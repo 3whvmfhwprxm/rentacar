@@ -1,4 +1,4 @@
-package com.third.ccaroption.controller;
+package com.third.rent.ccaroption.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.third.rent.reservUser.Model;
+package com.third.rent.reservUser.model;
 
 import java.sql.Timestamp;
 

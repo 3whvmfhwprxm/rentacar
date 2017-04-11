@@ -6,10 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class counselController {
+public class CounselController {
 	
-	private static final Logger logger 
-	= LoggerFactory.getLogger(counselController.class);
+	private static final Logger logger=LoggerFactory.getLogger(CounselController.class);
 	
 	
 	@RequestMapping("/inc_counselor/consel_index.do")
