@@ -18,7 +18,7 @@ public class RegisterController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/inc_user/register", method=RequestMethod.GET)
+	@RequestMapping(value="/inc_user/register.do", method=RequestMethod.GET)
 	public String insertLogin_get(){
 		logger.info("회원가입화면 띄우기");
 		
@@ -31,6 +31,6 @@ public class RegisterController {
 		
 		int cnt=userService.insertUser(vo);
 		logger.info("회원가입, cnt={}",cnt);
-		return "inc_user/index.do";
+		return "inc_user/index";
 	}
 }
