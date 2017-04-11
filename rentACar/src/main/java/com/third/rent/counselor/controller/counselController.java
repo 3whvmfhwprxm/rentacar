@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class counselController {
+	
 	private static final Logger logger 
 	= LoggerFactory.getLogger(counselController.class);
 	
@@ -54,7 +55,7 @@ public class counselController {
 		
 	}
 	
-	@RequestMapping("counselor/counselor_manage")
+	@RequestMapping("/counselor/counselor_manage.do")
 	public String counselor_manage(){
 		
 		logger.info("상담사 관리 화면 구현");
