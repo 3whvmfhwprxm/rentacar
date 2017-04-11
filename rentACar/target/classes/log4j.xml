@@ -21,7 +21,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.hy.herb">
+	<logger name="com.third.rent">
 		<level value="info" />
 	</logger>
 	
