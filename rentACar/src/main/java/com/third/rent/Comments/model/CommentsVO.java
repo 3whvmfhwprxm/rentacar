@@ -1,4 +1,4 @@
-package com.third.rent.counselor.model;
+package com.third.rent.Comments.model;
 
 import java.sql.Timestamp;
 
