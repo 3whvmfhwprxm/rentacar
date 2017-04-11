@@ -21,7 +21,7 @@
 		<!-- header -->				
 		<header>
 			<h1><a href="${pageContext.request.contextPath}/inc_user/index.do"><img alt="로고 이미지"
-				src="${pageContext.request.contextPath}/company_logos/logo.png"/></a></h1>
+				src="${pageContext.request.contextPath}/login_company/logo.png"/></a></h1>
 			<nav style="float: right;">
 				<a href="${pageContext.request.contextPath}/inc_user/login.do">로그인</a>
 				<a href="${pageContext.request.contextPath}/inc_user/register.do">회원가입</a>				
