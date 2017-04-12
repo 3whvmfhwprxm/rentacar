@@ -1,4 +1,4 @@
-package com.third.rent.admin.model;
+package com.third.rent.admin_User.model;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import com.third.rent.common.SearchVO;
 import com.third.rent.user.model.UserVO;
 
 @Repository
-public class AdminDAOMybatis extends SqlSessionDaoSupport
-	implements AdminDAO{
+public class Admin_UserMybatis extends SqlSessionDaoSupport
+	implements Admin_UserDAO{
 	private String namespace="config.mybatis.mapper.oracle.admin";
 	
 	public List<UserVO> selectAll(SearchVO searchVo){
@@ -21,7 +21,12 @@ public class AdminDAOMybatis extends SqlSessionDaoSupport
 	}
 	
 	public int selectTotalRecord(SearchVO searchVo) {
-		return getSqlSession().selectOne(namespace
-				+".selectTotalRecord", searchVo);
+		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
+	}
+	
+	public List<UserVO> selectByUserId(String userId){
+		List<UserVO> alist = getSqlSession().selectList(namespace+".selectByUserId", userId);
+		
+		return alist;
 	}
 }

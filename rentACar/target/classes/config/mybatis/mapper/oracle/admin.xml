@@ -23,6 +23,12 @@
 		select count(*) from RENT_USER 
 		<include refid="searchWhere"></include>
 	</select>
+	
+	<select id="selectByUserId" parameterType="String" resultType="UserVO">
+		select*from RENT_USER 
+		where user_id=#{userId}
+	</select>
+
 </mapper>
 
 

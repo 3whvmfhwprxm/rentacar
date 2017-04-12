@@ -1,4 +1,4 @@
-package com.third.rent.admin.model;
+package com.third.rent.admin_User.model;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import com.third.rent.common.SearchVO;
 import com.third.rent.user.model.UserVO;
 
 @Service
-public class AdminServiceImpl implements AdminService{
+public class Admin_UserServiceImpl implements Admin_UserService{
 	@Autowired
-	private AdminDAO adminDao;
+	private Admin_UserDAO adminDao;
 	
 	public List<UserVO> selectAll(SearchVO searchVo){
 		return adminDao.selectAll(searchVo);
@@ -19,5 +19,9 @@ public class AdminServiceImpl implements AdminService{
 	
 	public int selectTotalRecord(SearchVO searchVo){
 		return adminDao.selectTotalRecord(searchVo);
+	}
+
+	public List<UserVO> selectByUserId(String userId) {
+		return adminDao.selectByUserId(userId);
 	}
 }

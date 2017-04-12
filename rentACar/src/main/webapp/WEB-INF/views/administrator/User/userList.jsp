@@ -18,7 +18,7 @@
 <body>
 <h2>회원</h2>
 	<form name="frmPage" method="post"
-		action='<c:url value="/administrator/user/memberList.do" />'>
+		action='<c:url value="/administrator/member/memberList.do" />'>
 		<input type="text" name="currentPage"> 
 		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
 		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
@@ -47,7 +47,8 @@
 				</c:if>
 				<c:forEach var="vo" items="${mlist}">
 					<tr style="text-align: center">
-						<td>${vo.userId}</td>
+						<td><a href='<c:url value="/administrator/member/memberDetail.do?userId=${vo.userId}" />'>
+						${vo.userId}</a></td>
 						<td style="text-align: center">
 							${vo.userName}
 						</td>
@@ -93,7 +94,7 @@
 	
 	<div class="divSearch">
 		<form name="frmSearch" method="post"
-			action="<c:url value="/administrator/user/memberList.do" />">
+			action="<c:url value="/administrator/member/memberList.do" />">
 			<select name="searchCondition">
 				<option value="userId"
 					<c:if test="${'userId'==param.searchCondition}">
@@ -108,13 +109,6 @@
 				value="${param.searchKeyword}"> 
 			<input type="submit" value="검색">
 		</form>
-	</div>
-
-	<div class="divBtn">
-		<a href='<c:url value="/administrator/user/memberEdit.do?userId=${vo.userId}"/>'>수정</a>
-	</div>
-	<div class="divBtn">
-		<a href='<c:url value="/administrator/user/memberDelete.do?userId=${vo.userId}"/>'>삭제</a>
 	</div>
 </body>
 </html>

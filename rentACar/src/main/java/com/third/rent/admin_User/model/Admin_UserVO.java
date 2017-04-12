@@ -1,8 +1,8 @@
-package com.third.rent.admin.model;
+package com.third.rent.admin_User.model;
 
 import java.security.Timestamp;
 
-public class AdminVO {
+public class Admin_UserVO {
 	private String adminId;
 	private String adminPwd;
 	private String adminName;
