@@ -33,7 +33,7 @@
 			<!-- 로그인된 경우 -->	
 			<c:if test="${!empty sessionScope.userId }">
 				<nav style="float: right;">
-					<span style="font-size: 1em">(${sessionScope.userid} 님)</span>
+					<span style="font-size: 1em">(${sessionScope.userId} 님)</span>
 					<a href="${pageContext.request.contextPath}/inc_user/regedit.do">회원정보수정</a>
 					<a href="${pageContext.request.contextPath}/inc_user/logout.do">로그아웃</a>				
 				</nav>
