@@ -162,10 +162,46 @@ commit;
 --예) 회원(자식), 예약자/운전자 정보를 받을때(예약자-엄마, 운전자-아빠)받을수 있게
 
 --업체 공지
+delete from companynotice;
+insert into companynotice(cnotice_no, cnotice_title, cnotice_content, admin_id, cnotice_regdate, cnotice_visible, cnotice_readcount)
+values(1, '업체용 공지게시판 첫번째 글!', '업체가 봐야할 내용!!', 'admin1', sysdate, 'Y', 0);
+insert into companynotice(cnotice_no, cnotice_title, cnotice_content, admin_id, cnotice_regdate, cnotice_visible, cnotice_readcount)
+values(2, '업체용 공지게시판 두번째 글!', '업체가 봐야할 내용 2!!', 'admin2', sysdate, 'Y', 0);
+insert into companynotice(cnotice_no, cnotice_title, cnotice_content, admin_id, cnotice_regdate, cnotice_visible, cnotice_readcount)
+values(3, '업체용 공지게시판 세번째 글!', '업체가 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
+insert into companynotice(cnotice_no, cnotice_title, cnotice_content, admin_id, cnotice_regdate, cnotice_visible, cnotice_readcount, cnotice_deldate)
+values(4, '삭제된 업체용 공지게시판 네번째 글!', '업체가 볼수없는 내용 4!!', 'admin1', sysdate, 'N', 0, sysdate);
+
+select * from companynotice order by cnotice_no desc;
+commit;
 
 --일반 공지
+delete from usernotice;
+insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
+values(1, '고객용 공지게시판 첫번째 글!', '고객이 봐야할 내용!!', 'admin1', sysdate, 'Y', 0);
+insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
+values(2, '고객용 공지게시판 두번째 글!', '고객이 봐야할 내용 2!!', 'admin2', sysdate, 'Y', 0);
+insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
+values(3, '고객용 공지게시판 세번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
+insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount, unotice_deldate)
+values(4, '삭제된 고객용 공지게시판 네번째 글!', '고객이 볼수없는 내용 4!!', 'admin1', sysdate, 'N', 0, sysdate);
+
+select * from usernotice order by unotice_no desc;
+commit;
 
 --상담사 공지
+delete from servicecenternotice;
+insert into servicecenternotice(scnotice_no, scnotice_title, scnotice_content, admin_id, scnotice_regdate, scnotice_visible, scnotice_readcount)
+values(1, '상담사용 공지게시판 첫번째 글!', '상담사가 봐야할 내용!!', 'admin1', sysdate, 'Y', 0);
+insert into servicecenternotice(scnotice_no, scnotice_title, scnotice_content, admin_id, scnotice_regdate, scnotice_visible, scnotice_readcount)
+values(2, '상담사용 공지게시판 두번째 글!', '상담사가 봐야할 내용 2!!', 'admin2', sysdate, 'Y', 0);
+insert into servicecenternotice(scnotice_no, scnotice_title, scnotice_content, admin_id, scnotice_regdate, scnotice_visible, scnotice_readcount)
+values(3, '상담사용 공지게시판 세번째 글!', '상담사가 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
+insert into servicecenternotice(scnotice_no, scnotice_title, scnotice_content, admin_id, scnotice_regdate, scnotice_visible, scnotice_readcount, scnotice_deldate)
+values(4, '삭제된 상담사 공지게시판 네번째 글!', '상담사가 볼수없는 내용 4!!', 'admin1', sysdate, 'N', 0, sysdate);
+
+select * from servicecenternotice order by scnotice_no desc;
+commit;
 
 --결제 정보
 
