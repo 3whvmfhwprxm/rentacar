@@ -1,4 +1,4 @@
-package com.third.rent.admin.board.model;
+package com.third.rent.admin_Board.model;
 
 import java.util.List;
 

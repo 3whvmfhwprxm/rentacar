@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.third.rent.admin.board.model.Admin_BoardService;
+import com.third.rent.admin_Board.model.Admin_BoardService;
 import com.third.rent.user.notice.model.UserNoticeVO;
 
 @Controller
