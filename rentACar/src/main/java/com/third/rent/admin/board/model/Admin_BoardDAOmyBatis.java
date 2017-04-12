@@ -12,21 +12,21 @@ import com.third.rent.user.notice.model.UserNoticeVO;
 @Repository
 public class Admin_BoardDAOmyBatis extends SqlSessionDaoSupport implements Admin_BoardDAO{
 
+	private String nameSpace="config.mybatis.mapper.oracle.admin_board";
+	
 	@Override
 	public List<ServiceCenterNoticeVO> selectSN() {
-		return null;
+		return getSqlSession().selectList(nameSpace+".selectSCNotice");
 	}
 
 	@Override
 	public List<CompanyNoticeVO> selectCN() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSqlSession().selectList(nameSpace+".selectCNotice");
 	}
 
 	@Override
 	public List<UserNoticeVO> selectUN() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSqlSession().selectList(nameSpace+".selectUNotice");
 	}
 	
 	
