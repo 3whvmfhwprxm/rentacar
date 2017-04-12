@@ -20,14 +20,14 @@ public class RegisterController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/inc_user/regedit.do", method=RequestMethod.GET)
+	@RequestMapping(value="/inc_user/register.do", method=RequestMethod.GET)
 	public String insertLogin_get(){
 		logger.info("회원가입화면 띄우기");
 		
-		return "inc_user/regedit";
+		return "inc_user/register";
 	}
 	
-	@RequestMapping(value="/inc_user/regedit.do",method=RequestMethod.POST)
+	@RequestMapping(value="/inc_user/register.do",method=RequestMethod.POST)
 	public String join(@ModelAttribute UserVO userVo,@RequestParam(value="userEmail3", required=false) String userEmail3, Model model){
 		//1
 		logger.info("회원가입처리, 파라미터 UserVO={}",userVo);

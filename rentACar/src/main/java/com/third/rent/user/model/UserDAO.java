@@ -5,4 +5,5 @@ public interface UserDAO {
 	public int duplicateUserid(String userId);
 	public UserVO selectByUserid(String userId);
 	public String selectPwd(String userId);
+	public int updateUser(UserVO vo);
 }

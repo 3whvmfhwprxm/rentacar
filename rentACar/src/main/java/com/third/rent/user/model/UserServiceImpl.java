@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService{
 	public UserVO selectByUserid(String userId) {
 		return userDao.selectByUserid(userId);
 	}
+
+	@Override
+	public int updateUser(UserVO vo) {
+		return userDao.updateUser(vo);
+	}
 }

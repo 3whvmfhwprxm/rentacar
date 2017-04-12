@@ -14,4 +14,5 @@ public interface UserService {
 	public int loginCheck(String userid, String userPwd);
 	public int duplicateUserid(String userId);
 	public UserVO selectByUserid(String userId);
+	public int updateUser(UserVO vo);
 }
