@@ -2,8 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mybatis.mapper.oracle.admin">
+<mapper namespace="config.mybatis.mapper.oracle.admin">
+	<sql id="searchWhere">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
+		</if>
+	</sql>
 	
+	<select id="selectAllUser" resultType="UserVO" 
+		parameterType="SearchVO">
+		select * from RENT_USER
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
+		</if>	
+		order by user_regdate desc
+	</select> 
+	
+	<select id="selectTotalRecord" parameterType="SearchVO"
+		resultType="int">
+		select count(*) from RENT_USER 
+		<include refid="searchWhere"></include>
+	</select>
 </mapper>
 
 
