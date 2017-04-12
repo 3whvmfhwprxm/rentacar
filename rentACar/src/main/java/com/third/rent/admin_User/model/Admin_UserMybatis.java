@@ -11,7 +11,7 @@ import com.third.rent.user.model.UserVO;
 @Repository
 public class Admin_UserMybatis extends SqlSessionDaoSupport
 	implements Admin_UserDAO{
-	private String namespace="config.mybatis.mapper.oracle.admin";
+	private String namespace="config.mybatis.mapper.oracle.admin_User";
 	
 	public List<UserVO> selectAll(SearchVO searchVo){
 		List<UserVO> alist
@@ -25,8 +25,8 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 	}
 	
 	public List<UserVO> selectByUserId(String userId){
-		List<UserVO> alist = getSqlSession().selectList(namespace+".selectByUserId", userId);
+		List<UserVO> listByUser = getSqlSession().selectList(namespace+".selectByUserId", userId);
 		
-		return alist;
+		return listByUser;
 	}
 }

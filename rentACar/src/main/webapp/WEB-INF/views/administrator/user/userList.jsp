@@ -18,7 +18,7 @@
 <body>
 <h2>회원</h2>
 	<form name="frmPage" method="post"
-		action='<c:url value="/administrator/member/memberList.do" />'>
+		action='<c:url value="/administrator/user/userList.do" />'>
 		<input type="text" name="currentPage"> 
 		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
 		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
@@ -47,7 +47,7 @@
 				</c:if>
 				<c:forEach var="vo" items="${mlist}">
 					<tr style="text-align: center">
-						<td><a href='<c:url value="/administrator/member/memberDetail.do?userId=${vo.userId}" />'>
+						<td><a href='<c:url value="/administrator/user/userDetail.do?userId=${vo.userId}" />'>
 						${vo.userId}</a></td>
 						<td style="text-align: center">
 							${vo.userName}
@@ -87,14 +87,14 @@
 
 		<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
 			<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"> 
-			<img src='${pageContext.request.contextPath}/images/last.JPG' alt="다음블럭으로">
+				<img src='${pageContext.request.contextPath}/images/last.JPG' alt="다음블럭으로">
 			</a>
 		</c:if>
 	</div>
 	
 	<div class="divSearch">
 		<form name="frmSearch" method="post"
-			action="<c:url value="/administrator/member/memberList.do" />">
+			action="<c:url value="/administrator/user/userList.do" />">
 			<select name="searchCondition">
 				<option value="userId"
 					<c:if test="${'userId'==param.searchCondition}">

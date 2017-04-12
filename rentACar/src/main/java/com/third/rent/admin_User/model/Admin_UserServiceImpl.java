@@ -11,17 +11,17 @@ import com.third.rent.user.model.UserVO;
 @Service
 public class Admin_UserServiceImpl implements Admin_UserService{
 	@Autowired
-	private Admin_UserDAO adminDao;
+	private Admin_UserDAO adminUserDao;
 	
 	public List<UserVO> selectAll(SearchVO searchVo){
-		return adminDao.selectAll(searchVo);
+		return adminUserDao.selectAll(searchVo);
 	}
 	
 	public int selectTotalRecord(SearchVO searchVo){
-		return adminDao.selectTotalRecord(searchVo);
+		return adminUserDao.selectTotalRecord(searchVo);
 	}
 
 	public List<UserVO> selectByUserId(String userId) {
-		return adminDao.selectByUserId(userId);
+		return adminUserDao.selectByUserId(userId);
 	}
 }

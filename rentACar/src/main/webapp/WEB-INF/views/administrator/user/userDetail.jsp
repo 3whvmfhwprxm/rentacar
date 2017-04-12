@@ -11,7 +11,7 @@
 <body>
 	<h2>회원목록 상세보기</h2>
 	<div class="divForm">
-		<c:forEach var="vo" items="${mlist}">
+		<c:forEach var="vo" items="${mDetail}">
 			<div>
 				<span>아이디</span> <span>${vo.userId}</span>
 			</div>
@@ -42,13 +42,11 @@
 			<div>
 				<span>탈퇴일</span> <span>${vo.userOutdate}</span>
 			</div>
-		
-			<div class="center">
-				<a href='<c:url value="/administrator/user/memberEdit.do?userId=${vo.userId}"/>'>수정</a> |
-	        	<a href='<c:url value="/administrator/user/memberDelete.do?userId=${vo.userId}"/>'>삭제</a> ||
-	        	<a href='<c:url value="/administrator/user/memberList.do"/>'>목록</a>			
-			</div>
 		</c:forEach>
+		<div class="center">
+        	<a href='<c:url value="/administrator/user/userList.do"/>'>목록</a>			
+		</div>
+		
 	</div>
 </body>
 </html>
