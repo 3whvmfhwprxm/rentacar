@@ -133,22 +133,22 @@ commit;
 
 
 --렌트 업체 2개 정상운영, 1개 업체 탈퇴업체
---(계좌번호 컬럼이 없는데 아마 필요할것으로 예상됨) - 17-04-13 계좌번호 컬럼 추가됨
+--(계좌번호 컬럼이 없는데 아마 필요할것으로 예상됨) - 17-04-13 계좌번호 컬럼 추가됨, logo, regdate 컬럼 위치 수정
 delete from company;
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
-com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo)
+com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_logo, com_regdate)
 values('rentZoa', '렌트조아', '1', '100-81-02000', '국민:289333-01-22212', '02', '0100', '0100', '010', '0100', '0100',  '02', '0100', '0101', 
-'제주도 한라산 아래', '김렌트', 'rentZoa1', 'rentZoa.com', sysdate, 'rentZoa_logo.png');
+'제주도 한라산 아래', '김렌트', 'rentZoa1', 'rentZoa.com', 'rentZoa_logo.png', sysdate);
 
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
-com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo)
+com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_logo, com_regdate)
 values('rentGo', '렌트고', '1', '100-81-03000', '농협:22222-02-22222', '02', '0200', '0200', '010', '0200', '0200',  '02', '0200', '0201', 
-'제주도 한라산 아래', '이렌트', 'rentGo1', 'rentGo.com', sysdate, 'rentGo_logo.png');
+'제주도 한라산 아래', '이렌트', 'rentGo1', 'rentGo.com', 'rentGo_logo.png', sysdate);
 
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
-com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo, com_outdate)
+com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_logo, com_regdate,  com_outdate)
 values('rentDie', '렌트죽음', '1', '100-81-00000', '신한:3333-03-33333', '02', '0300', '0300', '010', '0300', '0300',  '02', '0300', '0301', 
-'제주공항 근처', '박렌트', 'rentDie1', 'rentDie.com', sysdate, 'rentDie_logo.png', sysdate);
+'제주공항 근처', '박렌트', 'rentDie1', 'rentDie.com', 'rentDie_logo.png', sysdate, sysdate);
 select * from company;
 commit;
 

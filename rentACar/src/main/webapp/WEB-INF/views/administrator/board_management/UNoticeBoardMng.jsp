@@ -3,7 +3,7 @@
 <%@ include file="../topBottom/top.jsp" %>
 	<div class="container">
 	<h1>고객용 공지 게시판 관리</h1>
-	<table>
+	<table class="table table-bordered table-hover">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -15,7 +15,7 @@
 		</tr>
 		<c:if test="${!empty unList }">			
 				<c:forEach var="vo" items="${unList }">
-					<tr>
+					<tr <c:if test="${!empty vo.unoticeDeldate }"> class="danger" </c:if>>
 						<td>${vo.unoticeNo }</td>
 						<td>${vo.unoticeTitle }</td>
 						<td>${vo.adminId }</td>

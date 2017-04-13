@@ -53,15 +53,7 @@ $(document).ready(function(){
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 
-
-						<li class="dropdown mega-dropdown"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">회원관리 </a>
-							<ul class="dropdown-menu mega-dropdown-menu">
-								<li class="col-sm-2"><a href="#" >회원 수정</a></li>
-								<li class="col-sm-2"><a href="#" >회원 삭제</a></li>
-								<li class="col-sm-2"><a href="#" >탈퇴 회원 조회</a></li>
-							</ul>
+						<li class="dropdown mega-dropdown"><a href="<c:url value='/administrator/user/userList.do' />">회원관리 </a>
 						</li>
 						
 						<li class="dropdown mega-dropdown"><a href="#"
@@ -135,5 +127,3 @@ $(document).ready(function(){
 	</div>
 
 	<!--  -->
-</body>
-</html>

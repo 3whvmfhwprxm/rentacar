@@ -40,9 +40,9 @@ CREATE TABLE Company (
 	com_address VARCHAR2(100) NOT NULL, /* 회사주소 */
 	com_ceo VARCHAR2(30) NOT NULL, /* 대표자 */
 	com_email1 VARCHAR2(50) NOT NULL, /* 대표메일1 */
-	com_email2 VARCHAR2(50) NOT NULL, /* 대표메일2 */
-	com_regdate DATE NOT NULL, /* 가입일 */
+	com_email2 VARCHAR2(50) NOT NULL, /* 대표메일2 */	
 	com_logo VARCHAR2(200), /* 업체로고 */
+	com_regdate DATE NOT NULL, /* 가입일 */
 	com_outdate DATE /* 탈퇴일 */
 );
 
@@ -170,8 +170,8 @@ CREATE TABLE Counsel (
 	counsel_category VARCHAR2(30) NOT NULL, /* 상담종류 */
 	counsel_content CLOB NOT NULL, /* 상담내용 */
 	counsel_regdate DATE NOT NULL, /* 상담시간 */
-	counsel_result VARCHAR2(200) NOT NULL, /* 처리내용 */
-	counsel_result_flag VARCHAR2(200) NOT NULL, /* 처리결과 */
+	counsel_result CLOB NOT NULL, /* 처리내용 */
+	counsel_result_flag VARCHAR2(10) NOT NULL, /* 처리결과 */
 	admin_id VARCHAR2(30) NOT NULL /* 관리자아이디 */
 );
 
