@@ -9,6 +9,30 @@
 <body>
 <div>
 <div>
+<label></label>
+<table border="2px">
+		<tr>
+			<th>번호</th>
+			<th>렌터카 업체</th>
+			<th>예약차량</th>
+			<th>결제가격</th>
+			<th>예약날짜</th>
+			<th>대여시간</th>
+			<th>보험여부</th>
+			<th>결제유무</th>
+			
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>소나타렌터카</td>
+			<td>부가티</td>
+			<td>25,000원</td>
+			<td>17</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
 	<table border="2px">
 		<tr>
 			<th>상담사 이름</th>
