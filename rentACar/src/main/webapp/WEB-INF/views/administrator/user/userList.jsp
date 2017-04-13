@@ -14,17 +14,24 @@
 		frmPage.submit();
 	}
 </script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+	th{
+		text-align: center;
+	}
+</style>
 </head>
 <body>
 <h2>회원</h2>
 	<form name="frmPage" method="post"
 		action='<c:url value="/administrator/user/userList.do" />'>
-		<input type="text" name="currentPage"> 
-		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
-		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
+		<input type="hidden" name="currentPage"> 
+		<input type="hidden" name="searchCondition" value="${param.searchCondition}"> 
+		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 	</form>
 	<div class="divList">
-		<table summary="회원정보에 관한 테이블" style="border: 1">
+		<table class="table table-hover table-bordered" summary="회원정보에 관한 테이블">
 			<thead>
 				<tr>
 					<th scope="col">아이디</th>

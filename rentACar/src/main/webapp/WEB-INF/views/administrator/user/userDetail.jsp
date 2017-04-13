@@ -7,40 +7,52 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원목록 상세보기</title>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<h2>회원목록 상세보기</h2>
 	<div class="divForm">
-		<c:forEach var="vo" items="${mDetail}">
+		<c:forEach var="vo" items="${userDetail}">
 			<div>
-				<span>아이디</span> <span>${vo.userId}</span>
+				<span>아이디</span>
+				<span>${vo.userId}</span>
 			</div>
 			<div>
-				<span>이름</span> <span>${vo.userName}</span>
+				<span>이름</span>
+				<span>${vo.userName}</span>
 			</div>
 			<div>
-				<span>이메일</span> <span>${vo.userEmail1}@${vo.userEmail1}</span>
+				<span>이메일</span>
+				<span>${vo.userEmail1}@${vo.userEmail1}</span>
 			</div>
 			<div>
-				<span>전화번호</span> <span>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</span>
+				<span>전화번호</span>
+				<span>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</span>
 			</div>
 			<div>
-				<span>생일</span> <span>${vo.userBirth}</span>
+				<span>생일</span>
+				<span>${vo.userBirth}</span>
 			</div>
 			<div>
-				<span>주소</span> <span>${vo.userAddress}</span>
+				<span>주소</span>
+				<span>${vo.userAddress}</span>
 			</div>
 			<div>
-				<span>성별</span> <span>${vo.userGender}</span>
+				<span>성별</span>
+				<span>${vo.userGender}</span>
 			</div>
 			<div>
-				<span>면허증</span> <span>${vo.userLicense}</span>
+				<span>면허증</span>
+				<span>${vo.userLicense}</span>
 			</div>
 			<div>
-				<span>가입일</span> <span>${vo.userRegdate}</span>
+				<span>가입일</span>
+				<span>${vo.userRegdate}</span>
 			</div>
 			<div>
-				<span>탈퇴일</span> <span>${vo.userOutdate}</span>
+				<span>탈퇴일</span>
+				<span>${vo.userOutdate}</span>
 			</div>
 		</c:forEach>
 		<div class="center">
