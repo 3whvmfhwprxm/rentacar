@@ -45,7 +45,7 @@ $(document).ready(function(){
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"> 3조 렌트카 관리자 </a>
+					<a class="navbar-brand" href="#"> 렌트카 관리자 </a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,66 +58,74 @@ $(document).ready(function(){
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
 							aria-haspopup="true" aria-expanded="false">회원관리 </a>
 							<ul class="dropdown-menu mega-dropdown-menu">
-								<li class="dropdown1 col-sm-4"><a href="#" >회원 수정 </a>
-								<li class="col-sm-4">회원 삭제 </li>
-								<li class="col-sm-4">탈퇴 회원 조회</li>
+								<li class="col-sm-2"><a href="#" >회원 수정</a></li>
+								<li class="col-sm-2"><a href="#" >회원 삭제</a></li>
+								<li class="col-sm-2"><a href="#" >탈퇴 회원 조회</a></li>
 							</ul>
 						</li>
 						
 						<li class="dropdown mega-dropdown"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">회원관리 </a>
+							aria-haspopup="true" aria-expanded="false">업체관리 </a>
 							<ul class="dropdown-menu mega-dropdown-menu">
-								<li class="dropdown1 col-sm-4"><a href="#" >회원 수정 </a>
-								<li class="col-sm-4">회원 삭제 </li>
-								<li class="col-sm-4">탈퇴 회원 조회</li>
+								<li class="col-sm-2"><a href="#" >업체 등록 </a></li>
+								<li class="col-sm-2"><a href="#" >업체 수정 </a></li>
+								<li class="col-sm-2"><a href="#" >업체 보유 차량 </a></li>
+								<li class="col-sm-2"><a href="#" >탈퇴 업체 조회 </a></li>
 							</ul>
 						</li>
 						
 						<li class="dropdown mega-dropdown"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">회원관리 </a>
+							aria-haspopup="true" aria-expanded="false">차모델관리 </a>
 							<ul class="dropdown-menu mega-dropdown-menu">
-								<li class="dropdown1 col-sm-4"><a href="#" >회원 수정 </a>
-								<li class="col-sm-4">회원 삭제 </li>
-								<li class="col-sm-4">탈퇴 회원 조회</li>
+								<li class="col-sm-4"><a href="#" >모델 등록 </a></li>
+								<li class="col-sm-4"><a href="#" >모델 수정 </a></li>
+								<li class="col-sm-4"><a href="#" >모델 삭제 </a></li>
 							</ul>
 						</li>
 						
 						<li class="dropdown mega-dropdown"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">회원관리 </a>
-							<ul class="dropdown-menu mega-dropdown-menu">
-								<li class="dropdown1 col-sm-4"><a href="#" >회원 수정 </a>
-								<li class="col-sm-4">회원 삭제 </li>
-								<li class="col-sm-4">탈퇴 회원 조회</li>
+							aria-haspopup="true" aria-expanded="false">게시판관리 </a>
+							<ul class="dropdown-menu mega-dropdown-menu">								
+								<li class="col-sm-2"><a href="#" >후기 관리 </a></li>
+								<li class="col-sm-2"><a href="<c:url value='/admin/Board/uNotice.do' />" >고객 공지 </a></li>
+								<li class="col-sm-2"><a href="<c:url value='/admin/Board/cNotice.do' />" >업체 공지 </a></li>
+								<li class="col-sm-2"><a href="<c:url value='/admin/Board/scNotice.do' />" >상담사 공지 </a></li>
+								<li class="col-sm-2"><a href="#" >FAQ 관리 </a></li>								
 							</ul>
 						</li>
 						
 						<li class="dropdown mega-dropdown"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">회원관리 </a>
-							<ul class="dropdown-menu mega-dropdown-menu">
-								<li class="dropdown1 col-sm-4"><a href="#" >회원 수정 </a>
-								<li class="col-sm-4">회원 삭제 </li>
-								<li class="col-sm-4">탈퇴 회원 조회</li>
+							aria-haspopup="true" aria-expanded="false">결제내역관리 </a>
+						</li>
+						
+						<li class="dropdown mega-dropdown"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">예약관리 </a>
+						</li>
+						
+						<li class="dropdown mega-dropdown"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">통계/정산관리 </a>
+							<ul class="dropdown-menu mega-dropdown-menu">								
+								<li class="col-sm-4"><a href="#" >년,월별 통계</a></li>
+								<li class="col-sm-4"><a href="#" >업체별 통계</a></li>
+								<li class="col-sm-4"><a href="#" >업체 정산 관리</a></li>								
 							</ul>
-						</li>					
+						</li>
+										
+						<li class="dropdown mega-dropdown"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">관리자 관리 </a>
+							<ul class="dropdown-menu mega-dropdown-menu">								
+								<li class="col-sm-6"><a href="#" >관리자 추가</a></li>
+								<li class="col-sm-6"><a href="#" >관리자 조회(수정)</a></li>								
+							</ul>
+						</li>
 
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">
-
-						<li class="dropdown1"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Dropdown </a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-							</ul></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
