@@ -27,6 +27,7 @@ CREATE TABLE Company (
 	com_name VARCHAR2(30) NOT NULL, /* 업체명 */
 	com_pwd VARCHAR2(30) NOT NULL, /* 패스워드 */
 	com_num VARCHAR2(30) NOT NULL, /* 사업자번호 */
+	com_accNum VARCHAR2(30) NOT NULL, /* 계좌번호 */
 	com_tel1 VARCHAR2(10) NOT NULL, /* 대표번호1 */
 	com_tel2 VARCHAR2(10) NOT NULL, /* 대표번호2 */
 	com_tel3 VARCHAR2(10) NOT NULL, /* 대표번호3 */
@@ -84,9 +85,9 @@ CREATE TABLE Reservation (
 	user_tel2 VARCHAR2(10) NOT NULL, /* 회원전화번호2 */
 	user_tel3 VARCHAR2(10) NOT NULL, /* 회원전화번호3 */
 	reserv_start_date DATE NOT NULL, /* 대여시작일 */
-	reserv_start_time DATE NOT NULL, /* 대여시작시간 */
+	reserv_start_time VARCHAR2(10) NOT NULL, /* 대여시작시간 */
 	reserv_end_date DATE NOT NULL, /* 반납일 */
-	reserv_end_time DATE NOT NULL, /* 반납시간 */
+	reserv_end_time VARCHAR2(10) NOT NULL, /* 반납시간 */
 	ccar_car_id VARCHAR2(50) NOT NULL, /* 업체보유차량 */
 	reserv_insurance VARCHAR2(20) NOT NULL, /* 보험여부 */
 	reserv_date DATE NOT NULL, /* 예약일시 */

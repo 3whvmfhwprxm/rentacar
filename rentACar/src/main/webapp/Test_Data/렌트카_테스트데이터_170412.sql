@@ -133,21 +133,21 @@ commit;
 
 
 --렌트 업체 2개 정상운영, 1개 업체 탈퇴업체
---(계좌번호 컬럼이 없는데 아마 필요할것으로 예상됨)
+--(계좌번호 컬럼이 없는데 아마 필요할것으로 예상됨) - 17-04-13 계좌번호 컬럼 추가됨
 delete from company;
-insert into company(com_id, com_name, com_pwd, com_num, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo)
-values('rentZoa', '렌트조아', '1', '100-81-02000', '02', '0100', '0100', '010', '0100', '0100',  '02', '0100', '0101', 
+values('rentZoa', '렌트조아', '1', '100-81-02000', '국민:289333-01-22212', '02', '0100', '0100', '010', '0100', '0100',  '02', '0100', '0101', 
 '제주도 한라산 아래', '김렌트', 'rentZoa1', 'rentZoa.com', sysdate, 'rentZoa_logo.png');
 
-insert into company(com_id, com_name, com_pwd, com_num, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo)
-values('rentGo', '렌트고', '1', '100-81-03000', '02', '0200', '0200', '010', '0200', '0200',  '02', '0200', '0201', 
+values('rentGo', '렌트고', '1', '100-81-03000', '농협:22222-02-22222', '02', '0200', '0200', '010', '0200', '0200',  '02', '0200', '0201', 
 '제주도 한라산 아래', '이렌트', 'rentGo1', 'rentGo.com', sysdate, 'rentGo_logo.png');
 
-insert into company(com_id, com_name, com_pwd, com_num, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo, com_outdate)
-values('rentDie', '렌트죽음', '1', '100-81-00000', '02', '0300', '0300', '010', '0300', '0300',  '02', '0300', '0301', 
+values('rentDie', '렌트죽음', '1', '100-81-00000', '신한:3333-03-33333', '02', '0300', '0300', '010', '0300', '0300',  '02', '0300', '0301', 
 '제주공항 근처', '박렌트', 'rentDie1', 'rentDie.com', sysdate, 'rentDie_logo.png', sysdate);
 select * from company;
 commit;
@@ -205,7 +205,7 @@ insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, 
 reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
 ccar_car_id, reserv_insurance, reserv_date, user_id)
-values('001', '011','1111','1111', '2017-05-10', TO_DATE('2017-05-10 18:00:00','YYYY-MM-DD HH24:MI:SS'), 
+values('001', '011','1111','1111', '2017-05-10', TO_DATE('18:00:00','HH24:MI:SS'), 
 '2017-05-13', TO_DATE('2017-05-13 18:00:00','YYYY-MM-DD HH24:MI:SS'), 'rentGo_0003', '자차보험', sysdate ,'kim1');
 
 select * from RESERVATION;
