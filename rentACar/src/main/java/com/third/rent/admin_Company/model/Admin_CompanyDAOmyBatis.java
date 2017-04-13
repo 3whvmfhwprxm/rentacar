@@ -25,10 +25,18 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
 	
-	public List<CompanyVO> selectByComId(String comId){
-		List<CompanyVO> listByComId = getSqlSession().selectList(namespace+".selectByComId", comId);
+	public CompanyVO selectByComId(String comId){
+		CompanyVO companyVo = getSqlSession().selectOne(namespace+".selectByComId", comId);
 		
-		return listByComId;
+		return companyVo;
+	}
+
+	public int updateCompany(CompanyVO companyVo) {
+		return getSqlSession().update(namespace+".updateCompany", companyVo);
+	}
+
+	public String selectPwd(String adminPwd) {
+		return getSqlSession().selectOne(namespace+".selectPwd", adminPwd);
 	}
 
 }

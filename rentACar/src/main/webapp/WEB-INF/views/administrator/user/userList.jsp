@@ -62,7 +62,7 @@
 		</table>
 	</div>
 
-	<div class="divPage">
+	<div class="divPage container">
 		<c:if test="${pagingInfo.firstPage>1 }">
 			<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
 				<img src='${pageContext.request.contextPath}/images/first.JPG' alt="이전블럭으로">

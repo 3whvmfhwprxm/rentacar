@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>memberList</title>
+<title>companyList</title>
 <script type="text/javascript">	
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
@@ -58,7 +58,8 @@
 				<c:forEach var="vo" items="${companyList}">
 					<tr style="text-align: center">
 						<td><a href='<c:url value="/administrator/company/companyDetail.do?comId=${vo.comId}" />'>
-						${vo.comId}</a></td>
+						${vo.comId}</a>
+						</td>
 						<td style="text-align: center">
 							${vo.comName}
 						</td>

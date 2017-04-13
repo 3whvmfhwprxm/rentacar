@@ -58,7 +58,6 @@
 		<div class="center">
         	<a href='<c:url value="/administrator/user/userList.do"/>'>목록</a>			
 		</div>
-		
 	</div>
 </body>
 </html>

@@ -10,5 +10,9 @@ public interface Admin_CompanyDAO {
 	
 	public int selectTotalRecord(SearchVO searchVo);
 	
-	public List<CompanyVO> selectByComId(String comId);
+	public CompanyVO selectByComId(String comId);
+	
+	public int updateCompany(CompanyVO companyVo);
+	
+	public String selectPwd(String adminPwd);
 }
