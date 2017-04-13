@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="counselor_top.jsp" %>
 
-111
+
 
 <%@ include file="counselor_bottom.jsp" %>
