@@ -10,7 +10,7 @@ public class CounselVO {
 	private String userTel2;  			 /* 전화번호2 */
 	private String userTel3; 			 /* 전화번호3 */
 	private String counselCategory;  	 /* 상담종류 */
-	private String counselContent; 	 	 /* 상담내용 */
+	private String counselContent;	 	 /* 상담내용 */
 	private Timestamp counselRegdate;	 /* 상담시간 */
 	private String counselResult;  	 	 /* 처리내용 */
 	private String counselResultFlag;    /* 처리결과 */

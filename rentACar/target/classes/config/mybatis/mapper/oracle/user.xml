@@ -7,7 +7,7 @@
 		insert into rent_user(user_id,user_pwd,user_name,user_email1,user_email2,user_tel1,user_tel2,
 		user_tel3,user_birth,user_address,user_gender,user_license)
 		values(#{userId},#{userPwd},#{userName},#{userEmail1},#{userEmail2},#{userTel1},#{userTel2},
-		#{userTel3},#{userBirth},#{userAddress},#{userGender},#{userLicense});
+		#{userTel3},#{userBirth},#{userAddress},#{userGender},#{userLicense})
 	</insert>
 </mapper>
 

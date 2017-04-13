@@ -12,4 +12,9 @@ public class UserServiceImpl implements UserService{
 	public int insertUser(UserVO vo) {
 		return userDao.insertUser(vo);
 	}
+
+	@Override
+	public int duplicateUserid(String userid) {
+		return userDao.duplicateUserid(userid);
+	}
 }

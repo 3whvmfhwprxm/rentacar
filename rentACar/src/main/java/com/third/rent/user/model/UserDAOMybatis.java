@@ -8,7 +8,10 @@ public class UserDAOMybatis extends SqlSessionDaoSupport implements UserDAO{
 	private String namespace="config.mybatis.mapper.oracle.user";
 	
 	public int insertUser(UserVO vo){
-		return getSqlSession().insert(namespace+".insertUser");
+		return getSqlSession().insert(namespace+".insertUser", vo);
 	}
 
+	public int duplicateUserid(String userid) {
+		return getSqlSession().selectOne(namespace+".duplicateUserid", userid);
+	}
 }
