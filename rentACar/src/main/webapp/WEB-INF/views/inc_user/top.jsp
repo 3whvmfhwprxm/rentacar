@@ -21,7 +21,7 @@
 		<!-- header -->				
 		<header>
 			<h1><a href="${pageContext.request.contextPath}/inc_user/index.do"><img alt="로고 이미지"
-				src="${pageContext.request.contextPath}/user_img/logo.png"/></a></h1>
+				src="${pageContext.request.contextPath}/user_img/logo1.png"/></a></h1>
 		
 			<!-- 로그이 안된 경우 -->	
 			<c:if test="${empty sessionScope.userId }">
