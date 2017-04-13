@@ -23,7 +23,7 @@ public class RegEditController {
 	private UserService userService;
 	
 	@RequestMapping(value="/inc_user/regedit.do", method=RequestMethod.GET)
-	public String insertLogin_get(HttpSession session, Model model){
+	public String userEdit_get(HttpSession session, Model model){
 		String userId=(String)session.getAttribute("userId");
 		logger.info("수정화면 보여주기 userId={}",userId);
 		
@@ -40,7 +40,7 @@ public class RegEditController {
 	}
 	
 	@RequestMapping(value="/inc_user/regedit.do",method=RequestMethod.POST)
-	public String insertLogin_post(@ModelAttribute UserVO vo, @RequestParam String userEmail3, HttpSession session, Model model){
+	public String userEdit_post(@ModelAttribute UserVO vo, HttpSession session, Model model){
 		logger.info("회원수정, 파라미터 vo={}",vo);
 		String userId=(String)session.getAttribute("userId");
 		vo.setUserId(userId);
@@ -55,23 +55,8 @@ public class RegEditController {
 			vo.setUserTel3("");
 		}
 
-		//이메일 입력하지 않은 경우 처리
-		String userEmail1=vo.getUserEmail1();
-		String userEmail2=vo.getUserEmail2();
+		
 
-		if(userEmail1==null||userEmail1.isEmpty()){
-			vo.setUserEmail2("");
-		}else{
-			//직접입력인 경우
-			if(userEmail2.equals("etc")){
-				if(userEmail3!=null && userEmail3.isEmpty()){
-					vo.setUserEmail2(userEmail3);
-				}else{
-					vo.setUserEmail1("");
-					vo.setUserEmail2("");
-				}
-			}
-		}
 		
 		int result=userService.loginCheck(vo.getUserId(), vo.getUserPwd());
 		String msg="", url="/inc_user/regedit.do";
@@ -79,9 +64,9 @@ public class RegEditController {
 			int cnt=userService.updateUser(vo);
 			logger.info("회원수정 결과, cnt={}", cnt);
 			if(cnt>0){
-				msg="회원수정 성공";
+				msg="회원정보수정 성공";
 			}else{
-				msg="회원수정 실패";
+				msg="회원정보수정 실패";
 			}
 		}else if(result==userService.PWD_DISAGREE){
 			msg="비밀번호가 일치하지 않습니다";

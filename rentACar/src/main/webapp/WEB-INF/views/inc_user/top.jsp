@@ -16,7 +16,7 @@
 
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
-<body>	
+<body style="width: 1200px">	
 	<div>
 		<!-- header -->				
 		<header>

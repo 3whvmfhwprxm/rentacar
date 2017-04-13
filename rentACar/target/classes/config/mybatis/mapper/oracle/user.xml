@@ -22,11 +22,11 @@
 		select user_pwd from rent_user where user_id=#{userId} and user_outdate is null
 	</select>
 	
-	<update id="memberUser" parameterType="UserVO">
+	<update id="updateUser" parameterType="UserVO">
 		update rent_user set user_email1=#{userEmail1}, user_email2=#{userEmail2}, user_tel1=#{userTel1},
 		user_tel2=#{userTel2}, user_tel3=#{userTel3},user_birth=#{userBirth},user_address=#{userAddress},
-		user_gender=#{userGender},user_license#{userLicense}
-		where user_id=#{userId} and outdate is null
+		user_gender=#{userGender},user_license=#{userLicense}
+		where user_id=#{userId} and user_outdate is null
 	</update>
 </mapper>
 
