@@ -1,58 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../inc_company/company_top.jsp"%>
-<h2>차량 옵션 등록 페이지123</h2>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".Yn").click(function(){
+			if($('#ccarUseYn').is(":checked")){
+				$(this).val('Y');
+			}else if($('#ccarBlackboxYn').is(":checked")){
+				$(this).val('Y');
+			}else if($('#ccarSmokeYn').is(":checked")){
+				$(this).val('Y');
+			}else if($('#ccarRearCameraYn').is(":checked")){
+				$(this).val('Y');
+			}else if($('#ccarRearSenceYn').is(":checked")){
+				$(this).val('Y');
+			}else if($('#ccarNaviYn').is(":checked")){
+				$(this).val('Y');
+			}else if($('#ccarSunRoofYn').is(":checked")){
+				$(this).val('Y');
+			}else if($('#ccarBluetoothYn').is(":checked")){
+				$(this).val('Y');
+			}else if($('#ccarSmartkeyYn').is(":checked")){
+				$(this).val('Y');
+			}
+			
+		});
+		
+	});
+	
+</script>
+<h2>차량 옵션 등록 페이지</h2>
 <br>
 <hr>
 <h3>차량등록</h3>
 
 <form name="frmCO" method="post"
 	action="<c:url value='/com_manage/regist_option.do'/>">
-	차량번호<input type="text" name="" id=""> &nbsp;&nbsp;&nbsp;
-	모델명<input type="text" name="" id=""><br>
-     제조사<input type="text" name="" id=""><br><br>
-      연료<select name="" id="d" title="연료">
-		<option>휘발유</option>
-		<option>디젤</option>
-		<option>LPG</option>
-	</select><br> 승차인원<select>
-		<option>2</option>
-		<option>3</option>
-		<option selected="selected">4</option>
-		<option>5</option>
-		<option>6</option>
-		<option>기타</option>
-	</select> 출시년도<select>
-		<option>2017</option>
-		<option>2016</option>
-		<option>2015</option>
-		<option>2014</option>
-	</select><br> 변속기<select>
-		<option>AUTO</option>
-		<option>STICK</option>
-	</select> 차량유형<select>
-		<option>소형</option>
-		<option>준중형</option>
-		<option>중형</option>
-		<option>대형</option>
-		<option>승합</option>
-		<option>RUV</option>
-		<option>SUV</option>
-	</select><br>
+	업체아이디<input type="text" name="comID" id="comID">
+	차량번호<input type="text" name="ccarCarId" id="ccarCarId">
+	모델명<span>car_name</span><br>
+     제조사<span>car_INC</span><br><br>
+     
+    <strong>차량등록하기</strong>
+     모델코드<input type="text" name="carCode" id="carCode">아래 제조사, 모델명 선택시 자동입력<br><br><hr>
+    제조사<select>
+    	<option>현대</option>
+    	<option>기아</option>
+    	<option>르노삼성</option>
+    	<option>쉐보레</option>
+    	<option>BMW</option>
+    </select>
+    모델명<select>
+    	<option>아반떼</option>
+    	<option>쏘나타</option>
+    	<option>그렌져</option>
+    </select><br><hr>
+	<strong>차량사용가능여부</strong><br>
+	<input type="checkbox" class = "Yn" name="ccarUseYn" id="ccarUseYn">사용가능할경우 체크<br><br>
 	<h3>옵션등록</h3>
-	<input type="checkbox" name="" id="" value="">블랙박스 <input
-		type="checkbox" name="" id="" value="">금연차 <input
-		type="checkbox" name="" id="" value="">후방카메라 <input
-		type="checkbox" name="" id="" value="">후방센서 <br> <input
-		type="checkbox" name="" id="" value="">네비게이션 <input
-		type="checkbox" name="" id="" value="">썬루프 <input
-		type="checkbox" name="" id="" value="">블루투스 <input
-		type="checkbox" name="" id="" value="">AUX <br> <input
-		type="checkbox" name="" id="" value="">스마트키 <br>
+	<input type="checkbox" class="Yn" name="ccarBlackboxYn" id="ccarBlackboxYn">블랙박스 <input
+		type="checkbox" class = "Yn" name="ccarSmokeYn" id="ccarSmokeYn">금연차 <input
+		type="checkbox" class = "Yn" name="ccarRearCameraYn" id="ccarRearCameraYn">후방카메라 <input
+		type="checkbox" class = "Yn" name="ccarRearSenceYn" id="ccarRearSenceYn">후방센서 <br> <input
+		type="checkbox" class = "Yn" name="ccarNaviYn" id="ccarNaviYn">네비게이션 <input
+		type="checkbox" class = "Yn" name="ccarSunRoofYn" id="ccarSunRoofYn">썬루프 <input
+		type="checkbox" class = "Yn" name="ccarBluetoothYn" id="ccarBluetoothYn">블루투스 <input
+		type="checkbox" class = "Yn" name="ccarAuxYn" id="ccarAuxYn">AUX <br> <input
+		type="checkbox" class = "Yn" name="ccarSmartkeyYn" id="ccarSmartkeyYn">스마트키 <br>
 	<h3>차량가격</h3>
-	평일예약가격<input type="text" name="" id=""> 주말예약가격<input
-		type="text" name="" id=""> 성수기예약가격<input type="text" name=""
-		id=""> 극성수기예약가격<input type="text" name="" id=""> <br>
+	대여횟수<input type="text" name="ccarRentalcount" id="ccarRentalcount">
+	평일예약가격<input type="text" name="ccarNormalPrice" id="ccarNormalPrice"> 주말예약가격<input
+		type="text" name="ccarWeekendPrice" id="ccarWeekendPrice">
+		 성수기예약가격<input type="text" name="ccarPeakPrice"
+		id="ccarPeakPrice"> 극성수기예약가격<input type="text" name="ccarSPeakPrice" id="ccarSPeakPrice"> <br>
+		연체료<input type="text" name="ccarArrear" id="ccarArrear">
 	<br>
 	<hr>
 	<input type="submit" value="등록"> <input type="reset" value="취소">

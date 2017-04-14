@@ -11,7 +11,7 @@
 	values(
 	#{ccarCarId},#{carCode}, #{comID}, #{ccarUseYn}, #{ccarBlackboxYn}, #{ccarSmokeYn}, #{ccarRearCameraYn}, #{ccarRearSenceYn},
 	 #{ccarNaviYn}, #{ccarSunRoofYn}, #{ccarBluetoothYn}, #{ccarAuxYn}, #{ccarSmartkeyYn}, #{ccarRentalcount},
-	 #{ccarNormalPrice}, #{ccarWeekendPrice}, #{ccarPeakPrice}, #{ccarSPeakPrice}, #{ccarArrear}, sysdate);
+	 #{ccarNormalPrice}, #{ccarWeekendPrice}, #{ccarPeakPrice}, #{ccarSPeakPrice}, #{ccarArrear}, sysdate)
 	</insert>
 
 	<select id="selectCompanyCO" resultType="CcarOptionVO">

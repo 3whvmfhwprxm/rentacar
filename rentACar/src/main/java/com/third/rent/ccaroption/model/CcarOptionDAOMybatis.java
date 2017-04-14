@@ -14,7 +14,7 @@ public class CcarOptionDAOMybatis extends SqlSessionDaoSupport
 	
 	@Override
 	public int insertCcarOption(CcarOptionVO vo){ 
-		return getSqlSession().insert(namespace+".", vo);
+		return getSqlSession().insert(namespace+".insertCcarOption", vo);
 	}
 
 	@Override
