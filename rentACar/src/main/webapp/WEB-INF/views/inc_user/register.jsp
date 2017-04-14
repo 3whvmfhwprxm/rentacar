@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="top.jsp" %>
+<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/regicss.css"/> --%>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#frm1").submit(function(){
-			if(!$("#userId").val()){
-				alert('아이디를 입력하세요');
+			if(!validate_userId($("#userId").val())){
+				alert('아이디는 영문대소문자, 숫자, 언더바만 가능합니다');
 				$("#userId").focus();
 				return false;
 			}else if(!$("#userName").val()){
@@ -49,17 +50,46 @@
 				$("#userGender").focus();
 				return false;
 			}else if(!$("#userLicense").val()){
-				alert('면허증을 입력하세요');
+				alert('면허증 종류를 입력하세요');
 				$("#userLicense").focus();
 				return false;
 			}
 		});
+		$("#btnChkId").click(function(){
+			window.open("<c:url value='/inc_user/checkUserid.do?userId="+$("#userId").val()+ "'/>", 'chk',
+			'width=400,height=300,left=10,top=10,location=yes,resizable=yes');
+		});
 	});
+
+	function validate_userId(userId){
+		var pattern = new RegExp(/^[a-zA-Z0-9_]+$/g);
+		return pattern.test(userId); //true이면 정규식을 만족,
+									 //false이면 에러 
+	    /*
+	   	정규식  /^[a-zA-Z0-9_]+$/g
+		a에서 z 사이의 문자, A~Z사이의 문자, 0 에서 9사이의 
+		숫자나 _로 시작하거나 끝나야 한다는 의미
+		닫기 대괄호(]) 뒤의 + 기호는 이 패턴이 한 번 또는 
+		그 이상 반복된다는 의미
+	    */
+	}
+
+	function validate_hp(hp){
+		var pattern = new RegExp(/^[0-9]*$/g);
+		return pattern.test(hp);
+		/*  정규식  /^[0-9]*$/g
+		0 에서 9사이의 숫자로 시작하거나 끝나야 한다는 의미 
+		(^는 시작, $는 끝을 의미)
+		닫기 대괄호(]) 뒤의 * 기호는 0번 이상 반복  */
+	}
+	
+	
 </script>
 
 	<h1>회원가입</h1>
 	<form id="frm1" name="frm1" method="post" action='<c:url value="/inc_user/register.do"/>'>
-		아이디 : <input id="userId" type="text" name="userId"><br>
+		아이디 : <input id="userId" type="text" name="userId">
+				<input type="button" value="중복확인" id="btnChkId" title="새창열림"><br>
 		이름 : <input id="userName" type="text" name="userName"><br>
 		패스워드 : <input id="userPwd" type="text" name="userPwd"><br>
 		이메일 : <input id="userEmail1" type="text" name="userEmail1">
@@ -73,5 +103,7 @@
 		면허증 : <input id="userLicense" type="text" name="userLicense"><br>
 		<input type="submit" name="btn1" value="확인">
 		<input type="reset" name="btn2" value="취소">
+		<input type ="hidden" name="chkId" id="chkId">
 	</form>
+	
 <%@ include file="bottom.jsp" %>

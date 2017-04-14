@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int duplicateUserid(String userid) {
-		return userDao.duplicateUserid(userid);
+	public int duplicateUserid(String userId) {
+		return userDao.duplicateUserid(userId);
 	}
 
 	@Override

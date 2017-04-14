@@ -49,10 +49,8 @@
 			   <a href="${pageContext.request.contextPath}/inc_user/benefits.do"><button type="button" class="btn btn-default">이용혜택</button></a>
 			</div>
 		</nav>
+	</div>
 		
-		
-		<!-- container -->
-		<div id="container">
 
 		
 		

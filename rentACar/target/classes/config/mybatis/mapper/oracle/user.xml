@@ -10,7 +10,7 @@
 		#{userTel3},#{userBirth},#{userAddress},#{userGender},#{userLicense})
 	</insert>
 	
-	<select id="duplicateUserid" parameterType="String" resultType="String">
+	<select id="duplicateUserid" parameterType="String" resultType="int">
 		select count(*) from rent_user where user_id=#{userId}
 	</select>
 	

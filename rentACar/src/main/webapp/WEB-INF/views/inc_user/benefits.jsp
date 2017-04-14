@@ -21,6 +21,7 @@
 	    top: 90%;
 	    left: 65.5%;
 	} */
+	
 </style> 
 
 <h1>benefits</h1>
@@ -59,9 +60,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- #useBenefit end -->
 	</div>
-	<!--//content-wrap-->
 </div>
 <!--//container-->
 
@@ -73,108 +72,6 @@
 
 
 
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script', '//www.google-analytics.com/analytics.js',
-			'ga');
 
-	ga('create', 'UA-74306059-1', 'auto');
-	ga('send', 'pageview');
-</script>
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script', '//www.google-analytics.com/analytics.js',
-			'ga');
-	ga('create', 'UA-57469759-4', 'auto');
-	ga('send', 'pageview');
-</script>
-
-
-
-<script type="text/javascript">
-	/* <![CDATA[ */
-	var google_conversion_id = 881135612;
-	var google_custom_params = window.google_tag_params;
-	var google_remarketing_only = true;
-	/* ]]> */
-</script>
-<script type="text/javascript"
-	src="//www.googleadservices.com/pagead/conversion.js">
-	
-</script>
-<noscript>
-	<div style="display: inline;">
-		<img height="1" width="1" style="border-style: none;" alt=""
-			src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/881135612/?value=0&amp;guid=ON&amp;script=0" />
-	</div>
-</noscript>
-<script type="text/javascript">
-	var roosevelt_params = {
-		retargeting_id : 'Bg2sOwQB-uSIzDzrFZ8Ldg00',
-		tag_label : '-1XYTc5iRVSuLnZkdbkIJA'
-	};
-</script>
-<script type="text/javascript" src="//adimg.daumcdn.net/rt/roosevelt.js"
-	async></script>
-<script type="text/javascript" src="//wcs.naver.net/wcslog.js">
-	
-</script>
-<script type="text/javascript">
-	if (!wcs_add)
-		var wcs_add = {};
-	wcs_add["wa"] = "s_20dfb1703876";
-	if (!_nasa)
-		var _nasa = {};
-	wcs.inflow();
-	wcs_do(_nasa);
-</script>
-<script type="text/javascript">
-	var _kmq = _kmq || [];
-	var _kmk = _kmk || '9138ed4c6de26302d229176497fbc8bb2087d2d5';
-	function _kms(u) {
-		setTimeout(function() {
-			var d = document, f = d.getElementsByTagName('script')[0], s = d
-					.createElement('script');
-			s.type = 'text/javascript';
-			s.async = true;
-			s.src = u;
-			f.parentNode.insertBefore(s, f);
-		}, 1);
-	}
-	_kms('//i.kissmetrics.com/i.js');
-	_kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
-</script>
-<script type="text/javascript">
-	var fby = fby || [];
-	fby.push([ 'showTab', {
-		id : '11497',
-		position : 'right',
-		color : '#FB9413'
-	} ]);
-	(function() {
-		var f = document.createElement('script');
-		f.type = 'text/javascript';
-		f.async = true;
-		f.src = '//cdn.feedbackify.com/f.js';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(f, s);
-	})();
-</script>
 
 <%@ include file="bottom.jsp"%>

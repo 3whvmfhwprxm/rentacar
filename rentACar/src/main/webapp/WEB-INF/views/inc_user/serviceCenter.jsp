@@ -17,7 +17,9 @@
                 </div>
                 <div class="panel-body">
                     <div class="tab-content">
-                        <div class="tab-pane fade in active" id="tab1default">[공지사항]3조 렌트카 서비스 점검 안내</div>
+                    	<%-- <c:forEach var="vo" items="${alist }> --%>
+                        	<div class="tab-pane fade in active" id="tab1default"><a href="<c:url value="/usernotice/usernotice.do" />">[공지사항]3조 렌트카 서비스 점검 안내</a></div>
+                        <%-- </c:forEach> --%>
                         <div class="tab-pane fade" id="tab2default">여러 대를 한 번에 예약할 수 있나요?</div>
                     </div>
                 </div>
