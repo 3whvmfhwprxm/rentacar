@@ -8,12 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.1.min.js'/>"/>
 <link rel="stylesheet" type="text/css" href='<c:url value="/css/company_ep.css"/>'/>
 
-<script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.1.min.js'/>">
 
 
-</script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/css/bootstrap.min.css"></script>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
@@ -73,16 +72,15 @@
 					class="icon-bar"></span>
 			</button>
 			<div>
-				<a class="navbar-brand" href='<c:url value="/com_reser/"/>'>예약관리</a>
+				<a class="navbar-brand" href='<c:url value="/com_reser/"/>'>| 예약관리 |</a>
 				<a class="navbar-brand"
-					href='<c:url value="/com_manage/regist_option.do"/>'>차량관리
-					</button>
-				</a> <a class="navbar-brand"
-					href='<c:url value="/com_manage/company_epilogue.do"/>'>후기관리</a> <a
-					class="navbar-brand"
-					href='<c:url value="/com_manage/company_revenue.do"/>'>매출현황/통계</a>
+					href='<c:url value="/com_manage/regist_option.do"/>'>| 차량관리 |</a> 
 				<a class="navbar-brand"
-					href='<c:url value="/com_manage/company_announcement.do"/>'>공지사항</a>
+					href='<c:url value="/com_manage/company_epilogue.do"/>'>| 후기관리 |</a> 
+				<a class="navbar-brand"
+					href='<c:url value="/com_manage/company_revenue.do"/>'>| 매출현황/통계 |</a>
+				<a class="navbar-brand"
+					href='<c:url value="/com_manage/company_announcement.do"/>'>| 공지사항 |</a>
 			</div>
 
 		</div>
