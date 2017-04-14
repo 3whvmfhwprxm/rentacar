@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+.table-responsive {height:300px;}
+
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+  border-bottom: 1px solid #22262e;
+}
+
