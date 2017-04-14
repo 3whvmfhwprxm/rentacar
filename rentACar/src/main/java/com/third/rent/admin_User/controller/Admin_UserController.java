@@ -27,12 +27,6 @@ public class Admin_UserController {
 	@Autowired
 	private Admin_UserService adminUserService;
 	
-	@RequestMapping("/inc_administrator/main.do")
-	public String main(){
-		logger.info("Main화면 띄우기");
-		return "administrator/inc_administrator/main";
-	}
-	
 	@RequestMapping("/user/userList.do")
 	public String MemberList(@ModelAttribute SearchVO searchVo, Model model){
 		//1

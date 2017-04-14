@@ -43,16 +43,20 @@
                         <legend>Sign In</legend>
                         <div class="form-group">
                             <label for="Admin_Id">Admin_Id</label>
-                            <input id="Admin_Id" placeholder="Admin_Id" type="text" class="form-control :focus" />
+                            <input type="text" id="Admin_Id" class="form-control"
+                            	value="${cookie.ck_admin_Id.value}" placeholder="Admin_Id" />
                         </div>
                         <div class="form-group">
                             <label for="pwd">Password</label>
-                            <input id="pwd" placeholder="Password" type="password" class="form-control" />
+                            <input type="password" id="pwd" class="form-control" placeholder="Password" />
                         </div>
                         <div class="input-group">
                           <div class="checkbox">
                             <label>
-                              <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                              <input type="checkbox" id="chkId" name="chkId" value="1"
+                              	<c:if test="${!empty cookie.ck_admin_id}">
+									checked="checked"
+								</c:if>> Remember me
                             </label>
                           </div>
                         </div>
