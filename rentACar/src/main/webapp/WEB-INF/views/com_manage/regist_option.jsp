@@ -10,8 +10,8 @@
 	action="<c:url value='/com_manage/regist_option.do'/>">
 	차량번호<input type="text" name="" id=""> &nbsp;&nbsp;&nbsp;
 	모델명<input type="text" name="" id=""><br>
-     제조사<input type="text" name="" id=""><br>
-      연료<select name="" id="" title="연료">
+     제조사<input type="text" name="" id=""><br><br>
+      연료<select name="" id="d" title="연료">
 		<option>휘발유</option>
 		<option>디젤</option>
 		<option>LPG</option>

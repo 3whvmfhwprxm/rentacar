@@ -13,25 +13,7 @@
 	 #{ccarNaviYn}, #{ccarSunRoofYn}, #{ccarBluetoothYn}, #{ccarAuxYn}, #{ccarSmartkeyYn}, #{ccarRentalcount},
 	 #{ccarNormalPrice}, #{ccarWeekendPrice}, #{ccarPeakPrice}, #{ccarSPeakPrice}, #{ccarArrear}, sysdate);
 	</insert>
-	
 
-
-	private int ccarNormalPrice;  		/* 평일예약가격 */
-	private int ccarWeekendPrice; 		/* 주말예약가격 */
-	private int ccarPeakPrice;  		/* 성수기예약가격 */
-	private int ccarSPeakPrice; 		/* 극성수기예약가격 */
-	private int ccarArrear; 			/* 연체료(표기용) */
-	private Timestamp comcarRegdate;  	/* 차량등록일 */
-	private Timestamp comcarOutdate;	/* 차량삭제일 */
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	<select id="selectCompanyCO" resultType="CcarOptionVO">
 		select * from companycaroption
 		where comcar_outdate is null
