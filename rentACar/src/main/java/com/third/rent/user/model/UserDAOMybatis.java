@@ -11,7 +11,20 @@ public class UserDAOMybatis extends SqlSessionDaoSupport implements UserDAO{
 		return getSqlSession().insert(namespace+".insertUser", vo);
 	}
 
-	public int duplicateUserid(String userid) {
-		return getSqlSession().selectOne(namespace+".duplicateUserid", userid);
+	public int duplicateUserid(String userId) {
+		return getSqlSession().selectOne(namespace+".duplicateUserid", userId);
 	}
+	
+	public UserVO selectByUserid(String userId){
+		return getSqlSession().selectOne(namespace+".selectByUserid", userId);
+	}
+	
+	public String selectPwd(String userId) {
+		return getSqlSession().selectOne(namespace+".selectPwdByUserid", userId);
+	}
+
+	public int updateUser(UserVO vo) {
+		return getSqlSession().update(namespace+".memberUser", vo);
+	}
+	
 }

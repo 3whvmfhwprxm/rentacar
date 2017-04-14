@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.admin_User">
+	<sql id="searchWhere">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
+		</if>
+	</sql>
+	
+	<select id="selectAllUser" resultType="UserVO" 
+		parameterType="SearchVO">
+		select user_id, user_pwd, user_name, user_email1, user_email2,
+			user_tel1, user_tel2, user_tel3, user_birth, user_address,
+			user_gender, user_license, user_regdate, user_outdate
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from RENT_USER 
+		        <include refid="searchWhere"></include>
+		        order by user_regdate
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select> 
+	
+	<select id="selectTotalRecord" parameterType="SearchVO"
+		resultType="int">
+		select count(*) from RENT_USER 
+		<include refid="searchWhere"></include>
+	</select>
+	
+	<select id="selectByUserId" parameterType="String" resultType="UserVO">
+		select*from RENT_USER 
+		where user_id=#{userId}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+
+

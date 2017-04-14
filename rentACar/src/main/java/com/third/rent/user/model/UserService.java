@@ -11,5 +11,8 @@ public interface UserService {
 	public static final int PWD_DISAGREE=3; //비밀번호가 일치하지 않는 경우
 	
 	public int insertUser(UserVO vo);
-	public int duplicateUserid(String userid);
+	public int loginCheck(String userid, String userPwd);
+	public int duplicateUserid(String userId);
+	public UserVO selectByUserid(String userId);
+	public int updateUser(UserVO vo);
 }

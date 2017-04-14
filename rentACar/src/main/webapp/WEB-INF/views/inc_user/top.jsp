@@ -21,11 +21,23 @@
 		<!-- header -->				
 		<header>
 			<h1><a href="${pageContext.request.contextPath}/inc_user/index.do"><img alt="로고 이미지"
-				src="${pageContext.request.contextPath}/login_company/logo.png"/></a></h1>
-			<nav style="float: right;">
-				<a href="${pageContext.request.contextPath}/inc_user/login.do">로그인</a>
-				<a href="${pageContext.request.contextPath}/inc_user/register.do">회원가입</a>				
-			</nav>
+				src="${pageContext.request.contextPath}/user_img/logo.png"/></a></h1>
+		
+			<!-- 로그이 안된 경우 -->	
+			<c:if test="${empty sessionScope.userId }">
+				<nav style="float: right;">
+					<a href="${pageContext.request.contextPath}/inc_user/login.do">로그인</a>
+					<a href="${pageContext.request.contextPath}/inc_user/register.do">회원가입</a>				
+				</nav>
+			</c:if>
+			<!-- 로그인된 경우 -->	
+			<c:if test="${!empty sessionScope.userId }">
+				<nav style="float: right;">
+					<span style="font-size: 1em">(${sessionScope.userId} 님)</span>
+					<a href="${pageContext.request.contextPath}/inc_user/regedit.do">회원정보수정</a>
+					<a href="${pageContext.request.contextPath}/inc_user/logout.do">로그아웃</a>				
+				</nav>
+			</c:if>
 		</header>
 
 		<nav>
