@@ -28,7 +28,7 @@
 			<th>삭제여부</th>
 		</tr>
 		
-		<c:if test="${empty mlist}">
+		<c:if test="${empty unList}">
 					<tr>
 						<td colspan="7" class="align_center">고객용 공지사항이 존재하지 않습니다.</td>
 					</tr>
@@ -71,30 +71,33 @@
 					<img src='${pageContext.request.contextPath}/images/last.JPG' alt="다음블럭으로">
 				</a>
 			</c:if>
-		</div>	
-	</div>
-</body>
-</html>
-
-	
-	
-	<div class="divSearch container">
+		</div>
+		<div class="divSearch container">
 		<form name="frmSearch" method="post"
-			action="<c:url value="/administrator/user/userList.do" />">
+			action="<c:url value="/admin/Board/uNotice.do" />">
 			<select name="searchCondition">
-				<option value="userId"
-					<c:if test="${'userId'==param.searchCondition}">
+			
+				<option value="unotice_title"
+					<c:if test="${'unotice_title'==param.searchCondition}">
             		selected            	
-            	</c:if>>아이디</option>
-				<option value="userName"
-					<c:if test="${'userName'==param.searchCondition}">
+            	</c:if>>제목</option>
+            	
+				<option value="unotice_content"
+					<c:if test="${'unotice_content'==param.searchCondition}">
             		selected            	
-            	</c:if>>이름</option>
+            	</c:if>>내용</option>
+            	
+            	<option value="admin_id"
+					<c:if test="${'admin_id'==param.searchCondition}">
+            		selected            	
+            	</c:if>>작성자</option>
+            	
 			</select> 
 			<input type="text" name="searchKeyword" title="검색어 입력"
 				value="${param.searchKeyword}"> 
 			<input type="submit" value="검색">
 		</form>
+	</div>	
 	</div>
 </body>
 </html>

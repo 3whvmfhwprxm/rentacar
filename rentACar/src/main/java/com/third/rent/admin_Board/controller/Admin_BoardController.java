@@ -42,7 +42,13 @@ public class Admin_BoardController {
 		List<UserNoticeVO> unList=adService.selectUN(searchVo);
 		logger.info("고객 공지사항 리스트 수, unList.size()={}", unList.size());
 		
+		int totalRecord=adService.selectTotalRecordU(searchVo);
+		logger.info("고객 공지사항 전체수 조회 결과, totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+		
 		model.addAttribute("unList", unList);
+		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "administrator/board_management/UNoticeBoardMng";
 	}

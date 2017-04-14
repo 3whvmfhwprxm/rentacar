@@ -3,16 +3,12 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.admin_board">
-	<sql id="searchWhere">
+	<sql id="searchWhat">
 		<if test="searchKeyword !=null and searchKeyword !=''">
 			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
 		</if>
 	</sql>
 
-	<!-- <select id="selectUNotice" resultType="UserNoticeVO">
-		select * from usernotice order by unotice_no desc
-	</select> -->
-	
 	<!-- <select id="selectCNotice" resultType="CompanyNoticeVO">
 		select * from companynotice order by cnotice_no desc
 	</select>
@@ -29,7 +25,7 @@
 		    from
 		    (
 		        select * from usernotice 
-		        <include refid="searchWhere"></include>
+		        <include refid="searchWhat"></include>
 		        order by unotice_no desc
 		    )LIST
 		)
@@ -47,7 +43,7 @@
 		    from
 		    (
 		        select * from companynotice 
-		        <include refid="searchWhere"></include>
+		        <include refid="searchWhat"></include>
 		        order by cnotice_no desc
 		    )LIST
 		)
@@ -65,7 +61,7 @@
 		    from
 		    (
 		        select * from servicecenternotice 
-		        <include refid="searchWhere"></include>
+		        <include refid="searchWhat"></include>
 		        order by scnotice_no desc
 		    )LIST
 		)
@@ -78,19 +74,19 @@
 	<select id="selectTotalRecordfromUN" parameterType="SearchVO"
 		resultType="int">
 		select count(*) from usernotice
-		<include refid="searchWhere"></include>
+		<include refid="searchWhat"></include>
 	</select>
 	
 	<select id="selectTotalRecordfromCN" parameterType="SearchVO"
 		resultType="int">
 		select count(*) from companynotice
-		<include refid="searchWhere"></include>
+		<include refid="searchWhat"></include>
 	</select>
 	
 	<select id="selectTotalRecordfromSN" parameterType="SearchVO"
 		resultType="int">
 		select count(*) from servicecenternotice
-		<include refid="searchWhere"></include>
+		<include refid="searchWhat"></include>
 	</select>	
 	
 </mapper>
