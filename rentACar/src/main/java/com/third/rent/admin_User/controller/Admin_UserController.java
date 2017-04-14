@@ -28,7 +28,7 @@ public class Admin_UserController {
 	private Admin_UserService adminUserService;
 	
 	@RequestMapping("/user/userList.do")
-	public String MemberList(@ModelAttribute SearchVO searchVo, Model model){
+	public String userList(@ModelAttribute SearchVO searchVo, Model model){
 		//1
 		logger.info("회원목록, 파라미터 searchVo={}", searchVo);
 
@@ -59,7 +59,7 @@ public class Admin_UserController {
 	}
 	
 	@RequestMapping("/user/userDetail.do")
-	public String detail(@RequestParam String userId, Model model){
+	public String userDetail(@RequestParam String userId, Model model){
 		//1.
 		logger.info("글 상세보기, 파라미터 userId={}", userId);
 		if(userId.isEmpty()){
