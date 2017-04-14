@@ -27,10 +27,10 @@ public class Admin_UserController {
 	@Autowired
 	private Admin_UserService adminUserService;
 	
-	@RequestMapping("/inc_admin/main.do")
+	@RequestMapping("/inc_administrator/main.do")
 	public String main(){
 		logger.info("Main화면 띄우기");
-		return "inc_admin/main";
+		return "administrator/inc_administrator/main";
 	}
 	
 	@RequestMapping("/user/userList.do")
@@ -76,12 +76,12 @@ public class Admin_UserController {
 		}
 
 		//2.
-		List<UserVO> mDetail = adminUserService.selectByUserId(userId);
-		logger.info("상세보기 결과, mDetail.size()={}", mDetail);
+		List<UserVO> userDetail = adminUserService.selectByUserId(userId);
+		logger.info("상세보기 결과, userDetail.size()={}", userDetail.size());
 
 
 		//3.
-		model.addAttribute("mDetail", mDetail);
+		model.addAttribute("userDetail", userDetail);
 
 		return "administrator/user/userDetail";
 	}

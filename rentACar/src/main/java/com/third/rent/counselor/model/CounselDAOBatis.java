@@ -9,8 +9,8 @@ public class CounselDAOBatis extends SqlSessionDaoSupport implements CounselDAO{
 	private String namespace = "config.mybatis.mapper.oracle.counsel";
 
 	@Override
-	public int counselInsert(CounselVO vo){
-		return getSqlSession().insert(namespace+".counselInsert",vo);
+	public CounselVO counselInsert(int counselId) {
+		return getSqlSession().selectOne(namespace+".counselSelect",counselId);
 	}
 		
 

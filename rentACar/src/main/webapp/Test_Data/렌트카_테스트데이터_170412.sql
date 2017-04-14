@@ -133,33 +133,83 @@ commit;
 
 
 --렌트 업체 2개 정상운영, 1개 업체 탈퇴업체
---(계좌번호 컬럼이 없는데 아마 필요할것으로 예상됨)
+--(계좌번호 컬럼이 없는데 아마 필요할것으로 예상됨) - 17-04-13 계좌번호 컬럼 추가됨, logo, regdate 컬럼 위치 수정
 delete from company;
-insert into company(com_id, com_name, com_pwd, com_num, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
-com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo)
-values('rentZoa', '렌트조아', '1', '100-81-02000', '02', '0100', '0100', '010', '0100', '0100',  '02', '0100', '0101', 
-'제주도 한라산 아래', '김렌트', 'rentZoa1', 'rentZoa.com', sysdate, 'rentZoa_logo.png');
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_logo, com_regdate)
+values('rentZoa', '렌트조아', '1', '100-81-02000', '국민:289333-01-22212', '02', '0100', '0100', '010', '0100', '0100',  '02', '0100', '0101', 
+'제주도 한라산 아래', '김렌트', 'rentZoa1', 'rentZoa.com', 'rentZoa_logo.png', sysdate);
 
-insert into company(com_id, com_name, com_pwd, com_num, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
-com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo)
-values('rentGo', '렌트고', '1', '100-81-03000', '02', '0200', '0200', '010', '0200', '0200',  '02', '0200', '0201', 
-'제주도 한라산 아래', '이렌트', 'rentGo1', 'rentGo.com', sysdate, 'rentGo_logo.png');
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_logo, com_regdate)
+values('rentGo', '렌트고', '1', '100-81-03000', '농협:22222-02-22222', '02', '0200', '0200', '010', '0200', '0200',  '02', '0200', '0201', 
+'제주도 한라산 아래', '이렌트', 'rentGo1', 'rentGo.com', 'rentGo_logo.png', sysdate);
 
-insert into company(com_id, com_name, com_pwd, com_num, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
-com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_regdate, com_logo, com_outdate)
-values('rentDie', '렌트죽음', '1', '100-81-00000', '02', '0300', '0300', '010', '0300', '0300',  '02', '0300', '0301', 
-'제주공항 근처', '박렌트', 'rentDie1', 'rentDie.com', sysdate, 'rentDie_logo.png', sysdate);
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_logo, com_regdate,  com_outdate)
+values('rentDie', '렌트죽음', '1', '100-81-00000', '신한:3333-03-33333', '02', '0300', '0300', '010', '0300', '0300',  '02', '0300', '0301', 
+'제주공항 근처', '박렌트', 'rentDie1', 'rentDie.com', 'rentDie_logo.png', sysdate, sysdate);
 select * from company;
 commit;
 
-
-
---업체 차량정보
-
---예약 정보
-
 --예약 회원(회원정보와는 다른 예약하는 당사자)
 --예) 회원(자식), 예약자/운전자 정보를 받을때(예약자-엄마, 운전자-아빠)받을수 있게
+
+insert into reserv_user
+values('kim1', '김엄마', '011', '1111', '1111', 'kim2', 'naver.com', '김아빠', '011', '1112', '1112', '1960-01-02', '1종보통');
+insert into reserv_user
+values('jin1', '진누나', '010', '2200', '2200', 'jin2', 'naver.com', '진남친', '011', '2200', '2201', '1988-01-02', '2종보통');
+insert into reserv_user
+values('lee1', '이친구1', '017', '3300', '3300', 'lee2', 'naver.com', '이친구2', '011', '3300', '3301', '1990-01-02', '1종보통');
+
+select * from reserv_user;
+commit;
+
+--업체 차량정보
+insert into companycaroption
+(ccar_car_id, car_code, com_id, ccar_use_yn, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
+ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
+ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
+values('rentZoa_0001','hd001', 'rentZoa', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 30000, 40000, 60000, 80000, 5000, '2017-01-02');
+
+insert into companycaroption
+(ccar_car_id, car_code, com_id, ccar_use_yn, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
+ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
+ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
+values('rentZoa_0002','kia002', 'rentZoa', 'N', 'Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+
+insert into companycaroption
+(ccar_car_id, car_code, com_id, ccar_use_yn, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
+ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
+ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
+values('rentGo_0001','hd001', 'rentGo', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
+
+insert into companycaroption
+(ccar_car_id, car_code, com_id, ccar_use_yn, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
+ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
+ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
+values('rentGo_0002','kia002', 'rentGo', 'N', 'Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+
+insert into companycaroption
+(ccar_car_id, car_code, com_id, ccar_use_yn, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
+ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
+ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
+values('rentGo_0003','lambo001', 'rentGo', 'Y', 'Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 60000, 70000, 80000, 90000, 10000, '2017-01-02');
+
+select * from companycaroption;
+commit;
+
+
+--예약 정보
+insert into RESERVATION(
+reserv_num, user_tel1, user_tel2, user_tel3, 
+reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
+ccar_car_id, reserv_insurance, reserv_date, user_id)
+values('001', '011','1111','1111', '2017-05-10', TO_DATE('18:00:00','HH24:MI:SS'), 
+'2017-05-13', TO_DATE('2017-05-13 18:00:00','YYYY-MM-DD HH24:MI:SS'), 'rentGo_0003', '자차보험', sysdate ,'kim1');
+
+select * from RESERVATION;
+commit;
 
 --업체 공지
 delete from companynotice;

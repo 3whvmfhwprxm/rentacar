@@ -10,13 +10,12 @@ public class CounselController {
 	
 	private static final Logger logger=LoggerFactory.getLogger(CounselController.class);
 	
-	
-	@RequestMapping("/inc_counselor/consel_index.do")
+	@RequestMapping("/inc_counselor/counsel_index.do")
 	public String consel_index(){
 		
 		logger.info("상담화면 구현");
 		
-		return "inc_counselor/consel_index";
+		return "inc_counselor/counsel_index";
 	}
 	
 	@RequestMapping("/counselor/consel_nonmember.do")

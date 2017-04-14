@@ -1,16 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="../topBottom/top.jsp" %>
+	<div class="container">
 	<h1>고객용 공지 게시판 관리</h1>
-	<table>
+	<table class="table table-bordered table-hover">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -22,7 +15,7 @@
 		</tr>
 		<c:if test="${!empty unList }">			
 				<c:forEach var="vo" items="${unList }">
-					<tr>
+					<tr <c:if test="${!empty vo.unoticeDeldate }"> class="danger" </c:if>>
 						<td>${vo.unoticeNo }</td>
 						<td>${vo.unoticeTitle }</td>
 						<td>${vo.adminId }</td>
@@ -34,5 +27,6 @@
 				</c:forEach>
 		</c:if>
 	</table>
+	</div>
 </body>
 </html>

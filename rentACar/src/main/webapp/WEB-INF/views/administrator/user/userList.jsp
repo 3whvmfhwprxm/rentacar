@@ -1,30 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>memberList</title>
+<%@ include file="../topBottom/top.jsp" %>
 <script type="text/javascript">	
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
 	}
 </script>
-</head>
-<body>
-<h2>회원</h2>
+<style type="text/css">
+	th{text-align: center;}
+</style>
 	<form name="frmPage" method="post"
 		action='<c:url value="/administrator/user/userList.do" />'>
-		<input type="text" name="currentPage"> 
-		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
-		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
+		<input type="hidden" name="currentPage"> 
+		<input type="hidden" name="searchCondition" value="${param.searchCondition}"> 
+		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 	</form>
-	<div class="divList">
-		<table summary="회원정보에 관한 테이블" style="border: 1">
+	<div class="divList container">
+		<h2>회원</h2>
+		<table class="table table-hover table-bordered" summary="회원정보에 관한 테이블">
 			<thead>
 				<tr>
 					<th scope="col">아이디</th>
@@ -68,7 +62,7 @@
 		</table>
 	</div>
 
-	<div class="divPage">
+	<div class="divPage container">
 		<c:if test="${pagingInfo.firstPage>1 }">
 			<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
 				<img src='${pageContext.request.contextPath}/images/first.JPG' alt="이전블럭으로">
@@ -92,7 +86,7 @@
 		</c:if>
 	</div>
 	
-	<div class="divSearch">
+	<div class="divSearch container">
 		<form name="frmSearch" method="post"
 			action="<c:url value="/administrator/user/userList.do" />">
 			<select name="searchCondition">

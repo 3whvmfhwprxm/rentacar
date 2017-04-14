@@ -28,7 +28,7 @@ public class RegisterController {
 	}
 	
 	@RequestMapping(value="/inc_user/register.do",method=RequestMethod.POST)
-	public String join(@ModelAttribute UserVO userVo,@RequestParam(value="userEmail3", required=false) String userEmail3, Model model){
+	public String insertLogin_post(@ModelAttribute UserVO userVo,@RequestParam(value="userEmail3", required=false) String userEmail3, Model model){
 		//1
 		logger.info("회원가입처리, 파라미터 UserVO={}",userVo);
 		//2
@@ -42,7 +42,7 @@ public class RegisterController {
 			userVo.setUserTel3("");
 		}
 		
-		//이메일 입력하지 않은 경우 처리
+		/*//이메일 입력하지 않은 경우 처리
 		String userEmail1=userVo.getUserEmail1();
 		String userEmail2=userVo.getUserEmail2();
 		
@@ -58,7 +58,7 @@ public class RegisterController {
 					userVo.setUserEmail2("");
 				}
 			}
-		}
+		}*/
 		
 		int cnt=userService.insertUser(userVo);
 		String msg="", url="";

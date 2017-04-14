@@ -10,8 +10,8 @@ public class CounselServiceImpl implements CounselService{
 	private CounselDAO counselDao;
 	
 	@Override
-	public int counselInsert(CounselVO vo) {
-		return counselDao.counselInsert(vo);
+	public CounselVO counselInsert(int counselId) {
+		return counselDao.counselInsert(counselId);
 	}
 	
 }

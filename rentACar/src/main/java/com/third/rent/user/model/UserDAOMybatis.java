@@ -24,7 +24,7 @@ public class UserDAOMybatis extends SqlSessionDaoSupport implements UserDAO{
 	}
 
 	public int updateUser(UserVO vo) {
-		return getSqlSession().update(namespace+".memberUser", vo);
+		return getSqlSession().update(namespace+".updateUser", vo);
 	}
 	
 }

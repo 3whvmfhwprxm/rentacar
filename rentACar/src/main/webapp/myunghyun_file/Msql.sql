@@ -16,3 +16,81 @@ values(1,'010','1231','1251','예약','1년 이상 재직하신 고객님
 'jinwootea');
 
 commit;
+
+create sequence Car_seq
+start with 1
+increment by 1
+nocache;
+
+
+create sequence Company_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence rent_user_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence Reservation_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence UserNotice_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence ServiceCenterNotice_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence CompanyNotice_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence Counsel_seq
+start with 1
+increment by 1
+nocache;
+
+
+create sequence comments_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence PayInfo_seq
+start with 1
+increment by 1
+nocache;
+
+
+create sequence Event_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence CompanyCarOption_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence rent_admin_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence Member_grade_seq
+start with 1
+increment by 1
+nocache;
+
+create sequence Reserv_User_seq
+start with 1
+increment by 1
+nocache;

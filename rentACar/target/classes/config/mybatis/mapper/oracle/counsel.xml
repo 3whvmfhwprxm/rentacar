@@ -11,8 +11,12 @@
 		counsel_content ,counsel_regdate ,counsel_result ,counsel_result_flag,admin_id)
 		values(#{counselId},#{user_tel1},#{user_tel2},#{user_tel3},#{counsel_category},
 		#{counsel_content},#{counsel_regdate},#{counsel_result},#{counsel_result_flag},#{admin_id})
-	</insert>
- -->
+	</insert> -->
+	<select id="counselSelect" parameterType="int" resultType="CounselVO">
+			select * from Counsel where counselId=#{counselId}
+	</select>
+	
+
 </mapper>
 
 
