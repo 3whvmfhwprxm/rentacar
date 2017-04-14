@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>consultation_notice_board</title>
-</head>
-<body>
+<%@ include file="../inc_counselor/counselor_top.jsp"%>
 
-</body>
-</html>
+<!--게시판 악성관리-->
+
+<%@ include file="../inc_counselor/counselor_bottom.jsp"%>

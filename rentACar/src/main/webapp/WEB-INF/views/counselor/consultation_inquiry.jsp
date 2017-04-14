@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>consultation_inquiry</title>
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<div>
-<div>
+<%@ include file="../inc_counselor/counselor_top.jsp"%>
+
+
+<!--렌트정보----------------------------------------------------------------------------  -->
 <div class="well">
-    <table class="table">
+    <table class="table" id="" >
       <thead>
       	<tr>
 			<th>번호</th>
@@ -88,29 +82,18 @@
       </tbody>
     </table>
 </div>
-<div class="pagination">
-    <ul>
-        <li><a href="#">Prev</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
-</div>
-<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Delete Confirmation</h3>
-    </div>
-    <div class="modal-body">
-        <p class="error-text">Are you sure you want to delete the user?</p>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        <button class="btn btn-danger" data-dismiss="modal">Delete</button>
-    </div>
-</div>
+
+
+
+<!-- 페이징 --------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+<!-- 상담내용 ----------------------------------------------------------------------------->
 <div class="well">
     <table class="table">
 			<tr>
@@ -130,7 +113,7 @@
 </div>
 </div>
 
-
+<!--상담사 입력란 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <div>
 	<span>상담내용</span>
 	<textarea rows="5" cols="50">상담내용 입력란</textarea>
@@ -142,5 +125,5 @@
 	<textarea rows="5" cols="50">상담내용 입력란</textarea>
 	<button value="처리버튼">처리버튼</button>
 </div>
-</body>
-</html>
+
+<%@ include file="../inc_counselor/counselor_bottom.jsp"%>
