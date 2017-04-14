@@ -9,13 +9,13 @@ import com.third.rent.admin_User.controller.Admin_UserController;
 
 @Controller
 @RequestMapping("/administrator")
-public class admin_Main {
+public class admin_MainController {
 	private static final Logger logger 
 		= LoggerFactory.getLogger(Admin_UserController.class);
 
-	@RequestMapping("/Main.do")
+	@RequestMapping("/admin_Main.do")
 	public String main() {
 		logger.info("Main화면 띄우기");
-		return "administrator/Main";
+		return "administrator/admin_Main";
 	}
 }

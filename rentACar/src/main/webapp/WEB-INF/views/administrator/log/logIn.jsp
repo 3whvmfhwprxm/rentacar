@@ -14,7 +14,11 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#Admin_Id").focus();
+		if($("input:checkbox[id='#chkId']").prop("checked", true)){
+			$("#pwd").focus();
+		}else{
+			$("#Admin_Id").focus();
+		}
 		
 		$("#frmLogin").submit(function(){
 			if($("#Admin_Id").val()==''){
@@ -43,18 +47,18 @@
                         <legend>Sign In</legend>
                         <div class="form-group">
                             <label for="Admin_Id">Admin_Id</label>
-                            <input type="text" id="Admin_Id" class="form-control"
+                            <input type="text" id="Admin_Id" name="Admin_Id" class="form-control"
                             	value="${cookie.ck_admin_Id.value}" placeholder="Admin_Id" />
                         </div>
                         <div class="form-group">
                             <label for="pwd">Password</label>
-                            <input type="password" id="pwd" class="form-control" placeholder="Password" />
+                            <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Password" />
                         </div>
                         <div class="input-group">
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox" id="chkId" name="chkId" value="1"
-                              	<c:if test="${!empty cookie.ck_admin_id}">
+                              <input type="checkbox" id="chkId" name="chkSaveId"
+                              	<c:if test="${!empty cookie.ck_admin_Id}">
 									checked="checked"
 								</c:if>> Remember me
                             </label>

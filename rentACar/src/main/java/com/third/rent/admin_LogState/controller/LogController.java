@@ -34,31 +34,30 @@ public class LogController {
 	
 	@RequestMapping(value="/log/logIn.do", method=RequestMethod.POST)
 	public String login_post(@RequestParam String Admin_Id,
-			@RequestParam String pwd, @RequestParam(required=false) String chkId,
+			@RequestParam String pwd, @RequestParam(required=false) String chkSaveId,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model){
 		//1
 		logger.info("로그인 처리, 파라미터 Admin_Id={}, pwd={}", Admin_Id, pwd);
-		logger.info("파라미터 chkId={}", chkId);
+		logger.info("파라미터 chkSaveId={}", chkSaveId);
 		
 		//2
 		int result = adminLogService.loginCheck(Admin_Id, pwd);
 		logger.info("로그인 처리결과, result={}", result);
 		
-		String msg = "", url = "/login/login.do";
-		if(result==adminLogService.LOGIN_OK){
+		String msg = "", url = "/administrator/log/login.do";
+		if(result==admin_LogService.LOGIN_OK){
 			AdminVO vo = adminLogService.selectByAdminId(Admin_Id);
 			msg = vo.getAdminName()+"님 로그인되었습니다.";
-			url = "administrator/log/logIn"; //Main페이지로 수정할 것!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			url = "../admin_Main.do";
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("Admin_Id", Admin_Id);
 			session.setAttribute("AdminName", vo.getAdminName());
 			
-			//아이디 저장하기를 체크한 경우
-			Cookie ck = new Cookie("ck_admin_id", Admin_Id);
+			Cookie ck = new Cookie("ck_admin_Id", Admin_Id);
 			ck.setPath("/");
-			if(chkId!=null){
+			if(chkSaveId!=null){
 				ck.setMaxAge(1000*24*60*60);
 				response.addCookie(ck);
 			}else{
@@ -66,9 +65,9 @@ public class LogController {
 				response.addCookie(ck);
 			}
 			
-		}else if(result==adminLogService.ID_NONE){
+		}else if(result==admin_LogService.ID_NONE){
 			msg = "해당아이디가 존재하지 않습니다.";
-		}else if(result==adminLogService.PWD_DISAGREE){
+		}else if(result==admin_LogService.PWD_DISAGREE){
 			msg = "비밀번호가 일치하지 않습니다.";
 		}else{
 			msg = "로그인 체크 실패";
@@ -87,6 +86,6 @@ public class LogController {
 		
 		session.invalidate();
 		
-		return "redirect:/administrator/log/logIn.do";
+		return "redirect:/administrator/admin_Main.do";
 	}
 }
