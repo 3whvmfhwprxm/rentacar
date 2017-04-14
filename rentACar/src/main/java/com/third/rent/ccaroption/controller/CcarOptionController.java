@@ -13,7 +13,7 @@ public class CcarOptionController {
 	@RequestMapping("/com_manage/regist_option.do")
 	public String optionRegist(){
 		
-		logger.info("옵션등록화면 보여주기1123");
+		logger.info("옵션등록화면 보여주기");
 		
 		return "com_manage/regist_option";
 	}
