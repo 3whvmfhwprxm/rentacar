@@ -4,7 +4,6 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.reserv_car">
 
-
 	<select id="searchCar" parameterType="map" resultType="CcarOptionVO">
 		<![CDATA[
 		select * from COMPANYCAROPTION
@@ -16,6 +15,11 @@
 			select ccar_car_id from RESERVATION
 			where reserv_end_date >= #{searchStartDate} and reserv_start_date <= #{searchEndDate}
 		)]]>
+	</select>
+	
+	<select id="selectByccarCarId" parameterType="String" resultType="CcarOptionVO">
+		select * from COMPANYCAROPTION 
+		where ccar_car_id=#{ccarCarId}
 	</select>
 </mapper>
 

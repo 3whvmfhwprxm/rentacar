@@ -50,4 +50,19 @@ public class RealTimeController {
 		
 		return "inc_user/realTime";		
 	}
+	
+	@RequestMapping("/reservInfo.do")
+	public String showReservInfo(@RequestParam String searchStartDate, @RequestParam String searchEndDate, 
+			@RequestParam String ccarCarId, Model model){
+		logger.info("선택한 회사차의 예약 기간 조건 searchStartDate={}, searchEndDate={}", searchStartDate, searchEndDate);
+		logger.info("선택한 회사차의 ID값, ccarCarId={}", ccarCarId);
+		
+		//DB작업 select by ccarCarId
+		CcarOptionVO car=rService.selectByCcarCarId(ccarCarId);
+		logger.info("선택한 회사차의 정보, car={}", car);
+		
+		model.addAttribute("car", car);
+		
+		return "inc_user/reservInfo";
+	}
 }

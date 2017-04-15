@@ -7,4 +7,5 @@ import com.third.rent.ccaroption.model.CcarOptionVO;
 
 public interface ReservSearchDAO {
 	public List<CcarOptionVO> searchNormal(HashMap<String, Object> map);
+	public CcarOptionVO selectByCcarCarId(String ccarCarId);
 }

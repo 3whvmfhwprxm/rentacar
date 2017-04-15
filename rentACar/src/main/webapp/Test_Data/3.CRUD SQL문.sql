@@ -12,16 +12,15 @@ ex)검색조건. 기간:17.04.28~17.05.02  차종:중형
 3. COMPANYCAROPTION 테이블 -> 위 1조건에 해당하면서 2조건에는 해당하지 않는 회사차들 목록 불러오기
     +Company테이블과 join해서 Company의 com_name 업체명 가져오기
 */
+--1번 검색 조건
+select car_code from car
+where car_type=1;
 
 --2번 검색 조건
 select ccar_car_id from RESERVATION
 where reserv_end_date >= '17-04-29' and reserv_start_date <= '17-05-01';
 
---1번 검색 조건
-select car_code from car
-where car_type=1;
-
---3번 검색 조건
+--3번 검색 조건(1,2번 결합)
 select * from COMPANYCAROPTION
 where car_code in (
 select car_code from car
@@ -31,3 +30,6 @@ and ccar_car_id not in (
 select ccar_car_id from RESERVATION
 where reserv_end_date >= '17-04-29' and reserv_start_date <= '17-05-01'
 );
+
+select * from COMPANYCAROPTION 
+where ccar_car_id='rentZoa_0001';

@@ -18,5 +18,10 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 		return getSqlSession().selectList(nameSpace+".searchCar", map);
 	}
 
+	@Override
+	public CcarOptionVO selectByCcarCarId(String ccarCarId) {
+		return getSqlSession().selectOne(nameSpace+".selectByccarCarId", ccarCarId);
+	}
+
 	
 }

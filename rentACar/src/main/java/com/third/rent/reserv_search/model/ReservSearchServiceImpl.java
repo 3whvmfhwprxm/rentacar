@@ -19,4 +19,9 @@ public class ReservSearchServiceImpl implements ReservSearchService{
 		return dao.searchNormal(map);
 	}
 
+	@Override
+	public CcarOptionVO selectByCcarCarId(String ccarCarId) {
+		return dao.selectByCcarCarId(ccarCarId);
+	}	
+
 }
