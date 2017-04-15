@@ -14,7 +14,8 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		if($("input:checkbox[id='#chkId']").prop("checked", true)){
+
+		if($("input:checkbox[name=chkSaveId]").is(":checked")){
 			$("#pwd").focus();
 		}else{
 			$("#Admin_Id").focus();
