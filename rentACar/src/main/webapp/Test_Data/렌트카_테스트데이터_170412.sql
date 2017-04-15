@@ -111,7 +111,7 @@ select * from counsel;
 commit;
 
 --차 모델 입력 현대차 2종류, 기아차 2종류, 외제차 1종류
---차량 유형 소형(0), 중형(1), 대형(2), 특대형(3), 특수차(4)
+--차량 유형 소형(0), 중형(1), 대형(2), 특대형(3), 특수차(4), 고급(5)
 delete from car;
 insert into car
 values('hd001', '현대소나타17', '현대', '휘발류', 
@@ -124,10 +124,10 @@ values('kia001', '기아k5_17', 'KIA', '휘발류',
         4, '2017-01-01', 'Trans', sysdate, 1, 'kia00101.jpg', 'kia00102.jpg', 'kia00103.jpg');
         insert into car
 values('kia002', '기아뉴모닝_17', 'KIA', '휘발류', 
-        4, '2017-01-01', 'AUTO', sysdate, 1, 'kia00201.jpg', 'kia00202.jpg', 'kia00203.jpg');
+        4, '2017-01-01', 'AUTO', sysdate, 0, 'kia00201.jpg', 'kia00202.jpg', 'kia00203.jpg');
         insert into car
 values('lambo001', '람보르기니_우라칸', 'Lamborghini', '휘발류', 
-        2, '2017-01-01', 'Trans', sysdate, 1, 'lb00101.jpg', 'lb00102.jpg', 'lb00103.jpg');
+        2, '2017-01-01', 'Trans', sysdate, 5, 'lb00101.jpg', 'lb00102.jpg', 'lb00103.jpg');
 select * from car;
 commit;
 
@@ -205,8 +205,15 @@ insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, 
 reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
 ccar_car_id, reserv_insurance, reserv_date, user_id)
-values('001', '011','1111','1111', '2017-05-10', TO_DATE('18:00:00','HH24:MI:SS'), 
-'2017-05-13', TO_DATE('2017-05-13 18:00:00','YYYY-MM-DD HH24:MI:SS'), 'rentGo_0003', '자차보험', sysdate ,'kim1');
+values('001', '011','1111','1111', '2017-05-10', 09, 
+'2017-05-13', 13, 'rentGo_0003', '자차보험', sysdate ,'kim1');
+
+insert into RESERVATION(
+reserv_num, user_tel1, user_tel2, user_tel3, 
+reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
+ccar_car_id, reserv_insurance, reserv_date, user_id)
+values('002', '010','2200','2200', '2017-04-30', 15, 
+'2017-05-02', 17, 'rentGo_0002', '자차보험', sysdate ,'jin1');
 
 select * from RESERVATION;
 commit;
