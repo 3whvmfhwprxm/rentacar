@@ -33,3 +33,9 @@ where reserv_end_date >= '17-04-29' and reserv_start_date <= '17-05-01'
 
 select * from COMPANYCAROPTION 
 where ccar_car_id='rentZoa_0001';
+
+select * from RENT_USER; 
+select * from reserv_user;
+insert into reserv_user
+values('kim1', '±è¾ö¸¶', '011', '1111', '1111', 
+'kim2email', 'naver.com', '±è¾Æºü', '011', '1112', '1112', '600102', '1Á¾º¸Åë', sysdate);

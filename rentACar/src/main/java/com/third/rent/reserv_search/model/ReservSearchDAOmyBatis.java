@@ -27,13 +27,11 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 
 	@Override
 	public int insertReservUser(ReservUserVO reservVo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return getSqlSession().insert(nameSpace+".insertReservUser", reservVo);
 	}
 
 	@Override
 	public int insertReservation(ReservationVO reserVo) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

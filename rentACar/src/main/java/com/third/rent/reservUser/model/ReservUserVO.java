@@ -1,5 +1,7 @@
 package com.third.rent.reservUser.model;
 
+import java.sql.Timestamp;
+
 public class ReservUserVO {
 	
 	//예약자 정보
@@ -19,6 +21,16 @@ public class ReservUserVO {
 	private String resDrvBirth;
 	private String resDrvCategory;
 	
+	private Timestamp resURegdate;
+	
+	
+	
+	public Timestamp getResURegdate() {
+		return resURegdate;
+	}
+	public void setResURegdate(Timestamp resURegdate) {
+		this.resURegdate = resURegdate;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -103,8 +115,10 @@ public class ReservUserVO {
 				+ resUTel2 + ", resUTel3=" + resUTel3 + ", resUMail1=" + resUMail1 + ", resUMail2=" + resUMail2
 				+ ", resDrvName=" + resDrvName + ", resDrvTel1=" + resDrvTel1 + ", resDrvTel2=" + resDrvTel2
 				+ ", resDrvTel3=" + resDrvTel3 + ", resDrvBirth=" + resDrvBirth + ", resDrvCategory=" + resDrvCategory
-				+ "]";
+				+ ", resURegdate=" + resURegdate + "]";
 	}
+	
+	
 	
 	
 }

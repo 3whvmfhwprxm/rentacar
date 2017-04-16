@@ -21,6 +21,22 @@
 		select * from COMPANYCAROPTION 
 		where ccar_car_id=#{ccarCarId}
 	</select>
+	
+	<insert id="insertReservUser" parameterType="ReservUserVO">
+		insert into reserv_user
+		values(#{userId}, '#{resUName}', '#{resUTel1}', '#{resUTel2}', '#{resUTel3}', 
+		#{resUMail1}, #{resUMail2}, #{resDrvName}, #{resDrvTel1}, #{resDrvTel2}, 
+		#{resDrvTel3}, #{resDrvBirth}, #{resDrvCategory}, sysdate)
+	</insert>
+	
+	<!-- <insert id="insertReservation" parameterType="">
+		insert into RESERVATION(
+		reserv_num, user_tel1, user_tel2, user_tel3, 
+		reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
+		ccar_car_id, reserv_insurance, reserv_date, user_id)
+		values('003', '010','2200','2200', '2017-04-30', 15, 
+		'2017-05-02', 17, 'rentGo_0002', '자차보험', sysdate ,'jin1');
+	</insert> -->
 </mapper>
 
 
