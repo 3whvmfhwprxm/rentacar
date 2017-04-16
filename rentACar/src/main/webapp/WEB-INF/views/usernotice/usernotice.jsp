@@ -6,19 +6,19 @@
 <h3>notice</h3>
 	<div class="divForm">
 		<div class="firstDiv">
-			<span class="sp1">관리자 아이디</span> <span>아이디</span>
+			<span class="sp1">관리자 아이디</span> <span>${vo.adminId }</span>
 		</div>
 		<div class="firstDiv">
-			<span class="sp1">글번호</span> <span>글번호</span>
+			<span class="sp1">글번호</span> <span>${vo.unoticeNo }</span>
 		</div>
 		<div class="firstDiv">
-			<span class="sp1">글제목</span> <span>글제목</span>
+			<span class="sp1">글제목</span> <span>${vo.unoticeTitle }</span>
 		</div>
 		<div class="firstDiv">
-			<span class="sp1">작성시간</span> <span>작성시간</span>
+			<span class="sp1">작성시간</span> <span>${vo.unoticeRegdate }</span>
 		</div>
 		<div>
-			<span class="sp1">조회수</span> <span>조회수</span>
+			<span class="sp1">조회수</span> <span>${vo.unoticeReadcount }</span>
 		</div>
 	</div>
 

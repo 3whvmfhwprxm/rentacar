@@ -9,11 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
-import com.third.rent.user.model.UserVO;
 import com.third.rent.user.notice.model.UserNoticeService;
 import com.third.rent.user.notice.model.UserNoticeVO;
 
@@ -23,7 +23,7 @@ public class ServiceCenterController {
 	@Autowired
 	private UserNoticeService usernoticeService;
 	
-	@RequestMapping("/inc_user/serviceCenter.do")
+	@RequestMapping(value="/inc_user/serviceCenter.do", method=RequestMethod.GET)
 	public String showServiceCenter(@ModelAttribute SearchVO searchVo, Model model){
 		//1
 		logger.info("고객센터 화면 띄우기 ");
@@ -41,6 +41,7 @@ public class ServiceCenterController {
 		logger.info("고객 공지사항 리스트 수, unList.size()={}", unList.size());
 		
 		model.addAttribute("unList", unList);
+		model.addAttribute("pagingInfo", pagingInfo);
 		//뷰페이지 리턴
 		return "inc_user/serviceCenter";
 	}

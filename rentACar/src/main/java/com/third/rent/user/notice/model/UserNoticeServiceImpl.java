@@ -18,4 +18,9 @@ public class UserNoticeServiceImpl implements UserNoticeService{
 		return usernoticeDao.selectUN(searchVo);
 	}
 
+	@Override
+	public UserNoticeVO selectByNo(int no) {
+		return usernoticeDao.selectByNo(no);
+	}
+
 }

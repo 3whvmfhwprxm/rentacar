@@ -17,5 +17,10 @@ public class UserNoticeMybatis extends SqlSessionDaoSupport implements UserNotic
 		return getSqlSession().selectList(namespace+".selectUNotice", searchVo);
 	}
 
+	@Override
+	public UserNoticeVO selectByNo(int no) {
+		return getSqlSession().selectOne(namespace+".selectByNo", no);
+	}
 
+	
 }

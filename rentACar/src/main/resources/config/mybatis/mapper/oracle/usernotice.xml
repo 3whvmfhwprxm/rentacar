@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.usernotice">
-	<!-- <select id="selectUNotice" resultType="UserNoticeVO" parameterType="SearchVO">
+	<select id="selectUNotice" resultType="UserNoticeVO" parameterType="SearchVO">
 		select *
 		from
 		(
@@ -11,7 +11,6 @@
 		    from
 		    (
 		        select * from usernotice 
-		        <include refid="searchWhere"></include>
 		        order by unotice_no desc
 		    )LIST
 		)
@@ -19,7 +18,11 @@
 		where RNUM>#{firstRecordIndex} 
 		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
 		]]>
-	</select> -->
+	</select>
+	
+	<select id="selectByNo" parameterType="int" resultType="UserNoticeVO">
+		select * from usernotice where unotice_no=#{unoticeNo}
+	</select>
 </mapper>
 
 
