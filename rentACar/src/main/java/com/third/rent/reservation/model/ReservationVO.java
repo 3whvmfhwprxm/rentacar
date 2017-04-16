@@ -8,9 +8,9 @@ public class ReservationVO {
 	private String userTel2;/* 회원전화번호2 */
 	private String userTel3;/* 회원전화번호3 */
 	private Timestamp reservStartDate;/* 대여시작일 */
-	private Timestamp reservStartTime;/* 대여시작시간 */
+	private String reservStartTime;/* 대여시작시간 */
 	private Timestamp reservEndDate;/* 반납일 */
-	private Timestamp reservEndTime;/* 반납시간 */
+	private String reservEndTime;/* 반납시간 */
 	private String ccarCarId;/* 업체보유차량 */
 	private String reservInsurance;/* 보험여부 */
 	private Timestamp reservDate;/* 예약일시 */
@@ -47,10 +47,10 @@ public class ReservationVO {
 	public void setReservStartDate(Timestamp reservStartDate) {
 		this.reservStartDate = reservStartDate;
 	}
-	public Timestamp getReservStartTime() {
+	public String getReservStartTime() {
 		return reservStartTime;
 	}
-	public void setReservStartTime(Timestamp reservStartTime) {
+	public void setReservStartTime(String reservStartTime) {
 		this.reservStartTime = reservStartTime;
 	}
 	public Timestamp getReservEndDate() {
@@ -59,10 +59,10 @@ public class ReservationVO {
 	public void setReservEndDate(Timestamp reservEndDate) {
 		this.reservEndDate = reservEndDate;
 	}
-	public Timestamp getReservEndTime() {
+	public String getReservEndTime() {
 		return reservEndTime;
 	}
-	public void setReservEndTime(Timestamp reservEndTime) {
+	public void setReservEndTime(String reservEndTime) {
 		this.reservEndTime = reservEndTime;
 	}
 	public String getCcarCarId() {

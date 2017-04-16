@@ -340,7 +340,7 @@ CREATE TABLE Reserv_User (
 	res_drv_tel1 VARCHAR2(10) NOT NULL, /* 운전자전화1 */
 	res_drv_tel2 VARCHAR2(10) NOT NULL, /* 운전자전화2 */
 	res_drv_tel3 VARCHAR2(10) NOT NULL, /* 운전자전화3 */
-	res_drv_birth DATE NOT NULL, /* 생년월일 */
+	res_drv_birth VARCHAR2(10) NOT NULL, /* 생년월일 */
 	res_drv_category VARCHAR2(10) NOT NULL /* 면허종류 */
 );
 
