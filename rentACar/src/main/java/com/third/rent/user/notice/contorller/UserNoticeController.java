@@ -31,7 +31,7 @@ public class UserNoticeController {
 	
 	
 	@RequestMapping(value="/usernotice/usernotice.do",method=RequestMethod.GET)
-	public String shownotice(@RequestParam(value="no", defaultValue="0") int unoticeNo, HttpServletRequest request, Model model){
+	public String shownotice(@RequestParam(value="unoticeNo", defaultValue="0") int unoticeNo, HttpServletRequest request, Model model){
 		//1.
 		logger.info("글 상세보기, 파라미터 no={}", unoticeNo);
 		if(unoticeNo==0){
