@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="config.mybatis.mapper.oracle.company">
+<mapper namespace="config.mybatis.mapper.oracle.ccaroption">
 	<insert id="insertCcarOption">
 		insert into companycaroption
 	(ccar_car_id, car_code, com_id, ccar_use_yn, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
@@ -19,6 +19,19 @@
 		where comcar_outdate is null
 	</select>
 	
+	<select id="selectAllComCar" resultType="map">
+		select c.*, cco.*
+		from car c right join companycaroption cco
+		on c.car_code = cco.car_code
+		where cco.comcar_outdate is null
+	</select>
+	
+	<select id="selectByCcarId" parameterType="string" resultType="map">
+		select c.*, cco.*
+		from car c right join companycaroption cco
+		on c.car_code = cco.car_code
+		where cco.ccar_car_id=#{cco.ccar_car_id}
+	</select>
 </mapper>
 
 

@@ -74,7 +74,7 @@
 			<div>
 				<a class="navbar-brand" href='<c:url value="/com_reser/"/>'>| 예약관리 |</a>
 				<a class="navbar-brand"
-					href='<c:url value="/com_manage/regist_option.do"/>'>| 차량관리 |</a> 
+					href='<c:url value="/com_manage/company_optionRegist.do"/>'>| 차량관리 |</a> 
 				<a class="navbar-brand"
 					href='<c:url value="/com_manage/company_epilogue.do"/>'>| 후기관리 |</a> 
 				<a class="navbar-brand"
