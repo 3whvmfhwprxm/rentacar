@@ -115,20 +115,18 @@ public class Admin_CompanyController {
 			Model model){
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
 		
-		String msg = "", url = ""; 
-		if(adminCompanyService.checkPwd(adminVo.getAdminId(), adminVo.getAdminPwd())){
-			int cnt = adminCompanyService.updateCompany(companyVo);
-			logger.info("업체 수정 결과 cnt={}", cnt);
-			
-			if(cnt>0){
-				msg = "업체 수정 성공";
-				url = "/administrator/company/companyEdit.do?comId="+companyVo.getComId();
-			}else{
-				msg = "업체 수정 실패";
-			}
+
+		int cnt = adminCompanyService.updateCompany(companyVo);
+		logger.info("업체 수정 결과 cnt={}", cnt);
+		
+		String msg = "", url = "";
+		if(cnt>0){
+			msg = "업체 수정 성공";
+			url = "/administrator/company/companyEdit.do?comId="+companyVo.getComId();
 		}else{
-			msg = "비밀번호가 일치하지 않습니다.";
+			msg = "업체 수정 실패";
 		}
+
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);

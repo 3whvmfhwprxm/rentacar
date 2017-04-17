@@ -14,5 +14,4 @@ public interface Admin_CompanyService {
 	
 	public int updateCompany(CompanyVO companyVo);
 	
-	public boolean checkPwd(String adminId, String adminPwd);
 }

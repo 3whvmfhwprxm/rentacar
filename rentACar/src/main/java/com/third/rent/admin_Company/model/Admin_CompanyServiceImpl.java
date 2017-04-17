@@ -29,15 +29,4 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 	public int updateCompany(CompanyVO companyVo) {
 		return adminCompanyDao.updateCompany(companyVo);
 	}
-
-	public boolean checkPwd(String adminId, String adminPwd) {
-		String dbPwd = adminCompanyDao.selectPwd(adminPwd);
-		
-		if(adminPwd.equals(dbPwd)){
-			return true;
-		}else{
-			return false;
-		}
-	}
-
 }

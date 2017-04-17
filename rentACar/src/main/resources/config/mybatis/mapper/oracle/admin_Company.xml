@@ -49,7 +49,7 @@
 	<update id="updateCompany" parameterType="CompanyVO">
 		update company 
 		set 
-	    	com_name=#{comName}, com_pwd=#{comPwd}, 
+	    	com_id=#{comId}, com_name=#{comName},
 	    	com_num=#{comNum}, com_tel1=#{comTel1},
 	    	com_tel2=#{comTel2}, com_tel3=#{comTel3},
 	    	com_mobile1=#{comMobile1}, com_mobile2=#{comMobile2},
