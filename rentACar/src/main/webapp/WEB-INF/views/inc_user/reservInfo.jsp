@@ -3,14 +3,14 @@
 <%@ include file="top.jsp"%>
 
 <div class="container">
-	<form name="insertReservInfo" id="insertReservInfo" method="post" action="#">
+	<form name="insertReservInfo" id="insertReservInfo" method="post" action="<c:url value='/inc_user/reservation.do' />">
 		<!-- 선택한 기간 정보 -->
 		<div>
 			<p><label>선택하신 예약 기간: ${param.searchStartDate} ~ ${param.searchEndDate}</label></p>
 			<!-- 테스트 끝나면 hidden으로 재 설정 -->
-			<input type="text" value="${param.searchStartDate}">
-			<input type="text" value="${param.searchEndDate}">
-			<input type="text" value="${car.ccarCarId }">	
+			<input type="text" name="searchStartDate"	value="${param.searchStartDate}">
+			<input type="text" name="searchEndDate"	value="${param.searchEndDate}">
+			<input type="text" name="ccarCarId"  value="${car.ccarCarId }">	
 		</div>
 		
 		<!-- 선택한 차에 대한 정보 -->
