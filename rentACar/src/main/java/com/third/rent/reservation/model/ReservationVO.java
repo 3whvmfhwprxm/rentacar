@@ -1,15 +1,16 @@
 package com.third.rent.reservation.model;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class ReservationVO {
 	private String reservNum;/* 예약번호 */
 	private String userTel1;/* 회원전화번호1 */
 	private String userTel2;/* 회원전화번호2 */
 	private String userTel3;/* 회원전화번호3 */
-	private Timestamp reservStartDate;/* 대여시작일 */
+	private String reservStartDate;/* 대여시작일 */
 	private String reservStartTime;/* 대여시작시간 */
-	private Timestamp reservEndDate;/* 반납일 */
+	private String reservEndDate;/* 반납일 */
 	private String reservEndTime;/* 반납시간 */
 	private String ccarCarId;/* 업체보유차량 */
 	private String reservInsurance;/* 보험여부 */
@@ -42,10 +43,10 @@ public class ReservationVO {
 	public void setUserTel3(String userTel3) {
 		this.userTel3 = userTel3;
 	}
-	public Timestamp getReservStartDate() {
+	public String getReservStartDate() {
 		return reservStartDate;
 	}
-	public void setReservStartDate(Timestamp reservStartDate) {
+	public void setReservStartDate(String reservStartDate) {
 		this.reservStartDate = reservStartDate;
 	}
 	public String getReservStartTime() {
@@ -54,10 +55,10 @@ public class ReservationVO {
 	public void setReservStartTime(String reservStartTime) {
 		this.reservStartTime = reservStartTime;
 	}
-	public Timestamp getReservEndDate() {
+	public String getReservEndDate() {
 		return reservEndDate;
 	}
-	public void setReservEndDate(Timestamp reservEndDate) {
+	public void setReservEndDate(String reservEndDate) {
 		this.reservEndDate = reservEndDate;
 	}
 	public String getReservEndTime() {
