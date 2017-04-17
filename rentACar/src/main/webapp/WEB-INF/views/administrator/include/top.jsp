@@ -15,7 +15,9 @@
 	
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/top.css" />
-	
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+
 <script type="text/javascript"
 	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
 	
@@ -66,11 +68,13 @@ $(document).ready(function(){
 							aria-haspopup="true" aria-expanded="false">업체관리 </a>
 							<ul class="dropdown-menu mega-dropdown-menu">
 								<li class="col-sm-2"><a
-									href='<c:url value="/administrator/company/companyRegister.do" />'>업체 등록 </a></li>
+									href='<c:url value="/administrator/company/companyList.do" />'>업체 리스트</a></li>
 								<li class="col-sm-2"><a
-									href='<c:url value="/administrator/company/companyCar.do" />'>업체 보유 차량 </a></li>
+									href='<c:url value="/administrator/company/companyRegister.do" />'>업체 등록</a></li>
 								<li class="col-sm-2"><a
-									href='<c:url value="/administrator/company/companyWithdraw.do" />'>탈퇴 업체 조회 </a></li>
+									href='<c:url value="/administrator/company/companyCar.do" />'>업체 보유 차량</a></li>
+								<li class="col-sm-2"><a
+									href='<c:url value="/administrator/company/companyWithdraw.do" />'>탈퇴 업체 조회</a></li>
 							</ul>
 						</li>
 						

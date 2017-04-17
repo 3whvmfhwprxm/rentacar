@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원목록 상세보기</title>
+<title>회원 상세정보</title>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
