@@ -17,9 +17,20 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
-	th{
-		text-align: center;
-	}
+th {
+	text-align: center;
+}
+
+.col-md-4{
+	float: left;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.col-md-4 ul li{
+	display: inline-block;
+}
 </style>
 </head>
 <body>
@@ -36,7 +47,6 @@
 				<tr>
 					<th scope="col">업체아이디</th>
 					<th scope="col">업체명</th>
-					<th scope="col">비밀번호</th>
 					<th scope="col">사업자번호</th>
 					<th scope="col">대표번호</th>
 					<th scope="col">휴대폰</th>
@@ -63,7 +73,6 @@
 						<td style="text-align: center">
 							${vo.comName}
 						</td>
-						<td>${vo.comPwd}</td>
 						<td>${vo.comNum}</td>
 						<td>${vo.comTel1}-${vo.comTel2}-${vo.comTel3}</td>
 						<td>${vo.comMobile1}-${vo.comMobile2}-${vo.comMobile3}</td>
@@ -81,30 +90,43 @@
 			</tbody>
 		</table>
 	</div>
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<nav>
+			<ul class="pagination">
+				<c:if test="${pagingInfo.firstPage>1 }">
+					<li>
+						<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
+							aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+				</c:if>
 
-	<div class="divPage">
-		<c:if test="${pagingInfo.firstPage>1 }">
-			<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
-				<img src='${pageContext.request.contextPath}/images/first.JPG' alt="이전블럭으로">
-			</a>
-		</c:if>
+				<c:forEach var="i" begin="${pagingInfo.firstPage}"
+					end="${pagingInfo.lastPage}">
+					<c:if test="${i==pagingInfo.currentPage}">
+						<li class="active"><a href="#">${i}</a></li>
+					</c:if>
+					<c:if test="${i!=pagingInfo.currentPage}">
+						<li><a href="#" onclick="pageFunc(${i})">${i}</a></li>
+					</c:if>
+				</c:forEach>
 
-		<c:forEach var="i" begin="${pagingInfo.firstPage}"
-			end="${pagingInfo.lastPage}">
-			<c:if test="${i==pagingInfo.currentPage }">
-				<span style="color: blue; font-weight: bold;">${i}</span>
-			</c:if>
-			<c:if test="${i!=pagingInfo.currentPage }">
-				<a href="#" onclick="pageFunc(${i})">[${i}]</a>
-			</c:if>
-		</c:forEach>
-
-		<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
-			<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"> 
-				<img src='${pageContext.request.contextPath}/images/last.JPG' alt="다음블럭으로">
-			</a>
-		</c:if>
+				<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+					<li>
+						<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"
+							aria-label="Next"> 
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</c:if>
+			</ul>
+		</nav>
 	</div>
+	<div class="col-md-4"></div>
+</div>
 	
 	<div class="divSearch">
 		<form name="frmSearch" method="post"
