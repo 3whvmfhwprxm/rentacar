@@ -56,8 +56,7 @@
 				</a>
 			</c:if>
 	
-			<c:forEach var="i" begin="${pagingInfo.firstPage}"
-				end="${pagingInfo.lastPage}">
+			<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
 				<c:if test="${i==pagingInfo.currentPage }">
 					<span style="color: blue; font-weight: bold;">${i}</span>
 				</c:if>
