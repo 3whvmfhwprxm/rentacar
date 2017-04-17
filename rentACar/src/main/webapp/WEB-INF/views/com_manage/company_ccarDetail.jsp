@@ -14,7 +14,7 @@
 			<td>${map['CCAR_CAR_ID'] }</td>
 		</tr>
 		<tr>
-			<td>모델명</td>
+			<td>모델명123</td>
 			<td></td>
 		</tr>
 		<tr>
