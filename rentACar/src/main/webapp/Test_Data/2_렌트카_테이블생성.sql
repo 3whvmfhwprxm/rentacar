@@ -329,7 +329,7 @@ ALTER TABLE Member_grade
 
 /* Reserv_User 예약회원정보 */
 CREATE TABLE Reserv_User (
-	user_id VARCHAR2(30) NOT NULL, /* 회원아이디 */
+	reserv_num VARCHAR2(20) NOT NULL, /* 예약번호 */
 	res_u_name VARCHAR2(30) NOT NULL, /* 예약자이름 */
 	res_u_tel1 VARCHAR2(10) NOT NULL, /* 예약자전화1 */
 	res_u_tel2 VARCHAR2(10) NOT NULL, /* 예약자전화2 */
@@ -341,15 +341,19 @@ CREATE TABLE Reserv_User (
 	res_drv_tel2 VARCHAR2(10) NOT NULL, /* 운전자전화2 */
 	res_drv_tel3 VARCHAR2(10) NOT NULL, /* 운전자전화3 */
 	res_drv_birth VARCHAR2(10) NOT NULL, /* 생년월일 */
-	res_drv_category VARCHAR2(10) NOT NULL, /* 면허종류 */
-	res_u_regdate Date default sysdate NOT NULL /* 면허종류 */
+	res_drv_category VARCHAR2(10) NOT NULL /* 면허종류 */
 );
+
+CREATE UNIQUE INDEX PK_Reserv_User
+	ON Reserv_User (
+		reserv_num ASC
+	);
 
 ALTER TABLE Reserv_User
 	ADD
 		CONSTRAINT PK_Reserv_User
 		PRIMARY KEY (
-			user_id
+			reserv_num
 		);
 
 ALTER TABLE Reservation
@@ -364,11 +368,11 @@ ALTER TABLE Reservation
 
 ALTER TABLE Reservation
 	ADD
-		CONSTRAINT FK_Res_User_TO_Res
+		CONSTRAINT FK_Rent_User_TO_Res
 		FOREIGN KEY (
 			user_id
 		)
-		REFERENCES Reserv_User (
+		REFERENCES rent_user (
 			user_id
 		);
 
@@ -514,10 +518,10 @@ ALTER TABLE Member_grade
 
 ALTER TABLE Reserv_User
 	ADD
-		CONSTRAINT FK_rent_us_TO_Res_User
+		CONSTRAINT FK_reserv_num_TO_Res_User
 		FOREIGN KEY (
-			user_id
+			reserv_num
 		)
-		REFERENCES rent_user (
-			user_id
+		REFERENCES Reservation (
+			reserv_num
 		);

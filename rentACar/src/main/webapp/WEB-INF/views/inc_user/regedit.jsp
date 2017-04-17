@@ -53,8 +53,8 @@
 
 	<h1>회원정보수정</h1>
 	<form id="frm1" name="frm1" method="post" action='<c:url value="/inc_user/regedit.do"/>'>
-		아이디 : <span>${vo.userName}</span><br>
-		이름 : <span>${sessionScope.userId}</span><br>
+		아이디 : <span>${sessionScope.userId}</span><br>
+		이름 : <span>${vo.userName}</span><br>
 		패스워드 : <input id="userPwd" type="text" name="userPwd"><br>
 		이메일 : <input id="userEmail1" type="text" name="userEmail1" value="${vo.userEmail1 }">
 				 <input id="userEmail2" type="text" name="userEmail2" value="${vo.userEmail2 }"><br>

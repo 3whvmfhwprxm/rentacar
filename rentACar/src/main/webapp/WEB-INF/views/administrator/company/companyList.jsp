@@ -31,6 +31,15 @@ th {
 .col-md-4 ul li{
 	display: inline-block;
 }
+
+.col-md-4{
+	float: left;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	display: inline-block;
+}
+
 </style>
 </head>
 <body>
@@ -127,24 +136,29 @@ th {
 	</div>
 	<div class="col-md-4"></div>
 </div>
-	
-	<div class="divSearch">
-		<form name="frmSearch" method="post"
-			action="<c:url value="/administrator/company/companyList.do" />">
-			<select name="searchCondition">
-				<option value="comId"
-					<c:if test="${'comId'==param.searchCondition}">
-            		selected            	
-            	</c:if>>업체아이디</option>
-				<option value="comName"
-					<c:if test="${'comName'==param.searchCondition}">
-            		selected            	
-            	</c:if>>업체명</option>
-			</select> 
-			<input type="text" name="searchKeyword" title="검색어 입력"
-				value="${param.searchKeyword}"> 
-			<input type="submit" value="검색">
-		</form>
-	</div>
+
+<div class="col-md-4"></div>
+<div>
+	<button type="button" class="btn btn-primary">Register</button>
+</div>
+
+<div class="divSearch">
+	<form name="frmSearch" method="post"
+		action="<c:url value="/administrator/company/companyList.do" />">
+		<select name="searchCondition">
+			<option value="com_id"
+				<c:if test="${'com_id'==param.searchCondition}">
+           		selected            	
+           	</c:if>>업체아이디</option>
+			<option value="com_name"
+				<c:if test="${'com_name'==param.searchCondition}">
+           		selected            	
+           	</c:if>>업체명</option>
+		</select> 
+		<input type="text" name="searchKeyword" title="검색어 입력"
+			value="${param.searchKeyword}"> 
+		<input type="submit" value="검색">
+	</form>
+</div>
 </body>
 </html>

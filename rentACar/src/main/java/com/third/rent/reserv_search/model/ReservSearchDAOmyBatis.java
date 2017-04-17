@@ -26,15 +26,23 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 	}
 
 	@Override
-	public int insertReservUser(ReservUserVO reservVo) {
-		return getSqlSession().insert(nameSpace+".insertReservUser", reservVo);
+	public String createReservationKey() {
+		return getSqlSession().selectOne(nameSpace+".createReservationKey");
+	}
+
+	@Override
+	public int insertReservUser(ReservUserVO reservWho) {
+		return getSqlSession().insert(nameSpace+".insertReservUser", reservWho);
 	}
 
 	@Override
 	public int insertReservation(ReservationVO reserVo) {
-		return 0;
+		return getSqlSession().insert(nameSpace+".insertReservation", reserVo);
 	}
 
-	
+	@Override
+	public ReservationVO selectByReservNum(String reservNum) {		
+		return getSqlSession().selectOne(nameSpace+".selectByReservNum", reservNum);
+	}	
 	
 }

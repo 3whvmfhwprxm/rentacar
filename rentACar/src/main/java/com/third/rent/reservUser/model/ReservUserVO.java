@@ -1,11 +1,9 @@
 package com.third.rent.reservUser.model;
 
-import java.sql.Timestamp;
-
 public class ReservUserVO {
 	
 	//예약자 정보
-	private String userId;
+	private String reservNum;
 	private String resUName;
 	private String resUTel1;
 	private String resUTel2;
@@ -19,23 +17,14 @@ public class ReservUserVO {
 	private String resDrvTel2;
 	private String resDrvTel3;
 	private String resDrvBirth;
-	private String resDrvCategory;
-	
-	private Timestamp resURegdate;
+	private String resDrvCategory;	
 	
 	
-	
-	public Timestamp getResURegdate() {
-		return resURegdate;
+	public String getReservNum() {
+		return reservNum;
 	}
-	public void setResURegdate(Timestamp resURegdate) {
-		this.resURegdate = resURegdate;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setReservNum(String reservNum) {
+		this.reservNum = reservNum;
 	}
 	public String getResUName() {
 		return resUName;
@@ -111,14 +100,12 @@ public class ReservUserVO {
 	}
 	@Override
 	public String toString() {
-		return "ReservUserVO [userId=" + userId + ", resUName=" + resUName + ", resUTel1=" + resUTel1 + ", resUTel2="
-				+ resUTel2 + ", resUTel3=" + resUTel3 + ", resUMail1=" + resUMail1 + ", resUMail2=" + resUMail2
-				+ ", resDrvName=" + resDrvName + ", resDrvTel1=" + resDrvTel1 + ", resDrvTel2=" + resDrvTel2
+		return "ReservUserVO [reservNum=" + reservNum + ", resUName=" + resUName + ", resUTel1=" + resUTel1
+				+ ", resUTel2=" + resUTel2 + ", resUTel3=" + resUTel3 + ", resUMail1=" + resUMail1 + ", resUMail2="
+				+ resUMail2 + ", resDrvName=" + resDrvName + ", resDrvTel1=" + resDrvTel1 + ", resDrvTel2=" + resDrvTel2
 				+ ", resDrvTel3=" + resDrvTel3 + ", resDrvBirth=" + resDrvBirth + ", resDrvCategory=" + resDrvCategory
-				+ ", resURegdate=" + resURegdate + "]";
+				+ "]";
 	}
 	
-	
-	
-	
+		
 }

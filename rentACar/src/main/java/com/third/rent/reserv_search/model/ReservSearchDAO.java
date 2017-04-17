@@ -10,6 +10,8 @@ import com.third.rent.reservation.model.ReservationVO;
 public interface ReservSearchDAO {
 	public List<CcarOptionVO> searchNormal(HashMap<String, Object> map);
 	public CcarOptionVO selectByCcarCarId(String ccarCarId);
-	public int insertReservUser(ReservUserVO reservVo);
 	public int insertReservation(ReservationVO reserVo);
+	public int insertReservUser(ReservUserVO reservWho);
+	public ReservationVO selectByReservNum(String reservNum);
+	public String createReservationKey();
 }

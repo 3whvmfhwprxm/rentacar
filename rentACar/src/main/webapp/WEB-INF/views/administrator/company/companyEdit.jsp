@@ -92,7 +92,6 @@
 						<input type="text" id="comRegdate" name="comRegdate" value="${companyVo.comRegdate}" />
 					</div>
 					
-
 					<div class="center">
 						<input type="submit" value="수정" /> 
 						<input type="Button" value="업체목록"
