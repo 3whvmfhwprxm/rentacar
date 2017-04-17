@@ -67,7 +67,7 @@ $(document).ready(function(){
 							<ul class="dropdown-menu mega-dropdown-menu">
 								<li class="col-sm-2"><a
 									href='<c:url value="/administrator/company/companyRegister.do" />'>업체 등록 </a></li>
-								<li class="col-sm-2"><<a
+								<li class="col-sm-2"><a
 									href='<c:url value="/administrator/company/companyCar.do" />'>업체 보유 차량 </a></li>
 								<li class="col-sm-2"><a
 									href='<c:url value="/administrator/company/companyWithdraw.do" />'>탈퇴 업체 조회 </a></li>
