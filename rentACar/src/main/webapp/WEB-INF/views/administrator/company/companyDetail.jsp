@@ -19,9 +19,6 @@
 				<span>이름</span> <span>${companyDetail.comName}</span>
 			</div>
 			<div>
-				<span>비밀번호</span> <span>${companyDetail.comPwd}</span>
-			</div>
-			<div>
 				<span>사업자번호</span> <span>${companyDetail.comNum}</span>
 			</div>
 			<div>

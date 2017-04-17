@@ -58,6 +58,14 @@ public class Admin_CompanyController {
 		return "administrator/company/companyList";
 	}
 	
+	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.GET)
+	public String companyRegister_get(Model model){
+		logger.info("업체등록화면 보여주기");
+			
+			return "administrator/company/companyRegister";
+		}
+		
+	
 	@RequestMapping("/company/companyDetail.do")
 	public String companyDetail(@RequestParam String comId, Model model){
 		//1.
