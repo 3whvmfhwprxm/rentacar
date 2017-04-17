@@ -17,6 +17,7 @@ public class ReservationVO {
 	private Timestamp reservCancel;/* 예약취소일시 */
 	private String reservCancelWhy;/* 예약취소사유 */
 	private String userId;/* 회원아이디 */
+	
 	public String getReservNum() {
 		return reservNum;
 	}
