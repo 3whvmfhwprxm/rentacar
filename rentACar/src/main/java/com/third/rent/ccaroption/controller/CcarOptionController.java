@@ -107,12 +107,24 @@ public class CcarOptionController {
 		logger.info("차량 상세정보 보여주기, 파라미터 ccarCarId={}", ccarCarId);
 		String ccarid = ccarCarId;
 		
-		HashMap<String, Object> map = 
-				ccarOptionService.selectByCcarId(ccarid);
+		HashMap<String, Object> map  
+			= ccarOptionService.selectByCcarId(ccarid);
 
 		model.addAttribute("map", map);
 		
 		return "com_manage/company_ccarDetail";
 	}
 
+	@RequestMapping(value="/company_ccarEdit.do", method=RequestMethod.GET)
+	public String ccarEdit(@RequestParam String ccarCarId, Model model){
+		logger.info("차량 수정화면 보여주기, 파라미터 ccarCarId={}", ccarCarId);
+		String ccarid = ccarCarId;
+		
+		HashMap<String, Object> map  
+			= ccarOptionService.selectByCcarId(ccarid);
+
+		model.addAttribute("map", map);
+		
+		return "com_manage/company_ccarEdit";
+	}
 }
