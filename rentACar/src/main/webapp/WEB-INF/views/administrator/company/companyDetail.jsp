@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>업체 상세정보</title>
+<script type="text/javascript"
+	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
@@ -156,7 +158,7 @@
 					</div>
 					<div class="panel-footer">
 						<a href='<c:url value="/administrator/company/companyList.do"/>'
-							data-original-title="Broadcast Message" data-toggle="tooltip"
+							data-original-title="Move userList" data-toggle="tooltip"
 							type="button" class="btn btn-primary btn-lg btn-primary"> 
 							<i class="fa fa-list" aria-hidden="true"></i>
 						</a> 
