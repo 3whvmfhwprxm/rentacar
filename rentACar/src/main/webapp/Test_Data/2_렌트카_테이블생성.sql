@@ -3,15 +3,15 @@ CREATE TABLE Car (
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */
 	car_name VARCHAR2(100) NOT NULL, /* 모델명 */
 	car_inc VARCHAR2(30) NOT NULL, /* 제조사 */
-	car_fuel VARCHAR2(30) NOT NULL, /* 연료 */
+	car_fuel VARCHAR2(30) NOT NULL, /* 연료 */--연료: CompanyCarOption에 컬럼을 이동시키고 삭제
 	car_size NUMBER NOT NULL, /* 승차인원 */
-	car_year DATE NOT NULL, /* 출시년도 */
+	car_year DATE NOT NULL, /* 출시년도 */--출시년도: 모델코드와 모델명에 각각 년도표기가 들어가거나 분류가 되므로 생략
 	car_trans VARCHAR2(6) NOT NULL, /* 변속기 */
 	car_regdate DATE default sysdate NOT NULL , /* 등록일 */
 	car_type VARCHAR2(30) NOT NULL, /* 차량유형 */
 	car_img1 VARCHAR2(200) NOT NULL, /* 이미지1 */
-	car_img2 VARCHAR2(200) NOT NULL, /* 이미지2 */
-	car_img3 VARCHAR2(200) NOT NULL /* 이미지3 */
+	car_img2 VARCHAR2(200) NOT NULL, /* 이미지2 */--차공식 사진 관련 1개만 올리도록 수정 예정
+	car_img3 VARCHAR2(200) NOT NULL /* 이미지3 */--차공식 사진 관련 1개만 올리도록 수정 예정
 );
 
 ALTER TABLE Car
@@ -256,6 +256,7 @@ CREATE TABLE CompanyCarOption (
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */
 	com_id VARCHAR2(30) NOT NULL, /* 업체아이디 */
 	ccar_use_yn VARCHAR2(6) default 'N' NOT NULL, /* 차량사용가능여부 */
+	--car_fuel VARCHAR2(30) NOT NULL, /* 연료 */--연료: Car에 있던 컬럼 이동
 	ccar_blackbox_yn VARCHAR2(6) default 'N' NOT NULL, /* 블랙박스유무 */
 	ccar_smoke_yn VARCHAR2(6) default 'N' NOT NULL, /* 금연차량 */
 	ccar_rear_camera_yn VARCHAR2(6) default 'N' NOT NULL, /* 후방카메라 */

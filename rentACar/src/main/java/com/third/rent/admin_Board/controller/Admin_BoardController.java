@@ -68,8 +68,13 @@ public class Admin_BoardController {
 		
 		List<ServiceCenterNoticeVO> scnList=adService.selectSN(searchVo);
 		logger.info("상담자센터 공지사항 리스트 수, scnList.size()={}", scnList.size());
+		int totalRecord=adService.selectTotalRecordSC(searchVo);
+		logger.info("고객 공지사항 전체수 조회 결과, totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);		
 		
 		model.addAttribute("scnList", scnList);
+		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "administrator/board_management/SCNoticeBoardMng";
 	}
@@ -90,7 +95,13 @@ public class Admin_BoardController {
 		List<CompanyNoticeVO> cnList=adService.selectCN(searchVo);
 		logger.info("업체 공지사항 리스트 수, cnList.size()={}", cnList.size());
 		
+		int totalRecord=adService.selectTotalRecordC(searchVo);
+		logger.info("업체 공지사항 전체수 조회 결과, totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+		
 		model.addAttribute("cnList", cnList);
+		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "administrator/board_management/CNoticeBoardMng";
 	}
