@@ -2,8 +2,18 @@
     pageEncoding="UTF-8"%>
 
 <%@ include file="top.jsp" %>
+
+<script type="text/javascript">	
+	function pageFunc(curPage){
+		document.frmPage.currentPage.value=curPage;
+		frmPage.submit();
+	}
+</script>
+
 	<h1>confirm.jsp</h1>
-	
+	<form name="frmPage" method="post" action='<c:url value="/inc_user/confirm.do" />'>
+		<input type="hidden" name="currentPage">
+	</form>
 	<div class="row">
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
@@ -28,6 +38,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                <c:if test="${empty alist}">
+				  	<td colspan="5" class="align_center">데이터가 존재하지 않습니다.</td>
+				</c:if> 
+                	<c:forEach var="vo" items="${alist }">
                     <tr>
                         <td>${vo.reservNum}</td>
                         <td>${sessionScope.userId}</td>
@@ -40,8 +54,39 @@
                         <td>${vo.reservDate}</td>
                         <td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
                     </tr>
+                	</c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
+    <div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<nav>
+				<ul class="pagination">
+					<c:if test="${pagingInfo.firstPage>1 }">
+						<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:if>
+
+					<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
+						<c:if test="${i==pagingInfo.currentPage}">
+							<li class="active"><a href="#">${i}</a></li>
+						</c:if>
+						<c:if test="${i!=pagingInfo.currentPage}">
+							<li><a href="#" onclick="pageFunc(${i})">${i}</a></li>
+						</c:if>
+					</c:forEach>
+
+					<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+						<li><a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
 <%@ include file="bottom.jsp" %>
