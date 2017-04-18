@@ -51,8 +51,9 @@
 		com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3, 
 		com_mobile3, com_fax2, com_fax3, com_address, com_ceo,
 		com_email1, com_email2, com_logo)
-		values(#{no}, #{userid}, #{name}, #{pwd}, #{email1}, #{email2},
-		#{hp1}, #{hp2}, #{hp3}, #{zipcode}, #{address}, #{addressDetail})
+		values(#{comId}, #{comName}, #{comPwd}, #{comNum}, #{comAccNum}, 
+		#{comTel1}, #{comTel2}, #{comTel3}, #{hp3}, #{comMobile1}, #{comMobile2}, #{comMobile3},
+		#{comFax1}, #{comFax2}, #{comFax3}, #{comAddress}, #{comCeo}, #{comEmail1}, #{comEmail2}, #{comLogo})
 	</insert>
 
 	<update id="updateCompany" parameterType="CompanyVO">

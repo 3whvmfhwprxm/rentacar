@@ -29,4 +29,8 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 	public int updateCompany(CompanyVO companyVo) {
 		return adminCompanyDao.updateCompany(companyVo);
 	}
+
+	public int insertCompany(CompanyVO companyVo) {
+		return adminCompanyDao.insertCompany(companyVo);
+	}
 }

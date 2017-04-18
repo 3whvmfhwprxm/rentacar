@@ -15,4 +15,6 @@ public interface Admin_CompanyDAO {
 	public int updateCompany(CompanyVO companyVo);
 	
 	public String selectPwd(String adminPwd);
+	
+	public int insertCompany(CompanyVO companyVo);
 }

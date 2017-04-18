@@ -96,7 +96,7 @@ public class Admin_CompanyController {
 			}
 		}
 		
-		int cnt = adminCompanyService
+		int cnt = adminCompanyService.insertCompany(comVo);
 		String msg="", url="";
 		if(cnt>0){
 			msg="업체등록 성공";

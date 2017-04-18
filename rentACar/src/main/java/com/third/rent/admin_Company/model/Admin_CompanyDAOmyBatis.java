@@ -39,4 +39,8 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 		return getSqlSession().selectOne(namespace+".selectPwd", adminPwd);
 	}
 
+	public int insertCompany(CompanyVO companyVo) {
+		return getSqlSession().insert(namespace+".insertCompany", companyVo);
+	}
+
 }

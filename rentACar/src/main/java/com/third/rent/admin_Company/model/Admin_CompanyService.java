@@ -14,4 +14,5 @@ public interface Admin_CompanyService {
 	
 	public int updateCompany(CompanyVO companyVo);
 	
+	public int insertCompany(CompanyVO companyVo);
 }
