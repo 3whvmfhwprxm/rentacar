@@ -8,14 +8,6 @@
 			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
 		</if>
 	</sql>
-
-	<!-- <select id="selectCNotice" resultType="CompanyNoticeVO">
-		select * from companynotice order by cnotice_no desc
-	</select>
-	
-	<select id="selectSCNotice" resultType="ServiceCenterNoticeVO">
-		select * from servicecenternotice order by scnotice_no desc
-	</select>	 -->
 	
 	<select id="selectUNotice" resultType="UserNoticeVO" parameterType="SearchVO">
 		select *
@@ -71,20 +63,17 @@
 		]]>
 	</select>
 	
-	<select id="selectTotalRecordfromUN" parameterType="SearchVO"
-		resultType="int">
+	<select id="selectTotalRecordfromUN" parameterType="SearchVO" resultType="int">
 		select count(*) from usernotice
 		<include refid="searchWhat"></include>
 	</select>
 	
-	<select id="selectTotalRecordfromCN" parameterType="SearchVO"
-		resultType="int">
+	<select id="selectTotalRecordfromCN" parameterType="SearchVO" resultType="int">
 		select count(*) from companynotice
 		<include refid="searchWhat"></include>
 	</select>
 	
-	<select id="selectTotalRecordfromSN" parameterType="SearchVO"
-		resultType="int">
+	<select id="selectTotalRecordfromSN" parameterType="SearchVO" resultType="int">
 		select count(*) from servicecenternotice
 		<include refid="searchWhat"></include>
 	</select>	

@@ -6,7 +6,7 @@ CREATE TABLE Car (
 	car_fuel VARCHAR2(30) NOT NULL, /* 연료 */
 	car_size NUMBER NOT NULL, /* 승차인원 */
 	car_year DATE NOT NULL, /* 출시년도 */
-	car_trans CHAR(6) NOT NULL, /* 변속기 */
+	car_trans VARCHAR2(6) NOT NULL, /* 변속기 */
 	car_regdate DATE default sysdate NOT NULL , /* 등록일 */
 	car_type VARCHAR2(30) NOT NULL, /* 차량유형 */
 	car_img1 VARCHAR2(200) NOT NULL, /* 이미지1 */
@@ -65,7 +65,7 @@ CREATE TABLE rent_user (
 	user_tel3 VARCHAR2(10) NOT NULL, /* 연락처3 */
 	user_birth VARCHAR2(50) NOT NULL, /* 생년월일 */
 	user_address VARCHAR2(100) NOT NULL, /* 주소 */
-	user_gender CHAR(6) NOT NULL, /* 성별 */
+	user_gender VARCHAR2(6) NOT NULL, /* 성별 */
 	user_license VARCHAR2(30) NOT NULL, /* 면허증 */
 	user_regdate DATE default sysdate NOT NULL, /* 가입일 */
 	user_outdate DATE /* 탈퇴일 */
@@ -110,7 +110,7 @@ CREATE TABLE UserNotice (
 	unotice_content CLOB NOT NULL, /* 글내용 */
 	admin_id VARCHAR2(30) NOT NULL, /* 관리자아이디 */
 	unotice_regdate DATE default sysdate NOT NULL, /* 작성시간 */
-	unotice_visible CHAR(6) default 'N' NOT NULL, /* 글노출 */
+	unotice_visible VARCHAR2(6) default 'N' NOT NULL, /* 글노출 */
 	unotice_readcount NUMBER default 0 NOT NULL, /* 조회수 */
 	unotice_deldate DATE /* 삭제일 */
 );
@@ -129,7 +129,7 @@ CREATE TABLE ServiceCenterNotice (
 	scnotice_content CLOB NOT NULL, /* 글내용 */
 	admin_id VARCHAR2(30) NOT NULL, /* 관리자아이디 */
 	scnotice_regdate DATE default sysdate NOT NULL, /* 작성시간 */
-	scnotice_visible CHAR(6) default 'N' NOT NULL, /* 글노출 */
+	scnotice_visible VARCHAR2(6) default 'N' NOT NULL, /* 글노출 */
 	scnotice_readcount NUMBER default 0 NOT NULL, /* 조회수 */
 	scnotice_deldate DATE /* 삭제일 */
 );
@@ -148,7 +148,7 @@ CREATE TABLE CompanyNotice (
 	cnotice_content CLOB NOT NULL, /* 글내용 */
 	admin_id VARCHAR2(30) NOT NULL, /* 관리자아이디 */
 	cnotice_regdate DATE default sysdate NOT NULL, /* 작성시간 */
-	cnotice_visible CHAR(6) default 'N' NOT NULL, /* 글노출 */
+	cnotice_visible VARCHAR2(6) default 'N' NOT NULL, /* 글노출 */
 	cnotice_readcount NUMBER default 0 NOT NULL, /* 조회수 */
 	cnotice_deldate DATE /* 삭제일 */
 );
@@ -255,16 +255,16 @@ CREATE TABLE CompanyCarOption (
 	ccar_car_id VARCHAR2(50) NOT NULL, /* 업체보유차량 */
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */
 	com_id VARCHAR2(30) NOT NULL, /* 업체아이디 */
-	ccar_use_yn CHAR(6) default 'N' NOT NULL, /* 차량사용가능여부 */
-	ccar_blackbox_yn CHAR(6) default 'N' NOT NULL, /* 블랙박스유무 */
-	ccar_smoke_yn CHAR(6) default 'N' NOT NULL, /* 금연차량 */
-	ccar_rear_camera_yn CHAR(6) default 'N' NOT NULL, /* 후방카메라 */
-	ccar_rear_sence_yn CHAR(6) default 'N' NOT NULL, /* 후방센서 */
-	ccar_navi_yn CHAR(6) default 'N' NOT NULL, /* 네비게이션 */
-	ccar_sun_roof_yn CHAR(6) default 'N' NOT NULL, /* 썬루프 */
-	ccar_bluetooth_yn CHAR(6) default 'N' NOT NULL, /* 블루투스 */
-	ccar_aux_yn CHAR(6) default 'N' NOT NULL, /* AUX */
-	ccar_smartkey_yn CHAR(6) default 'N' NOT NULL, /* 스마트키 */
+	ccar_use_yn VARCHAR2(6) default 'N' NOT NULL, /* 차량사용가능여부 */
+	ccar_blackbox_yn VARCHAR2(6) default 'N' NOT NULL, /* 블랙박스유무 */
+	ccar_smoke_yn VARCHAR2(6) default 'N' NOT NULL, /* 금연차량 */
+	ccar_rear_camera_yn VARCHAR2(6) default 'N' NOT NULL, /* 후방카메라 */
+	ccar_rear_sence_yn VARCHAR2(6) default 'N' NOT NULL, /* 후방센서 */
+	ccar_navi_yn VARCHAR2(6) default 'N' NOT NULL, /* 네비게이션 */
+	ccar_sun_roof_yn VARCHAR2(6) default 'N' NOT NULL, /* 썬루프 */
+	ccar_bluetooth_yn VARCHAR2(6) default 'N' NOT NULL, /* 블루투스 */
+	ccar_aux_yn VARCHAR2(6) default 'N' NOT NULL, /* AUX */
+	ccar_smartkey_yn VARCHAR2(6) default 'N' NOT NULL, /* 스마트키 */
 	ccar_rentalcount NUMBER default 0 NOT NULL, /* 차량대여횟수 */
 	ccar_normal_price NUMBER NOT NULL, /* 평일예약가격 */
 	ccar_weekend_price NUMBER NOT NULL, /* 주말예약가격 */
