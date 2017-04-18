@@ -32,11 +32,13 @@ th {
 	display: inline-block;
 }
 </style>
-<div class="divList container">
+<div class="divL                                                                                                                                                                                                                                                                                                                                                 ist container">
 	<h2>업체</h2>
 	<form name="frmPage" method="post"
 		action='<c:url value="/administrator/company/companyList.do" />'>
 		<input type="hidden" name="currentPage">
+		<input type="hidden" name="searchCondition" value="${param.searchCondition}">
+		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 	</form>
 	<div class="divList">
 		<table class="table table-hover table-bordered" summary="회원정보에 관한 테이블">

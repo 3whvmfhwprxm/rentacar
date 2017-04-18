@@ -70,12 +70,12 @@ public class Admin_UserController {
 		}
 
 		//2.
-		List<UserVO> userDetail = adminUserService.selectByUserId(userId);
-		logger.info("상세보기 결과, userDetail.size()={}", userDetail.size());
+		UserVO userVo = adminUserService.selectByUserId(userId);
+		logger.info("상세보기 결과, userVo={}", userVo);
 
 
 		//3.
-		model.addAttribute("userDetail", userDetail);
+		model.addAttribute("userVo", userVo);
 
 		return "administrator/user/userDetail";
 	}

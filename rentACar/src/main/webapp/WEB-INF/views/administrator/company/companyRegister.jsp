@@ -1,167 +1,170 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ include file="../include/top.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript"
+	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'>
+	
+</script>
 
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-<!-- Website CSS style -->
-<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-<!-- Website Font style -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<!-- Google Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Passion+One'
-	rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Oxygen'
-	rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var panels = $('.user-infos');
+		var panelsButton = $('.dropdown-user');
+		panels.hide();
+
+		//Click dropdown
+		panelsButton.click(function() {
+			//get data-for attribute
+			var dataFor = $(this).attr('data-for');
+			var idFor = $(dataFor);
+
+			//current button
+			var currentButton = $(this);
+			idFor.slideToggle(400, function() {
+				//Completed slidetoggle
+				if (idFor.is(':visible')) {
+					currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+				} else {
+					currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+				}
+			})
+		});
+
+		$('[data-toggle="tooltip"]').tooltip();
+
+		$('button').click(function(e) {
+			e.preventDefault();
+			alert("This is a demo.\n :-)");
+		});
+	});
+</script>
+
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet" />
 
 <style type="text/css">
-body, html{
-     height: 100%;
- 	background-repeat: no-repeat;
- 	background-color: #d3d3d3;
- 	font-family: 'Oxygen', sans-serif;
-}
-
-.main{
- 	margin-top: 70px;
-}
-
-h1.title { 
-	font-size: 50px;
-	font-family: 'Passion One', cursive; 
-	font-weight: 400; 
-}
-
-hr{
-	width: 10%;
-	color: #fff;
-}
-
-.form-group{
-	margin-bottom: 15px;
-}
-
-label{
-	margin-bottom: 15px;
-}
-
-input,
-input::-webkit-input-placeholder {
-    font-size: 11px;
-    padding-top: 3px;
-}
-
-.main-login{
- 	background-color: #fff;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
-}
-
-.main-center{
- 	margin-top: 30px;
- 	margin: 0 auto;
- 	max-width: 330px;
-    padding: 40px 40px;
-
-}
-
-.login-button{
-	margin-top: 5px;
-}
-
-.login-register{
-	font-size: 11px;
+.register {
+	float: left;
+	width: 100%;
+	margin: 0 auto;
 	text-align: center;
+	display: inline-block;
 }
-
 </style>
 <title>CompanyRegister</title>
 </head>
 <body>
-	<div class="container">
-			<div class="row main">
-				<div class="panel-heading">
-	               <div class="panel-title text-center">
-	               		<h1 class="title">Company Name</h1>
-	               		<hr />
-	               	</div>
-	            </div> 
-				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="#">
-						
-						<div class="form-group">
-							<label for="name" class="cols-sm-2 control-label">Your Name</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Your Email</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Username</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
-								</div>
-							</div>
-						</div>
-
-						<div class="form-group ">
-							<button type="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-						</div>
-						<div class="login-register">
-				            <a href="index.php">Login</a>
-				         </div>
-					</form>
+	<div class="divList container">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="CompanyId" class="col-sm-2 control-label">Company
+					Id</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="CompanyId"
+						placeholder="Company Id">
 				</div>
 			</div>
-		</div>
+			<div class="form-group">
+				<label for="CompanyName" class="col-sm-2 control-label">Company
+					Name</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="CompanyName"
+						placeholder="Company Name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyPwd" class="col-sm-2 control-label">Company
+					Password</label>
+				<div class="col-sm-8">
+					<input type="password" class="form-control" id="CompanyPwd"
+						placeholder="Company Password">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyNo" class="col-sm-2 control-label">Company
+					No</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="CompanyNo"
+						placeholder="Company No">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyTel" class="col-sm-2 control-label">Company
+					Tel</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="CompanyTel"
+						placeholder="Company Tel">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyMobile" class="col-sm-2 control-label">Company
+					Mobile</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="CompanyMobile"
+						placeholder="Company Mobile">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyFax" class="col-sm-2 control-label">Company
+					Fax</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="CompanyFax"
+						placeholder="Company Fax">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyAddress" class="col-sm-2 control-label">Company
+					Address</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="CompanyAddress"
+						placeholder="Company Address">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyCeo" class="col-sm-2 control-label">Company
+					Ceo</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="CompanyCeo"
+						placeholder="Company Ceo">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyEmail" class="col-sm-2 control-label">Company
+					Email</label>
+				<div class="col-sm-8">
+					<input type="email" class="form-control" id="CompanyEmail"
+						placeholder="Company Email">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CompanyLogo" class="col-sm-2 control-label">Company
+					Logo</label>
+				<div class="col-sm-8">
+					<input type="file" id="CompanyLogo" placeholder="file">
+				</div>
+			</div>
+			<div class=form-group>
+				<div class="register">
+					<a href='<c:url value="/administrator/company/companyList.do"/>'
+						data-original-title="Register the Company" data-toggle="tooltip"
+						type="button" class="btn btn-primary btn-lg btn-primary"> <i
+						class="fa fa-registered" aria-hidden="true"> Register</i>
+					</a>
+				</div>
+			</div>
+		</form>
+
+	</div>
 </body>
 </html>

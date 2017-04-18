@@ -24,9 +24,7 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
 	
-	public List<UserVO> selectByUserId(String userId){
-		List<UserVO> listByUser = getSqlSession().selectList(namespace+".selectByUserId", userId);
-		
-		return listByUser;
+	public UserVO selectByUserId(String userId){
+		return getSqlSession().selectOne(namespace+".selectByUserId", userId);
 	}
 }

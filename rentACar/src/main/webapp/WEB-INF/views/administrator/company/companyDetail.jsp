@@ -8,7 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>업체 상세정보</title>
 <script type="text/javascript"
-	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
+	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'>
+</script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
@@ -49,7 +50,7 @@
 
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -172,7 +173,6 @@
 							type="button" class="btn btn-primary btn-lg btn-danger"> 
 							<i class="fa fa-times" aria-hidden="true"></i>
 						</a>
-						<!-- <span class="pull-right"> </span> -->
 					</div>
 				</div>
 			</div>
