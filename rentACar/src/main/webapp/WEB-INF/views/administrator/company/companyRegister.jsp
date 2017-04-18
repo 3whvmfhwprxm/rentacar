@@ -103,13 +103,13 @@
 			}
 		});
 		
-		$("#email2").change(function(){
-			if($("#email2").val()=="etc"){
-				$('#email3').css("visibility","visible");
-				$("#email3").val("");
-				$("#email3").focus();
+		$("#CompanyEmail2").change(function(){
+			if($("#CompanyEmail2").val()=="etc"){
+				$('#CompanyEmail3').css("visibility","visible");
+				$("#CompanyEmail3").val("");
+				$("#CompanyEmail3").focus();
 			}else{
-				$('#email3').css("visibility","hidden");
+				$('#CompanyEmail3').css("visibility","hidden");
 			}
 		});
 		
@@ -270,31 +270,27 @@
 					<input type="text" class="form-control" name="CompanyCeo" id="CompanyCeo"
 						placeholder="Company Ceo">
 				</div>
-			</div>
-			<div class="form-group">
-				<label for="CompanyEmail" class="col-sm-2 control-label">Company Email</label>
-				<div class="col-sm-8">
-					<input type="email" class="form-control" name="CompanyEmail" id="CompanyEmail"
-						placeholder="Company Email">
-				</div>
-			</div>
-			
+			</div>			
 			<div class="form-group">
 				<label for="CompanyEmail" class="col-sm-2 control-label">Company Email</label>
 				<div class="col-md-3">
-					<input type="email" class="form-control" name="CompanyEmail" id="CompanyEmail"
-						placeholder="Company Email">
+					<input type="email" class="form-control" name="CompanyEmail1" id="CompanyEmail1"
+						placeholder="Company Email1">
+				</div>				
+				<div class="col-xs-2">
+					<select class="form-control" name="CompanyEmail2" id="CompanyEmail2">
+		           	    <option value="naver.com">naver.com</option>
+			            <option value="hanmail.net">hanmail.net</option>
+			            <option value="nate.com">nate.com</option>
+			            <option value="gmail.com">gmail.com</option>
+			            <option value="etc">직접입력</option>
+      		 		</select>
 				</div>
-				<div class="col-xs-1">
-				@
-				</div>
-				<div class="col-md-3">	
-					<input type="email" class="form-control" name="CompanyEmail" id="CompanyEmail"
-						placeholder="Company Email">
-				</div>
-
-			</div>
-			
+				<div class="col-xs-2">
+					<input type="text" class="form-control" name="CompanyEmail3" id="CompanyEmail3"
+        				placeholder="Company Email3" style="visibility:hidden">
+        		</div>
+			</div>	
 			<div class="form-group">
 				<label for="CompanyLogo" class="col-sm-2 control-label">Company Logo</label>
 				<div class="col-sm-8">

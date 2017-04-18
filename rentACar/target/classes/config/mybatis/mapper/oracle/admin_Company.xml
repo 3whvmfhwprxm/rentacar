@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.admin_Company">
+	<sql id="searchWhere">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
+		</if>
+	</sql>
+	
+	<select id="selectAllCompany" resultType="CompanyVO" 
+		parameterType="SearchVO">
+		select com_id, com_name, com_pwd, com_num, com_tel1, com_tel2, com_tel3,
+			com_mobile1, com_mobile2, com_mobile3, com_fax1, com_fax2, com_fax3,
+			com_address, com_ceo, com_email1, com_email2, com_logo, com_regdate,
+			com_outdate
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from company 
+		        <include refid="searchWhere"></include>
+		        order by com_regdate
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select> 
+	
+	<select id="selectTotalRecord" parameterType="SearchVO"
+		resultType="int">
+		select count(*) from Company 
+		<include refid="searchWhere"></include>
+	</select>
+	
+	<select id="selectByComId" parameterType="String" resultType="CompanyVO">
+		select*from Company 
+		where com_id=#{comId}
+	</select>
+	
+	<select id="selectPwd" parameterType="int" resultType="String">
+		select admin_pwd from rent_admin where admin_id=#{adminId}
+	</select>
+
+	<insert id="insertCompany" parameterType="CompanyVO">
+		insert into company(com_id, com_name, com_pwd, com_num, com_accNum, 
+		com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3, 
+		com_mobile3, com_fax2, com_fax3, com_address, com_ceo,
+		com_email1, com_email2, com_logo)
+		values(#{comId}, #{comName}, #{comPwd}, #{comNum}, #{comAccNum}, 
+		#{comTel1}, #{comTel2}, #{comTel3}, #{hp3}, #{comMobile1}, #{comMobile2}, #{comMobile3},
+		#{comFax1}, #{comFax2}, #{comFax3}, #{comAddress}, #{comCeo}, #{comEmail1}, #{comEmail2}, #{comLogo})
+	</insert>
+
+	<update id="updateCompany" parameterType="CompanyVO">
+		update company 
+		set 
+	    	com_id=#{comId}, com_name=#{comName},
+	    	com_num=#{comNum}, com_accNum=#{comAccNum},
+	    	com_tel1=#{comTel1}, com_tel2=#{comTel2}, 
+	    	com_tel3=#{comTel3}, com_mobile1=#{comMobile1}, 
+	    	com_mobile2=#{comMobile2}, com_mobile3=#{comMobile3}, 
+	    	com_fax1=#{comFax1}, com_fax2=#{comFax2}, 
+	    	com_fax3=#{comFax3}, com_address=#{comAddress}, 
+	    	com_ceo=#{comCeo}, com_email1=#{comEmail1}, 
+	    	com_email2=#{comEmail2}, com_logo=#{comLogo}
+		where com_id=#{comId}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
