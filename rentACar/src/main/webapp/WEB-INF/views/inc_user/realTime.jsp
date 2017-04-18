@@ -9,6 +9,39 @@
 	    $("#searchStartDate, #searchEndDate").datepicker({
 	        dateFormat: 'yy-mm-dd'
 	    });
+		
+	    $("#searchStartDate").change(function(){
+	    	compareTime();
+	    });
+	    
+	    $("#searchEndDate").change(function(){
+	    	compareTime();
+	    });
+	    
+	    $("#searchForm").submit(function(){
+	    	compareTime();
+	    });
+	    
+	    $("#selectThisCar").click(function(){
+	    	compareTime();	    		
+	    });
+	    
+	    function compareTime() {
+	    	var startDate=$("#searchStartDate").val();
+	    	var startDateArr=startDate.split('-');
+	    	
+	    	var endDate=$("#searchEndDate").val();
+	    	var endDateArr=endDate.split('-');
+	    	
+	    	var startDateCompare=new Date(startDateArr[0],startDateArr[1],startDateArr[2]);
+	    	var endDateCompare=new Date(endDateArr[0],endDateArr[1],endDateArr[2]);
+	    	
+	    	if(startDateCompare.getTime() > endDateCompare.getTime()){
+	    		alert("앞날짜가 뒷날짜보다 크면 안됩니다. 검색기간을 확인해주세요.");
+	    		$("#searchEndDate").focus();
+	    		return event.preventDefault();
+	    	}
+		}
 	});
 </script>
 <!-- 1.
@@ -28,8 +61,17 @@
 		<label for="from">대여일: </label> 
 		<input type="text" id="searchStartDate" name="searchStartDate" value="${param.searchStartDate }"> 
 		<label for="to">반납일: </label> 
-		<input type="text" id="searchEndDate" name="searchEndDate" value="${param.searchEndDate }"> 
-		차종: <input type="text" id="carType" name="carType" value="${param.carType }">
+		<input type="text" id="searchEndDate" name="searchEndDate" value="${param.searchEndDate }">
+		
+		<!-- 차량 유형 소형(0), 중형(1), 대형(2), 특대형(3), 특수차(4), 고급(5) -->
+		차종: <select name="carType" id="carType" title="차종">
+			<option value="0" <c:if test='${param.carType=="0" }'> selected="selected" </c:if> >소형</option>
+			<option value="1" <c:if test='${param.carType=="1" }'> selected="selected" </c:if> >중형</option>
+			<option value="2" <c:if test='${param.carType=="2" }'> selected="selected" </c:if> >대형</option>
+			<option value="3" <c:if test='${param.carType=="3" }'> selected="selected" </c:if> >특대형</option>
+			<option value="4" <c:if test='${param.carType=="4" }'> selected="selected" </c:if> >특수차</option>
+			<option value="5" <c:if test='${param.carType=="5" }'> selected="selected" </c:if> >고급</option>
+		</select>
 		<p><input type="submit" value="조건에 맞는 차량 찾기"></p>
 	</form>
 </div>
@@ -60,7 +102,7 @@
 						<td>${car.ccarArrear }</td>
 						<td><a href='<c:url 
 					value="/inc_user/reservInfo.do?ccarCarId=${car.ccarCarId }&searchStartDate=${param.searchStartDate }&searchEndDate=${param.searchEndDate}" />'>
-					<button>이 차 예약!</button> </a></td>					
+					<button id="selectThisCar">이 차 예약!</button> </a></td>					
 				</tr>
 			</c:forEach>
 		</table>

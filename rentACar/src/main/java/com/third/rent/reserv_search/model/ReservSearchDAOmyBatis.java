@@ -7,6 +7,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.third.rent.ccaroption.model.CcarOptionVO;
+import com.third.rent.reservUser.model.ReservUserVO;
+import com.third.rent.reservation.model.ReservationVO;
 
 @Repository
 public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements ReservSearchDAO{
@@ -23,5 +25,24 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 		return getSqlSession().selectOne(nameSpace+".selectByccarCarId", ccarCarId);
 	}
 
+	@Override
+	public String createReservationKey() {
+		return getSqlSession().selectOne(nameSpace+".createReservationKey");
+	}
+
+	@Override
+	public int insertReservUser(ReservUserVO reservWho) {
+		return getSqlSession().insert(nameSpace+".insertReservUser", reservWho);
+	}
+
+	@Override
+	public int insertReservation(ReservationVO reserVo) {
+		return getSqlSession().insert(nameSpace+".insertReservation", reserVo);
+	}
+
+	@Override
+	public ReservationVO selectByReservNum(String reservNum) {		
+		return getSqlSession().selectOne(nameSpace+".selectByReservNum", reservNum);
+	}	
 	
 }

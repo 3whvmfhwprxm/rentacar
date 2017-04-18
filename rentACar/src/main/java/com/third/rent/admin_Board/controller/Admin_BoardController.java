@@ -53,28 +53,57 @@ public class Admin_BoardController {
 		return "administrator/board_management/UNoticeBoardMng";
 	}
 	
-	/*@RequestMapping("/admin/Board/scNotice.do")
-	public String showSCNotice(Model model){
-		logger.info("관리자 시스템 - 상담자센터 공지사항 관리 화면 표시");
+	@RequestMapping("/admin/Board/scNotice.do")
+	public String showSCNotice(@ModelAttribute SearchVO searchVo, Model model){		
+		logger.info("관리자 시스템 - 상담센터 공지사항 관리 화면표시 searchVo={}", searchVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		//SearchVO 값 셋팅
+		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		List<ServiceCenterNoticeVO> scnList=adService.selectSN(searchVo);
 		logger.info("상담자센터 공지사항 리스트 수, scnList.size()={}", scnList.size());
+		int totalRecord=adService.selectTotalRecordSC(searchVo);
+		logger.info("고객 공지사항 전체수 조회 결과, totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);		
 		
 		model.addAttribute("scnList", scnList);
+		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "administrator/board_management/SCNoticeBoardMng";
 	}
 	
 	@RequestMapping("/admin/Board/cNotice.do")
-	public String showCNotice(Model model){
-		logger.info("관리자 시스템 - 업체 공지사항 관리 화면 표시");
+	public String showCNotice(@ModelAttribute SearchVO searchVo, Model model){
+		logger.info("관리자 시스템 - 업체 공지사항 관리 화면표시 searchVo={}", searchVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		//SearchVO 값 셋팅
+		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		List<CompanyNoticeVO> cnList=adService.selectCN(searchVo);
 		logger.info("업체 공지사항 리스트 수, cnList.size()={}", cnList.size());
 		
+		int totalRecord=adService.selectTotalRecordC(searchVo);
+		logger.info("업체 공지사항 전체수 조회 결과, totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+		
 		model.addAttribute("cnList", cnList);
+		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "administrator/board_management/CNoticeBoardMng";
-	}*/
+	}
 	
 }

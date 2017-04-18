@@ -3,7 +3,65 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.admin_CarModel">
+	<sql id="searchWhere">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
+		</if>
+	</sql>
 	
+	<insert id="insertCarModel" parameterType="CarVO">
+		insert into car(car_code, car_name, car_inc, car_fuel, car_size, car_year, 
+			car_trans, car_regdate, car_type, car_img1, car_img2, car_img3)
+		values(#{carCode}, #{carName},#{carInc}, #{carFuel}, #{carSize}, #{carYear},
+			#{carTrans}, #{carRegdate}, #{carType}, #{carImg1}, #{carImg2}, #{carImg3})
+	</insert>
+	
+	<select id="selectAllCarModel" resultType="CarVO"
+		parameterType="SearchVO">
+		select car_code, car_name, car_inc, car_fuel, car_size, car_year, 
+			   car_trans, car_regdate, car_type, car_img1, car_img2, car_img3
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from car 
+		        <include refid="searchWhere"></include>
+		        order by car_regdate
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select> 
+	
+	<select id="selectTotalRecord" parameterType="SearchVO"
+		resultType="int">
+		select count(*) from car 
+		<include refid="searchWhere"></include>
+	</select>
+	
+	<select id="selectByCarCode" parameterType="String" resultType="CarVO">
+		select*from car 
+		where car_code=#{carCode}
+	</select>
+
+	<update id="updateCarModel" parameterType="CarVO">
+		update car
+		set 
+	    	car_code=#{carCode}, car_name=#{carName},
+	    	car_inc=#{carInc}, car_fuel=#{carFuel},
+	    	car_size=#{carSize}, car_year=#{carYear},
+	    	car_trans=#{carTrans}, car_regdate=#{carRegdate},
+	    	car_type=#{carType}, car_img1=#{carImg1},
+	    	car_img2=#{carImg2}, car_img3=#{carImg3}
+		where car_code=#{carCode}
+	</update>
+	
+	<delete id="deleteCarModel" parameterType="String">
+		delete from car where car_code=#{carCode}
+	</delete>
 </mapper>
 
 

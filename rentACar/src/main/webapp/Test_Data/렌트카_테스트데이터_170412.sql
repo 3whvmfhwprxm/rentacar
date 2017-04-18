@@ -152,18 +152,6 @@ values('rentDie', '렌트죽음', '1', '100-81-00000', '신한:3333-03-33333', '02', '
 select * from company;
 commit;
 
---예약 회원(회원정보와는 다른 예약하는 당사자)
---예) 회원(자식), 예약자/운전자 정보를 받을때(예약자-엄마, 운전자-아빠)받을수 있게
-
-insert into reserv_user
-values('kim1', '김엄마', '011', '1111', '1111', 'kim2', 'naver.com', '김아빠', '011', '1112', '1112', '1960-01-02', '1종보통');
-insert into reserv_user
-values('jin1', '진누나', '010', '2200', '2200', 'jin2', 'naver.com', '진남친', '011', '2200', '2201', '1988-01-02', '2종보통');
-insert into reserv_user
-values('lee1', '이친구1', '017', '3300', '3300', 'lee2', 'naver.com', '이친구2', '011', '3300', '3301', '1990-01-02', '1종보통');
-
-select * from reserv_user;
-commit;
 
 --업체 차량정보
 insert into companycaroption
@@ -216,6 +204,17 @@ values('002', '010','2200','2200', '2017-04-30', 15,
 '2017-05-02', 17, 'rentGo_0002', '자차보험', sysdate ,'jin1');
 
 select * from RESERVATION;
+commit;
+
+--예약 회원(회원정보와는 다른 예약하는 당사자)
+--예) 회원(자식), 예약자/운전자 정보를 받을때(예약자-엄마, 운전자-아빠)받을수 있게
+
+insert into reserv_user
+values('001', '김엄마', '011', '1111', '1111', 'kim2', 'naver.com', '김아빠', '011', '1112', '1112', '600102', '1종보통');
+insert into reserv_user
+values('002', '진누나', '010', '2200', '2200', 'jin2', 'naver.com', '진남친', '011', '2200', '2201', '880102', '2종보통');
+
+select * from reserv_user;
 commit;
 
 --업체 공지

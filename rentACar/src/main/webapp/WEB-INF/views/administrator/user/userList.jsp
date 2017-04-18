@@ -81,7 +81,7 @@ th {
 	<div class="col-md-4">
 		<nav>
 			<ul class="pagination">
-				<c:if test="${pagingInfo.firstPage>1 }">
+				<c:if test="${pagingInfo.firstPage>1}">
 					<li>
 						<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
 							aria-label="Previous">

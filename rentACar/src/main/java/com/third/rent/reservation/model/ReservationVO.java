@@ -1,22 +1,24 @@
 package com.third.rent.reservation.model;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class ReservationVO {
 	private String reservNum;/* 예약번호 */
 	private String userTel1;/* 회원전화번호1 */
 	private String userTel2;/* 회원전화번호2 */
 	private String userTel3;/* 회원전화번호3 */
-	private Timestamp reservStartDate;/* 대여시작일 */
-	private Timestamp reservStartTime;/* 대여시작시간 */
-	private Timestamp reservEndDate;/* 반납일 */
-	private Timestamp reservEndTime;/* 반납시간 */
+	private String reservStartDate;/* 대여시작일 */
+	private String reservStartTime;/* 대여시작시간 */
+	private String reservEndDate;/* 반납일 */
+	private String reservEndTime;/* 반납시간 */
 	private String ccarCarId;/* 업체보유차량 */
 	private String reservInsurance;/* 보험여부 */
 	private Timestamp reservDate;/* 예약일시 */
 	private Timestamp reservCancel;/* 예약취소일시 */
 	private String reservCancelWhy;/* 예약취소사유 */
 	private String userId;/* 회원아이디 */
+	
 	public String getReservNum() {
 		return reservNum;
 	}
@@ -41,28 +43,28 @@ public class ReservationVO {
 	public void setUserTel3(String userTel3) {
 		this.userTel3 = userTel3;
 	}
-	public Timestamp getReservStartDate() {
+	public String getReservStartDate() {
 		return reservStartDate;
 	}
-	public void setReservStartDate(Timestamp reservStartDate) {
+	public void setReservStartDate(String reservStartDate) {
 		this.reservStartDate = reservStartDate;
 	}
-	public Timestamp getReservStartTime() {
+	public String getReservStartTime() {
 		return reservStartTime;
 	}
-	public void setReservStartTime(Timestamp reservStartTime) {
+	public void setReservStartTime(String reservStartTime) {
 		this.reservStartTime = reservStartTime;
 	}
-	public Timestamp getReservEndDate() {
+	public String getReservEndDate() {
 		return reservEndDate;
 	}
-	public void setReservEndDate(Timestamp reservEndDate) {
+	public void setReservEndDate(String reservEndDate) {
 		this.reservEndDate = reservEndDate;
 	}
-	public Timestamp getReservEndTime() {
+	public String getReservEndTime() {
 		return reservEndTime;
 	}
-	public void setReservEndTime(Timestamp reservEndTime) {
+	public void setReservEndTime(String reservEndTime) {
 		this.reservEndTime = reservEndTime;
 	}
 	public String getCcarCarId() {

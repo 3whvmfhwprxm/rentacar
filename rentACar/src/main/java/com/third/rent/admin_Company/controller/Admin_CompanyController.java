@@ -58,6 +58,61 @@ public class Admin_CompanyController {
 		return "administrator/company/companyList";
 	}
 	
+	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.GET)
+	public String companyRegister_get(Model model){
+		logger.info("업체등록화면 보여주기");
+			
+			return "administrator/company/companyRegister";
+		}
+	
+	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.POST)
+	public String companyRegister_post(@ModelAttribute CompanyVO comVo,
+			@RequestParam(value="email3", required=false) String email3,
+			Model model){
+		//1
+		logger.info("업체등록 처리, 파라미터 comVo={}", comVo);
+		
+		//2
+		String tel2 = comVo.getComTel2();
+		String tel3 = comVo.getComTel3();
+		if(tel2==null || tel2.isEmpty() || tel3==null || tel3.isEmpty()){
+			comVo.setComTel1("");
+			comVo.setComTel2("");
+			comVo.setComTel3("");
+		}
+		
+		String email1=comVo.getComEmail1();
+				
+		if(email1==null || email1.isEmpty()){
+			comVo.setComEmail2("");;
+		}else{
+			if(comVo.getComEmail2().equals("etc")){
+				if(email3 !=null && !email3.isEmpty()){
+					comVo.setComEmail2(email3);
+				}else{
+					comVo.setComEmail2("");
+					comVo.setComEmail2("");
+				}
+			}
+		}
+		
+		int cnt = adminCompanyService.insertCompany(comVo);
+		String msg="", url="";
+		if(cnt>0){
+			msg="업체등록 성공";
+			url="/administrator/company/companyList.do";
+		}else{
+			msg="업체등록 실패";
+			url="/administrator/company/companyRegister.do";
+		}
+		
+		//3
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
 	@RequestMapping("/company/companyDetail.do")
 	public String companyDetail(@RequestParam String comId, Model model){
 		//1.
@@ -107,20 +162,18 @@ public class Admin_CompanyController {
 			Model model){
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
 		
-		String msg = "", url = ""; 
-		if(adminCompanyService.checkPwd(adminVo.getAdminId(), adminVo.getAdminPwd())){
-			int cnt = adminCompanyService.updateCompany(companyVo);
-			logger.info("업체 수정 결과 cnt={}", cnt);
-			
-			if(cnt>0){
-				msg = "업체 수정 성공";
-				url = "/administrator/company/companyEdit.do?comId="+companyVo.getComId();
-			}else{
-				msg = "업체 수정 실패";
-			}
+
+		int cnt = adminCompanyService.updateCompany(companyVo);
+		logger.info("업체 수정 결과 cnt={}", cnt);
+		
+		String msg = "", url = "";
+		if(cnt>0){
+			msg = "업체 수정 성공";
+			url = "/administrator/company/companyEdit.do?comId="+companyVo.getComId();
 		}else{
-			msg = "비밀번호가 일치하지 않습니다.";
+			msg = "업체 수정 실패";
 		}
+
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);

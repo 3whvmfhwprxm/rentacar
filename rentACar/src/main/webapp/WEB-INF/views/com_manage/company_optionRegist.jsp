@@ -35,14 +35,12 @@
 <h3>차량등록</h3>
 
 <form name="frmCO" method="post"
-	action="<c:url value='/com_manage/regist_option.do'/>">
+	action="<c:url value='/com_manage/company_optionRegist.do'/>">
 	업체아이디<input type="text" name="comID" id="comID">
 	차량번호<input type="text" name="ccarCarId" id="ccarCarId">
-	모델명<span>car_name</span><br>
-     제조사<span>car_INC</span><br><br>
-     
+	<br><br>     
     <strong>차량등록하기</strong>
-     모델코드<input type="text" name="carCode" id="carCode">아래 제조사, 모델명 선택시 자동입력<br><br><hr>
+     모델코드<input type="text" name="carCode" id="carCode">아래 제조사car_INC, 모델명 선택car_name시 자동입력<br><br><hr>
     제조사<select>
     	<option>현대</option>
     	<option>기아</option>
@@ -56,7 +54,7 @@
     	<option>그렌져</option>
     </select><br><hr>
 	<strong>차량사용가능여부</strong><br>
-	<input type="checkbox" class = "Yn" name="ccarUseYn" id="ccarUseYn">사용가능할경우 체크<br><br>
+	<input type="checkbox" class = "Yn" name="ccarUseYn" id="ccarUseYn" value="N">사용가능할경우 체크<br><br>
 	<h3>옵션등록</h3>
 	<input type="checkbox" class="Yn" name="ccarBlackboxYn" id="ccarBlackboxYn">블랙박스 <input
 		type="checkbox" class = "Yn" name="ccarSmokeYn" id="ccarSmokeYn">금연차 <input
@@ -66,7 +64,7 @@
 		type="checkbox" class = "Yn" name="ccarSunRoofYn" id="ccarSunRoofYn">썬루프 <input
 		type="checkbox" class = "Yn" name="ccarBluetoothYn" id="ccarBluetoothYn">블루투스 <input
 		type="checkbox" class = "Yn" name="ccarAuxYn" id="ccarAuxYn">AUX <br> <input
-		type="checkbox" class = "Yn" name="ccarSmartkeyYn" id="ccarSmartkeyYn">스마트키 <br>
+		type="checkbox" class = "Yn" name="ccarSmartkeyYn" id="ccarSmartkeyYn">  스마트키 <br>
 	<h3>차량가격</h3>
 	대여횟수<input type="text" name="ccarRentalcount" id="ccarRentalcount">
 	평일예약가격<input type="text" name="ccarNormalPrice" id="ccarNormalPrice"> 주말예약가격<input

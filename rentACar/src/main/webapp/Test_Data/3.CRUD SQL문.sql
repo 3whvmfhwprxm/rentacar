@@ -33,3 +33,27 @@ where reserv_end_date >= '17-04-29' and reserv_start_date <= '17-05-01'
 
 select * from COMPANYCAROPTION 
 where ccar_car_id='rentZoa_0001';
+
+
+
+
+select lpad(Reservation_seq.nextval, 8, '0') from dual;
+
+create sequence Reservation_seq2
+start with 10
+increment by 1
+nocache;
+
+select * from RESERVATION where reserv_num='001';
+
+insert into RESERVATION(
+reserv_num, user_tel1, user_tel2, user_tel3, 
+reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
+ccar_car_id, reserv_insurance, user_id)
+values(lpad(Reservation_seq.nextval, 8, '0'), '011','2212','2212', '2017-05-15', 15, 
+'2017-05-16', 17, 'rentGo_0002', '자차보험', 'jin1')
+RETURNING reserv_num into ;
+
+INSERT INTO SequenceTest_Table (ID, OtherColumn)
+VALUES (SequenceTest_Sequence.NEXTVAL, :OtherColumn)
+RETURNING ID INTO :ID

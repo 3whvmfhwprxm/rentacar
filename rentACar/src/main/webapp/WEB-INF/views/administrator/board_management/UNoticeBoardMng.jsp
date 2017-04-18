@@ -12,9 +12,9 @@
 	<!-- 페이지 처리용 폼 -->
 	<form name="frmPage" method="post"
 		action='<c:url value="/admin/Board/uNotice.do" />'>
-		<input type="hidden" name="currentPage"> 
-		<input type="hidden" name="searchCondition" value="${param.searchCondition}"> 
-		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
+		<input type="text" name="currentPage"> 
+		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
+		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
 	</form>
 	<!-- 테이블 화면 시작 -->
 	<table class="table table-bordered table-hover">		
@@ -56,8 +56,7 @@
 				</a>
 			</c:if>
 	
-			<c:forEach var="i" begin="${pagingInfo.firstPage}"
-				end="${pagingInfo.lastPage}">
+			<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
 				<c:if test="${i==pagingInfo.currentPage }">
 					<span style="color: blue; font-weight: bold;">${i}</span>
 				</c:if>
@@ -73,31 +72,31 @@
 			</c:if>
 		</div>
 		<div class="divSearch container">
-		<form name="frmSearch" method="post"
-			action="<c:url value="/admin/Board/uNotice.do" />">
-			<select name="searchCondition">
-			
-				<option value="unotice_title"
-					<c:if test="${'unotice_title'==param.searchCondition}">
-            		selected            	
-            	</c:if>>제목</option>
-            	
-				<option value="unotice_content"
-					<c:if test="${'unotice_content'==param.searchCondition}">
-            		selected            	
-            	</c:if>>내용</option>
-            	
-            	<option value="admin_id"
-					<c:if test="${'admin_id'==param.searchCondition}">
-            		selected            	
-            	</c:if>>작성자</option>
-            	
-			</select> 
-			<input type="text" name="searchKeyword" title="검색어 입력"
-				value="${param.searchKeyword}"> 
-			<input type="submit" value="검색">
-		</form>
-	</div>	
+			<form name="frmSearch" method="post"
+				action="<c:url value="/admin/Board/uNotice.do" />">
+				<select name="searchCondition">
+				
+					<option value="unotice_title"
+						<c:if test="${'unotice_title'==param.searchCondition}">
+	            		selected            	
+	            	</c:if>>제목</option>
+	            	
+					<option value="unotice_content"
+						<c:if test="${'unotice_content'==param.searchCondition}">
+	            		selected            	
+	            	</c:if>>내용</option>
+	            	
+	            	<option value="admin_id"
+						<c:if test="${'admin_id'==param.searchCondition}">
+	            		selected            	
+	            	</c:if>>작성자</option>
+	            	
+				</select> 
+				<input type="text" name="searchKeyword" title="검색어 입력"
+					value="${param.searchKeyword}"> 
+				<input type="submit" value="검색">
+			</form>
+		</div>	
 	</div>
 </body>
 </html>
