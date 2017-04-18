@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.reserv_car">
+
+	<select id="searchCar" parameterType="map" resultType="CcarOptionVO">
+		<![CDATA[
+		select * from COMPANYCAROPTION
+		where car_code in (
+			select car_code from car
+			where car_type=#{carType}
+		) 
+		and ccar_car_id not in (
+			select ccar_car_id from RESERVATION
+			where reserv_end_date >= #{searchStartDate} and reserv_start_date <= #{searchEndDate}
+		)]]>
+	</select>
+	
+	<select id="selectByccarCarId" parameterType="String" resultType="CcarOptionVO">
+		select * from COMPANYCAROPTION 
+		where ccar_car_id=#{ccarCarId}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+

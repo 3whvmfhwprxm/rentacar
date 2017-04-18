@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.admin_LogState">
+	<insert id="insertAdmin" parameterType="AdminVO">
+		insert into rent_admin
+		(admin_id, admin_pwd, admin_name, admin_tel1, admin_tel2, admin_tel3,
+        admin_email1, admin_email2, admin_regdate, admin_authcode)
+		values(#{adminId}, #{adminPwd}, #{adminName}, #{adminTel1}, #{adminTel2}, #{adminTel3}, #{adminEmail1},
+		#{adminEmail2}, sysdate, #{adminAuthcode});
+	</insert>
+	
+	<select id="duplicateAdminId" parameterType="String"
+		resultType="int">
+		select count(*) from rent_admin
+		where admin_id=#{adminId}
+	</select>
+	
+	<select id="selectPwdByAdminId" parameterType="String"
+		resultType="String">
+		select admin_pwd from rent_admin
+		where admin_id = #{adminId} and admin_outdate is null
+	</select>
+	
+	<select id="selectByAdminId" parameterType="String"
+		resultType="AdminVO">
+		select * from rent_admin where admin_id=#{adminId}
+	</select>
+	
+	<update id="updateAdmin" parameterType="AdminVO">
+		update rent_admin set admin_tel1=#{adminTel1}, admin_tel2=#{adminTel2}, admin_tel3=#{adminTel3},
+		admin_email1=#{adminEmail1}, admin_email2=#{adminEmail2},
+		admin_authcode=#{adminAuthcode}
+		where admin_id=#{adminId} and admin_outdate is null
+	</update>
+	
+	<update id="withdrawAdmin" parameterType="String">
+		update rent_admin
+		set admin_outdate=sysdate
+		where admin_id=#{adminId}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
