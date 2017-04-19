@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="top.jsp" %>
-<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/regicss.css"/> --%>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#frm1").submit(function(){
@@ -86,25 +85,101 @@
 	
 </script>
 
-	<h1>회원가입</h1>
-	<form id="frm1" name="frm1" method="post" action='<c:url value="/inc_user/register.do"/>'>
-		아이디 : <input id="userId" type="text" name="userId">
-				<input type="button" value="중복확인" id="btnChkId" title="새창열림"><br>
-		이름 : <input id="userName" type="text" name="userName"><br>
-		패스워드 : <input id="userPwd" type="text" name="userPwd"><br>
-		이메일 : <input id="userEmail1" type="text" name="userEmail1">
-				 <input id="userEmail2" type="text" name="userEmail2"><br>
-		연락처 : <input id="userTel1" type="text" name="userTel1">
-				<input id="userTel2" type="text" name="userTel2">
-				<input id="userTel3" type="text" name="userTel3"><br>
-		생년월일 : <input id="userBirth" type="text" name="userBirth"><br>
-		주소 : <input id="userAddress" type="text" name="userAddress"><br>
-		성별 : <input id="userGender" type="text" name="userGender"><br>
-		면허증 : <input id="userLicense" type="text" name="userLicense"><br>
-		<input type="submit" name="btn1" value="확인">
-		<input type="reset" name="btn2" value="취소">
-		<input type ="hidden" name="chkId" id="chkId">
-	</form>
+	<form id="frm1" name="frm1" class="form-horizontal form-label-left" novalidate method="post" action='<c:url value="/inc_user/register.do"/>'>
+		  <br>
+          <div class="row">
+            <label class="control-label col-md-2" for="name">아이디 <span class="required">*</span>
+            </label>
+            <div class="col-md-3">
+              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong" required="required" type="text">
+            </div>
+            <div class="col-md-3">
+            	<input type="button" value="중복확인" id="btnChkId" title="새창열림">
+            </div>
+          </div><br>
+          
+          <div class="row">
+            <label class="control-label col-md-2" for="name">이름 <span class="required">*</span>
+            </label>
+            <div class="col-md-3">
+              <input id="userName" name="userName" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 홍길동" required="required" type="text">
+            </div>
+          </div><br>
+          
+          <div class="row">
+            <label class="control-label col-md-2" for="name">비밀번호 <span class="required">*</span>
+            </label>
+            <div class="col-md-3">
+              <input id="userPwd" name="userPwd" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" type="password">
+            </div>
+          </div><br>
+          
+          <div class="row">
+            <label class="control-label col-md-2" for="name">이메일 <span class="required">*</span>
+            </label>
+            <div class="col-md-2">
+              <input id="userEmail1" name="userEmail1" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong" required="required" type="text">
+            </div>
+            <div class="col-md-2">
+              <input id="userEmail2" name="userEmail2" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) naver.com" required="required" type="text">
+            </div>
+          </div><br>
+          
+          <div class="row">
+            <label class="control-label col-md-2" for="name">연락처 <span class="required">*</span>
+            </label>
+            <div class="col-md-2">
+              <input id="userTel1" name="userTel1" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 010" required="required" type="text">
+            </div>
+            <div class="col-md-2">
+              <input id="userTel2" name="userTel2" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" type="text">
+            </div>
+            <div class="col-md-2">
+              <input id="userTel3" name="userTel3" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" type="text">
+            </div>
+          </div><br>
+          
+          <div class="row">
+            <label class="control-label col-md-2" for="name">생년월일 <span class="required">*</span>
+            </label>
+            <div class="col-md-3">
+              <input id="userBirth" name="userBirth" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 910310" required="required" type="text">
+            </div>
+          </div><br>
+          
+          <div class="row">
+            <label class="control-label col-md-2" for="name">주소 <span class="required">*</span>
+            </label>
+            <div class="col-md-3">
+              <input id="userAddress" name="userAddress" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 서울시 영등포구 당산동" required="required" type="text">
+            </div>
+          </div><br>
+          
+          <div class="row">
+            <label class="control-label col-md-2" for="name">성별 <span class="required">*</span>
+            </label>
+            <div class="col-md-3">
+              <input id="userGender" name="userGender" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 남 or 여" required="required" type="text">
+            </div>
+          </div><br>
+          
+          <div class="row">
+            <label class="control-label col-md-2" for="name">면허증 <span class="required">*</span>
+            </label>
+            <div class="col-md-3">
+              <input id="userLicense" name="userLicense" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 1종보통" required="required" type="text">
+            </div>
+          </div><br>
+          
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+              <button type="reset" class="btn btn-primary" name="btn2">Cancel</button>
+              <button type="submit" class="btn btn-success" name="btn1">Submit</button>
+              <input type ="hidden" name="chkId" id="chkId">
+            </div>
+          </div>
+        </form>
 	
 	
 	
