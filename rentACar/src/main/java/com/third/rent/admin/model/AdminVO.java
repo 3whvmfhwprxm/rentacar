@@ -1,6 +1,6 @@
 package com.third.rent.admin.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class AdminVO {
 	private String adminId;

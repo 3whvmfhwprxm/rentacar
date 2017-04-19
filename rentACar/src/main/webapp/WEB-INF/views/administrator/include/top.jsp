@@ -124,8 +124,8 @@ $(document).ready(function(){
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
 							aria-haspopup="true" aria-expanded="false">관리자 관리 </a>
 							<ul class="dropdown-menu mega-dropdown-menu">								
-								<li class="col-sm-6"><a href="#" >관리자 추가</a></li>
-								<li class="col-sm-6"><a href="#" >관리자 조회(수정)</a></li>								
+								<li class="col-sm-6"><a href="<c:url value='/admin/Mng/adminJoin.do' />" >관리자 추가</a></li>
+								<li class="col-sm-6"><a href="<c:url value='/admin/Mng/adminList.do' />" >관리자 조회(수정)</a></li>								
 							</ul>
 						</li>
 

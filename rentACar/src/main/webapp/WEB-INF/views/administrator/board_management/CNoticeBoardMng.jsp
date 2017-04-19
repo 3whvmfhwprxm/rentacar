@@ -29,7 +29,7 @@
 		
 		<c:if test="${empty cnList}">
 					<tr>
-						<td colspan="7" class="align_center">업체용 공지사항이 존재하지 않습니다.</td>
+						<td colspan="8" class="align_center">업체용 공지사항이 존재하지 않습니다.</td>
 					</tr>
 		</c:if>
 		

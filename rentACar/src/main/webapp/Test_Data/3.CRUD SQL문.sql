@@ -46,14 +46,20 @@ nocache;
 
 select * from RESERVATION where reserv_num='001';
 
-insert into RESERVATION(
-reserv_num, user_tel1, user_tel2, user_tel3, 
-reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
-ccar_car_id, reserv_insurance, user_id)
-values(lpad(Reservation_seq.nextval, 8, '0'), '011','2212','2212', '2017-05-15', 15, 
-'2017-05-16', 17, 'rentGo_0002', '자차보험', 'jin1')
-RETURNING reserv_num into ;
+select * from RENT_ADMIN
+order by admin_authcode desc;
 
-INSERT INTO SequenceTest_Table (ID, OtherColumn)
-VALUES (SequenceTest_Sequence.NEXTVAL, :OtherColumn)
-RETURNING ID INTO :ID
+insert into rent_admin(admin_id, admin_pwd, admin_name, admin_tel1, admin_tel2, admin_tel3, admin_email1, admin_email2, admin_authcode) 
+values('adminkim', '1', '킴관리', '010', '1231', '3212', 'gogo', 'naver.com', 3);
+
+update RENT_ADMIN
+set admin_tel1='012', admin_tel2='3321', admin_tel3='1111', admin_email1='22q', admin_email2='nate.com', admin_authcode=2  
+where admin_id='coun1'
+
+update RENT_ADMIN
+set admin_outdate=sysdate
+where admin_id='coun1';
+
+rollback;
+
+select * from rent_admin where admin_id='coun4';
