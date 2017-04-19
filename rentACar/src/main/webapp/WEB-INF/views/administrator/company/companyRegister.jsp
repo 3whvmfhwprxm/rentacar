@@ -137,54 +137,57 @@
 			action='<c:url value="/administrator/company/companyRegister.do" />'>
 			<fieldset>
 			<legend>Register</legend>
-			<div class="form-group">
-				<label for="CompanyId" class="col-sm-2 control-label">Company
-					Id</label>
-				<div class="col-sm-2">
-					<input type="text" class="form-control" name="CompanyId"
-						id="CompanyId" placeholder="Company Id">	
-				</div>
-				<div>
-					<button type="button" class="btn btn-primary" data-toggle="modal" 
-						data-target=".bs-example-modal-lg">Check</button>
-					<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" 
-						aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header modal-header-primary">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-hidden="true">×</button>
-									<h1>
-										Check
-									</h1>
-								</div>
-								<!-- <form name="frmId" method="post" action="checkCompanyId.do"> -->
-								<div class="modal-body">
-									<label for="checkComId">아이디</label> 
-									<input type="text" id="checkComId" name="checkComId" value="${comVo.comId}">
-									<button type="button" id="checkCompanyId">Check Id</button>	
-									<c:if test="${result==EXIST_ID}">
-										<p>이미 등록된 아이디입니다. 다른 아이디를 입력하세요</p>
-									</c:if>
-								</div>
-								<div class="modal-footer">
-									<c:if test="${result==NONE_EXIST_ID}">
-									<button type="button" class="btn btn-default pull-rigth" id="checkId" 
-										data-dismiss="modal">
-										<i class="fa fa-check-square" aria-hidden="true"></i>
-									</button>
-									</c:if>
-									<button type="button" class="btn btn-default pull-rigth" data-dismiss="modal">
-										<i class="fa fa-window-close" aria-hidden="true"></i>
-									</button>
+				<div class="form-group">
+					<label for="CompanyId" class="col-sm-2 control-label">Company
+						Id</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="CompanyId"
+							id="CompanyId" placeholder="Company Id">
+					</div>
+					<div>
+						<button type="button" class="btn btn-info btn-md"
+							data-toggle="modal" data-target=".bs-example-modal-lg">Check</button>
+						<div class="modal fade bs-example-modal-lg" tabindex="-1"
+							role="dialog" aria-labelledby="myLargeModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header modal-header-primary">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">
+											×
+										</button>
+										<h1>Check</h1>
+									</div>
+									<div class="modal-body">
+										<label for="checkComId">아이디</label> <input type="text"
+											id="checkComId" name="checkComId" value="${comVo.comId}">
+										<button type="button" id="checkCompanyId">
+											Check Id
+										</button>
+										<c:if test="${result==EXIST_ID}">
+											<p>이미 등록된 아이디입니다. 다른 아이디를 입력하세요</p>
+										</c:if>
+									</div>
+									<div class="modal-footer">
+										<c:if test="${result==NONE_EXIST_ID}">
+											<button type="button" class="btn btn-default pull-rigth"
+												id="checkId" data-dismiss="modal">
+												<i class="fa fa-check" aria-hidden="true"></i>
+											</button>
+										</c:if>
+										<button type="button" class="btn btn-default pull-rigth"
+											data-dismiss="modal">
+											<i class="fa fa-times" aria-hidden="true"></i>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="form-group">
+				<div class="form-group">
 					<label for="CompanyName" class="col-sm-2 control-label">
 						Company Name
 					</label>
