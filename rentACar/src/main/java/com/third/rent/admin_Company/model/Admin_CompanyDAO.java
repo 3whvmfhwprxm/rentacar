@@ -17,4 +17,10 @@ public interface Admin_CompanyDAO {
 	public String selectPwd(String adminPwd);
 	
 	public int insertCompany(CompanyVO companyVo);
+	
+	public int duplicateCompanyId(String comId);
+	
+	public int withdrawCompany(String comId);
+	
+	public String selectPwdByComId(String comId);
 }

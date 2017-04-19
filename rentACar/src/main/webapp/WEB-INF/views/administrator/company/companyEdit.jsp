@@ -41,6 +41,10 @@
 						<input type="text" id="comNum" name="comNum" value="${companyVo.comNum}" />
 					</div>
 					<div>
+						<label for="comNum">계좌번호</label> 
+						<input type="text" id="comAccNum" name="comAccNum" value="${companyVo.comAccNum}" />
+					</div>
+					<div>
 						<label for="comTel">대표번호</label>
 						<input type="text" id="comTel1" name="comTel1" value="${companyVo.comTel1}" />-
 						<input type="text" id="comTel2" name="comTel2" value="${companyVo.comTel2}" />-

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.third.rent.admin_LogState.model.admin_LogService;
 import com.third.rent.common.SearchVO;
 import com.third.rent.company.model.CompanyVO;
 
@@ -32,5 +33,37 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 
 	public int insertCompany(CompanyVO companyVo) {
 		return adminCompanyDao.insertCompany(companyVo);
+	}
+
+	public int duplicateCompanyId(String comId) {
+		int cnt = adminCompanyDao.duplicateCompanyId(comId);
+		
+		int result=0;
+		if(cnt>0){
+			result = Admin_CompanyService.EXIST_ID;
+		}else{
+			result = Admin_CompanyService.NONE_EXIST_ID;
+		}
+		return result;
+	}
+
+	public int withdrawCompany(String comId) {
+		return adminCompanyDao.withdrawCompany(comId);
+	}
+
+	public int loginCheck(String comId, String pwd) {
+		int result=0;
+		String dbPwd = adminCompanyDao.selectPwdByComId(comId);
+		
+		if(dbPwd==null || dbPwd.isEmpty()){
+			result = admin_LogService.ID_NONE;
+		}else{		
+			if(dbPwd.equals(pwd)){
+				result = admin_LogService.LOGIN_OK;
+			}else{
+				result = admin_LogService.PWD_DISAGREE;
+			}
+		}		
+		return result;
 	}
 }

@@ -18,33 +18,21 @@
 		var panelsButton = $('.dropdown-user');
 		panels.hide();
 
-		//Click dropdown
 		panelsButton.click(function() {
-			//get data-for attribute
 			var dataFor = $(this).attr('data-for');
 			var idFor = $(dataFor);
 
-			//current button
 			var currentButton = $(this);
 			idFor.slideToggle(400, function() {
-				//Completed slidetoggle
-				if (idFor
-						.is(':visible')) {
-					currentButton
-							.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+				if (idFor.is(':visible')) {
+					currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
 				} else {
-					currentButton
-							.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+					currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
 				}
 			})
 		});
 
 		$('[data-toggle="tooltip"]').tooltip();
-
-		$('button').click(function(e) {
-			e.preventDefault();
-			alert("This is a demo.\n :-)");
-		});
 	});
 </script>
 
@@ -168,7 +156,7 @@
 							type="button" class="btn btn-primary btn-lg btn-warning"> 
 							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 						</a> 
-						<a href="<c:url value='/administrator/company/companyDelete.do?comId=${companyDetail.comId}'/>"
+						<a href="<c:url value='/administrator/company/companyWithdraw.do?comId=${companyDetail.comId}'/>"
 							data-original-title="Remove this user" data-toggle="tooltip"
 							type="button" class="btn btn-primary btn-lg btn-danger"> 
 							<i class="fa fa-times" aria-hidden="true"></i>

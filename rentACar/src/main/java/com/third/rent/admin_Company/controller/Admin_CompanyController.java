@@ -2,6 +2,9 @@ package com.third.rent.admin_Company.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,16 +62,15 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.GET)
-	public String companyRegister_get(Model model){
+	public String companyRegister_get(){
 		logger.info("업체등록화면 보여주기");
 			
-			return "administrator/company/companyRegister";
-		}
+		return "administrator/company/companyRegister";
+	}
 	
 	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.POST)
 	public String companyRegister_post(@ModelAttribute CompanyVO comVo,
-			@RequestParam(value="email3", required=false) String email3,
-			Model model){
+			@RequestParam(value="email3", required=false) String email3, Model model){
 		//1
 		logger.info("업체등록 처리, 파라미터 comVo={}", comVo);
 		
@@ -111,6 +113,26 @@ public class Admin_CompanyController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping("/company/companyRegister.do")
+	public String checkCompanyId(@RequestParam String comId, Model model){
+		//1.		
+		logger.info("아이디 중복체크 매개변수 comId={}", comId);
+		
+		//2.
+		int result=0;
+		if(comId!=null && !comId.isEmpty()){
+			result = adminCompanyService.duplicateCompanyId(comId);
+			logger.info("중복아이디 체크 결과 result={}", result);
+		}
+		
+		//3.
+		model.addAttribute("result", result);
+		model.addAttribute("EXIST_ID", Admin_CompanyService.EXIST_ID);
+		model.addAttribute("NONE_EXIST_ID", Admin_CompanyService.NONE_EXIST_ID);
+		
+		return "administrator/company/companyRegister";
 	}
 	
 	@RequestMapping("/company/companyDetail.do")
@@ -174,6 +196,46 @@ public class Admin_CompanyController {
 			msg = "업체 수정 실패";
 		}
 
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/company/companyWithdraw.do", method=RequestMethod.GET)
+	public String memberOut_get(){
+		//1.
+		logger.info("삭제화면 보여주기");
+		
+		return "administrator/company/companyWithdraw";
+	}
+	
+	@RequestMapping(value="/company/companyWithdraw.do", method=RequestMethod.POST)
+	public String memberOut_post(@RequestParam String pwd, HttpSession session, 
+		Model model, HttpServletResponse response){
+		
+		//1.
+		logger.info("삭제처리시 비밀번호  매개변수 pwd={}", pwd);
+		
+		String comId = (String)session.getAttribute("comId");
+		
+		//패스워드 체크하기
+		int result = adminCompanyService.loginCheck(comId, pwd);
+		String msg="", url="/administrator/company/companyWithdraw.do";
+		if(result==Admin_CompanyService.LOGIN_OK){
+			int outResult = adminCompanyService.withdrawCompany(comId);
+			if(outResult>0){
+				msg="삭제 처리 성공";
+				url="/administrator/company/companyList.do";	
+			}else{
+				msg="삭제 처리 실패";
+			}
+		}else if(result==Admin_CompanyService.PWD_DISAGREE){
+			msg="비밀번호를 확인해주세요";
+		}else{
+			msg="비밀번호 체크 에러발생";
+		}
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
