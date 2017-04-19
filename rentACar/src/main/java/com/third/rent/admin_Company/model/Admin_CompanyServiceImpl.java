@@ -51,9 +51,9 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 		return adminCompanyDao.withdrawCompany(comId);
 	}
 
-	public int loginCheck(String comId, String pwd) {
+	public int loginCheck(String adminId, String pwd) {
 		int result=0;
-		String dbPwd = adminCompanyDao.selectPwdByComId(comId);
+		String dbPwd = adminCompanyDao.selectPwdByAdminId(adminId);
 		
 		if(dbPwd==null || dbPwd.isEmpty()){
 			result = admin_LogService.ID_NONE;

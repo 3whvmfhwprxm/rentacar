@@ -27,5 +27,5 @@ public interface Admin_CompanyService {
 	
 	public int withdrawCompany(String comId);
 	
-	public int loginCheck(String comId, String pwd);
+	public int loginCheck(String adminId, String adminPwd);
 }

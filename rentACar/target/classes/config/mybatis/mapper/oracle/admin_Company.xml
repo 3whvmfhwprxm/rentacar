@@ -41,10 +41,6 @@
 		select*from Company 
 		where com_id=#{comId}
 	</select>
-	
-	<select id="selectPwd" parameterType="int" resultType="String">
-		select admin_pwd from rent_admin where admin_id=#{adminId}
-	</select>
 
 	<insert id="insertCompany" parameterType="CompanyVO">
 		insert into company(com_id, com_name, com_pwd, com_num, com_accNum, 
@@ -70,6 +66,17 @@
 	    	com_email2=#{comEmail2}, com_logo=#{comLogo}
 		where com_id=#{comId}
 	</update>
+	
+	<update id="withdrawCompany" parameterType="String">
+		update company
+		set com_outdate=sysdate
+		where com_id=#{comId}
+	</update>
+	
+	<select id="selectPwdByAdminId" resultType="String" parameterType="String">
+		select admin_pwd from rent_admin
+		where admin_id=#{adminId}
+	</select>
 </mapper>
 
 

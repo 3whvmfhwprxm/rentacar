@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>administrator 메뉴</title>
 <!-- Bootstrap -->
@@ -22,7 +23,9 @@
 	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
 	
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet" />
 <script type="text/javascript">
 $(document).ready(function(){
     $(".dropdown1").hover(            

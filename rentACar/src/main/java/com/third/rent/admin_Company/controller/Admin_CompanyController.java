@@ -2,7 +2,6 @@ package com.third.rent.admin_Company.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -136,9 +135,11 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping("/company/companyDetail.do")
-	public String companyDetail(@RequestParam String comId, Model model){
+	public String companyDetail(@RequestParam String comId, HttpSession session,
+			Model model){
 		//1.
 		logger.info("글 상세보기, 파라미터 comId={}", comId);
+		
 		if(comId.isEmpty()){
 			model.addAttribute("msg", "잘못된 url입니다");
 			model.addAttribute("url", "/administrator/company/companyList.do");
@@ -204,7 +205,7 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping(value="/company/companyWithdraw.do", method=RequestMethod.GET)
-	public String memberOut_get(){
+	public String companyWithdraw_get(){
 		//1.
 		logger.info("삭제화면 보여주기");
 		
@@ -212,16 +213,15 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping(value="/company/companyWithdraw.do", method=RequestMethod.POST)
-	public String memberOut_post(@RequestParam String pwd, HttpSession session, 
-		Model model, HttpServletResponse response){
-		
+	public String companyWithdraw_post(@RequestParam String comId, @RequestParam String pwd, 
+			HttpSession session, Model model){
 		//1.
 		logger.info("삭제처리시 비밀번호  매개변수 pwd={}", pwd);
 		
-		String comId = (String)session.getAttribute("comId");
+		String Admin_Id = (String)session.getAttribute("Admin_Id");
 		
 		//패스워드 체크하기
-		int result = adminCompanyService.loginCheck(comId, pwd);
+		int result = adminCompanyService.loginCheck(Admin_Id, pwd);
 		String msg="", url="/administrator/company/companyWithdraw.do";
 		if(result==Admin_CompanyService.LOGIN_OK){
 			int outResult = adminCompanyService.withdrawCompany(comId);

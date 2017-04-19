@@ -35,10 +35,6 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 		return getSqlSession().update(namespace+".updateCompany", companyVo);
 	}
 
-	public String selectPwd(String adminPwd) {
-		return getSqlSession().selectOne(namespace+".selectPwd", adminPwd);
-	}
-
 	public int insertCompany(CompanyVO companyVo) {
 		return getSqlSession().insert(namespace+".insertCompany", companyVo);
 	}
@@ -51,9 +47,8 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 		return getSqlSession().update(namespace+".withdrawCompany", comId);
 	}
 
-	@Override
-	public String selectPwdByComId(String comId) {
-		return getSqlSession().selectOne(namespace+".selectPwdByComId", comId);
+	public String selectPwdByAdminId(String adminId) {
+		return getSqlSession().selectOne(namespace+".selectPwdByAdminId", adminId);
 	}
 
 }

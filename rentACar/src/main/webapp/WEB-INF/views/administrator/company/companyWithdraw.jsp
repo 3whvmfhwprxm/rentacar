@@ -14,11 +14,13 @@
 		});		
 	});
 </script>
-	<form name="frmOut" id="frmOut" method="post" action="<c:url value='/administrator/company/companyWithdraw.do' />" >
+	<form name="frmOut" id="frmOut" method="post"
+		action="<c:url value='/administrator/company/companyWithdraw.do' />" >
 		<fieldset>
 			<legend>업체 삭제</legend>
 			<div>
 				<label for="pwd">비밀번호</label>
+				<input type="hidden" name="comId" id="comId" value="${param.comId}">
 				<input type="password" name="pwd" id="pwd">
 			</div>
 			<div class="align_center">
