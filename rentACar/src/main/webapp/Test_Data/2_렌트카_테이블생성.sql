@@ -1,3 +1,4 @@
+--SYS계정인지 확인 주의 RENT 계정으로 재접속
 /* Car 차모델 */
 CREATE TABLE Car (
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */

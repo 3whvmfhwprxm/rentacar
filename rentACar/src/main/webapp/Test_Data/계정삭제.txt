@@ -1,3 +1,0 @@
-select sid,serial#,username,status from v$session where schemaname = 'RENT';
-
-alter system kill session 'SID,SERIAL#';
