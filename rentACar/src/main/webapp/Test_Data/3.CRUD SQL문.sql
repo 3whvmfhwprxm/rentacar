@@ -63,3 +63,16 @@ where admin_id='coun1';
 rollback;
 
 select * from rent_admin where admin_id='coun4';
+
+select * from event;
+insert into event(event_num, event_title, event_content, admin_id, event_start_date, event_end_date,
+event_target_grade, event_image1, event_original_image1, event_image2, event_original_image2, event_target_company)
+values(event_seq.nextval, '이벤트 제목: 김이벤트', '이벤트 내용: 김내용', 'admin2', '2017-05-01', '2017-05-10', 
+'1', 'eimage1.jpg', 'eimage1Original.jpg', '', '', '');
+
+update event
+set event_title='수정제목', event_content='수정내용', event_start_date='2017-05-02', event_end_date='2017-05-05',
+event_target_grade='1', event_image1='12.jpg', event_image2='2.jpg'
+where event_num=11
+
+rollback;
