@@ -9,7 +9,7 @@
 </style>
 <!-- 업체 차량 조회 -->
 <h2>차량 현황</h2>
-<table border="1">
+<table border="1" width=100%>
 	<tr>
 		<th>차량번호</th>
 		<th>차량모델코드</th>
