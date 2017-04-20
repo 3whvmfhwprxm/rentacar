@@ -33,7 +33,7 @@ th {
 }
 </style>
 <div class="divList container">
-	<h2>업체</h2>
+	<h2>차량 모델</h2>
 	<form name="frmPage" method="post"
 		action='<c:url value="/administrator/carModel/modelList.do" />'>
 		<input type="hidden" name="currentPage">
