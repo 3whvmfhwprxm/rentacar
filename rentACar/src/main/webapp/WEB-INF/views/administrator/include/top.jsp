@@ -64,9 +64,11 @@ $(document).ready(function(){
 							<a href="<c:url value='/administrator/user/userList.do' />">회원관리</a>
 						</li>
 						
-						<li class="dropdown mega-dropdown"><a href="#"
+						<li class="dropdown mega-dropdown">
+							<a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">업체관리 </a>
+							aria-haspopup="true" aria-expanded="false">업체관리
+							</a>
 							<ul class="dropdown-menu mega-dropdown-menu">
 								<li class="col-sm-2"><a
 									href='<c:url value="/administrator/company/companyList.do" />'>업체 리스트</a></li>
@@ -78,14 +80,14 @@ $(document).ready(function(){
 						</li>
 						
 						<li class="dropdown mega-dropdown">
-							<a href="/administrator/carModel/modelList.do"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">차모델관리</a>
+							<a href='<c:url value="/administrator/carModel/modelList.do" />'>차모델관리</a>
 						</li>
-						
-						<li class="dropdown mega-dropdown"><a href="#"
+
+						<li class="dropdown mega-dropdown">
+							<a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">게시판관리 </a>
+							aria-haspopup="true" aria-expanded="false">게시판관리
+							</a>
 							<ul class="dropdown-menu mega-dropdown-menu">								
 								<li class="col-sm-2"><a href="#" >후기 관리 </a></li>
 								<li class="col-sm-2"><a href="<c:url value='/admin/Board/uNotice.do' />" >고객 공지 </a></li>
@@ -114,7 +116,14 @@ $(document).ready(function(){
 								<li class="col-sm-4"><a href="#" >업체 정산 관리</a></li>								
 							</ul>
 						</li>
-										
+						
+						<li class="dropdown mega-dropdown">
+							<a href="#"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">이벤트 관리 
+							</a>
+						</li>
+								
 						<li class="dropdown mega-dropdown"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
 							aria-haspopup="true" aria-expanded="false">관리자 관리 </a>

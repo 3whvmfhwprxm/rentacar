@@ -5,7 +5,7 @@
 <mapper namespace="config.mybatis.mapper.oracle.admin_User">
 	<sql id="searchWhere">
 		<if test="searchKeyword !=null and searchKeyword !=''">
-			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
+			where lower(${searchCondition}) like '%'|| lower(#{searchKeyword}) ||'%'
 		</if>
 	</sql>
 	
