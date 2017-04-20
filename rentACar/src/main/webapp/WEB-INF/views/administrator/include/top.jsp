@@ -42,7 +42,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<!--  -->
 	<div class="container">
 		<nav class="navbar navbar-inverse">
 			<div class="container">
@@ -55,15 +54,14 @@ $(document).ready(function(){
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"> 렌트카 관리자 </a>
+					<a class="navbar-brand" href="/administrator/admin_Main.do"> 렌트카 관리자 </a>
 				</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-
-						<li class="dropdown mega-dropdown"><a href="<c:url value='/administrator/user/userList.do' />">회원관리 </a>
+						<li class="dropdown mega-dropdown">
+							<a href="<c:url value='/administrator/user/userList.do' />">회원관리</a>
 						</li>
 						
 						<li class="dropdown mega-dropdown"><a href="#"
@@ -73,22 +71,16 @@ $(document).ready(function(){
 								<li class="col-sm-2"><a
 									href='<c:url value="/administrator/company/companyList.do" />'>업체 리스트</a></li>
 								<li class="col-sm-2"><a
-									href='<c:url value="/administrator/company/companyRegister.do" />'>업체 등록</a></li>
-								<li class="col-sm-2"><a
 									href='<c:url value="/administrator/company/companyCar.do" />'>업체 보유 차량</a></li>
 								<li class="col-sm-2"><a
-									href='<c:url value="/administrator/company/companyWithdraw.do" />'>탈퇴 업체 조회</a></li>
+									href='<c:url value="/administrator/company/companyOutList.do" />'>탈퇴 업체 조회</a></li>
 							</ul>
 						</li>
 						
-						<li class="dropdown mega-dropdown"><a href="#"
+						<li class="dropdown mega-dropdown">
+							<a href="/administrator/carModel/modelList.do"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">차모델관리 </a>
-							<ul class="dropdown-menu mega-dropdown-menu">
-								<li class="col-sm-4"><a href="#" >모델 등록 </a></li>
-								<li class="col-sm-4"><a href="#" >모델 수정 </a></li>
-								<li class="col-sm-4"><a href="#" >모델 삭제 </a></li>
-							</ul>
+							aria-haspopup="true" aria-expanded="false">차모델관리</a>
 						</li>
 						
 						<li class="dropdown mega-dropdown"><a href="#"
