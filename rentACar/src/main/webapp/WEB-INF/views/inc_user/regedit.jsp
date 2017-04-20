@@ -48,7 +48,7 @@
 		});
 	});
 </script>
-	<form id="frm1" name="frm1" class="form-horizontal form-label-left" novalidate method="post" action='<c:url value="/inc_user/register.do"/>'>
+	<form id="frm1" name="frm1" class="form-horizontal form-label-left" novalidate method="post" action='<c:url value="/inc_user/regedit.do"/>'>
 		  <br>
           <div class="row">
             <label class="control-label col-md-2" for="name">아이디 <span class="required">*</span>
@@ -87,10 +87,17 @@
           
           <div class="row">
             <label class="control-label col-md-2" for="name">연락처 <span class="required">*</span>
-            </label>
-            <div class="col-md-2">
-              <input id="userTel1" name="userTel1" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 010" required="required" type="text" value="${vo.userTel1 }">
-            </div>
+           		</label>
+           		<div class="col-md-2">
+             		<select id="userTel1" name="userTel1" class="form-control" name="name">
+             			<option value="010" <c:if test="${vo.userTel1=='010'}">selected</c:if> >010</option>
+             			<option value="011" <c:if test="${vo.userTel1=='011'}">selected</c:if> >011</option>
+             			<option value="016" <c:if test="${vo.userTel1=='016'}">selected</c:if> >016</option>
+             			<option value="017" <c:if test="${vo.userTel1=='017'}">selected</c:if> >017</option>
+             			<option value="018" <c:if test="${vo.userTel1=='018'}">selected</c:if> >018</option>
+             			<option value="019" <c:if test="${vo.userTel1=='019'}">selected</c:if> >019</option>
+             		</select>
+           		</div>
             <div class="col-md-2">
               <input id="userTel2" name="userTel2" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" type="text" value="${vo.userTel2 }">
             </div>

@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="top.jsp" %>
 
-<h1>review</h1>
-	
 	<div id="map" style="width:500px;height:400px;"></div>
 	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=0f24996b0e58b92f5c277a3bf3b4f066"></script>
 	<script>

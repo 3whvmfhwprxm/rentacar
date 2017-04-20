@@ -23,8 +23,6 @@
 	} */
 	
 </style> 
-
-<h1>benefits</h1>
 <div id="container">
 	<div class="content-wrap">
 		<div id="useBenefit">

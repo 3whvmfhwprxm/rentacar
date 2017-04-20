@@ -9,47 +9,120 @@
 <head>
 <meta charset="utf-8" />
 <title>유저메인</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Free Responsive Admin Theme - ZONTAL</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+     <script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"6331141e2217db0e72f71e8b02fe8fe4",petok:"14f4c6a93b203d4c27363dc962c5dbd6ae8d672b-1492669658-1800",zone:"designbootstrap.com",rocket:"a",apps:{}}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=905ca5bd16/cloudflare.min.js"><'+'\/script>');}}catch(e){};
+//]]>
+</script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- FONT AWESOME ICONS  -->
+    <link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" />
+     <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script data-rocketsrc="http://www.designbootstrap.com/track/ga.js"  type="text/rocketscript"></script>
 </head>
-<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
-<!-- Bootstrap -->
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Email: </strong><a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="4821262e270831273d3a2c2725292126662b2725">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>
+                    &nbsp;&nbsp;
+                    <strong>Support: </strong>010-8976-7844
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/inc_user/index.do"">
+                    <img src="${pageContext.request.contextPath}/user_img/logo.png" />
+                </a>
+            </div>
+		<!-- dropdown -->
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" style="font-size: 25px;"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-settings">
+                                <div class="media">
+                                    <a class="media-left" href="#">
+                                        <img src="${pageContext.request.contextPath}/user_img/usericon.png" alt="" class="img-rounded" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">${sessionScope.userId}</h4>
+                                    </div>
+                                </div>
+                                <hr />
+                                <span><strong>자기 소개가 없습니다.</strong></span>
+                                <hr />
+                                <c:if test="${!empty sessionScope.userId }">
+	                                <a href="${pageContext.request.contextPath}/inc_user/regedit.do" class="btn btn-info btn-sm">Regedit</a>&nbsp; <a href="${pageContext.request.contextPath}/inc_user/logout.do" class="btn btn-danger btn-sm">Logout</a>
+                                </c:if>
+                                <c:if test="${empty sessionScope.userId }">
+	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/inc_user/login.do" class="btn btn-danger btn-sm">Login</a>
+                                </c:if>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+    <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                    <c:if test="${empty sessionScope.userId }">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="${pageContext.request.contextPath}/inc_user/realTime.do">실시간예약</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/confirm.do">예약확인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/review.do">이용후기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/serviceCenter.do">고객센터</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/benefits.do">이용혜택</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/login.do">LOGIN</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/register.do">회원가입</a></li>
+                        </ul>
+                    </c:if>
+                     <c:if test="${!empty sessionScope.userId }">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="${pageContext.request.contextPath}/inc_user/realTime.do">실시간예약</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/confirm.do">예약확인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/review.do">이용후기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/serviceCenter.do">고객센터</a></li>
+                            <li><a href="${pageContext.request.contextPath}/inc_user/benefits.do">이용혜택</a></li>
+                        </ul>
+                    </c:if>
+                    </div>
+                </div>
 
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-
-<body style="width: 1200px">	
-	<div>
-		<!-- header -->				
-		<header>
-			<h1><a href="${pageContext.request.contextPath}/inc_user/index.do"><img alt="로고 이미지"
-				src="${pageContext.request.contextPath}/user_img/logo1.png"/></a></h1>
-		
-			<!-- 로그이 안된 경우 -->	
-			<c:if test="${empty sessionScope.userId }">
-				<nav style="float: right;">
-					<a href="${pageContext.request.contextPath}/inc_user/login.do">로그인</a>
-					<a href="${pageContext.request.contextPath}/inc_user/register.do">회원가입</a>				
-				</nav>
-			</c:if>
-			<!-- 로그인된 경우 -->	
-			<c:if test="${!empty sessionScope.userId }">
-				<nav style="float: right;">
-					<span style="font-size: 1em">(${sessionScope.userId} 님)</span>
-					<a href="${pageContext.request.contextPath}/inc_user/regedit.do">회원정보수정</a>
-					<a href="${pageContext.request.contextPath}/inc_user/logout.do">로그아웃</a>				
-				</nav>
-			</c:if>
-		</header>
-
-		<nav>
-			<div>
-			   <a href="${pageContext.request.contextPath}/inc_user/realTime.do"><button type="button" class="btn btn-default">실시간예약</button></a>
-			   <a href="${pageContext.request.contextPath}/inc_user/confirm.do"><button type="button" class="btn btn-default">예약확인</button></a>
-			   <a href="${pageContext.request.contextPath}/inc_user/review.do"><button type="button" class="btn btn-default">이용후기</button></a>
-			   <a href="${pageContext.request.contextPath}/inc_user/serviceCenter.do"><button type="button" class="btn btn-default">고객센터</button></a>
-			   <a href="${pageContext.request.contextPath}/inc_user/benefits.do"><button type="button" class="btn btn-default">이용혜택</button></a>
-			</div>
-		</nav>
-	</div>
+            </div>
+        </div>
+    </section>
+    <!-- MENU SECTION END-->
 		
 
 		

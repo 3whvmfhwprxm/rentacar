@@ -9,8 +9,6 @@
 		frmPage.submit();
 	}
 </script>
-
-	<h1>confirm.jsp</h1>
 	<form name="frmPage" method="post" action='<c:url value="/inc_user/confirm.do" />'>
 		<input type="hidden" name="currentPage">
 	</form>
