@@ -114,15 +114,15 @@ public class Admin_CompanyController {
 		return "common/message";
 	}
 	
-	@RequestMapping("/company/companyRegister.do")
-	public String checkCompanyId(@RequestParam String comId, Model model){
+	@RequestMapping("/company/checkCompanyId.do")
+	public String checkCompanyId(@RequestParam String CompanyId, Model model){
 		//1.		
-		logger.info("아이디 중복체크 매개변수 comId={}", comId);
+		logger.info("아이디 중복체크 매개변수 CompanyId={}", CompanyId);
 		
 		//2.
 		int result=0;
-		if(comId!=null && !comId.isEmpty()){
-			result = adminCompanyService.duplicateCompanyId(comId);
+		if(CompanyId!=null && !CompanyId.isEmpty()){
+			result = adminCompanyService.duplicateCompanyId(CompanyId);
 			logger.info("중복아이디 체크 결과 result={}", result);
 		}
 		
@@ -131,7 +131,7 @@ public class Admin_CompanyController {
 		model.addAttribute("EXIST_ID", Admin_CompanyService.EXIST_ID);
 		model.addAttribute("NONE_EXIST_ID", Admin_CompanyService.NONE_EXIST_ID);
 		
-		return "administrator/company/companyRegister";
+		return "administrator/company/checkCompanyId";
 	}
 	
 	@RequestMapping("/company/companyDetail.do")

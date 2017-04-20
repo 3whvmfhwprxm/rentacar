@@ -24,8 +24,6 @@
 	
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" />
 <script type="text/javascript">
 $(document).ready(function(){
     $(".dropdown1").hover(            

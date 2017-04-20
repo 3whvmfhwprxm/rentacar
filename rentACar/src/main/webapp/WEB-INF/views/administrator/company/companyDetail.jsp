@@ -148,18 +148,18 @@
 					<div class="panel-footer">
 						<a href='<c:url value="/administrator/company/companyList.do"/>'
 							data-original-title="Move userList" data-toggle="tooltip"
-							type="button" class="btn btn-primary btn-lg btn-primary"> 
-							<i class="fa fa-list" aria-hidden="true"></i>
+							type="button" class="btn btn-primary btn-lg btn-primary">
+							<i class="fa fa-list" aria-hidden="true"></i>목록
 						</a> 
 						<a href='<c:url value="/administrator/company/companyEdit.do?comId=${companyDetail.comId}"/>'
 							data-original-title="Edit this user" data-toggle="tooltip"
-							type="button" class="btn btn-primary btn-lg btn-warning"> 
-							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							type="button" class="btn btn-primary btn-lg btn-warning">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
 						</a> 
 						<a href="<c:url value='/administrator/company/companyWithdraw.do?comId=${companyDetail.comId}'/>"
 							data-original-title="Remove this user" data-toggle="tooltip"
 							type="button" class="btn btn-primary btn-lg btn-danger"> 
-							<i class="fa fa-times" aria-hidden="true"></i>
+							<i class="fa fa-times" aria-hidden="true"></i>삭제
 						</a>
 					</div>
 				</div>
