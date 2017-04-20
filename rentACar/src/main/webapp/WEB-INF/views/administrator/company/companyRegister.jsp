@@ -12,6 +12,10 @@
 				alert('아이디는 영문대소문자, 숫자만 가능합니다');
 				$("#CompanyId").focus();
 				return false;
+			}else if($("#chkId").val()!='Y'){
+				alert('아이디 중복검사를 해야 합니다.');
+				$('#btnChkId').focus();
+				return false;
 			}else if($("#CompanyName").val()==''){
 				alert('업체명을 입력하세요');
 				$("#CompanyName").focus();
@@ -24,18 +28,20 @@
 				alert('비밀번호가 일치하지 않습니다');
 				$("#CompanyPwd2").focus();
 				return false;
-			}else if($("#chkCompanyId").val()!='Y'){
-				alert('아이디 중복검사를 해야 합니다.');
-				$('#chkCompanyId').focus();
+			}else if($("#CompanyNo").val()==''){
+				alert('사업자번호를 입력해야 합니다.');
+				$('#CompanyNo').focus();
 				return false;
-			}else if($("#comAccNum").val()!='Y'){
+			}else if($("#comAccNum").val()==''){
 				alert('계좌번호를 입력해야 합니다.');
 				$('#comAccNum').focus();
 				return false;
-			}else if(!validate_tel($("#CompanyTel2").val()) || 
-					!validate_tel($("#CompanyTel3").val())){
-				alert('대표번호는 숫자를 입력하셔야 합니다');
-				$("#CompanyTel2").focus();
+			}else if($("#CompanyTel2").val()=='' || $("#CompanyTel3").val()==''){
+				if(!validate_tel($("#CompanyTel2").val()) || 
+				   !validate_tel($("#CompanyTel3").val())){
+					alert('대표번호는 숫자를 입력하셔야 합니다');
+					$("#CompanyTel2").focus();
+				}
 				return false;
 			}else if(!validate_mobile($("#CompanyMobile2").val()) || 
 					!validate_mobile($("#CompanyMobile3").val())){
@@ -73,7 +79,11 @@
 		});
 		
 		$("#btnChkId").click(function(){	
-			if(!validate_CompanyId($("#CompanyId").val())){
+			if($("#CompanyId").val()==''){
+				alert('아이디를 입력하세요.');
+				$("#CompanyId").focus();
+				return false;
+			}else if(!validate_CompanyId($("#CompanyId").val())){
 				alert('아이디는 영문대소문자, 숫자만 가능합니다');
 				$("#CompanyId").focus();
 				return false;
@@ -148,8 +158,12 @@
 						Company Id </label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="CompanyId"
-							id="CompanyId" placeholder="Company Id">
-						<input type="button" value="중복확인" id="btnChkId" title="새창열림">
+							id="CompanyId" placeholder="Company Id">		
+					</div>
+					<div class="col-sm-2">
+						<button class="btn btn-default" type="button" id="btnChkId">
+							중복 확인
+						</button>
 					</div>
 				</div>
 				<div class="form-group">
@@ -171,16 +185,18 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyPwd" class="col-sm-2 control-label">Password
-						Check</label>
+					<label for="CompanyPwd" class="col-sm-2 control-label">
+						Password Check
+					</label>
 					<div class="col-sm-8">
 						<input type="password" class="form-control" name="CompanyPwd2"
 							id="CompanyPwd2" placeholder="Company CompanyPwd2">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyNo" class="col-sm-2 control-label">Company
-						No</label>
+					<label for="CompanyNo" class="col-sm-2 control-label">
+					Company No
+					</label>
 					<div class="col-sm-8">
 						<input type="text" class="form-control" name="CompanyNo"
 							id="CompanyNo" placeholder="Company No">
@@ -268,7 +284,7 @@
 					<label for="CompanyEmail" class="col-sm-2 control-label">Company
 						Email</label>
 					<div class="col-md-3">
-						<input type="email" class="form-control" name="CompanyEmail1"
+						<input type="text" class="form-control" name="CompanyEmail1"
 							id="CompanyEmail1" placeholder="Company Email1">
 					</div>
 					<div class="col-xs-2">
