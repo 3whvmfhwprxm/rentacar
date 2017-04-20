@@ -39,18 +39,18 @@ public class EventController {
 		//이벤트 등록 화면
 		logger.info("관리 - 이벤트 등록 처리, 입력값 evo={}", evo);
 		
-		List<Map<String, Object>> fileList=fileUtil.fileUpload(request, FileUploadWebUtil.FILE_UPLOAD);
+		List<Map<String, Object>> imgList=fileUtil.fileUpload(request, FileUploadWebUtil.FILE_UPLOAD);
 		
-		String fileName="", originalFileName="";
-		if(!fileList.isEmpty()){
-			for(Map<String, Object> map : fileList){
-				fileName=(String)map.get("fileName");				
-				originalFileName=(String)map.get("originalFileName");
+		String img1="", img2="";
+		if(!imgList.isEmpty()){
+			for(Map<String, Object> map : imgList){
+				img1=(String)map.get("img1");
 			}//for
 		}//if
 		
-		/*evo.setEventImage1(fileName);
-		evo.setEventOriginalImage1(originalFileName);*/
+		evo.setEventImage1(img1);
+		evo.setEventImage2(img2);
+		
 		
 		return "administrator/event/evtList";
 	}	
