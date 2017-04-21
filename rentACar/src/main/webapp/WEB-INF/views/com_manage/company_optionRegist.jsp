@@ -25,12 +25,37 @@
 			}
 		});
 		
-		$("#btRegister").click(function(){
-			if(!$("#comId").val()){
+		jQuery("#btRegister").click(function(){
+			if(!jQuery("#comId").val()){
 				alert("업체아이디를 입력에러, 로그인처리가 정상적으로 되지 않았습니다.");
-				$("#comId").focus();
+				jQuery("#comId").focus();
 				return false;
-			}	
+			}else if(!jQuery('#carCode').val()){
+				alert("모델코드가 입력되지않았습니다. 제조사,모델명을 선택해주세요.");
+				jQuery("#carCode").focus();
+				return false;
+			}else if(!jQuery('#ccarCarId').val() || jQuery('#ccarCarId').val().length!=4){
+				alert("차량 차대번호를 입력하세요. 4자리 입니다.");
+				jQuery("#ccarCarId").focus();
+				return false;
+			}else if(!jQuery('#ccarNormalPrice').val()){
+				alert("차량 렌탈 평일 가격을 입력하세요.");
+				jQuery("#ccarNormalPrice").focus();
+				return false;
+			}else if(!jQuery('#ccarWeekendPrice').val()){
+				alert("차량 렌탈 주말 가격을 입력하세요.");
+				jQuery("#ccarWeekendPrice").focus();
+				return false;
+			}else if(!jQuery('#ccarPeakPrice').val()){
+				alert("차량 렌탈 성수기 가격을 입력하세요.");
+				jQuery("#ccarPeakPrice").focus();
+				return false;
+			}else if(!jQuery('#ccarSPeakPrice').val()){
+				alert("차량 렌탈 극 성수기 가격을 입력하세요.");
+				jQuery("#ccarSPeakPrice").focus();
+				return false;
+			}
+		
 		});
 		
 	});
@@ -44,14 +69,14 @@
 			<legend>차량 등록</legend>
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">업체아이디</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<input type="text" class="form-control" name="comId"
 							id="comId" placeholder="로그인시 자동입력">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="carCode" class="col-sm-2 control-label">모델코드</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<input type="text" class="form-control" name="carCode"
 							id="carCode" placeholder="제조사,모델명 선택시 자동입력">
 					</div>
@@ -59,7 +84,7 @@
 				<div class="form-group">
 					<label for="com1" class="col-sm-2 control-label">제조사</label>
 					<div class="col-xs-2">
-						<select class="form-control" name="com1" id="com1">
+						<select class="form-control" name="carInc" id="carInc">
 							<option value="010">현대</option>
 							<option value="011">기아</option>
 							<option value="016">르노삼성</option>
@@ -72,7 +97,7 @@
 				<div class="form-group">
 					<label for="com2" class="col-sm-2 control-label">모델명</label>
 					<div class="col-xs-2">
-						<select class="form-control" name="com2" id="com2">
+						<select class="form-control" name="carName" id="carName">
 							<option value="010">쏘나타</option>
 							<option value="011">그렌져</option>
 							<option value="016">아반떼</option>
@@ -84,9 +109,23 @@
 				</div>
 				<div class="form-group">
 					<label for="ccarCarId" class="col-sm-2 control-label">차량번호</label>
-					<div class="col-sm-8">
+					<div class="col-sm-2">
+						<select class="form-control" name="area" id="area">
+							<option>선택하세요</option>
+							<option selected>서울</option>
+							<option>경기</option>
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select class="form-control" name="secondCarNum" id="secondCarNum">
+							<option>선택하세요</option>
+							<option>하</option>
+							<option selected>허</option>
+						</select>
+					</div>
+					<div class="col-sm-2">
 						<input type="text" class="form-control" name="ccarCarId"
-							id="ccarCarId" placeholder="서울가1234">
+							id="ccarCarId" placeholder="1234">
 					</div>
 				</div>
 				<div class="form-group">
@@ -107,28 +146,28 @@
 				</div>
 				<div class="form-group">
 					<label for="ccarNormalPrice" class="col-sm-2 control-label">평일 예약가격</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<input type="text" class="form-control" name="ccarNormalPrice"
 							id="ccarNormalPrice" placeholder="50000">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="ccarWeekendPrice" class="col-sm-2 control-label">주말 예약가격</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<input type="text" class="form-control" name="ccarWeekendPrice"
 							id="ccarWeekendPrice" placeholder="70000">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="ccarPeakPrice" class="col-sm-2 control-label">성수기 예약가격</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<input type="text" class="form-control" name="ccarPeakPrice"
 							id="ccarPeakPrice" placeholder="100000">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="ccarSPeakPrice" class="col-sm-2 control-label">극성수기 예약가격</label>
-					<div class="col-sm-8">
+					<div class="col-sm-6">
 						<input type="text" class="form-control" name="ccarSPeakPrice"
 							id="ccarSPeakPrice" placeholder="150000">
 					</div>

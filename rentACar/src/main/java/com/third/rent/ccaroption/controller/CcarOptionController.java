@@ -37,6 +37,7 @@ public class CcarOptionController {
 
 	@RequestMapping(value="/company_optionRegist.do", method=RequestMethod.POST)
 	public String optionRegist_post(@ModelAttribute CcarOptionVO vo,
+			@RequestParam String area, @RequestParam String secondCarNum,
 			Model model){
 		logger.info("옵션등록처리, 파라미터 vo={}", vo);
 		String aux = vo.getCcarAuxYn();
@@ -74,18 +75,24 @@ public class CcarOptionController {
 
 		logger.info("N작업후 vo = {}",vo);
 
+		//연료,렌탈카운트0 처리
 		int arrear = vo.getCcarArrear();
 		int rentalcnt = vo.getCcarRentalcount();
-		
 		if(arrear==0){
 			arrear=0;
 		}
 		if(rentalcnt==0){
 			rentalcnt=0;
 		}
-		
 		vo.setCcarArrear(arrear);
 		vo.setCcarRentalcount(rentalcnt);
+		
+		String carId = vo.getCcarCarId();
+		
+		String CcarCarId =area+secondCarNum+carId;
+		vo.setCcarCarId(CcarCarId);
+		logger.info("ccarCarId 합치기 파라미터 area={}, secondCarNum={}",area,secondCarNum);
+		logger.info("파라미터carId={}",carId);
 		
 		int cnt = ccarOptionService.insertCcarOption(vo);
 		logger.info("vo 수정후 등록처리 vo={}", vo);

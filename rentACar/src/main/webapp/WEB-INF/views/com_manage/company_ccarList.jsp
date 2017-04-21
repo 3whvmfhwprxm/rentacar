@@ -3,7 +3,7 @@
 <%@ include file="../inc_company/company_top.jsp" %>
 <style type="text/css">
 	table tr th{
-		background-color: yellow;
+		background-color: #d8ffb0;
 		text-align: center;
 	}
 	
