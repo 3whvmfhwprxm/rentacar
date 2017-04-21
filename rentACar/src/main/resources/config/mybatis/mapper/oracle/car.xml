@@ -4,7 +4,7 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.car">
 	<select id="selectAllCar" resultType="CarVO">
-		select * from car
+		select car_inc from car group by car_inc order by car_inc desc
 	</select>
 	
 	<select id="selectCarCode" parameterType="CarVO" resultType="string">
@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="selectCarName" parameterType="string" resultType="string">
-		select car_inc from car where car_inc =#{carInc}	
+		select car_name from car where car_inc =#{carInc}	
 	</select>
 	
 	

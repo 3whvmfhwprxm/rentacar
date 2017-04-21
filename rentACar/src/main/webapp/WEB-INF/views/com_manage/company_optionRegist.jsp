@@ -85,13 +85,12 @@
 					<label for="com1" class="col-sm-2 control-label">제조사</label>
 					<div class="col-xs-2">
 						<select class="form-control" name="carInc" id="carInc">
-							<option value="010">현대</option>
-							<option value="011">기아</option>
-							<option value="016">르노삼성</option>
-							<option value="017">BENZ</option>
-							<option value="018">HONDA</option>
-							<option value="019">BMW</option>
+							<option selected>선택하세요</option>
+							<c:forEach var="s" items="${slist }">
+							<option value="${s.carInc }">${s.carInc }</option>
+							</c:forEach>
 						</select>
+						
 					</div>
 				</div>
 				<div class="form-group">
@@ -114,6 +113,21 @@
 							<option>선택하세요</option>
 							<option selected>서울</option>
 							<option>경기</option>
+							<option>인천</option>
+							<option>대구</option>
+							<option>대전</option>
+							<option>부산</option>
+							<option>제주</option>
+							<option>강원</option>
+							<option>광주</option>
+							<option>울산</option>
+							<option>충북</option>
+							<option>충남</option>
+							<option>전남</option>
+							<option>전북</option>
+							<option>경북</option>
+							<option>경남</option>
+								
 						</select>
 					</div>
 					<div class="col-sm-2">
@@ -121,6 +135,7 @@
 							<option>선택하세요</option>
 							<option>하</option>
 							<option selected>허</option>
+							<option>호</option>
 						</select>
 					</div>
 					<div class="col-sm-2">
