@@ -1,0 +1,25 @@
+3조 렌터카 url
+
+STS에서 github 파일 받을수 있는 주소
+https://github.com/3whvmfhwprxm/rentacar
+
+받은후 데이터 넣는 순서
+webapp/Test_Data 폴더에
+1_오라클 계정 생성 및 권한부여.sql 파일 등록(SYS계정)
+2_렌트카_테이블생성.sql (이후부터 RENT/RENT123 계정)
+3_시퀀스생성.sql
+4_렌트카_테스트데이터.sql
+
+아직 web.xml에 welcome-file-list 등록처리를 안해서 
+아래의 각 주소로 들어가시면 탑메뉴를 통해 이동
+
+-현재 고객페이지 17.04.20 디자인 적용후 jquery 작동 안되고 잇음
+
+고객(kim1/kim123)
+http://172.16.9.65:9090/rent/inc_user/index.do
+
+업체
+http://172.16.9.65:9090/rent/com_manage/company_optionRegist.do
+
+관리자
+http://172.16.9.65:9090/rent/administrator/user/userList.do

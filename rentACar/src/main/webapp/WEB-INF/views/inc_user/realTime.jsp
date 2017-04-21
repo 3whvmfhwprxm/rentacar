@@ -94,7 +94,7 @@
 				<tr>					
 						<td>${car.ccarCarId }</td>
 						<td>${car.carCode }</td>
-						<td>${car.comID }</td>
+						<td>${car.comId }</td>
 						<td>${car.ccarNormalPrice }</td>
 						<td>${car.ccarWeekendPrice }</td>
 						<td>${car.ccarPeakPrice }</td>
