@@ -74,6 +74,19 @@ public class CcarOptionController {
 
 		logger.info("N작업후 vo = {}",vo);
 
+		int arrear = vo.getCcarArrear();
+		int rentalcnt = vo.getCcarRentalcount();
+		
+		if(arrear==0){
+			arrear=0;
+		}
+		if(rentalcnt==0){
+			rentalcnt=0;
+		}
+		
+		vo.setCcarArrear(arrear);
+		vo.setCcarRentalcount(rentalcnt);
+		
 		int cnt = ccarOptionService.insertCcarOption(vo);
 		logger.info("vo 수정후 등록처리 vo={}", vo);
 		String msg="", url="/login_company/companyMain.do";

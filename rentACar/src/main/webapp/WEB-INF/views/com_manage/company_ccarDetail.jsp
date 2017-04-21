@@ -2,9 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc_company/company_top.jsp" %>
 <!-- 차량 상세보기  -->
-<h2>차량 상세 정보</h2>
-<table border="1">
-		<tr>
+
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <legend>차량 상세 정보</legend>
+        <tr>
 			<td>차량번호</td>
 			<td>${map['CCAR_CAR_ID'] }</td>
 			<td>모델코드</td>
@@ -81,8 +84,15 @@
 			
 		</tr>
 		
-</table>	
-	
-<button><a href="<c:url value='/com_manage/company_ccarList.do' />" />목록</button>
-<button><a href="<c:url value='/com_manage/company_ccarEdit.do?ccarCarId=${map["CCAR_CAR_ID"] }' />" />수정</button>
+
+            <tr>
+                <td class="text-center">
+                <a href="<c:url value='/com_manage/company_ccarList.do' />" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-list"></span>목록</a>
+                <a class='btn btn-info btn-xs' href="<c:url value='/com_manage/company_ccarEdit.do?ccarCarId=${map["CCAR_CAR_ID"] }' />"  ><span class="glyphicon glyphicon-edit"></span>수정</a>
+                 </td>
+            </tr>
+    </table>
+    </div>
+</div>
+
 <%@ include file="../inc_company/company_bottom.jsp" %>
