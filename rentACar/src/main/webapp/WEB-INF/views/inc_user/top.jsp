@@ -55,7 +55,7 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="${pageContext.request.contextPath}/inc_user/index.do"">
-                    <img src="${pageContext.request.contextPath}/user_img/logonew.png" />
+                    <img src="${pageContext.request.contextPath}/user_img/indexlogo.png" />
                 </a>
             </div>
 		<!-- dropdown -->

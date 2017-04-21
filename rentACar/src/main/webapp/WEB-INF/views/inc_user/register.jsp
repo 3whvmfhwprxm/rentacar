@@ -20,11 +20,11 @@
 				alert('이메일주소를 입력하세요');
 				$("#userEmail1").focus();
 				return false;
-			}else if(!validate_userTel2($("#userTel2").val()) && $("#userTel2").val().length()!=4){
+			}else if(!validate_userTel2($("#userTel2").val()) && $("#userTel2").length=4){
 				alert('전화번호를 입력하세요');
 				$("#userTel2").focus();
 				return false;
-			}else if(!validate_userTel3($("#userTel3").val()) && ($("#userTel3").val().length())>4)){
+			}else if(!validate_userTel3($("#userTel3").val()) && $("#userTel3").length=4){
 				alert('전화번호를 입력하세요');
 				$("#userTel3").focus();
 				return false;
