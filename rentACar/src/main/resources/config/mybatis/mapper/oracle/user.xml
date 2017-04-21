@@ -4,9 +4,9 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.user">
 	<insert id="insertUser" parameterType="UserVO">
-		insert into rent_user(user_id,user_pwd,user_name,user_email1,user_email2,user_tel1,user_tel2,
+		insert into rent_user(user_id,user_pwd,user_name,user_email,user_tel1,user_tel2,
 		user_tel3,user_birth,user_address,user_gender,user_license)
-		values(#{userId},#{userPwd},#{userName},#{userEmail1},#{userEmail2},#{userTel1},#{userTel2},
+		values(#{userId},#{userPwd},#{userName},#{userEmail},#{userTel1},#{userTel2},
 		#{userTel3},#{userBirth},#{userAddress},#{userGender},#{userLicense})
 	</insert>
 	
@@ -23,7 +23,7 @@
 	</select>
 	
 	<update id="updateUser" parameterType="UserVO">
-		update rent_user set user_email1=#{userEmail1}, user_email2=#{userEmail2}, user_tel1=#{userTel1},
+		update rent_user set user_email=#{userEmail}, user_tel1=#{userTel1},
 		user_tel2=#{userTel2}, user_tel3=#{userTel3},user_birth=#{userBirth},user_address=#{userAddress},
 		user_gender=#{userGender},user_license=#{userLicense}
 		where user_id=#{userId} and user_outdate is null

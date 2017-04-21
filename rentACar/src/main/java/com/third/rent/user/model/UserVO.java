@@ -6,8 +6,7 @@ public class UserVO {
 	private String userId;
 	private String userPwd;
 	private String userName;
-	private String userEmail1;
-	private String userEmail2;
+	private String userEmail;
 	private String userTel1;
 	private String userTel2;
 	private String userTel3;
@@ -36,17 +35,11 @@ public class UserVO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getUserEmail1() {
-		return userEmail1;
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public void setUserEmail1(String userEmail1) {
-		this.userEmail1 = userEmail1;
-	}
-	public String getUserEmail2() {
-		return userEmail2;
-	}
-	public void setUserEmail2(String userEmail2) {
-		this.userEmail2 = userEmail2;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	public String getUserTel1() {
 		return userTel1;
@@ -104,12 +97,10 @@ public class UserVO {
 	}
 	@Override
 	public String toString() {
-		return "UserVO [userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName + ", userEmail1="
-				+ userEmail1 + ", userEmail2=" + userEmail2 + ", userTel1=" + userTel1 + ", userTel2=" + userTel2
-				+ ", userTel3=" + userTel3 + ", userBirth=" + userBirth + ", userAddress=" + userAddress
-				+ ", userGender=" + userGender + ", userLicense=" + userLicense + ", userRegdate=" + userRegdate
-				+ ", userOutdate=" + userOutdate + "]";
+		return "UserVO [userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName + ", userEmail="
+				+ userEmail + ", userTel1=" + userTel1 + ", userTel2=" + userTel2 + ", userTel3=" + userTel3
+				+ ", userBirth=" + userBirth + ", userAddress=" + userAddress + ", userGender=" + userGender
+				+ ", userLicense=" + userLicense + ", userRegdate=" + userRegdate + ", userOutdate=" + userOutdate
+				+ "]";
 	}
-	
-	
 }

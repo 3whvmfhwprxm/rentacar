@@ -8,13 +8,9 @@
 				alert('패스워드를 입력하세요');
 				$("#userPwd").focus();
 				return false;
-			}else if(!$("#userEmail1").val()){
+			}else if(!$("#userEmail").val()){
 				alert('이메일주소를 입력하세요');
 				$("#userEmail1").focus();
-				return false;
-			}else if(!$("#userEmail2").val()){
-				alert('이메일주소를 입력하세요');
-				$("#userEmail2").focus();
 				return false;
 			}else if(!$("#userTel1").val()){
 				alert('전화번호를 입력하세요');
@@ -78,10 +74,7 @@
             <label class="control-label col-md-2" for="name">이메일 <span class="required">*</span>
             </label>
             <div class="col-md-2">
-              <input id="userEmail1" name="userEmail1" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong" required="required" type="text" value="${vo.userEmail1 }">
-            </div>
-            <div class="col-md-2">
-              <input id="userEmail2" name="userEmail2" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) naver.com" required="required" type="text" value="${vo.userEmail2 }">
+              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong" required="required" type="email" value="${vo.userEmail }">
             </div>
           </div><br>
           

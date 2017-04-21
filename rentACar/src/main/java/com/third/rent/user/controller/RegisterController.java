@@ -28,7 +28,7 @@ public class RegisterController {
 	}
 	
 	@RequestMapping(value="/inc_user/register.do",method=RequestMethod.POST)
-	public String insertLogin_post(@ModelAttribute UserVO userVo,@RequestParam(value="userEmail3", required=false) String userEmail3, Model model){
+	public String insertLogin_post(@ModelAttribute UserVO userVo, Model model){
 		//1
 		logger.info("회원가입처리, 파라미터 UserVO={}",userVo);
 		//2

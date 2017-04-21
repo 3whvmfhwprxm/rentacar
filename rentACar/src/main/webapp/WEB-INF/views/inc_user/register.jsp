@@ -16,23 +16,15 @@
 				alert('패스워드를 입력하세요');
 				$("#userPwd").focus();
 				return false;
-			}else if(!$("#userEmail1").val()){
+			}else if(!$("#userEmail").val()){
 				alert('이메일주소를 입력하세요');
 				$("#userEmail1").focus();
 				return false;
-			}else if(!$("#userEmail2").val()){
-				alert('이메일주소를 입력하세요');
-				$("#userEmail2").focus();
-				return false;
-			}else if(!$("#userTel1").val()){
-				alert('전화번호를 입력하세요');
-				$("#userTel1").focus();
-				return false;
-			}else if(!$("#userTel2").val()){
+			}else if(!validate_userTel2($("#userTel2").val()) && $("#userTel2").val().length()!=4){
 				alert('전화번호를 입력하세요');
 				$("#userTel2").focus();
 				return false;
-			}else if(!$("#userTel3").val()){
+			}else if(!validate_userTel3($("#userTel3").val()) && ($("#userTel3").val().length())>4)){
 				alert('전화번호를 입력하세요');
 				$("#userTel3").focus();
 				return false;
@@ -65,7 +57,11 @@
 		return pattern.test(userId); 
 	}
 
-	function validate_hp(hp){
+	function validate_userTel2(userTel2){
+		var pattern = new RegExp(/^[0-9]*$/g);
+		return pattern.test(hp);
+	}
+	function validate_userTel3(userTel3){
 		var pattern = new RegExp(/^[0-9]*$/g);
 		return pattern.test(hp);
 	}
@@ -106,10 +102,7 @@
             <label class="control-label col-md-2" for="name">이메일 <span class="required">*</span>
             </label>
             <div class="col-md-2">
-              <input id="userEmail1" name="userEmail1" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong" required="required" type="text">
-            </div>
-            <div class="col-md-2">
-              <input id="userEmail2" name="userEmail2" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) naver.com" required="required" type="text">
+              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="email">
             </div>
           </div><br>
           
