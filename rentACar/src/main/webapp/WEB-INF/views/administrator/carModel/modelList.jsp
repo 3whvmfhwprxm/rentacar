@@ -120,7 +120,9 @@ th {
 
 	<div class="col-md-4"></div>
 	<div>
+		<a href='<c:url value="/administrator/carModel/modelRegister.do" />'>
 		<button type="button" class="btn btn-primary">Register</button>
+		</a>
 	</div>
 
 	<div class="divSearch">

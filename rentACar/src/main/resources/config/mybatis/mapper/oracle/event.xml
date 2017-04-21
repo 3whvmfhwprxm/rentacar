@@ -4,6 +4,59 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.event">
 	
+	<sql id="searchWhat">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
+		</if>
+	</sql>
+
+	<select id="selectEvt" resultType="EventVO" parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from EVENT 
+		        <include refid="searchWhat"></include>
+		        order by event_num desc
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectEvtTotalRecord" parameterType="SearchVO" resultType="int">
+		select count(*) from EVENT
+		<include refid="searchWhat"></include>
+	</select>
+	
+	<insert id="inserEvt" parameterType="EventVO">
+		<selectKey keyProperty="eventNum" order="BEFORE" resultType="int">
+			select event_seq.nextval from dual
+		</selectKey>	
+		insert into event(event_num, event_title, event_content, admin_id, event_start_date, event_end_date,
+		event_target_grade, event_image1, event_original_image1, event_image2, event_original_image2, event_target_company)
+		values(#{eventNum}, #{eventTitle}, #{eventContent}, #{adminId}, #{eventStart_date}, 
+		#{eventEnd_date}, #{eventTargetGrade}, #{eventImage1}, #{eventOriginalImage1}, #{eventImage2}, 
+		#{eventOriginalImage2}, #{eventTargetCompany})
+	</insert>
+	
+	<update id="updateEvt" parameterType="EventVO">
+		update event
+		set event_title=#{eventTitle}, event_content=#{eventContent}, event_start_date=#{eventStart_date}, event_end_date=#{eventEnd_date},
+		event_target_grade=#{eventTargetGrade}, event_editdate=sysdate
+		<if test="eventImage1!=null">
+			, event_image1=#{eventImage1}
+		</if>
+		<if test="eventImage2!=null">
+			, event_image2=#{eventImage2}
+		</if>
+		where event_num=#{eventNum}
+	</update>
+	
 </mapper>
 
 

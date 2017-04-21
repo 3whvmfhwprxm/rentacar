@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.user.model.UserService;
 import com.third.rent.user.model.UserVO;
@@ -30,7 +29,7 @@ public class RegEditController {
 		//로그인되었는지 체크
 		if(userId==null || userId.isEmpty()){
 			model.addAttribute("msg", "먼저 로그인하세요");
-			model.addAttribute("url", "/login/login.do");
+			model.addAttribute("url", "/inc_user/login.do");
 			return "common/message";
 		}
 		UserVO vo=userService.selectByUserid(userId);

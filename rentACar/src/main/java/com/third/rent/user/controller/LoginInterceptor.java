@@ -23,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null || userId.isEmpty()){
-			request.setAttribute("msg", "먼저 로그인하세요");
+			request.setAttribute("msg", "먼저 로그인하세요!!");
 			request.setAttribute("url", "/inc_user/login.do");
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/common/message.jsp");

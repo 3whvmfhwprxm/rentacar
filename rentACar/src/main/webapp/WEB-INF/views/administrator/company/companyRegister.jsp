@@ -8,9 +8,13 @@
 		$("#name").focus();
 		
 		$("#btRegister").click(function(){
-			if(!validate_userid($("#CompanyId").val())){
-				alert('아이디는 영문대소문자, 숫자, 언더바만 가능합니다');
+			if(!validate_CompanyId($("#CompanyId").val())){
+				alert('아이디는 영문대소문자, 숫자만 가능합니다');
 				$("#CompanyId").focus();
+				return false;
+			}else if($("#chkId").val()!='Y'){
+				alert('아이디 중복검사를 해야 합니다.');
+				$('#btnChkId').focus();
 				return false;
 			}else if($("#CompanyName").val()==''){
 				alert('업체명을 입력하세요');
@@ -24,18 +28,20 @@
 				alert('비밀번호가 일치하지 않습니다');
 				$("#CompanyPwd2").focus();
 				return false;
-			}else if($("#chkCompanyId").val()!='Y'){
-				alert('아이디 중복검사를 해야 합니다.');
-				$('#chkCompanyId').focus();
+			}else if($("#CompanyNo").val()==''){
+				alert('사업자번호를 입력해야 합니다.');
+				$('#CompanyNo').focus();
 				return false;
-			}else if($("#comAccNum").val()!='Y'){
+			}else if($("#comAccNum").val()==''){
 				alert('계좌번호를 입력해야 합니다.');
 				$('#comAccNum').focus();
 				return false;
-			}else if(!validate_tel($("#CompanyTel2").val()) || 
-					!validate_tel($("#CompanyTel3").val())){
-				alert('대표번호는 숫자를 입력하셔야 합니다');
-				$("#CompanyTel2").focus();
+			}else if($("#CompanyTel2").val()=='' || $("#CompanyTel3").val()==''){
+				if(!validate_tel($("#CompanyTel2").val()) || 
+				   !validate_tel($("#CompanyTel3").val())){
+					alert('대표번호는 숫자를 입력하셔야 합니다');
+					$("#CompanyTel2").focus();
+				}
 				return false;
 			}else if(!validate_mobile($("#CompanyMobile2").val()) || 
 					!validate_mobile($("#CompanyMobile3").val())){
@@ -72,10 +78,20 @@
 			}
 		});
 		
-		$("#checkCompanyId").click(function(){
-			$("#frm1").prop("action", "<c:url value='/administrator/company/companyRegister.do?comId=${comVo.comId}' />");
-			$("#frm1").submit();
-		});	
+		$("#btnChkId").click(function(){	
+			if($("#CompanyId").val()==''){
+				alert('아이디를 입력하세요.');
+				$("#CompanyId").focus();
+				return false;
+			}else if(!validate_CompanyId($("#CompanyId").val())){
+				alert('아이디는 영문대소문자, 숫자만 가능합니다');
+				$("#CompanyId").focus();
+				return false;
+			}
+			
+			window.open("<c:url value='/administrator/company/checkCompanyId.do?CompanyId="+$("#CompanyId").val()+"'/>",'chk',
+			'width=400,height=300,left=10,top=10,location=yes,resizable=yes');
+		});
 		
 		var panels = $('.user-infos');
 		var panelsButton = $('.dropdown-user');
@@ -99,9 +115,9 @@
 	});
 		
 	
-	function validate_userid(userid){
-		var pattern = new RegExp(/^[a-zA-Z0-9_]+$/g);
-		return pattern.test(userid);
+	function validate_CompanyId(CompanyId){
+		var pattern = new RegExp(/^[a-zA-Z0-9]+$/g);
+		return pattern.test(CompanyId);
 	}
 
 	function validate_tel(tel){
@@ -133,60 +149,23 @@
 <title>CompanyRegister</title>
 <body>
 	<div class="divList container">
-		<form class="form-horizontal" id="frm1" method="post"
+		<form class="form-horizontal" id="frm1" name="frm1" method="post"
 			action='<c:url value="/administrator/company/companyRegister.do" />'>
 			<fieldset>
 			<legend>Register</legend>
 				<div class="form-group">
-					<label for="CompanyId" class="col-sm-2 control-label">Company
-						Id</label>
+					<label for="CompanyId" class="col-sm-2 control-label">
+						Company Id </label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="CompanyId"
-							id="CompanyId" placeholder="Company Id">
+							id="CompanyId" placeholder="Company Id">		
 					</div>
-					<div>
-						<button type="button" class="btn btn-info btn-md"
-							data-toggle="modal" data-target=".bs-example-modal-lg">Check</button>
-						<div class="modal fade bs-example-modal-lg" tabindex="-1"
-							role="dialog" aria-labelledby="myLargeModalLabel"
-							aria-hidden="true">
-							<div class="modal-dialog modal-lg">
-								<div class="modal-content">
-									<div class="modal-header modal-header-primary">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">
-											×
-										</button>
-										<h1>Check</h1>
-									</div>
-									<div class="modal-body">
-										<label for="checkComId">아이디</label> <input type="text"
-											id="checkComId" name="checkComId" value="${comVo.comId}">
-										<button type="button" id="checkCompanyId">
-											Check Id
-										</button>
-										<c:if test="${result==EXIST_ID}">
-											<p>이미 등록된 아이디입니다. 다른 아이디를 입력하세요</p>
-										</c:if>
-									</div>
-									<div class="modal-footer">
-										<c:if test="${result==NONE_EXIST_ID}">
-											<button type="button" class="btn btn-default pull-rigth"
-												id="checkId" data-dismiss="modal">
-												<i class="fa fa-check" aria-hidden="true"></i>
-											</button>
-										</c:if>
-										<button type="button" class="btn btn-default pull-rigth"
-											data-dismiss="modal">
-											<i class="fa fa-times" aria-hidden="true"></i>
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
+					<div class="col-sm-2">
+						<button class="btn btn-default" type="button" id="btnChkId">
+							중복 확인
+						</button>
 					</div>
 				</div>
-
 				<div class="form-group">
 					<label for="CompanyName" class="col-sm-2 control-label">
 						Company Name
@@ -206,16 +185,18 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyPwd" class="col-sm-2 control-label">Password
-						Check</label>
+					<label for="CompanyPwd" class="col-sm-2 control-label">
+						Password Check
+					</label>
 					<div class="col-sm-8">
 						<input type="password" class="form-control" name="CompanyPwd2"
-							id="chkCompanyId" placeholder="Company CompanyPwd2">
+							id="CompanyPwd2" placeholder="Company CompanyPwd2">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyNo" class="col-sm-2 control-label">Company
-						No</label>
+					<label for="CompanyNo" class="col-sm-2 control-label">
+					Company No
+					</label>
 					<div class="col-sm-8">
 						<input type="text" class="form-control" name="CompanyNo"
 							id="CompanyNo" placeholder="Company No">
@@ -303,7 +284,7 @@
 					<label for="CompanyEmail" class="col-sm-2 control-label">Company
 						Email</label>
 					<div class="col-md-3">
-						<input type="email" class="form-control" name="CompanyEmail1"
+						<input type="text" class="form-control" name="CompanyEmail1"
 							id="CompanyEmail1" placeholder="Company Email1">
 					</div>
 					<div class="col-xs-2">
@@ -323,11 +304,12 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyLogo" class="col-sm-2 control-label">Company
-						Logo</label>
-					<div class="col-sm-8">
+					<label for="CompanyLogo" class="col-sm-2 control-label">
+					Company Logo
+					</label>
+					<div class="col-sm-2">
 						<input type="file" name="CompanyLogo" id="CompanyLogo"
-							placeholder="file">
+							placeholder="file">	
 					</div>
 				</div>
 				<div class=form-group>
@@ -339,6 +321,7 @@
 					</div>
 				</div>
 			</fieldset>
+			<input type ="text" name="chkId" id="chkId">
 		</form>
 	</div>
 </body>

@@ -123,9 +123,9 @@ th {
 	<div class="col-md-4"></div>
 	<div>
 		<a href='<c:url value="/administrator/company/companyRegister.do" />'>
-		<button type="button" class="btn btn-primary">
-			Register
-		</button>
+			<button type="button" class="btn btn-primary">
+				Register
+			</button>
 		</a>
 	</div>
 
@@ -141,10 +141,9 @@ th {
 					<c:if test="${'com_name'==param.searchCondition}">
            		selected            	
            	</c:if>>업체명</option>
-			</select>
-			<input type="text" name="searchKeyword" title="검색어 입력"
-				value="${param.searchKeyword}"> 
-			<input type="submit" value="검색">
+			</select> <input type="text" name="searchKeyword" title="검색어 입력"
+				value="${param.searchKeyword}"> <input type="submit"
+				value="검색">
 		</form>
 	</div>
 </div>

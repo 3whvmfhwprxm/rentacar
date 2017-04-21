@@ -11,10 +11,7 @@
 	
 	<select id="selectAllCompany" resultType="CompanyVO" 
 		parameterType="SearchVO">
-		select com_id, com_name, com_pwd, com_num, com_tel1, com_tel2, com_tel3,
-			com_mobile1, com_mobile2, com_mobile3, com_fax1, com_fax2, com_fax3,
-			com_address, com_ceo, com_email1, com_email2, com_logo, com_regdate,
-			com_outdate
+		select *
 		from
 		(
 		    select rownum as RNUM ,LIST.*
@@ -31,6 +28,10 @@
 		]]>
 	</select> 
 	
+	<select id="selectCompany" resultType="CompanyVO">
+		select*from company;
+	</select>
+	
 	<select id="selectTotalRecord" parameterType="SearchVO"
 		resultType="int">
 		select count(*) from Company 
@@ -44,13 +45,17 @@
 
 	<insert id="insertCompany" parameterType="CompanyVO">
 		insert into company(com_id, com_name, com_pwd, com_num, com_accNum, 
-		com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3, 
-		com_mobile3, com_fax2, com_fax3, com_address, com_ceo,
-		com_email1, com_email2, com_logo)
+		com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+		com_fax1, com_fax2, com_fax3, com_address, com_ceo, com_email1, com_email2, com_logo)
 		values(#{comId}, #{comName}, #{comPwd}, #{comNum}, #{comAccNum}, 
-		#{comTel1}, #{comTel2}, #{comTel3}, #{hp3}, #{comMobile1}, #{comMobile2}, #{comMobile3},
+		#{comTel1}, #{comTel2}, #{comTel3}, #{comMobile1}, #{comMobile2}, #{comMobile3},
 		#{comFax1}, #{comFax2}, #{comFax3}, #{comAddress}, #{comCeo}, #{comEmail1}, #{comEmail2}, #{comLogo})
 	</insert>
+	
+	<select id="duplicateCompanyId" parameterType="String" resultType="int">
+		select count(*) from company
+		where com_id=#{comId} and com_outdate is null
+	</select>
 
 	<update id="updateCompany" parameterType="CompanyVO">
 		update company 

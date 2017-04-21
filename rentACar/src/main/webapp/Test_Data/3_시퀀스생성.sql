@@ -3,7 +3,6 @@ start with 10
 increment by 1
 nocache;
 
-
 create sequence Company_seq
 start with 10
 increment by 1
@@ -35,6 +34,11 @@ increment by 1
 nocache;
 
 create sequence Counsel_seq
+start with 10
+increment by 1
+nocache;
+
+create sequence Event_seq
 start with 10
 increment by 1
 nocache;
