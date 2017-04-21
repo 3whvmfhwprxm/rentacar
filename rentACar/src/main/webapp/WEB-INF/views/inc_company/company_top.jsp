@@ -91,7 +91,7 @@ $(document).ready(function () {
 	                <li><a href='<c:url value="/com_manage/company_epilogue.do"/>'>후기관리</a></li>
 	                <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>통계관리</a></li>
 	                <li><a href='<c:url value="/com_manage/company_announcement.do"/>'>공지사항</a></li>
-	                <li><a href="#">내업체정보</a></li>
+	                <li><a href='<c:url value="/com_manage/company_detail.do"/>'>내업체정보</a></li>
 	            </ul>
 	        </div>
         </div>

@@ -9,11 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_Board.model.Admin_BoardService;
+import com.third.rent.admin_Company.model.Admin_CompanyService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
+import com.third.rent.company.model.CompanyVO;
 import com.third.rent.company.notice.model.CompanyNoticeVO;
 
 
@@ -28,6 +33,9 @@ public class CompanyEpilogueController {
 	@Autowired
 	private Admin_BoardService adService;
 	
+	@Autowired
+	private Admin_CompanyService acService;
+	
 	@RequestMapping("/company_epilogue.do")
 	public String consel_index(){
 		
@@ -36,16 +44,8 @@ public class CompanyEpilogueController {
 		return "com_manage/company_epilogue";
 	}
 	
-	@RequestMapping("/company_announcement.do")
-	public String consel_nonmember(){
-		
-		logger.info("공지사항 화면 구현");
-		
-		return "com_manage/company_announcement";
-		
-	}
 	
-	/*@RequestMapping("/company_announcement.do")
+	@RequestMapping("/company_announcement.do")
 	public String companyAnnouncement(@ModelAttribute SearchVO searchVo, Model model){
 		logger.info("업체 공지사항 화면표시 searchVo={}", searchVo);
 		
@@ -70,7 +70,53 @@ public class CompanyEpilogueController {
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "com_manage/company_announcement";
-	}*/
+	}
+	
+	@RequestMapping(value="/company_detail.do", method=RequestMethod.GET)
+	public String companyEdit_get(@RequestParam String comId,
+			Model model){
+		logger.info("업체수정화면 보여주기, 파라미터 comId={}", comId);
+		
+		if(comId==null || comId.isEmpty()){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "com_manage/company_detail");
+			
+			return "common/message";
+		}
+		
+		CompanyVO companyVo
+			= acService.selectByComId(comId);
+		logger.info("업체수정화면 조회결과 companyVo={}", companyVo);
+		
+		model.addAttribute("companyVo", companyVo);
+		
+		return "com_manage/company_detail";
+	}
+	
+	@RequestMapping(value="/company/companyEdit.do", method=RequestMethod.POST)
+	public String companyEdit_post(@ModelAttribute CompanyVO companyVo,
+			@ModelAttribute AdminVO adminVo,
+			Model model){
+		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
+		
+
+		int cnt = acService.updateCompany(companyVo);
+		logger.info("업체 수정 결과 cnt={}", cnt);
+		
+		String msg = "", url = "";
+		if(cnt>0){
+			msg = "업체 수정 성공";
+			url = "/administrator/company/companyEdit.do?comId="+companyVo.getComId();
+		}else{
+			msg = "업체 수정 실패";
+		}
+
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
 	
 	
 	@RequestMapping("/company_revenue.do")
