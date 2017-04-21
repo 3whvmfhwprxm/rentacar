@@ -1,8 +1,17 @@
 --테스트 데이터 준비
 
---관리자 - 시스템 관리자: 권한코드(1)/ 상담장: 권한코드(2) / 상담사: 권한코드(3)
+--관리자 등급
+insert into ad_grade values(1,'최고관리자');
+insert into ad_grade values(2,'부관리자');
+insert into ad_grade values(3,'상담장');
+insert into ad_grade values(4,'상담사');
+insert into ad_grade values(5,'기타');
+commit;
+select * from ad_grade;
+
+
+--관리자 - 시스템 최고 관리자: 권한코드(1)/ 부관리자: (2) / 상담장: 권한코드(3) / 상담사: 권한코드(4) / 기타: 권한코드(5)
 --시스템 관리자 3명
-delete from rent_admin cascade;
 insert into rent_admin(admin_id,admin_pwd,admin_name,admin_tel1,admin_tel2,admin_tel3,
         admin_email,admin_regdate,admin_authcode)
 values('admin1','1','김관리','010','0001','0001','admin1@naver.com', sysdate,'1');
@@ -110,8 +119,18 @@ values(7, 'kimout1' ,'010','4444','4444','기타','전화로 욕설함', sysdate,
 select * from counsel;
 commit;
 
+--차량 유형
+insert into car_category values(1,'경형');
+insert into car_category values(2,'소형');
+insert into car_category values(3,'준중형');
+insert into car_category values(4,'중형');
+insert into car_category values(5,'고급');
+insert into car_category values(6,'RV/SUV');
+insert into car_category values(7,'승합');
+commit;
+select * from car_category;
+
 --차 모델 입력 현대차 2종류, 기아차 2종류, 외제차 1종류
---차량 유형 소형(0), 중형(1), 대형(2), 특대형(3), 특수차(4), 고급(5)
 delete from car;
 insert into car
 values('hd001', '현대소나타17', '현대', '휘발류', 

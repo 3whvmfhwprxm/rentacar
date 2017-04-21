@@ -22,6 +22,12 @@ ALTER TABLE Car
 			car_code
 		);
 
+/* CAR_CATEGORY 차종류 */
+CREATE TABLE CAR_CATEGORY (
+	car_category_num NUMBER primary key NOT NULL, /* 모델코드 */
+	car_category_name VARCHAR2(10) NOT NULL /* 모델명 */
+);
+
 /* Company 업체 */
 CREATE TABLE Company (
 	com_id VARCHAR2(30) NOT NULL, /* 업체아이디 */
@@ -298,6 +304,12 @@ CREATE TABLE rent_admin (
 	admin_regdate DATE default sysdate, /* 등록일 */
 	admin_authcode VARCHAR2(10) NOT NULL, /* 권한 */
 	admin_outdate DATE /* 탈퇴일 */
+);
+
+/* Ad_Grade 관리자등급 */
+CREATE TABLE Ad_Grade (
+	auth_code NUMBER primary key NOT NULL, /* 관리자등급 */
+	auth_name VARCHAR2(30) NOT NULL /* 관리등급명 */
 );
 
 ALTER TABLE rent_admin
