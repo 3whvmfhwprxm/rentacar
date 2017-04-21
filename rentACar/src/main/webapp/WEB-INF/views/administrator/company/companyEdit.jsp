@@ -72,8 +72,7 @@
 					</div>
 					<div>
 						<label for="comEmail">이메일</label> 
-						<input type="text" id="comEmail1" name="comEmail1" value="${companyVo.comEmail1}" />@
-						<input type="text" id="comEmail2" name="comEmail2" value="${companyVo.comEmail2}" />
+						<input type="text" id="comEmail1" name="comEmail" value="${companyVo.comEmail}" />
 					</div>
 					<div>
 						<label for="comLogo">업체로고</label> 

@@ -8,4 +8,8 @@ public class Utility {
 	public static final int COM_BLOCKSIZE = 3; 
 	public static final int COM_RECORDCOUNT_PERPAGE = 3;
 	//푸시를 위한 주석
+	
+	//관리자 업체 관리
+	public static final int ADMIN_COMPANY_BLOCKSIZE = 10;
+	public static final int ADMIN_COMPANY_RECORDCOUNT_PERPAGE = 1;
 }
