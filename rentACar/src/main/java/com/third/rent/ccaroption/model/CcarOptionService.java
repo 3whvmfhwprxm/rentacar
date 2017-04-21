@@ -11,4 +11,5 @@ public interface CcarOptionService {
 	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo);
 	public HashMap<String, Object> selectByCcarId(String ccarid);
 	public int selectTotalRecord(SearchVO searchVo);
+	public int updateCarOption(CcarOptionVO vo);
 }

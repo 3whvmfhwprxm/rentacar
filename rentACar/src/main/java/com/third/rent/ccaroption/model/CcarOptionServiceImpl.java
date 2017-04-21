@@ -37,6 +37,13 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 	public int selectTotalRecord(SearchVO searchVo) {
 		return ccarOptionDao.selectTotalRecord(searchVo);
 	}
+
+
+	@Override
+	public int updateCarOption(CcarOptionVO vo) {
+		return ccarOptionDao.updateCarOption(vo);
+		//업
+	}
 	
 
 }

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,24 +123,24 @@ public class CcarOptionController {
 	}
 
 
-	@RequestMapping(value="/company_ccarList.do", method=RequestMethod.GET)
-	public String list_get(@ModelAttribute SearchVO searchVo,
+	@RequestMapping("/company_ccarList.do")
+	public String list(@ModelAttribute SearchVO searchVo,			
 			Model model){
 		logger.info("업체차량 전체현황 보여주기");
 			
-		List<Map<String, Object>> cclist =
-				ccarOptionService.selectAllComCar(searchVo);
-		logger.info("cclist.size()={}", cclist.size());
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(Utility.COM_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
-
-		logger.info("업체목록 조회결과, companyList.size()={}", cclist.size());
+		
+		
+		List<Map<String, Object>> cclist =
+				ccarOptionService.selectAllComCar(searchVo);
+		logger.info("업체목록 조회결과, cclist.size()={}", cclist.size());
 
 		int totalRecord = ccarOptionService.selectTotalRecord(searchVo);
 		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
@@ -154,7 +156,7 @@ public class CcarOptionController {
 	}
 
 
-	@RequestMapping(value="/company_ccarDetail.do", method=RequestMethod.GET)
+	@RequestMapping("/company_ccarDetail.do")
 	public String ccarDetail(@RequestParam String ccarCarId, Model model){
 		logger.info("차량 상세정보 보여주기, 파라미터 ccarCarId={}", ccarCarId);
 		String ccarid = ccarCarId;
@@ -168,7 +170,7 @@ public class CcarOptionController {
 	}
 
 	@RequestMapping(value="/company_ccarEdit.do", method=RequestMethod.GET)
-	public String ccarEdit(@RequestParam String ccarCarId, Model model){
+	public String ccarEdit_get(@RequestParam String ccarCarId, Model model){
 		logger.info("차량 수정화면 보여주기, 파라미터 ccarCarId={}", ccarCarId);
 		String ccarid = ccarCarId;
 		
@@ -179,4 +181,14 @@ public class CcarOptionController {
 		
 		return "com_manage/company_ccarEdit";
 	}
+	
+	@RequestMapping(value="/company_ccarEdit.do", method=RequestMethod.POST)
+	public String ccarEdit_post(@ModelAttribute CcarOptionVO ccarOptionVo, Model model){
+		logger.info("차량 수정처리, 파라미터=ccarOptionVo={}", ccarOptionVo);
+		
+		
+		
+		return "";
+	}
+	
 }

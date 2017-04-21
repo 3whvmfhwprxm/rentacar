@@ -38,6 +38,11 @@ public class CcarOptionDAOMybatis extends SqlSessionDaoSupport
 	public int selectTotalRecord(SearchVO searchVo) {
 		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
+
+	@Override
+	public int updateCarOption(CcarOptionVO vo) {
+		return getSqlSession().update(namespace+".updateCarOption", vo);
+	}
 	
 }
 
