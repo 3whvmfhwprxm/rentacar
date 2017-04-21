@@ -6,9 +6,9 @@
 	<insert id="insertAdmin" parameterType="AdminVO">
 		insert into rent_admin
 		(admin_id, admin_pwd, admin_name, admin_tel1, admin_tel2, admin_tel3,
-        admin_email1, admin_email2, admin_regdate, admin_authcode)
-		values(#{adminId}, #{adminPwd}, #{adminName}, #{adminTel1}, #{adminTel2}, #{adminTel3}, #{adminEmail1},
-		#{adminEmail2}, sysdate, #{adminAuthcode});
+        admin_email, admin_regdate, admin_authcode)
+		values(#{adminId}, #{adminPwd}, #{adminName}, #{adminTel1}, #{adminTel2}, #{adminTel3}, #{adminEmail},
+		sysdate, #{adminAuthcode});
 	</insert>
 	
 	<select id="duplicateAdminId" parameterType="String"
@@ -30,8 +30,7 @@
 	
 	<update id="updateAdmin" parameterType="AdminVO">
 		update rent_admin set admin_tel1=#{adminTel1}, admin_tel2=#{adminTel2}, admin_tel3=#{adminTel3},
-		admin_email1=#{adminEmail1}, admin_email2=#{adminEmail2},
-		admin_authcode=#{adminAuthcode}
+		admin_email=#{adminEmail}, admin_authcode=#{adminAuthcode}
 		where admin_id=#{adminId} and admin_outdate is null
 	</update>
 	

@@ -1,11 +1,8 @@
 package com.third.rent.ccaroption.controller;
 
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +21,6 @@ import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
-import com.third.rent.company.model.CompanyVO;
 
 @Controller
 @RequestMapping("/com_manage")
