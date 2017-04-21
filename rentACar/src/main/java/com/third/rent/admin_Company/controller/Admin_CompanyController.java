@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_Company.model.Admin_CompanyService;
@@ -37,11 +38,11 @@ public class Admin_CompanyController {
 
 		//2
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(Utility.ADMIN_COMPANY_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 
 		List<CompanyVO> companyList = adminCompanyService.selectAllCompany(searchVo);
@@ -68,8 +69,7 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.POST)
-	public String companyRegister_post(@ModelAttribute CompanyVO comVo,
-			@RequestParam(value="email3", required=false) String email3, Model model){
+	public String companyRegister_post(@ModelAttribute CompanyVO comVo, Model model){
 		//1
 		logger.info("업체등록 처리, 파라미터 comVo={}", comVo);
 		
@@ -80,21 +80,6 @@ public class Admin_CompanyController {
 			comVo.setComTel1("");
 			comVo.setComTel2("");
 			comVo.setComTel3("");
-		}
-		
-		String email1=comVo.getComEmail1();
-				
-		if(email1==null || email1.isEmpty()){
-			comVo.setComEmail2("");;
-		}else{
-			if(comVo.getComEmail2().equals("etc")){
-				if(email3 !=null && !email3.isEmpty()){
-					comVo.setComEmail2(email3);
-				}else{
-					comVo.setComEmail2("");
-					comVo.setComEmail2("");
-				}
-			}
 		}
 		
 		int cnt = adminCompanyService.insertCompany(comVo);
@@ -114,48 +99,19 @@ public class Admin_CompanyController {
 		return "common/message";
 	}
 	
-	@RequestMapping("/company/checkCompanyId.do")
-	public String checkCompanyId(@RequestParam String CompanyId, Model model){
-		//1.		
-		logger.info("아이디 중복체크 매개변수 CompanyId={}", CompanyId);
+	@RequestMapping("/company/CheckCompanyId.do")
+	@ResponseBody
+	public boolean CheckCompanyId(@RequestParam String CompanyId){
+		logger.info("ajax - 아이디 중복확인, 파라미터 userid={}", CompanyId);
 		
-		//2.
-		int result=0;
-		if(CompanyId!=null && !CompanyId.isEmpty()){
-			result = adminCompanyService.duplicateCompanyId(CompanyId);
-			logger.info("중복아이디 체크 결과 result={}", result);
+		int result = adminCompanyService.duplicateCompanyId(CompanyId);
+		logger.info("아이디 중복확인, CompanyId={}", CompanyId);
+		
+		boolean bool = false;
+		if(result==Admin_CompanyService.EXIST_ID){
+			bool = true;
 		}
-		
-		//3.
-		model.addAttribute("result", result);
-		model.addAttribute("EXIST_ID", Admin_CompanyService.EXIST_ID);
-		model.addAttribute("NONE_EXIST_ID", Admin_CompanyService.NONE_EXIST_ID);
-		
-		return "administrator/company/checkCompanyId";
-	}
-	
-	@RequestMapping("/company/companyDetail.do")
-	public String companyDetail(@RequestParam String comId, HttpSession session,
-			Model model){
-		//1.
-		logger.info("글 상세보기, 파라미터 comId={}", comId);
-		
-		if(comId.isEmpty()){
-			model.addAttribute("msg", "잘못된 url입니다");
-			model.addAttribute("url", "/administrator/company/companyList.do");
-
-			return "common/message";
-		}
-
-		//2.
-		CompanyVO companyDetail = adminCompanyService.selectByComId(comId);
-		logger.info("상세보기 결과, companyDetail={}", companyDetail);
-
-
-		//3.
-		model.addAttribute("companyDetail", companyDetail);
-
-		return "administrator/company/companyDetail";
+		return bool;
 	}
 	
 	@RequestMapping(value="/company/companyEdit.do", method=RequestMethod.GET)

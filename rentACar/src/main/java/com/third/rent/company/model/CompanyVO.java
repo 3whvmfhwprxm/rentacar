@@ -19,8 +19,7 @@ public class CompanyVO {
 	private String comFax3;
 	private String comAddress;
 	private String comCeo;
-	private String comEmail1;
-	private String comEmail2;
+	private String comEmail;
 	private String comLogo;
 	private Timestamp comRegdate;
 	private Timestamp comOutdate;
@@ -153,20 +152,12 @@ public class CompanyVO {
 		this.comCeo = comCeo;
 	}
 
-	public String getComEmail1() {
-		return comEmail1;
+	public String getComEmail() {
+		return comEmail;
 	}
 
-	public void setComEmail1(String comEmail1) {
-		this.comEmail1 = comEmail1;
-	}
-
-	public String getComEmail2() {
-		return comEmail2;
-	}
-
-	public void setComEmail2(String comEmail2) {
-		this.comEmail2 = comEmail2;
+	public void setComEmail(String comEmail) {
+		this.comEmail = comEmail;
 	}
 
 	public String getComLogo() {
@@ -199,7 +190,8 @@ public class CompanyVO {
 				+ ", comAccNum=" + comAccNum + ", comTel1=" + comTel1 + ", comTel2=" + comTel2 + ", comTel3=" + comTel3
 				+ ", comMobile1=" + comMobile1 + ", comMobile2=" + comMobile2 + ", comMobile3=" + comMobile3
 				+ ", comFax1=" + comFax1 + ", comFax2=" + comFax2 + ", comFax3=" + comFax3 + ", comAddress="
-				+ comAddress + ", comCeo=" + comCeo + ", comEmail1=" + comEmail1 + ", comEmail2=" + comEmail2
-				+ ", comLogo=" + comLogo + ", comRegdate=" + comRegdate + ", comOutdate=" + comOutdate + "]";
+				+ comAddress + ", comCeo=" + comCeo + ", comEmail=" + comEmail + ", comLogo=" + comLogo
+				+ ", comRegdate=" + comRegdate + ", comOutdate=" + comOutdate + "]";
 	}
+
 }

@@ -5,16 +5,20 @@
 	$(document).ready(function() {
 		$('[data-toggle="tooltip"]').tooltip();
 	
-		$("#name").focus();
+		$("#CompanyId").focus();
 		
-		$("#btRegister").click(function(){
+		$("#btRegister").submit(function(){
 			if(!validate_CompanyId($("#CompanyId").val())){
 				alert('아이디는 영문대소문자, 숫자만 가능합니다');
 				$("#CompanyId").focus();
 				return false;
-			}else if($("#chkId").val()!='Y'){
-				alert('아이디 중복검사를 해야 합니다.');
-				$('#btnChkId').focus();
+			}else if($("#CompanyId").val()==''){
+				alert('아이디를 입력하세요.');
+				$("#CompanyId").focus();
+				return false;
+			}else if($("#CompanyId").val().length<6){
+				alert('아이디는 6글자 이상이어야합니다.');
+				$("#CompanyId").focus();
 				return false;
 			}else if($("#CompanyName").val()==''){
 				alert('업체명을 입력하세요');
@@ -36,22 +40,35 @@
 				alert('계좌번호를 입력해야 합니다.');
 				$('#comAccNum').focus();
 				return false;
-			}else if($("#CompanyTel2").val()=='' || $("#CompanyTel3").val()==''){
-				if(!validate_tel($("#CompanyTel2").val()) || 
-				   !validate_tel($("#CompanyTel3").val())){
-					alert('대표번호는 숫자를 입력하셔야 합니다');
-					$("#CompanyTel2").focus();
-				}
+			}else if($("#CompanyTel2").val()=='' || 
+					$("#CompanyTel3").val()==''){
+				alert('대표번호를 입력하세요.');
+				$("#CompanyTel2").focus();
+					return false;
+			}else if(!validate_tel($("#CompanyTel2").val()) || 
+					!validate_tel($("#CompanyTel3").val())){
+				alert('대표번호는 숫자를 입력하셔야 합니다');
+				$("#CompanyTel2").focus();
+				return false;
+			}else if($("#CompanyMobile2").val()=='' || 
+					$("#CompanyMobile3").val()==''){
+				alert('휴대폰번호를 입력하세요');
+				$("#CompanyMobile2").focus();
 				return false;
 			}else if(!validate_mobile($("#CompanyMobile2").val()) || 
 					!validate_mobile($("#CompanyMobile3").val())){
-				alert('휴대폰은 숫자를 입력하셔야 합니다');
+				alert('휴대폰번호는 숫자를 입력하셔야 합니다');
 				$("#CompanyMobile2").focus();
+				return false;
+			}else if($("#CompanyFax2").val()=='' || 
+					$("#CompanyFax3").val()==''){
+				alert('팩스번호를 입력하세요');
+				$("#CompanyFax1").focus();
 				return false;
 			}else if(!validate_fax($("#CompanyFax2").val()) || 
 					!validate_fax($("#CompanyFax3").val())){
 				alert('팩스번호는 숫자를 입력하셔야 합니다');
-				$("#CompanyFax2").focus();
+				$("#CompanyFax1").focus();
 				return false;
 			}else if($("#CompanyAddress").val()==''){
 				alert('회사주소를 입력하세요');
@@ -61,36 +78,48 @@
 				alert('대표자를 입력하세요');
 				$("#CompanyCeo").focus();
 				return false;
-			}else if($("#CompanyEmail1").val()==''){
-				alert('이메일을 입력하세요');
-				$("#CompanyEmail1").focus();
-				return false;
 			}
 		});
 		
-		$("#CompanyEmail2").change(function(){
-			if($("#CompanyEmail2").val()=="etc"){
-				$('#CompanyEmail3').css("visibility","visible");
-				$("#CompanyEmail3").val("");
-				$("#CompanyEmail3").focus();
+		
+		$("#CompanyId").keyup(function(){
+			if(!validate_CompanyId($("#CompanyId").val())){
+				$("#check").html('아이디는 영문이나 숫자만 입력하셔야 합니다.');
+				$("#check").show();
+			}else if($("#CompanyId").val()==''){
+				$("#check").html('아이디를 입력하세요');
+				$("#chkId").val("");
+				$("#check").show();
+			}else if($("#CompanyId").val().length<6){
+				$("#check").html('아이디는 6글자 이상이어야합니다.');
+				$("#chkId").val("");
+				$("#check").show();
 			}else{
-				$('#CompanyEmail3').css("visibility","hidden");
+				$.ajax({
+					url:'<c:url value="/administrator/company/CheckCompanyId.do" />',
+					type:'post',
+					data:'CompanyId='+$("#CompanyId").val(),
+					dataType:'json',
+					success:function(res){
+						var msg = "";
+						var chkId = "";
+						
+						if(res){
+							//아이디가 이미 존재
+							msg = "해당 아이디가 이미 존재합니다.";
+						}else{
+							msg = "해당 아이디 사용가능";
+							chkId = "Y";
+						}
+						$("#check").html(msg);
+						$("#chkId").val(chkId);
+						$("#check").show();
+					},
+					error:function(xhr, status, error){
+						alert("error: "+error);
+					}
+				});
 			}
-		});
-		
-		$("#btnChkId").click(function(){	
-			if($("#CompanyId").val()==''){
-				alert('아이디를 입력하세요.');
-				$("#CompanyId").focus();
-				return false;
-			}else if(!validate_CompanyId($("#CompanyId").val())){
-				alert('아이디는 영문대소문자, 숫자만 가능합니다');
-				$("#CompanyId").focus();
-				return false;
-			}
-			
-			window.open("<c:url value='/administrator/company/checkCompanyId.do?CompanyId="+$("#CompanyId").val()+"'/>",'chk',
-			'width=400,height=300,left=10,top=10,location=yes,resizable=yes');
 		});
 		
 		var panels = $('.user-infos');
@@ -114,10 +143,9 @@
 		$('[data-toggle="tooltip"]').tooltip();
 	});
 		
-	
 	function validate_CompanyId(CompanyId){
-		var pattern = new RegExp(/^[a-zA-Z0-9]+$/g);
-		return pattern.test(CompanyId);
+		var pattern = new RegExp(/^[a-zA-Z0-9]*$/g);
+		return pattern.test(CompanyId);		
 	}
 
 	function validate_tel(tel){
@@ -145,6 +173,12 @@
 		text-align: center;
 		display: inline-block;
 	}
+	
+	#check{
+		color: red;
+		font-weight: bold;
+		display: none;
+	}
 </style>
 <title>CompanyRegister</title>
 <body>
@@ -157,64 +191,89 @@
 					<label for="CompanyId" class="col-sm-2 control-label">
 						Company Id </label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" name="CompanyId"
+						<input type="text" class="form-control" name="comId"
 							id="CompanyId" placeholder="Company Id">		
+						
 					</div>
-					<div class="col-sm-2">
-						<button class="btn btn-default" type="button" id="btnChkId">
-							중복 확인
-						</button>
+					<div class="col-sm-4">
+						<span id="check"></span>
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label for="CompanyName" class="col-sm-2 control-label">
 						Company Name
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="CompanyName"
+						<input type="text" class="form-control" name="comName"
 							id="CompanyName" placeholder="Company Name">
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label for="CompanyPwd" class="col-sm-2 control-label">
 						Company Password
 					</label>
 					<div class="col-sm-8">
-						<input type="password" class="form-control" name="CompanyPwd"
+						<input type="password" class="form-control" name="comPwd"
 							id="CompanyPwd" placeholder="Company Password">
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label for="CompanyPwd" class="col-sm-2 control-label">
 						Password Check
 					</label>
 					<div class="col-sm-8">
-						<input type="password" class="form-control" name="CompanyPwd2"
-							id="CompanyPwd2" placeholder="Company CompanyPwd2">
+						<input type="password" class="form-control" name="comPwd2"
+							id="CompanyPwd2" placeholder="Check Company Password">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="CompanyNo" class="col-sm-2 control-label">
-					Company No
+						Company No
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="CompanyNo"
+						<input type="text" class="form-control" name="comNum"
 							id="CompanyNo" placeholder="Company No">
 					</div>
 				</div>
+				
 				<div class="form-group">
-					<label for="comAccNum" class="col-sm-2 control-label">Company
-						Account</label>
+					<label for="comAccNum" class="col-sm-2 control-label">
+						Company Account
+					</label>
 					<div class="col-sm-8">
 						<input type="text" class="form-control" name="comAccNum"
 							id="comAccNum" placeholder="Company Account">
 					</div>
 				</div>
+				
 				<div class="form-group">
-					<label for="CompanyTel1" class="col-sm-2 control-label">Company
-						Tel</label>
+					<label class="col-sm-2 control-label">
+						Company Tel
+					</label>
 					<div class="col-xs-2">
-						<select class="form-control" name="CompanyTel1" id="CompanyTel1">
+						<input class="form-control" type="text" name="comTel1"
+							id="CompanyTel1" maxlength="4" placeholder="Company Tel1">
+					</div>
+					
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="comTel2"
+							id="CompanyTel2" maxlength="4" placeholder="Company Tel2">
+					</div>
+					
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="comTel3"
+							id="CompanyTel3" maxlength="4" placeholder="Company Tel3">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="CompanyMobile11" class="col-sm-2 control-label">
+						Company Mobile
+					</label>
+					<div class="col-xs-2">
+						<select class="form-control" id="comMobile1" name="comMobile1">
 							<option value="010">010</option>
 							<option value="011">011</option>
 							<option value="016">016</option>
@@ -224,104 +283,78 @@
 						</select>
 					</div>
 					<div class="col-xs-2">
-						<input class="form-control" type="text" name="CompanyTel2"
-							id="CompanyTel2" maxlength="4" placeholder="Company Tel2">
-					</div>
-					<div class="col-xs-2">
-						<input class="form-control" type="text" name="CompanyTel3"
-							id="CompanyTel3" maxlength="4" placeholder="Company Tel3">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="CompanyMobile" class="col-sm-2 control-label">Company
-						Mobile</label>
-					<div class="col-xs-2">
-						<input type="text" class="form-control" name="CompanyMobile1"
-							id="CompanyMobile1" placeholder="Company Mobile1">
-					</div>
-					<div class="col-xs-2">
-						<input type="text" class="form-control" name="CompanyMobile2"
+						<input type="text" class="form-control" name="comMobile2"
 							id="CompanyMobile2" placeholder="Company Mobile2">
 					</div>
 					<div class="col-xs-2">
-						<input type="text" class="form-control" name="CompanyMobile3"
+						<input type="text" class="form-control" name="comMobile3"
 							id="CompanyMobile3" placeholder="Company Mobile3">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyFax" class="col-sm-2 control-label">Company
-						Fax</label>
+					<label for="CompanyFax" class="col-sm-2 control-label">
+						Company Fax
+					</label>
 					<div class="col-xs-2">
-						<input type="text" class="form-control" name="CompanyFax1"
+						<input type="text" class="form-control" name="comFax1"
 							id="CompanyFax1" placeholder="Company Fax1">
 					</div>
 					<div class="col-xs-2">
-						<input type="text" class="form-control" name="CompanyFax2"
+						<input type="text" class="form-control" name="comFax2"
 							id="CompanyFax2" placeholder="Company Fax2">
 					</div>
 					<div class="col-xs-2">
-						<input type="text" class="form-control" name="CompanyFax3"
+						<input type="text" class="form-control" name="comFax3"
 							id="CompanyFax3" placeholder="Company Fax3">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyAddress" class="col-sm-2 control-label">Company
-						Address</label>
+					<label for="CompanyAddress" class="col-sm-2 control-label">
+						Company Address
+					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="CompanyAddress"
+						<input type="text" class="form-control" name="comAddress"
 							id="CompanyAddress" placeholder="Company Address">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyCeo" class="col-sm-2 control-label">Company
-						Ceo</label>
+					<label for="CompanyCeo" class="col-sm-2 control-label">
+						Company Ceo
+					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="CompanyCeo"
+						<input type="text" class="form-control" name="comCeo"
 							id="CompanyCeo" placeholder="Company Ceo">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="CompanyEmail" class="col-sm-2 control-label">Company
-						Email</label>
-					<div class="col-md-3">
-						<input type="text" class="form-control" name="CompanyEmail1"
-							id="CompanyEmail1" placeholder="Company Email1">
-					</div>
-					<div class="col-xs-2">
-						<select class="form-control" name="CompanyEmail2"
-							id="CompanyEmail2">
-							<option value="naver.com">naver.com</option>
-							<option value="hanmail.net">hanmail.net</option>
-							<option value="nate.com">nate.com</option>
-							<option value="gmail.com">gmail.com</option>
-							<option value="etc">직접입력</option>
-						</select>
-					</div>
-					<div class="col-xs-2">
-						<input type="text" class="form-control" name="CompanyEmail3"
-							id="CompanyEmail3" placeholder="Company Email3"
-							style="visibility: hidden">
+					<label for="CompanyEmail" class="col-sm-2 control-label">
+						Company Email</label>
+					<div class="col-md-8">
+						<input type="email" class="form-control" name="comEmail"
+							id="CompanyEmail" placeholder="Company Email">
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<label for="CompanyLogo" class="col-sm-2 control-label">
-					Company Logo
+						Company Logo
 					</label>
 					<div class="col-sm-2">
-						<input type="file" name="CompanyLogo" id="CompanyLogo"
+						<input type="file" id="CompanyLogo" name="comLogo"
 							placeholder="file">	
 					</div>
 				</div>
+				
 				<div class=form-group>
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-8">
-							<button class="btn btn-primary btn-lg btn-block" id="btRegister">
-								<i class="fa fa-registered" aria-hidden="true"> Register</i>
-							</button>
+						<button class="btn btn-primary btn-lg btn-block" id="btRegister">
+							Register
+						</button>
 					</div>
 				</div>
 			</fieldset>
-			<input type ="text" name="chkId" id="chkId">
+			<input type ="hidden" name="chkId" id="chkId">
 		</form>
 	</div>
 </body>

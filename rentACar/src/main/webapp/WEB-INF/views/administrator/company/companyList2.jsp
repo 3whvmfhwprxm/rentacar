@@ -66,98 +66,10 @@ th {
 				</c:if>
 				<c:forEach var="vo" items="${companyList}">
 					<tr style="text-align: center">
-						<td><img alt="업체 로고" 
-							src='<c:url value="/companyLogo/${vo.comLogo}" />'></td>
-						<td>
-							<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
-								${vo.comId}
-							</button>
-
-							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h4 class="modal-title" id="myModalLabel">${vo.comId}</h4>
-										</div>
-										<div class="modal-body">
-											<table class="table table-user-information">
-												<tbody>
-													<tr>
-														<td>업체로고</td>
-														<td><img alt="업체 로고" 
-															src='<c:url value="/companyLogo/${vo.comLogo}" />'> </td>
-													</tr>
-													<tr>
-														<td>아이디</td>
-														<td>${vo.comId}</td>
-													</tr>
-													<tr>
-														<td>사업자 번호</td>
-														<td>${vo.comNum}</td>
-													</tr>
-													<tr>
-														<td>대표번호</td>
-														<td>${vo.comTel1}-${vo.comTel2}-${vo.comTel3}</td>
-													</tr>
-													<tr>
-														<td>휴대폰</td>
-														<td>${vo.comMobile1}-${vo.comMobile2}-${vo.comMobile3}</td>
-													</tr>
-													<tr>
-														<td>팩스번호</td>
-														<td>${vo.comFax1}-${vo.comFax2}-${vo.comFax3}</td>
-													</tr>
-													<tr>
-														<td>주소</td>
-														<td>${vo.comFax1}-${vo.comFax2}-${vo.comFax3}}</td>
-													</tr>
-													<tr>
-														<td>대표자</td>
-														<td>${vo.comCeo}</td>
-													</tr>
-													<tr>
-														<td>이메일</td>
-														<td>${vo.comEmail}</td>
-													</tr>
-													<tr>
-														<td>등록일</td>
-														<td>${vo.comRegdate}</td>
-													</tr>
-													<tr>
-														<td>탈퇴일</td>
-														<td>${vo.comOutdate}</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="modal-footer">
-											<a
-												href='<c:url value="/administrator/company/companyList.do"/>'
-												data-original-title="Move userList" data-toggle="tooltip"
-												type="button" class="btn btn-primary btn-lg btn-primary">
-												<i class="fa fa-list" aria-hidden="true"></i>목록
-											</a> <a
-												href='<c:url value="/administrator/company/companyEdit.do?comId=${vo.comId}"/>'
-												data-original-title="Edit this user" data-toggle="tooltip"
-												type="button" class="btn btn-primary btn-lg btn-warning">
-												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
-											</a> <a
-												href="<c:url value='/administrator/company/companyWithdraw.do?comId=${vo.comId}'/>"
-												data-original-title="Remove this user" data-toggle="tooltip"
-												type="button" class="btn btn-primary btn-lg btn-danger">
-												<i class="fa fa-times" aria-hidden="true"></i>삭제
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</td>
+						<td>${vo.comLogo}</td>
+						<td><a
+							href='<c:url value="/administrator/company/companyDetail.do?comId=${vo.comId}" />'>
+								${vo.comId}</a></td>
 						<td style="text-align: center">${vo.comName}</td>
 						<td>${vo.comNum}</td>
 						<td>${vo.comTel1}-${vo.comTel2}-${vo.comTel3}</td>
