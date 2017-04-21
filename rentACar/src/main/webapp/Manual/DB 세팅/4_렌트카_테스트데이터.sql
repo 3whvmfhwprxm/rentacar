@@ -129,6 +129,12 @@ insert into car_category values(6,'RV/SUV');
 insert into car_category values(7,'승합');
 commit;
 select * from car_category;
+select * from car;
+
+select *
+from car_category, car
+where car_category_num=car_type
+and car_category_num=1;
 
 --차 모델 입력 현대차 2종류, 기아차 2종류, 외제차 1종류
 delete from car;

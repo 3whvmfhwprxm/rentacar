@@ -58,7 +58,7 @@ th {
 						href='<c:url value="/administrator/user/userDetail.do?userId=${vo.userId}" />'>
 							${vo.userId}</a></td>
 					<td style="text-align: center">${vo.userName}</td>
-					<td>${vo.userEmail1}@${vo.userEmail2}</td>
+					<td>${vo.userEmail}</td>
 					<td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
 					<td>${vo.userBirth}</td>
 					<td>${vo.userAddress}</td>

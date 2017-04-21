@@ -108,7 +108,7 @@ $(document).ready(function() {
 								</tr>
 								<tr>
 									<td>이메일</td>
-									<td>${userVo.userEmail1}@${userVo.userEmail1}</td>
+									<td>${userVo.userEmail}</td>
 								</tr>
 								<tr>
 									<td>주소</td>

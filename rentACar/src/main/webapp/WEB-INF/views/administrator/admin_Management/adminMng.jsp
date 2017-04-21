@@ -40,9 +40,6 @@
 					<c:if test="${!empty vo.adminTel1 }">
 						<c:set var="tel" value="${vo.adminTel1}-${vo.adminTel2}-${vo.adminTel3}" />
 					</c:if>
-					<c:if test="${!empty vo.adminEmail1 }">
-						<c:set var="email" value="${vo.adminEmail1 }@${vo.adminEmail2 }" />
-					</c:if>
 					<c:set var="authName" value="" />
 					<c:choose>
 						<c:when test="${vo.adminAuthcode==1}">
@@ -65,7 +62,7 @@
 						<td><a href='<c:url value="/admin/Mng/adminEdit.do?adminId=${vo.adminId }" />'> ${vo.adminId }</a></td>
 						<td>${vo.adminName }</td>
 						<td>${tel }</td>
-						<td>${email }</td>
+						<td>${vo.adminEmail}</td>
 						<td>${authName }</td>
 						<td>${vo.adminRegdate }</td>
 						<td>${vo.adminOutdate }</td>

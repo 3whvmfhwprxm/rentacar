@@ -11,7 +11,7 @@
 	
 	<select id="selectAllUser" resultType="UserVO" 
 		parameterType="SearchVO">
-		select user_id, user_pwd, user_name, user_email1, user_email2,
+		select user_id, user_pwd, user_name, user_email,
 			user_tel1, user_tel2, user_tel3, user_birth, user_address,
 			user_gender, user_license, user_regdate, user_outdate
 		from

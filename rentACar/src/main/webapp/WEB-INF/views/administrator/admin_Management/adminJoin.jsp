@@ -19,7 +19,7 @@
 		</div>		
 		<div>
 			<label>이메일:</label>
-			<input type="text" name="adminEmail1" id="adminEmail1">@<input type="text" name="adminEmail2" id="adminEmail2">
+			<input type="email" name="adminEmail" id="adminEmail" required="required">
 		</div>
 		<br>
 		<div>
