@@ -19,7 +19,7 @@
     <!-- BOOTSTRAP CORE STYLE  -->
      <script type="text/javascript">
 //<![CDATA[
-try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"6331141e2217db0e72f71e8b02fe8fe4",petok:"14f4c6a93b203d4c27363dc962c5dbd6ae8d672b-1492669658-1800",zone:"designbootstrap.com",rocket:"a",apps:{}}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=905ca5bd16/cloudflare.min.js"><'+'\/script>');}}catch(e){};
+//try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"6331141e2217db0e72f71e8b02fe8fe4",petok:"14f4c6a93b203d4c27363dc962c5dbd6ae8d672b-1492669658-1800",zone:"designbootstrap.com",rocket:"a",apps:{}}];document.write('<script type="text/javascript" src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=905ca5bd16/cloudflare.min.js"><'+'\/script>');}}catch(e){};
 //]]>
 </script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -55,7 +55,7 @@ try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="${pageContext.request.contextPath}/inc_user/index.do"">
-                    <img src="${pageContext.request.contextPath}/user_img/logo.png" />
+                    <img src="${pageContext.request.contextPath}/user_img/logonew.png" />
                 </a>
             </div>
 		<!-- dropdown -->
