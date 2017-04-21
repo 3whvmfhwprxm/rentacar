@@ -9,7 +9,7 @@
 	ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 	ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
 	values(
-	#{ccarCarId},#{carCode}, #{comID}, #{ccarUseYn}, #{ccarBlackboxYn}, #{ccarSmokeYn}, #{ccarRearCameraYn}, #{ccarRearSenceYn},
+	#{ccarCarId},#{carCode}, #{comId}, #{ccarUseYn}, #{ccarBlackboxYn}, #{ccarSmokeYn}, #{ccarRearCameraYn}, #{ccarRearSenceYn},
 	 #{ccarNaviYn}, #{ccarSunRoofYn}, #{ccarBluetoothYn}, #{ccarAuxYn}, #{ccarSmartkeyYn}, #{ccarRentalcount},
 	 #{ccarNormalPrice}, #{ccarWeekendPrice}, #{ccarPeakPrice}, #{ccarSPeakPrice}, #{ccarArrear}, sysdate)
 	</insert>
@@ -32,6 +32,8 @@
 		on c.car_code = cco.car_code
 		where cco.ccar_car_id=#{cco.ccar_car_id}
 	</select>
+	
+	
 </mapper>
 
 

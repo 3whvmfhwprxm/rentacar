@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class CcarOptionVO {
 	private String ccarCarId; 			/* 업체보유차량 변경--> 차량고유번호 */
 	private String carCode;  			/* 모델코드 */
-	private String comID;  				/* 업체아이디 */
+	private String comId;  				/* 업체아이디 */
 	private String ccarUseYn;  			/* 차량사용가능여부 */
 	private String ccarBlackboxYn;  	/* 블랙박스유무 */
 	private String ccarSmokeYn;  		/* 금연차량 */
@@ -39,11 +39,11 @@ public class CcarOptionVO {
 		this.carCode = carCode;
 	}
 	
-	public String getComID() {
-		return comID;
+	public String getComId() {
+		return comId;
 	}
-	public void setComID(String comID) {
-		this.comID = comID;
+	public void setComId(String comId) {
+		this.comId = comId;
 	}
 	public String getCcarUseYn() {
 		return ccarUseYn;
@@ -155,7 +155,7 @@ public class CcarOptionVO {
 	}
 	@Override
 	public String toString() {
-		return "CcarOptionVO [ccarCarId=" + ccarCarId + ", carCode=" + carCode + ", comID=" + comID + ", ccarUseYn="
+		return "CcarOptionVO [ccarCarId=" + ccarCarId + ", carCode=" + carCode + ", comId=" + comId + ", ccarUseYn="
 				+ ccarUseYn + ", ccarBlackboxYn=" + ccarBlackboxYn + ", ccarSmokeYn=" + ccarSmokeYn
 				+ ", ccarRearCameraYn=" + ccarRearCameraYn + ", ccarRearSenceYn=" + ccarRearSenceYn + ", ccarNaviYn="
 				+ ccarNaviYn + ", ccarSunRoofYn=" + ccarSunRoofYn + ", ccarBluetoothYn=" + ccarBluetoothYn

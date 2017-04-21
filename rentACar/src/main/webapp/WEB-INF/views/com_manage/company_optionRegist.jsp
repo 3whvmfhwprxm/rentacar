@@ -25,6 +25,13 @@
 			}
 		});
 		
+		$("#btRegister").click(function(){
+			if(!$("#comId").val()){
+				alert("업체아이디를 입력에러, 로그인처리가 정상적으로 되지 않았습니다.");
+				$("#comId").focus();
+				return false;
+			}	
+		});
 		
 	});
 	
@@ -36,10 +43,10 @@
 			<fieldset>
 			<legend>차량 등록</legend>
 				<div class="form-group">
-					<label for="comID" class="col-sm-2 control-label">업체아이디</label>
+					<label for="comId" class="col-sm-2 control-label">업체아이디</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" name="comID"
-							id="comID" placeholder="로그인시 자동입력">
+						<input type="text" class="form-control" name="comId"
+							id="comId" placeholder="로그인시 자동입력">
 					</div>
 				</div>
 				<div class="form-group">

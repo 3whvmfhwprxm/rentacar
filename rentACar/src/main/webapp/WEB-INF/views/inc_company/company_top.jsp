@@ -49,57 +49,48 @@ $(document).ready(function () {
     
     <nav class="navbar navbar-default mega-nav">
         <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#MainMenu" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="MainMenu">
-            <ul class="nav navbar-nav menu-list">
-            	 <li class="dropdown list-category">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-navicon"></i> 예약 관리 <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-menu mega-dropdown-menu">
-                        <li><a href="#">예약현황</a></li>
-                        <li><a href="#">차량현황</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">View all</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown list-category">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-navicon"></i> 차량 관리 <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-menu mega-dropdown-menu">
-                        <li><a href='<c:url value="/com_manage/company_ccarList.do"/>'>차량현황</a></li>
-                        <li><a href='<c:url value="/com_manage/company_optionRegist.do"/>'>차량등록</a></li>
-                        <li><a href="#">Air Conditioner</a></li>
-                        <li><a href="#">Radiator</a></li>
-                        <li><a href="#">Washing Machine</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">View all</a></li>
-                    </ul>
-                </li>
-               
-                <li><a href="#">후기관리</a></li>
-                <li><a href="#">통계관리</a></li>
-                <li><a href="#">공지사항</a></li>
-            </ul>
-            <form id="mega-search" class="navbar-form navbar-right">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </form>
-        </div>
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#MainMenu" aria-expanded="false">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	        </div>
+	        <div class="collapse navbar-collapse" id="MainMenu">
+	            <ul class="nav navbar-nav menu-list">
+	            	 <li class="dropdown list-category">
+	                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	                        <i class="fa fa-navicon"></i> 예약 관리 <i class="fa fa-angle-down" aria-hidden="true"></i>
+	                    </a>
+	                    <ul class="dropdown-menu mega-dropdown-menu">
+	                        <li><a href="#">예약현황</a></li>
+	                        <li><a href="#">차량현황</a></li>
+	                        <li role="separator" class="divider"></li>
+	                        <li><a href="#">View all</a></li>
+	                    </ul>
+	                </li>
+	                <li class="dropdown list-category">
+	                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	                        <i class="fa fa-navicon"></i> 차량 관리 <i class="fa fa-angle-down" aria-hidden="true"></i>
+	                    </a>
+	                    <ul class="dropdown-menu mega-dropdown-menu">
+	                        <li><a href='<c:url value="/com_manage/company_ccarList.do"/>'>차량현황</a></li>
+	                        <li><a href='<c:url value="/com_manage/company_optionRegist.do"/>'>차량등록</a></li>
+	                        <li><a href="#">Air Conditioner</a></li>
+	                        <li><a href="#">Radiator</a></li>
+	                        <li><a href="#">Washing Machine</a></li>
+	                        <li role="separator" class="divider"></li>
+	                        <li><a href="#">View all</a></li>
+	                    </ul>
+	                </li>
+	               
+	                <li><a href='<c:url value="/com_manage/company_epilogue.do"/>'>후기관리</a></li>
+	                <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>통계관리</a></li>
+	                <li><a href='<c:url value="/com_manage/company_announcement.do"/>'>공지사항</a></li>
+	                <li><a href="#">내업체정보</a></li>
+	            </ul>
+	        </div>
         </div>
     </nav>
     

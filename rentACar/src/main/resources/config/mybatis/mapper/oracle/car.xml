@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding	="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.car">
+	<select id="selectAllCar" resultType="CarVO">
+		select * from car
+	</select>
+	
+	<select id="selectCarCode" parameterType="CarVO" resultType="string">
+		select car_code from car where car_inc=#{carInc} and car_name=#{carName}
+	</select>
+	
+	<select id="selectCarName" parameterType="string" resultType="string">
+		select car_inc from car where car_inc =#{carInc}	
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
