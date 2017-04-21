@@ -15,8 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.third.rent.car.model.CarService;
+import com.third.rent.car.model.CarVO;
 import com.third.rent.ccaroption.model.CcarOptionService;
 import com.third.rent.ccaroption.model.CcarOptionVO;
+import com.third.rent.common.PaginationInfo;
+import com.third.rent.common.SearchVO;
+import com.third.rent.common.Utility;
+import com.third.rent.company.model.CompanyVO;
 
 @Controller
 @RequestMapping("/com_manage")
@@ -26,12 +32,18 @@ public class CcarOptionController {
 
 	@Autowired
 	private CcarOptionService ccarOptionService;
+	
+	@Autowired
+	private CarService carService;
 
 	@RequestMapping(value="/company_optionRegist.do", method=RequestMethod.GET)
-	public String optionRegist_get(){
-
+	public String optionRegist_get(Model model){
 		logger.info("옵션등록화면 보여주기");
-
+		
+		List<CarVO> alist = carService.selectAllCar();
+		
+		model.addAttribute("slist",alist);
+		
 		return "com_manage/company_optionRegist";
 	}
 
@@ -110,12 +122,32 @@ public class CcarOptionController {
 
 
 	@RequestMapping(value="/company_ccarList.do", method=RequestMethod.GET)
-	public String list_get(Model model){
+	public String list_get(@ModelAttribute SearchVO searchVo,
+			Model model){
 		logger.info("업체차량 전체현황 보여주기");
 			
 		List<Map<String, Object>> cclist =
-				ccarOptionService.selectAllComCar();
+				ccarOptionService.selectAllComCar(searchVo);
 		logger.info("cclist.size()={}", cclist.size());
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+
+		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+
+		logger.info("업체목록 조회결과, companyList.size()={}", cclist.size());
+
+		int totalRecord = ccarOptionService.selectTotalRecord(searchVo);
+		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
+				totalRecord);
+
+		pagingInfo.setTotalRecord(totalRecord);
+
+		//3
+		model.addAttribute("pagingInfo", pagingInfo);
 		
 		model.addAttribute("cclist", cclist);
 		return "com_manage/company_ccarList";

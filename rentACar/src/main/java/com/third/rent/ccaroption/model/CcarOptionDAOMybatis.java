@@ -8,6 +8,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.jdbc.core.metadata.GenericTableMetaDataProvider;
 import org.springframework.stereotype.Repository;
 
+import com.third.rent.common.SearchVO;
+
 @Repository
 public class CcarOptionDAOMybatis extends SqlSessionDaoSupport
 	implements CcarOptionDAO{
@@ -24,12 +26,17 @@ public class CcarOptionDAOMybatis extends SqlSessionDaoSupport
 		return getSqlSession().selectList(namespace+".selectCompanyCO");
 	}
 	
-	public List<Map<String, Object>> selectAllComCar(){
-		return getSqlSession().selectList(namespace+".selectAllComCar");
+	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo){
+		return getSqlSession().selectList(namespace+".selectAllCcar", searchVo);
 	}
 	
 	public HashMap<String, Object> selectByCcarId(String ccarid){
 		return getSqlSession().selectOne(namespace+".selectByCcarId", ccarid);
+	}
+
+	@Override
+	public int selectTotalRecord(SearchVO searchVo) {
+		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
 	
 }

@@ -33,6 +33,37 @@
 		where cco.ccar_car_id=#{cco.ccar_car_id}
 	</select>
 	
+	<sql id="searchWhere">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			where lower(${searchCondition}) like '%'|| lower(#{searchKeyword}) ||'%'
+		</if>
+	</sql>
+	
+<!-- 	<select id="selectAllCcar" resultType="map" parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM, LIST.*
+		    from
+		    (
+		        select c.*, cco.*
+				from car c join companycaroption cco
+				on c.car_code = cco.car_code
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>  -->
+	
+	
+	
+	<select id="selectTotalRecord" parameterType="SearchVO"
+		resultType="int">
+		select count(*) from CompanyCaroption
+		<include refid="searchWhere"></include>
+	</select>
 	
 </mapper>
 

@@ -16,8 +16,19 @@
 <!-- 업체 차량 조회 -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<script type="text/javascript">	
+	function pageFunc(curPage){
+		document.frmPage.currentPage.value=curPage;
+		frmPage.submit();
+	}
+</script>
 <body>
+	<form name="frmPage" method="POST"
+		action='<c:url value="/com_manage/company_ccarList.do" />'>
+		<input type="hidden" name="currentPage">
+		<input type="hidden" name="searchCondition" value="${param.searchCondition}">
+		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
+	</form>
     <div class="container">
         <legend>차량 현황</legend>
         <!--dropdown menu-->
@@ -50,10 +61,8 @@
 			</tr>
         </thead>
         <tbody>
-      	
-        
         <!-- 반복시작 -->
-	<c:forEach var="map" items="${cclist }">
+		<c:forEach var="map" items="${cclist }">
 		<tr>
 			<td><input type="checkbox" id="" name=""></td>
 			<td><a href="<c:url value='/com_manage/company_ccarDetail.do?ccarCarId=${map["CCAR_CAR_ID"] }' /> " />${map['CCAR_CAR_ID']}</td>
@@ -70,25 +79,56 @@
 	 <!-- 반복끝 --> 
         
         
-        
         </tbody>
     </table>
     </div>
-</body>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<nav>
+				<ul class="pagination">
+					<c:if test="${pagingInfo.firstPage>1 }">
+						<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:if>
 
-</html>
+					<c:forEach var="i" begin="${pagingInfo.firstPage}"
+						end="${pagingInfo.lastPage}">
+						<c:if test="${i==pagingInfo.currentPage}">
+							<li class="active"><a href="#">${i}</a></li>
+						</c:if>
+						<c:if test="${i!=pagingInfo.currentPage}">
+							<li><a href="#" onclick="pageFunc(${i})">${i}</a></li>
+						</c:if>
+					</c:forEach>
 
-
-<table border="1" width=100%>
-	
-	
-            <%-- <c:forEach var="map" items="${authList}">
-            	<option value="${map['AUTHCODE'] }">${map['AUTHNAME']}</option>
-            </c:forEach>
-            --%>
-	
-	 
-</table>
-
-
+					<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+						<li><a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+		<div class="divSearch">
+				<form name="frmSearch" method="post"
+					action="<c:url value="/com_manage/company_ccarList.do" />">
+					<select name="searchCondition">
+						<option value="com_id"
+							<c:if test="${'com_id'==param.searchCondition}">
+		           		selected            	
+		           	</c:if>>차량번호</option>
+						<option value="com_name"
+							<c:if test="${'com_name'==param.searchCondition}">
+		           		selected            	
+		           	</c:if>>차량모델코드</option>
+					</select> <input type="text" name="searchKeyword" title="검색어 입력"
+						value="${param.searchKeyword}"> <input type="submit"
+						value="검색">
+				</form>
+			</div>
+		</div>
 <%@ include file="../inc_company/company_bottom.jsp" %>

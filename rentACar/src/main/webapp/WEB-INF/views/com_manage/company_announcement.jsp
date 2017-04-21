@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc_company/company_top.jsp" %>
-<link rel="stylesheet" type="text/css" href='<c:url value="/css/company_an.css"/>'/>
-
-
 
 
 <!-- 공지사항 -->
@@ -11,135 +8,35 @@
 
 	<div class="row">
 		<div class="col-lg-8">
-    	    
             <table class="table table-stripped table-bordered">
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>관리자 아이디</th>
+          <th>글번호</th>
+          <th>글제목</th>
+          <th>작성시간</th>
+          <th>조회수</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark
-              <div class="pull-right">
-        
-              </div>
-          </td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob<div class="pull-right">
-       
-              </div></td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry<div class="pull-right">
-          
-              </div></td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark<div class="pull-right">
-       
-              </div></td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob<div class="pull-right">
       
-              </div></td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry<div class="pull-right">
-     
-              </div></td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark<div class="pull-right">
-    
-              </div></td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob<div class="pull-right">
-    
-
-
-
-
-              </div></td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>  
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark<div class="pull-right">
-    
-              </div></td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob<div class="pull-right">
- >
-              </div></td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry<div class="pull-right">
-  
-              </div></td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>  
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark<div class="pull-right">
-   
-              </div></td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob<div class="pull-right">
-   
-              </div></td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry<div class="pull-right">
-   
-              </div></td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>        
+      <tbody>
+       <c:if test="${empty cnList}">
+					<tr>
+						<td colspan="8" class="align_center">공지사항이 존재하지 않습니다.</td>
+					</tr>
+		</c:if>
+		
+		<c:if test="${!empty cnList }">			
+				<c:forEach var="vo" items="${cnList }">
+					<tr <c:if test="${!empty vo.cnoticeDeldate }"> class="danger" </c:if>>
+						<td>${vo.cnoticeNo }</td>
+						<td><a href='<c:url value="#" />'>${vo.cnoticeTitle }</a></td>
+						<td>${vo.adminId }</td>
+						<td>${vo.cnoticeRegdate }</td>						
+						<td>${vo.cnoticeReadcount }</td>
+					</tr>	
+				</c:forEach>				
+		</c:if>		
       </tbody>
     </table>
     <div class="row">
@@ -148,17 +45,30 @@
   <ul class="pagination">
     <li>
       <a href="#" aria-label="Previous">
+  		<div class="divPage container">
         <span aria-hidden="true">«</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
+			<%-- <c:if test="${pagingInfo.firstPage>1 }">
+				<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
+					<img src='${pageContext.request.contextPath}/images/first.JPG' alt="이전블럭으로">
+				</a>
+			</c:if>
+	
+			<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
+				<c:if test="${i==pagingInfo.currentPage }">
+					<span style="color: blue; font-weight: bold;">${i}</span>
+				</c:if>
+				<c:if test="${i!=pagingInfo.currentPage }">
+					<a href="#" onclick="pageFunc(${i})">[${i}]</a>
+				</c:if>
+			</c:forEach>
+	
+			<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+				<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"> 
+					<img src='${pageContext.request.contextPath}/images/last.JPG' alt="다음블럭으로">
+				</a>
+			</c:if> --%>
         <span aria-hidden="true">»</span>
+		</div>
       </a>
     </li>
   </ul>

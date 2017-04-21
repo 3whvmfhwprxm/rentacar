@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.third.rent.common.SearchVO;
+
 @Service
 public class CcarOptionServiceImpl implements CcarOptionService {
 
@@ -18,17 +20,23 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 		return ccarOptionDao.insertCcarOption(vo);
 	}
 
-	@Override
-	public List<Map<String, Object>> selectAllComCar() {
-		return ccarOptionDao.selectAllComCar();
-	}
 
 	@Override
 	public HashMap<String, Object> selectByCcarId(String ccarid) {
 		return ccarOptionDao.selectByCcarId(ccarid);
 	}
 
-	
+
+	@Override
+	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo) {
+		return ccarOptionDao.selectAllComCar(searchVo);
+	}
+
+
+	@Override
+	public int selectTotalRecord(SearchVO searchVo) {
+		return ccarOptionDao.selectTotalRecord(searchVo);
+	}
 	
 
 }
