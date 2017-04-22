@@ -22,8 +22,6 @@ import com.third.rent.company.model.CompanyVO;
 import com.third.rent.company.notice.model.CompanyNoticeVO;
 
 
-
-
 @Controller
 @RequestMapping("/com_manage")
 public class CompanyEpilogueController {
@@ -72,9 +70,11 @@ public class CompanyEpilogueController {
 		return "com_manage/company_announcement";
 	}
 	
-	@RequestMapping(value="/company_detail.do", method=RequestMethod.GET)
+	@RequestMapping(value="/company_detail.do")
 	public String companyEdit_get(@RequestParam String comId,
 			Model model){
+		
+		//String comId = null;
 		logger.info("업체수정화면 보여주기, 파라미터 comId={}", comId);
 		
 		if(comId==null || comId.isEmpty()){
