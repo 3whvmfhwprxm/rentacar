@@ -20,11 +20,11 @@
 				alert('이메일주소를 입력하세요');
 				$("#userEmail1").focus();
 				return false;
-			}else if(!validate_userTel2($("#userTel2").val()) && $("#userTel2").length=4){
+			}else if(!validate_userTel2($("#userTel2").val())){
 				alert('전화번호를 입력하세요');
 				$("#userTel2").focus();
 				return false;
-			}else if(!validate_userTel3($("#userTel3").val()) && $("#userTel3").length=4){
+			}else if(!validate_userTel3($("#userTel3").val())){
 				alert('전화번호를 입력하세요');
 				$("#userTel3").focus();
 				return false;
@@ -46,28 +46,62 @@
 				return false;
 			}
 		});
-		$("#btnChkId").click(function(){
-			window.open("<c:url value='/inc_user/checkUserid.do?userId="+$("#userId").val()+ "'/>", 'chk',
-			'width=400,height=300,left=10,top=10,location=yes,resizable=yes');
+		//아이디 중복확인-ajax 방식으로
+		$("#userId").keyup(function() {
+			if(!validate_userId($("#userId").val())||$("#userId").val().length<4){
+				//유효성 검사를 통과하지 못한 경우
+				$("#error").html('4자리이상이어야 합니다.');
+				$("#chkId").val("");
+				$("#error").show();
+			}else{
+				//유효성 검사를 통과하면 아이디 중복검사한다
+				$.ajax({
+					url:'<c:url value="/inc_user/userAjaxCheckId.do"/>',
+					type:'post',
+					data:'userId='+$("#userId").val(),
+					success:function(res){
+						var msg="";
+						var chkId="";
+						if(res){
+							//아이디가 이미 존재
+							msg="해당 아이디는 이미 존재합니다.";
+						}else{
+							msg="해당 아이디 사용 가능합니다.";
+							chkId="Y";
+						}
+						$("#error").html(msg);
+						$("#chkId").val(chkId);
+						$("#chkId").show();
+					},
+					error:function(){
+						alert("error:"+error)
+					}
+				});
+			}
 		});
+
+		function validate_userId(userId){
+			var pattern = new RegExp(/^[a-zA-Z0-9_]+$/g);
+			return pattern.test(userId); 
+		}
+	
+		function validate_userTel2(userTel2){
+			var pattern = new RegExp(/^[0-9]*$/g);
+			return pattern.test(hp);
+		}
+		function validate_userTel3(userTel3){
+			var pattern = new RegExp(/^[0-9]*$/g);
+			return pattern.test(hp);
+		}
 	});
-
-	function validate_userId(userId){
-		var pattern = new RegExp(/^[a-zA-Z0-9_]+$/g);
-		return pattern.test(userId); 
-	}
-
-	function validate_userTel2(userTel2){
-		var pattern = new RegExp(/^[0-9]*$/g);
-		return pattern.test(hp);
-	}
-	function validate_userTel3(userTel3){
-		var pattern = new RegExp(/^[0-9]*$/g);
-		return pattern.test(hp);
-	}
-	
-	
 </script>
+<style type="text/css">
+	#error{
+		color: red;
+		font-weight: bold;
+		display: none;
+	}	
+</style>
 
 	<form id="frm1" name="frm1" class="form-horizontal form-label-left" novalidate method="post" action='<c:url value="/inc_user/register.do"/>'>
 		  <br>
@@ -78,7 +112,7 @@
               <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong" required="required" type="text">
             </div>
             <div class="col-md-3">
-            	<button type="button" class="btn btn-success" id="btnChkId" name="btn1">Check</button>
+            	<span id="error"></span>
             </div>
           </div><br>
           
@@ -109,7 +143,7 @@
             <div class="row">
             	<label class="control-label col-md-2" for="name">연락처 <span class="required">*</span>
            		</label>
-           		<div class="col-md-2">
+           		<div class="col-md-1">
              		<select id="userTel1" name="userTel1" class="form-control" name="name">
              			<option value="010">010</option>
 						<option value="011">011</option>
@@ -119,10 +153,10 @@
 						<option value="019">019</option>
              		</select>
            		</div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               <input id="userTel2" name="userTel2" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" type="text">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               <input id="userTel3" name="userTel3" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" type="text">
             </div>
           </div><br>
@@ -146,18 +180,29 @@
           <div class="row">
             <label class="control-label col-md-2" for="name">성별 <span class="required">*</span>
             </label>
-            <div class="col-md-3">
-              <input id="userGender" name="userGender" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 남 or 여" required="required" type="text">
+              <div class="col-md-2">
+           		<select id="userGender" name="userGender" class="form-control" name="name">
+           			<option value="남자">남자</option>
+           			<option value="여자">여자</option>
+           		</select>
             </div>
           </div><br>
           
           <div class="row">
             <label class="control-label col-md-2" for="name">면허증 <span class="required">*</span>
             </label>
-            <div class="col-md-3">
-              <input id="userLicense" name="userLicense" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 1종보통" required="required" type="text">
-            </div>
+           	<div class="col-md-2">
+           		<select id="userLicense" name="userLicense" class="form-control" name="name">
+           			<option value="1종 대형">1종 대형</option>
+           			<option value="1종 보통">1종 보통</option>
+           			<option value="1종 소형">1종 소형</option>
+           			<option value="1종 특수">1종 특수</option>
+           			<option value="2종 보통">2종 보통</option>
+           			<option value="2종 소형">2종 소형</option>
+           		</select>
+       		</div>
           </div><br>
+          
           
           <div class="ln_solid"></div>
           <div class="form-group">

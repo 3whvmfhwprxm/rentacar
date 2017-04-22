@@ -81,7 +81,7 @@
           <div class="row">
             <label class="control-label col-md-2" for="name">연락처 <span class="required">*</span>
            		</label>
-           		<div class="col-md-2">
+           		<div class="col-md-1">
              		<select id="userTel1" name="userTel1" class="form-control" name="name">
              			<option value="010" <c:if test="${vo.userTel1=='010'}">selected</c:if> >010</option>
              			<option value="011" <c:if test="${vo.userTel1=='011'}">selected</c:if> >011</option>
@@ -91,10 +91,10 @@
              			<option value="019" <c:if test="${vo.userTel1=='019'}">selected</c:if> >019</option>
              		</select>
            		</div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               <input id="userTel2" name="userTel2" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" type="text" value="${vo.userTel2 }">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               <input id="userTel3" name="userTel3" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" type="text" value="${vo.userTel3 }">
             </div>
           </div><br>
@@ -118,17 +118,27 @@
           <div class="row">
             <label class="control-label col-md-2" for="name">성별 <span class="required">*</span>
             </label>
-            <div class="col-md-3">
-              <input id="userGender" name="userGender" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 남 or 여" required="required" type="text" value="${vo.userGender }">
-            </div>
+       		<div class="col-md-2">
+         		<select id="userGender" name="userGender" class="form-control" name="name">
+         			<option value="남자" <c:if test="${vo.userGender=='남자'}">selected</c:if> >남자</option>
+         			<option value="여자" <c:if test="${vo.userGender=='여자'}">selected</c:if> >여자</option>
+         		</select>
+       		</div>
           </div><br>
           
           <div class="row">
             <label class="control-label col-md-2" for="name">면허증 <span class="required">*</span>
             </label>
-            <div class="col-md-3">
-              <input id="userLicense" name="userLicense" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 1종보통" required="required" type="text" value="${vo.userLicense }">
-            </div>
+            <div class="col-md-2">
+           		<select id="userLicense" name="userLicense" class="form-control" name="name">
+           			<option value="1종 대형" <c:if test="${vo.userLicense=='1종 대형'}">selected</c:if> >1종 대형</option>
+           			<option value="1종 보통" <c:if test="${vo.userLicense=='1종 보통'}">selected</c:if> >1종 보통</option>
+           			<option value="1종 소형" <c:if test="${vo.userLicense=='1종 소형'}">selected</c:if> >1종 소형</option>
+           			<option value="1종 특수" <c:if test="${vo.userLicense=='1종 특수'}">selected</c:if> >1종 특수</option>
+           			<option value="2종 보통" <c:if test="${vo.userLicense=='2종 보통'}">selected</c:if> >2종 보통</option>
+           			<option value="2종 소형" <c:if test="${vo.userLicense=='2종 소형'}">selected</c:if> >2종 소형</option>
+           		</select>
+       		</div>
           </div><br>
           
           <div class="ln_solid"></div>

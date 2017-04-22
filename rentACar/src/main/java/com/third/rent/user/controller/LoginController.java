@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.user.model.UserService;
 import com.third.rent.user.model.UserVO;
@@ -65,6 +66,22 @@ public class LoginController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping("/inc_user/userAjaxCheckId.do")
+	@ResponseBody
+	public boolean userAjaxCheckId(@RequestParam String userId){
+		logger.info("ajax-아이디 중복확인, 파라미터 userid={}",userId);
+		
+		int result=userService.duplicateUserid(userId);
+		logger.info("아이디 중복확인, result={}",result);
+		
+		boolean bool=false;
+		if(result==UserService.EXIST_ID){
+			//아이디가 이미 존재하는 경우
+			bool=true;
+		}
+		return bool;
 	}
 	
 }
