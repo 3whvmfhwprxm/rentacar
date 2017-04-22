@@ -37,10 +37,10 @@
 			<mapping path="/inc_user/reservation.do" />
 			<beans:ref bean ="loginInterceptor" />	<!-- 클래스이름에서 첫 글자를 소문자로 바꿔서 입력 -->
 		</interceptor>		
-		<interceptor>
+		<!-- <interceptor>
 			<mapping path="/com_manage/*.do" />
-			<beans:ref bean ="companyInterceptor" />	<!-- 클래스이름에서 첫 글자를 소문자로 바꿔서 입력 -->
-		</interceptor>		
+			<beans:ref bean ="companyInterceptor" />	클래스이름에서 첫 글자를 소문자로 바꿔서 입력
+		</interceptor>	 -->	
 	</interceptors>
 	
 </beans:beans>
