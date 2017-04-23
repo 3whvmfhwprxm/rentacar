@@ -1,57 +1,121 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp" %>
-<div class="container">
-	<h2>관리자 정보 수정</h2>
-	<form name="AdminEditfrm" id="AdminEditfrm" method="post" action="<c:url value='/admin/Mng/adminEdit.do' />">
-		<input type="hidden" name="adminId" value="${avo.adminId }">
-		<div>
-			<label>관리자 ID:</label> ${avo.adminId }
+<script type="text/javascript">
+	$().ready(function(){
+		$("#adminPwd").focus();		
+		
+		$("#AdminEditfrm").submit(function(){
+			if(!$("#adminPwd").val()){
+				alert('비밀번호를 입력하세요');
+				$("#adminPwd").focus();
+				return false;
+			}else if($("#adminPwd").val()!=$("#adminPwd2").val()){
+				alert('비밀번호가 일치하지 않습니다');
+				$("#adminPwd2").focus();
+				return false;
+			}else if(!validate_hp($("#adminTel2").val()) || !validate_hp($("#adminTel3").val())){
+				alert('숫자만 입력하셔야 합니다.');
+				$("#adminTel2").focus();
+				return false;
+			}else if($("#adminAuthcode").val()=='0'){
+				alert('관리자 등급을 선택해주세요');
+				$("#adminAuthcode").focus();
+				return false;
+			}
+			
+		});
+	});	
+	function validate_hp(hp){
+		var pattern = new RegExp(/^[0-9]*$/g);
+		return pattern.test(hp);
+		/*  정규식  /^[0-9]*$/g
+		0 에서 9사이의 숫자로 시작하거나 끝나야 한다는 의미 
+		(^는 시작, $는 끝을 의미)
+		닫기 대괄호(]) 뒤의 * 기호는 0번 이상 반복  
+		return 값이 true면 정규식을 통과 false면 정규식을 통과하지못했음을 의미
+		*/
+	}
+</script>
+<div class="divList container">
+	<form class="form-horizontal" name="AdminEditfrm" id="AdminEditfrm" method="post" action="<c:url value='/admin/Mng/adminEdit.do' />">
+	<fieldset>
+		<legend>관리자 정보 수정</legend>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">등록일</label>
+			<div class="col-sm-4">
+				<span class="form-control">${avo.adminRegdate }</span>			
+			</div>
 		</div>
-		<div>
-			<label>관리자 이름:</label> ${avo.adminName }
+		<div class="form-group">
+				<label class="col-sm-2 control-label">관리자 ID</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" 
+						name="adminId" id="adminId" disabled="true" value="${avo.adminId }">					
+				</div>
+				<label id="checkID" class="control-label"></label>
 		</div>
-		<div>
-			<label>등록일:</label> ${avo.adminRegdate }
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">관리자 PWD</label>
+				<div class="col-sm-2">
+					<input type="password" class="form-control" name="adminPwd" id="adminPwd" style="ime-mode:inactive">				
+				</div>
 		</div>
-		<div>
-			<label>연락처:</label>
-			<input type="text" name="adminTel1" id="adminTel1" 
-				value="${avo.adminTel1}">-<input type="text" name="adminTel2" id="adminTel2"
-				value="${avo.adminTel2}">-<input type="text" name="adminTel3" id="adminTel3"
-				value="${avo.adminTel3}">
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">관리자 PWD 확인</label>
+				<div class="col-sm-2">
+					<input type="password" class="form-control" name="adminPwd2" id="adminPwd2" style="ime-mode:inactive">				
+				</div>
 		</div>
-		<br>
-		<div>
-			<label>이메일:</label>
-			<input type="email" name="adminEmail" id="adminEmail" value="${avo.adminEmail}">
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">관리자 이름</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" name="adminName" id="adminName" disabled="true" value="${avo.adminName }">				
+				</div>
 		</div>
-		<br>
-		<div>
-			<label>관리자 등급:</label>
-			<select name="adminAuthcode" id="adminAuthcode">
-				<option value="0" 
-					<c:if test='${avo.adminAuthcode==0}'>selected           	
-			        </c:if>>선택</option>
-			    <option value="1"
-					<c:if test='${avo.adminAuthcode==1}'>selected           	
-			        </c:if>>관리자</option>
-				<option value="2"
-					<c:if test='${avo.adminAuthcode==2}'>selected           	
-			        </c:if>>부관리자</option>
-				<option value="3"
-				<c:if test='${avo.adminAuthcode==3}'>selected           	
-			        </c:if>>상담장</option>
-				<option value="4"
-				<c:if test='${avo.adminAuthcode==4}'>selected           	
-			        </c:if>>상담사</option>
-				<option value="5"
-				<c:if test='${avo.adminAuthcode==5}'>selected           	
-			        </c:if>>기타</option>
-			</select>
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">연락처</label>
+				<div class="col-sm-2">
+					<select class="form-control" name="adminTel1" id="adminTel1">
+						<option value="010" <c:if test="${avo.adminTel1==010}"> selected </c:if> >010</option>
+						<option value="011" <c:if test="${avo.adminTel1==011}"> selected </c:if> >011</option>
+						<option value="016" <c:if test="${avo.adminTel1==016}"> selected </c:if> >016</option>
+						<option value="017" <c:if test="${avo.adminTel1==017}"> selected </c:if> >017</option>
+						<option value="019" <c:if test="${avo.adminTel1==019}"> selected </c:if> >019</option>
+					</select>			
+				</div>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" name="adminTel2" id="adminTel2" value="${avo.adminTel2}">		
+				</div>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" name="adminTel3" id="adminTel3" value="${avo.adminTel3}">		
+				</div>
 		</div>
-	<div>
-		<input type="submit" value="정보 수정" name="btsubmit" id="btsubmit" >
-	</div>
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">이메일</label>
+				<div class="col-sm-2">
+					<input type="email" class="form-control" name="adminEmail" id="adminEmail" 
+						style="ime-mode:inactive" required="required" value="${avo.adminEmail}">				
+				</div>
+		</div>
+		<div class="form-group">	
+			<label class="col-sm-2 control-label">관리자 등급</label>
+			<div class="col-sm-2">
+				<select class="form-control" name="adminAuthcode" id="adminAuthcode">
+					<option value="0">선택</option>
+				    <c:forEach var="auth" items="${authlist }">
+				    	<option value="${auth.authCode }" <c:if test="${avo.adminAuthcode==auth.authCode}"> selected </c:if>>${auth.authName }</option>
+				    </c:forEach>
+				</select>
+			</div>
+		</div>
+	<div class=form-group>
+		<label class="col-sm-2 control-label"></label>		
+		<div class="col-sm-6">
+			<input class="btn btn-primary btn-lg btn-block" type="submit" value="관리자 정보 수정" name="btsubmit" id="btsubmit" >
+		</div>
+	</div>	
+	</fieldset>
+	<input type="hidden" name="adminId" value="${avo.adminId }">
 	</form>
 </div>
 </body>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_Mng.Model.AdminMngService;
+import com.third.rent.admin_Mng.Model.AuthcodeVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
@@ -57,8 +58,13 @@ public class AdminMngController {
 	}
 	
 	@RequestMapping(value="/adminJoin.do", method=RequestMethod.GET)
-	public String joinAdmin_get(){
-		logger.info("관리 - 관리자 입력 화면 보여주기");		
+	public String joinAdmin_get(Model model){
+		logger.info("관리 - 관리자 입력 화면 보여주기");
+		
+		List<AuthcodeVO> authlist=aService.selectAuthCode();
+		
+		model.addAttribute("authlist", authlist);
+		
 		return "administrator/admin_Management/adminJoin";
 	};
 	
@@ -90,6 +96,10 @@ public class AdminMngController {
 		AdminVO avo=aService.selectOneAdmin(adminId);
 		logger.info("관리 - 관리자 수정 관련 조회결과 avo={}", avo);
 		
+		List<AuthcodeVO> authlist=aService.selectAuthCode();
+		logger.info("관리 - 관리자 수정 관련 등급 조회결과 authlist.size()={}", authlist.size());
+		
+		model.addAttribute("authlist", authlist);		
 		model.addAttribute("avo", avo);
 		
 		return "administrator/admin_Management/adminEdit";

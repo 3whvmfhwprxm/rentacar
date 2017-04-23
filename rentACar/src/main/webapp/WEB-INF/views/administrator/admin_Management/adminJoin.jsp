@@ -29,6 +29,10 @@
 				alert('숫자만 입력하셔야 합니다.');
 				$("#adminTel2").focus();
 				return false;
+			}else if($("#adminAuthcode").val()=='0'){
+				alert('관리자 등급을 선택해주세요');
+				$("#adminAuthcode").focus();
+				return false;
 			}else if($("#chkId").val()!='Y'){
 				alert('아이디 중복검사를 해야 합니다.');
 				$("#btnChkId").focus();
@@ -124,7 +128,7 @@
 		<div class="form-group">	
 				<label class="col-sm-2 control-label">관리자 이름</label>
 				<div class="col-sm-2">
-					<input type="password" class="form-control" name="adminName" id="adminName" style="ime-mode:inactive">				
+					<input type="text" class="form-control" name="adminName" id="adminName" style="ime-mode:inactive">				
 				</div>
 		</div>
 		<div class="form-group">	
@@ -156,11 +160,9 @@
 			<div class="col-sm-2">
 				<select class="form-control" name="adminAuthcode" id="adminAuthcode">
 					<option value="0">선택</option>
-				    <option value="1">관리자</option>
-					<option value="2">부관리자</option>
-					<option value="3">상담장</option>
-					<option value="4">상담사</option>
-					<option value="5">기타</option>
+				    <c:forEach var="auth" items="${authlist }">
+				    	<option value="${auth.authCode }">${auth.authName }</option>
+				    </c:forEach>
 				</select>
 			</div>
 		</div>

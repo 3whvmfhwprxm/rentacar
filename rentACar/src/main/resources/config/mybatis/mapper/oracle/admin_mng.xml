@@ -18,7 +18,7 @@
 		    (
 		        select * from RENT_ADMIN
 		        <include refid="searchWhat"></include>
-		        order by admin_authcode desc
+		        order by admin_regdate desc
 		    )LIST
 		)
 		<![CDATA[
@@ -57,6 +57,11 @@
 	<select id="adminDuplicateIDCheck" parameterType="String" resultType="int">
 		select count(*) from RENT_ADMIN
 		where ADMIN_ID=#{ADMINID} and ADMIN_OUTDATE is null
+	</select>
+	
+	<select id="adminAuthcodeSelect" resultType="AuthcodeVO">
+		select * from AD_GRADE
+		where auth_code !=1
 	</select>
 </mapper>
 

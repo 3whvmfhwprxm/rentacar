@@ -47,6 +47,11 @@ public class AdminMngDAOmyBatis extends SqlSessionDaoSupport implements AdminMng
 	public int duplicateAdminId(String adminId) {
 		return getSqlSession().selectOne(namespace+".adminDuplicateIDCheck", adminId);
 	}
+
+	@Override
+	public List<AuthcodeVO> selectAuthCode() {
+		return getSqlSession().selectList(namespace+".adminAuthcodeSelect");
+	}
 	
 	
 }

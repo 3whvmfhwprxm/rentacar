@@ -57,6 +57,11 @@ public class AdminMngServiceImple implements AdminMngService{
 		
 		return result;
 	}
+
+	@Override
+	public List<AuthcodeVO> selectAuthCode() {
+		return dao.selectAuthCode();
+	}
 	
 	
 
