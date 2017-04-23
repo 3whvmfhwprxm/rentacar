@@ -284,11 +284,16 @@ values(4, '삭제된 상담사 공지게시판 네번째 글!', '상담사가 볼수없는 내용 4!!', '
 select * from servicecenternotice order by scnotice_no desc;
 commit;
 
---이벤트 정보(이벤트 적용 대상 등급 1:일반모두, 2:베스트고객)
+--이벤트 정보
 insert into event(event_num, event_title, event_content, admin_id, event_start_date, event_end_date,
 event_image1, event_image2)
 values(event_seq.nextval, '이벤트 제목: 김이벤트', '이벤트 내용: 김내용', 'admin2', '2017-05-01', '2017-05-10', 
 'eimage1.jpg', 'eimage2.jpg');
+
+insert into event(event_num, event_title, event_content, admin_id, event_start_date, event_end_date,
+event_image1, event_image2)
+values(event_seq.nextval, '이벤트 제목: 고객 감사 이벤트', '이벤트 내용: 고객님들에게 감사함을 ...', 'admin1', '2017-05-01', '2017-05-10', 
+'eimage11.jpg', 'eimage22.jpg');
 
 select * from event order by event_num desc;
 commit;
