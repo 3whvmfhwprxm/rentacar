@@ -179,12 +179,68 @@ public class CcarOptionController {
 	}
 	
 	@RequestMapping(value="/company_ccarEdit.do", method=RequestMethod.POST)
-	public String ccarEdit_post(@ModelAttribute CcarOptionVO ccarOptionVo, Model model){
-		logger.info("차량 수정처리, 파라미터=ccarOptionVo={}", ccarOptionVo);
+	public String ccarEdit_post(@ModelAttribute CcarOptionVO vo,
+			Model model){
+		logger.info("차량 수정처리, 파라미터=ccarOptionVo={}", vo);
+		String aux = vo.getCcarAuxYn();
+		String blackbox = vo.getCcarBlackboxYn();
+		String bluetooth = vo.getCcarBluetoothYn();
+		String navi = vo.getCcarNaviYn();
+		String rearcam = vo.getCcarRearCameraYn();
+		String rearSense = vo.getCcarRearSenceYn();
+		String smartkey = vo.getCcarSmartkeyYn();
+		String smoke = vo.getCcarSmokeYn();
+		String sunroof = vo.getCcarSunRoofYn();
+		String caruse = vo.getCcarUseYn();
+
+		if(aux==null || aux.isEmpty()) aux = "N"; 
+		if(blackbox==null || blackbox.isEmpty()) blackbox = "N";
+		if(bluetooth==null || bluetooth.isEmpty()) bluetooth = "N";
+		if(navi==null || navi.isEmpty()) navi = "N";
+		if(rearcam==null || rearcam.isEmpty()) rearcam = "N";
+		if(rearSense==null || rearSense.isEmpty()) rearSense = "N";
+		if(smartkey==null || smartkey.isEmpty()) smartkey = "N";
+		if(smoke==null || smoke.isEmpty()) smoke = "N";
+		if(sunroof==null || sunroof.isEmpty()) sunroof = "N";
+		if(caruse==null || caruse.isEmpty()) caruse = "N";
+
+		vo.setCcarAuxYn(aux);
+		vo.setCcarBlackboxYn(blackbox);
+		vo.setCcarBluetoothYn(bluetooth);
+		vo.setCcarNaviYn(navi);
+		vo.setCcarRearCameraYn(rearcam);
+		vo.setCcarRearSenceYn(rearSense);
+		vo.setCcarSmartkeyYn(smartkey);
+		vo.setCcarSmokeYn(smoke);
+		vo.setCcarSunRoofYn(sunroof);
+		vo.setCcarUseYn(caruse);
 		
+		//연료,렌탈카운트0 처리
+		int arrear = vo.getCcarArrear();
+		int rentalcnt = vo.getCcarRentalcount();
+		if(arrear==0){
+			arrear=0;
+		}
+		if(rentalcnt==0){
+			rentalcnt=0;
+		}
+		vo.setCcarArrear(arrear);
+		vo.setCcarRentalcount(rentalcnt);
+		logger.info("수정 N작업후 vo = {}",vo);
 		
+		int cnt = ccarOptionService.updateCarOption(vo);
+		String msg="", url="/login_company/company_ccarList.do";
+		if(cnt>0){
+			msg="차량정보 수정이 정상적으로 처리되었습니다.";
+			url="/com_manage/company_ccarDetail.do?ccarCarId=" +vo.getCcarCarId();
+		}else{
+			msg="차량정보 수정실패!";
+		}
 		
-		return "";
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
 	
 }

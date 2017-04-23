@@ -24,8 +24,6 @@ public class CcarOptionVO {
 	private int ccarArrear; 			/* 연체료(표기용) */
 	private Timestamp comcarRegdate;  	/* 차량등록일 */
 	private Timestamp comcarOutdate;	/* 차량삭제일 */
-	
-	
 	public String getCcarCarId() {
 		return ccarCarId;
 	}
@@ -38,7 +36,6 @@ public class CcarOptionVO {
 	public void setCarCode(String carCode) {
 		this.carCode = carCode;
 	}
-	
 	public String getComId() {
 		return comId;
 	}
@@ -164,6 +161,7 @@ public class CcarOptionVO {
 				+ ", ccarPeakPrice=" + ccarPeakPrice + ", ccarSPeakPrice=" + ccarSPeakPrice + ", ccarArrear="
 				+ ccarArrear + ", comcarRegdate=" + comcarRegdate + ", comcarOutdate=" + comcarOutdate + "]";
 	}
+	
 	
 	
 	

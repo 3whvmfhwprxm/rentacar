@@ -65,7 +65,7 @@
 			<input type="checkbox" class = "Yn" name="ccarBlackboxYn" id="ccarBlackboxYn" disabled="true" value="${map['CCAR_BLACKBOX_YN'] }"
 				<c:if test="${map['CCAR_BLACKBOX_YN']=='Y' }">checked</c:if>> 블랙박스
 			<input type="checkbox" class = "Yn" name="ccarSmokeYn" id="ccarSmokeYn" disabled="true" value="${map['CCAR_SMOKE_YN'] }"
-				<c:if test="${map['CCAR_SMOKE_YN']=='Y' }">checked</c:if>> 금연
+				<c:if test="${map['CCAR_SMOKE_YN']=='Y' }">checked</c:if>> 금연차${map['CCAR_SMOKE_YN']}
 			<input type="checkbox" class = "Yn" name="ccarRearCameraYn" id="ccarRearCameraYn" disabled="true" value="${map['CCAR_REAR_CAMERA_YN'] }"
 				<c:if test="${map['CCAR_REAR_CAMERA_YN']=='Y' }">checked</c:if>> 후방카메라 
 			<input type="checkbox" class = "Yn" name="ccarRearSenceYn" id="ccarRearSenceYn" disabled="true" value="${map['CCAR_REAR_SENCE_YN'] }"
@@ -73,7 +73,7 @@
 			<input type="checkbox" class = "Yn" name="ccarNaviYn" id="ccarNaviYn" disabled="true" value="${map['CCAR_NAVI_YN'] }"
 				<c:if test="${map['CCAR_NAVI_YN']=='Y' }">checked</c:if>> 네비게이션
 			<input type="checkbox" class = "Yn" name="ccarSunRoofYn" id="ccarSunRoofYn" disabled="true" value="${map['CCAR_SUNROOF_YN'] }"
-				<c:if test="${map['CCAR_SUNROOF_YN']=='Y' }">checked</c:if>> 썬루프
+				<c:if test="${map['CCAR_SUN_ROOF_YN']=='Y' }">checked</c:if>> 썬루프
 			<input type="checkbox" class = "Yn" name="ccarBluetoothYn" id="ccarBluetoothYn" disabled="true" value="${map['CCAR_BLUETOOTH_YN'] }"
 				<c:if test="${map['CCAR_BLUETOOTH_YN']=='Y' }">checked</c:if>> 블루투스
 			<input type="checkbox" class = "Yn" name="ccarAuxYn" id="ccarAuxYn" disabled="true" value="${map['CCAR_AUX_YN'] }"
@@ -87,8 +87,9 @@
 
             <tr>
                 <td class="text-center">
-                <a href="<c:url value='/com_manage/company_ccarList.do' />" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-list"></span>목록</a>
-                <a class='btn btn-info btn-xs' href="<c:url value='/com_manage/company_ccarEdit.do?ccarCarId=${map["CCAR_CAR_ID"] }' />"  ><span class="glyphicon glyphicon-edit"></span>수정</a>
+                <a href="<c:url value='/com_manage/company_ccarList.do' />" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-list"></span>목　록</a>
+                <a class='btn btn-warning btn-xs' href="<c:url value='/com_manage/company_ccarEdit.do?ccarCarId=${map["CCAR_CAR_ID"] }' />"  ><span class="glyphicon glyphicon-edit"></span>수　정</a>
+                <a class='btn btn-danger btn-xs' href="#"  ><span class="glyphicon glyphicon-remove"></span>삭　제</a>
                  </td>
             </tr>
     </table>
