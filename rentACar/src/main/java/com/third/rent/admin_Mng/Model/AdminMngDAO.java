@@ -12,4 +12,5 @@ public interface AdminMngDAO {
 	public List<AdminVO> selectAdmins(SearchVO svo);
 	public int countAdmin(SearchVO svo);
 	public AdminVO selectOneAdmin(String adminId);
+	public int duplicateAdminId(String adminId);
 }

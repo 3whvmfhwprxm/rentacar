@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_Mng.Model.AdminMngService;
@@ -133,6 +134,21 @@ public class AdminMngController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping("/ajaxCheckId.do")
+	@ResponseBody
+	public boolean ajaxCheckID(@RequestParam String adminId){
+		logger.info("관리 - 관리자 아이디 중복확인 파라미터 adminId={}",adminId);
+		
+		int result=aService.duplicateAdminId(adminId);
+		logger.info("관리 - 관리자 아이디 중복수 result={}",result);
+		
+		boolean res=false;
+		if(result==AdminMngService.EXIST_ID){
+			res=true;
+		}		
+		return res;
 	}
 	
 	/*@RequestMapping("/adminDetail.do")

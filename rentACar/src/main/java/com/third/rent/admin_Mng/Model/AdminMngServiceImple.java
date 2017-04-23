@@ -44,4 +44,20 @@ public class AdminMngServiceImple implements AdminMngService{
 		return dao.selectOneAdmin(adminId);
 	}
 
+	@Override
+	public int duplicateAdminId(String adminId) {
+		int cnt=dao.duplicateAdminId(adminId);
+		int result=0;
+		
+		if(cnt>0){
+			result=AdminMngService.EXIST_ID;
+		}else{
+			result=AdminMngService.NONE_EXIST_ID;
+		}
+		
+		return result;
+	}
+	
+	
+
 }

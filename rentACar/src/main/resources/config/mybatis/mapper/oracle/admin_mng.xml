@@ -53,6 +53,11 @@
 	<select id="selectOneAdmin" parameterType="String" resultType="AdminVO">
 		select * from rent_admin where admin_id=#{adminId}
 	</select>
+	
+	<select id="adminDuplicateIDCheck" parameterType="String" resultType="int">
+		select count(*) from RENT_ADMIN
+		where ADMIN_ID=#{ADMINID} and ADMIN_OUTDATE is null
+	</select>
 </mapper>
 
 
