@@ -41,7 +41,7 @@
 		$("#adminId").keyup(function(){
 			if(!validate_userid($("#adminId").val()) || $("#adminId").val().length<3){
 				//유효성 검사를 통과하지 못한 경우
-				$("#checkID").html('영문,숫자, 3자리 이상만');
+				$("#checkID").html('영문,숫자 5자리 이상 입력하세요');
 				$("#chkId").val("");
 				$("#checkID").show();				
 			}else{				
@@ -53,9 +53,9 @@
 						var msg="";
 						var chkId="";
 						if(res){
-							msg='존재하는 관리자 ID입니다.';
+							msg='존재하는 ID입니다.';
 						}else{
-							msg='사용 가능한 관리자 ID입니다.';
+							msg='사용 가능한 ID입니다.';
 							chkId="Y";
 						}
 						$("#checkID").html(msg);
@@ -98,47 +98,80 @@
 <style type="text/css">
 #checkID{color: red; font-weight: bold;display: none;}	
 </style>
-<div class="container">
-	<h2>새 관리자 추가</h2>
-	<form name="AdminInsertfrm" id="AdminInsertfrm" method="post" action="<c:url value='/admin/Mng/adminJoin.do' />">
-		<div>
-			<label>관리자 ID:</label><input type="text" name="adminId" id="adminId" style="ime-mode:inactive">
-			<span id="checkID"></span><br>
+<div class="divList container">
+	<form class="form-horizontal" name="AdminInsertfrm" id="AdminInsertfrm" method="post" action="<c:url value='/admin/Mng/adminJoin.do' />">
+	<fieldset>
+		<legend>새 관리자 추가</legend>
+		<div class="form-group">
+				<label class="col-sm-2 control-label">관리자 ID</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" name="adminId" id="adminId" style="ime-mode:inactive">					
+				</div>
+				<label id="checkID" class="control-label"></label>
 		</div>
-		<div>
-			<label>관리자 PWD:</label><input type="password" name="adminPwd" id="adminPwd"><br>
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">관리자 PWD</label>
+				<div class="col-sm-2">
+					<input type="password" class="form-control" name="adminPwd" id="adminPwd" style="ime-mode:inactive">				
+				</div>
 		</div>
-		<div>
-			<label>관리자 PWD 확인:</label><input type="password" name="adminPwd2" id="adminPwd2"><br>
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">관리자 PWD 확인</label>
+				<div class="col-sm-2">
+					<input type="password" class="form-control" name="adminPwd2" id="adminPwd2" style="ime-mode:inactive">				
+				</div>
 		</div>
-		<div>
-			<label>관리자 이름:</label><input type="text" name="adminName" id="adminName"><br>
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">관리자 이름</label>
+				<div class="col-sm-2">
+					<input type="password" class="form-control" name="adminName" id="adminName" style="ime-mode:inactive">				
+				</div>
 		</div>
-		<div>
-			<label>연락처:</label>
-			<input type="text" name="adminTel1" id="adminTel1">-<input type="text" 
-				name="adminTel2" id="adminTel2">-<input type="text" name="adminTel3" id="adminTel3"><br>
-		</div>		
-		<div>
-			<label>이메일:</label>
-			<input type="email" name="adminEmail" id="adminEmail" required="required">
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">연락처</label>
+				<div class="col-sm-2">
+					<select class="form-control" name="adminTel1" id="adminTel1">
+						<option value="010">010</option>
+						<option value="011">011</option>
+						<option value="016">016</option>
+						<option value="017">017</option>
+						<option value="019">019</option>
+					</select>			
+				</div>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" name="adminTel2" id="adminTel2">		
+				</div>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" name="adminTel3" id="adminTel3">		
+				</div>
 		</div>
-		<br>
-		<div>
-			<label>관리자 등급:</label>
-			<select name="adminAuthcode" id="adminAuthcode">
-				<option value="0">선택</option>
-			    <option value="1">관리자</option>
-				<option value="2">부관리자</option>
-				<option value="3">상담장</option>
-				<option value="4">상담사</option>
-				<option value="5">기타</option>
-			</select>
+		<div class="form-group">	
+				<label class="col-sm-2 control-label">이메일</label>
+				<div class="col-sm-2">
+					<input type="email" class="form-control" name="adminEmail" id="adminEmail" style="ime-mode:inactive" required="required">				
+				</div>
 		</div>
-	<div>
-		<input type="submit" value="관리자 입력" name="btsubmit" id="btsubmit" >
-	</div>
-	<input type ="text" name="chkId" id="chkId">
+		<div class="form-group">	
+			<label class="col-sm-2 control-label">관리자 등급</label>
+			<div class="col-sm-2">
+				<select class="form-control" name="adminAuthcode" id="adminAuthcode">
+					<option value="0">선택</option>
+				    <option value="1">관리자</option>
+					<option value="2">부관리자</option>
+					<option value="3">상담장</option>
+					<option value="4">상담사</option>
+					<option value="5">기타</option>
+				</select>
+			</div>
+		</div>
+	<div class=form-group>
+		<label class="col-sm-2 control-label"></label>		
+		<div class="col-sm-6">
+			<input class="btn btn-primary btn-lg btn-block" type="submit" value="관리자 등록" name="btsubmit" id="btsubmit" >
+		</div>
+	</div>	
+	</fieldset>
+	<input type ="hidden" name="chkId" id="chkId">
 	</form>
 </div>
 </body>
