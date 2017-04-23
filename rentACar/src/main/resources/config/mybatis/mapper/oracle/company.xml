@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="config.mybatis.mapper.oracle.company_announcement">
+<mapper namespace="config.mybatis.mapper.oracle.company">
 	<sql id="searchWhat">
 		<if test="searchKeyword !=null and searchKeyword !=''">
 			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
@@ -30,6 +30,44 @@
 	<!-- <select id="selectByNo" parameterType="int" resultType="UserNoticeVO">
 		select * from usernotice where unotice_no=#{unoticeNo}
 	</select> -->
+	
+	<select id="duplicateComId" parameterType="String"
+		resultType="int">
+		select count(*) from company
+		where com_id=#{comId}
+	</select>
+	
+	<select id="selectPwdByComId" parameterType="String"
+		resultType="String">
+		select com_pwd from company
+		where com_id=#{comId} and com_outdate is null
+	</select>
+	
+	<select id="selectByComId" parameterType="String"
+		resultType="CompanyVO">
+		select * from company where com_id=#{comId}
+	</select>
+	
+	<!-- <select id="companyIdChk" parameterType="CompanyVO" resultType="Integer">
+		select 
+			count(*)
+		from 
+			company
+		where
+			com_id =#{comId}
+	</select>
+	
+	<select id="companyPwdChk" parameterType="CompanyVO" resultType="Integer">
+		select 
+			count(*)
+		from 
+			company
+		where
+			com_pwd =#{comPwd}
+	</select> -->
+	
+	
+	
 </mapper>
 
 

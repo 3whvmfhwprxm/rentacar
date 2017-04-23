@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +10,6 @@
 
 		<!-- Website Font style -->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		<link rel="stylesheet" href="style.css">
 		<!-- Google Fonts -->
 		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -127,13 +129,24 @@ span.input-group-addon i {
 </style>
 		
 <title>Admin</title>
+<script type="text/javascript" 	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-<script type="text/javascript" 	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'/>
-<script>
+
+<script type="text/javascript">
 	$(function(){
 		$("#loginBt").click(function(){
-			$("frm1").attr('action','/login_company/companyMain.do').submit();
-		});
+			$("#loginForm").submit(function(){
+				if($("#comId").val()==''){
+					alert('아이디를 입력하세요');
+					$("#comId").focus();
+					return false;
+				}else if($("#comPwd").val()==''){
+					alert('비밀번호를 입력하세요');
+					$("#comPwd").focus();
+					return false;
+				}
+			});
+		}); 
 	});
 </script>
 
@@ -144,30 +157,32 @@ span.input-group-addon i {
 			<div class="row main">
 				<div class="main-login main-center">
 				
-					<form  method="post" id="frm1">
+					<form  method="post" name="loginForm" id="loginForm" action='<c:url value="/login_company/com_login.do" />'>
 						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Userid</label>
+							<label for="comId" class="cols-sm-2 control-label">Userid</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+									<input type="text" class="form-control" name="comId" id="comId"  
+									placeholder="아이디를 입력하세요" value="${cookie.ck_comId.value}"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Password</label>
+							<label for="comPwd" class="cols-sm-2 control-label">Password</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+									<input type="password" class="form-control" name="comPwd" id="comPwd"  
+									placeholder="비밀번호를 입력하세요" />
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group ">
-							<a target="_blank" type="button" id="loginBt" 
-							class="btn btn-primary btn-lg btn-block login-button"> 로그인</a>
+							<input type="submit"  id="loginBt" 
+							class="btn btn-primary btn-lg btn-block login-button" value="로그인"> 
 							
 						</div>
 						
@@ -175,4 +190,3 @@ span.input-group-addon i {
 				</div>
 			</div>
 		</div>
-<%@ include file="../inc_company/company_bottom.jsp" %>

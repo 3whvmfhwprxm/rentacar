@@ -39,6 +39,11 @@ $(document).ready(function () {
 </script>
 
 </head>
+<nav style="float: right;">
+		<a class="navbar-brand"
+		href="${pageContext.request.contextPath}/inc_user/login.do">로그아웃</a> 
+	
+</nav>
 <body>
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
 <body>

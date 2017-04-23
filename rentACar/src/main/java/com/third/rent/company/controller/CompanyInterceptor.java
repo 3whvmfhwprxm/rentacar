@@ -31,8 +31,8 @@ public class CompanyInterceptor extends HandlerInterceptorAdapter {
 		logger.info("로그인 확인 - 인터셉터");
 		
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("u");
-		if(userId==null || userId.isEmpty()){
+		String comId = (String) session.getAttribute("comId");
+		if(comId==null || comId.isEmpty()){
 			request.setAttribute("msg", "먼저 로그인하세요!!");
 			request.setAttribute("url", "/login_company/login.do");
 			
