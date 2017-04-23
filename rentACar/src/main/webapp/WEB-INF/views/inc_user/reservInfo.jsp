@@ -27,8 +27,7 @@
 		<!-- 예약자 및 운전자 입력 정보 -->
 		<h4>예약자 정보 입력</h4>
 		예약자 이름: <input type="text" name="resUName" id="resUName"><br>
-		이메일: <input type="text" name="resUMail1" id="resUMail1">@
-		<input type="text" name="resUMail2" id="resUMail2">
+		이메일: <input type="email" name="resUMail" id="resUMail">
 		<br>
 		연락처: <input type="text" name="resUTel1" id="resUTel1">-
 		<input type="text" name="resUTel2" id="resUTel2">-

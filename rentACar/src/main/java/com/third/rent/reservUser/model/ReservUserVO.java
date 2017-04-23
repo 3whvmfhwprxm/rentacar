@@ -1,5 +1,9 @@
 package com.third.rent.reservUser.model;
 
+/**
+ * @author coope
+ *
+ */
 public class ReservUserVO {
 	
 	//예약자 정보
@@ -8,8 +12,7 @@ public class ReservUserVO {
 	private String resUTel1;
 	private String resUTel2;
 	private String resUTel3;
-	private String resUMail1;
-	private String resUMail2;
+	private String resUMail;
 	
 	//운전자 정보
 	private String resDrvName;
@@ -17,9 +20,7 @@ public class ReservUserVO {
 	private String resDrvTel2;
 	private String resDrvTel3;
 	private String resDrvBirth;
-	private String resDrvCategory;	
-	
-	
+	private String resDrvCategory;
 	public String getReservNum() {
 		return reservNum;
 	}
@@ -50,17 +51,11 @@ public class ReservUserVO {
 	public void setResUTel3(String resUTel3) {
 		this.resUTel3 = resUTel3;
 	}
-	public String getResUMail1() {
-		return resUMail1;
+	public String getResUMail() {
+		return resUMail;
 	}
-	public void setResUMail1(String resUMail1) {
-		this.resUMail1 = resUMail1;
-	}
-	public String getResUMail2() {
-		return resUMail2;
-	}
-	public void setResUMail2(String resUMail2) {
-		this.resUMail2 = resUMail2;
+	public void setResUMail(String resUMail) {
+		this.resUMail = resUMail;
 	}
 	public String getResDrvName() {
 		return resDrvName;
@@ -101,11 +96,10 @@ public class ReservUserVO {
 	@Override
 	public String toString() {
 		return "ReservUserVO [reservNum=" + reservNum + ", resUName=" + resUName + ", resUTel1=" + resUTel1
-				+ ", resUTel2=" + resUTel2 + ", resUTel3=" + resUTel3 + ", resUMail1=" + resUMail1 + ", resUMail2="
-				+ resUMail2 + ", resDrvName=" + resDrvName + ", resDrvTel1=" + resDrvTel1 + ", resDrvTel2=" + resDrvTel2
-				+ ", resDrvTel3=" + resDrvTel3 + ", resDrvBirth=" + resDrvBirth + ", resDrvCategory=" + resDrvCategory
-				+ "]";
-	}
+				+ ", resUTel2=" + resUTel2 + ", resUTel3=" + resUTel3 + ", resUMail=" + resUMail + ", resDrvName="
+				+ resDrvName + ", resDrvTel1=" + resDrvTel1 + ", resDrvTel2=" + resDrvTel2 + ", resDrvTel3="
+				+ resDrvTel3 + ", resDrvBirth=" + resDrvBirth + ", resDrvCategory=" + resDrvCategory + "]";
+	}	
 	
 		
 }

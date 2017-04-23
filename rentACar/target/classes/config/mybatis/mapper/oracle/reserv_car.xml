@@ -38,7 +38,7 @@
 	<insert id="insertReservUser" parameterType="ReservUserVO">
 		insert into reserv_user
 		values(#{reservNum}, #{resUName}, #{resUTel1}, #{resUTel2}, #{resUTel3}, 
-		#{resUMail1}, #{resUMail2}, #{resDrvName}, #{resDrvTel1}, #{resDrvTel2}, 
+		#{resUMail}, #{resDrvName}, #{resDrvTel1}, #{resDrvTel2}, 
 		#{resDrvTel3}, #{resDrvBirth}, #{resDrvCategory})
 	</insert>
 	
