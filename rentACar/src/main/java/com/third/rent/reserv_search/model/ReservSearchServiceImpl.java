@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reservation.model.ReservationVO;
@@ -46,5 +47,12 @@ public class ReservSearchServiceImpl implements ReservSearchService{
 		
 		dao.insertReservation(reserVo);
 		dao.insertReservUser(reservWho);	
-	}	
+	}
+
+	@Override
+	public List<CarCategoryVO> selectCategoryList() {
+		return dao.selectCategoryList();
+	}
+	
+	
 }

@@ -140,16 +140,16 @@ and car_category_num=1;
 delete from car;
 insert into car
 values('hd001', '현대소나타17', '현대', '휘발류', 
-        4, '2017-01-01', 'AUTO', sysdate, 1, 'hd00101.jpg', 'hd00102.jpg', 'hd00103.jpg');
+        4, '2017-01-01', 'AUTO', sysdate, 4, 'hd00101.jpg', 'hd00102.jpg', 'hd00103.jpg');
 insert into car
 values('hd002', '현대액센트17', '현대', '디젤', 
-        4, '2017-01-01', 'AUTO', sysdate, 1, 'hd00201.jpg', 'hd00202.jpg', 'hd00203.jpg');
+        4, '2017-01-01', 'AUTO', sysdate, 3, 'hd00201.jpg', 'hd00202.jpg', 'hd00203.jpg');
 insert into car
 values('kia001', '기아k5_17', 'KIA', '휘발류', 
-        4, '2017-01-01', 'Trans', sysdate, 1, 'kia00101.jpg', 'kia00102.jpg', 'kia00103.jpg');
+        4, '2017-01-01', 'Trans', sysdate, 4, 'kia00101.jpg', 'kia00102.jpg', 'kia00103.jpg');
         insert into car
 values('kia002', '기아뉴모닝_17', 'KIA', '휘발류', 
-        4, '2017-01-01', 'AUTO', sysdate, 0, 'kia00201.jpg', 'kia00202.jpg', 'kia00203.jpg');
+        4, '2017-01-01', 'AUTO', sysdate, 2, 'kia00201.jpg', 'kia00202.jpg', 'kia00203.jpg');
         insert into car
 values('lambo001', '람보르기니_우라칸', 'Lamborghini', '휘발류', 
         2, '2017-01-01', 'Trans', sysdate, 5, 'lb00101.jpg', 'lb00102.jpg', 'lb00103.jpg');

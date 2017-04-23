@@ -53,28 +53,42 @@
 2.
 위의 조건을 입력받고 '검색'을 누르면(post) 조건에 해당하는 리스트를 가져와서 보여준다
 이때 검색시 예약정보 테이블에서 예약시작날짜/예약종료날짜/예약시작시간/예약종료시간 -->
-
-<div class="container">
-<h1>실시간 예약하기(예약가능차량 검색 조회/선택)</h1>
+<br>
+<div class="divList container">
 
 <!-- 예약 가능 차 기본 옵션 검색 폼 -->
 <div>
-	<form name="searchForm" id="searchForm" method="post" action='<c:url value="/inc_user/realTime.do" />'>
-		<label for="from">대여일: </label> 
-		<input type="text" id="searchStartDate" name="searchStartDate" value="${param.searchStartDate }"> 
-		<label for="to">반납일: </label> 
-		<input type="text" id="searchEndDate" name="searchEndDate" value="${param.searchEndDate }">
-		
-		<!-- 차량 유형 소형(0), 중형(1), 대형(2), 특대형(3), 특수차(4), 고급(5) -->
-		차종: <select name="carType" id="carType" title="차종">
-			<option value="0" <c:if test='${param.carType=="0" }'> selected="selected" </c:if> >소형</option>
-			<option value="1" <c:if test='${param.carType=="1" }'> selected="selected" </c:if> >중형</option>
-			<option value="2" <c:if test='${param.carType=="2" }'> selected="selected" </c:if> >대형</option>
-			<option value="3" <c:if test='${param.carType=="3" }'> selected="selected" </c:if> >특대형</option>
-			<option value="4" <c:if test='${param.carType=="4" }'> selected="selected" </c:if> >특수차</option>
-			<option value="5" <c:if test='${param.carType=="5" }'> selected="selected" </c:if> >고급</option>
-		</select>
-		<p><input type="submit" value="조건에 맞는 차량 찾기"></p>
+	<form class="form-horizontal" name="searchForm" id="searchForm" 
+		method="post" action='<c:url value="/inc_user/realTime.do" />'>
+		<fieldset>
+			<legend>실시간 예약하기(예약가능차량 검색 조회/선택)</legend>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">날짜 선택</label>
+				<div class="col-sm-8">
+					<input type="text" id="searchStartDate" name="searchStartDate" 
+					value="${param.searchStartDate }">&nbsp;&nbsp;~&nbsp;
+					&nbsp;<input type="text" id="searchEndDate" name="searchEndDate" value="${param.searchEndDate }">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">차종</label>
+				<div class="col-sm-2">
+					<select class="form-control" name="carType" id="carType" title="차종">
+						<c:forEach var="carcate" items="${catelist }">
+							<option value=${carcate.carCategoryNum } 
+								<c:if test='${param.carType==carcate.carCategoryNum }'> selected="selected" </c:if> >
+								${carcate.carCategoryName } </option>
+						</c:forEach>
+					</select>					
+				</div>
+			</div>			
+			<div class=form-group>
+				<label class="col-sm-2 control-label"></label>		
+				<div class="col-sm-6">
+					<input class="btn btn-primary btn-lg btn-block" type="submit" value="조건에 맞는 차량 찾기" name="btsubmit" id="btsubmit" >
+				</div>
+			</div>
+		</fieldset>
 	</form>
 </div>
 <!-- 예약 가능 차 리스트 표시 시작 -->

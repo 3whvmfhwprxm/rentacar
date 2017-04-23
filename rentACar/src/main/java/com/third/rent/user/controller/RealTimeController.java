@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reserv_search.model.ReservSearchService;
@@ -31,8 +32,12 @@ public class RealTimeController {
 	private ReservSearchService rService;
 	
 	@RequestMapping(value="/realTime.do", method=RequestMethod.GET)
-	public String showRealTime_get(){
+	public String showRealTime_get(Model model){
 		logger.info("실시간예약화면 띄우기");
+		
+		List<CarCategoryVO> catelist=rService.selectCategoryList();
+		
+		model.addAttribute("catelist", catelist);
 		
 		return "inc_user/realTime";		
 	}
@@ -53,6 +58,9 @@ public class RealTimeController {
 		List<CcarOptionVO> clist=rService.searchNormal(searchOption);
 		logger.info("예약 대상 검색 차종 리스트 크기 clist.size()={}", clist.size());
 		
+		List<CarCategoryVO> catelist=rService.selectCategoryList();
+		
+		model.addAttribute("catelist", catelist);		
 		model.addAttribute("clist", clist);
 		
 		return "inc_user/realTime";		

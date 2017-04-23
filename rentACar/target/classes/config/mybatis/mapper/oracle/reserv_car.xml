@@ -45,6 +45,11 @@
 	<select id="selectByReservNum" parameterType="String" resultType="ReservationVO">
 		select * from RESERVATION where reserv_num=#{reservNum}
 	</select>
+	
+	<select id="selectCarCategoryList" resultType="CarCategoryVO">
+		select * from CAR_CATEGORY
+		order by car_category_num
+	</select>
 </mapper>
 
 

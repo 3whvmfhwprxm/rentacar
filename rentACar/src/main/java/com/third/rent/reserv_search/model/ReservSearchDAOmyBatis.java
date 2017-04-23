@@ -6,6 +6,7 @@ import java.util.List;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reservation.model.ReservationVO;
@@ -43,6 +44,12 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 	@Override
 	public ReservationVO selectByReservNum(String reservNum) {		
 		return getSqlSession().selectOne(nameSpace+".selectByReservNum", reservNum);
+	}
+
+	@Override
+	public List<CarCategoryVO> selectCategoryList() {
+		return getSqlSession().selectList(nameSpace+".selectCarCategoryList");
 	}	
+	
 	
 }

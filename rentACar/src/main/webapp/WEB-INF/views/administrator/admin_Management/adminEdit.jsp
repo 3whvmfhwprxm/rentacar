@@ -17,12 +17,7 @@
 				alert('숫자만 입력하셔야 합니다.');
 				$("#adminTel2").focus();
 				return false;
-			}else if($("#adminAuthcode").val()=='0'){
-				alert('관리자 등급을 선택해주세요');
-				$("#adminAuthcode").focus();
-				return false;
 			}
-			
 		});
 	});	
 	function validate_hp(hp){
@@ -101,7 +96,6 @@
 			<label class="col-sm-2 control-label">관리자 등급</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="adminAuthcode" id="adminAuthcode">
-					<option value="0">선택</option>
 				    <c:forEach var="auth" items="${authlist }">
 				    	<option value="${auth.authCode }" <c:if test="${avo.adminAuthcode==auth.authCode}"> selected </c:if>>${auth.authName }</option>
 				    </c:forEach>
