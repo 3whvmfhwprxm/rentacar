@@ -182,8 +182,7 @@ span.input-group-addon i {
 
 						<div class="form-group ">
 							<input type="submit"  id="loginBt" 
-							class="btn btn-primary btn-lg btn-block login-button" value="로그인"> 
-							
+							class="btn btn-primary btn-lg btn-block login-button" value="로그인"> 	
 						</div>
 						
 					</form>

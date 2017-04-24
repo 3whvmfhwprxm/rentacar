@@ -34,7 +34,7 @@ public class CompanyInterceptor extends HandlerInterceptorAdapter {
 		String comId = (String) session.getAttribute("comId");
 		if(comId==null || comId.isEmpty()){
 			request.setAttribute("msg", "먼저 로그인하세요!!");
-			request.setAttribute("url", "/login_company/login.do");
+			request.setAttribute("url", "/login_company/com_login.do");
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/common/message.jsp");
 			dispatcher.forward(request, response);
