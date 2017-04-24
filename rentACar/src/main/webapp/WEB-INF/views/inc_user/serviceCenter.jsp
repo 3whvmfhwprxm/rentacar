@@ -75,6 +75,9 @@
 	}
 </style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/logincss.css"/>
+	<form name="frmPage" method="post" action='<c:url value="/inc_user/serviceCenter.do" />'>
+		<input type="hidden" name="currentPage">
+	</form>
 <div class="container">
 <!-- <div style="text-align: center;"><h3><b>공지사항</b></h3></div> -->
 <h1 class="welcome text-center"><br>공지사항</h1>
@@ -157,6 +160,36 @@
     </div>
 </div>
 
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<nav>
+			<ul class="pagination">
+				<c:if test="${pagingInfo.firstPage>1 }">
+					<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					</a></li>
+				</c:if>
+
+				<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
+					<c:if test="${i==pagingInfo.currentPage}">
+						<li class="active"><a href="#">${i}</a></li>
+					</c:if>
+					<c:if test="${i!=pagingInfo.currentPage}">
+						<li><a href="#" onclick="pageFunc(${i})">${i}</a></li>
+					</c:if>
+				</c:forEach>
+
+				<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+					<li><a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+					</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</div>
+	<div class="col-md-4"></div>
+</div>
 	
 
 <%@ include file="bottom.jsp" %>
