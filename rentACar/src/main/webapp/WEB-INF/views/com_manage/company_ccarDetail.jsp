@@ -129,7 +129,7 @@
 								<!-- body -->
 								<form id="form1" name="form1">
 								<div class="modal-body">
-									차량번호<input type="text" name="readCarId" id="readCarId" disabled="true" value=${map['CCAR_CAR_ID']}>
+									차량번호1<input type="text" name="readCarId" id="readCarId" disabled="true" value=${map['CCAR_CAR_ID']}>
 									모델명<input type="text" name="readCarName" id="readCarName" disabled="true" value="${map['CAR_NAME'] }"><br>
 									<br><span style="color:red">등록 해지 하시려는 차량의 차대 번호를 입력하세요.</span><br>
 									차량번호<input type="text" name="ccarCarId" id="ccarCarId" placeholder="서울가1234">
