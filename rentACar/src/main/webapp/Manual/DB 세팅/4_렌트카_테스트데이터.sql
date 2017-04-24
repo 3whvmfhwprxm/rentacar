@@ -327,7 +327,4 @@ rollback;
 --회원등급
 
 
-
-
-
 select * from user_sequences;

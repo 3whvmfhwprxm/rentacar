@@ -22,14 +22,15 @@
 			    	$.ajax({
 			    		url:'<c:url value="/inc_user/payOK.do" />',
 			    		type:'POST',
-			    		data:{payNo:rsp.merchant_uid, reservNum:rsp.custom_data.reservNum, 
-								userTel1:${reserVo.userTel1},
-								userTel2:${reserVo.userTel2},
-								userTel3:${reserVo.userTel3},
-								payMethod:rsp.pay_method,
-								payMoney:rsp.paid_amount,
-								payRegdateUnixTimeStamp:rsp.paid_at,
-								payCondition:rsp.status},
+			    		data:{payNo:rsp.merchant_uid, 
+			    			  reservNum:rsp.custom_data.reservNum, 
+			    		      userTel1:'${reserVo.userTel1}', /* ${reserVo.userTel1} 작은 따옴표로 덮지 않으면 16진수로 인식 010이 8이된다 */
+							  userTel2:'${reserVo.userTel2}',
+							  userTel3:'${reserVo.userTel3}',
+							  payMethod:rsp.pay_method,
+						      payMoney:rsp.paid_amount,
+							  payRegdateUnixTimeStamp:rsp.paid_at,
+							  payCondition:rsp.status},
 			    		dataType:'json',
 			    		success:function(res){
 			    			$("#payInfo").html("<span> 결제 정보 입력 완료 </span>");

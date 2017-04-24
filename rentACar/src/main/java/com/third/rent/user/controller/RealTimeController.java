@@ -126,13 +126,13 @@ public class RealTimeController {
 		
 		//unix timestamp형식 변환 1493027909
 		Date date = new Date(payRegdateUnixTimeStamp*1000L);		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		sdf.setTimeZone(TimeZone.getTimeZone("GMT+9"));
 
 		System.out.println(sdf.format(date));
-		/*payInfoVO.setPayRegdate(sdf.format(date));
+		payInfoVO.setPayRegdate(sdf.format(date));
 		
 		int result=rService.insertPayInfo(payInfoVO);
-		logger.info("결제완료 정보 입력 결과 result={}", result);*/
+		logger.info("결제완료 정보 입력 결과 result={}", result);
 	}
 }
