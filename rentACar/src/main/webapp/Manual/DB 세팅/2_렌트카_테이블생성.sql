@@ -1,4 +1,9 @@
---SYS계정인지 확인 주의 RENT 계정으로 재접속
+
+
+--% 주의 %
+--SYS계정인지 확인.  RENT 계정으로 재접속하여 생성
+
+
 /* Car 차모델 */
 CREATE TABLE Car (
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */
@@ -198,8 +203,8 @@ CREATE TABLE comments (
 	cmt_kind_score NUMBER NOT NULL, /* 친절도 */
 	cmt_clean_score NUMBER NOT NULL, /* 청결도 */
 	cmt_conv_score NUMBER NOT NULL, /* 편의성 */
-	cmt_img1 VARCHAR2(200) NOT NULL, /* 후기이미지1 */
-	cmt_img2 VARCHAR2(200) NOT NULL, /* 후기이미지2 */
+	cmt_img1 VARCHAR2(200), /* 후기이미지1 */
+	cmt_img2 VARCHAR2(200), /* 후기이미지2 */
 	cmt_regdate DATE default sysdate, /* 기록일 */
 	cmt_deldate DATE, /* 삭제일 */
 	admin_id VARCHAR2(30) /* 관리자아이디 */
@@ -263,7 +268,7 @@ CREATE TABLE CompanyCarOption (
 	ccar_car_id VARCHAR2(50) NOT NULL, /* 업체보유차량 */
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */
 	com_id VARCHAR2(30) NOT NULL, /* 업체아이디 */
-	ccar_use_yn VARCHAR2(6) default 'N', /* 차량사용가능여부 */
+	ccar_use_yn VARCHAR2(6) default 'N', /* 차량사용가능여부 */ --VARCHAR2(30) 예약중/수리중/대기중 등으로 전환예정 170424
 	--car_fuel VARCHAR2(30) NOT NULL, /* 연료 */--연료: Car에 있던 컬럼 이동
 	ccar_blackbox_yn VARCHAR2(6) default 'N', /* 블랙박스유무 */
 	ccar_smoke_yn VARCHAR2(6) default 'N', /* 금연차량 */

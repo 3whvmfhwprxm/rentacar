@@ -42,3 +42,8 @@ create sequence Event_seq
 start with 10
 increment by 1
 nocache;
+
+create sequence cmt_seq
+start with 10
+increment by 1
+nocache;
