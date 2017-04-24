@@ -21,7 +21,6 @@
 		});
 	});
 </script>
-<body>
 	<div class="divForm">
 		<form id="frmEdit" name="frmEdit" method="post"
 			action='<c:url value="/administrator/company/companyEdit.do" />'>
@@ -87,5 +86,4 @@
 				</fieldset>
 		</form>
 	</div>
-</body>
-</html>
+<%@ include file="../include/bottom.jsp"%>

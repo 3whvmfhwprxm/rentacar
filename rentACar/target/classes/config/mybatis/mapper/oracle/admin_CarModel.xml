@@ -62,6 +62,12 @@
 	<delete id="deleteCarModel" parameterType="String">
 		delete from car where car_code=#{carCode}
 	</delete>
+	
+	<select id="selectByComId" parameterType="String" resultType="CcarOptionVO">
+		select*from COMPANYCAROPTION
+		where com_id=#{comId}
+	</select>
+
 </mapper>
 
 

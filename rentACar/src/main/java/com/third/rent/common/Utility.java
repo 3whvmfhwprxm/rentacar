@@ -11,4 +11,7 @@ public class Utility {
 	//관리자 업체 관리
 	public static final int ADMIN_COMPANY_BLOCKSIZE = 10;
 	public static final int ADMIN_COMPANY_RECORDCOUNT_PERPAGE = 1;
+	
+	public static final int ADMIN_OUT_COMPANY_BLOCKSIZE = 10;
+	public static final int ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE = 10;
 }

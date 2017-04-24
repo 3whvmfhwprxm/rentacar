@@ -9,28 +9,16 @@
 	}
 </script>
 <style type="text/css">
-th {
-	text-align: center;
-}
-
-.col-md-4 {
-	float: left;
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.col-md-4 ul li {
-	display: inline-block;
-}
-
-.col-md-4 {
-	float: left;
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
-	display: inline-block;
-}
+	th {
+		text-align: center;
+	}
+	
+	.col-md-4 {
+		float: left;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+	}
 </style>
 <div class="divL                                                                                                                                                                                                                                                                                                                                                 ist container">
 	<h2>업체</h2>
@@ -44,7 +32,6 @@ th {
 		<table class="table table-hover table-bordered" summary="회원정보에 관한 테이블">
 			<thead>
 				<tr>
-					<th scope="col">업체로고</th>
 					<th scope="col">업체아이디</th>
 					<th scope="col">업체명</th>
 					<th scope="col">사업자번호</th>
@@ -61,103 +48,14 @@ th {
 			<tbody>
 				<c:if test="${empty companyList}">
 					<tr>
-						<td colspan="10" class="align_center">데이터가 존재하지 않습니다.</td>
+						<td colspan="9" class="align_center">데이터가 존재하지 않습니다.</td>
 					</tr>
 				</c:if>
 				<c:forEach var="vo" items="${companyList}">
 					<tr style="text-align: center">
-						<td><img alt="업체 로고" 
-							src='<c:url value="/companyLogo/${vo.comLogo}" />'></td>
-						<td>
-							<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
-								${vo.comId}
-							</button>
-
-							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-											<h4 class="modal-title" id="myModalLabel">${vo.comId}</h4>
-										</div>
-										<div class="modal-body">
-											<table class="table table-user-information">
-												<tbody>
-													<tr>
-														<td>업체로고</td>
-														<td><img alt="업체 로고" 
-															src='<c:url value="/companyLogo/${vo.comLogo}" />'> </td>
-													</tr>
-													<tr>
-														<td>아이디</td>
-														<td>${vo.comId}</td>
-													</tr>
-													<tr>
-														<td>사업자 번호</td>
-														<td>${vo.comNum}</td>
-													</tr>
-													<tr>
-														<td>대표번호</td>
-														<td>${vo.comTel1}-${vo.comTel2}-${vo.comTel3}</td>
-													</tr>
-													<tr>
-														<td>휴대폰</td>
-														<td>${vo.comMobile1}-${vo.comMobile2}-${vo.comMobile3}</td>
-													</tr>
-													<tr>
-														<td>팩스번호</td>
-														<td>${vo.comFax1}-${vo.comFax2}-${vo.comFax3}</td>
-													</tr>
-													<tr>
-														<td>주소</td>
-														<td>${vo.comFax1}-${vo.comFax2}-${vo.comFax3}}</td>
-													</tr>
-													<tr>
-														<td>대표자</td>
-														<td>${vo.comCeo}</td>
-													</tr>
-													<tr>
-														<td>이메일</td>
-														<td>${vo.comEmail}</td>
-													</tr>
-													<tr>
-														<td>등록일</td>
-														<td>${vo.comRegdate}</td>
-													</tr>
-													<tr>
-														<td>탈퇴일</td>
-														<td>${vo.comOutdate}</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="modal-footer">
-											<a
-												href='<c:url value="/administrator/company/companyList.do"/>'
-												data-original-title="Move userList" data-toggle="tooltip"
-												type="button" class="btn btn-primary btn-lg btn-primary">
-												<i class="fa fa-list" aria-hidden="true"></i>목록
-											</a> <a
-												href='<c:url value="/administrator/company/companyEdit.do?comId=${vo.comId}"/>'
-												data-original-title="Edit this user" data-toggle="tooltip"
-												type="button" class="btn btn-primary btn-lg btn-warning">
-												<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
-											</a> <a
-												href="<c:url value='/administrator/company/companyWithdraw.do?comId=${vo.comId}'/>"
-												data-original-title="Remove this user" data-toggle="tooltip"
-												type="button" class="btn btn-primary btn-lg btn-danger">
-												<i class="fa fa-times" aria-hidden="true"></i>삭제
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</td>
+						<td><a
+							href='<c:url value="/administrator/company/companyDetail.do?comId=${vo.comId}" />'>
+								${vo.comId}</a></td>
 						<td style="text-align: center">${vo.comName}</td>
 						<td>${vo.comNum}</td>
 						<td>${vo.comTel1}-${vo.comTel2}-${vo.comTel3}</td>
@@ -177,7 +75,6 @@ th {
 		</table>
 	</div>
 	<div class="row">
-		<div class="col-md-4"></div>
 		<div class="col-md-4">
 			<nav>
 				<ul class="pagination">
@@ -205,35 +102,30 @@ th {
 				</ul>
 			</nav>
 		</div>
-		<div class="col-md-4"></div>
 	</div>
 
-	<div class="col-md-4"></div>
-	<div>
-		<a href='<c:url value="/administrator/company/companyRegister.do" />'>
-			<button type="button" class="btn btn-primary">
-				Register
-			</button>
-		</a>
-	</div>
-
-	<div class="divSearch">
-		<form name="frmSearch" method="post"
-			action="<c:url value="/administrator/company/companyList.do" />">
-			<select name="searchCondition">
-				<option value="com_id"
-					<c:if test="${'com_id'==param.searchCondition}">
+	<div class="col-md-4">
+		<div class="divSearch">
+			<form name="frmSearch" method="post"
+				action="<c:url value="/administrator/company/companyList.do" />">
+				<select name="searchCondition">
+					<option value="com_id"
+						<c:if test="${'com_id'==param.searchCondition}">
            		selected            	
            	</c:if>>업체아이디</option>
-				<option value="com_name"
-					<c:if test="${'com_name'==param.searchCondition}">
+					<option value="com_name"
+						<c:if test="${'com_name'==param.searchCondition}">
            		selected            	
            	</c:if>>업체명</option>
-			</select> <input type="text" name="searchKeyword" title="검색어 입력"
-				value="${param.searchKeyword}"> <input type="submit"
-				value="검색">
-		</form>
+				</select> <input type="text" name="searchKeyword" title="검색어 입력"
+					value="${param.searchKeyword}"> <input type="submit"
+					value="검색">
+			</form>
+			<br> <br> 
+			<a href='<c:url value="/administrator/company/companyRegister.do" />'>
+				<button type="button" class="btn btn-primary">Register</button>
+			</a>
+		</div>
 	</div>
 </div>
-</body>
-</html>
+<%@ include file="../include/bottom.jsp"%>

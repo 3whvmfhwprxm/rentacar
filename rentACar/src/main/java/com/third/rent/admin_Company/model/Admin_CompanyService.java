@@ -28,4 +28,6 @@ public interface Admin_CompanyService {
 	public int withdrawCompany(String comId);
 	
 	public int loginCheck(String adminId, String adminPwd);
+	
+	public List<CompanyVO> selectOutompany(SearchVO searchVo);
 }

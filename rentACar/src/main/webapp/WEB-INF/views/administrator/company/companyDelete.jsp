@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>업체 삭제</title>
+<%@ include file="../include/bottom.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#pwd").focus();
@@ -21,8 +17,6 @@
 		});
 	});
 </script>
-</head>
-<body>
 <div class="divForm">
 <form id="frmDel" name="frmDelete" method="post"	
 	action='<c:url value="/administrator/company/companyDelete.do" />'>
@@ -45,5 +39,4 @@
 	    </fieldset>
     </form>
 </div>
-</body>
-</html>
+<%@ include file="../include/bottom.jsp"%>

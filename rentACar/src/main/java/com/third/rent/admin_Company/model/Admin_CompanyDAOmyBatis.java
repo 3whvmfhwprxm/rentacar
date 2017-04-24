@@ -51,4 +51,8 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 		return getSqlSession().selectOne(namespace+".selectPwdByAdminId", adminId);
 	}
 
+	public List<CompanyVO> selectOutompany(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectOutompany", searchVo);
+	}
+
 }

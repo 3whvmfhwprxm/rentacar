@@ -66,4 +66,8 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 		}		
 		return result;
 	}
+
+	public List<CompanyVO> selectOutompany(SearchVO searchVo) {
+		return adminCompanyDao.selectOutompany(searchVo);
+	}
 }

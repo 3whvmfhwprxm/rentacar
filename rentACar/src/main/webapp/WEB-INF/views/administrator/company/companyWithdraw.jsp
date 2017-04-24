@@ -29,5 +29,4 @@
 			</div>
 		</fieldset>
 	</form>
-</body>
-</html>
+<%@ include file="../include/bottom.jsp"%>

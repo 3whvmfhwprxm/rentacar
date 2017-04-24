@@ -7,22 +7,20 @@
 		frmPage.submit();
 	}
 </script>
+
 <style type="text/css">
-th {
-	text-align: center;
-}
-
-.col-md-4{
-	float: left;
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.col-md-4 ul li{
-	display: inline-block;
-}
+	th {
+		text-align: center;
+	}
+	
+	.col-md-4 {
+		float: left;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+	}
 </style>
+
 <form name="frmPage" method="post"
 	action='<c:url value="/administrator/user/userList.do" />'>
 	<input type="hidden" name="currentPage"> <input type="hidden"
@@ -115,6 +113,7 @@ th {
 </div>
 
 <div class="divSearch container">
+<div class="col-md-4">
 	<form name="frmSearch" method="post"
 		action="<c:url value="/administrator/user/userList.do" />">
 		<select name="searchCondition">
@@ -131,5 +130,5 @@ th {
 			value="검색">
 	</form>
 </div>
-</body>
-</html>
+</div>
+<%@ include file="../include/bottom.jsp"%>

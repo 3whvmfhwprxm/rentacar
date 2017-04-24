@@ -4,6 +4,7 @@ package com.third.rent.admin_CarModel.model;
 import java.util.List;
 
 import com.third.rent.car.model.CarVO;
+import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.SearchVO;
 
 public interface Admin_CarModelDAO {
@@ -18,4 +19,6 @@ public interface Admin_CarModelDAO {
 	public int deleteCarModel(String CarCode);
 	
 	public int selectTotalRecord(SearchVO searchVo);
+	
+	public List<CcarOptionVO> selectByComId(String comId);
 }

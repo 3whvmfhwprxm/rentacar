@@ -21,4 +21,6 @@ public interface Admin_CompanyDAO {
 	public int withdrawCompany(String comId);
 	
 	public String selectPwdByAdminId(String adminId);
+	
+	public List<CompanyVO> selectOutompany(SearchVO searchVo);
 }

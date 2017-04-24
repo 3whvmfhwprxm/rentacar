@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원 상세정보</title>
+<%@ include file="../include/top.jsp"%>
 <script type="text/javascript"
 	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'>
 </script>
@@ -80,8 +74,6 @@ $(document).ready(function() {
 	margin-top: 20px;
 }
 </style>
-</head>
-<body>
 <div class="container">
 	<div
 		class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
@@ -138,5 +130,4 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-</body>
-</html>
+<%@ include file="../include/bottom.jsp"%>

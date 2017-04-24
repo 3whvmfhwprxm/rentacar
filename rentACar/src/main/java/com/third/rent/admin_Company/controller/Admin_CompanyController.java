@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.admin.model.AdminVO;
+import com.third.rent.admin_CarModel.model.Admin_CarModelService;
 import com.third.rent.admin_Company.model.Admin_CompanyService;
+import com.third.rent.car.model.CarVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
@@ -30,6 +32,9 @@ public class Admin_CompanyController {
 	
 	@Autowired
 	private Admin_CompanyService adminCompanyService;
+	
+	@Autowired
+	private Admin_CarModelService adminCompanyCarservice;
 	
 	@RequestMapping("/company/companyList.do")
 	public String companyList(@ModelAttribute SearchVO searchVo, Model model){
@@ -102,7 +107,7 @@ public class Admin_CompanyController {
 	@RequestMapping("/company/CheckCompanyId.do")
 	@ResponseBody
 	public boolean CheckCompanyId(@RequestParam String CompanyId){
-		logger.info("ajax - 아이디 중복확인, 파라미터 userid={}", CompanyId);
+		logger.info("ajax - 아이디 중복확인, 파라미터 CompanyId={}", CompanyId);
 		
 		int result = adminCompanyService.duplicateCompanyId(CompanyId);
 		logger.info("아이디 중복확인, CompanyId={}", CompanyId);
@@ -112,6 +117,28 @@ public class Admin_CompanyController {
 			bool = true;
 		}
 		return bool;
+	}
+	
+	@RequestMapping("/company/companyDetail.do")
+	public String companyDetail(@RequestParam String comId, Model model){
+		//1.
+		logger.info("글 상세보기, 파라미터 comId={}", comId);
+		if(comId.isEmpty()){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "/administrator/company/companyList.do");
+
+			return "common/message";
+		}
+
+		//2.
+		CompanyVO companyVo = adminCompanyService.selectByComId(comId);
+		logger.info("상세보기 결과, companyVo={}", companyVo);
+
+
+		//3.
+		model.addAttribute("companyVo", companyVo);
+
+		return "administrator/company/companyDetail";
 	}
 	
 	@RequestMapping(value="/company/companyEdit.do", method=RequestMethod.GET)
@@ -197,6 +224,47 @@ public class Admin_CompanyController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping("/company/companyOutList.do")
+	public String companyOutList(@ModelAttribute SearchVO searchVo, Model model){
+		logger.info("업체목록, 파라미터 searchVo={}", searchVo);
+
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.ADMIN_OUT_COMPANY_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+
+		searchVo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+
+		List<CompanyVO> outCompanyList = adminCompanyService.selectOutompany(searchVo);
+		logger.info("업체목록 조회결과, outCompanyList.size()={}", outCompanyList.size());
+
+		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
+		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
+				totalRecord);
+
+		pagingInfo.setTotalRecord(totalRecord);
+
+		//3
+		model.addAttribute("outCompanyList", outCompanyList);
+		model.addAttribute("pagingInfo", pagingInfo);
+
+		return "administrator/company/companyOutList";
+	}
+	
+	@RequestMapping("/company/companyCar.do")
+	public String companyCar(@RequestParam SearchVO searchVo, Model model){
+		logger.info("업체보유차량 보기, 파라미터 searchVo={}", searchVo);
+
+		List<CarVO> carList = adminCompanyCarservice.selectAll(searchVo);
+		logger.info("상세보기 결과, carList={}", carList);
+
+
+		model.addAttribute("carList", carList);
+
+		return "administrator/company/companyCar";
 	}
 }
 

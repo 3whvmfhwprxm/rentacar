@@ -8,30 +8,20 @@
 		frmPage.submit();
 	}
 </script>
+
 <style type="text/css">
-th {
-	text-align: center;
-}
-
-.col-md-4 {
-	float: left;
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
-}
-
-.col-md-4 ul li {
-	display: inline-block;
-}
-
-.col-md-4 {
-	float: left;
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
-	display: inline-block;
-}
+	th {
+		text-align: center;
+	}
+	
+	.col-md-4 {
+		float: left;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+	}
 </style>
+
 <div class="divList container">
 	<h2>차량 모델</h2>
 	<form name="frmPage" method="post"
@@ -53,9 +43,6 @@ th {
 					<th scope="col">변속기</th>
 					<th scope="col">등록일</th>
 					<th scope="col">차량유형</th>
-					<th scope="col">이미지1</th>
-					<th scope="col">이미지2</th>
-					<th scope="col">이미지3</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,9 +65,6 @@ th {
 						<td><fmt:formatDate value="${vo.carRegdate}"
 								pattern="yyyy-MM-dd" /></td>
 						<td>${vo.carType}</td>
-						<td>${vo.carImg1}</td>
-						<td>${vo.carImg2}</td>
-						<td>${vo.carImg3}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -118,14 +102,8 @@ th {
 		<div class="col-md-4"></div>
 	</div>
 
-	<div class="col-md-4"></div>
-	<div>
-		<a href='<c:url value="/administrator/carModel/modelRegister.do" />'>
-		<button type="button" class="btn btn-primary">Register</button>
-		</a>
-	</div>
-
 	<div class="divSearch">
+	<div class="col-md-4">
 		<form name="frmSearch" method="post"
 			action="<c:url value="/administrator/carModel/modelList.do" />">
 			<select name="searchCondition">
@@ -146,6 +124,11 @@ th {
 				value="${param.searchKeyword}">
 				<input type="submit" value="검색">
 		</form>
+		<br><br>
+		<a href='<c:url value="/administrator/carModel/modelRegister.do" />'>
+			<button type="button" class="btn btn-primary">Register</button>
+		</a>
+	</div>
 	</div>
 </div>
 </body>

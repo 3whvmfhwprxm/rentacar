@@ -180,8 +180,6 @@
 		display: none;
 	}
 </style>
-<title>CompanyRegister</title>
-<body>
 	<div class="divList container">
 		<form class="form-horizontal" id="frm1" name="frm1" method="post"
 			action='<c:url value="/administrator/company/companyRegister.do" />'>
@@ -357,5 +355,4 @@
 			<input type ="hidden" name="chkId" id="chkId">
 		</form>
 	</div>
-</body>
-</html>
+<%@ include file="../include/bottom.jsp"%>
