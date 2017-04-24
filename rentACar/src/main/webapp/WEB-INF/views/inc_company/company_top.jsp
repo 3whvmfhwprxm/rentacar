@@ -57,7 +57,7 @@ $(document).ready(function () {
         </div>
         <nav style="float: right; ">
 	        <c:if test="${!empty sessionScope.comId }">
-				<span class="navbar-brand1">${sessionScope.comId } 님 접속중 </span>
+				<span class="navbar-brand1">${sessionScope.comName } 님 접속중 </span>
 				<span class="navbar-brand1"><a href="<c:url value='/login_company/com_logout.do'/>">로그아웃</a></span>
 			</c:if>
 			<c:if test="${empty sessionScope.comId }">
@@ -107,7 +107,7 @@ $(document).ready(function () {
 	                <li><a href='<c:url value="/com_manage/company_epilogue.do"/>'>후기관리</a></li>
 	                <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>통계관리</a></li>
 	                <li><a href='<c:url value="/com_manage/company_announcement.do"/>'>공지사항</a></li>
-	                <li><a href='<c:url value="/com_manage/company_detail.do"/>'>내업체정보</a></li>
+	                <li><a href='<c:url value="/com_manage/company_detail.do?comId=${comId}"/>'>내업체정보</a></li>
 	            </ul>
 	        </div>
         </div>

@@ -26,9 +26,6 @@
 <!-- header -->
 
 <nav style="float: right;">
-	<a class="navbar-brand" id="img1"
-		href="${pageContext.request.contextPath}/login_company/companyMain.do">
-		<img alt="로고 이미지" src='<c:url value="/images/left_sns_b.gif"/>' /> 
 		<a class="navbar-brand"
 		href="${pageContext.request.contextPath}/inc_user/login.do">로그인</a> 
 		<a class="navbar-brand"

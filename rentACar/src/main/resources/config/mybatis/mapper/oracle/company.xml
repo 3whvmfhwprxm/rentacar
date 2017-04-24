@@ -48,6 +48,22 @@
 		select * from company where com_id=#{comId}
 	</select>
 	
+	<update id="updateCompany" parameterType="CompanyVO">
+		update company 
+		set 
+	    	com_id=#{comId}, com_name=#{comName},
+	    	com_num=#{comNum}, com_accNum=#{comAccNum},
+	    	com_tel1=#{comTel1}, com_tel2=#{comTel2}, 
+	    	com_tel3=#{comTel3}, com_mobile1=#{comMobile1}, 
+	    	com_mobile2=#{comMobile2}, com_mobile3=#{comMobile3}, 
+	    	com_fax1=#{comFax1}, com_fax2=#{comFax2}, 
+	    	com_fax3=#{comFax3}, com_address=#{comAddress}, 
+	    	com_ceo=#{comCeo}, com_email=#{comEmail}, 
+	    	com_logo=#{comLogo}
+	    	
+		where com_id=#{comId}
+	</update>
+	
 	<!-- <select id="companyIdChk" parameterType="CompanyVO" resultType="Integer">
 		select 
 			count(*)

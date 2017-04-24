@@ -24,4 +24,10 @@ public class CompanyDAOMybatis extends SqlSessionDaoSupport
 		return getSqlSession().selectOne(namespace+".selectByComId",comId);
 	}
 
+	@Override
+	public int updateCompany(CompanyVO vo) {
+		return getSqlSession().update(namespace+".updateCompany",vo);
+				
+	}
+
 }

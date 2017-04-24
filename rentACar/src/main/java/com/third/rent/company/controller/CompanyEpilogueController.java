@@ -18,6 +18,7 @@ import com.third.rent.admin_Company.model.Admin_CompanyService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
+import com.third.rent.company.model.CompanyService;
 import com.third.rent.company.model.CompanyVO;
 import com.third.rent.company.notice.model.CompanyNoticeVO;
 
@@ -32,7 +33,7 @@ public class CompanyEpilogueController {
 	private Admin_BoardService adService;
 	
 	@Autowired
-	private Admin_CompanyService acService;
+	private CompanyService comService;
 	
 	@RequestMapping("/company_epilogue.do")
 	public String consel_index(){
@@ -75,7 +76,7 @@ public class CompanyEpilogueController {
 			Model model){
 		
 		//String comId = null;
-		logger.info("업체수정화면 보여주기, 파라미터 comId={}", comId);
+		logger.info("업체화면 보여주기, 파라미터 comId={}", comId);
 		
 		if(comId==null || comId.isEmpty()){
 			model.addAttribute("msg", "잘못된 url입니다");
@@ -85,28 +86,34 @@ public class CompanyEpilogueController {
 		}
 		
 		CompanyVO companyVo
-			= acService.selectByComId(comId);
-		logger.info("업체수정화면 조회결과 companyVo={}", companyVo);
+			= comService.selectBycomId(comId);
+		logger.info("업체화면 조회결과 companyVo={}", companyVo);
 		
 		model.addAttribute("companyVo", companyVo);
 		
 		return "com_manage/company_detail";
 	}
+	@RequestMapping(value="/company_edit.do", method=RequestMethod.GET)
+	public String companyEdit_get(){
+		logger.info("업체수정화면 조회결과");
+		
+		return "/com_manage/company_edit";
+		
+	}
 	
-	@RequestMapping(value="/company/companyEdit.do", method=RequestMethod.POST)
+	@RequestMapping(value="/company_detail.do", method=RequestMethod.POST)
 	public String companyEdit_post(@ModelAttribute CompanyVO companyVo,
-			@ModelAttribute AdminVO adminVo,
 			Model model){
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
 		
 
-		int cnt = acService.updateCompany(companyVo);
+		int cnt = comService.updateCompany(companyVo);
 		logger.info("업체 수정 결과 cnt={}", cnt);
 		
 		String msg = "", url = "";
 		if(cnt>0){
 			msg = "업체 수정 성공";
-			url = "/administrator/company/companyEdit.do?comId="+companyVo.getComId();
+			url = "/com_manage/company_edit.do?comId="+companyVo.getComId();
 		}else{
 			msg = "업체 수정 실패";
 		}
