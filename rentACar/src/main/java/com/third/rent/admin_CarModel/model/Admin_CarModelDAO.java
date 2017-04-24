@@ -11,11 +11,11 @@ public interface Admin_CarModelDAO {
 	
 	public List<CarVO> selectAll(SearchVO searchVo);
 	
-	public CarVO selectByCarCode(String CarCode);
+	public CarVO selectByCarCode(String carCode);
 	
 	public int updateCarModel(CarVO vo);
 	
-	public int deleteCarModel(String CarCode);
+	public int deleteCarModel(String carCode);
 	
 	public int selectTotalRecord(SearchVO searchVo);	
 }

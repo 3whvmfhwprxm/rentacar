@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.admin_CarModel.model.Admin_CarModelServiceImpl;
 import com.third.rent.admin_Company.controller.Admin_CompanyController;
@@ -84,5 +85,23 @@ public class Admin_CarModelController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping("/carModel/modelDetail.do")
+	public String companyDetail(@RequestParam String carCode, Model model){
+		logger.info("글 상세보기, 파라미터 carCode={}", carCode);
+		if(carCode.isEmpty()){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "/administrator/company/companyList.do");
+
+			return "common/message";
+		}
+
+		CarVO carVo = adminCarModelService.selectByCarCode(carCode);
+		logger.info("상세보기 결과, carVo={}", carVo);
+
+		model.addAttribute("carVo", carVo);
+
+		return "administrator/carModel/modelDetail";
 	}
 }

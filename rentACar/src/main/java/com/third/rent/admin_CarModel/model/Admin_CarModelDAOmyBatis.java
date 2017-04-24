@@ -22,16 +22,16 @@ public class Admin_CarModelDAOmyBatis extends SqlSessionDaoSupport
 		return getSqlSession().selectList(namespace+".selectAllCarModel", searchVo);
 	}
 
-	public CarVO selectByCarCode(String CarCode) {
-		return getSqlSession().selectOne(namespace+".selectByCarCode", CarCode);
+	public CarVO selectByCarCode(String carCode) {
+		return getSqlSession().selectOne(namespace+".selectByCarCode", carCode);
 	}
 
 	public int updateCarModel(CarVO vo) {
 		return getSqlSession().update(namespace+".updateCarModel", vo);
 	}
 
-	public int deleteCarModel(String CarCode) {
-		return getSqlSession().delete(namespace+".deleteCarModel", CarCode);
+	public int deleteCarModel(String carCode) {
+		return getSqlSession().delete(namespace+".deleteCarModel", carCode);
 	}
 
 	public int selectTotalRecord(SearchVO searchVo) {

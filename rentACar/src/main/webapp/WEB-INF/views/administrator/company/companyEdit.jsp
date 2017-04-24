@@ -2,88 +2,186 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp"%>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#frmEdit').submit(function() {
-			if ($("#title").val() == "") {
-				alert("제목을 입력하세요");
-				$('#title').focus();
-				event.preventDefault();
-			} else if ($('#name').val().length < 1) {
-				alert("이름을 입력하세요");
-				$('#name').focus();
-				event.preventDefault();
-			} else if (!$('#pwd').val()) {
-				alert("비밀번호를 입력하세요");
-				$('#pwd').focus();
-				event.preventDefault();
+	$(document).ready(function() {		
+		$("#btCompanyRegister").click(function(){
+			if(!$("#CompanyPwd").val()){
+				alert('비밀번호를 입력하세요');
+				$("#CompanyPwd").focus();
+				return false;
 			}
-
 		});
 	});
 </script>
-	<div class="divForm">
-		<form id="frmEdit" name="frmEdit" method="post"
-			action='<c:url value="/administrator/company/companyEdit.do" />'>
 
-				<fieldset>
-					<legend>업체수정</legend>
-					<div class="firstDiv">
-						<label for="comId">아이디</label> 
-						<input type="text" id="comId" name="comId" value="${companyVo.comId}" />
-					</div>
-					<div>
-						<label for="comName">업체명</label> 
-						<input type="text" id="comName" name="comName" value="${companyVo.comName}" />
-					</div>
-					<div>
-						<label for="comNum">사업자번호</label> 
-						<input type="text" id="comNum" name="comNum" value="${companyVo.comNum}" />
-					</div>
-					<div>
-						<label for="comNum">계좌번호</label> 
-						<input type="text" id="comAccNum" name="comAccNum" value="${companyVo.comAccNum}" />
-					</div>
-					<div>
-						<label for="comTel">대표번호</label>
-						<input type="text" id="comTel1" name="comTel1" value="${companyVo.comTel1}" />-
-						<input type="text" id="comTel2" name="comTel2" value="${companyVo.comTel2}" />-
-						<input type="text" id="comTel3" name="comTel3" value="${companyVo.comTel3}" />
-					</div>
-					<div>
-						<label for="comMobile">휴대폰</label> 
-						<input type="text" id="comMobile1" name="comMobile1" value="${companyVo.comMobile1}" />-
-						<input type="text" id="comMobile2" name="comMobile2" value="${companyVo.comMobile2}" />-
-						<input type="text" id="comMobile3" name="comMobile3" value="${companyVo.comMobile3}" />
-					</div>
-					<div>
-						<label for="comFax">팩스번호</label> 
-						<input type="text" id="comFax1" name="comFax1" value="${companyVo.comFax1}" />-
-						<input type="text" id="comFax2" name="comFax2" value="${companyVo.comFax2}" />-
-						<input type="text" id="comFax3" name="comFax3" value="${companyVo.comFax3}" />
-					</div>
-					<div>
-						<label for="comAddress">주소</label> 
-						<input type="text" id="comAddress" name="comAddress" value="${companyVo.comAddress}" />
-					</div>
-					<div>
-						<label for="comCeo">대표자</label> 
-						<input type="text" id="comCeo" name="comCeo" value="${companyVo.comCeo}" />
-					</div>
-					<div>
-						<label for="comEmail">이메일</label> 
-						<input type="text" id="comEmail1" name="comEmail" value="${companyVo.comEmail}" />
-					</div>
-					<div>
-						<label for="comLogo">업체로고</label> 
-						<input type="text" id="comLogo" name="comLogo" value="${companyVo.comLogo}" />
-					</div>
-					
-					<div class="center">
-						<input type="submit" value="수정" /> 
-						<input type="Button" value="업체목록"
-							onclick="location.href='<c:url value="/administrator/company/companyList.do"/>'" />
-					</div>
-				</fieldset>
-		</form>
-	</div>
+<style type="text/css">
+	.register {
+		float: left;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+		display: inline-block;
+	}
+	
+	#check{
+		color: red;
+		font-weight: bold;
+		display: none;
+	}
+</style>
+
+<form class="form-horizontal" id="frm1" name="frm1" method="post"
+	action='<c:url value="/administrator/company/companyEdit.do" />'>
+	<fieldset>
+	<legend>Company Edit</legend>
+		<div class="form-group">
+			<label for="CompanyId" class="col-sm-2 control-label">
+				Company Id </label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" name="comId"
+					id="CompanyId" value="${companyVo.comId}">		
+			</div>
+			<div class="col-sm-4">
+				<span id="check"></span>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="CompanyName" class="col-sm-2 control-label">
+				Company Name
+			</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="comName"
+					id="CompanyName" value="${companyVo.comName}">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="CompanyPwd" class="col-sm-2 control-label">
+				Company Password
+			</label>
+			<div class="col-sm-8">
+				<input type="password" class="form-control" name="comPwd"
+					id="CompanyPwd" value="${companyVo.comPwd}">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="CompanyNo" class="col-sm-2 control-label">
+				Company No
+			</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="comNum"
+					id="CompanyNo" value="${companyVo.comNum}">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="comAccNum" class="col-sm-2 control-label">
+				Company Account
+			</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="comAccNum"
+					id="comAccNum" value="${companyVo.comAccNum}">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">
+				Company Tel
+			</label>
+			<div class="col-xs-2">
+				<input class="form-control" type="text" name="comTel1"
+					id="CompanyTel1" maxlength="4" value="${companyVo.comTel1}">
+			</div>
+			
+			<div class="col-xs-2">
+				<input class="form-control" type="text" name="comTel2"
+					id="CompanyTel2" maxlength="4" value="${companyVo.comTel2}">
+			</div>
+			
+			<div class="col-xs-2">
+				<input class="form-control" type="text" name="comTel3"
+					id="CompanyTel3" maxlength="4" value="${companyVo.comTel3}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="CompanyMobile11" class="col-sm-2 control-label">
+				Company Mobile
+			</label>
+			<div class="col-xs-2">
+				<select class="form-control" id="comMobile1" name="comMobile1"
+					value="${companyVo.comMobile1}">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="018">018</option>
+					<option value="019">019</option>
+				</select>
+			</div>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" name="comMobile2"
+					id="CompanyMobile2" value="${companyVo.comMobile2}">
+			</div>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" name="comMobile3"
+					id="CompanyMobile3" value="${companyVo.comMobile3}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="CompanyFax" class="col-sm-2 control-label">
+				Company Fax
+			</label>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" name="comFax1"
+					id="CompanyFax1" value="${companyVo.comFax1}">
+			</div>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" name="comFax2"
+					id="CompanyFax2" value="${companyVo.comFax2}">
+			</div>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" name="comFax3"
+					id="CompanyFax3" value="${companyVo.comFax3}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="CompanyAddress" class="col-sm-2 control-label">
+				Company Address
+			</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="comAddress"
+					id="CompanyAddress" value="${companyVo.comAddress}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="CompanyCeo" class="col-sm-2 control-label">
+				Company Ceo
+			</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="comCeo"
+					id="CompanyCeo" value="${companyVo.comCeo}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="CompanyEmail" class="col-sm-2 control-label">
+				Company Email</label>
+			<div class="col-md-8">
+				<input type="email" class="form-control" name="comEmail"
+					id="CompanyEmail" value="${companyVo.comEmail}">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="CompanyLogo" class="col-sm-2 control-label">
+				Company Logo
+			</label>
+			<div class="col-sm-2">
+				<input type="text" id="CompanyLogo" name="comLogo"
+					value="${companyVo.comLogo}">	
+				<input type="file" id="CompanyLogo" name="comLogo">	
+			</div>
+		</div>
+		</fieldset>
+</form>
 <%@ include file="../include/bottom.jsp"%>

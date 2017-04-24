@@ -37,9 +37,7 @@
 					<th scope="col">코드</th>
 					<th scope="col">모델명</th>
 					<th scope="col">제조사</th>
-					<th scope="col">연료</th>
 					<th scope="col">승차인원</th>
-					<th scope="col">출시년도</th>
 					<th scope="col">변속기</th>
 					<th scope="col">등록일</th>
 					<th scope="col">차량유형</th>
@@ -58,9 +56,7 @@
 								${vo.carCode}</a></td>
 						<td style="text-align: center">${vo.carName}</td>
 						<td>${vo.carInc}</td>
-						<td>${vo.carFuel}</td>
 						<td>${vo.carSize}</td>
-						<td>${vo.carYear}</td>
 						<td>${vo.carTrans}</td>
 						<td><fmt:formatDate value="${vo.carRegdate}"
 								pattern="yyyy-MM-dd" /></td>

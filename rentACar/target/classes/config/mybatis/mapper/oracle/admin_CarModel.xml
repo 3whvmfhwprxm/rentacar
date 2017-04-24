@@ -11,9 +11,9 @@
 	
 	<insert id="insertCarModel" parameterType="CarVO">
 		insert into car(car_code, car_name, car_inc, car_size,
-			car_trans, car_regdate, car_type, car_img)
+			car_trans, car_type, car_img)
 		values(#{carCode}, #{carName},#{carInc}, #{carSize},
-			#{carTrans}, #{carRegdate}, #{carType}, #{carImg})
+			#{carTrans}, #{carType}, #{carImg})
 	</insert>
 	
 	<select id="selectAllCarModel" resultType="CarVO"
@@ -52,8 +52,8 @@
 		set 
 	    	car_code=#{carCode}, car_name=#{carName},
 	    	car_inc=#{carInc}, car_size=#{carSize},
-	    	car_trans=#{carTrans}, car_regdate=#{carRegdate},
-	    	car_type=#{carType}, car_img=#{carImg},
+	    	car_trans=#{carTrans}, car_type=#{carType},
+	    	car_img=#{carImg},
 		where car_code=#{carCode}
 	</update>
 	

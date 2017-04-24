@@ -22,16 +22,16 @@ public class Admin_CarModelServiceImpl implements Admin_CarModelService {
 		return adminCarModelDao.selectAll(searchVo);
 	}
 
-	public CarVO selectByCarCode(String CarCode) {
-		return adminCarModelDao.selectByCarCode(CarCode);
+	public CarVO selectByCarCode(String carCode) {
+		return adminCarModelDao.selectByCarCode(carCode);
 	}
 
 	public int updateCarModel(CarVO vo) {
 		return adminCarModelDao.updateCarModel(vo);
 	}
 
-	public int deleteCarModel(String CarCode) {
-		return adminCarModelDao.deleteCarModel(CarCode);
+	public int deleteCarModel(String carCode) {
+		return adminCarModelDao.deleteCarModel(carCode);
 	}
 
 	public int selectTotalRecord(SearchVO searchVo) {
