@@ -20,7 +20,7 @@
                     <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
                 </div>
             </div>
-            <table class="table">
+            <table class="table" width="100%">
                 <thead>
                     <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="예약번호" disabled></th>
