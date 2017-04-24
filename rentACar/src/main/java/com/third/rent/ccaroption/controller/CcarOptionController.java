@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.car.model.CarService;
 import com.third.rent.car.model.CarVO;
@@ -229,7 +230,7 @@ public class CcarOptionController {
 		logger.info("수정 N작업후 vo = {}",vo);
 		
 		int cnt = ccarOptionService.updateCarOption(vo);
-		String msg="", url="/login_company/company_ccarList.do";
+		String msg="", url="/com_manage/company_ccarList.do";
 		if(cnt>0){
 			msg="차량정보 수정이 정상적으로 처리되었습니다.";
 			url="/com_manage/company_ccarDetail.do?ccarCarId=" +vo.getCcarCarId();
@@ -241,6 +242,45 @@ public class CcarOptionController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
+	}
+	
+	@RequestMapping(value="/company_ccarDelete.do", method=RequestMethod.POST)
+	public String ccardelete_post(@RequestParam String comId, @RequestParam String ccarCarId
+			,Model model){
+		logger.info("차량 삭제처리, 파라미터=ccarCarId{},comId={}",ccarCarId,comId);
+		CcarOptionVO vo = new CcarOptionVO();
+		vo.setComId(comId);
+		vo.setCcarCarId(ccarCarId);
+		logger.info("차량 삭제처리, vo셋팅후={}",vo);
+		int cnt =ccarOptionService.deleteCarOption(vo);
+		String msg="", url="/com_manage/company_ccarList.do";
+		if(cnt>0){
+			msg="해당 차량등록 해지가 정상적으로 처리되었습니다.";
+		}else{
+			msg="차량 등록 해지 실패!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/checkCarId.do", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean checkCarId(@RequestParam String ccarCarId){
+		logger.info("ajax-아이디 중복확인, 파라미터ccarCarId={}", ccarCarId);
+		
+		int result = ccarOptionService.checkCarId(ccarCarId);
+		logger.info("아이디 중복확인, result={}", result);
+		
+		boolean bool=false;
+		if(result==ccarOptionService.UN_USABLE_NUM){
+			//차량번호가가 이미 존재하는경우
+			bool=true;
+		}
+		
+		return bool;
 	}
 	
 }

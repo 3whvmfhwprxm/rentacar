@@ -58,10 +58,58 @@
 		
 		});
 		
+		var areaNm = jQuery("#area").val(); 
+		var carMiddleNm = jQuery("#carMiddelNum").val();
+		var carLastNm = jQuery("#ccarCarId").val();
+		var carNo = areaNm+carMiddleNm+carLastNm;
+		//차량번호 중복확인 - ajax 방식으로
+		$("#userid").keyup(function(){
+			if($("#ccarCarId").val().length<3){
+				//유효성 검사를 통과하지 못한경우
+				$("#error").html('4자리 이상이어야 합니다.');
+				$("chkCarId").val("");
+				$("#error").show();
+			}else{
+				//유효성 검사를 통과하면 아이디 중복검사한다.
+				$.ajax({
+					url:'<c:url value="/com_manage/checkCarId.do" />',
+					type:'post',
+					data:'ccarCarId'= CarNo,
+					success:function(res){
+						var msg="";
+						var chkId="";
+						if(res){
+							//차량번호 존재
+							msg="해당 차대번호는 이미 존재합니다!";
+						}else{
+							msg="해당 차대번호 사용 가능합니다!"
+							chkId="Y";
+						}
+						$("#error").html(msg);
+						$("#chkCarId").val(chkId);
+						$("#error").show();
+					},
+					error:function(xhr, status, error){
+						alert("error:"+error)
+					}
+				});
+			}
+			
+			
+		});
 	});
 	
+	
+	
 </script>
+<style type="text/css">
+	#error{
+		color: red;
+		font-weight: bold;
+		display: none;
+	}	
 
+</style>
 <div class="divList container">
 		<form class="form-horizontal" id="frmRg" method="post"
 			action="<c:url value='/com_manage/company_optionRegist.do'/>">
@@ -111,36 +159,37 @@
 					<div class="col-sm-2">
 						<select class="form-control" name="area" id="area">
 							<option>선택하세요</option>
-							<option selected>서울</option>
-							<option>경기</option>
-							<option>인천</option>
-							<option>대구</option>
-							<option>대전</option>
-							<option>부산</option>
-							<option>제주</option>
-							<option>강원</option>
-							<option>광주</option>
-							<option>울산</option>
-							<option>충북</option>
-							<option>충남</option>
-							<option>전남</option>
-							<option>전북</option>
-							<option>경북</option>
-							<option>경남</option>
-								
+							<option value="서울" selected>서울</option>
+							<option value="경기" >경기</option>
+							<option value="인천" >인천</option>
+							<option value="대구" >대구</option>
+							<option value="대전" >대전</option>
+							<option value="부산" >부산</option>
+							<option value="제주" >제주</option>
+							<option value="강원" >강원</option>
+							<option value="광주" >광주</option>
+							<option value="울산" >울산</option>
+							<option value="충북" >충북</option>
+							<option value="충남" >충남</option>
+							<option value="전남" >전남</option>
+							<option value="전북" >전북</option>
+							<option value="경북" >경북</option>
+							<option value="경남" >경남</option>
 						</select>
 					</div>
 					<div class="col-sm-2">
-						<select class="form-control" name="secondCarNum" id="secondCarNum">
+						<select class="form-control" name="carMiddleNum" id="carMiddleNum">
 							<option>선택하세요</option>
-							<option>하</option>
-							<option selected>허</option>
-							<option>호</option>
+							<option value="하">하</option>
+							<option value="허" selected>허</option>
+							<option value="호">호</option>
 						</select>
 					</div>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="ccarCarId"
 							id="ccarCarId" placeholder="1234">
+						<span id="error"></span>
+						<input type="text" name="chkCarId" id="chkCarId">
 					</div>
 				</div>
 				<div class="form-group">

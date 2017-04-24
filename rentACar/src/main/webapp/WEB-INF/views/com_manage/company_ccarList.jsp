@@ -62,13 +62,61 @@
         </thead>
         <tbody>
         <!-- 반복시작 -->
-		<c:forEach var="map" items="${cclist }">
+		<c:forEach var="map" items="${cclist }" varStatus="i">
 		<tr>
 			<td><input type="checkbox" id="" name=""></td>
 			<td><a href="<c:url value='/com_manage/company_ccarDetail.do?ccarCarId=${map["CCAR_CAR_ID"] }' /> " />${map['CCAR_CAR_ID']}</td>
 			<td>${map['CAR_CODE'] }</td>
 			<td>${map['CAR_NAME'] }</td>
-			<td><a href="#">옵션상세보기</a></td>
+			<td><!-- <a href="#">옵션상세보기</a> -->
+			<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="address">
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target='#ordine_${i.index }'>옵션상세보기</button>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<!-- Modal -->
+<div id="ordine_${i.index }" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">${map['CCAR_CAR_ID'] } 의 옵션사항</h4>
+      </div>
+      <div class="modal-body">
+       <p> 
+       <c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
+	       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
+	       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N' 
+	       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
+	       && map['CCAR_BLUETOOTH_YN']=='N' && map['CCAR_SMARTKEY_YN']=='N' }">등록된 옵션이 없습니다.
+       </c:if>
+       <c:if test="${map['CCAR_AUX_YN']=='Y' }"> AUX</c:if>
+       <c:if test="${map['CCAR_BLACKBOX_YN']=='Y' }"> 블랙박스</c:if>
+       <c:if test="${map['CCAR_SMOKE_YN']=='Y' }"> 금연차</c:if>
+       <c:if test="${map['CCAR_REAR_CAMERA_YN']=='Y' }"> 후방카메라</c:if>
+       <c:if test="${map['CCAR_REAR_SENCE_YN']=='Y' }"> 후방센서</c:if>
+       <c:if test="${map['CCAR_NAVI_YN']=='Y' }"> 네비게이션</c:if>
+       <c:if test="${map['CCAR_SUN_ROOF_YN']=='Y' }">썬루프</c:if>
+       <c:if test="${map['CCAR_BLUETOOTH_YN']=='Y' }"> 블루투스</c:if>
+       <c:if test="${map['CCAR_SMARTKEY_YN']=='Y' }"> 스마트키</c:if>
+       </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+			</td>
+			
 			<c:if test="${map['CCAR_USE_YN']=='Y' }"><td>사용가능</td>  </c:if>
 			<c:if test="${map['CCAR_USE_YN']=='N' }"><td>사용불가</td>  </c:if>
 			<td><button>여부변경</button></td>

@@ -50,6 +50,7 @@
 				from car c join companycaroption cco
 				on c.car_code = cco.car_code
 				<!-- where cco.com_id='rentGo' -->
+				where cco.comcar_outdate is null
 				order by cco.comcar_regdate desc
 		    )LIST
 		)
@@ -77,7 +78,16 @@
 		where ccar_car_id=#{ccarCarId} and com_id=#{comId}
 	</update>	
 	
+	<update id="DeleteCompanyCar" parameterType="CcarOptionVo">
+		update companycaroption
+		set	comcar_outdate = sysdate
+		where ccar_car_id=#{ccarCarId} and com_id=#{comId}
+	</update>
 	
+	<select id="checkCarId" parameterType="String" resultType="int">
+		select count(*) from  companycaroption 
+		where Ccar_car_id = #{ccarCarId };
+ 	</select>
 	
 </mapper>
 

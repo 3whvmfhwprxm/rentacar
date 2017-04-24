@@ -42,6 +42,16 @@ public class CcarOptionDAOMybatis extends SqlSessionDaoSupport
 	public int updateCarOption(CcarOptionVO vo) {
 		return getSqlSession().update(namespace+".updateCarOption", vo);
 	}
+
+	@Override
+	public int deleteCarOption(CcarOptionVO vo) {
+		return getSqlSession().update(namespace+".DeleteCompanyCar", vo);
+	}
+
+	@Override
+	public int checkCarId(String ccarCarId) {
+		return getSqlSession().selectOne(namespace+".checkCarId", ccarCarId);
+	}
 	
 }
 

@@ -14,4 +14,6 @@ public interface CcarOptionDAO {
 	public HashMap<String, Object> selectByCcarId(String ccarid);
 	public int selectTotalRecord(SearchVO searchVo);
 	public int updateCarOption(CcarOptionVO vo);
+	public int deleteCarOption(CcarOptionVO vo);
+	public int checkCarId(String ccarCarId);
 }
