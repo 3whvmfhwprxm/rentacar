@@ -140,19 +140,19 @@ and car_category_num=1;
 delete from car;
 
 insert into car
-values('hd001', '현대소나타17', '현대', 4, '2017-01-01', 'AUTO', sysdate, 4, 'hd00101.jpg');
+values('hd001', '현대소나타17', '현대', 4, 'AUTO', sysdate, 4, 'hd00101.jpg');
 
 insert into car
-values('hd002', '현대액센트17', '현대', 4, '2017-01-01', 'AUTO', sysdate, 3, 'hd00201.jpg');
+values('hd002', '현대액센트17', '현대', 4, 'AUTO', sysdate, 3, 'hd00201.jpg');
 
 insert into car
-values('kia001', '기아k5_17', 'KIA', 4, '2017-01-01', 'Trans', sysdate, 4, 'kia00101.jpg');
+values('kia001', '기아k5_17', 'KIA', 4, 'Trans', sysdate, 4, 'kia00101.jpg');
 
 insert into car
-values('kia002', '기아뉴모닝_17', 'KIA', 4, '2017-01-01', 'AUTO', sysdate, 2, 'kia00201.jpg');
+values('kia002', '기아뉴모닝_17', 'KIA', 4, 'AUTO', sysdate, 2, 'kia00201.jpg');
 
 insert into car
-values('lambo001', '람보르기니_우라칸', 'Lamborghini', 2, '2017-01-01', 'Trans', sysdate, 5, 'lb00101.jpg');
+values('lambo001', '람보르기니_우라칸', 'Lamborghini', 2, 'Trans', sysdate, 5, 'lb00101.jpg');
 
 select * from car;
 commit;

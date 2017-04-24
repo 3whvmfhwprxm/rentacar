@@ -130,9 +130,9 @@ public class RealTimeController {
 		sdf.setTimeZone(TimeZone.getTimeZone("GMT+9"));
 
 		System.out.println(sdf.format(date));
-		payInfoVO.setPayRegdate(sdf.format(date));
+		/*payInfoVO.setPayRegdate(sdf.format(date));
 		
 		int result=rService.insertPayInfo(payInfoVO);
-		logger.info("결제완료 정보 입력 결과 result={}", result);
+		logger.info("결제완료 정보 입력 결과 result={}", result);*/
 	}
 }
