@@ -37,13 +37,15 @@ $(document).ready(function () {
     });
 });
 </script>
-
+<style type="text/css">
+.navbar-brand1{
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+</style>
 </head>
-<nav style="float: right;">
-		<a class="navbar-brand"
-		href="${pageContext.request.contextPath}/inc_user/login.do">로그아웃</a> 
-	
-</nav>
 <body>
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
 <body>
@@ -53,6 +55,15 @@ $(document).ready(function () {
                 업체 관리자<BR>
             </h3>
         </div>
+        <nav style="float: right; ">
+	        <c:if test="${!empty sessionScope.comId }">
+				<span class="navbar-brand1">${sessionScope.comId } 님 접속중 </span>
+				<span class="navbar-brand1"><a href="<c:url value='/login_company/com_logout.do'/>">로그아웃</a></span>
+			</c:if>
+			<c:if test="${empty sessionScope.comId }">
+				<span class="navbar-brand1"><a href="${pageContext.request.contextPath }/login_company/com_login.do">로그인</a></span>
+			</c:if>
+		</nav>
     </header>
     
     <nav class="navbar navbar-default mega-nav">

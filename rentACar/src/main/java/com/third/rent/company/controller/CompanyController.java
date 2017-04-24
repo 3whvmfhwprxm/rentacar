@@ -96,6 +96,6 @@ public class CompanyController {
 		
 		session.invalidate();
 		
-		return "redirect:/login_company/companyMain.do";
+		return "redirect:/login_company/com_login.do";
 	}
 }
