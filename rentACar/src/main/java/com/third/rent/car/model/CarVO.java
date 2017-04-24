@@ -3,84 +3,84 @@ package com.third.rent.car.model;
 import java.sql.Timestamp;
 
 public class CarVO {
-	private String car_code;
-	private String car_name;
-	private String car_inc;
-	private int car_size;
-	private String car_trans;
-	private Timestamp car_regdate;
-	private String car_type;
-	private String car_img;
+	private String carCode;
+	private String carName;
+	private String carInc;
+	private int carSize;
+	private String carTrans;
+	private Timestamp carRegdate;
+	private String carType;
+	private String carImg;
 
-	public String getCar_code() {
-		return car_code;
+	public String getCarCode() {
+		return carCode;
 	}
 
-	public void setCar_code(String car_code) {
-		this.car_code = car_code;
+	public void setCarCode(String carCode) {
+		this.carCode = carCode;
 	}
 
-	public String getCar_name() {
-		return car_name;
+	public String getCarName() {
+		return carName;
 	}
 
-	public void setCar_name(String car_name) {
-		this.car_name = car_name;
+	public void setCarName(String carName) {
+		this.carName = carName;
 	}
 
-	public String getCar_inc() {
-		return car_inc;
+	public String getCarInc() {
+		return carInc;
 	}
 
-	public void setCar_inc(String car_inc) {
-		this.car_inc = car_inc;
+	public void setCarInc(String carInc) {
+		this.carInc = carInc;
 	}
 
-	public int getCar_size() {
-		return car_size;
+	public int getCarSize() {
+		return carSize;
 	}
 
-	public void setCar_size(int car_size) {
-		this.car_size = car_size;
+	public void setCarSize(int carSize) {
+		this.carSize = carSize;
 	}
 
-	public String getCar_trans() {
-		return car_trans;
+	public String getCarTrans() {
+		return carTrans;
 	}
 
-	public void setCar_trans(String car_trans) {
-		this.car_trans = car_trans;
+	public void setCarTrans(String carTrans) {
+		this.carTrans = carTrans;
 	}
 
-	public Timestamp getCar_regdate() {
-		return car_regdate;
+	public Timestamp getCarRegdate() {
+		return carRegdate;
 	}
 
-	public void setCar_regdate(Timestamp car_regdate) {
-		this.car_regdate = car_regdate;
+	public void setCarRegdate(Timestamp carRegdate) {
+		this.carRegdate = carRegdate;
 	}
 
-	public String getCar_type() {
-		return car_type;
+	public String getCarType() {
+		return carType;
 	}
 
-	public void setCar_type(String car_type) {
-		this.car_type = car_type;
+	public void setCarType(String carType) {
+		this.carType = carType;
 	}
 
-	public String getCar_img() {
-		return car_img;
+	public String getCarImg() {
+		return carImg;
 	}
 
-	public void setCar_img(String car_img) {
-		this.car_img = car_img;
+	public void setCarImg(String carImg) {
+		this.carImg = carImg;
 	}
 
 	@Override
 	public String toString() {
-		return "CarVO [car_code=" + car_code + ", car_name=" + car_name + ", car_inc=" + car_inc + ", car_size="
-				+ car_size + ", car_trans=" + car_trans + ", car_regdate=" + car_regdate + ", car_type=" + car_type
-				+ ", car_img=" + car_img + "]";
+		return "CarVO [carCode=" + carCode + ", carName=" + carName + ", carInc=" + carInc + ", carSize=" + carSize
+				+ ", carTrans=" + carTrans + ", carRegdate=" + carRegdate + ", carType=" + carType + ", carImg="
+				+ carImg + "]";
 	}
 
 }
