@@ -1,8 +1,11 @@
 package com.third.rent.user.controller;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,9 +18,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
+import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reserv_search.model.ReservSearchService;
 import com.third.rent.reservation.model.ReservationVO;
@@ -98,18 +103,36 @@ public class RealTimeController {
 		reserVo.setUserTel2(reservWho.getResUTel2());
 		reserVo.setUserTel3(reservWho.getResUTel3());
 		reserVo.setReservStartDate(searchStartDate);
-		reserVo.setReservStartTime("9");			
+		reserVo.setReservStartTime("9");	//시간 관련 현재 9로 고정되어있는데 수정해야함. 아마도 시작날짜에 시간까지 포함하는 컬럼으로 수정되는걸로 결론날것 같음. 반납일로 마찬가지		
 		reserVo.setReservEndDate(searchEndDate);
-		reserVo.setReservEndTime("13");
+		reserVo.setReservEndTime("13"); //위와 같음
 		reserVo.setReservInsurance("자차보험");
 		reserVo.setUserId(userId);
 					
 		//DB작업
-		rService.takeReservation(reserVo, reservWho);
-
-/*		model.addAttribute();
-		model.addAttribute();*/
+		String reservKey=rService.takeReservation(reserVo, reservWho);
+		reserVo.setReservNum(reservKey);
+		
+		model.addAttribute("reserVo",reserVo);
 		
 		return "inc_user/payment";
+	}
+	
+	@RequestMapping("/payOK.do")
+	@ResponseBody
+	public void payOK(@ModelAttribute PayInfoVO payInfoVO, @RequestParam long payRegdateUnixTimeStamp){
+		logger.info("결제완료 정보 테이블 입력하기 ajax 호출. 파라미터 payInfoVO={}", payInfoVO);
+		logger.info("결제완료 정보 테이블 입력하기 ajax 호출. 유닉스 타임 payRegdateUnixTimeStamp={}", payRegdateUnixTimeStamp);
+		
+		//unix timestamp형식 변환 1493027909
+		Date date = new Date(payRegdateUnixTimeStamp*1000L);		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT+9"));
+
+		System.out.println(sdf.format(date));
+		payInfoVO.setPayRegdate(sdf.format(date));
+		
+		int result=rService.insertPayInfo(payInfoVO);
+		logger.info("결제완료 정보 입력 결과 result={}", result);
 	}
 }

@@ -1,9 +1,7 @@
 package com.third.rent.payInfo.model;
 
-import java.sql.Timestamp;
-
 public class PayInfoVO {
-	private int payNo; /* 결제번호 */
+	private String payNo; /* 결제번호 */
 	private String reservNum; /* 예약번호 */
 	private String userTel1; /* 회원전화번호1 */
 	private String userTel2; /* 회원전화번호2 */
@@ -11,12 +9,13 @@ public class PayInfoVO {
 	private String payMethod; /* 결제방법 */
 	private int payMoney; /* 결제금액 */
 	private int payDiscount; /* 할인금액 */
-	private Timestamp payRegdate; /* 결제일시 */
+	private String payRegdate; /* 결제일시 */
 	private String payCondition; /* 진행상태 */
-	public int getPayNo() {
+	
+	public String getPayNo() {
 		return payNo;
 	}
-	public void setPayNo(int payNo) {
+	public void setPayNo(String payNo) {
 		this.payNo = payNo;
 	}
 	public String getReservNum() {
@@ -61,10 +60,10 @@ public class PayInfoVO {
 	public void setPayDiscount(int payDiscount) {
 		this.payDiscount = payDiscount;
 	}
-	public Timestamp getPayRegdate() {
+	public String getPayRegdate() {
 		return payRegdate;
 	}
-	public void setPayRegdate(Timestamp payRegdate) {
+	public void setPayRegdate(String payRegdate) {
 		this.payRegdate = payRegdate;
 	}
 	public String getPayCondition() {
@@ -80,6 +79,5 @@ public class PayInfoVO {
 				+ ", payDiscount=" + payDiscount + ", payRegdate=" + payRegdate + ", payCondition=" + payCondition
 				+ "]";
 	}
-	
 	
 }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
+import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reservation.model.ReservationVO;
 
@@ -38,7 +39,8 @@ public class ReservSearchServiceImpl implements ReservSearchService{
 	}
 
 	@Transactional
-	public void takeReservation(ReservationVO reserVo, ReservUserVO reservWho) {
+	@Override
+	public String takeReservation(ReservationVO reserVo, ReservUserVO reservWho) {
 		String primarykey=dao.createReservationKey();
 		reserVo.setReservNum(primarykey);
 		reservWho.setReservNum(primarykey);
@@ -46,13 +48,21 @@ public class ReservSearchServiceImpl implements ReservSearchService{
 		logger.info("서비스 트랜잭션 처리 reservWho={}", reservWho);
 		
 		dao.insertReservation(reserVo);
-		dao.insertReservUser(reservWho);	
+		dao.insertReservUser(reservWho);
+		
+		//예약번호 고유키 리턴
+		return primarykey;
 	}
 
 	@Override
 	public List<CarCategoryVO> selectCategoryList() {
 		return dao.selectCategoryList();
 	}
-	
+
+	@Override
+	public int insertPayInfo(PayInfoVO payInfoVO) {
+		return dao.insertPayInfo(payInfoVO);
+	}
+
 	
 }

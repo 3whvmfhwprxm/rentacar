@@ -1,5 +1,3 @@
-
-
 --% 주의 %
 --SYS계정인지 확인.  RENT 계정으로 재접속하여 생성
 
@@ -9,15 +7,15 @@ CREATE TABLE Car (
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */
 	car_name VARCHAR2(100) NOT NULL, /* 모델명 */
 	car_inc VARCHAR2(30) NOT NULL, /* 제조사 */
-	car_fuel VARCHAR2(30) NOT NULL, /* 연료 */--연료: CompanyCarOption에 컬럼을 이동시키고 삭제
+	--car_fuel VARCHAR2(30) NOT NULL, /* 연료 */--연료: CompanyCarOption에 컬럼을 이동시키고 삭제
 	car_size NUMBER NOT NULL, /* 승차인원 */
-	car_year DATE NOT NULL, /* 출시년도 */--출시년도: 모델코드와 모델명에 각각 년도표기가 들어가거나 분류가 되므로 생략
+	--car_year DATE NOT NULL, /* 출시년도 */--출시년도: 모델코드와 모델명에 각각 년도표기가 들어가거나 분류가 되므로 생략
 	car_trans VARCHAR2(6) NOT NULL, /* 변속기 */
 	car_regdate DATE default sysdate, /* 등록일 */
 	car_type VARCHAR2(30) NOT NULL, /* 차량유형 */
-	car_img1 VARCHAR2(200) NOT NULL, /* 이미지1 */
-	car_img2 VARCHAR2(200) NOT NULL, /* 이미지2 */--차공식 사진 관련 1개만 올리도록 수정 예정
-	car_img3 VARCHAR2(200) NOT NULL /* 이미지3 */--차공식 사진 관련 1개만 올리도록 수정 예정
+	car_img VARCHAR2(200) NOT NULL /* 이미지 */
+	--car_img2 VARCHAR2(200) NOT NULL, /* 이미지2 */--차공식 사진 관련 1개만 올리도록 수정 예정
+	--car_img3 VARCHAR2(200) NOT NULL /* 이미지3 */--차공식 사진 관련 1개만 올리도록 수정 예정
 );
 
 ALTER TABLE Car
@@ -218,8 +216,9 @@ ALTER TABLE comments
 		);
 
 /* PayInfo - 결제정보 */
+--drop table payInfo;
 CREATE TABLE PayInfo (
-	pay_no NUMBER NOT NULL, /* 결제번호 */
+	pay_no VARCHAR2(100) NOT NULL, /* 결제번호 */
 	reserv_num VARCHAR2(20) NOT NULL, /* 예약번호 */
 	user_tel1 VARCHAR2(10) NOT NULL, /* 회원전화번호1 */
 	user_tel2 VARCHAR2(10) NOT NULL, /* 회원전화번호2 */
@@ -230,13 +229,14 @@ CREATE TABLE PayInfo (
 	pay_regdate DATE default sysdate, /* 결제일시 */
 	pay_condition VARCHAR2(20) NOT NULL /* 진행상태 */
 );
-
+commit;
 ALTER TABLE PayInfo
 	ADD
 		CONSTRAINT PK_PayInfo
 		PRIMARY KEY (
 			pay_no
 		);
+
 
 /* Event 이벤트 */
 CREATE TABLE Event (
@@ -269,7 +269,7 @@ CREATE TABLE CompanyCarOption (
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */
 	com_id VARCHAR2(30) NOT NULL, /* 업체아이디 */
 	ccar_use_yn VARCHAR2(6) default 'N', /* 차량사용가능여부 */ --VARCHAR2(30) 예약중/수리중/대기중 등으로 전환예정 170424
-	--car_fuel VARCHAR2(30) NOT NULL, /* 연료 */--연료: Car에 있던 컬럼 이동
+	car_fuel VARCHAR2(30) NOT NULL, /* 연료 */--연료: Car에 있던 컬럼 이동 170424
 	ccar_blackbox_yn VARCHAR2(6) default 'N', /* 블랙박스유무 */
 	ccar_smoke_yn VARCHAR2(6) default 'N', /* 금연차량 */
 	ccar_rear_camera_yn VARCHAR2(6) default 'N', /* 후방카메라 */

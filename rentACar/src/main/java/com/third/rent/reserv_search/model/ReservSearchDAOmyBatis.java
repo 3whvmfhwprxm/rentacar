@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
+import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reservation.model.ReservationVO;
 
@@ -49,6 +50,11 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 	@Override
 	public List<CarCategoryVO> selectCategoryList() {
 		return getSqlSession().selectList(nameSpace+".selectCarCategoryList");
+	}
+
+	@Override
+	public int insertPayInfo(PayInfoVO payInfoVO) {
+		return getSqlSession().insert(nameSpace+".insertPayInfo", payInfoVO);
 	}	
 	
 	

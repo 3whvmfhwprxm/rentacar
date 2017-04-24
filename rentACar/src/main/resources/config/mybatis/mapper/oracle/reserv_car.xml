@@ -50,6 +50,12 @@
 		select * from CAR_CATEGORY
 		order by car_category_num
 	</select>
+	
+	<insert id="insertPayInfo" parameterType="PayInfoVO">
+		insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2, 
+		user_tel3, pay_method, pay_money, pay_condition, pay_regdate)
+		values(#{payNo}, #{reservNum}, #{userTel1}, #{userTel2}, #{userTel3}, #{payMethod}, #{payMoney}, #{payRegdate}, #{payCondition})
+	</insert>
 </mapper>
 
 
