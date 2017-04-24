@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.third.rent.car.model.CarVO;
-import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.SearchVO;
 
 @Service
@@ -15,8 +14,8 @@ public class Admin_CarModelServiceImpl implements Admin_CarModelService {
 	@Autowired
 	private Admin_CarModelDAO adminCarModelDao; 
 	
-	public int insertCarModel(CarVO vo) {
-		return adminCarModelDao.insertCarModel(vo);
+	public int insertCarModel(CarVO carVo) {
+		return adminCarModelDao.insertCarModel(carVo);
 	}
 
 	public List<CarVO> selectAll(SearchVO searchVo) {
@@ -38,10 +37,4 @@ public class Admin_CarModelServiceImpl implements Admin_CarModelService {
 	public int selectTotalRecord(SearchVO searchVo) {
 		return adminCarModelDao.selectTotalRecord(searchVo);
 	}
-
-	public List<CcarOptionVO> selectByComId(String comId) {
-		return adminCarModelDao.selectByComId(comId);
-	}
-
-	
 }

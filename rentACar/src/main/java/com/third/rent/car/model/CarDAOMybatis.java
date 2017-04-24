@@ -10,7 +10,6 @@ public class CarDAOMybatis extends SqlSessionDaoSupport implements CarDAO{
 
 	private String namespace="config.mybatis.mapper.oracle.car";
 
-	@Override
 	public List<CarVO> selectAllCar() {
 		return getSqlSession().selectList(namespace+".selectAllCar");
 	}

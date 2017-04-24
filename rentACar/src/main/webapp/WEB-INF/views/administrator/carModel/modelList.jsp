@@ -131,5 +131,4 @@
 	</div>
 	</div>
 </div>
-</body>
-</html>
+<%@ include file="../include/bottom.jsp"%>

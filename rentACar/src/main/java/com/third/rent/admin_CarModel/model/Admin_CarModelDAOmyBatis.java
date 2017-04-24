@@ -6,7 +6,6 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.third.rent.car.model.CarVO;
-import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.SearchVO;
 
 @Repository
@@ -15,8 +14,8 @@ public class Admin_CarModelDAOmyBatis extends SqlSessionDaoSupport
 	
 	private String namespace="config.mybatis.mapper.oracle.admin_CarModel";
 
-	public int insertCarModel(CarVO vo) {
-		return getSqlSession().insert(namespace+".insertCarModel", vo);
+	public int insertCarModel(CarVO carVo) {
+		return getSqlSession().insert(namespace+".insertCarModel", carVo);
 	}
 
 	public List<CarVO> selectAll(SearchVO searchVo) {
@@ -37,10 +36,6 @@ public class Admin_CarModelDAOmyBatis extends SqlSessionDaoSupport
 
 	public int selectTotalRecord(SearchVO searchVo) {
 		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
-	}
-
-	public List<CcarOptionVO> selectByComId(String comId) {
-		return getSqlSession().selectList(namespace+".selectByComId", comId);
 	}
 
 }

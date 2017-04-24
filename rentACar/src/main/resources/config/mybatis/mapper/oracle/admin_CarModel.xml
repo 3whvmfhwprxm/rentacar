@@ -10,16 +10,16 @@
 	</sql>
 	
 	<insert id="insertCarModel" parameterType="CarVO">
-		insert into car(car_code, car_name, car_inc, car_fuel, car_size, car_year, 
-			car_trans, car_regdate, car_type, car_img1, car_img2, car_img3)
-		values(#{carCode}, #{carName},#{carInc}, #{carFuel}, #{carSize}, #{carYear},
-			#{carTrans}, #{carRegdate}, #{carType}, #{carImg1}, #{carImg2}, #{carImg3})
+		insert into car(car_code, car_name, car_inc, car_size,
+			car_trans, car_regdate, car_type, car_img)
+		values(#{carCode}, #{carName},#{carInc}, #{carSize},
+			#{carTrans}, #{carRegdate}, #{carType}, #{carImg})
 	</insert>
 	
 	<select id="selectAllCarModel" resultType="CarVO"
 		parameterType="SearchVO">
-		select car_code, car_name, car_inc, car_fuel, car_size, car_year, 
-			   car_trans, car_regdate, car_type, car_img1, car_img2, car_img3
+		select car_code, car_name, car_inc, car_size,
+			   car_trans, car_regdate, car_type, car_img
 		from
 		(
 		    select rownum as RNUM ,LIST.*
@@ -51,22 +51,15 @@
 		update car
 		set 
 	    	car_code=#{carCode}, car_name=#{carName},
-	    	car_inc=#{carInc}, car_fuel=#{carFuel},
-	    	car_size=#{carSize}, car_year=#{carYear},
+	    	car_inc=#{carInc}, car_size=#{carSize},
 	    	car_trans=#{carTrans}, car_regdate=#{carRegdate},
-	    	car_type=#{carType}, car_img1=#{carImg1},
-	    	car_img2=#{carImg2}, car_img3=#{carImg3}
+	    	car_type=#{carType}, car_img=#{carImg},
 		where car_code=#{carCode}
 	</update>
 	
 	<delete id="deleteCarModel" parameterType="String">
 		delete from car where car_code=#{carCode}
 	</delete>
-	
-	<select id="selectByComId" parameterType="String" resultType="CcarOptionVO">
-		select*from COMPANYCAROPTION
-		where com_id=#{comId}
-	</select>
 
 </mapper>
 

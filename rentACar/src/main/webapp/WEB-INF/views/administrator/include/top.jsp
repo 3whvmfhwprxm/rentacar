@@ -23,25 +23,10 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <script type="text/javascript"
-	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'>
+	src="${pageContext.request.contextPath}/jquery/jquery-3.1.1.min.js">
 </script>
 	
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".filter-button").click(function() {
-			var value = $(this).attr('data-filter');
-
-			if (value == "all") {
-				$('.filter').show('1000');
-			} else {
-				$(".filter").not('.' + value).hide('3000');
-				$('.filter').filter('.' + value).show('3000');
-			}
-		});
-	});
-</script>
 
 </head>
 <body>

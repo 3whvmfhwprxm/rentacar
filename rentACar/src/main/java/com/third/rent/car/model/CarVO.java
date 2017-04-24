@@ -3,98 +3,84 @@ package com.third.rent.car.model;
 import java.sql.Timestamp;
 
 public class CarVO {
-	private String carCode; 		 /* 모델코드 */
-	private String carName; 		 /* 모델명 */
-	private String carInc; 			 /* 제조사 */
-	private String carFuel; 		 /* 연료 */
-	private int carSize; 			 /* 승차인원 */
-	private Timestamp carYear;  	 /* 출시년도 */
-	private String carTrans;		 /* 변속기 */
-	private Timestamp carRegdate;  	 /* 등록일 */
-	private String carType; 		 /* 차량유형 */
-	private String carImg1; 		 /* 이미지1 */
-	private String carImg2; 		 /* 이미지2 */
-	private String carImg3;			 /* 이미지3 */
-	public String getCarCode() {
-		return carCode;
+	private String car_code;
+	private String car_name;
+	private String car_inc;
+	private int car_size;
+	private String car_trans;
+	private Timestamp car_regdate;
+	private String car_type;
+	private String car_img;
+
+	public String getCar_code() {
+		return car_code;
 	}
-	public void setCarCode(String carCode) {
-		this.carCode = carCode;
+
+	public void setCar_code(String car_code) {
+		this.car_code = car_code;
 	}
-	public String getCarName() {
-		return carName;
+
+	public String getCar_name() {
+		return car_name;
 	}
-	public void setCarName(String carName) {
-		this.carName = carName;
+
+	public void setCar_name(String car_name) {
+		this.car_name = car_name;
 	}
-	public String getCarInc() {
-		return carInc;
+
+	public String getCar_inc() {
+		return car_inc;
 	}
-	public void setCarInc(String carInc) {
-		this.carInc = carInc;
+
+	public void setCar_inc(String car_inc) {
+		this.car_inc = car_inc;
 	}
-	public String getCarFuel() {
-		return carFuel;
+
+	public int getCar_size() {
+		return car_size;
 	}
-	public void setCarFuel(String carFuel) {
-		this.carFuel = carFuel;
+
+	public void setCar_size(int car_size) {
+		this.car_size = car_size;
 	}
-	public int getCarSize() {
-		return carSize;
+
+	public String getCar_trans() {
+		return car_trans;
 	}
-	public void setCarSize(int carSize) {
-		this.carSize = carSize;
+
+	public void setCar_trans(String car_trans) {
+		this.car_trans = car_trans;
 	}
-	public Timestamp getCarYear() {
-		return carYear;
+
+	public Timestamp getCar_regdate() {
+		return car_regdate;
 	}
-	public void setCarYear(Timestamp carYear) {
-		this.carYear = carYear;
+
+	public void setCar_regdate(Timestamp car_regdate) {
+		this.car_regdate = car_regdate;
 	}
-	public String getCarTrans() {
-		return carTrans;
+
+	public String getCar_type() {
+		return car_type;
 	}
-	public void setCarTrans(String carTrans) {
-		this.carTrans = carTrans;
+
+	public void setCar_type(String car_type) {
+		this.car_type = car_type;
 	}
-	public Timestamp getCarRegdate() {
-		return carRegdate;
+
+	public String getCar_img() {
+		return car_img;
 	}
-	public void setCarRegdate(Timestamp carRegdate) {
-		this.carRegdate = carRegdate;
+
+	public void setCar_img(String car_img) {
+		this.car_img = car_img;
 	}
-	public String getCarType() {
-		return carType;
-	}
-	public void setCarType(String carType) {
-		this.carType = carType;
-	}
-	public String getCarImg1() {
-		return carImg1;
-	}
-	public void setCarImg1(String carImg1) {
-		this.carImg1 = carImg1;
-	}
-	public String getCarImg2() {
-		return carImg2;
-	}
-	public void setCarImg2(String carImg2) {
-		this.carImg2 = carImg2;
-	}
-	public String getCarImg3() {
-		return carImg3;
-	}
-	public void setCarImg3(String carImg3) {
-		this.carImg3 = carImg3;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "CarVO [carCode=" + carCode + ", carName=" + carName + ", carInc=" + carInc + ", carFuel=" + carFuel
-				+ ", carSize=" + carSize + ", carYear=" + carYear + ", carTrans=" + carTrans + ", carRegdate="
-				+ carRegdate + ", carType=" + carType + ", carImg1=" + carImg1 + ", carImg2=" + carImg2 + ", carImg3="
-				+ carImg3 + "]";
+		return "CarVO [car_code=" + car_code + ", car_name=" + car_name + ", car_inc=" + car_inc + ", car_size="
+				+ car_size + ", car_trans=" + car_trans + ", car_regdate=" + car_regdate + ", car_type=" + car_type
+				+ ", car_img=" + car_img + "]";
 	}
-	
-	
+
 }

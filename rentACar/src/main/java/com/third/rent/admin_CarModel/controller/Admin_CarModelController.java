@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.third.rent.admin_CarModel.model.Admin_CarModelServiceImpl;
 import com.third.rent.admin_Company.controller.Admin_CompanyController;
@@ -56,5 +57,32 @@ public class Admin_CarModelController {
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "administrator/carModel/modelList";
+	}
+	
+	@RequestMapping(value="/carModel/modelRegister.do", method=RequestMethod.GET)
+	public String modelRegister_get(){
+		logger.info("차량등록화면 보여주기");
+			
+		return "administrator/carModel/modelRegister";
+	}
+	
+	@RequestMapping(value="/carModel/modelRegister.do", method=RequestMethod.POST)
+	public String companyRegister_post(@ModelAttribute CarVO carVo, Model model){
+		logger.info("차량등록 처리, 파라미터 carVo={}", carVo);
+
+		int cnt = adminCarModelService.insertCarModel(carVo);
+		String msg="", url="";
+		if(cnt>0){
+			msg="업체등록 성공";
+			url="/administrator/carModel/modelList.do";
+		}else{
+			msg="업체등록 실패";
+			url="/administrator/carModel/modelRegister.do";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
 }
