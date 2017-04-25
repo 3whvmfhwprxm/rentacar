@@ -74,13 +74,56 @@ public class Admin_CarModelController {
 		int cnt = adminCarModelService.insertCarModel(carVo);
 		String msg="", url="";
 		if(cnt>0){
-			msg="업체등록 성공";
+			msg="차량등록 성공";
 			url="/administrator/carModel/modelList.do";
 		}else{
-			msg="업체등록 실패";
+			msg="차량등록 실패";
 			url="/administrator/carModel/modelRegister.do";
 		}
 		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/carModel/modelEdit.do", method=RequestMethod.GET)
+	public String modelEdit_get(@RequestParam String carCode,
+			Model model){
+		logger.info("차량수정화면 보여주기, 파라미터 carCode={}", carCode);
+		
+		if(carCode==null || carCode.isEmpty()){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "administrator/carModel/modelList");
+			
+			return "common/message";
+		}
+		
+		CarVO carVo
+			= adminCarModelService.selectByCarCode(carCode);
+		logger.info("차량수정화면 조회결과 carVo={}", carVo);
+		
+		model.addAttribute("carVo", carVo);
+		
+		return "administrator/carModel/modelEdit";
+	}
+	
+	@RequestMapping(value="/carModel/modelEdit.do", method=RequestMethod.POST)
+	public String modelEdit_post(@ModelAttribute CarVO carVo, Model model){
+		logger.info("차량 수정 처리, 파라미터 carVo={}", carVo);
+		
+
+		int cnt = adminCarModelService.updateCarModel(carVo);
+		logger.info("차량 수정 결과 cnt={}", cnt);
+		
+		String msg = "", url = "";
+		if(cnt>0){
+			msg = "차량 수정 성공";
+			url = "/administrator/carModel/modelEdit.do?carCode="+carVo.getCarCode();
+		}else{
+			msg = "차량 수정 실패";
+		}
+
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
@@ -92,7 +135,7 @@ public class Admin_CarModelController {
 		logger.info("글 상세보기, 파라미터 carCode={}", carCode);
 		if(carCode.isEmpty()){
 			model.addAttribute("msg", "잘못된 url입니다");
-			model.addAttribute("url", "/administrator/company/companyList.do");
+			model.addAttribute("url", "/administrator/carModel/modelList.do");
 
 			return "common/message";
 		}

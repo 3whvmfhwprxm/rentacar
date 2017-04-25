@@ -27,7 +27,7 @@
 				$("#carSize").focus();
 				return false;
 			}else if($("#carImg").val()==''){
-				alert('이미지1을 선택해주세요.');
+				alert('이미지을 선택해주세요.');
 				return false;
 			}
 		});
@@ -117,7 +117,7 @@
 						
 		<div class="form-group">
 			<label for="carImg" class="col-sm-2 control-label">
-				Car Img1
+				Car Img
 			</label>
 			<div class="col-sm-2">
 				<input type="file" id="carImg" name="carImg"

@@ -17,5 +17,6 @@ public interface Admin_CarModelDAO {
 	
 	public int deleteCarModel(String carCode);
 	
-	public int selectTotalRecord(SearchVO searchVo);	
+	public int selectTotalRecord(SearchVO searchVo);
+	
 }

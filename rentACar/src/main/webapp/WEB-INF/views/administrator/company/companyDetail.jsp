@@ -2,15 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp"%>
 
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=발급받은 API KEY를 넣으시면 됩니다."></script>
-
-<script type="text/javascript">
-
-</script>
-
-<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700'
-	rel='stylesheet' type='text/css'>
-
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/admin_Detail.css" />
 
@@ -27,6 +18,11 @@
 								<img class="img img-responsive" alt="업체 로고"
 									src='<c:url value="/companyLogo/${companyVo.comLogo}" />'>
 							</div>
+							
+							<div class="tab-pane " id="tab2">
+                                <img src="https://unsplash.imgix.net/uploads/1411724908903377d4696/2e9b0cb2?dpr=2&fit=crop&fm=jpg&h=650&q=75&w=950">      
+                            </div>
+                            
 							<div class="tab-pane  in active" id="tab1">
 							</div>
 						</div>
@@ -105,17 +101,17 @@
 <div>
 	<a href='<c:url value="/administrator/company/companyList.do" />'
 		data-original-title="go to the List" data-toggle="tooltip"
-		type="button" class="btn btn-primary btn-lg btn-info"> <i
+		type="button" class="btn btn-default"> <i
 		class="fa fa-list-ul" aria-hidden="true"></i>목록
 	</a> <a
 		href='<c:url value="/administrator/company/companyEdit.do?comId=${companyVo.comId}"/>'
 		data-original-title="Edit this user" data-toggle="tooltip"
-		type="button" class="btn btn-primary btn-lg btn-warning"> <i
+		type="button" class="btn btn-default"> <i
 		class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
 	</a> <a
 		href="<c:url value='/administrator/company/companyWithdraw.do?comId=${companyVo.comId}'/>"
 		data-original-title="Remove this user" data-toggle="tooltip"
-		type="button" class="btn btn-primary btn-lg btn-danger"> <i
+		type="button" class="btn btn-default"> <i
 		class="fa fa-times" aria-hidden="true"></i>삭제
 	</a>
 </div>

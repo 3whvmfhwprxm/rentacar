@@ -17,6 +17,11 @@
 								<img class="img img-responsive" alt="자동차 이미지"
 									src='<c:url value="/carImages/${carVo.carImg}" />'>
 							</div>
+							
+							<div class="tab-pane " id="tab2">
+                                <img src="https://unsplash.imgix.net/uploads/1411724908903377d4696/2e9b0cb2?dpr=2&fit=crop&fm=jpg&h=650&q=75&w=950">      
+                            </div>
+                            
 							<div class="tab-pane  in active" id="tab1">
 							</div>
 						</div>
@@ -55,7 +60,7 @@
 						<p><span style="font-weight: bold; font-size: 1.2em;">승차인원: </span>
 							<span>${carVo.carSize}</span></p>
 						<p><span style="font-weight: bold; font-size: 1.2em;">변속기: </span>
-							<span>carTrans</span></p>
+							<span>${carVo.carTrans}</span></p>
 						<p><span style="font-weight: bold; font-size: 1.2em;">등록일: </span>
 							<span>${carVo.carRegdate}</span></p>
 						<p><span style="font-weight: bold; font-size: 1.2em;">차량유형: </span>
@@ -89,18 +94,13 @@
 <div>
 	<a href='<c:url value="/administrator/carModel/modelList.do" />'
 		data-original-title="go to the List" data-toggle="tooltip"
-		type="button" class="btn btn-primary btn-lg btn-info"> <i
+		type="button" class="btn btn-default"> <i
 		class="fa fa-list-ul" aria-hidden="true"></i>목록
-	</a> <a
-		href='<c:url value="/administrator/carModel/modelEdit.do?carCode=${carVo.carCode}"/>'
+	</a> 
+	<a href='<c:url value="/administrator/carModel/modelEdit.do?carCode=${carVo.carCode}"/>'
 		data-original-title="Edit this user" data-toggle="tooltip"
-		type="button" class="btn btn-primary btn-lg btn-warning"> <i
+		type="button" class="btn btn-default"> <i
 		class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
-	</a> <a
-		href="<c:url value='/administrator/carModel/modelDelete.do?carCode=${carVo.carCode}'/>"
-		data-original-title="Remove this user" data-toggle="tooltip"
-		type="button" class="btn btn-primary btn-lg btn-danger"> <i
-		class="fa fa-times" aria-hidden="true"></i>삭제
 	</a>
 </div>
 

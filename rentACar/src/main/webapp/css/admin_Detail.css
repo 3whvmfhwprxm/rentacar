@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 
 body {
-	margin-top: 20px;
 	font-family: 'Montserrat', sans-serif;
 }
+
 .panel-heading:hover {
 	cursor: pointer;
 }

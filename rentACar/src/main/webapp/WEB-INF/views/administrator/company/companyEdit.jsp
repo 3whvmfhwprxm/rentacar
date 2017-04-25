@@ -40,9 +40,6 @@
 				<input type="text" class="form-control" name="comId"
 					id="CompanyId" value="${companyVo.comId}">		
 			</div>
-			<div class="col-sm-4">
-				<span id="check"></span>
-			</div>
 		</div>
 		
 		<div class="form-group">
@@ -52,16 +49,6 @@
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comName"
 					id="CompanyName" value="${companyVo.comName}">
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label for="CompanyPwd" class="col-sm-2 control-label">
-				Company Password
-			</label>
-			<div class="col-sm-8">
-				<input type="password" class="form-control" name="comPwd"
-					id="CompanyPwd" value="${companyVo.comPwd}">
 			</div>
 		</div>
 		
@@ -182,6 +169,17 @@
 				<input type="file" id="CompanyLogo" name="comLogo">	
 			</div>
 		</div>
-		</fieldset>
+		
+		<div class="center">
+			<button type="submit" class="btn btn-default">
+				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
+			</button>
+			
+            <a href='<c:url value="/administrator/company/companyList.do" />'
+				type="button" class="btn btn-default"> 
+				<i class="fa fa-list-ul" aria-hidden="true"></i>목록
+			</a>
+        </div>
+	</fieldset>
 </form>
 <%@ include file="../include/bottom.jsp"%>

@@ -37,5 +37,4 @@ public class Admin_CarModelDAOmyBatis extends SqlSessionDaoSupport
 	public int selectTotalRecord(SearchVO searchVo) {
 		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
-
 }

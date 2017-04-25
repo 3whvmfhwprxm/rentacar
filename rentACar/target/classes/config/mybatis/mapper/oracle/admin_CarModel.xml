@@ -56,11 +56,11 @@
 	    	car_img=#{carImg},
 		where car_code=#{carCode}
 	</update>
-	
-	<delete id="deleteCarModel" parameterType="String">
-		delete from car where car_code=#{carCode}
-	</delete>
 
+	<select id="selectPwdByAdminId" resultType="String" parameterType="String">
+		select admin_pwd from rent_admin
+		where admin_id=#{adminId}
+	</select>
 </mapper>
 
 
