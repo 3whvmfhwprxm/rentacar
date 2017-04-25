@@ -13,7 +13,7 @@
 			    pay_method : 'card',
 			    merchant_uid : 'reserv_' + new Date().getTime(),
 			    name : '주문명:${param.ccarCarId} 예약기간: ${param.searchStartDate}~${param.searchEndDate}',
-			    amount : 100, /* 테스트 가격은 현재 100원 고정. 후에 가격계산되어 바꾸는걸로 */
+			    amount : 100, /* 테스트 가격은 현재 100원 고정. 후에 가격 계산되어 바꾸는걸로 */
 			    buyer_tel : '${reserVo.userTel1}-${reserVo.userTel2}-${reserVo.userTel3}',
 			    buyer_email : '${param.resUMail}',
 			    custom_data : '{"reservNum":"${reserVo.reservNum}"}' /* 예약번호(PK) 저장 */

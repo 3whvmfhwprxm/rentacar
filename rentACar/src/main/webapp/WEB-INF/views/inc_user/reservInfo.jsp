@@ -48,7 +48,13 @@
 		<div class="form-group">			
 			<label class="col-sm-2 control-label">연락처</label>
 			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resUTel1" id="resUTel1">
+				<select class="form-control" name="resUTel1" id="resUTel1">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="019">019</option>
+				</select>			
 			</div>
 			<div class="col-xs-2">
 				<input class="form-control" type="text" name="resUTel2" id="resUTel2">
@@ -74,7 +80,13 @@
 		<div class="form-group">			
 			<label class="col-sm-2 control-label">연락처</label>
 			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resDrvTel1" id="resDrvTel1">
+				<select class="form-control" name="resDrvTel1" id="resDrvTel1">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="019">019</option>
+				</select>			
 			</div>
 			<div class="col-xs-2">
 				<input class="form-control" type="text" name="resDrvTel2" id="resDrvTel2">
@@ -91,7 +103,13 @@
 			</div>
 		</div>
 		
-		<input type="submit" value="예약하기">
+		<div class=form-group>
+			<label class="col-sm-2 control-label"></label>		
+			<div class="col-sm-6">
+				<input class="btn btn-primary btn-lg btn-block" type="submit" value="예약하기" name="btsubmit" id="btsubmit" >
+			</div>
+		</div>
+		
 		</fieldset>
 	</form>
 	<br>
