@@ -28,60 +28,70 @@
     <div class="row col-md-6 col-md-offset-2 custyle">
     <table class="table table-striped custab">
     <legend>차량 상세 정보</legend>
+    	<colgroup>
+    		<col width="25%">
+    		<col width="33%">
+    		<col width="25%">
+    		<col width="*%">
+    	</colgroup>
         <tr>
-			<td>차량번호</td>
+			<td><strong>차량번호</strong></td>
 			<td>${map['CCAR_CAR_ID'] }</td>
-			<td>모델코드</td>
+			<td><strong>모델코드</strong></td>
 			<td>${map['CAR_CODE'] }</td>
 		</tr>
 		<tr>
-			<td>모델명</td>
+			<td><strong>모델명</strong></td>
 			<td>${map['CAR_NAME'] }</td>
-			<td>제조사</td>
+			<td><strong>제조사</strong></td>
 			<td>${map['CAR_INC'] }</td>
 		</tr>
 		<tr>
-			<td>연료타입</td>
+			<td><strong>연료타입</strong></td>
 			<td>${map['CAR_FUEL'] }</td>
-			<td>승차인원</td>
+			<td><strong>승차인원</strong></td>
 			<td>${map['CAR_SIZE'] } 명</td>
 		</tr>
 		<tr>
-			<td>출시년도</td>
-			<td>${map['CAR_YEAR'] }</td>
-			<td>변속기</td>
+			<td><strong>차량유형</strong></td>
+			<td>${map['CAR_TYPE'] }</td>
+			<td><strong>변속기</strong></td>
 			<td>${map['CAR_TRANS'] }</td>
 		</tr>
 		<tr>
-			<td>차량등록일자</td>
-			<td>${map['COMCAR_REGDATE'] }</td>
-			<td>차량유형</td>
-			<td>${map['CAR_TYPE'] }</td>
+			<td><strong>차량등록일자</strong></td>
+			<td><fmt:formatDate value="${map['COMCAR_REGDATE'] }" pattern="yyyy년 MM월 dd일" /></td>
+			<td></td>
+			<td></td>
 		</tr>
 		<tr>
-			<td>평일 예약가격</td>
-			<td colspan="3">${map['CCAR_NORMAL_PRICE'] } 원</td>
+			<td><strong>평일 예약가격</strong></td>
+			<td colspan="3"><fmt:formatNumber value="${map['CCAR_NORMAL_PRICE'] }"
+			 pattern="#,###"/>원</td>
 		</tr>
 		<tr>
-			<td>주말 예약가격</td>
-			<td colspan="3">${map['CCAR_WEEKEND_PRICE'] } 원</td>
+			<td><strong>주말 예약가격</strong></td>
+			<td colspan="3"><fmt:formatNumber value="${map['CCAR_WEEKEND_PRICE'] }"
+			 pattern="#,###" />원</td>
 		</tr>
 		<tr>
-			<td>성수기 예약가격</td>
-			<td colspan="3">${map['CCAR_PEAK_PRICE'] } 원</td>
+			<td><strong>성수기 예약가격</strong></td>
+			<td colspan="3"><fmt:formatNumber value="${map['CCAR_PEAK_PRICE'] }"
+			  pattern="#,###" />원</td>
 		</tr>
 		<tr>
-			<td>극성수기 예약가격</td>
-			<td colspan="3">${map['CCAR_S_PEAK_PRICE'] } 원</td>
+			<td><strong>극성수기 예약가격</strong></td>
+			<td colspan="3"><fmt:formatNumber value="${map['CCAR_S_PEAK_PRICE'] }"
+			 pattern="#,###" />원</td>
 		</tr>
 		<tr>
-			<td>차량사용가능여부</td>
+			<td><strong>차량사용가능여부</strong></td>
 			<td colspan="3">
 			<input type="checkbox" class = "Yn" name="ccarUseYn" id="ccarUseYn" disabled="true" value="${map['CCAR_USE_YN'] }"		
 			 <c:if test="${map['CCAR_USE_YN']=='Y' }">checked</c:if>> 사용가능할경우 체크</td>
 		</tr>
 		<tr>
-			<td>옵션사항</td>
+			<td><strong>옵션사항</strong></td>
 			<td colspan="3">
 			<input type="checkbox" class = "Yn" name="ccarBlackboxYn" id="ccarBlackboxYn" disabled="true" value="${map['CCAR_BLACKBOX_YN'] }"
 				<c:if test="${map['CCAR_BLACKBOX_YN']=='Y' }">checked</c:if>> 블랙박스
@@ -107,7 +117,7 @@
 		
 
             <tr>
-				<td class="text-center"><a
+				<td class="text-center" colspan="4"><a
 					href="<c:url value='/com_manage/company_ccarList.do' />"
 					class="btn btn-info btn-xs"><span
 						class="glyphicon glyphicon-list"></span>목 록</a> <a

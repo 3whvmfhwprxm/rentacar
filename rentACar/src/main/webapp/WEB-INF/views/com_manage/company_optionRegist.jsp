@@ -55,10 +55,9 @@
 				jQuery("#ccarSPeakPrice").focus();
 				return false;
 			}
-		
 		});
 		
-		var areaNm = jQuery("#area").val(); 
+		/* var areaNm = jQuery("#area").val(); 
 		var carMiddleNm = jQuery("#carMiddelNum").val();
 		var carLastNm = jQuery("#ccarCarId").val();
 		var carNo = areaNm+carMiddleNm+carLastNm;
@@ -74,7 +73,7 @@
 				$.ajax({
 					url:'<c:url value="/com_manage/checkCarId.do" />',
 					type:'post',
-					data:'ccarCarId'= CarNo,
+					data:'ccarCarId'= carNo,
 					success:function(res){
 						var msg="";
 						var chkId="";
@@ -96,7 +95,7 @@
 			}
 			
 			
-		});
+		}); */
 	});
 	
 	
@@ -133,7 +132,7 @@
 					<label for="com1" class="col-sm-2 control-label">제조사</label>
 					<div class="col-xs-2">
 						<select class="form-control" name="carInc" id="carInc">
-							<option selected>선택하세요</option>
+							<option selected>::선택::</option>
 							<c:forEach var="s" items="${slist }">
 							<option value="${s.carInc }">${s.carInc }</option>
 							</c:forEach>
@@ -145,6 +144,7 @@
 					<label for="com2" class="col-sm-2 control-label">모델명</label>
 					<div class="col-xs-2">
 						<select class="form-control" name="carName" id="carName">
+							<option>::선택::</option>
 							<option value="010">쏘나타</option>
 							<option value="011">그렌져</option>
 							<option value="016">아반떼</option>
@@ -158,7 +158,7 @@
 					<label for="ccarCarId" class="col-sm-2 control-label">차량번호</label>
 					<div class="col-sm-2">
 						<select class="form-control" name="area" id="area">
-							<option>선택하세요</option>
+							<option>::선택::</option>
 							<option value="서울" selected>서울</option>
 							<option value="경기" >경기</option>
 							<option value="인천" >인천</option>
@@ -179,7 +179,7 @@
 					</div>
 					<div class="col-sm-2">
 						<select class="form-control" name="carMiddleNum" id="carMiddleNum">
-							<option>선택하세요</option>
+							<option>::선택::</option>
 							<option value="하">하</option>
 							<option value="허" selected>허</option>
 							<option value="호">호</option>
@@ -190,6 +190,18 @@
 							id="ccarCarId" placeholder="1234">
 						<span id="error"></span>
 						<input type="text" name="chkCarId" id="chkCarId">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="ccarCarId" class="col-sm-2 control-label">연료타입</label>
+					<div class="col-sm-2">
+						<select class="form-control" name="carFuel" id="carFuel">
+							<option>::선택::</option>
+							<option value="휘발유" selected>휘발유</option>
+							<option value="경유" >경유 (DIESEL)</option>
+							<option value="가스" >가스 (LPG,LPI,LPGI)</option>
+							<option value="전기" >전기 (ELECTONIC)</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">

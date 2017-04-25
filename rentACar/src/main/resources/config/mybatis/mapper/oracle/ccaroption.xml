@@ -5,11 +5,11 @@
 <mapper namespace="config.mybatis.mapper.oracle.ccaroption">
 	<insert id="insertCcarOption" parameterType="CcarOptionVO">
 		insert into companycaroption
-	(ccar_car_id, car_code, com_id, ccar_use_yn, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
+	(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 	ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 	ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
 	values(
-	#{ccarCarId},#{carCode}, #{comId}, #{ccarUseYn}, #{ccarBlackboxYn}, #{ccarSmokeYn}, #{ccarRearCameraYn}, #{ccarRearSenceYn},
+	#{ccarCarId},#{carCode}, #{comId}, #{ccarUseYn}, #{carFuel}, #{ccarBlackboxYn}, #{ccarSmokeYn}, #{ccarRearCameraYn}, #{ccarRearSenceYn},
 	 #{ccarNaviYn}, #{ccarSunRoofYn}, #{ccarBluetoothYn}, #{ccarAuxYn}, #{ccarSmartkeyYn}, #{ccarRentalcount},
 	 #{ccarNormalPrice}, #{ccarWeekendPrice}, #{ccarPeakPrice}, #{ccarSPeakPrice}, #{ccarArrear}, sysdate)
 	</insert>
@@ -46,17 +46,31 @@
 		    select rownum as RNUM, LIST.*
 		    from
 		    (
-		        select c.car_name, c.car_inc, c.car_fuel, c.car_size, c.car_year, c.car_trans, c.car_type, cco.*
+		        select c.car_name, c.car_inc, c.car_size, c.car_trans, c.car_type, cco.*
 				from car c join companycaroption cco
 				on c.car_code = cco.car_code
 				<!-- where cco.com_id='rentGo' -->
 				where cco.comcar_outdate is null
-				order by cco.comcar_regdate desc
+				<!-- <if test="sortingKeyword != null">
+					<if test="sortingKeyword == 'model'">
+						order by c.car_name asc
+					</if>
+					<if test="sortingKeyword == 'use'">
+						order by cco.ccar_use_yn 
+					</if>
+					<if test="sortingKeyword == 'num'">
+						order by cco.ccar_car_id desc
+					</if>
+				</if>
+				<if test="sortingKeyword == null">
+					order by cco.comcar_regdate desc
+				</if> -->
 		    )LIST
 		)
 		<![CDATA[
 		where RNUM>#{firstRecordIndex} 
 		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		
 		]]>
 	</select>  
 	
@@ -88,6 +102,12 @@
 		select count(*) from  companycaroption 
 		where Ccar_car_id = #{ccarCarId };
  	</select>
+ 	
+ 	<update id="updateCarUseYn" parameterType="CcarOptionVO">
+ 		update companyCarOption
+ 		set CCAR_USE_YN=#{ccarUseYn}
+ 		where ccar_car_id=#{ccarCarId} and com_id=#{comId} 
+ 	</update>
 	
 </mapper>
 

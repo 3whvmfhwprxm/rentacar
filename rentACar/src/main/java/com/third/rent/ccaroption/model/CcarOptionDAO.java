@@ -16,4 +16,5 @@ public interface CcarOptionDAO {
 	public int updateCarOption(CcarOptionVO vo);
 	public int deleteCarOption(CcarOptionVO vo);
 	public int checkCarId(String ccarCarId);
+	public int updateCarUseYn(CcarOptionVO vo);
 }

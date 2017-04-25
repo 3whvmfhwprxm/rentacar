@@ -8,7 +8,10 @@ public class SearchVO {
     private int blockSize;
     private int firstRecordIndex = 1;
     private int lastRecordIndex = 1;
-    private int recordCountPerPage; 
+    private int recordCountPerPage;
+    
+    //업체 리스트 정렬용 변수
+    private String sortingKeyword;
 
     public void setSearchVO(SearchVO bean){
     	this.currentPage = bean.currentPage;
@@ -94,5 +97,14 @@ public class SearchVO {
 				+ firstRecordIndex + ", lastRecordIndex=" + lastRecordIndex
 				+ ", recordCountPerPage=" + recordCountPerPage + "]";
 	}
+
+	public String getSortingKeyword() {
+		return sortingKeyword;
+	}
+
+	public void setSortingKeyword(String sortingKeyword) {
+		this.sortingKeyword = sortingKeyword;
+	}
+	
 }
  

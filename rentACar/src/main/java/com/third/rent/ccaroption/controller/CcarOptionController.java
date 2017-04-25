@@ -48,7 +48,7 @@ public class CcarOptionController {
 
 	@RequestMapping(value="/company_optionRegist.do", method=RequestMethod.POST)
 	public String optionRegist_post(@ModelAttribute CcarOptionVO vo,
-			@RequestParam String area, @RequestParam String secondCarNum,
+			@RequestParam String area, @RequestParam String carMiddleNum,
 			Model model){
 		logger.info("옵션등록처리, 파라미터 vo={}", vo);
 		String aux = vo.getCcarAuxYn();
@@ -99,20 +99,19 @@ public class CcarOptionController {
 		vo.setCcarRentalcount(rentalcnt);
 		
 		String carId = vo.getCcarCarId();
-		
-		String CcarCarId =area+secondCarNum+carId;
+		String CcarCarId =area+carMiddleNum+carId;
 		vo.setCcarCarId(CcarCarId);
-		logger.info("ccarCarId 합치기 파라미터 area={}, secondCarNum={}",area,secondCarNum);
+		logger.info("ccarCarId 합치기 파라미터 area={}, secondCarNum={}",area,carMiddleNum);
 		logger.info("파라미터carId={}",carId);
 		
 		int cnt = ccarOptionService.insertCcarOption(vo);
 		logger.info("vo 수정후 등록처리 vo={}", vo);
 		String msg="", url="/login_company/companyMain.do";
 		if(cnt>0){
-			msg="옵션등록성공";
+			msg="차량등록이 처리되었습니다.";
 			url="/com_manage/company_ccarList.do";
 		}else{
-			msg="옵션등록실패";
+			msg="차량등록실패!";
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
@@ -137,10 +136,10 @@ public class CcarOptionController {
 		
 		List<Map<String, Object>> cclist =
 				ccarOptionService.selectAllComCar(searchVo);
-		logger.info("업체목록 조회결과, cclist.size()={}", cclist.size());
+		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
 
 		int totalRecord = ccarOptionService.selectTotalRecord(searchVo);
-		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
+		logger.info("업체 차량목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
 				totalRecord);
 
 		pagingInfo.setTotalRecord(totalRecord);
@@ -266,7 +265,7 @@ public class CcarOptionController {
 		return "common/message";
 	}
 	
-	@RequestMapping(value="/checkCarId.do", method=RequestMethod.POST)
+	/*@RequestMapping(value="/checkCarId.do", method=RequestMethod.POST)
 	@ResponseBody
 	public boolean checkCarId(@RequestParam String ccarCarId){
 		logger.info("ajax-아이디 중복확인, 파라미터ccarCarId={}", ccarCarId);
@@ -281,6 +280,37 @@ public class CcarOptionController {
 		}
 		
 		return bool;
-	}
+	}*/
 	
+	@RequestMapping("/updateCarUseYn.do")
+	public String UpdateCarUseYn(@RequestParam String ccarUseYn,
+			@RequestParam String ccarCarId, @RequestParam String comId,
+			Model model){
+		logger.info("상태변경 파라미터, ccaruseyn={},ccarCarId={}",ccarUseYn,ccarCarId);
+		logger.info("상태변경 파라미터, comId={}",comId);
+		CcarOptionVO vo = new CcarOptionVO();
+		vo.setCcarCarId(ccarCarId);
+		vo.setComId(comId);
+		String useYn="";
+		if(ccarUseYn.equals("Y")){
+			useYn="N";
+			vo.setCcarUseYn(useYn);
+		}else if(ccarUseYn.equals("N")){
+			useYn="Y";
+			vo.setCcarUseYn(useYn);
+		}
+		
+		int cnt = ccarOptionService.updateCarUseYn(vo);
+		String msg="", url="/com_manage/company_ccarList.do";
+		if(cnt>0){
+			msg="차량상태 "+ccarUseYn+" 에서" +useYn+ " 으로 변경 처리 되었습니다" ;
+		}else{
+			msg="차량상태 변경 실패!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
 }

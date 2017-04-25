@@ -55,6 +55,12 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 	public int checkCarId(String ccarCarId) {
 		return ccarOptionDao.checkCarId(ccarCarId);
 	}
+
+
+	@Override
+	public int updateCarUseYn(CcarOptionVO vo) {
+		return ccarOptionDao.updateCarUseYn(vo);
+	}
 	
 
 }

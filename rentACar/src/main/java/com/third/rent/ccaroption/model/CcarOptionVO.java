@@ -7,6 +7,7 @@ public class CcarOptionVO {
 	private String carCode;  			/* 모델코드 */
 	private String comId;  				/* 업체아이디 */
 	private String ccarUseYn;  			/* 차량사용가능여부 */
+	private String carFuel;				/* 차량 연료 타입 */
 	private String ccarBlackboxYn;  	/* 블랙박스유무 */
 	private String ccarSmokeYn;  		/* 금연차량 */
 	private String ccarRearCameraYn;	/* 후방카메라 */
@@ -24,6 +25,7 @@ public class CcarOptionVO {
 	private int ccarArrear; 			/* 연체료(표기용) */
 	private Timestamp comcarRegdate;  	/* 차량등록일 */
 	private Timestamp comcarOutdate;	/* 차량삭제일 */
+	
 	public String getCcarCarId() {
 		return ccarCarId;
 	}
@@ -47,6 +49,13 @@ public class CcarOptionVO {
 	}
 	public void setCcarUseYn(String ccarUseYn) {
 		this.ccarUseYn = ccarUseYn;
+	}
+	
+	public String getCarFuel() {
+		return carFuel;
+	}
+	public void setCarFuel(String carFuel) {
+		this.carFuel = carFuel;
 	}
 	public String getCcarBlackboxYn() {
 		return ccarBlackboxYn;
@@ -153,13 +162,14 @@ public class CcarOptionVO {
 	@Override
 	public String toString() {
 		return "CcarOptionVO [ccarCarId=" + ccarCarId + ", carCode=" + carCode + ", comId=" + comId + ", ccarUseYn="
-				+ ccarUseYn + ", ccarBlackboxYn=" + ccarBlackboxYn + ", ccarSmokeYn=" + ccarSmokeYn
-				+ ", ccarRearCameraYn=" + ccarRearCameraYn + ", ccarRearSenceYn=" + ccarRearSenceYn + ", ccarNaviYn="
-				+ ccarNaviYn + ", ccarSunRoofYn=" + ccarSunRoofYn + ", ccarBluetoothYn=" + ccarBluetoothYn
-				+ ", ccarAuxYn=" + ccarAuxYn + ", ccarSmartkeyYn=" + ccarSmartkeyYn + ", ccarRentalcount="
-				+ ccarRentalcount + ", ccarNormalPrice=" + ccarNormalPrice + ", ccarWeekendPrice=" + ccarWeekendPrice
-				+ ", ccarPeakPrice=" + ccarPeakPrice + ", ccarSPeakPrice=" + ccarSPeakPrice + ", ccarArrear="
-				+ ccarArrear + ", comcarRegdate=" + comcarRegdate + ", comcarOutdate=" + comcarOutdate + "]";
+				+ ccarUseYn + ", carFuel=" + carFuel + ", ccarBlackboxYn=" + ccarBlackboxYn + ", ccarSmokeYn="
+				+ ccarSmokeYn + ", ccarRearCameraYn=" + ccarRearCameraYn + ", ccarRearSenceYn=" + ccarRearSenceYn
+				+ ", ccarNaviYn=" + ccarNaviYn + ", ccarSunRoofYn=" + ccarSunRoofYn + ", ccarBluetoothYn="
+				+ ccarBluetoothYn + ", ccarAuxYn=" + ccarAuxYn + ", ccarSmartkeyYn=" + ccarSmartkeyYn
+				+ ", ccarRentalcount=" + ccarRentalcount + ", ccarNormalPrice=" + ccarNormalPrice
+				+ ", ccarWeekendPrice=" + ccarWeekendPrice + ", ccarPeakPrice=" + ccarPeakPrice + ", ccarSPeakPrice="
+				+ ccarSPeakPrice + ", ccarArrear=" + ccarArrear + ", comcarRegdate=" + comcarRegdate
+				+ ", comcarOutdate=" + comcarOutdate + "]";
 	}
 	
 	
