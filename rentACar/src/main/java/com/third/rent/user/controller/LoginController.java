@@ -53,6 +53,7 @@ public class LoginController {
 			HttpSession session= request.getSession();
 			session.setAttribute("userId", userId);
 			session.setAttribute("userName", vo.getUserName());
+			session.setAttribute("userLicense", vo.getUserLicense());
 			
 		}else if(result==userService.ID_NONE){
 			msg="해당 아이디가 존재하지 않습니다.";

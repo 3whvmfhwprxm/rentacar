@@ -6,6 +6,7 @@
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
 	}
+	
 	$(document).ready(function() {
 	    var panels = $('.user-infos');
 	    var panelsButton = $('.dropdown-user');
@@ -75,11 +76,10 @@
 	}
 </style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/logincss.css"/>
-	<form name="frmPage" method="post" action='<c:url value="/inc_user/serviceCenter.do" />'>
+	<form name="frmPage" method="get" action='<c:url value="/inc_user/serviceCenter.do" />'>
 		<input type="hidden" name="currentPage">
 	</form>
 <div class="container">
-<!-- <div style="text-align: center;"><h3><b>공지사항</b></h3></div> -->
 <h1 class="welcome text-center"><br>공지사항</h1>
  <div class="well col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
  	<c:forEach var="vo" items="${unList }">

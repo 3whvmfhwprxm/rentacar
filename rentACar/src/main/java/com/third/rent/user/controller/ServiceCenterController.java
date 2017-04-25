@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.third.rent.admin_Board.model.Admin_BoardService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
@@ -22,6 +23,8 @@ public class ServiceCenterController {
 	private static final Logger logger=LoggerFactory.getLogger(ServiceCenterController.class);
 	@Autowired
 	private UserNoticeService usernoticeService;
+	@Autowired
+	private Admin_BoardService adService;
 	
 	@RequestMapping(value="/inc_user/serviceCenter.do", method=RequestMethod.GET)
 	public String showServiceCenter(@ModelAttribute SearchVO searchVo, Model model){
@@ -39,6 +42,10 @@ public class ServiceCenterController {
 		
 		List<UserNoticeVO> unList=usernoticeService.selectUN(searchVo);
 		logger.info("고객 공지사항 리스트 수, unList.size()={}", unList.size());
+		
+		int totalRecord=adService.selectTotalRecordU(searchVo);
+		
+		pagingInfo.setTotalRecord(totalRecord);
 		
 		model.addAttribute("unList", unList);
 		model.addAttribute("pagingInfo", pagingInfo);

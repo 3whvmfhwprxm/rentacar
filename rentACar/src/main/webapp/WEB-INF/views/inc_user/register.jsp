@@ -20,11 +20,11 @@
 				alert('이메일주소를 입력하세요');
 				$("#userEmail1").focus();
 				return false;
-			}else if(!validate_userTel2($("#userTel2").val())||$("#userTel2").val().length<3){
+			}else if(!validate_userTel2($("#userTel2").val())&&$("#userTel2").val().length!=4){
 				alert('전화번호를 입력하세요');
 				$("#userTel2").focus();
 				return false;
-			}else if(!validate_userTel3($("#userTel3").val())||$("#userTel3").val().length<3){
+			}else if(!validate_userTel3($("#userTel3").val())&&$("#userTel3").val().length!=4){
 				alert('전화번호를 입력하세요');
 				$("#userTel3").focus();
 				return false;
@@ -50,7 +50,7 @@
 		$("#userId").keyup(function() {
 			if(!validate_userId($("#userId").val())||$("#userId").val().length<4){
 				//유효성 검사를 통과하지 못한 경우
-				$("#error").html('4자리이상이어야 합니다.');
+				$("#error").html('ID는 4자리 이상 영대소문자, 숫자, 언더바만 가능.');
 				$("#chkId").val("");
 				$("#error").show();
 			}else{

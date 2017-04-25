@@ -72,11 +72,14 @@
                                         <img src="${pageContext.request.contextPath}/user_img/usericon.png" alt="" class="img-rounded" />
                                     </a>
                                     <div class="media-body">
-                                        <h4 class="media-heading">${sessionScope.userId}</h4>
+                                        <h4 class="media-heading">${userName }</h4>
                                     </div>
                                 </div>
                                 <hr />
-                                <span><strong>자기 소개가 없습니다.</strong></span>
+                                <c:if test="${!empty sessionScope.userId }">
+                                아이디 : <span><strong>${sessionScope.userId}</strong></span><br>
+                                면허증 : <span><strong>${userLicense }</strong></span>
+                                </c:if>
                                 <hr />
                                 <c:if test="${!empty sessionScope.userId }">
 	                                <a href="${pageContext.request.contextPath}/inc_user/regedit.do" class="btn btn-info btn-sm">Regedit</a>&nbsp; <a href="${pageContext.request.contextPath}/inc_user/logout.do" class="btn btn-danger btn-sm">Logout</a>
