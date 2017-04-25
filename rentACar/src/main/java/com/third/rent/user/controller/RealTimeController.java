@@ -26,6 +26,8 @@ import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reserv_search.model.ReservSearchService;
 import com.third.rent.reservation.model.ReservationVO;
+import com.third.rent.user.model.UserService;
+import com.third.rent.user.model.UserVO;
 
 @Controller
 @RequestMapping("/inc_user")
@@ -35,6 +37,9 @@ public class RealTimeController {
 	@Autowired
 	private ReservSearchService rService;
 	
+	@Autowired
+	private UserService uService;
+	
 	@RequestMapping(value="/realTime.do", method=RequestMethod.GET)
 	public String showRealTime_get(Model model){
 		logger.info("실시간예약화면 띄우기");
@@ -43,19 +48,24 @@ public class RealTimeController {
 		
 		model.addAttribute("catelist", catelist);
 		
-		return "inc_user/realTime";		
+		return "inc_user/realTime";
 	}
 	
 	@RequestMapping(value="/realTime.do", method=RequestMethod.POST)
-	public String showRealTime_post(@RequestParam String searchStartDate, @RequestParam String searchEndDate,
-											@RequestParam int carType ,Model model){
+	public String showRealTime_post(@RequestParam String searchStartDate, @RequestParam int startHour, @RequestParam String startMin,
+									@RequestParam String searchEndDate, @RequestParam int endHour, @RequestParam String endMin,
+									@RequestParam int carType, Model model){
 		logger.info("예약 대상 검색 기간 조건 searchStartDate={}, searchEndDate={}", searchStartDate, searchEndDate);
 		logger.info("예약 대상 검색 차종 조건 carType={}", carType);
 		
+		//검색 날짜 조건 결합
+		String startDate=searchStartDate+" "+startHour+":"+startMin;
+		String endDate=searchEndDate+" "+endHour+":"+endMin;
+		
 		//검색 조건 해쉬맵에 저장
 		HashMap<String, Object> searchOption=new HashMap<String, Object>();
-		searchOption.put("searchStartDate", searchStartDate);
-		searchOption.put("searchEndDate", searchEndDate);
+		searchOption.put("searchStartDate", startDate);
+		searchOption.put("searchEndDate", endDate);
 		searchOption.put("carType", carType);
 		
 		//DB작업
@@ -71,16 +81,25 @@ public class RealTimeController {
 	}
 	
 	@RequestMapping("/reservInfo.do")
-	public String showReservInfo(@RequestParam String searchStartDate, @RequestParam String searchEndDate, 
-			@RequestParam String ccarCarId, Model model){
+	public String showReservInfo(@RequestParam String searchStartDate, @RequestParam int startHour, @RequestParam String startMin,
+								 @RequestParam String searchEndDate, @RequestParam int endHour, @RequestParam String endMin,
+								 @RequestParam String ccarCarId, Model model, HttpSession session){
+		
+		String userId=(String)session.getAttribute("userId");
+		
 		logger.info("선택한 회사차의 예약 기간 조건 searchStartDate={}, searchEndDate={}", searchStartDate, searchEndDate);
 		logger.info("선택한 회사차의 ID값, ccarCarId={}", ccarCarId);
+		logger.info("세션의 유저ID, userId={}", userId);
 		
 		//DB작업 select by ccarCarId
 		CcarOptionVO car=rService.selectByCcarCarId(ccarCarId);
 		logger.info("선택한 회사차의 정보, car={}", car);
 		
+		//유저에 대한 정보 가져오기
+		UserVO uvo=uService.selectByUserid(userId);
+		
 		model.addAttribute("car", car);
+		model.addAttribute("uvo", uvo);
 		
 		return "inc_user/reservInfo";
 	}
@@ -102,10 +121,8 @@ public class RealTimeController {
 		reserVo.setUserTel1(reservWho.getResUTel1());
 		reserVo.setUserTel2(reservWho.getResUTel2());
 		reserVo.setUserTel3(reservWho.getResUTel3());
-		reserVo.setReservStartDate(searchStartDate);
-		reserVo.setReservStartTime("9");	//시간 관련 현재 9로 고정되어있는데 수정해야함. 아마도 시작날짜에 시간까지 포함하는 컬럼으로 수정되는걸로 결론날것 같음. 반납일로 마찬가지		
+		reserVo.setReservStartDate(searchStartDate);		
 		reserVo.setReservEndDate(searchEndDate);
-		reserVo.setReservEndTime("13"); //위와 같음
 		reserVo.setReservInsurance("자차보험");
 		reserVo.setUserId(userId);
 					

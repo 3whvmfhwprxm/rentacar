@@ -13,7 +13,8 @@
 		) 
 		and ccar_car_id not in (
 			select ccar_car_id from RESERVATION
-			where reserv_end_date >= #{searchStartDate} and reserv_start_date <= #{searchEndDate}
+			where reserv_end_date >= TO_DATE(#{searchStartDate},'yyyy/mm/dd hh24:mi') 
+			and reserv_start_date <= TO_DATE(#{searchEndDate},'yyyy/mm/dd hh24:mi')
 		)]]>
 	</select>
 	
@@ -31,8 +32,9 @@
 		reserv_num, user_tel1, user_tel2, user_tel3, 
 		reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
 		ccar_car_id, reserv_insurance, user_id)
-		values(#{reservNum}, #{userTel1},#{userTel2},#{userTel3},#{reservStartDate}, #{reservStartTime}, 
-		#{reservEndDate}, #{reservEndTime}, #{ccarCarId}, #{reservInsurance}, #{userId})
+		values(#{reservNum}, #{userTel1},#{userTel2},#{userTel3}, 
+		TO_DATE(#{reservStartDate},'yyyy/mm/dd hh24:mi'),
+		TO_DATE(#{reservEndDate},'yyyy/mm/dd hh24:mi'), #{ccarCarId}, #{reservInsurance}, #{userId})
 	</insert>
 	
 	<insert id="insertReservUser" parameterType="ReservUserVO">

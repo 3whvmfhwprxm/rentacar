@@ -95,9 +95,9 @@ CREATE TABLE Reservation (
 	user_tel2 VARCHAR2(10) NOT NULL, /* 회원전화번호2 */
 	user_tel3 VARCHAR2(10) NOT NULL, /* 회원전화번호3 */
 	reserv_start_date DATE NOT NULL, /* 대여시작일 */
-	reserv_start_time VARCHAR2(10) NOT NULL, /* 대여시작시간 */
+	--reserv_start_time VARCHAR2(10) NOT NULL, /* 대여시작시간 */
 	reserv_end_date DATE NOT NULL, /* 반납일 */
-	reserv_end_time VARCHAR2(10) NOT NULL, /* 반납시간 */
+	--reserv_end_time VARCHAR2(10) NOT NULL, /* 반납시간 */
 	ccar_car_id VARCHAR2(50) NOT NULL, /* 업체보유차량 */
 	reserv_insurance VARCHAR2(20) NOT NULL, /* 보험여부 */
 	reserv_date DATE default sysdate, /* 예약일시 */
@@ -262,13 +262,14 @@ ALTER TABLE Event
 		PRIMARY KEY (
 			event_num
 		);
+ 
 
 /* CompanyCarOption 업체 보유 차량 */
 CREATE TABLE CompanyCarOption (
 	ccar_car_id VARCHAR2(50) NOT NULL, /* 업체보유차량 */
 	car_code VARCHAR2(100) NOT NULL, /* 모델코드 */
 	com_id VARCHAR2(30) NOT NULL, /* 업체아이디 */
-	ccar_use_yn VARCHAR2(6) default 'N', /* 차량사용가능여부 */ --VARCHAR2(30) 예약중/수리중/대기중 등으로 전환예정 170424
+	ccar_use_yn VARCHAR2(6) default 'N', /* 차량사용가능여부 */ --VARCHAR2(30) 정비(사용불가능)/사용가능
 	car_fuel VARCHAR2(30) NOT NULL, /* 연료 */--연료: Car에 있던 컬럼 이동 170424
 	ccar_blackbox_yn VARCHAR2(6) default 'N', /* 블랙박스유무 */
 	ccar_smoke_yn VARCHAR2(6) default 'N', /* 금연차량 */

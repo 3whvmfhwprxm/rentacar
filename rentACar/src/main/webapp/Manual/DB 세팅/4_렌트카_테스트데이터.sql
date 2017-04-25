@@ -216,20 +216,18 @@ commit;
 
 --예약 정보
 insert into RESERVATION(
-reserv_num, user_tel1, user_tel2, user_tel3, 
-reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
+reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
-values('001', '011','1111','1111', '2017-05-10', 09, 
-'2017-05-13', 13, 'rentGo_0003', '자차보험', sysdate ,'kim1');
+values('001', '011','1111','1111', to_date('2017-05-10 09:30','yyyy/mm/dd hh24:mi'), 
+to_date('2017-05-13 13:30','yyyy/mm/dd hh24:mi'),'rentGo_0003', '자차보험', sysdate ,'kim1');
 
 insert into RESERVATION(
-reserv_num, user_tel1, user_tel2, user_tel3, 
-reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
+reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
-values('002', '010','2200','2200', '2017-04-30', 15, 
-'2017-05-02', 17, 'rentGo_0002', '자차보험', sysdate ,'jin1');
+values('002', '010','2200','2200', to_date('2017-04-30 11:00','yyyy/mm/dd hh24:mi'), 
+to_date('2017-05-02 14:30','yyyy/mm/dd hh24:mi'), 'rentGo_0002', '자차보험', sysdate ,'jin1');
 
-select * from RESERVATION;
+select * from RESERVATION order by reserv_date desc;
 commit;
 
 --예약 회원(회원정보와는 다른 예약하는 당사자)

@@ -9,9 +9,9 @@ public class ReservationVO {
 	private String userTel2;/* 회원전화번호2 */
 	private String userTel3;/* 회원전화번호3 */
 	private String reservStartDate;/* 대여시작일 */
-	private String reservStartTime;/* 대여시작시간 */
+	//private String reservStartTime;/* 대여시작시간 */
 	private String reservEndDate;/* 반납일 */
-	private String reservEndTime;/* 반납시간 */
+	//private String reservEndTime;/* 반납시간 */
 	private String ccarCarId;/* 업체보유차량 */
 	private String reservInsurance;/* 보험여부 */
 	private Timestamp reservDate;/* 예약일시 */
@@ -49,23 +49,11 @@ public class ReservationVO {
 	public void setReservStartDate(String reservStartDate) {
 		this.reservStartDate = reservStartDate;
 	}
-	public String getReservStartTime() {
-		return reservStartTime;
-	}
-	public void setReservStartTime(String reservStartTime) {
-		this.reservStartTime = reservStartTime;
-	}
 	public String getReservEndDate() {
 		return reservEndDate;
 	}
 	public void setReservEndDate(String reservEndDate) {
 		this.reservEndDate = reservEndDate;
-	}
-	public String getReservEndTime() {
-		return reservEndTime;
-	}
-	public void setReservEndTime(String reservEndTime) {
-		this.reservEndTime = reservEndTime;
 	}
 	public String getCcarCarId() {
 		return ccarCarId;
@@ -103,15 +91,14 @@ public class ReservationVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
 	@Override
 	public String toString() {
 		return "ReservationVO [reservNum=" + reservNum + ", userTel1=" + userTel1 + ", userTel2=" + userTel2
-				+ ", userTel3=" + userTel3 + ", reservStartDate=" + reservStartDate + ", reservStartTime="
-				+ reservStartTime + ", reservEndDate=" + reservEndDate + ", reservEndTime=" + reservEndTime
+				+ ", userTel3=" + userTel3 + ", reservStartDate=" + reservStartDate + ", reservEndDate=" + reservEndDate
 				+ ", ccarCarId=" + ccarCarId + ", reservInsurance=" + reservInsurance + ", reservDate=" + reservDate
 				+ ", reservCancel=" + reservCancel + ", reservCancelWhy=" + reservCancelWhy + ", userId=" + userId
 				+ "]";
 	}
-	
 	
 }
