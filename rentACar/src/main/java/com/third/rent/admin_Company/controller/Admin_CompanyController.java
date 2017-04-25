@@ -168,7 +168,6 @@ public class Admin_CompanyController {
 			Model model){
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
 		
-
 		int cnt = adminCompanyService.updateCompany(companyVo);
 		logger.info("업체 수정 결과 cnt={}", cnt);
 		
@@ -180,7 +179,6 @@ public class Admin_CompanyController {
 			msg = "업체 수정 실패";
 		}
 
-		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		

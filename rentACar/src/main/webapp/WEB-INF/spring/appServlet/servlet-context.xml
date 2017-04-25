@@ -24,13 +24,13 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.third.rent" use-default-filters="false">
-		<context:include-filter expression="org.springframework.stereotype.Controller" 	type="annotation"/>
+		<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
 	</context:component-scan>
 	
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 	     <beans:property name="order" value="0" />
-	</beans:bean>	
-	
+	</beans:bean>
+		
 	<interceptors>
 		<interceptor>
 			<mapping path="/inc_user/reservInfo.do" />

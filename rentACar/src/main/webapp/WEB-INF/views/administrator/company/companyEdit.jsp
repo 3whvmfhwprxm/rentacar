@@ -164,8 +164,6 @@
 				Company Logo
 			</label>
 			<div class="col-sm-2">
-				<input type="text" id="CompanyLogo" name="comLogo"
-					value="${companyVo.comLogo}">	
 				<input type="file" id="CompanyLogo" name="comLogo">	
 			</div>
 		</div>
