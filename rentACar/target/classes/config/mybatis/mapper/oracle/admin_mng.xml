@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.admin_mng">
+	<sql id="searchWhat">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
+		</if>
+	</sql>
+	
+	<select id="selectAdmin" resultType="AdminVO" parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from RENT_ADMIN
+		        <include refid="searchWhat"></include>
+		        order by admin_regdate desc
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+
+	<select id="selectAdminCount" parameterType="SearchVO" resultType="int">
+		select count(*) from RENT_ADMIN
+		<include refid="searchWhat"></include>
+	</select>
+
+	<insert id="insertAdmin" parameterType="AdminVO">
+		insert into rent_admin(admin_id, admin_pwd, admin_name, admin_tel1, admin_tel2, admin_tel3, admin_email, admin_authcode) 
+		values(#{adminId}, #{adminPwd}, #{adminName}, #{adminTel1}, #{adminTel2}, #{adminTel3}, #{adminEmail}, #{adminAuthcode})
+	</insert>
+	
+	<update id="updateAdmin" parameterType="AdminVO">
+		update RENT_ADMIN
+		set admin_tel1=#{adminTel1}, admin_tel2=#{adminTel2}, admin_tel3=#{adminTel3}, 
+		admin_email=#{adminEmail}, admin_authcode=#{adminAuthcode}  
+		where admin_id=#{adminId}
+	</update>
+	
+	<update id="updateOutdate" parameterType="String">
+		update RENT_ADMIN
+		set admin_outdate=sysdate
+		where admin_id=#{adminId}
+	</update>
+	
+	<select id="selectOneAdmin" parameterType="String" resultType="AdminVO">
+		select * from rent_admin where admin_id=#{adminId}
+	</select>
+	
+	<select id="adminDuplicateIDCheck" parameterType="String" resultType="int">
+		select count(*) from RENT_ADMIN
+		where ADMIN_ID=#{ADMINID} and ADMIN_OUTDATE is null
+	</select>
+	
+	<select id="adminAuthcodeSelect" resultType="AuthcodeVO">
+		select * from AD_GRADE
+		where auth_code !=1
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
