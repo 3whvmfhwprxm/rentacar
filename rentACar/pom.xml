@@ -297,6 +297,12 @@
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz-oracle</artifactId>
             <version>1.8.5</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.16</version>
         </dependency>       
 	</dependencies>
 	
