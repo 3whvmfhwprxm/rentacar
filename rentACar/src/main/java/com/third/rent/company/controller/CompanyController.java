@@ -90,6 +90,8 @@ public class CompanyController {
 		return "common/message";
 	}
 	
+	
+	
 	@RequestMapping("com_logout.do")
 	public String logout(HttpSession session){
 		logger.info("로그아웃 처리, 파라미터");

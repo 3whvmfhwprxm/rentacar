@@ -71,7 +71,7 @@ public class CompanyEpilogueController {
 		return "com_manage/company_announcement";
 	}
 	
-	@RequestMapping(value="/company_detail.do")
+	@RequestMapping(value="/company_detail.do",method=RequestMethod.GET)
 	public String companyEdit_get(@RequestParam String comId,
 			Model model){
 		
@@ -93,13 +93,13 @@ public class CompanyEpilogueController {
 		
 		return "com_manage/company_detail";
 	}
-	@RequestMapping(value="/company_edit.do", method=RequestMethod.GET)
+	/*@RequestMapping(value="/company_edit.do", method=RequestMethod.GET)
 	public String companyEdit_get(){
 		logger.info("업체수정화면 조회결과");
 		
 		return "/com_manage/company_edit";
 		
-	}
+	}*/
 	
 	@RequestMapping(value="/company_detail.do", method=RequestMethod.POST)
 	public String companyEdit_post(@ModelAttribute CompanyVO companyVo,
@@ -113,7 +113,7 @@ public class CompanyEpilogueController {
 		String msg = "", url = "";
 		if(cnt>0){
 			msg = "업체 수정 성공";
-			url = "/com_manage/company_edit.do?comId="+companyVo.getComId();
+			url = "/com_manage/company_detail.do?comId="+companyVo.getComId();
 		}else{
 			msg = "업체 수정 실패";
 		}

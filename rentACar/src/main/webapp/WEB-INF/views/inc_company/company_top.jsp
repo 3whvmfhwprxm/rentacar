@@ -37,6 +37,23 @@ $(document).ready(function () {
     });
 });
 </script>
+<style >
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+      .hh {font-family: 'Hanna'; }
+      .nbs {font-family: 'Nanum Brush Script';}
+      .ng {font-family: 'Nanum Gothic';}
+      .ngc {font-family: 'Nanum Gothic Coding';}
+      .nm {font-family: 'Nanum Myeongjo';}
+      .h3{font-family: 'Nanum Pen Script';
+      	font-size: 50px;
+      }
+    
+</style>
 <style type="text/css">
 .navbar-brand1{
     height: 50px;
@@ -51,8 +68,8 @@ $(document).ready(function () {
 <body>
     <header>
         <div class="center-block text-center">
-            <h3>
-                업체 관리자<BR>
+            <h3 class="h3">
+                업체관리자<BR>
             </h3>
         </div>
         <nav style="float: right; ">
