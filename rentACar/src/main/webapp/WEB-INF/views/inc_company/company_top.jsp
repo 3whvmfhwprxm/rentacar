@@ -55,12 +55,16 @@ $(document).ready(function () {
     
 </style>
 <style type="text/css">
+.text-right1{
+	padding-left: 80%;
+}
 .navbar-brand1{
     height: 50px;
-    padding: 15px 15px;
+    padding: 15px 0px 10px 15px;
     font-size: 18px;
-    line-height: 20px;
 }
+#MainMenu{font-family: 'Nanum Pen Script'; font-size: 25px;}
+.dropdown-menu>li>a{font-family: 'Nanum Pen Script'; font-size: 20px;}
 </style>
 </head>
 <body>
@@ -68,11 +72,9 @@ $(document).ready(function () {
 <body>
     <header>
         <div class="center-block text-center">
-            <h3 class="h3">
-                업체관리자<BR>
-            </h3>
+            <h3 class="h3">업체관리자</h3>
         </div>
-        <nav style="float: right; ">
+        <nav class="text-right1">
 	        <c:if test="${!empty sessionScope.comId }">
 				<span class="navbar-brand1">${sessionScope.comName } 님 접속중 </span>
 				<span class="navbar-brand1"><a href="<c:url value='/login_company/com_logout.do'/>">로그아웃</a></span>
