@@ -8,15 +8,34 @@
 	}
 </script>
 <style>
-.row{
-	margin-left: 110px;
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
- table{
- 	font-family: 'Hanna'; 
- 	font-size: 18px;
+.row1{margin-left: 100px;}
+.row{margin-right: 25px; margin-left: -20px;}
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 0px 0;
+    border-radius: 4px;	
+}
+select{
+	height: 26px;
+	margin-right: 10px;
+}
+.divSearch container{
+	padding:15px;
+	margin-right: -20px;
+}
+th,td{text-align: center;}
+.table>tbody>tr.danger>td, .table>tbody>tr.danger>th, .table>tbody>tr>td.danger, .table>tbody>tr>th.danger, .table>tfoot>tr.danger>td, .table>tfoot>tr.danger>th, .table>tfoot>tr>td.danger, .table>tfoot>tr>th.danger, .table>thead>tr.danger>td, .table>thead>tr.danger>th, .table>thead>tr>td.danger, .table>thead>tr>th.danger {
+    background-color: #FFFFFF;
 }
 .table table-stripped table-bordered{
-	font-family: 'Nanum Brush Script';
+	font-family: 'kopubbatang';
 }
 .divPage container{
 	font-size: 10px;
@@ -34,7 +53,7 @@
 <section id="contact"><br>
 <div class="container">
 
-	<div class="row">
+	<div class="row1">
 		<div class="col-lg-10">
 			<table class="table table-stripped table-bordered">
 				<thead>

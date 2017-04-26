@@ -44,14 +44,13 @@ $(document).ready(function () {
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/kopubbatang.css);
       .hh {font-family: 'Hanna'; }
       .nbs {font-family: 'Nanum Brush Script';}
       .ng {font-family: 'Nanum Gothic';}
       .ngc {font-family: 'Nanum Gothic Coding';}
       .nm {font-family: 'Nanum Myeongjo';}
-      .h3{font-family: 'Nanum Pen Script';
-      	font-size: 50px;
-      }
+      .h3{font-family: 'Nanum Pen Script'; font-size: 50px;}
     
 </style>
 <style type="text/css">
@@ -64,13 +63,33 @@ $(document).ready(function () {
     font-size: 18px;
 }
 .container1{
-	
-	font-family: 'Nanum Pen Script'; font-size: 25px;
+	font-family: 'Nanum Gothic Coding'; font-size: 18px;
     margin-left: auto;
     width: 970px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
+}
+
+/*탑 하위 메뉴  */
+.dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    font-size: 15px;
+}
+.dropdown-menu>li>a:HOVER{
+	background-color: #2a8fcf;
+}
+.dropdown-menu .divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #2a8fcf;
 }
 
 
