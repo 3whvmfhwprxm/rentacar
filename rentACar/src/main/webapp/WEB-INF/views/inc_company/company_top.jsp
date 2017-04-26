@@ -64,7 +64,7 @@ $(document).ready(function () {
     font-size: 18px;
 }
 #MainMenu{font-family: 'Nanum Pen Script'; font-size: 25px;}
-.dropdown-menu>li>a{font-family: 'Nanum Pen Script'; font-size: 20px;}
+
 </style>
 </head>
 <body>
