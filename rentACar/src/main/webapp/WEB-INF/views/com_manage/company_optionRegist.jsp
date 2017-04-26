@@ -98,8 +98,6 @@
 		}); */
 	});
 	
-	
-	
 </script>
 <style type="text/css">
 	#error{
@@ -113,7 +111,7 @@
 		<form class="form-horizontal" id="frmRg" method="post"
 			action="<c:url value='/com_manage/company_optionRegist.do'/>">
 			<fieldset>
-			<legend>차량 등록</legend>
+			<legend>차량 등록123</legend>
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">업체아이디</label>
 					<div class="col-sm-6">
