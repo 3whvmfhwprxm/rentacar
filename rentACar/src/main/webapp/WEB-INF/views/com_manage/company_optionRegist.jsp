@@ -101,7 +101,7 @@
 </script>
 <style type="text/css">
 	#error{
-		color: blue;
+		color: green;
 		font-weight: bold;
 		display: none;
 	}	
