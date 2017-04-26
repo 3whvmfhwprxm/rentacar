@@ -12,7 +12,7 @@
 			    pg : 'html5_inicis',
 			    pay_method : 'card',
 			    merchant_uid : 'reserv_' + new Date().getTime(),
-			    name : '주문명:${param.ccarCarId} 예약기간: ${param.searchStartDate}~${param.searchEndDate}',
+			    name : '주문명:${reserVo.reservNum}, ${param.ccarCarId} ',
 			    amount : 100, /* 테스트 가격은 현재 100원 고정. 후에 가격 계산되어 바꾸는걸로 */
 			    buyer_tel : '${reserVo.userTel1}-${reserVo.userTel2}-${reserVo.userTel3}',
 			    buyer_email : '${param.resUMail}',
@@ -55,6 +55,12 @@
 </script>
 <br>
 <div class="divList container" id="payInfo">
+	<!-- 결제하실 예약내용 표시 -->
+	<div class="">
+		
+	</div>
+	
+	<!-- 결제 버튼 표시 -->
 	<form class="form-horizontal" name="payForm" id="payForm" method="post">
 		<fieldset>
 			<legend>결제하기</legend>

@@ -2,6 +2,7 @@ package com.third.rent.reserv_search.model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -18,7 +19,7 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 	private String nameSpace="config.mybatis.mapper.oracle.reserv_car";
 	
 	@Override
-	public List<CcarOptionVO> searchNormal(HashMap<String, Object> map) {
+	public List<Map<String, Object>> searchNormal(HashMap<String, Object> map) {
 		return getSqlSession().selectList(nameSpace+".searchCar", map);
 	}
 

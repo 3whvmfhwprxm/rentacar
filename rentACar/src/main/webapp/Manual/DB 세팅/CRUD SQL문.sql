@@ -24,15 +24,64 @@ where reserv_end_date >= '17-04-29' and reserv_start_date <= '17-05-01';
 select * from COMPANYCAROPTION
 where car_code in (
 select car_code from car
-where car_type=1
+where car_type=5
 ) 
 and ccar_car_id not in (
 select ccar_car_id from RESERVATION
-where reserv_end_date >= '17-04-29' and reserv_start_date <= '17-05-01'
-);
+where reserv_end_date >= to_date('2017-04-29 08:00', 'yyyy/mm/dd hh24:mi')
+and reserv_start_date <= to_date('2017-05-01 09:30', 'yyyy/mm/dd hh24:mi')
+)
+and comcar_outdate is null;
+
+
+select * from CAR;
+--4번 위 내용에 차정보 조인 2017.04.26
+select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
+from (select * from COMPANYCAROPTION
+        where car_code in (
+        select car_code from car
+        where car_type=5
+        )
+        and ccar_car_id not in (
+        select ccar_car_id from RESERVATION
+        where reserv_end_date >= to_date('2017-04-29 08:00', 'yyyy/mm/dd hh24:mi')
+        and reserv_start_date <= to_date('2017-05-01 09:30', 'yyyy/mm/dd hh24:mi')
+        )
+        and comcar_outdate is null
+    ) comc join car c
+on comc.car_code=c.car_code;
+
+--5번 위 내용에 업체 이름정보 조인
+select a.*, b.COM_NAME
+from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
+        from (select * from COMPANYCAROPTION
+        where car_code in (
+        select car_code from car
+        where car_type=5
+        )
+        and ccar_car_id not in (
+        select ccar_car_id from RESERVATION
+        where reserv_end_date >= to_date('2017-04-29 08:00', 'yyyy/mm/dd hh24:mi')
+        and reserv_start_date <= to_date('2017-05-01 09:30', 'yyyy/mm/dd hh24:mi')
+        )
+        and comcar_outdate is null
+    ) comc join car c
+    on comc.car_code=c.car_code) a join company b
+on a.com_id=b.com_id;
+
+
+
+
+
+
+
+
+
 
 select * from COMPANYCAROPTION 
 where ccar_car_id='rentZoa_0001';
+
+
 
 
 

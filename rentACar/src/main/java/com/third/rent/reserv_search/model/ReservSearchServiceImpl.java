@@ -2,6 +2,7 @@ package com.third.rent.reserv_search.model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class ReservSearchServiceImpl implements ReservSearchService{
 	private ReservSearchDAO dao;
 	
 	@Override
-	public List<CcarOptionVO> searchNormal(HashMap<String, Object> map) {
+	public List<Map<String, Object>> searchNormal(HashMap<String, Object> map) {
 		return dao.searchNormal(map);
 	}
 

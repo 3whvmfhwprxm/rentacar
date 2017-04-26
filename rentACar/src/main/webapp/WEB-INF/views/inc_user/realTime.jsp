@@ -161,26 +161,22 @@
 		</div>		
 		<table class="table table-bordered table-hover">			
 			<tr>
-				<th>업체보유차량 ID</th>
-				<th>모델코드</th>
-				<th>업체 ID</th>
-				<th>평일예약가격(1일)</th>
-				<th>주말예약가격(1일)</th>
-				<th>성수기예약가격(1일)</th>
-				<th>극성수기예약가격(1일)</th>
+				<th>차종</th>
+				<th>업체</th>
+				<th>계산된 가격(아직 로직없음)</th>
 				<th>연체료</th>
 				<th>예약하기</th>
 			</tr>
-			<c:forEach var="car" items="${clist }">
-				<tr>				
-						<td>${car.ccarCarId }</td>
-						<td>${car.carCode }</td>
-						<td>${car.comId }</td>
-						<td>${car.ccarNormalPrice }</td>
-						<td>${car.ccarWeekendPrice }</td>
-						<td>${car.ccarPeakPrice }</td>
-						<td>${car.ccarSPeakPrice }</td>
-						<td>${car.ccarArrear }</td>
+			<c:forEach var="map" items="${clist }">
+			
+				<!-- 조건에 따른 가격 계산 처리 (아직 안됨 단순 가격 입력시키는 상태)-->
+				<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
+				
+				<tr>				<%-- ${map['SELLPRICE']*map['QUANTITY'] } --%>
+						<td>${map['CAR_NAME'] }</td>
+						<td>${map['COM_NAME'] }</td>
+						<td>${priceByReservDays }</td>
+						<td>${map['CCAR_ARREAR'] }</td>
 						<td>
 							<a href='<c:url 
 							value="/inc_user/reservInfo.do

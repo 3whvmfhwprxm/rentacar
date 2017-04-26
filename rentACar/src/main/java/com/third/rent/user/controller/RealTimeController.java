@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
 import javax.servlet.http.HttpSession;
@@ -69,7 +70,7 @@ public class RealTimeController {
 		searchOption.put("carType", carType);
 		
 		//DB작업
-		List<CcarOptionVO> clist=rService.searchNormal(searchOption);
+		List<Map<String, Object>> clist=rService.searchNormal(searchOption);
 		logger.info("예약 대상 검색 차종 리스트 크기 clist.size()={}", clist.size());
 		
 		List<CarCategoryVO> catelist=rService.selectCategoryList();
