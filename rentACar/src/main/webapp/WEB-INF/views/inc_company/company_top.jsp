@@ -130,7 +130,7 @@ $(document).ready(function () {
 	                        <i class="fa fa-navicon"></i> 예약 관리 <i class="fa fa-angle-down" aria-hidden="true"></i>
 	                    </a>
 	                    <ul class="dropdown-menu mega-dropdown-menu">
-	                        <li><a href="#">예약현황</a></li>
+	                        <li><a href="<c:url value='/com_manage/company_reservList.do'/>">예약현황</a></li>
 	                        <li><a href="#">차량현황</a></li>
 	                        <li role="separator" class="divider"></li>
 	                        <li><a href="#">View all</a></li>

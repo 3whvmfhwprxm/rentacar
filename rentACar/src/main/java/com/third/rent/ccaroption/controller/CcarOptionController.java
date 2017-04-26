@@ -124,8 +124,6 @@ public class CcarOptionController {
 			Model model){
 		logger.info("업체차량 전체현황 보여주기");
 			
-		System.out.println("######################## searchVo.getCurrentPage():::"+searchVo.getCurrentPage());
-		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.COM_BLOCKSIZE);
 		pagingInfo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
@@ -312,4 +310,38 @@ public class CcarOptionController {
 		model.addAttribute("url", url);
 		return "common/message";
 	}
+	
+	@RequestMapping("/company_reservList.do")
+	public String reservList(@ModelAttribute SearchVO searchVo, Model model){
+		logger.info("업체관리, 예약현황 보여주기");
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.COM_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+
+		searchVo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		
+		
+		List<Map<String, Object>> cclist =
+				ccarOptionService.selectAllComCar(searchVo);
+		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
+
+		int totalRecord = ccarOptionService.selectTotalRecord(searchVo);
+		logger.info("업체 차량목록 조회 - 전체 업체 차량 조회 결과, totalRecord={}",
+				totalRecord);
+
+		pagingInfo.setTotalRecord(totalRecord);
+
+		model.addAttribute("pagingInfo", pagingInfo);
+		
+		model.addAttribute("cclist", cclist);
+		
+		return "com_manage/company_reservList";
+	}
 }
+
+
+
+

@@ -180,8 +180,9 @@
 								<i class="fa fa-registered" aria-hidden="true"> 수정하기</i>
 							</button>
 							<button class="btn btn-danger" id="btReset">
-								<i class="fa fa-registered" aria-hidden="true"> 리셋</i>
+								<i class="fa fa-registered" aria-hidden="true"> 현황목록</i>
 							</button>
+							
 					</div>
 				</div>
 			</fieldset>

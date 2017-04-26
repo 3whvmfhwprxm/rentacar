@@ -52,7 +52,7 @@
 		<input type="hidden" name="comId" id="comId">
 	</form>
     <div class="container">
-        <legend>차량 현황</legend>
+        <legend>예약 현황</legend>
         <!--dropdown menu-->
         <div class="collapse navbar-collapse" id="MainMenu">
             <ul class="nav navbar-nav menu-list">
@@ -75,19 +75,18 @@
        <thead>
        		<tr>
        			<th><input type="checkbox" id="" name=""></th>
-  				<th>차량번호</th>
-				<th>차량모델코드</th>
-				<th>모델명</th>
-				<th>연료타입</th>
-				<th>옵션</th>
-				<th>차량상태</th>
-				<th>차량상태변경</th>
-				<th>차량등록일</th>
+  				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
+				<th>#</th>
 			</tr>
         </thead>
         <tbody>
         <!-- 반복시작 -->
-       
 		<c:forEach var="map" items="${cclist }" varStatus="i">
 		
 		<tr>

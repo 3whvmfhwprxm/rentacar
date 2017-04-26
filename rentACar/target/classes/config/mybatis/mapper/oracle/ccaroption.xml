@@ -35,7 +35,7 @@
 	
 	<sql id="searchWhere">
 		<if test="searchKeyword !=null and searchKeyword !=''">
-			where lower(${searchCondition}) like '%'|| lower(#{searchKeyword}) ||'%'
+			and lower(${searchCondition}) like '%'|| lower(#{searchKeyword}) ||'%'
 		</if>
 	</sql>
 	
@@ -55,11 +55,22 @@
 					<if test="sortingKeyword == 'model'">
 						order by c.car_name asc
 					</if>
-					<if test="sortingKeyword == 'use'">
-						order by cco.ccar_use_yn desc
+					<if test="sortingKeyword == 'usey'">
+						and cco.ccar_use_yn = 'Y'
+						order by cco.ccar_car_id asc
+					</if>
+					<if test="sortingKeyword == 'usen'">
+						and cco.ccar_use_yn = 'N'
+						order by cco.ccar_car_id asc
 					</if>
 					<if test="sortingKeyword == 'num'">
-						order by cco.ccar_car_id desc
+						order by cco.ccar_car_id asc
+					</if>
+					<if test="sortingKeyword == 'fuel'">
+						order by cco.car_fuel desc
+					</if>
+					<if test="sortingKeyword == 'date'">
+						order by cco.comcar_regdate desc
 					</if>
 				</if>
 				<if test="sortingKeyword == null">
@@ -77,6 +88,7 @@
 	<select id="selectTotalRecord" parameterType="SearchVO"
 		resultType="int">
 		select count(*) from CompanyCaroption
+		where com_id= 'rentGo' and comcar_outdate is null
 		<include refid="searchWhere"></include>
 	</select>
 
