@@ -49,12 +49,12 @@ public class CompanyEpilogueController {
 		logger.info("업체 공지사항 화면표시 searchVo={}", searchVo);
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(Utility.COM_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 		
 		//SearchVO 값 셋팅
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		List<CompanyNoticeVO> cnList=adService.selectCN(searchVo);
@@ -134,6 +134,16 @@ public class CompanyEpilogueController {
 		return "com_manage/company_revenue";
 		
 	}
+	
+	@RequestMapping("/company_announcement_detail.do")
+	public String company_announcementDetail(){
+		
+		logger.info("공지사항 상세 화면 구현");
+		
+		return "com_manage/company_announcement_detail";
+		
+	}
+	
 	
 
 	
