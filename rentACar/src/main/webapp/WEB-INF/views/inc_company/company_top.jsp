@@ -63,7 +63,16 @@ $(document).ready(function () {
     padding: 15px 0px 10px 15px;
     font-size: 18px;
 }
-#MainMenu{font-family: 'Nanum Pen Script'; font-size: 25px;}
+.container1{
+	
+	font-family: 'Nanum Pen Script'; font-size: 25px;
+    margin-left: auto;
+    width: 970px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+}
+
 
 </style>
 </head>
@@ -86,7 +95,7 @@ $(document).ready(function () {
     </header>
     
     <nav class="navbar navbar-default mega-nav">
-        <div class="container">
+        <div class="container1">
 	        <div class="navbar-header">
 	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#MainMenu" aria-expanded="false">
 	                <span class="sr-only">Toggle navigation</span>
