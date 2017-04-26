@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.third.rent.admin_LogState.model.admin_LogService;
 import com.third.rent.company.model.CompanyService;
 import com.third.rent.company.model.CompanyVO;
-import com.third.rent.company.notice.model.Company_noticeService;
 
 @Controller
 @RequestMapping("/login_company")
