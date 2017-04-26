@@ -30,7 +30,7 @@
 	<insert id="insertReservation" parameterType="ReservationVO">
 		insert into RESERVATION(
 		reserv_num, user_tel1, user_tel2, user_tel3, 
-		reserv_start_date, reserv_start_time, reserv_end_date, reserv_end_time, 
+		reserv_start_date, reserv_end_date, 
 		ccar_car_id, reserv_insurance, user_id)
 		values(#{reservNum}, #{userTel1},#{userTel2},#{userTel3}, 
 		TO_DATE(#{reservStartDate},'yyyy/mm/dd hh24:mi'),

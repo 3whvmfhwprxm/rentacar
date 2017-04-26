@@ -5,9 +5,32 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script>
-	$(function() {
-	    $("#searchStartDate, #searchEndDate").datepicker({
-	        dateFormat: 'yy-mm-dd'
+	$(function() {		
+		$("#searchForm").submit(function(){
+			compareTime();
+			
+			if($("#searchStartDate").val()==''){
+				alert("검색하실 차량의 예약 시작일을 선택해주세요");
+				$("#searchStartDate").focus();
+				return false;
+			}else if($("#searchEndDate").val()==''){
+				alert("검색하실 차량의 반납일을 선택해주세요");
+				$("#searchEndDate").focus();
+				return false;
+			}
+			return true;
+		});
+		
+	    $("#searchStartDate").datepicker({
+	    	dateFormat: 'yy-mm-dd', 
+	    	minDate: 1,
+	    	maxDate: 89
+	    });
+	    
+	    $("#searchEndDate").datepicker({
+	    	dateFormat: 'yy-mm-dd', 
+	    	minDate: 2,
+	    	maxDate: 90
 	    });
 		
 	    $("#searchStartDate").change(function(){
@@ -15,10 +38,6 @@
 	    });
 	    
 	    $("#searchEndDate").change(function(){
-	    	compareTime();
-	    });
-	    
-	    $("#searchForm").submit(function(){
 	    	compareTime();
 	    });
 	    
@@ -40,7 +59,11 @@
 	    		alert("앞날짜가 뒷날짜보다 크면 안됩니다. 검색기간을 확인해주세요.");
 	    		$("#searchEndDate").focus();
 	    		return event.preventDefault();
-	    	}
+	    	}/* else if((endDateCompare.getTime()-startDateCompare.getTime())>7){
+	    		alert("예약하실 수 있는 기간은 최대 7일까지 입니다");
+	    		$("#searchEndDate").focus();
+	    		return event.preventDefault();
+	    	} */
 		}
 	});
 </script>
@@ -53,6 +76,9 @@
 2.
 위의 조건을 입력받고 '검색'을 누르면(post) 조건에 해당하는 리스트를 가져와서 보여준다
 이때 검색시 예약정보 테이블에서 예약시작날짜/예약종료날짜/예약시작시간/예약종료시간 -->
+<style type="text/css">
+	.fontStyle1{color: #0033FF; font-weight: bold;}	
+</style>
 <br>
 <div class="divList container">
 
@@ -128,7 +154,11 @@
 </div>
 <!-- 예약 가능 차 리스트 표시 시작 -->
 <div>
-	<c:if test="${!empty clist }">	
+	<c:if test="${!empty clist }">
+		<div class=form-group>
+			<label class="col-sm-6">검색하신 예약 기간: <span class="fontStyle1">${param.searchStartDate} ${param.startHour}:${param.startMin} 
+				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</span></label>
+		</div>		
 		<table class="table table-bordered table-hover">			
 			<tr>
 				<th>업체보유차량 ID</th>
@@ -142,7 +172,7 @@
 				<th>예약하기</th>
 			</tr>
 			<c:forEach var="car" items="${clist }">
-				<tr>					
+				<tr>				
 						<td>${car.ccarCarId }</td>
 						<td>${car.carCode }</td>
 						<td>${car.comId }</td>

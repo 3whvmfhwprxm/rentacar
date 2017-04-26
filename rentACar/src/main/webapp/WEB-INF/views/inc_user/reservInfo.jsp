@@ -108,8 +108,7 @@
 			<div class="col-sm-6">
 				<input class="btn btn-primary btn-lg btn-block" type="submit" value="예약하기" name="btsubmit" id="btsubmit" >
 			</div>
-		</div>
-		
+		</div>		
 		</fieldset>
 	</form>
 	<br>

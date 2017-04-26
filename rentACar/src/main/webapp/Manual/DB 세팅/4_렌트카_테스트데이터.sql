@@ -317,7 +317,7 @@ insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2,
 user_tel3, pay_method, pay_money, pay_condition, pay_regdate)
 values('p00123', '001', '010', '1234', '1234', 'card', 100, 'paid', '2017-04-22');
 
-select * from PAYINFO;
+select * from PAYINFO order by pay_regdate desc;
 commit;
 rollback;
 

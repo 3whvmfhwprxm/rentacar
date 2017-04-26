@@ -105,9 +105,10 @@ public class RealTimeController {
 	}
 	
 	@RequestMapping("/reservation.do")
-	public String reservation(@ModelAttribute ReservUserVO reservWho, @RequestParam String searchStartDate, 
-								@RequestParam String searchEndDate, @RequestParam String ccarCarId, 
-								HttpSession session, Model model) throws ParseException{
+	public String reservation(@ModelAttribute ReservUserVO reservWho, 			
+							  @RequestParam String searchStartDate, @RequestParam int startHour, @RequestParam String startMin,
+						      @RequestParam String searchEndDate, @RequestParam int endHour, @RequestParam String endMin,																
+							  @RequestParam String ccarCarId, HttpSession session, Model model) throws ParseException{
 		
 		String userId=(String)session.getAttribute("userId");
 		logger.info("예약하기 - 예약자 로그인 아이디 체크 userid={}", userId);	
@@ -121,8 +122,13 @@ public class RealTimeController {
 		reserVo.setUserTel1(reservWho.getResUTel1());
 		reserVo.setUserTel2(reservWho.getResUTel2());
 		reserVo.setUserTel3(reservWho.getResUTel3());
-		reserVo.setReservStartDate(searchStartDate);		
-		reserVo.setReservEndDate(searchEndDate);
+		
+		//날짜 문자열 조합
+		String startDate=searchStartDate+" "+startHour+":"+startMin;
+		String endDate=searchEndDate+" "+endHour+":"+endMin;
+		
+		reserVo.setReservStartDate(startDate);		
+		reserVo.setReservEndDate(endDate);
 		reserVo.setReservInsurance("자차보험");
 		reserVo.setUserId(userId);
 					
