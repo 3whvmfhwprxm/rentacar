@@ -313,3 +313,6 @@ footer {
 .btn-google {
     background-color: #c32f10;
 }
+.form-horizontal .control-label{
+	padding-top:0;
+}

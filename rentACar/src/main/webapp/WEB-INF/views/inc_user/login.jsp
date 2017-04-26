@@ -14,13 +14,83 @@
                 <p class="input_title">Password</p>
                 <input name="userPwd" type="password" id="inputPassword" class="login_box" placeholder="******" required>
                 <div id="remember" class="checkbox">
-                    <label>
-                        
-                    </label>
+                    <a class="input_title" data-toggle="modal" href="#myModal">아이디찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="input_title" href="#">비밀번호 찾기</a>
                 </div>
-                <button class="btn btn-lg btn-primary" type="submit">Login</button>
+                <button class="btnlogin btn-lg btn-primary" type="submit">Login</button>
             </form><!-- /form -->
         </div><!-- /card-container -->
     </div><!-- /container -->
+    
+	
+
+        <!-- <div class="modal" id="myModal">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">x</button>
+            <h3>Login to MyWebsite.com</h3>
+          </div>
+          <div class="modal-body">
+            <form method="post" action='' name="login_form">
+              <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
+              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
+              <p><button type="submit" class="btn btn-primary">Sign in</button>
+                <a href="#">Forgot Password?</a>
+              </p>
+            </form>
+          </div>
+          <div class="modal-footer">
+            New To MyWebsite.com?
+            <a href="#" class="btn btn-primary">Register</a>
+          </div>
+        </div> -->
+<div class="container">
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">아이디 찾기</h4>
+					</div>
+					<div class="modal-body">
+						<form method="post" action='' name="login_form">
+							<div class="row">
+					            <label class="control-label col-md-3" for="name" style="text-align: right;">아이디 <span class="required">*</span>
+					            </label>
+					            <div class="col-md-5">
+					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong123" required="required" type="userId">
+					            </div>
+					        </div><br>
+					        <div class="row">
+					            <label class="control-label col-md-3" for="name" style="text-align: right;">이메일 <span class="required">*</span>
+					            </label>
+					            <div class="col-md-5">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text">
+					            </div>
+					        </div><br>
+					        <div class="row">
+					            <label class="control-label col-md-3" for="name" style="text-align: right;" disabled>찾으신 아이디
+					            </label>
+					            <div class="col-md-5">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text" value="hong123" disabled>
+					            </div>
+					        </div><br>
+						</form>
+					</div>
+					<div class="modal-footer">
+		           		 <a href="#" class="btn btn-primary">확인</a>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+	</div>
+</div>
+<!-- /.modal -->
+
 
 <%@ include file="bottom.jsp" %>
