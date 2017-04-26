@@ -27,7 +27,24 @@
 </script>
 	
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-
+<style type="text/css">
+.navbar-inverse{
+	background-color: #443f3f;
+	border-color: white;
+}
+.nav navbar-nav{
+	color: white;
+}
+.navbar-inverse .navbar-nav>li>a{
+	color: #FFFFFF;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #CCFFFF;
+}
+ul{
+	color: white;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
