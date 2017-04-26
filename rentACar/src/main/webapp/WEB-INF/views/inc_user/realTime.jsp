@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="top.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -77,7 +78,8 @@
 위의 조건을 입력받고 '검색'을 누르면(post) 조건에 해당하는 리스트를 가져와서 보여준다
 이때 검색시 예약정보 테이블에서 예약시작날짜/예약종료날짜/예약시작시간/예약종료시간 -->
 <style type="text/css">
-	.fontStyle1{color: #0033FF; font-weight: bold;}	
+	.fontStyle1{color: #0033FF; font-weight: bold;}
+	table tr th{background-color: skyblue;}
 </style>
 <br>
 <div class="divList container">
@@ -159,38 +161,101 @@
 			<label class="col-sm-6">검색하신 예약 기간: <span class="fontStyle1">${param.searchStartDate} ${param.startHour}:${param.startMin} 
 				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</span></label>
 		</div>		
-		<table class="table table-bordered table-hover">			
-			<tr>
-				<th>차종</th>
-				<th>업체</th>
-				<th>계산된 가격(아직 로직없음)</th>
-				<th>연체료</th>
-				<th>예약하기</th>
-			</tr>
-			<c:forEach var="map" items="${clist }">
-			
-				<!-- 조건에 따른 가격 계산 처리 (아직 안됨 단순 가격 입력시키는 상태)-->
-				<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
-				
-				<tr>				<%-- ${map['SELLPRICE']*map['QUANTITY'] } --%>
-						<td>${map['CAR_NAME'] }</td>
-						<td>${map['COM_NAME'] }</td>
-						<td>${priceByReservDays }</td>
-						<td>${map['CCAR_ARREAR'] }</td>
-						<td>
-							<a href='<c:url 
-							value="/inc_user/reservInfo.do
-							?ccarCarId=${car.ccarCarId }
-							&searchStartDate=${param.searchStartDate }
-							&startHour=${param.startHour}
-							&startMin=${param.startMin }
-							&searchEndDate=${param.searchEndDate }
-							&endHour=${param.endHour }
-							&endMin=${param.endMin }
-							" />'>
-					<button id="selectThisCar">이 차 예약!</button> </a></td>					
+		<table class="table table-bordered table-hover">
+			<colgroup>
+				<col style="width: 20%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+			</colgroup>
+			<thead>		
+				<tr>
+					<th class="text-center">차량</th>
+					<th class="text-center">업체</th>
+					<th class="text-center">계산된 가격(아직X)</th>
+					<th class="text-center">연체료(30분단위)</th>
+					<th class="text-center">옵션상세보기</th>
+					<th class="text-center">예약하기</th>
 				</tr>
-			</c:forEach>
+			</thead>
+			<tbody>
+				<c:forEach var="map" items="${clist }" varStatus="i">
+					
+						<!-- 조건에 따른 가격 계산 처리 (아직 안됨 단순 가격)-->
+						<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
+						
+						<tr>				
+							<td class="text-center">${map['CAR_NAME'] }</td>
+							<td class="text-center">${map['COM_NAME'] }</td>
+							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${priceByReservDays }"  /> 원 </td>
+							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${map['CCAR_ARREAR'] }"  /> 원 </td>
+							<td class="text-center">
+								<!-- 옵션상세보기 -->
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<div class="address">
+											<button type="button" class="btn btn-info"
+												data-toggle="modal" data-target='#ordine_${i.index }'>옵션상세보기</button>
+										</div>
+									</div>
+									<div class="col-md-2"></div>
+								</div> 
+								
+								<!-- Modal -->
+								<div id="ordine_${i.index }" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+					
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">×</button>
+												<h4 class="modal-title">${map['COM_NAME'] }의 ${map['CAR_NAME'] } 옵션사항</h4>
+											</div>
+											<div class="modal-body">
+												<p>
+													<c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
+												       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
+												       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N' 
+												       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
+												       && map['CCAR_BLUETOOTH_YN']=='N' && map['CCAR_SMARTKEY_YN']=='N' }">등록된 옵션이 없습니다.
+					      						 	</c:if>
+													<c:if test="${map['CCAR_AUX_YN']=='Y' }"> AUX</c:if>
+													<c:if test="${map['CCAR_BLACKBOX_YN']=='Y' }"> 블랙박스</c:if>
+													<c:if test="${map['CCAR_SMOKE_YN']=='Y' }"> 금연차</c:if>
+													<c:if test="${map['CCAR_REAR_CAMERA_YN']=='Y' }"> 후방카메라</c:if>
+													<c:if test="${map['CCAR_REAR_SENCE_YN']=='Y' }"> 후방센서</c:if>
+													<c:if test="${map['CCAR_NAVI_YN']=='Y' }"> 네비게이션</c:if>
+													<c:if test="${map['CCAR_SUN_ROOF_YN']=='Y' }">썬루프</c:if>
+													<c:if test="${map['CCAR_BLUETOOTH_YN']=='Y' }"> 블루투스</c:if>
+													<c:if test="${map['CCAR_SMARTKEY_YN']=='Y' }"> 스마트키</c:if>
+												</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+											</div>
+										</div>								
+									</div>
+								</div>
+							</td>
+							<td class="text-center">
+								<a href='<c:url 
+								value="/inc_user/reservInfo.do
+								?ccarCarId=${car.ccarCarId }
+								&searchStartDate=${param.searchStartDate }
+								&startHour=${param.startHour}
+								&startMin=${param.startMin }
+								&searchEndDate=${param.searchEndDate }
+								&endHour=${param.endHour }
+								&endMin=${param.endMin }
+								" />'>
+							<button id="selectThisCar" class="btn btn-success">이 차 예약!</button> </a>
+							</td>					
+						</tr>
+					</c:forEach>
+			</tbody>
 		</table>
 	</c:if>
 </div>
