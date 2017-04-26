@@ -124,6 +124,7 @@ public class CcarOptionController {
 			Model model){
 		logger.info("업체차량 전체현황 보여주기");
 			
+		System.out.println("######################## searchVo.getCurrentPage():::"+searchVo.getCurrentPage());
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.COM_BLOCKSIZE);
@@ -139,7 +140,7 @@ public class CcarOptionController {
 		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
 
 		int totalRecord = ccarOptionService.selectTotalRecord(searchVo);
-		logger.info("업체 차량목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
+		logger.info("업체 차량목록 조회 - 전체 업체 차량 조회 결과, totalRecord={}",
 				totalRecord);
 
 		pagingInfo.setTotalRecord(totalRecord);
@@ -278,7 +279,6 @@ public class CcarOptionController {
 			//차량번호가가 이미 존재하는경우
 			bool=true;
 		}
-		
 		return bool;
 	}*/
 	
@@ -310,7 +310,6 @@ public class CcarOptionController {
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
-		
 		return "common/message";
 	}
 }

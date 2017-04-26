@@ -51,12 +51,12 @@
 				on c.car_code = cco.car_code
 				<!-- where cco.com_id='rentGo' -->
 				where cco.comcar_outdate is null
-				<!-- <if test="sortingKeyword != null">
+				<if test="sortingKeyword != null">
 					<if test="sortingKeyword == 'model'">
 						order by c.car_name asc
 					</if>
 					<if test="sortingKeyword == 'use'">
-						order by cco.ccar_use_yn 
+						order by cco.ccar_use_yn desc
 					</if>
 					<if test="sortingKeyword == 'num'">
 						order by cco.ccar_car_id desc
@@ -64,7 +64,7 @@
 				</if>
 				<if test="sortingKeyword == null">
 					order by cco.comcar_regdate desc
-				</if> -->
+				</if>
 		    )LIST
 		)
 		<![CDATA[
