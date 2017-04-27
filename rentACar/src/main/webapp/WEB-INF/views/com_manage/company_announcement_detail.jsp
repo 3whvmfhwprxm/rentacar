@@ -6,6 +6,6 @@
 	
 	});
 </script>
-
+	
 	
 <%@ include file="../inc_company/company_bottom.jsp" %>
