@@ -76,7 +76,7 @@ CREATE TABLE rent_user (
 	user_birth VARCHAR2(50) NOT NULL, /* 생년월일 */
 	user_address VARCHAR2(100) NOT NULL, /* 주소 */
 	user_gender VARCHAR2(6) NOT NULL, /* 성별 */
-	user_license VARCHAR2(30) NOT NULL, /* 면허증 */
+	user_license VARCHAR2(50) NOT NULL, /* 면허증 */
 	user_regdate DATE default sysdate, /* 가입일 */
 	user_outdate DATE /* 탈퇴일 */
 );
@@ -361,8 +361,8 @@ CREATE TABLE Reserv_User (
 	res_drv_tel1 VARCHAR2(10) NOT NULL, /* 운전자전화1 */
 	res_drv_tel2 VARCHAR2(10) NOT NULL, /* 운전자전화2 */
 	res_drv_tel3 VARCHAR2(10) NOT NULL, /* 운전자전화3 */
-	res_drv_birth VARCHAR2(10) NOT NULL, /* 생년월일 */
-	res_drv_category VARCHAR2(10) NOT NULL /* 면허종류 */
+	res_drv_birth VARCHAR2(30) NOT NULL, /* 생년월일 */
+	res_drv_category VARCHAR2(50) NOT NULL /* 면허종류 */
 );
 
 CREATE UNIQUE INDEX PK_Reserv_User

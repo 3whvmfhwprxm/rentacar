@@ -222,15 +222,15 @@
 												       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
 												       && map['CCAR_BLUETOOTH_YN']=='N' && map['CCAR_SMARTKEY_YN']=='N' }">등록된 옵션이 없습니다.
 					      						 	</c:if>
-													<c:if test="${map['CCAR_AUX_YN']=='Y' }"> AUX</c:if>
-													<c:if test="${map['CCAR_BLACKBOX_YN']=='Y' }"> 블랙박스</c:if>
-													<c:if test="${map['CCAR_SMOKE_YN']=='Y' }"> 금연차</c:if>
-													<c:if test="${map['CCAR_REAR_CAMERA_YN']=='Y' }"> 후방카메라</c:if>
-													<c:if test="${map['CCAR_REAR_SENCE_YN']=='Y' }"> 후방센서</c:if>
-													<c:if test="${map['CCAR_NAVI_YN']=='Y' }"> 네비게이션</c:if>
-													<c:if test="${map['CCAR_SUN_ROOF_YN']=='Y' }">썬루프</c:if>
-													<c:if test="${map['CCAR_BLUETOOTH_YN']=='Y' }"> 블루투스</c:if>
-													<c:if test="${map['CCAR_SMARTKEY_YN']=='Y' }"> 스마트키</c:if>
+													<c:if test="${map['CCAR_AUX_YN']!='N' }"> AUX</c:if>
+													<c:if test="${map['CCAR_BLACKBOX_YN']!='N' }"> 블랙박스</c:if>
+													<c:if test="${map['CCAR_SMOKE_YN']!='N' }"> 금연차</c:if>
+													<c:if test="${map['CCAR_REAR_CAMERA_YN']!='N' }"> 후방카메라</c:if>
+													<c:if test="${map['CCAR_REAR_SENCE_YN']!='N' }"> 후방센서</c:if>
+													<c:if test="${map['CCAR_NAVI_YN']!='N' }"> 네비게이션</c:if>
+													<c:if test="${map['CCAR_SUN_ROOF_YN']!='N' }">썬루프</c:if>
+													<c:if test="${map['CCAR_BLUETOOTH_YN']!='N' }"> 블루투스</c:if>
+													<c:if test="${map['CCAR_SMARTKEY_YN']!='N' }"> 스마트키</c:if>
 												</p>
 											</div>
 											<div class="modal-footer">
@@ -243,7 +243,7 @@
 							<td class="text-center">
 								<a href='<c:url 
 								value="/inc_user/reservInfo.do
-								?ccarCarId=${car.ccarCarId }
+								?ccarCarId=${map['CCAR_CAR_ID'] }
 								&searchStartDate=${param.searchStartDate }
 								&startHour=${param.startHour}
 								&startMin=${param.startMin }

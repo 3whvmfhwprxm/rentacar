@@ -98,6 +98,7 @@ public class RealTimeController {
 		
 		//유저에 대한 정보 가져오기
 		UserVO uvo=uService.selectByUserid(userId);
+		logger.info("예약자 회원 정보 uvo={}", uvo);
 		
 		model.addAttribute("car", car);
 		model.addAttribute("uvo", uvo);

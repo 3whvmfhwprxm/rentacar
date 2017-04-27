@@ -22,6 +22,7 @@
 		    ) comc join car c
 		    on comc.car_code=c.car_code) a join company b
 		on a.com_id=b.com_id
+		order by a.car_name
 		]]>
 	</select>
 	
