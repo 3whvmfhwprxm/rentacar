@@ -78,7 +78,7 @@
                 </div>
               </div>
               <div class="panel-body">
-                <img src="*" class="coupon-img img-rounded" alt="선택한 차종 이미지">
+                <img src='<c:url value="/carImages/${map['CAR_IMG'] }" />' class="coupon-img img-rounded" alt="선택한 차종 이미지">
                 <div class="col-md-9">
                     <ul class="items">
                     <c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
