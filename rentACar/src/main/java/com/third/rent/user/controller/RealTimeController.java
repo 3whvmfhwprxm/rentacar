@@ -93,14 +93,14 @@ public class RealTimeController {
 		logger.info("세션의 유저ID, userId={}", userId);
 		
 		//DB작업 select by ccarCarId
-		CcarOptionVO car=rService.selectByCcarCarId(ccarCarId);
-		logger.info("선택한 회사차의 정보, car={}", car);
+		Map<String, Object> map=rService.selectedCarInfo(ccarCarId);
+		logger.info("선택한 회사차의 정보, map={}", map);
 		
 		//유저에 대한 정보 가져오기
 		UserVO uvo=uService.selectByUserid(userId);
 		logger.info("예약자 회원 정보 uvo={}", uvo);
 		
-		model.addAttribute("car", car);
+		model.addAttribute("map", map);
 		model.addAttribute("uvo", uvo);
 		
 		return "inc_user/reservInfo";
@@ -134,11 +134,15 @@ public class RealTimeController {
 		reserVo.setReservInsurance("자차보험");
 		reserVo.setUserId(userId);
 					
+		Map<String, Object> map=rService.selectedCarInfo(ccarCarId);
+		logger.info("선택한 회사차의 정보, map={}", map);
+		
 		//DB작업
 		String reservKey=rService.takeReservation(reserVo, reservWho);
 		reserVo.setReservNum(reservKey);
 		
 		model.addAttribute("reserVo",reserVo);
+		model.addAttribute("map", map);
 		
 		return "inc_user/payment";
 	}
@@ -160,4 +164,5 @@ public class RealTimeController {
 		int result=rService.insertPayInfo(payInfoVO);
 		logger.info("결제완료 정보 입력 결과 result={}", result);
 	}
+	
 }

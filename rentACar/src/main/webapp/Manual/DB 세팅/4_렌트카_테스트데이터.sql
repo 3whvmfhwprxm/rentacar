@@ -184,49 +184,49 @@ insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentZoa_0001','hd001', 'rentZoa', 'N', 'ÈÖ¹ß·ù', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 30000, 40000, 60000, 80000, 5000, '2017-01-02');
+values('rentZoa_0001','hd001', 'rentZoa', 'N', 'ÈÖ¹ß·ù', 'N', 'N', 'Y', 'N', 'Y', 'Y', 'Y', 'N', 'N', 1, 30000, 40000, 60000, 80000, 5000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentZoa_0002','kia002', 'rentZoa', 'N', 'ÈÖ¹ß·ù','Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+values('rentZoa_0002','kia002', 'rentZoa', 'N', 'ÈÖ¹ß·ù','Y', 'N', 'N', 'N', 'Y', 'Y', 'Y', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentZoa_0003','kia001', 'rentZoa', 'N', 'ÈÖ¹ß·ù','Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+values('rentZoa_0003','kia001', 'rentZoa', 'N', 'ÈÖ¹ß·ù','Y', 'N', 'Y', 'N', 'N', 'Y', 'N', 'Y', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0001','hd001', 'rentGo', 'N', 'ÈÖ¹ß·ù','N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
+values('rentGo_0001','hd001', 'rentGo', 'N', 'ÈÖ¹ß·ù','N', 'N', 'Y', 'N', 'Y', 'Y', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0002','kia002', 'rentGo', 'N', 'ÈÖ¹ß·ù', 'Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+values('rentGo_0002','kia002', 'rentGo', 'N', 'ÈÖ¹ß·ù', 'Y', 'N', 'N', 'Y', 'N', 'N', 'Y', 'Y', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0003','lambo001', 'rentGo', 'Y', 'ÈÖ¹ß·ù', 'Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 60000, 70000, 80000, 90000, 10000, '2017-01-02');
+values('rentGo_0003','lambo001', 'rentGo', 'Y', 'ÈÖ¹ß·ù', 'Y', 'Y', 'N', 'Y', 'N', 'Y', 'N', 'Y', 'N', 1, 60000, 70000, 80000, 90000, 10000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0005','hd001', 'rentGo', 'N', 'ÈÖ¹ß·ù','N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
+values('rentGo_0005','hd001', 'rentGo', 'N', 'ÈÖ¹ß·ù','N', 'Y', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0006','kia001', 'rentGo', 'N', 'ÈÖ¹ß·ù','Y', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+values('rentGo_0006','kia001', 'rentGo', 'N', 'ÈÖ¹ß·ù','Y', 'N', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
 
 select * from companycaroption;
 commit;

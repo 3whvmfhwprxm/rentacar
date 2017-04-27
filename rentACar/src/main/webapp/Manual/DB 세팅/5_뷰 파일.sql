@@ -32,3 +32,14 @@ as
 
     
     select * from com_reservView
+    
+--
+select a.*, b.COM_NAME, b.COM_TEL1, b.COM_TEL2, b.COM_TEL3 
+from (	select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
+        from COMPANYCAROPTION comc join car c
+        on comc.car_code=c.car_code) a join company b
+on a.com_id=b.com_id
+where ccar_car_id='rentZoa_0001';
+
+
+select * from company

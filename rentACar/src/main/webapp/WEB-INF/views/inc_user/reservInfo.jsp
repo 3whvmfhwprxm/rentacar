@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="top.jsp"%>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/coupon_style.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript">
@@ -99,10 +100,7 @@
 		<fieldset>
 			<legend>예약자 정보 입력</legend>
 		<!-- 선택한 기간 정보 -->
-		<h4>예약하신 내용</h4>
 		<div class="form-group">
-				<span class="fontStyle1">선택하신 예약 기간: ${param.searchStartDate} ${param.startHour}:${param.startMin} 
-				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</span>
 				<!-- 테스트 끝나면 hidden으로 재 설정 -->
 				<input type="hidden" name="searchStartDate" value="${param.searchStartDate}">
 				<input type="hidden" name="startHour" value="${param.startHour}">
@@ -110,18 +108,61 @@
 				<input type="hidden" name="searchEndDate" value="${param.searchEndDate}">
 				<input type="hidden" name="endHour" value="${param.endHour}">
 				<input type="hidden" name="endMin" value="${param.endMin}">
-				<input type="hidden" name="ccarCarId" value="${car.ccarCarId }">	
+				<input type="hidden" name="ccarCarId" value="${map['CCAR_CAR_ID'] }">	
 		</div>
 		
+		<!-- 조건에 따른 가격 계산 처리 (아직 안됨 단순 가격)-->
+		<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
+		
 		<!-- 선택한 차에 대한 정보 -->
-		<div class="form-group">
-			<p>선택한 차 ID: ${car.ccarCarId }</p>
-			<p>선택한 차 모델: ${car.carCode }</p>			
-			<p>블랙박스 유무: ${car.ccarBlackboxYn }</p>
-			<p>흡연 가능여부: ${car.ccarSmokeYn }</p>
-			<p>후방카메라 유무: ${car.ccarRearCameraYn }</p>
-			<p>...등</p>
-		</div>
+		<div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default coupon">
+              <div class="panel-heading" id="head">
+                <div class="panel-title" id="title">
+                    <img src="*" alt="선택한 업체 로고 이미지">
+                    <span class="hidden-xs"> ${map['CAR_NAME'] }</span>
+                    <span class="visible-xs"> ${map['CAR_NAME'] }</span>
+                </div>
+              </div>
+              <div class="panel-body">
+                <img src="*" class="coupon-img img-rounded" alt="선택한 차종 이미지">
+                <div class="col-md-9">
+                    <ul class="items">
+                    <c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
+												       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
+												       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N' 
+												       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
+												       && map['CCAR_BLUETOOTH_YN']=='N' && map['CCAR_SMARTKEY_YN']=='N' }">
+												       <li>등록된 옵션이 없습니다.</li>
+					</c:if>
+					<c:if test="${map['CCAR_AUX_YN']!='N' }"><li>AUX</li></c:if>
+					<c:if test="${map['CCAR_BLACKBOX_YN']!='N' }"><li>블랙박스</li></c:if>
+					<c:if test="${map['CCAR_NAVI_YN']!='N' }"><li>네비게이션</li></c:if>
+					<c:if test="${map['CCAR_SUN_ROOF_YN']!='N' }"><li>썬루프</li></c:if>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <div class="offer">
+                        <span class="number"><fmt:formatNumber pattern="#,###" value="${priceByReservDays }" /> </span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <p class="disclosure">연락처: ${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }</p>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <div class="coupon-code">
+                    <span class="print">
+                        <a href="<c:url value='/inc_user/realTime.do' />" class="btn btn-link">다른 차량 선택하기</a>
+                    </span>
+                </div>
+                <div class="exp">선택하신 예약 기간: ${param.searchStartDate} ${param.startHour}:${param.startMin} 
+				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</div>
+              </div>
+            </div>
+    	</div>
+    </div>
 		
 		<!-- 예약자 및 운전자 입력 정보 -->
 		<h4>예약자 정보 입력</h4>

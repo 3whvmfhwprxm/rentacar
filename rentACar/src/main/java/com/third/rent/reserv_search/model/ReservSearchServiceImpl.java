@@ -65,5 +65,9 @@ public class ReservSearchServiceImpl implements ReservSearchService{
 		return dao.insertPayInfo(payInfoVO);
 	}
 
-	
+	@Override
+	public Map<String, Object> selectedCarInfo(String ccarCarId) {
+		return dao.selectedCarInfo(ccarCarId);
+	}
+		
 }

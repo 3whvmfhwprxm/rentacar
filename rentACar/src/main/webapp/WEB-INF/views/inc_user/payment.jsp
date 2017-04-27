@@ -3,6 +3,7 @@
 <%@ include file="top.jsp"%>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://service.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/coupon_style.css" />
 <script type="text/javascript">
 	$().ready(function(){
 		IMP.init('imp33307123');
@@ -33,7 +34,8 @@
 							  payCondition:rsp.status},
 			    		dataType:'json',
 			    		success:function(res){
-			    			$("#payInfo").html("<span> 결제 정보 입력 완료 </span>");
+			    			alert('결제가 완료됐습니다.');
+			    			location.href="<c:url value='/inc_user/confirm.do' />";
 			    		},error:function(xhr, status, error){
 			    			$("#payInfo").html("<span> 결제 정보 입력 실패 </span>");
 			    		}			    		
@@ -55,19 +57,64 @@
 </script>
 <br>
 <div class="divList container" id="payInfo">
-	<!-- 결제하실 예약내용 표시 -->
-	<div class="">
-		
-	</div>
 	
 	<!-- 결제 버튼 표시 -->
 	<form class="form-horizontal" name="payForm" id="payForm" method="post">
 		<fieldset>
 			<legend>결제하기</legend>
+			
+			<!-- 결제하신 예약내용 표시 -->
+	<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
+		
+		<!-- 선택한 차에 대한 정보 -->
+		<div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default coupon">
+              <div class="panel-heading" id="head">
+                <div class="panel-title" id="title">
+                    <img src="*" alt="선택한 업체 로고 이미지">
+                    <span class="hidden-xs"> ${map['CAR_NAME'] }</span>
+                    <span class="visible-xs"> ${map['CAR_NAME'] }</span>
+                </div>
+              </div>
+              <div class="panel-body">
+                <img src="*" class="coupon-img img-rounded" alt="선택한 차종 이미지">
+                <div class="col-md-9">
+                    <ul class="items">
+                    <c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
+												       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
+												       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N' 
+												       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
+												       && map['CCAR_BLUETOOTH_YN']=='N' && map['CCAR_SMARTKEY_YN']=='N' }">
+												       <li>등록된 옵션이 없습니다.</li>
+					</c:if>
+					<c:if test="${map['CCAR_AUX_YN']!='N' }"><li>AUX</li></c:if>
+					<c:if test="${map['CCAR_BLACKBOX_YN']!='N' }"><li>블랙박스</li></c:if>
+					<c:if test="${map['CCAR_NAVI_YN']!='N' }"><li>네비게이션</li></c:if>
+					<c:if test="${map['CCAR_SUN_ROOF_YN']!='N' }"><li>썬루프</li></c:if>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <div class="offer">
+                        <span class="number"><fmt:formatNumber pattern="#,###" value="${priceByReservDays }" /> </span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <p class="disclosure">연락처: ${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }</p>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <div class="exp">선택하신 예약 기간: ${param.searchStartDate} ${param.startHour}:${param.startMin} 
+				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</div>
+              </div>
+            </div>
+    	</div>
+    </div>
+			
 			<input type="hidden" name="payNo">
 			<div class=form-group>
 				<label class="col-sm-2 control-label"></label>
-				<div class="col-sm-6">
+				<div class="col-sm-8">
 					<input class="btn btn-primary btn-lg btn-block" type="button" value="결제하기" name="bt_pay" id="bt_pay" >
 				</div>
 			</div>
