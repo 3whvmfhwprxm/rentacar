@@ -15,4 +15,5 @@ public interface UserService {
 	public int duplicateUserid(String userId);
 	public UserVO selectByUserid(String userId);
 	public int updateUser(UserVO vo);
+	public String selectSearchid(UserVO vo);
 }

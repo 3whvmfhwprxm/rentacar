@@ -26,5 +26,10 @@ public class UserDAOMybatis extends SqlSessionDaoSupport implements UserDAO{
 	public int updateUser(UserVO vo) {
 		return getSqlSession().update(namespace+".updateUser", vo);
 	}
+
+	@Override
+	public String selectSearchid(UserVO vo) {
+		return getSqlSession().selectOne(namespace+".userseachid", vo);
+	}
 	
 }
