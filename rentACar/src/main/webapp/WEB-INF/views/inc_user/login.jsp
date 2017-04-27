@@ -1,6 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="top.jsp" %>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#idSearch").click(function(){
+			$.ajax({
+				url:'<c:url value="/inc_user/userseachid.do"/>',
+				type:'post',
+				dataType:'json',
+				data: $("#frmid").serialize(),
+				success:function(res){
+					alert("찾으신 아이디는 "+res.userName+"입니다!");
+					
+				},
+				error:function(xhr, status, error){
+				}
+			});
+			//alert("이름,이메일주소가 틀립니다.");
+		});
+	});
+</script>
+<c:if test='${userId!="" }'>
+</c:if>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/logincss.css"/>
 	<div class="container">
     <h1 class="welcome text-center">Welcome to <br> RentA Car</h1>
@@ -56,12 +78,12 @@
 						<h4 class="modal-title">아이디 찾기</h4>
 					</div>
 					<div class="modal-body">
-						<form method="post" action='' name="login_form">
+						<form method="post" action='' name="login_form" id="frmid">
 							<div class="row">
-					            <label class="control-label col-md-3" for="name" style="text-align: right;">아이디 <span class="required">*</span>
+					            <label class="control-label col-md-3" for="name" style="text-align: right;">이름 <span class="required">*</span>
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong123" required="required" type="userId">
+					              <input id="userName" name="userName" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 홍길동" required="required" type="userName">
 					            </div>
 					        </div><br>
 					        <div class="row">
@@ -71,18 +93,22 @@
 					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text">
 					            </div>
 					        </div><br>
-					        <div class="row">
+					        <!-- <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;" disabled>찾으신 아이디
 					            </label>
 					            <div class="col-md-5">
 					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text" value="hong123" disabled>
 					            </div>
-					        </div><br>
+					        </div><br> -->
+					        <br>
+					        <input type="hidden" id="id" value="찾는아이디">
 						</form>
 					</div>
-					<div class="modal-footer">
-		           		 <a href="#" class="btn btn-primary">확인</a>
-					</div>
+					<!-- <form name="frmid" method="post" action="<c:url value="/inc_user/userseachid.do"/>"> -->
+						<div class="modal-footer">
+			           		 <button type="button" class="btn btn-primary" id="idSearch">확인</button>
+						</div>
+					<!-- </form> -->
 				</div>
 				<!-- /.modal-content -->
 			</div>

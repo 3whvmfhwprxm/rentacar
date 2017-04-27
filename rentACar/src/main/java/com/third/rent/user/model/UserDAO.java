@@ -6,4 +6,5 @@ public interface UserDAO {
 	public UserVO selectByUserid(String userId);
 	public String selectPwd(String userId);
 	public int updateUser(UserVO vo);
+	public String selectSearchid(UserVO vo);
 }

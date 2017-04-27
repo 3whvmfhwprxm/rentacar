@@ -9,10 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.third.rent.user.model.UserService;
 import com.third.rent.user.model.UserVO;
@@ -85,4 +87,35 @@ public class LoginController {
 		return bool;
 	}
 	
+	@RequestMapping(value="/inc_user/userseachid.do")
+	@ResponseBody
+	/*public String userseachid(@ModelAttribute UserVO vo, Model model){*/
+	public UserVO userseachid(@RequestParam String userName, @RequestParam String userEmail, Model model){
+		logger.info("아이디찾기");
+		UserVO userVo = new UserVO();
+		userVo.setUserName(userName);
+		userVo.setUserEmail(userEmail);
+		String result = userService.selectSearchid(userVo);
+		logger.info("결과 result = {}",result);
+		
+		UserVO vo = new UserVO();
+		vo.setUserName(result);
+		
+		return vo;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
