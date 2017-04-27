@@ -72,7 +72,7 @@ ul{
 				            	</a>
 				            </li>
 				            <li>
-				            	<a href='<c:url value="/administrator/company/companyCar.do" />'>
+				            	<a href='<c:url value="/administrator/company/companyListByCar.do" />'>
 				            		업체 보유차랑
 				            	</a>
 				            </li>

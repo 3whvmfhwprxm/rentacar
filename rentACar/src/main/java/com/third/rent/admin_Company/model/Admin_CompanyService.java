@@ -1,6 +1,7 @@
 package com.third.rent.admin_Company.model;
 
 import java.util.List;
+import java.util.Map;
 
 import com.third.rent.common.SearchVO;
 import com.third.rent.company.model.CompanyVO;
@@ -30,4 +31,6 @@ public interface Admin_CompanyService {
 	public int loginCheck(String adminId, String adminPwd);
 	
 	public List<CompanyVO> selectOutompany(SearchVO searchVo);
+	
+	public List<Map<String, Object>> selectAllComCar(String comId);
 }

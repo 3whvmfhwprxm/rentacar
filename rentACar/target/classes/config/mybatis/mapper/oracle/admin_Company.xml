@@ -101,6 +101,13 @@
 		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
 		and com_outdate is not null
 		]]>
+	</select>
+	
+	<select id="selectAllCcar" resultType="map" parameterType="String">
+		select*
+		from car c, CompanyCarOption cco
+		where c.car_code=cco.car_code
+		and com_id=#{comId}
 	</select> 
 </mapper>
 

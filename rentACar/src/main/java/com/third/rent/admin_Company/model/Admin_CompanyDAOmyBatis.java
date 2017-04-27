@@ -1,6 +1,7 @@
 package com.third.rent.admin_Company.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -55,4 +56,7 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 		return getSqlSession().selectList(namespace+".selectOutompany", searchVo);
 	}
 
+	public List<Map<String, Object>> selectAllComCar(String comId){
+		return getSqlSession().selectList(namespace+".selectAllCcar", comId);
+	}
 }

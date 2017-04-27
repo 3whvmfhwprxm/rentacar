@@ -1,6 +1,7 @@
 package com.third.rent.admin_Company.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,5 +70,9 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 
 	public List<CompanyVO> selectOutompany(SearchVO searchVo) {
 		return adminCompanyDao.selectOutompany(searchVo);
+	}
+	
+	public List<Map<String, Object>> selectAllComCar(String comId) {
+		return adminCompanyDao.selectAllComCar(comId);
 	}
 }

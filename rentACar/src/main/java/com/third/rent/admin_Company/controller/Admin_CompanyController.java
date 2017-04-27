@@ -1,6 +1,7 @@
 package com.third.rent.admin_Company.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_CarModel.model.Admin_CarModelService;
 import com.third.rent.admin_Company.model.Admin_CompanyService;
-import com.third.rent.car.model.CarVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
@@ -64,6 +64,36 @@ public class Admin_CompanyController {
 		model.addAttribute("pagingInfo", pagingInfo);
 
 		return "administrator/company/companyList";
+	}
+	
+	@RequestMapping("/company/companyListByCar.do")
+	public String companyListByCar(@ModelAttribute SearchVO searchVo, Model model){
+		//1
+		logger.info("업체목록, 파라미터 searchVo={}", searchVo);
+
+		//2
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.ADMIN_COMPANY_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+
+		searchVo.setRecordCountPerPage(Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+
+		List<CompanyVO> companyList = adminCompanyService.selectAllCompany(searchVo);
+		logger.info("업체목록 조회결과, companyList.size()={}", companyList.size());
+
+		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
+		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
+				totalRecord);
+
+		pagingInfo.setTotalRecord(totalRecord);
+
+		//3
+		model.addAttribute("companyList", companyList);
+		model.addAttribute("pagingInfo", pagingInfo);
+
+		return "administrator/company/companyListByCar";
 	}
 	
 	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.GET)
@@ -253,15 +283,33 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping("/company/companyCar.do")
-	public String companyCar(@RequestParam SearchVO searchVo, Model model){
-		logger.info("업체보유차량 보기, 파라미터 searchVo={}", searchVo);
+	public String list(@ModelAttribute SearchVO searchVo, @RequestParam String comId,		
+			Model model){
+		logger.info("업체차량 전체현황 보여주기");
+			
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.ADMIN_COMPANY_CAR_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		List<CarVO> carList = adminCompanyCarservice.selectAll(searchVo);
-		logger.info("상세보기 결과, carList={}", carList);
+		searchVo.setRecordCountPerPage(Utility.ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		
+		
+		List<Map<String, Object>> cclist 
+			= adminCompanyService.selectAllComCar(comId);
+		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
+		logger.info("cclist={}", cclist);
 
+		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
+		logger.info("업체 차량목록 조회 - 전체 업체 차량 조회 결과, totalRecord={}",
+				totalRecord);
 
-		model.addAttribute("carList", carList);
+		pagingInfo.setTotalRecord(totalRecord);
 
+		model.addAttribute("pagingInfo", pagingInfo);
+		model.addAttribute("cclist", cclist);
+		
 		return "administrator/company/companyCar";
 	}
 }

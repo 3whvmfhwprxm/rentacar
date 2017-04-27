@@ -120,7 +120,17 @@
 			}
 		});
 	});
+	
+	function goPopup(){
+		window.open("../zipcode/jusoPopup.do","pop",
+				"width=570,height=420, scrollbars=yes, resizable=yes");
+	}
 		
+	function jusoCallBack(addrDetail){
+		document.frm1.comAddress.value 
+			= addrDetail;
+	}
+	
 	function validate_CompanyId(CompanyId){
 		var pattern = new RegExp(/^[a-zA-Z0-9]*$/g);
 		return pattern.test(CompanyId);		
@@ -203,6 +213,7 @@
 					id="CompanyPwd2" placeholder="Check Company Password">
 			</div>
 		</div>
+		
 		<div class="form-group">
 			<label for="CompanyNo" class="col-sm-2 control-label">
 				Company No
@@ -242,6 +253,7 @@
 					id="CompanyTel3" maxlength="4" placeholder="Company Tel3">
 			</div>
 		</div>
+		
 		<div class="form-group">
 			<label for="CompanyMobile11" class="col-sm-2 control-label">
 				Company Mobile
@@ -282,15 +294,20 @@
 					id="CompanyFax3" placeholder="Company Fax3">
 			</div>
 		</div>
+		
 		<div class="form-group">
 			<label for="CompanyAddress" class="col-sm-2 control-label">
 				Company Address
 			</label>
-			<div class="col-sm-8">
+			<div class="col-sm-6">
 				<input type="text" class="form-control" name="comAddress"
-					id="CompanyAddress" placeholder="Company Address">
+					id="CompanyAddress" placeholder="Company Address" readonly="readonly">
+			</div>
+			<div class="col-sm-2">
+				<input type="button" class="btn btn-default" value="주소찾기" onClick="goPopup()">
 			</div>
 		</div>
+		
 		<div class="form-group">
 			<label for="CompanyCeo" class="col-sm-2 control-label">
 				Company Ceo
@@ -300,6 +317,7 @@
 					id="CompanyCeo" placeholder="Company Ceo">
 			</div>
 		</div>
+		
 		<div class="form-group">
 			<label for="CompanyEmail" class="col-sm-2 control-label">
 				Company Email</label>
