@@ -16,6 +16,9 @@
 		
 		$("#resDrvBirth").datepicker({
 	    	dateFormat: 'yy-mm-dd',
+	    	yearRange: "1900:2020" ,
+	    	changeYear: true,
+	    	changeMonth: true
 	    });
 		
 		$("#insertReservInfo").submit(function(){
@@ -87,6 +90,9 @@
 		}
 	}
 </script>
+<style type="text/css">
+	.fontStyle1{color: #0033FF; font-weight: bold;}
+</style>
 <div class="container">
 	<br>
 	<form class="form-horizontal" name="insertReservInfo" id="insertReservInfo" method="post" action="<c:url value='/inc_user/reservation.do' />">
@@ -95,8 +101,8 @@
 		<!-- 선택한 기간 정보 -->
 		<h4>예약하신 내용</h4>
 		<div class="form-group">
-				선택하신 예약 기간: ${param.searchStartDate} ${param.startHour}:${param.startMin} 
-				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}
+				<span class="fontStyle1">선택하신 예약 기간: ${param.searchStartDate} ${param.startHour}:${param.startMin} 
+				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</span>
 				<!-- 테스트 끝나면 hidden으로 재 설정 -->
 				<input type="hidden" name="searchStartDate" value="${param.searchStartDate}">
 				<input type="hidden" name="startHour" value="${param.startHour}">

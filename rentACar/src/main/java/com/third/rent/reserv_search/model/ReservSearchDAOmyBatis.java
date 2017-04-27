@@ -56,7 +56,10 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 	@Override
 	public int insertPayInfo(PayInfoVO payInfoVO) {
 		return getSqlSession().insert(nameSpace+".insertPayInfo", payInfoVO);
+	}
+
+	@Override
+	public Map<String, Object> selectedCarInfo(HashMap<String, Object> map) {
+		return getSqlSession().selectOne(nameSpace+".selectedCarInfo", map);
 	}	
-	
-	
 }
