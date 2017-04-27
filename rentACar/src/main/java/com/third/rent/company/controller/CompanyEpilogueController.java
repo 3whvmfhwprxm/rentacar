@@ -1,6 +1,7 @@
 package com.third.rent.company.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -127,8 +128,7 @@ public class CompanyEpilogueController {
 	
 	
 	@RequestMapping("/company_revenue.do")
-	public String consultation_inquiry(){
-		
+	public String consultation_inquiry(Model model){
 		logger.info("매출 통계 화면 구현");
 		
 		return "com_manage/company_revenue";

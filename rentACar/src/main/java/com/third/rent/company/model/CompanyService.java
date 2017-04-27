@@ -1,5 +1,8 @@
 package com.third.rent.company.model;
 
+import java.util.List;
+import java.util.Map;
+
 import com.third.rent.admin.model.AdminVO;
 
 public interface CompanyService {
@@ -14,4 +17,5 @@ public interface CompanyService {
 	public int duplicateUserid(String comId);
 	public CompanyVO selectBycomId(String comId);
 	public int updateCompany(CompanyVO vo);
+	
 }

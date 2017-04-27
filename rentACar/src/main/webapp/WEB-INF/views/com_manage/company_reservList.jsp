@@ -61,10 +61,10 @@
                         <i class="fa fa-navicon"></i> 정렬기준 <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu mega-dropdown-menu">
-                    	<li><a href="javascript:fncSort('date')">최근등록순</a></li>
+                    	<li><a href="javascript:fncSort('date')">최근예약순</a></li>
                     	<li><a href="javascript:fncSort('num')">차량번호순</a></li>
                         <li><a href="javascript:fncSort('model')">차량모델순</a></li>
-                        <li><a href="javascript:fncSort('fuel')">연료타입순</a></li>
+                        <li><a href="javascript:fncSort('fuel')">남은일수순</a></li>
                         <li><a href="javascript:fncSort('usey')">사용가능한 차량만 보기</a></li>
                         <li><a href="javascript:fncSort('usen')">정비중인 차량만 보기</a></li>
                     </ul>
@@ -74,84 +74,31 @@
        <table class="table table-striped">
        <thead>
        		<tr>
-       			<th><input type="checkbox" id="" name=""></th>
-  				<th>#</th>
-				<th>#</th>
-				<th>#</th>
-				<th>#</th>
-				<th>#</th>
-				<th>#</th>
-				<th>#</th>
-				<th>#</th>
+  				<th>차량번호</th>
+				<th>모델명</th>
+				<th>예약자이름</th>
+				<th>전화번호</th>
+				<th>결제금액</th>
+				<th>대여일</th>
+				<th>반납일</th>
+				<th>대여일까지 남은일수</th>
+				<th>예약취소</th>
 			</tr>
         </thead>
         <tbody>
         <!-- 반복시작 -->
-		<c:forEach var="map" items="${cclist }" varStatus="i">
+		<c:forEach var="map" items="${crList }" varStatus="i">
 		
 		<tr>
-			<td><input type="checkbox" id="" name=""></td>
-			<td><a href="<c:url value='/com_manage/company_ccarDetail.do?ccarCarId=${map["CCAR_CAR_ID"] }' /> " />${map['CCAR_CAR_ID']}</td>
-			<td>${map['CAR_CODE'] }</td>
+			<td>${map['CCAR_CAR_ID'] }</td>
 			<td>${map['CAR_NAME'] }</td>
-			<td>${map['CAR_FUEL'] }</td>
-			<td><!-- <a href="#">옵션상세보기</a> -->
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<div class="address">
-						<button type="button" class="btn btn-info"
-							data-toggle="modal" data-target='#ordine_${i.index }'>옵션상세보기</button>
-					</div>
-				</div>
-				<div class="col-md-2"></div>
-			</div> <!-- Modal -->
-			<div id="ordine_${i.index }" class="modal fade" role="dialog">
-				<div class="modal-dialog">
-
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">×</button>
-							<h4 class="modal-title">${map['CCAR_CAR_ID'] }의 옵션사항</h4>
-						</div>
-						<div class="modal-body">
-							<p>
-								<c:if
-									test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
-	       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
-	       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N' 
-	       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
-	       && map['CCAR_BLUETOOTH_YN']=='N' && map['CCAR_SMARTKEY_YN']=='N' }">등록된 옵션이 없습니다.
-       </c:if>
-		<c:if test="${map['CCAR_AUX_YN']=='Y' }"> AUX</c:if>
-		<c:if test="${map['CCAR_BLACKBOX_YN']=='Y' }"> 블랙박스</c:if>
-		<c:if test="${map['CCAR_SMOKE_YN']=='Y' }"> 금연차</c:if>
-		<c:if test="${map['CCAR_REAR_CAMERA_YN']=='Y' }"> 후방카메라</c:if>
-		<c:if test="${map['CCAR_REAR_SENCE_YN']=='Y' }"> 후방센서</c:if>
-		<c:if test="${map['CCAR_NAVI_YN']=='Y' }"> 네비게이션</c:if>
-		<c:if test="${map['CCAR_SUN_ROOF_YN']=='Y' }">썬루프</c:if>
-		<c:if test="${map['CCAR_BLUETOOTH_YN']=='Y' }"> 블루투스</c:if>
-		<c:if test="${map['CCAR_SMARTKEY_YN']=='Y' }"> 스마트키</c:if>
-		</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-info"
-							data-dismiss="modal">Close</button>
-					</div>
-				</div>
-		
-				</div>
-			</div>
-		</td>
-			<c:if test="${map['CCAR_USE_YN']=='Y' }"><td>사용가능</td>  </c:if>
-			<c:if test="${map['CCAR_USE_YN']=='N' }"><td>정비중</td>  </c:if>
-			<td>
-			
-			<button class="btn btn-warning" onclick="javascript:cg('${map['CCAR_USE_YN']}','${map['CCAR_CAR_ID'] }','${map['COM_ID'] }')">
-				여부변경</button>
-			</td>
-			<td><fmt:formatDate value="${map['COMCAR_REGDATE'] }" pattern="yyyy/MM/dd"/></td>
+			<td>${map['RES_U_NAME'] }</td>
+			<td>${map['RES_U_TEL1'] } - ${map['RES_U_TEL2'] } - ${map['RES_U_TEL3'] }</td>
+			<td>${map['PAY_MONEY'] }</td>
+			<td>${map['RESERV_START_DATE'] }</td>
+			<td>${map['RESERV_END_DATE'] }</td>
+			<td>${map['REMAININGDAY'] }</td>
+			<td><button>취소</button></td>
 		</tr>
 	</c:forEach>
 	 <!-- 반복끝 --> 

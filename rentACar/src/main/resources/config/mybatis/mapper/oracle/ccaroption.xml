@@ -120,6 +120,22 @@
  		set CCAR_USE_YN=#{ccarUseYn}
  		where ccar_car_id=#{ccarCarId} and com_id=#{comId} 
  	</update>
+ 	
+ 	<select id="selectComReserv" resultType="map">
+	 select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from com_reservView
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
 	
 </mapper>
 

@@ -324,9 +324,6 @@ public class CcarOptionController {
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		
-		List<Map<String, Object>> cclist =
-				ccarOptionService.selectAllComCar(searchVo);
-		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
 
 		int totalRecord = ccarOptionService.selectTotalRecord(searchVo);
 		logger.info("업체 차량목록 조회 - 전체 업체 차량 조회 결과, totalRecord={}",
@@ -336,10 +333,15 @@ public class CcarOptionController {
 
 		model.addAttribute("pagingInfo", pagingInfo);
 		
-		model.addAttribute("cclist", cclist);
+		List<Map<String, Object>> alist =
+				ccarOptionService.selectComReserv(searchVo);
+		logger.info("예약정보 조회결과 alist.size()={}",alist.size());
+		
+		model.addAttribute("crList", alist);
 		
 		return "com_manage/company_reservList";
 	}
+	
 }
 
 

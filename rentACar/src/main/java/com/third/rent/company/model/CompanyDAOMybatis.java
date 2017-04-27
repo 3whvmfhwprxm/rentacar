@@ -1,5 +1,8 @@
 package com.third.rent.company.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -29,5 +32,7 @@ public class CompanyDAOMybatis extends SqlSessionDaoSupport
 		return getSqlSession().update(namespace+".updateCompany",vo);
 				
 	}
+
+	
 
 }

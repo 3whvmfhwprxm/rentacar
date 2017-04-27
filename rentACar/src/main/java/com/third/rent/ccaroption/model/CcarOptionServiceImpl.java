@@ -62,5 +62,10 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 		return ccarOptionDao.updateCarUseYn(vo);
 	}
 	
+	@Override
+	public List<Map<String, Object>> selectComReserv(SearchVO searchVo) {
+		return ccarOptionDao.selectComReserv(searchVo);
+	}
+
 
 }
