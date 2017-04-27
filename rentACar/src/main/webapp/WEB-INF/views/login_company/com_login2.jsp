@@ -10,105 +10,15 @@
 <script type="text/javascript" 	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <style type="text/css">
-.btn3d {
-    position:relative;
-    top: -6px;
-    border:0;
-     transition: all 40ms linear;
-     margin-top:10px;
-     margin-bottom:10px;
-     margin-left:2px;
-     margin-right:2px;
+body
+{
+    background: url("<c:url value='/images/login5.png' />") no-repeat;
+    background-size:cover;
+    padding: 0;
+    margin: 0;
+    
 }
-.btn3d:active:focus,
-.btn3d:focus:hover,
-.btn3d:focus {
-    -moz-outline-style:none;
-         outline:medium none;
-}
-.btn3d:active, .btn3d.active {
-    top:2px;
-}
-.btn3d.btn-white {
-    color: #666666;
-    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.10) inset, 0 8px 0 0 #f5f5f5, 0 8px 8px 1px rgba(0,0,0,.2);
-    background-color:#fff;
-}
-.btn3d.btn-white:active, .btn3d.btn-white.active {
-    color: #666666;
-    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,.1);
-    background-color:#fff;
-}
-.btn3d.btn-default {
-    color: #666666;
-    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 2px rgba(255,255,255,0.10) inset, 0 8px 0 0 #BEBEBE, 0 8px 8px 1px rgba(0,0,0,.2);
-    background-color:#f9f9f9;
-}
-.btn3d.btn-default:active, .btn3d.btn-default.active {
-    color: #666666;
-    box-shadow:0 0 0 1px #ebebeb inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,.1);
-    background-color:#f9f9f9;
-}
-.btn3d.btn-primary {
-    box-shadow:0 0 0 1px #417fbd inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #4D5BBE, 0 8px 8px 1px rgba(0,0,0,0.5);
-    background-color:#4274D7;
-}
-.btn3d.btn-primary:active, .btn3d.btn-primary.active {
-    box-shadow:0 0 0 1px #417fbd inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
-    background-color:#4274D7;
-}
-.btn3d.btn-success {
-    box-shadow:0 0 0 1px #31c300 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #5eb924, 0 8px 8px 1px rgba(0,0,0,0.5);
-    background-color:#78d739;
-}
-.btn3d.btn-success:active, .btn3d.btn-success.active {
-    box-shadow:0 0 0 1px #30cd00 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
-    background-color: #78d739;
-}
-.btn3d.btn-info {
-    box-shadow:0 0 0 1px #00a5c3 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #348FD2, 0 8px 8px 1px rgba(0,0,0,0.5);
-    background-color:#39B3D7;
-}
-.btn3d.btn-info:active, .btn3d.btn-info.active {
-    box-shadow:0 0 0 1px #00a5c3 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
-    background-color: #39B3D7;
-}
-.btn3d.btn-warning {
-    box-shadow:0 0 0 1px #d79a47 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #D79A34, 0 8px 8px 1px rgba(0,0,0,0.5);
-    background-color:#FEAF20;
-}
-.btn3d.btn-warning:active, .btn3d.btn-warning.active {
-    box-shadow:0 0 0 1px #d79a47 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
-    background-color: #FEAF20;
-}
-.btn3d.btn-danger {
-    box-shadow:0 0 0 1px #b93802 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #AA0000, 0 8px 8px 1px rgba(0,0,0,0.5);
-    background-color:#D73814;
-}
-.btn3d.btn-danger:active, .btn3d.btn-danger.active {
-    box-shadow:0 0 0 1px #b93802 inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
-    background-color: #D73814;
-}
-.btn3d.btn-magick {
-    color: #fff;
-    box-shadow:0 0 0 1px #9a00cd inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #9823d5, 0 8px 8px 1px rgba(0,0,0,0.5);
-    background-color:#bb39d7;
-}
-.btn3d.btn-magick:active, .btn3d.btn-magick.active {
-    box-shadow:0 0 0 1px #9a00cd inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
-    background-color: #bb39d7;
-}
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color:#ffffff;
-}
-.divImg{
-	width: auto;
-	margin-left: 150px;
-}
+
 .wrap
 {
     width: 100%;
@@ -123,10 +33,10 @@ body {
 p.form-title
 {
     font-family: 'Open Sans' , sans-serif;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
-    color: #33CCFF;
+    color: #FFFFFF;
     margin-top: 5%;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -136,7 +46,6 @@ form
 {
     width: 250px;
     margin: 0 auto;
-    margin-top:70px;
 }
 
 form.login input[type="text"], form.login input[type="password"]
@@ -146,13 +55,14 @@ form.login input[type="text"], form.login input[type="password"]
     padding: 5px 10px;
     background: 0;
     border: 0;
-    border-bottom: 1px solid #33b78b;
+    border-bottom: 1px solid #FFFFFF;
     outline: 0;
-    font-size: 20px;
+    font-style: italic;
+    font-size: 12px;
     font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 5px;
-    color: #33CCFF;
+    color: #FFFFFF;
     outline: 0;
 }
 
@@ -189,7 +99,7 @@ form.login label, form.login a
 {
     font-size: 12px;
     font-weight: 400;
-    color: #6e33ff;
+    color: #FFFFFF;
 }
 
 form.login a
@@ -282,12 +192,6 @@ form.login a:hover
     padding: 10px;
     left: 45%;
 }
-.col-md-6 {
-    width: 50%;
-    color: #33CCFF; 
-}
-form.login input[type="text"]::-webkit-input-placeholder {color: #33CCFF; font-size: 20px;}
-form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; font-size: 20px;}
 
 </style>
 		
@@ -320,9 +224,6 @@ form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; fo
 	});
 </script>
 </head>
-	
-
-		
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -358,9 +259,8 @@ form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; fo
                     </div>
                 </div>
                 </form>
-                <div class="divImg"><img src="<c:url value='/images/login4.fw.png' />"></div>
             </div>
         </div>
     </div>
 </div>
-		
+
