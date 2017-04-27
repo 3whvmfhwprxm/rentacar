@@ -125,3 +125,8 @@ event_target_grade='1', event_image1='12.jpg', event_image2='2.jpg'
 where event_num=11
 
 rollback;
+
+select comcar.*, c.car_name
+from COMPANYCAROPTION comcar join car c
+on comcar.CAR_CODE = c.CAR_CODE
+order by c.car_name;

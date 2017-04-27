@@ -152,7 +152,7 @@ insert into car
 values('kia002', '기아뉴모닝_17', 'KIA', 4, 'AUTO', sysdate, 2, 'kia00201.jpg');
 
 insert into car
-values('lambo001', '람보르기니_우라칸', 'Lamborghini', 2, 'Trans', sysdate, 5, 'lb00101.jpg');
+values('lambo001', '람보르기니_센테나리오', 'Lamborghini', 2, 'Trans', sysdate, 5, 'lb00101.jpg');
 
 select * from car;
 commit;
