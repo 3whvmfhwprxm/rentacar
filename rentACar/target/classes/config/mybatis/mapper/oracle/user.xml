@@ -34,6 +34,12 @@
 		from rent_user
 		where user_name=#{userName} and user_email=#{userEmail}
 	</select>
+	
+	<select id="userseachpwd" parameterType="UserVO" resultType="String">
+		select user_pwd
+		from rent_user
+		where user_id=#{userId} and user_email=#{userEmail}
+	</select>
 </mapper>
 
 

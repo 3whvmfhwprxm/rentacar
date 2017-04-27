@@ -16,4 +16,5 @@ public interface UserService {
 	public UserVO selectByUserid(String userId);
 	public int updateUser(UserVO vo);
 	public String selectSearchid(UserVO vo);
+	public String selectSearchpwd(UserVO vo);
 }

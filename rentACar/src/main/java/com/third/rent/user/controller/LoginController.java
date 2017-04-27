@@ -91,11 +91,27 @@ public class LoginController {
 	@ResponseBody
 	/*public String userseachid(@ModelAttribute UserVO vo, Model model){*/
 	public UserVO userseachid(@RequestParam String userName, @RequestParam String userEmail, Model model){
-		logger.info("아이디찾기");
+		logger.info("아이디 찾기");
 		UserVO userVo = new UserVO();
 		userVo.setUserName(userName);
 		userVo.setUserEmail(userEmail);
 		String result = userService.selectSearchid(userVo);
+		logger.info("결과 result = {}",result);
+		
+		UserVO vo = new UserVO();
+		vo.setUserName(result);
+		
+		return vo;
+	}
+	
+	@RequestMapping(value="/inc_user/userseachpwd.do")
+	@ResponseBody
+	public UserVO userseachpwd(@RequestParam String userId, @RequestParam String userEmail, Model model){
+		logger.info("비밀번호 찾기");
+		UserVO userVo = new UserVO();
+		userVo.setUserId(userId);
+		userVo.setUserEmail(userEmail);
+		String result = userService.selectSearchpwd(userVo);
 		logger.info("결과 result = {}",result);
 		
 		UserVO vo = new UserVO();

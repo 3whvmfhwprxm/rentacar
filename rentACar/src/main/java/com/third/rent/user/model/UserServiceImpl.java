@@ -50,4 +50,9 @@ public class UserServiceImpl implements UserService{
 	public String selectSearchid(UserVO vo) {
 		return userDao.selectSearchid(vo);
 	}
+
+	@Override
+	public String selectSearchpwd(UserVO vo) {
+		return userDao.selectSearchpwd(vo);
+	}
 }

@@ -31,5 +31,10 @@ public class UserDAOMybatis extends SqlSessionDaoSupport implements UserDAO{
 	public String selectSearchid(UserVO vo) {
 		return getSqlSession().selectOne(namespace+".userseachid", vo);
 	}
+
+	@Override
+	public String selectSearchpwd(UserVO vo) {
+		return getSqlSession().selectOne(namespace+".userseachpwd", vo);
+	}
 	
 }
