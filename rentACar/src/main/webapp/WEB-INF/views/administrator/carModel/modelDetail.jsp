@@ -61,10 +61,14 @@
 							<span>${carVo.carSize}</span></p>
 						<p><span style="font-weight: bold; font-size: 1.2em;">변속기: </span>
 							<span>${carVo.carTrans}</span></p>
-						<p><span style="font-weight: bold; font-size: 1.2em;">등록일: </span>
-							<span>${carVo.carRegdate}</span></p>
 						<p><span style="font-weight: bold; font-size: 1.2em;">차량유형: </span>
 							<span>${carVo.carType}</span></p>
+						<p><span style="font-weight: bold; font-size: 1.2em;">등록일: </span>
+							<span>
+								<fmt:formatDate value="${carVo.carRegdate}"
+									pattern="yyyy-MM-dd" />
+							</span>
+						</p>					
 					</div>
 				</div>
 			</div>

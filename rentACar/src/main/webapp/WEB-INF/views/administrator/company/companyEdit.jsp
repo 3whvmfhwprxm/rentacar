@@ -32,10 +32,11 @@
 <form class="form-horizontal" id="frm1" name="frm1" method="post"
 	action='<c:url value="/administrator/company/companyEdit.do" />'>
 	<fieldset>
-	<legend>Company Edit</legend>
+	<legend>업체 수정</legend>
 		<div class="form-group">
 			<label for="CompanyId" class="col-sm-2 control-label">
-				Company Id </label>
+				업체 아이디
+			</label>
 			<div class="col-sm-2">
 				<input type="text" class="form-control" name="comId"
 					id="CompanyId" value="${companyVo.comId}">		
@@ -44,7 +45,7 @@
 		
 		<div class="form-group">
 			<label for="CompanyName" class="col-sm-2 control-label">
-				Company Name
+				업체 이름
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comName"
@@ -54,7 +55,7 @@
 		
 		<div class="form-group">
 			<label for="CompanyNo" class="col-sm-2 control-label">
-				Company No
+				사업자 번호
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comNum"
@@ -64,7 +65,7 @@
 		
 		<div class="form-group">
 			<label for="comAccNum" class="col-sm-2 control-label">
-				Company Account
+				계좌번호
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comAccNum"
@@ -74,7 +75,7 @@
 		
 		<div class="form-group">
 			<label class="col-sm-2 control-label">
-				Company Tel
+				대표번호
 			</label>
 			<div class="col-xs-2">
 				<input class="form-control" type="text" name="comTel1"
@@ -93,7 +94,7 @@
 		</div>
 		<div class="form-group">
 			<label for="CompanyMobile11" class="col-sm-2 control-label">
-				Company Mobile
+				휴대폰
 			</label>
 			<div class="col-xs-2">
 				<select class="form-control" id="comMobile1" name="comMobile1"
@@ -117,7 +118,7 @@
 		</div>
 		<div class="form-group">
 			<label for="CompanyFax" class="col-sm-2 control-label">
-				Company Fax
+				팩스
 			</label>
 			<div class="col-xs-2">
 				<input type="text" class="form-control" name="comFax1"
@@ -134,7 +135,7 @@
 		</div>
 		<div class="form-group">
 			<label for="CompanyAddress" class="col-sm-2 control-label">
-				Company Address
+				주소
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comAddress"
@@ -143,7 +144,7 @@
 		</div>
 		<div class="form-group">
 			<label for="CompanyCeo" class="col-sm-2 control-label">
-				Company Ceo
+				대표자
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comCeo"
@@ -152,7 +153,8 @@
 		</div>
 		<div class="form-group">
 			<label for="CompanyEmail" class="col-sm-2 control-label">
-				Company Email</label>
+				이메일
+			</label>
 			<div class="col-md-8">
 				<input type="email" class="form-control" name="comEmail"
 					id="CompanyEmail" value="${companyVo.comEmail}">
@@ -161,16 +163,17 @@
 		
 		<div class="form-group">
 			<label for="CompanyRate" class="col-sm-2 control-label">
-				Company Rate</label>
+				수수료
+			</label>
 			<div class="col-md-8">
 				<input type="text" class="form-control" name="comRate"
-					id="CompanyRate" value="${companyVo.comRate}">
+					id="CompanyRate" value="${companyVo.comRate}%">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="CompanyLogo" class="col-sm-2 control-label">
-				Company Logo
+				로고
 			</label>
 			<div class="col-sm-2">
 				<input type="file" id="CompanyLogo" name="comLogo">	

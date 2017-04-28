@@ -4,6 +4,7 @@ public class SearchVO {
 	private String searchCondition = "";
 	private String searchKeyword = "";
 	private String searchUseYn = "";
+	private String comId = "";
 	private int currentPage = 1;
     private int blockSize;
     private int firstRecordIndex = 1;
@@ -18,6 +19,7 @@ public class SearchVO {
     	this.searchCondition = bean.getSearchCondition();
     	this.searchKeyword = bean.getSearchKeyword();
     	this.searchUseYn = bean.getSearchUseYn();
+    	this.comId = bean.comId;
     	this.blockSize = bean.blockSize;
     	this.firstRecordIndex = bean.firstRecordIndex;
     	this.lastRecordIndex = bean.lastRecordIndex;
@@ -46,6 +48,14 @@ public class SearchVO {
 
     public void setSearchUseYn(String searchUseYn) {
     	this.searchUseYn = searchUseYn;
+    }
+    
+    public String getcomId() {
+    	return comId;
+    }
+
+    public void setcomId(String comId) {
+    	this.comId = comId;
     }
 
     public int getCurrentPage() {
@@ -90,11 +100,9 @@ public class SearchVO {
 
 	@Override
 	public String toString() {
-		return "SearchVO [searchCondition=" + searchCondition
-				+ ", searchKeyword=" + searchKeyword + ", searchUseYn="
-				+ searchUseYn + ", currentPage=" + currentPage
-				+ ", blockSize=" + blockSize + ", firstRecordIndex="
-				+ firstRecordIndex + ", lastRecordIndex=" + lastRecordIndex
+		return "SearchVO [searchCondition=" + searchCondition + ", searchKeyword=" + searchKeyword + ", searchUseYn="
+				+ searchUseYn + ", comId=" + comId + ", currentPage=" + currentPage + ", blockSize=" + blockSize
+				+ ", firstRecordIndex=" + firstRecordIndex + ", lastRecordIndex=" + lastRecordIndex
 				+ ", recordCountPerPage=" + recordCountPerPage + "]";
 	}
 

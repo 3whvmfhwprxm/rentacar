@@ -32,5 +32,5 @@ public interface Admin_CompanyService {
 	
 	public List<CompanyVO> selectOutompany(SearchVO searchVo);
 	
-	public List<Map<String, Object>> selectAllComCar(String comId);
+	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo);
 }

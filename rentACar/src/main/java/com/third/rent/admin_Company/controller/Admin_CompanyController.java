@@ -297,7 +297,7 @@ public class Admin_CompanyController {
 		
 		
 		List<Map<String, Object>> cclist 
-			= adminCompanyService.selectAllComCar(comId);
+			= adminCompanyService.selectAllComCar(searchVo);
 		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
 		logger.info("cclist={}", cclist);
 

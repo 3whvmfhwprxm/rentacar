@@ -103,12 +103,31 @@
 		]]>
 	</select>
 	
-	<select id="selectAllCcar" resultType="map" parameterType="String">
+	<select id="selectAllCcar" resultType="map" parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select*
+		        from car c join CompanyCarOption cco
+		        on c.car_code=cco.car_code
+		        where com_id=#{comId}
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select> 
+	
+	<!-- <select id="selectAllCcar" resultType="map" parameterType="String">
 		select*
 		from car c, CompanyCarOption cco
 		where c.car_code=cco.car_code
 		and com_id=#{comId}
-	</select> 
+	</select>  -->
 </mapper>
 
 

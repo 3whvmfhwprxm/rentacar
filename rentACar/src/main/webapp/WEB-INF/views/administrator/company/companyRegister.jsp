@@ -237,7 +237,7 @@
 		
 		<div class="form-group">
 			<label class="col-sm-2 control-label">
-				업체 대표번호
+				대표번호
 			</label>
 			<div class="col-xs-2">
 				<input class="form-control" type="text" name="comTel1"
@@ -280,7 +280,7 @@
 		</div>
 		<div class="form-group">
 			<label for="CompanyFax" class="col-sm-2 control-label">
-				팩스 번호
+				팩스
 			</label>
 			<div class="col-xs-2">
 				<input type="text" class="form-control" name="comFax1"
@@ -298,7 +298,7 @@
 		
 		<div class="form-group">
 			<label for="CompanyAddress" class="col-sm-2 control-label">
-				회사 주소
+				주소
 			</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" name="comAddress"
@@ -339,7 +339,7 @@
 		
 		<div class="form-group">
 			<label for="CompanyLogo" class="col-sm-2 control-label">
-				회사 로고
+				로고
 			</label>
 			<div class="col-sm-2">
 				<input type="file" id="CompanyLogo" name="comLogo"

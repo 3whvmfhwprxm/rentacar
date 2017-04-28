@@ -23,7 +23,7 @@
 <div class="divL                                                                                                                                                                                                                                                                                                                                                 ist container">
 	<h2>업체</h2>
 	<form name="frmPage" method="post"
-		action='<c:url value="/administrator/company/companyList.do" />'>
+		action='<c:url value="/administrator/company/companyListByCar.do" />'>
 		<input type="hidden" name="currentPage">
 		<input type="hidden" name="searchCondition" value="${param.searchCondition}">
 		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">

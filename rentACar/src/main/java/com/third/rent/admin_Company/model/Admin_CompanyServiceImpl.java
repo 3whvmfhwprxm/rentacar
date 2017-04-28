@@ -72,7 +72,7 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 		return adminCompanyDao.selectOutompany(searchVo);
 	}
 	
-	public List<Map<String, Object>> selectAllComCar(String comId) {
-		return adminCompanyDao.selectAllComCar(comId);
+	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo) {
+		return adminCompanyDao.selectAllComCar(searchVo);
 	}
 }

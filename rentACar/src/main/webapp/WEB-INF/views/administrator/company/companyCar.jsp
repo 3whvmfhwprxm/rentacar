@@ -27,11 +27,9 @@
 <form name="frmPage" method="post"
 	action='<c:url value="/administrator/company/companyCar.do" />'>
 	<input type="hidden" name="currentPage">
-	<input type="hidden" name="searchCondition" value="${param.searchCondition}">
-	<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 </form>
 
-<div class="container container-pad" id="property-listings">
+<!-- <div class="container container-pad" id="property-listings"> -->
 	<div class="row">
 		<div class="col-md-12">
 			<h1 style="text-align: center;">${param.comId} 보유 차량</h1>
@@ -54,7 +52,7 @@
 						<a href="#" target="_parent"></a>
 
 						<h4>
-							${map['COM_ID']}
+							<span style="font-weight: bold;">${map['COM_ID']}</span>
 						</h4>
 
 						<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
@@ -98,26 +96,35 @@
 								<li>스마트키</li>
 							</c:if>
 						</ul>
-
+						
 						<p class="hidden-xs">
+							<span style="font-size: 1.2em; font-weight: bold;">※예약 가격</span><br>
 							<c:if test="${!empty map['CCAR_NORMAL_PRICE']}">
-							평일 예약가격: ${map['CCAR_NORMAL_PRICE']} <br>
+							평일: <fmt:formatNumber value="${map['CCAR_NORMAL_PRICE']}"
+								pattern="#,###" />원<br>
 							</c:if>
 							<c:if test="${!empty map['CCAR_WEEKEND_PRICE']}">
-							주말 예약가격: ${map['CCAR_WEEKEND_PRICE']} <br>
+							주말: <fmt:formatNumber value="${map['CCAR_WEEKEND_PRICE']}"
+								pattern="#,###" />원<br>
 							</c:if>
 							<c:if test="${!empty map['CCAR_PEAK_PRICE']}">
-							성수기 예약가격: ${map['CCAR_PEAK_PRICE']} <br>
+							성수기: <fmt:formatNumber value="${map['CCAR_PEAK_PRICE']}"
+								pattern="#,###" />원<br>
 							</c:if>
 							<c:if test="${!empty map['CCAR_S_PEAK_PEICE']}">
-							극성수기 예약가격: ${map['CCAR_S_PEAK_PRICE']}
+							극성수기: <fmt:formatNumber value="${map['CCAR_S_PEAK_PRICE']}"
+								pattern="#,###" />원
 							</c:if>
 						</p>
 						
 						<span>
-							차량 등록일: ${map['COMCAR_REGDATE']} <br>
+							차량 등록일: <fmt:formatDate value="${map['COMCAR_REGDATE']}"
+								pattern="yyyy-MM-dd" /><br>
+						</span>
+						<span style="color: red">
 							<c:if test="${!empty map['COMCAR_OUTDATE']}">
-							차량 삭제일: ${map['COMCAR_OUTDATE']}
+							차량 삭제일: <fmt:formatDate value="${map['COMCAR_OUTDATE']}"
+								pattern="yyyy-MM-dd" />
 							</c:if>
 						</span>
 					</div>
@@ -154,8 +161,5 @@
 			</ul>
 		</nav>
 	</div>
-</div>
-<!-- End container -->
-
-
+<!-- </div> -->
 <%@ include file="../include/bottom.jsp"%>
