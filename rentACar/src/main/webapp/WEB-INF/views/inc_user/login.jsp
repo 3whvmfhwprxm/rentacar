@@ -10,7 +10,7 @@
 				dataType:'json',
 				data: $("#frmid").serialize(),
 				success:function(res){
-					alert("찾으신 아이디는 "+res.userName+"입니다!");
+					alert("찾으신 아이디는 [ "+res.userId+" ]입니다!");
 				},
 				error:function(xhr, status, error){
 				}
@@ -25,7 +25,7 @@
 				dataType:'json',
 				data: $("#frmpwd").serialize(),
 				success:function(res){
-					alert("찾으신 비밀번호는 "+res.userPwd+"입니다!");
+					alert("찾으신 비밀번호는 [ "+res.userPwd+" ]입니다!");
 				},
 				error:function(xhr, status, error){
 				}
