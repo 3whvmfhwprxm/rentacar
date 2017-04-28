@@ -150,9 +150,19 @@ $(document).ready(function () {
 	                        <li><a href="#">View all</a></li>
 	                    </ul>
 	                </li>
+	                <li class="dropdown list-category">
+	                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	                        <i class="fa fa-navicon"></i> 매출/통계 관리 <i class="fa fa-angle-down" aria-hidden="true"></i>
+	                    </a>
+	                    <ul class="dropdown-menu mega-dropdown-menu">
+	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>일별 매출 현황</a></li>
+	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>월별 매출 현황</a></li>
+	                        <li role="separator" class="divider"></li>
+	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>월별 정산 현황</a></li>
+	                    </ul>
+	                </li>
 	               
 	                <li><a href='<c:url value="/com_manage/company_epilogue.do"/>'>후기관리</a></li>
-	                <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>통계관리</a></li>
 	                <li><a href='<c:url value="/com_manage/company_announcement.do"/>'>공지사항</a></li>
 	                <li><a href='<c:url value="/com_manage/company_detail.do?comId=${comId}"/>'>내업체정보</a></li>
 	            </ul>

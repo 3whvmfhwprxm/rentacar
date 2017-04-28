@@ -36,6 +36,7 @@
 		jQuery("#frmPage").submit();
 	}
 	
+	
 </script>
 <body>
 	<form id="frmPage" name="frmPage" method="POST"
@@ -83,11 +84,15 @@
 				<th>차량상태</th>
 				<th>차량상태변경</th>
 				<th>차량등록일</th>
+				<th>편집</th>
 			</tr>
         </thead>
         <tbody>
         <!-- 반복시작 -->
-       
+		<c:if test="${empty cclist }">
+			<td colspan="10">데이터가 없습니다.</td>
+		</c:if>
+		<c:if test="${!empty cclist }">
 		<c:forEach var="map" items="${cclist }" varStatus="i">
 		
 		<tr>
@@ -153,7 +158,13 @@
 				여부변경</button>
 			</td>
 			<td><fmt:formatDate value="${map['COMCAR_REGDATE'] }" pattern="yyyy/MM/dd"/></td>
+			<td>
+			<button><a href="<c:url value='/com_manage/company_ccarEdit.do?ccarCarId=${map["CCAR_CAR_ID"] }' />">수정</a></button>
+			<button><a href="<c:url value='/com_manage/company_ccarDelete.do?ccarCarId=${map["CCAR_CAR_ID"] }'/>">삭제</a></button>
+			
+			</td>
 		</tr>
+		
 	</c:forEach>
 	 <!-- 반복끝 --> 
         
@@ -190,22 +201,24 @@
 				</ul>
 			</nav>
 		</div>
+				</c:if>
 		<div class="col-md-4"></div>
 	</div>
 		<div class="divSearch">
 				<form name="frmSearch" method="post"
 					action="<c:url value="/com_manage/company_ccarList.do" />">
 					<select name="searchCondition">
-						<option value="com_id"
-							<c:if test="${'com_id'==param.searchCondition}">
+						<option>::선택::</option>
+						<option value="ccar_car_id"
+							<c:if test="${'ccar_car_id'==param.searchCondition}">
 		           		selected            	
 		           	</c:if>>차량번호</option>
-						<option value="com_name"
-							<c:if test="${'com_name'==param.searchCondition}">
+						<option value="car_inc"
+							<c:if test="${'car_inc'==param.searchCondition}">
 		           		selected            	
-		           	</c:if>>차량모델코드</option>
+		           	</c:if>>모델명</option>
 					</select> <input type="text" name="searchKeyword" title="검색어 입력"
-						value="${param.searchKeyword}"> <input type="submit"
+						value="${param.searchKeyword}" placeholder="검색어 입력"> <input type="submit"
 						value="검색">
 				</form>
 			</div>

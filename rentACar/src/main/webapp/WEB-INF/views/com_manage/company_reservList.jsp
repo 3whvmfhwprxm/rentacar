@@ -11,7 +11,6 @@
 		text-align: center;
 	}
 	
-
 </style>
 <!-- 업체 차량 조회 -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -35,6 +34,18 @@
 		jQuery("#frmPage").attr("action" , "<c:url value='/com_manage/company_ccarList.do'/>");
 		jQuery("#frmPage").submit();
 	}
+	
+	jQuery(function(){
+		jQuery("tr").each(function(idx){
+			jQuery("#tra0").hide();
+			jQuery("#trb0").hide();
+			
+			jQuery("#bt"+idx).click(function(){
+				jQuery("#tra"+idx).toggle();
+				jQuery("#trb"+idx).toggle();
+			});
+		});	 
+	});
 	
 </script>
 <body>
@@ -82,6 +93,7 @@
 				<th>대여일</th>
 				<th>반납일</th>
 				<th>대여일까지 남은일수</th>
+				<th>상세정보보기</th>
 				<th>예약취소</th>
 			</tr>
         </thead>
@@ -98,8 +110,31 @@
 			<td>${map['RESERV_START_DATE'] }</td>
 			<td>${map['RESERV_END_DATE'] }</td>
 			<td>${map['REMAININGDAY'] }</td>
+			<td><button id="bt${i.index }">상세정보보기</button></td>
 			<td><button>취소</button></td>
 		</tr>
+		<tr id="tra${i.index }">
+			<td>${map['CCAR_CAR_ID'] } 예약</td>
+        	<td>예약자ID</td>
+        	<td>운전자 이름</td>
+        	<td>운전자 전화번호</td>
+        	<td>예약한 날짜</td>
+        	<td>결제한 날짜</td>
+        	<td>진행 상태</td>
+        	<td>할인 금액</td>
+        	<td>하나더</td>
+        </tr>
+        <tr id="trb${i.index }" style="display: show;">
+        	<td></td>
+        	<td>${map['USER_ID'] }</td>
+        	<td>${map['RES_DRV_NAME'] }</td>
+        	<td>${map['RES_DRV_TEL1'] }-${map['RES_DRV_TEL2'] }-${map['RES_DRV_TEL3'] }</td>
+        	<td>${map['RESERV_DATE'] }</td>
+        	<td>${map['PAY_REGDATE'] }</td>
+        	<td>${map['PAY_CONDITION'] }</td>
+        	<td>#</td>
+        	<td>#</td>
+        </tr>
 	</c:forEach>
 	 <!-- 반복끝 --> 
         

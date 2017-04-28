@@ -35,8 +35,7 @@
 	
 	<sql id="searchWhere">
 		<if test="searchKeyword !=null and searchKeyword !=''">
-			and lower(${searchCondition}) like '%'|| lower(#{searchKeyword}) ||'%'
-		</if>
+			and lower(${searchCondition}) like '%'|| lower(#{searchKeyword}) ||'%' </if>
 	</sql>
 	
  	<select id="selectAllCcar" resultType="map" parameterType="SearchVO">
@@ -50,6 +49,7 @@
 				from car c join companycaroption cco
 				on c.car_code = cco.car_code
 				<!-- where cco.com_id='rentGo' -->
+				<include refid="searchWhere"></include>
 				where cco.comcar_outdate is null
 				<if test="sortingKeyword != null">
 					<if test="sortingKeyword == 'model'">
@@ -84,11 +84,14 @@
 		
 		]]>
 	</select>  
+
 	
 	<select id="selectTotalRecord" parameterType="SearchVO"
 		resultType="int">
-		select count(*) from CompanyCaroption
-		where com_id= 'rentGo' and comcar_outdate is null
+		select count(*)
+			from car c join companycaroption cco
+			on c.car_code = cco.car_code
+		where <!-- com_id= 'rentGo' and --> comcar_outdate is null
 		<include refid="searchWhere"></include>
 	</select>
 

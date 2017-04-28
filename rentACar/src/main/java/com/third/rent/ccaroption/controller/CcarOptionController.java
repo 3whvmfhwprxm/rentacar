@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +38,15 @@ public class CcarOptionController {
 	private CarService carService;
 
 	@RequestMapping(value="/company_optionRegist.do", method=RequestMethod.GET)
-	public String optionRegist_get(Model model){
-		logger.info("옵션등록화면 보여주기");
+	public String optionRegist_get(HttpSession session,
+			Model model){
+		String comId = (String) session.getAttribute("comId");
+		logger.info("옵션등록화면 보여주기 comId={}", comId);
 		
 		List<CarVO> alist = carService.selectAllCar();
 		
 		model.addAttribute("slist",alist);
+		model.addAttribute("comId", comId);
 		
 		return "com_manage/company_optionRegist";
 	}
@@ -132,7 +137,6 @@ public class CcarOptionController {
 		searchVo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
-		
 		List<Map<String, Object>> cclist =
 				ccarOptionService.selectAllComCar(searchVo);
 		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
@@ -140,6 +144,8 @@ public class CcarOptionController {
 		int totalRecord = ccarOptionService.selectTotalRecord(searchVo);
 		logger.info("업체 차량목록 조회 - 전체 업체 차량 조회 결과, totalRecord={}",
 				totalRecord);
+		
+		
 
 		pagingInfo.setTotalRecord(totalRecord);
 

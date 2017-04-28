@@ -111,12 +111,12 @@
 		<form class="form-horizontal" id="frmRg" method="post"
 			action="<c:url value='/com_manage/company_optionRegist.do'/>">
 			<fieldset>
-			<legend>차량 등록123</legend>
+			<legend>차량 등록</legend>
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">업체아이디</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" name="comId"
-							id="comId" placeholder="로그인시 자동입력">
+							id="comId" value=${comId } readOnly="readOnly">
 					</div>
 				</div>
 				<div class="form-group">
