@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.third.rent.admin_User.controller.Admin_UserController;
 
 @Controller
-@RequestMapping("/administrator")
 public class admin_MainController {
 	private static final Logger logger 
 		= LoggerFactory.getLogger(Admin_UserController.class);
@@ -16,6 +15,6 @@ public class admin_MainController {
 	@RequestMapping("/admin_Main.do")
 	public String main() {
 		logger.info("Main화면 띄우기");
-		return "administrator/admin_Main";
+		return "admin_Main";
 	}
 }

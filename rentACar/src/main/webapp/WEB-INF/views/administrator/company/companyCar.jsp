@@ -41,7 +41,7 @@
 			<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
 				<div class="media">
 					<a class="pull-left" href="#" target="_parent">
-						<img alt="image" class="img-responsive"
+						<img width="50px" height="50px" alt="image" class="img-responsive"
 							src='<c:url value="/carImages/${map['CAR_IMG']}" />'>
 					</a>
 					<div class="clearfix visible-sm"></div>
