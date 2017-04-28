@@ -1,5 +1,6 @@
 package com.third.rent.user.controller;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,13 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.third.rent.email.EmailSender;
 import com.third.rent.user.model.UserService;
 import com.third.rent.user.model.UserVO;
 
@@ -25,6 +25,9 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private EmailSender emailSender;
 	
 	@RequestMapping(value="/inc_user/login.do", method=RequestMethod.GET)
 	public String showLogin_get(){
@@ -105,8 +108,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/inc_user/userseachpwd.do")
-	@ResponseBody
-	public UserVO userseachpwd(@RequestParam String userId, @RequestParam String userEmail, Model model){
+	public String userseachpwd(@RequestParam String userId, @RequestParam String userEmail, Model model){
 		logger.info("비밀번호 찾기");
 		UserVO userVo = new UserVO();
 		userVo.setUserId(userId);
@@ -116,9 +118,24 @@ public class LoginController {
 		
 		UserVO vo = new UserVO();
 		vo.setUserPwd(result);
+		logger.info("이메일 발송 처리");
+		String subject="비밀번호 문의에 대한 답변입니다.";
+		String content="찾으실 비밀번호 [ "+vo.getUserPwd()+" ]";
+		String receiver="horo7777@gmail.com";
+		String sender="admin@herbmall.com";
 		
-		return vo;
+		try {
+			emailSender.sendEmail(subject, content, receiver, sender);
+			logger.info("이메일 발송 성공");
+		} catch (MessagingException e) {
+			logger.info("이메일 발송 실패");
+			e.printStackTrace();
+		}
+		
+		return "redirect:/inc_user/index.do";
 	}
+	
+	
 	
 }
 

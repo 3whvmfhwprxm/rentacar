@@ -94,6 +94,14 @@
 			return pattern.test(hp);
 		}
 	});
+	
+	function juso(){
+		window.open("../userzipcode/jusoPopup.do","pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+		
+	function jusoCallBack(addrDetail){
+		document.frm1.userAddress.value=addrDetail;
+	}
 </script>
 <style type="text/css">
 	#error{
@@ -179,6 +187,9 @@
 	            <div class="col-md-4">
 	              <input id="userAddress" name="userAddress" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 서울시 영등포구 당산동" required="required" type="text">
 	            </div>
+	            <div class="col-sm-2">
+					<input type="button" class="btn btn-default" value="주소찾기" onClick="juso()">
+				</div>
 	          </div><br>
 	          
 	          <div class="row">

@@ -49,6 +49,41 @@
 		text-align: center;
 	}
 </style>
+<script type="text/javascript">
+	/* $(function(){
+		$("#userPwd").focus();
+		
+		$("#outbt").submit(function(){
+			if($("#userPwd").val()==''){
+				alert('비밀번호를 입력하세요');
+				$("#pwd").focus();
+				return false;
+			}			
+		});
+	}); */
+	function fncout(){
+		if($("#userPwdmd").val() == "" || $("#userPwdmd").val() == null){
+			alert("탈퇴할아이디 비밀번호를 입력해주세요");
+			return false;
+		}
+		if($("#userPwdmd").val() != $("#userPwdmd").val()){
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		} 
+		
+		$("#outmember").attr("method","POST");
+		$("#outmember").attr("action","<c:url value='/inc_user/outMember.do'/>");
+		$("#outmember").submit();
+		
+	}
+	function juso(){
+		window.open("../userzipcode/jusoPopup.do","pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+		
+	function jusoCallBack(addrDetail){
+		document.frm1.userAddress.value=addrDetail;
+	}
+</script>
 
 <div class="container">
 	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -121,6 +156,9 @@
 	            <div class="col-md-4">
 	              <input id="userAddress" name="userAddress" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) 서울시 영등포구 당산동" required="required" type="text" value="${vo.userAddress }">
 	            </div>
+	            <div class="col-sm-2">
+					<input type="button" class="btn btn-default" value="주소찾기" onClick="juso()">
+				</div>
 	          </div><br>
 	          
 	          <div class="row">
@@ -153,11 +191,57 @@
 	          <div class="form-group">
 	            <div class="col-md-6 col-md-offset-3">
 	              <button type="reset" class="btn btn-primary" name="btn2">Cancel</button>
-	              <button type="submit" class="btn btn-success" name="btn1">Submit</button>
+	              <button type="button" class="btn btn-danger" name="btn3" data-toggle="modal" href="#myModal">회원탈퇴</button>
+	              <button type="submit" class="btn btn-success" name="btn1">정보수정</button>
 	              <input type ="hidden" name="chkId" id="chkId">
 	            </div>
 	          </div>
 	     </form>
 	</div>
 </div>
+
+<!-- 회원 탈퇴 -->
+<div class="container">
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+		<div class="modal fade" id="myModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">회원 탈퇴</h4>
+					</div>
+					<div class="modal-body">
+						<form method="post" name="outmember" id="outmember" action="<c:url value="/inc_user/outMember.do"/>">
+							<div class="row">
+					            <label class="control-label col-md-3" for="name" style="text-align: right;">아이디 <span class="required">*</span>
+					            </label>
+					            <div class="col-md-5">
+					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="ex) hong123" required="required" type="text" value="${userId }" disabled>
+					            </div>
+					        </div><br>
+					        <div class="row">
+					            <label class="control-label col-md-3" for="name" style="text-align: right;">비밀번호 <span class="required">*</span>
+					            </label>
+					            <div class="col-md-5">
+					              <input id="userPwdmd" name="userPwdmd" class="form-control" data-validate-length-range="6" data-validate-words="2"  placeholder="****" required="required" type="text">
+					            </div>
+					        </div><br>
+						</form>
+					</div>
+						<div class="modal-footer">
+			           		 <button id="outbt" type="submit" class="btn btn-primary" id="out" data-dismiss="modal" onclick="fncout()">탈퇴</button>
+						</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+	</div>
+</div>
+<!-- /.modal -->
+
+
 <%@ include file="bottom.jsp" %>

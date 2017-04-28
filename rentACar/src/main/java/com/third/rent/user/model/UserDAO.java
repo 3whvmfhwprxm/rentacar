@@ -8,4 +8,5 @@ public interface UserDAO {
 	public int updateUser(UserVO vo);
 	public String selectSearchid(UserVO vo);
 	public String selectSearchpwd(UserVO vo);
+	public int outMember(String userid);
 }

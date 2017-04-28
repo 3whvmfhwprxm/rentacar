@@ -18,7 +18,7 @@
 			//alert("이름,이메일주소가 틀립니다.");
 		});
 		
-		$("#pwdSearch").click(function(){
+		/* $("#pwdSearch").click(function(){
 			$.ajax({
 				url:'<c:url value="/inc_user/userseachpwd.do"/>',
 				type:'post',
@@ -30,7 +30,9 @@
 				error:function(xhr, status, error){
 				}
 			});
-			//alert("이름,이메일주소가 틀립니다.");
+		}); */
+		$("#pwdSearch").click(function(){
+			alert("찾으신 비밀번호를 이메일로 발송하였습니다.");
 		});
 	});
 </script>
@@ -119,13 +121,11 @@
 					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text" value="hong123" disabled>
 					            </div>
 					        </div><br> -->
-					        <br>
-					        <input type="hidden" id="id" value="찾는아이디">
 						</form>
 					</div>
 					<!-- <form name="frmid" method="post" action="<c:url value="/inc_user/userseachid.do"/>"> -->
 						<div class="modal-footer">
-			           		 <button type="button" class="btn btn-primary" id="idSearch">확인</button>
+			           		 <button type="button" class="btn btn-primary" id="idSearch" data-dismiss="modal">확인</button>
 						</div>
 					<!-- </form> -->
 				</div>
@@ -151,7 +151,7 @@
 						<h4 class="modal-title">비밀번호 찾기</h4>
 					</div>
 					<div class="modal-body">
-						<form method="post" action='' name="login_form" id="frmpwd">
+						<form method="post" name="login_form" id="frmpwd" action="<c:url value="/inc_user/userseachpwd.do"/>">
 							<div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">아이디 <span class="required">*</span>
 					            </label>
@@ -173,13 +173,11 @@
 					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text" value="hong123" disabled>
 					            </div>
 					        </div><br> -->
-					        <br>
-					        <input type="hidden" id="id" value="찾는아이디">
 						</form>
 					</div>
 					<!-- <form name="frmid" method="post" action="<c:url value="/inc_user/userseachid.do"/>"> -->
 						<div class="modal-footer">
-			           		 <button type="button" class="btn btn-primary" id="pwdSearch">확인</button>
+			           		 <button type="submit" class="btn btn-primary" id="pwdSearch" data-dismiss="modal">이메일발송</button>
 						</div>
 					<!-- </form> -->
 				</div>

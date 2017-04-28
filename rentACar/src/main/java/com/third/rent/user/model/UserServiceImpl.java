@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService{
 	public String selectSearchpwd(UserVO vo) {
 		return userDao.selectSearchpwd(vo);
 	}
+
+	@Override
+	public int outMember(String userid) {
+		return userDao.outMember(userid);
+	}
 }

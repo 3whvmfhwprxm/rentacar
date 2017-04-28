@@ -40,6 +40,12 @@
 		from rent_user
 		where user_id=#{userId} and user_email=#{userEmail}
 	</select>
+	
+	<update id="outMember" parameterType="string">
+		update rent_user
+		set user_outdate=sysdate
+		where user_id=#{userId}
+	</update>
 </mapper>
 
 
