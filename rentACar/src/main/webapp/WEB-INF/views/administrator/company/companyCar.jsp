@@ -99,13 +99,26 @@
 							</c:if>
 						</ul>
 
-						<p class="hidden-xs">Situated between fairmount park and the
-							prestigious philadelphia cricket club, this beautiful 2+ acre
-							property is truly ...
+						<p class="hidden-xs">
+							<c:if test="${!empty map['CCAR_NORMAL_PRICE']}">
+							평일 예약가격: ${map['CCAR_NORMAL_PRICE']} <br>
+							</c:if>
+							<c:if test="${!empty map['CCAR_WEEKEND_PRICE']}">
+							주말 예약가격: ${map['CCAR_WEEKEND_PRICE']} <br>
+							</c:if>
+							<c:if test="${!empty map['CCAR_PEAK_PRICE']}">
+							성수기 예약가격: ${map['CCAR_PEAK_PRICE']} <br>
+							</c:if>
+							<c:if test="${!empty map['CCAR_S_PEAK_PEICE']}">
+							극성수기 예약가격: ${map['CCAR_S_PEAK_PRICE']}
+							</c:if>
 						</p>
 						
-						<span class="fnt-smaller fnt-lighter fnt-arial">
-							Courtesy of HS Fox & Roach-Chestnut Hill Evergreen
+						<span>
+							차량 등록일: ${map['COMCAR_REGDATE']} <br>
+							<c:if test="${!empty map['COMCAR_OUTDATE']}">
+							차량 삭제일: ${map['COMCAR_OUTDATE']}
+							</c:if>
 						</span>
 					</div>
 				</div>
