@@ -99,7 +99,7 @@ public class LoginController {
 		logger.info("결과 result = {}",result);
 		
 		UserVO vo = new UserVO();
-		vo.setUserName(result);
+		vo.setUserId(result);
 		
 		return vo;
 	}
@@ -115,7 +115,7 @@ public class LoginController {
 		logger.info("결과 result = {}",result);
 		
 		UserVO vo = new UserVO();
-		vo.setUserName(result);
+		vo.setUserPwd(result);
 		
 		return vo;
 	}
