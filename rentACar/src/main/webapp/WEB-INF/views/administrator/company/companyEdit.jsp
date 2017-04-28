@@ -160,6 +160,15 @@
 		</div>
 		
 		<div class="form-group">
+			<label for="CompanyRate" class="col-sm-2 control-label">
+				Company Rate</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" name="comRate"
+					id="CompanyRate" value="${companyVo.comRate}">
+			</div>
+		</div>
+		
+		<div class="form-group">
 			<label for="CompanyLogo" class="col-sm-2 control-label">
 				Company Logo
 			</label>

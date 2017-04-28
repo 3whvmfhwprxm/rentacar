@@ -41,6 +41,7 @@
 					<th scope="col">주소</th>
 					<th scope="col">대표자</th>
 					<th scope="col">대표메일</th>
+					<th scope="col">수수료(%)</th>
 					<th scope="col">가입일</th>
 					<th scope="col">탈퇴일</th>
 				</tr>
@@ -64,7 +65,7 @@
 						<td>${vo.comAddress}</td>
 						<td>${vo.comCeo}</td>
 						<td>${vo.comEmail}</td>
-						
+						<td>${vo.comRate}</td>
 						<td><fmt:formatDate value="${vo.comRegdate}"
 								pattern="yyyy-MM-dd" /></td>
 						<td><fmt:formatDate value="${vo.comOutdate}"

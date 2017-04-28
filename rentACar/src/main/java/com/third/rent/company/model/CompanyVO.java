@@ -20,6 +20,7 @@ public class CompanyVO {
 	private String comAddress;
 	private String comCeo;
 	private String comEmail;
+	private int comRate;
 	private String comLogo;
 	private Timestamp comRegdate;
 	private Timestamp comOutdate;
@@ -160,6 +161,14 @@ public class CompanyVO {
 		this.comEmail = comEmail;
 	}
 
+	public int getComRate() {
+		return comRate;
+	}
+
+	public void setComRate(int comRate) {
+		this.comRate = comRate;
+	}
+
 	public String getComLogo() {
 		return comLogo;
 	}
@@ -190,8 +199,7 @@ public class CompanyVO {
 				+ ", comAccNum=" + comAccNum + ", comTel1=" + comTel1 + ", comTel2=" + comTel2 + ", comTel3=" + comTel3
 				+ ", comMobile1=" + comMobile1 + ", comMobile2=" + comMobile2 + ", comMobile3=" + comMobile3
 				+ ", comFax1=" + comFax1 + ", comFax2=" + comFax2 + ", comFax3=" + comFax3 + ", comAddress="
-				+ comAddress + ", comCeo=" + comCeo + ", comEmail=" + comEmail + ", comLogo=" + comLogo
-				+ ", comRegdate=" + comRegdate + ", comOutdate=" + comOutdate + "]";
+				+ comAddress + ", comCeo=" + comCeo + ", comEmail=" + comEmail + ", comRate=" + comRate + ", comLogo="
+				+ comLogo + ", comRegdate=" + comRegdate + ", comOutdate=" + comOutdate + "]";
 	}
-
 }

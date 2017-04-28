@@ -170,13 +170,14 @@
 <form class="form-horizontal" id="frm1" name="frm1" method="post"
 	action='<c:url value="/administrator/company/companyRegister.do" />'>
 	<fieldset>
-	<legend>Register</legend>
+	<legend>업체 등록</legend>
 		<div class="form-group">
 			<label for="CompanyId" class="col-sm-2 control-label">
-				Company Id </label>
+				업체 아이디
+			</label>
 			<div class="col-sm-2">
 				<input type="text" class="form-control" name="comId"
-					id="CompanyId" placeholder="Company Id">		
+					id="CompanyId" placeholder="업체 아이디">		
 				
 			</div>
 			<div class="col-sm-4">
@@ -186,77 +187,77 @@
 		
 		<div class="form-group">
 			<label for="CompanyName" class="col-sm-2 control-label">
-				Company Name
+				업체 이름
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comName"
-					id="CompanyName" placeholder="Company Name">
+					id="CompanyName" placeholder="업체 이름">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="CompanyPwd" class="col-sm-2 control-label">
-				Company Password
+				비밀번호
 			</label>
 			<div class="col-sm-8">
 				<input type="password" class="form-control" name="comPwd"
-					id="CompanyPwd" placeholder="Company Password">
+					id="CompanyPwd" placeholder="비밀번호">
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<label for="CompanyPwd" class="col-sm-2 control-label">
-				Password Check
+			<label for="CompanyPwd2" class="col-sm-2 control-label">
+				비밀번호 확인
 			</label>
 			<div class="col-sm-8">
 				<input type="password" class="form-control" name="comPwd2"
-					id="CompanyPwd2" placeholder="Check Company Password">
+					id="CompanyPwd2" placeholder="비밀번호 확인">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="CompanyNo" class="col-sm-2 control-label">
-				Company No
+				사업자 번호
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comNum"
-					id="CompanyNo" placeholder="Company No">
+					id="CompanyNo" placeholder="사업자 번호">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="comAccNum" class="col-sm-2 control-label">
-				Company Account
+				계좌번호
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comAccNum"
-					id="comAccNum" placeholder="Company Account">
+					id="comAccNum" placeholder="계좌번호">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label class="col-sm-2 control-label">
-				Company Tel
+				업체 대표번호
 			</label>
 			<div class="col-xs-2">
 				<input class="form-control" type="text" name="comTel1"
-					id="CompanyTel1" maxlength="4" placeholder="Company Tel1">
+					id="CompanyTel1" maxlength="4" placeholder="대표번호1">
 			</div>
 			
 			<div class="col-xs-2">
 				<input class="form-control" type="text" name="comTel2"
-					id="CompanyTel2" maxlength="4" placeholder="Company Tel2">
+					id="CompanyTel2" maxlength="4" placeholder="대표번호2">
 			</div>
 			
 			<div class="col-xs-2">
 				<input class="form-control" type="text" name="comTel3"
-					id="CompanyTel3" maxlength="4" placeholder="Company Tel3">
+					id="CompanyTel3" maxlength="4" placeholder="대표번호3">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="CompanyMobile11" class="col-sm-2 control-label">
-				Company Mobile
+				휴대폰
 			</label>
 			<div class="col-xs-2">
 				<select class="form-control" id="comMobile1" name="comMobile1">
@@ -270,38 +271,38 @@
 			</div>
 			<div class="col-xs-2">
 				<input type="text" class="form-control" name="comMobile2"
-					id="CompanyMobile2" placeholder="Company Mobile2">
+					id="CompanyMobile2" placeholder="휴대폰2">
 			</div>
 			<div class="col-xs-2">
 				<input type="text" class="form-control" name="comMobile3"
-					id="CompanyMobile3" placeholder="Company Mobile3">
+					id="CompanyMobile3" placeholder="휴대폰3">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="CompanyFax" class="col-sm-2 control-label">
-				Company Fax
+				팩스 번호
 			</label>
 			<div class="col-xs-2">
 				<input type="text" class="form-control" name="comFax1"
-					id="CompanyFax1" placeholder="Company Fax1">
+					id="CompanyFax1" placeholder="팩스 번호1">
 			</div>
 			<div class="col-xs-2">
 				<input type="text" class="form-control" name="comFax2"
-					id="CompanyFax2" placeholder="Company Fax2">
+					id="CompanyFax2" placeholder="팩스 번호2">
 			</div>
 			<div class="col-xs-2">
 				<input type="text" class="form-control" name="comFax3"
-					id="CompanyFax3" placeholder="Company Fax3">
+					id="CompanyFax3" placeholder="팩스 번호3">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="CompanyAddress" class="col-sm-2 control-label">
-				Company Address
+				회사 주소
 			</label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" name="comAddress"
-					id="CompanyAddress" placeholder="Company Address" readonly="readonly">
+					id="CompanyAddress" placeholder="회사 주소" readonly="readonly">
 			</div>
 			<div class="col-sm-2">
 				<input type="button" class="btn btn-default" value="주소찾기" onClick="goPopup()">
@@ -310,30 +311,39 @@
 		
 		<div class="form-group">
 			<label for="CompanyCeo" class="col-sm-2 control-label">
-				Company Ceo
+				대표자
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comCeo"
-					id="CompanyCeo" placeholder="Company Ceo">
+					id="CompanyCeo" placeholder="대표자">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="CompanyEmail" class="col-sm-2 control-label">
-				Company Email</label>
+				이메일</label>
 			<div class="col-md-8">
 				<input type="email" class="form-control" name="comEmail"
-					id="CompanyEmail" placeholder="Company Email">
+					id="CompanyEmail" placeholder="이메일을 정확히 입력해주세요. ex)asd@naver.com">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="CompanyRate" class="col-sm-2 control-label">
+				수수료</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" name="comRate"
+					id="CompanyRate" placeholder="수수료(기본 3%)">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="CompanyLogo" class="col-sm-2 control-label">
-				Company Logo
+				회사 로고
 			</label>
 			<div class="col-sm-2">
 				<input type="file" id="CompanyLogo" name="comLogo"
-					placeholder="file">	
+					placeholder="회사 로고">	
 			</div>
 		</div>
 		
@@ -341,7 +351,7 @@
 			<label class="col-sm-2 control-label"></label>
 			<div class="col-sm-8">
 				<button type="submit" class="btn btn-primary btn-lg btn-block" id="btCompanyRegister">
-					Register
+					등록
 				</button>
 			</div>
 		</div>
