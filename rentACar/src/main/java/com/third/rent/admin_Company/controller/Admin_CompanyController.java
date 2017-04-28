@@ -275,7 +275,6 @@ public class Admin_CompanyController {
 
 		pagingInfo.setTotalRecord(totalRecord);
 
-		//3
 		model.addAttribute("outCompanyList", outCompanyList);
 		model.addAttribute("pagingInfo", pagingInfo);
 
@@ -283,9 +282,9 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping("/company/companyCar.do")
-	public String list(@ModelAttribute SearchVO searchVo, @RequestParam String comId,		
+	public String list(@ModelAttribute SearchVO searchVo, @RequestParam String comId,	
 			Model model){
-		logger.info("업체차량 전체현황 보여주기");
+		logger.info("업체차량 전체 보여주기");
 			
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.ADMIN_COMPANY_CAR_BLOCKSIZE);
@@ -301,7 +300,7 @@ public class Admin_CompanyController {
 		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
 		logger.info("cclist={}", cclist);
 
-		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
+		int totalRecord = adminCompanyService.selectCarTotalRecord(searchVo);
 		logger.info("업체 차량목록 조회 - 전체 업체 차량 조회 결과, totalRecord={}",
 				totalRecord);
 

@@ -18,5 +18,5 @@ public class Utility {
 	
 	//관리자 업체보유차량
 	public static final int ADMIN_COMPANY_CAR_BLOCKSIZE = 10;
-	public static final int ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE = 10;
+	public static final int ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE = 4;
 }

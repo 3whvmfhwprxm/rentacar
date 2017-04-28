@@ -11,6 +11,8 @@ public interface Admin_CompanyDAO {
 	
 	public int selectTotalRecord(SearchVO searchVo);
 	
+	public int selectCarTotalRecord(SearchVO searchVo);
+	
 	public CompanyVO selectByComId(String comId);
 	
 	public int updateCompany(CompanyVO companyVo);

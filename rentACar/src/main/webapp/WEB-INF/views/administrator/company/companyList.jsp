@@ -20,7 +20,6 @@
 		text-align: center;
 	}
 </style>
-<div class="divL                                                                                                                                                                                                                                                                                                                                                 ist container">
 	<h2>업체</h2>
 	<form name="frmPage" method="post"
 		action='<c:url value="/administrator/company/companyList.do" />'>
@@ -128,5 +127,4 @@
 			</a>
 		</div>
 	</div>
-</div>
 <%@ include file="../include/bottom.jsp"%>

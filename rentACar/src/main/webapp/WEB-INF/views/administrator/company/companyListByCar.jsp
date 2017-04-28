@@ -63,8 +63,7 @@
 						<td>${vo.comFax1}-${vo.comFax2}-${vo.comFax3}</td>
 						<td>${vo.comAddress}</td>
 						<td>${vo.comCeo}</td>
-						<td>${vo.comEmail}</td>
-						
+						<td>${vo.comEmail}</td>		
 						<td><fmt:formatDate value="${vo.comRegdate}"
 								pattern="yyyy-MM-dd" /></td>
 						<td><fmt:formatDate value="${vo.comOutdate}"

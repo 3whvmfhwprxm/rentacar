@@ -26,6 +26,10 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
 	
+	public int selectCarTotalRecord(SearchVO searchVo) {
+		return getSqlSession().selectOne(namespace+".selectCarTotalRecord", searchVo);
+	}
+	
 	public CompanyVO selectByComId(String comId){
 		CompanyVO companyVo = getSqlSession().selectOne(namespace+".selectByComId", comId);
 		

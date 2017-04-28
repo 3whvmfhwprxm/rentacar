@@ -27,16 +27,14 @@
 <form name="frmPage" method="post"
 	action='<c:url value="/administrator/company/companyCar.do" />'>
 	<input type="hidden" name="currentPage">
+	<input type="hidden" name="comId" value="${param.comId}">
 </form>
-
-<!-- <div class="container container-pad" id="property-listings"> -->
 	<div class="row">
 		<div class="col-md-12">
 			<h1 style="text-align: center;">${param.comId} 보유 차량</h1>
 		</div>
 	</div>
 
-	<!-- 왼쪽 반복 시작 -->
 	<div class="row">
 		<c:forEach var="map" items="${cclist}">
 		<div class="col-sm-6">
@@ -52,7 +50,7 @@
 						<a href="#" target="_parent"></a>
 
 						<h4>
-							<span style="font-weight: bold;">${map['COM_ID']}</span>
+							<span style="font-weight: bold;">${map['CAR_CODE']}</span>
 						</h4>
 
 						<ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
@@ -133,33 +131,38 @@
 		</div>
 		</c:forEach>
 	</div>
-	<!-- End row -->
-	<div class="col-md-4">
-		<nav>
-			<ul class="pagination">
-				<c:if test="${pagingInfo.firstPage>1 }">
-					<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-					</a></li>
-				</c:if>
 
-				<c:forEach var="i" begin="${pagingInfo.firstPage}"
-					end="${pagingInfo.lastPage}">
-					<c:if test="${i==pagingInfo.currentPage}">
-						<li class="active"><a href="#">${i}</a></li>
+	<div class="row">
+		<div class="col-md-4">
+			<nav>
+				<ul class="pagination">
+					<c:if test="${pagingInfo.firstPage>1 }">
+						<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
 					</c:if>
-					<c:if test="${i!=pagingInfo.currentPage}">
-						<li><a href="#" onclick="pageFunc(${i})">${i}</a></li>
+	
+					<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
+						<c:if test="${i==pagingInfo.currentPage}">
+							<li class="active">
+								<a href="#">${i}</a>
+							</li>
+						</c:if>
+						
+						<c:if test="${i!=pagingInfo.currentPage}">
+							<li>
+								<a href="#" onclick="pageFunc(${i})">${i}</a>
+							</li>
+						</c:if>
+					</c:forEach>
+	
+					<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+						<li><a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
 					</c:if>
-				</c:forEach>
-
-				<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
-					<li><a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-					</a></li>
-				</c:if>
-			</ul>
-		</nav>
+				</ul>
+			</nav>
+		</div>
 	</div>
-<!-- </div> -->
 <%@ include file="../include/bottom.jsp"%>

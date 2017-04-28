@@ -38,6 +38,14 @@
 		<include refid="searchWhere"></include>
 	</select>
 	
+	<select id="selectCarTotalRecord" parameterType="SearchVO"
+		resultType="int">
+		select count(*)
+		from car c join CompanyCarOption cco
+		on c.car_code=cco.car_code
+		where com_id=#{comId}
+	</select>
+	
 	<select id="selectByComId" parameterType="String" resultType="CompanyVO">
 		select*from Company 
 		where com_id=#{comId}
@@ -121,13 +129,6 @@
 		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
 		]]>
 	</select> 
-	
-	<!-- <select id="selectAllCcar" resultType="map" parameterType="String">
-		select*
-		from car c, CompanyCarOption cco
-		where c.car_code=cco.car_code
-		and com_id=#{comId}
-	</select>  -->
 </mapper>
 
 

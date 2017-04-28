@@ -24,6 +24,10 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 		return adminCompanyDao.selectTotalRecord(searchVo);
 	}
 
+	public int selectCarTotalRecord(SearchVO searchVo) {
+		return adminCompanyDao.selectCarTotalRecord(searchVo);
+	}
+	
 	public CompanyVO selectByComId(String comId) {
 		return adminCompanyDao.selectByComId(comId);
 	}
