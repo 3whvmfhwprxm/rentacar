@@ -3,7 +3,9 @@ package com.third.rent.reservation.model;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class ReservationVO {
+import com.third.rent.common.SearchVO;
+
+public class ReservationVO extends SearchVO{
 	private String reservNum;/* 예약번호 */
 	private String userTel1;/* 회원전화번호1 */
 	private String userTel2;/* 회원전화번호2 */
@@ -98,7 +100,7 @@ public class ReservationVO {
 				+ ", userTel3=" + userTel3 + ", reservStartDate=" + reservStartDate + ", reservEndDate=" + reservEndDate
 				+ ", ccarCarId=" + ccarCarId + ", reservInsurance=" + reservInsurance + ", reservDate=" + reservDate
 				+ ", reservCancel=" + reservCancel + ", reservCancelWhy=" + reservCancelWhy + ", userId=" + userId
-				+ "]";
-	}
+				+ ", toString()=" + super.toString() + "]";
+	}	
 	
 }

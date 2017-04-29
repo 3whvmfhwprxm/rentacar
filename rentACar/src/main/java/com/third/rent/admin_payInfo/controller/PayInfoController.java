@@ -35,12 +35,13 @@ public class PayInfoController {
 		pInfo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
 		
 		pvo.setFirstRecordIndex(pInfo.getFirstRecordIndex());
-		pvo.setBlockSize(Utility.ADMIN_PAYINFO_BLOCKSIZE);
+		pvo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
 		
 		List<PayInfoVO>	plist=pService.selectPayInfo(pvo);
 		logger.info("결제 내역 조회 결과 plist.size()={}", plist.size());
 		
 		int totalRecord=pService.selectTotalRecordPayInfo(pvo);
+		logger.info("결제 내역 전체 조회 결과 수 totalRecord={}", totalRecord);
 		pInfo.setTotalRecord(totalRecord);
 		
 		model.addAttribute("plist", plist);

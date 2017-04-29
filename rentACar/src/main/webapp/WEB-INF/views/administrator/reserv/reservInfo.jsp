@@ -7,13 +7,12 @@
 	}
 </script>
 	<div class="container">
-	<h1>결제내역 조회/관리</h1>
+	<h1>예약내역 조회/관리</h1>
 	<!-- 페이지 처리용 폼 -->
-	<form name="frmPage" method="post" action='<c:url value="/admin/payInfo.do" />'>
+	<form name="frmPage" method="post" action='<c:url value="/admin/reservInfo.do" />'>
 		<input type="text" name="currentPage"> 
 		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
 		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
-		<input type="text" name="payRegdate" value="${param.payRegdate}">
 	</form>
 	<!-- 테이블 화면 시작 -->
 	<table class="table table-bordered table-hover">
@@ -36,14 +35,14 @@
 			<th>결제취소 <input type="checkbox" id="checkAll" name="checkAll"></th>
 		</tr>
 		
-		<c:if test="${empty plist}">
+		<c:if test="${empty rlist}">
 					<tr>
-						<td colspan="7" class="align_center">결제내역이 존재하지 않습니다.</td>
+						<td colspan="7" class="align_center">예약 내역이 존재하지 않습니다.</td>
 					</tr>
 		</c:if>
 		
-		<c:if test="${!empty plist }">			
-				<c:forEach var="vo" items="${plist }">
+		<c:if test="${!empty rlist }">			
+				<c:forEach var="vo" items="${rlist }">
 					<tr>
 						<td>${vo.payNo }</td>
 						<td>${vo.reservNum }</td>
@@ -79,7 +78,7 @@
 			</c:if>
 		</div>
 		<div class="divSearch container">
-			<form name="frmSearch" method="post" action="<c:url value="/admin/payInfo.do" />">
+			<form name="frmSearch" method="post" action="<c:url value="/admin/reservInfo.do" />">
 				<select name="searchCondition">				
 					<option value="user_tel3"
 						<c:if test="${'user_tel3'==param.searchCondition}">

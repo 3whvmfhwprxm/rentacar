@@ -28,4 +28,16 @@ public class ReservationServiceImpl implements ReservationService{
 	public List<ReservationVO> selectAll(SearchVO searchVo) {
 		return reservationDao.selectAll(searchVo);
 	}
+
+	@Override
+	public List<Map<String, Object>> selectReservPayInfo(ReservationVO rvo) {
+		return reservationDao.selectReservPayInfo(rvo);
+	}
+
+	@Override
+	public int selectTotalRecordWithPayInfo(ReservationVO rvo) {
+		return reservationDao.selectTotalRecordWithPayInfo(rvo);
+	}
+	
+	
 }
