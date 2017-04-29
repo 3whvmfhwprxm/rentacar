@@ -115,12 +115,12 @@
 				<i class="fa fa-car"></i>&nbsp; 차량모델관리
 			</a>
 			
-			<a href="#" 
+			<a href="<c:url value="/admin/reserv/reservInfo.do" />" 
 				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-calendar-check-o"></i>&nbsp; 예약관리
 			</a>
 				
-			<a href="#" class="w3-bar-item w3-button w3-padding">
+			<a href="<c:url value="/admin/payInfo.do" />" class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-credit-card"></i>&nbsp; 결재내역관리
 			</a>
 			

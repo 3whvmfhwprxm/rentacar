@@ -9,48 +9,55 @@
 	<div class="container">
 	<h1>예약내역 조회/관리</h1>
 	<!-- 페이지 처리용 폼 -->
-	<form name="frmPage" method="post" action='<c:url value="/admin/reservInfo.do" />'>
+	<form name="frmPage" method="post" action='<c:url value="/admin/reserv/reservInfo.do" />'>
 		<input type="text" name="currentPage"> 
 		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
 		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
+		<input type="text" name="payRegdate" value="${param.payRegdate}">
 	</form>
 	<!-- 테이블 화면 시작 -->
 	<table class="table table-bordered table-hover">
 		<colgroup>
+			<col width="10%">
 			<col width="15%">
-			<col width="15%">
-			<col width="20%">
 			<col width="10%">
 			<col width="15%">
 			<col width="15%">
 			<col width="10%">
+			<col width="15%">
+			<col width="15%">
+			<col width="*">
 		</colgroup>
-		<tr>			
-			<th>결제번호</th>
+		<tr>						
 			<th>예약번호</th>
-			<th>결제자 연락처</th>
-			<th>결제방법</th>
-			<th>결제금액</th>			
-			<th>결제일시</th>
-			<th>결제취소 <input type="checkbox" id="checkAll" name="checkAll"></th>
+			<th>예약자 연락처</th>
+			<th>예약자 ID</th>
+			<th>인수일시</th>
+			<th>반납일시</th>			
+			<th>예약차 번호</th>
+			<th>예약일</th>
+			<th>취소여부</th>			
+			<th>결제여부</th>
 		</tr>
 		
 		<c:if test="${empty rlist}">
 					<tr>
-						<td colspan="7" class="align_center">예약 내역이 존재하지 않습니다.</td>
+						<td colspan="9" class="align_center">예약 내역이 존재하지 않습니다.</td>
 					</tr>
 		</c:if>
 		
 		<c:if test="${!empty rlist }">			
-				<c:forEach var="vo" items="${rlist }">
+				<c:forEach var="map" items="${rlist }">
 					<tr>
-						<td>${vo.payNo }</td>
-						<td>${vo.reservNum }</td>
-						<td>${vo.userTel1 }-${vo.userTel2 }-${vo.userTel3 }</td>
-						<td>${vo.payMethod }</td>
-						<td>${vo.payMoney }</td>						
-						<td>${vo.payRegdate }</td>
-						<td><input type="checkbox" id="checkbox" name="checkbox"></td>
+						<td>${map['RESERV_NUM'] }</td>
+						<td>${map['USER_TEL1'] }-${map['USER_TEL2'] }-${map['USER_TEL3'] }</td>
+						<td>${map['USER_ID'] }</td>
+						<td>${map['RESERV_START_DATE'] }</td>
+						<td>${map['RESERV_END_DATE'] }</td>
+						<td>${map['CCAR_CAR_ID'] }</td>
+						<td>${map['RESERV_DATE'] }</td>
+						<td>${map['RESERV_CANCEL'] }</td>
+						<td>${map['PAY_CONDITION'] }</td>
 					</tr>	
 				</c:forEach>				
 		</c:if>		
@@ -78,7 +85,7 @@
 			</c:if>
 		</div>
 		<div class="divSearch container">
-			<form name="frmSearch" method="post" action="<c:url value="/admin/reservInfo.do" />">
+			<form name="frmSearch" method="post" action="<c:url value="/admin/reserv/reservInfo.do" />">
 				<select name="searchCondition">				
 					<option value="user_tel3"
 						<c:if test="${'user_tel3'==param.searchCondition}">
