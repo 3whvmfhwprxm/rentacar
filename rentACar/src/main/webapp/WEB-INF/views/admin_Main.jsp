@@ -24,58 +24,99 @@
 
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script>
+	// Get the Sidebar
+	var mySidebar = document.getElementById("mySidebar");
+	
+	// Get the DIV with overlay effect
+	var overlayBg = document.getElementById("myOverlay");
+	
+	// Toggle between showing and hiding the sidebar, and add overlay effect
+	function w3_open() {
+	    if (mySidebar.style.display === 'block') {
+	        mySidebar.style.display = 'none';
+	        overlayBg.style.display = "none";
+	    } else {
+	        mySidebar.style.display = 'block';
+	        overlayBg.style.display = "block";
+	    }
+	}
+	
+	// Close the sidebar with the close button
+	function w3_close() {
+	    mySidebar.style.display = "none";
+	    overlayBg.style.display = "none";
+	}
+</script>
+
 <style>
-html, body, h1, h2, h3, h4, h5 {
-	font-family: "Raleway", sans-serif
-}
+	html, body, h1, h2, h3, h4, h5{
+		font-family: "Raleway", sans-serif
+	}
+	
+	a{
+		text-decoration: none !important;
+	}
 </style>
 
 <body class="w3-light-grey">
 	<!-- Top container -->
-	<div class="w3-bar w3-top w3-black w3-large" style="z-index: 4">
+	<div class="w3-bar w3-top w3-large" style="background-color: gray;">
 		<span class="w3-bar-item w3-left">
 			<a href='<c:url value="/admin_Main.do" />'>
 				3조 렌트카
 			</a>
 		</span>
 	</div>
-
+	<!-- z-index: 3; w3-bar" style="" -->
 	<!-- Sidebar/menu -->
 	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
-		style="z-index: 3; width: 300px;" id="mySidebar">
+		style=" width: 250px;" id="mySidebar">
 		<br>
 		<div class="w3-container w3-row">
 			<div class="w3-col s4">
-				<img src='<c:url value="/images/administrator.png" />' class="w3-circle w3-margin-right"
-					style="width: 46px">
+				<i class="fa fa-user-o fa-5x" style="width: 46px" aria-hidden="true"></i>
 			</div>
-			<div class="w3-col s8 w3-bar">
-				<span><strong>Mike</strong></span><br>
-					<a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-					<a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-				<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+			<div class="w3-col s8">
+				<span><strong> Mike님 환영합니다.</strong></span><br><br>					
+					<span>
+					<%-- <c:if test="${sessionScope.Admin_Id!=null}"> --%>
+						<a href='<c:url value="/administrator/log/logIn.do" />'>
+							<i class="glyphicon glyphicon-log-out"></i> log Out
+						</a>
+					<%-- </c:if> --%>
+					</span>
 			</div>
 		</div>
 		<hr>
-		<div class="w3-container">
-			<h5><i class="fa fa-home"></i> 메뉴</h5>
+		<div class="w3-container" style="background-color: gray;">
+			<h5>
+				<i class="fa fa-home"></i>&nbsp; 메뉴
+			</h5>
 		</div>
+		
 		<div class="w3-bar-block">
-	
-			
-			<a href="#" class="w3-bar-item w3-button w3-padding w3-blue">
+			<a href="<c:url value="/administrator/user/userList.do" />" 
+				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-users fa-fw"></i>&nbsp; 회원
 			</a>
 			
-			<a href="#" class="w3-bar-item w3-button w3-padding">
+			<a href="<c:url value="/administrator/company/companyList.do" />" 
+				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-mixcloud"></i>&nbsp; 업체
 			</a>
 			
-			<a href="#" class="w3-bar-item w3-button w3-padding">
+			<a href="<c:url value="/administrator/carModel/modelList.do" />" 
+				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-car"></i>&nbsp; 차량모델관리
 			</a>
 			
-			<a href="#" class="w3-bar-item w3-button w3-padding">
+			<a href="#" 
+				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-calendar-check-o"></i>&nbsp; 예약관리
 			</a>
 				
@@ -83,19 +124,23 @@ html, body, h1, h2, h3, h4, h5 {
 				<i class="fa fa-credit-card"></i>&nbsp; 결재내역관리
 			</a>
 			
-			<a href="#" class="w3-bar-item w3-button w3-padding">
+			<a href="#" 
+				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-line-chart"></i>&nbsp; 통계/정산
 			</a>
 			
-			<a href="#" class="w3-bar-item w3-button w3-padding">
+			<a href="#" 
+				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-list"></i>&nbsp; 게시판관리
 			</a>
 			
-			<a href="#" class="w3-bar-item w3-button w3-padding">
+			<a href="#" 
+				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-gift"></i>&nbsp; 이벤트관리
 			</a>
 			
-			<a href="#" class="w3-bar-item w3-button w3-padding">
+			<a href="<c:url value="/admin/Mng/adminList.do" />" 
+				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-cogs"></i>&nbsp; 관리자관리
 			</a><br><br>
 		</div>
@@ -107,285 +152,148 @@ html, body, h1, h2, h3, h4, h5 {
 		id="myOverlay"></div>
 
 	<!-- !PAGE CONTENT! -->
-	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
+	<div class="w3-main" style="margin-left: 250px; margin-top: 43px;">
 
 		<!-- Header -->
-		<header class="w3-container" style="padding-top: 22px">
-			<h5>
-				<b><i class="fa fa-dashboard"></i> My Dashboard</b>
-			</h5>
+		<header class="w3-container" style="padding-top: 5px;">
+			<h3>
+				<b><i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; 현황</b>
+			</h3>
 		</header>
-
+		
+		
 		<div class="w3-row-padding w3-margin-bottom">
+			<a href='<c:url value="/administrator/user/userList.do" />'>
+				<div class="w3-quarter">
+					<div class="w3-container w3-orange w3-text-white w3-padding-16">
+						<div class="w3-left">
+							<i class="fa fa-users w3-xxxlarge"></i>
+						</div>
+						<div class="w3-right">
+							<h3>회원 수</h3>
+						</div>
+						<div class="w3-clear"></div>
+						<h4>회원</h4>
+					</div>
+				</div>
+			</a>
+			
+			<a href='<c:url value="/administrator/user/userList.do" />'>
 			<div class="w3-quarter">
 				<div class="w3-container w3-red w3-padding-16">
 					<div class="w3-left">
-						<i class="fa fa-comment w3-xxxlarge"></i>
+						<i class="fa fa-mixcloud w3-xxxlarge"></i>
 					</div>
 					<div class="w3-right">
-						<h3>52</h3>
+						<h3>업체 수</h3>
 					</div>
 					<div class="w3-clear"></div>
-					<h4>Messages</h4>
+					<h4>업체</h4>
 				</div>
 			</div>
+			</a>
+			
+			<a href='<c:url value="/administrator/user/userList.do" />'>
 			<div class="w3-quarter">
 				<div class="w3-container w3-blue w3-padding-16">
 					<div class="w3-left">
-						<i class="fa fa-eye w3-xxxlarge"></i>
+						<i class="fa fa-calendar-check-o w3-xxxlarge"></i>
 					</div>
 					<div class="w3-right">
-						<h3>99</h3>
+						<h3>예약 수</h3>
 					</div>
 					<div class="w3-clear"></div>
-					<h4>Views</h4>
+					<h4>예약</h4>
 				</div>
 			</div>
+			</a>
+			
+			<a href='<c:url value="/administrator/user/userList.do" />'>
 			<div class="w3-quarter">
 				<div class="w3-container w3-teal w3-padding-16">
 					<div class="w3-left">
-						<i class="fa fa-share-alt w3-xxxlarge"></i>
+						<i class="fa fa-credit-card w3-xxxlarge"></i>
 					</div>
 					<div class="w3-right">
-						<h3>23</h3>
+						<h3>결제 수</h3>
 					</div>
 					<div class="w3-clear"></div>
-					<h4>Shares</h4>
+					<h4>결제</h4>
 				</div>
 			</div>
-			<div class="w3-quarter">
-				<div class="w3-container w3-orange w3-text-white w3-padding-16">
-					<div class="w3-left">
-						<i class="fa fa-users w3-xxxlarge"></i>
-					</div>
-					<div class="w3-right">
-						<h3>50</h3>
-					</div>
-					<div class="w3-clear"></div>
-					<h4>Users</h4>
-				</div>
-			</div>
+			</a>
 		</div>
 
-		<div class="w3-panel">
-			<div class="w3-row-padding" style="margin: 0 -16px">
-				<div class="w3-third">
-					<h5>Regions</h5>
-					<img src="/w3images/region.jpg" style="width: 100%"
-						alt="Google Regional Map">
-				</div>
-				<div class="w3-twothird">
-					<h5>Feeds</h5>
-					<table class="w3-table w3-striped w3-white">
-						<tr>
-							<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-							<td>New record, over 90 views.</td>
-							<td><i>10 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-bell w3-text-red w3-large"></i></td>
-							<td>Database error.</td>
-							<td><i>15 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
-							<td>New record, over 40 users.</td>
-							<td><i>17 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-comment w3-text-red w3-large"></i></td>
-							<td>New comments.</td>
-							<td><i>25 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
-							<td>Check transactions.</td>
-							<td><i>28 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
-							<td>CPU overload.</td>
-							<td><i>35 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
-							<td>New shares.</td>
-							<td><i>39 mins</i></td>
-						</tr>
-					</table>
-				</div>
-			</div>
+		<div>
+			<!-- HighChart 그래프 -->
+			<div id="container" style="width: 100%; height: 450px; margin: 8px 0 8px 0;
+				padding: 0 8px;"></div>
+			
+			<script type="text/javascript">
+				Highcharts.chart('container', {
+				    chart: {
+				        type: 'column'
+				    },
+				    title: {
+				        text: 'Monthly Average Reservation'
+				    },
+				    xAxis: {
+				        categories: [
+				            '1월',
+				            '2월',
+				            '3월',
+				            '4월',
+				            '5월',
+				            '6월',
+				            '7월',
+				            '8월',
+				            '9월',
+				            '10월',
+				            '11월',
+				            '12월'
+				        ],
+				        crosshair: true
+				    },
+				    yAxis: {
+				        min: 0,
+				        title: {
+				            text: 'Rainfall (mm)'
+				        }
+				    },
+				    tooltip: {
+				        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+				        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+				            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+				        footerFormat: '</table>',
+				        shared: true,
+				        useHTML: true
+				    },
+				    plotOptions: {
+				        column: {
+				            pointPadding: 0.2,
+				            borderWidth: 0
+				        }
+				    },
+				    series: [{
+				        name: 'Tokyo',
+				        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+				
+				    }, {
+				        name: 'New York',
+				        data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+				
+				    }, {
+				        name: 'London',
+				        data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+				
+				    }, {
+				        name: 'Berlin',
+				        data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+				
+				    }]
+				});
+			</script>
 		</div>
-		<hr>
-		<div class="w3-container">
-			<h5>General Stats</h5>
-			<p>New Visitors</p>
-			<div class="w3-grey">
-				<div class="w3-container w3-center w3-padding w3-green"
-					style="width: 25%">+25%</div>
-			</div>
-
-			<p>New Users</p>
-			<div class="w3-grey">
-				<div class="w3-container w3-center w3-padding w3-orange"
-					style="width: 50%">50%</div>
-			</div>
-
-			<p>Bounce Rate</p>
-			<div class="w3-grey">
-				<div class="w3-container w3-center w3-padding w3-red"
-					style="width: 75%">75%</div>
-			</div>
-		</div>
-		<hr>
-
-		<div class="w3-container">
-			<h5>Countries</h5>
-			<table
-				class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-				<tr>
-					<td>United States</td>
-					<td>65%</td>
-				</tr>
-				<tr>
-					<td>UK</td>
-					<td>15.7%</td>
-				</tr>
-				<tr>
-					<td>Russia</td>
-					<td>5.6%</td>
-				</tr>
-				<tr>
-					<td>Spain</td>
-					<td>2.1%</td>
-				</tr>
-				<tr>
-					<td>India</td>
-					<td>1.9%</td>
-				</tr>
-				<tr>
-					<td>France</td>
-					<td>1.5%</td>
-				</tr>
-			</table>
-			<br>
-			<button class="w3-button w3-dark-grey">
-				More Countries &nbsp;<i class="fa fa-arrow-right"></i>
-			</button>
-		</div>
-		<hr>
-		<div class="w3-container">
-			<h5>Recent Users</h5>
-			<ul class="w3-ul w3-card-4 w3-white">
-				<li class="w3-padding-16"><img src="/w3images/avatar2.png"
-					class="w3-left w3-circle w3-margin-right" style="width: 35px">
-					<span class="w3-xlarge">Mike</span><br></li>
-				<li class="w3-padding-16"><img src="/w3images/avatar5.png"
-					class="w3-left w3-circle w3-margin-right" style="width: 35px">
-					<span class="w3-xlarge">Jill</span><br></li>
-				<li class="w3-padding-16"><img src="/w3images/avatar6.png"
-					class="w3-left w3-circle w3-margin-right" style="width: 35px">
-					<span class="w3-xlarge">Jane</span><br></li>
-			</ul>
-		</div>
-		<hr>
-
-		<div class="w3-container">
-			<h5>Recent Comments</h5>
-			<div class="w3-row">
-				<div class="w3-col m2 text-center">
-					<img class="w3-circle" src="/w3images/avatar3.png"
-						style="width: 96px; height: 96px">
-				</div>
-				<div class="w3-col m10 w3-container">
-					<h4>
-						John <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12
-							PM</span>
-					</h4>
-					<p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum
-						dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-						incididunt ut labore et dolore magna aliqua.</p>
-					<br>
-				</div>
-			</div>
-
-			<div class="w3-row">
-				<div class="w3-col m2 text-center">
-					<img class="w3-circle" src="/w3images/avatar1.png"
-						style="width: 96px; height: 96px">
-				</div>
-				<div class="w3-col m10 w3-container">
-					<h4>
-						Bo <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span>
-					</h4>
-					<p>Sed do eiusmod tempor incididunt ut labore et dolore magna
-						aliqua.</p>
-					<br>
-				</div>
-			</div>
-		</div>
-		<br>
-		<div class="w3-container w3-dark-grey w3-padding-32">
-			<div class="w3-row">
-				<div class="w3-container w3-third">
-					<h5 class="w3-bottombar w3-border-green">Demographic</h5>
-					<p>Language</p>
-					<p>Country</p>
-					<p>City</p>
-				</div>
-				<div class="w3-container w3-third">
-					<h5 class="w3-bottombar w3-border-red">System</h5>
-					<p>Browser</p>
-					<p>OS</p>
-					<p>More</p>
-				</div>
-				<div class="w3-container w3-third">
-					<h5 class="w3-bottombar w3-border-orange">Target</h5>
-					<p>Users</p>
-					<p>Active</p>
-					<p>Geo</p>
-					<p>Interests</p>
-				</div>
-			</div>
-		</div>
-
-		<!-- Footer -->
-		<footer class="w3-container w3-padding-16 w3-light-grey">
-			<h4>FOOTER</h4>
-			<p>
-				Powered by <a href="https://www.w3schools.com/w3css/default.asp"
-					target="_blank">w3.css</a>
-			</p>
-		</footer>
-
-		<!-- End page content -->
 	</div>
-
-	<script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-    if (mySidebar.style.display === 'block') {
-        mySidebar.style.display = 'none';
-        overlayBg.style.display = "none";
-    } else {
-        mySidebar.style.display = 'block';
-        overlayBg.style.display = "block";
-    }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-    mySidebar.style.display = "none";
-    overlayBg.style.display = "none";
-}
-</script>
-
 </body>
 </html>
