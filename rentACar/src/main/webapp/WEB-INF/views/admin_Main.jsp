@@ -170,7 +170,7 @@
 							<i class="fa fa-users w3-xxxlarge"></i>
 						</div>
 						<div class="w3-right">
-							<h3>회원 수</h3>
+							<h3>${userCount} 명</h3>
 						</div>
 						<div class="w3-clear"></div>
 						<h4>회원</h4>
@@ -185,7 +185,7 @@
 						<i class="fa fa-mixcloud w3-xxxlarge"></i>
 					</div>
 					<div class="w3-right">
-						<h3>업체 수</h3>
+						<h3>${companyCount} 개</h3>
 					</div>
 					<div class="w3-clear"></div>
 					<h4>업체</h4>
@@ -200,7 +200,7 @@
 						<i class="fa fa-calendar-check-o w3-xxxlarge"></i>
 					</div>
 					<div class="w3-right">
-						<h3>예약 수</h3>
+						<h3>${reservationCount} 건</h3>
 					</div>
 					<div class="w3-clear"></div>
 					<h4>예약</h4>
@@ -215,7 +215,7 @@
 						<i class="fa fa-credit-card w3-xxxlarge"></i>
 					</div>
 					<div class="w3-right">
-						<h3>결제 수</h3>
+						<h3>${payinfoCount} 건</h3>
 					</div>
 					<div class="w3-clear"></div>
 					<h4>결제</h4>

@@ -119,7 +119,7 @@ public class Admin_CarModelController {
 		String msg = "", url = "";
 		if(cnt>0){
 			msg = "차량 수정 성공";
-			url = "/administrator/carModel/modelEdit.do?carCode="+carVo.getCarCode();
+			url = "/administrator/carModel/modelDetail.do?carCode="+carVo.getCarCode();
 		}else{
 			msg = "차량 수정 실패";
 		}

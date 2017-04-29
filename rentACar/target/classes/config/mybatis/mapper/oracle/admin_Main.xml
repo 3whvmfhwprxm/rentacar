@@ -3,81 +3,21 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.admin_Main">
-	<sql id="searchWhat">
-		<if test="searchKeyword !=null and searchKeyword !=''">
-			where ${searchCondition} like '%'|| #{searchKeyword} ||'%'
-		</if>
-	</sql>
-	
-	<select id="selectUNotice" resultType="UserNoticeVO" parameterType="SearchVO">
-		select *
-		from
-		(
-		    select rownum as RNUM ,LIST.*
-		    from
-		    (
-		        select * from usernotice 
-		        <include refid="searchWhat"></include>
-		        order by unotice_no desc
-		    )LIST
-		)
-		<![CDATA[
-		where RNUM>#{firstRecordIndex} 
-		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
-		]]>
+	<select id="selectCountUser" resultType="int">
+		select count(*) from rent_user
 	</select>
 	
-	<select id="selectCNotice" resultType="CompanyNoticeVO" parameterType="SearchVO">
-		select *
-		from
-		(
-		    select rownum as RNUM ,LIST.*
-		    from
-		    (
-		        select * from companynotice 
-		        <include refid="searchWhat"></include>
-		        order by cnotice_no desc
-		    )LIST
-		)
-		<![CDATA[
-		where RNUM>#{firstRecordIndex} 
-		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
-		]]>
+	<select id="selectCountCompany" resultType="int">
+		select count(*) from company
 	</select>
 	
-	<select id="selectSCNotice" resultType="ServiceCenterNoticeVO" parameterType="SearchVO">
-		select *
-		from
-		(
-		    select rownum as RNUM ,LIST.*
-		    from
-		    (
-		        select * from servicecenternotice 
-		        <include refid="searchWhat"></include>
-		        order by scnotice_no desc
-		    )LIST
-		)
-		<![CDATA[
-		where RNUM>#{firstRecordIndex} 
-		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
-		]]>
+	<select id="selectCountReservation" resultType="int">
+		select count(*) from reservation
 	</select>
 	
-	<select id="selectTotalRecordfromUN" parameterType="SearchVO" resultType="int">
-		select count(*) from usernotice
-		<include refid="searchWhat"></include>
+	<select id="selectCountPayinfo" resultType="int">
+		select count(*) from payinfo
 	</select>
-	
-	<select id="selectTotalRecordfromCN" parameterType="SearchVO" resultType="int">
-		select count(*) from companynotice
-		<include refid="searchWhat"></include>
-	</select>
-	
-	<select id="selectTotalRecordfromSN" parameterType="SearchVO" resultType="int">
-		select count(*) from servicecenternotice
-		<include refid="searchWhat"></include>
-	</select>	
-	
 </mapper>
 
 

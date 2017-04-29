@@ -53,7 +53,7 @@
 	    	car_code=#{carCode}, car_name=#{carName},
 	    	car_inc=#{carInc}, car_size=#{carSize},
 	    	car_trans=#{carTrans}, car_type=#{carType},
-	    	car_img=#{carImg},
+	    	car_img=#{carImg}
 		where car_code=#{carCode}
 	</update>
 

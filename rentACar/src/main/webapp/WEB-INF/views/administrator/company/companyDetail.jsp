@@ -70,8 +70,10 @@
 							<span>${companyVo.comEmail}</span></p>
 						<p><span style="font-weight: bold; font-size: 1.2em;">등록일: </span>
 							<span><fmt:formatDate value="${companyVo.comRegdate}" pattern="yyyy-MM-dd" /></span></p>
+						<c:if test="${!empty companyVo.comOutdate}">
 						<p><span style="font-weight: bold; font-size: 1.2em;">탈퇴일: </span>
 							<span><fmt:formatDate value="${companyVo.comOutdate}" pattern="yyyy-MM-dd" /></span></p>
+						</c:if>
 					</div>
 				</div>
 			</div>

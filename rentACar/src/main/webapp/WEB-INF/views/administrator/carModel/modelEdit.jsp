@@ -30,7 +30,7 @@
 </style>
 
 <form class="form-horizontal" id="frm1" name="frm1" method="post"
-	action='<c:url value="/administrator/company/companyEdit.do" />'>
+	action='<c:url value="/administrator/carModel/modelEdit.do" />'>
 	<fieldset>
 	<legend>CarModel Edit</legend>
 		<div class="form-group">
@@ -98,7 +98,7 @@
 			</label>
 			<div class="col-sm-2">
 				<input type="text" id="carImg" name="carImg"
-					value="${carVo.carImg}">	
+					value="${carVo.carImg}">
 				<input type="file" id="carImg" name="carImg">	
 			</div>
 		</div>
