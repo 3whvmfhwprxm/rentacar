@@ -2,9 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="top.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
+<link href="${pageContext.request.contextPath}/css/jquery_custom/jquery-ui.min.css" rel="stylesheet" />
+<script src="${pageContext.request.contextPath}/jquery/jquery_custom/jquery-ui.min.js"></script>
 <script>
 	$(function() {		
 		$("#searchForm").submit(function(){
@@ -79,7 +81,7 @@
 이때 검색시 예약정보 테이블에서 예약시작날짜/예약종료날짜/예약시작시간/예약종료시간 -->
 <style type="text/css">
 	.fontStyle1{color: #0033FF; font-weight: bold;}
-	table tr th{background-color: skyblue;}
+	.thStyle1{background-color: skyblue;}
 </style>
 <br>
 <div class="divList container">
@@ -172,12 +174,12 @@
 			</colgroup>
 			<thead>		
 				<tr>
-					<th class="text-center">차량</th>
-					<th class="text-center">업체</th>
-					<th class="text-center">계산된 가격(아직X)</th>
-					<th class="text-center">연체료(30분단위)</th>
-					<th class="text-center">옵션상세보기</th>
-					<th class="text-center">예약하기</th>
+					<th class="text-center thStyle1">차량</th>
+					<th class="text-center thStyle1">업체</th>
+					<th class="text-center thStyle1">계산된 가격(아직X)</th>
+					<th class="text-center thStyle1">연체료(30분단위)</th>
+					<th class="text-center thStyle1">옵션상세보기</th>
+					<th class="text-center thStyle1">예약하기</th>
 				</tr>
 			</thead>
 			<tbody>

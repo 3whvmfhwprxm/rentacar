@@ -160,3 +160,12 @@ where ccar_car_id='rentZoa_0001';
 
 
 select * from company
+
+select * from RESERVATION;
+select * from PAYINFO order by pay_regdate desc;
+
+select * from PAYINFO 
+where user_tel1='010' and user_tel2='1234' and user_tel3='1234'
+order by pay_regdate desc;
+
+

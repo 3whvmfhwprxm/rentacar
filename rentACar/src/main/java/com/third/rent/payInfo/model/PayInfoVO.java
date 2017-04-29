@@ -1,6 +1,8 @@
 package com.third.rent.payInfo.model;
 
-public class PayInfoVO {
+import com.third.rent.common.SearchVO;
+
+public class PayInfoVO extends SearchVO{
 	private String payNo; /* 결제번호 */
 	private String reservNum; /* 예약번호 */
 	private String userTel1; /* 회원전화번호1 */
@@ -72,12 +74,13 @@ public class PayInfoVO {
 	public void setPayCondition(String payCondition) {
 		this.payCondition = payCondition;
 	}
+	
 	@Override
 	public String toString() {
 		return "PayInfoVO [payNo=" + payNo + ", reservNum=" + reservNum + ", userTel1=" + userTel1 + ", userTel2="
 				+ userTel2 + ", userTel3=" + userTel3 + ", payMethod=" + payMethod + ", payMoney=" + payMoney
 				+ ", payDiscount=" + payDiscount + ", payRegdate=" + payRegdate + ", payCondition=" + payCondition
-				+ "]";
+				+ ", toString()=" + super.toString() + "]";
 	}
 	
 }

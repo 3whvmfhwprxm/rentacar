@@ -19,4 +19,8 @@ public class Utility {
 	//관리자 업체보유차량
 	public static final int ADMIN_COMPANY_CAR_BLOCKSIZE = 10;
 	public static final int ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE = 4;
+	
+	//관리자 결제정보 페이지 처리용
+	public static final int ADMIN_PAYINFO_BLOCKSIZE=10;
+	public static final int ADMIN_PAYINFO_RECORDCOUNT_PERPAGE=10;
 }
