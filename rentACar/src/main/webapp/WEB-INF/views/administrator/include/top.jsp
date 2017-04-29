@@ -82,14 +82,19 @@
 				<i class="fa fa-user-o fa-5x" style="width: 46px" aria-hidden="true"></i>
 			</div>
 			<div class="w3-col s8">
-				<span><strong> Mike님 환영합니다.</strong></span><br><br>					
-				<span>
-				<%-- <c:if test="${sessionScope.Admin_Id!=null}"> --%>
+				<c:if test="${sessionScope.Admin_Id!=null}">
+					<span><strong> Mike님 환영합니다.</strong></span><br><br>					
+					<span>					
+						<a href='<c:url value="/administrator/log/logout.do" />'>
+							<i class="glyphicon glyphicon-log-out"></i> 로그아웃
+						</a>				
+					</span>
+				</c:if>
+				<c:if test="${sessionScope.Admin_Id=null}">
 					<a href='<c:url value="/administrator/log/logIn.do" />'>
-						<i class="glyphicon glyphicon-log-out"></i> log Out
-					</a>
-				<%-- </c:if> --%>
-				</span>
+						<i class="glyphicon glyphicon-log-in"></i> 로그인
+					</a>	
+				</c:if>
 			</div>
 		</div>
 		<hr>
