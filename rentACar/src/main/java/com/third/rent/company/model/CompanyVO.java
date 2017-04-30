@@ -18,7 +18,7 @@ public class CompanyVO {
 	private String comFax2;
 	private String comFax3;
 	private String comAddress;
-	private String comReturnPlace;
+	private String comReturnPlace;	//차량 인수/반납 주소
 	private String comCeo;
 	private String comEmail;
 	private int comRate;

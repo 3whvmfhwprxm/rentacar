@@ -161,11 +161,17 @@ where ccar_car_id='rentZoa_0001';
 
 select * from company
 
-select * from RESERVATION;
+select r.*, p.PAY_CONDITION, p.PAY_REGDATE
+from RESERVATION r join payinfo p
+on r.RESERV_NUM=p.RESERV_NUM(+)
+order by reserv_date desc;
+
+
 select * from PAYINFO order by pay_regdate desc;
 
 select * from PAYINFO 
 where user_tel1='010' and user_tel2='1234' and user_tel3='1234'
 order by pay_regdate desc;
+
 
 

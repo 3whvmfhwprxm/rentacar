@@ -164,17 +164,17 @@ delete from company;
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo, com_regdate)
 values('rentZoa', '렌트조아', '1', '100-81-02000', '국민:289333-01-22212', '02', '0100', '0100', '010', '0100', '0100',  '02', '0100', '0101', 
-'제주도 한라산 아래', '제주공항 주차장', '김렌트', 'rentZoa1@rentZoa.com', 'rentZoa_logo.png', sysdate);
+'제주도 한라산 아래', '제주특별자치도 제주시 다호북길 13', '김렌트', 'rentZoa1@rentZoa.com', 'rentZoa_logo.png', sysdate);
 
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo, com_regdate)
 values('rentGo', '렌트고', '1', '100-81-03000', '농협:22222-02-22222', '02', '0200', '0200', '010', '0200', '0200',  '02', '0200', '0201', 
-'제주도 한라산 아래', '제주공항 주차장', '이렌트', 'rentGo1@rentGo.com', 'rentGo_logo.png', sysdate);
+'제주도 한라산 아래', '제주특별자치도 제주시 다호북길 13', '이렌트', 'rentGo1@rentGo.com', 'rentGo_logo.png', sysdate);
 
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo, com_regdate,  com_outdate)
 values('rentDie', '렌트죽음', '1', '100-81-00000', '신한:3333-03-33333', '02', '0300', '0300', '010', '0300', '0300',  '02', '0300', '0301', 
-'제주공항 근처', '제주공항 주차장', '박렌트', 'rentDie1@rentDie.com', 'rentDie_logo.png', sysdate, sysdate);
+'제주공항 근처', '제주특별자치도 제주시 다호북길 13', '박렌트', 'rentDie1@rentDie.com', 'rentDie_logo.png', sysdate, sysdate);
 select * from company;
 commit;
 

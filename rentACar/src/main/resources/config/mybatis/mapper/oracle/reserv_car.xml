@@ -28,7 +28,7 @@
 	
 	<select id="selectedCarInfo" parameterType="String" resultType="map">
 		<![CDATA[
-		select a.*, b.COM_NAME, b.COM_TEL1, b.COM_TEL2, b.COM_TEL3
+		select a.*, b.COM_NAME, b.COM_TEL1, b.COM_TEL2, b.COM_TEL3, b.COM_RETURN_PLACE
 		from (	select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
 		        from COMPANYCAROPTION comc join car c
 		   		on comc.car_code=c.car_code) a join company b
