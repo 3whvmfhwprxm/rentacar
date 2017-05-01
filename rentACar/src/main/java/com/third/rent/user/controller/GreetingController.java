@@ -10,10 +10,26 @@ public class GreetingController {
 	private static final Logger logger=LoggerFactory.getLogger(GreetingController.class);
 	
 	@RequestMapping("/user/greeting.do")
-	public String showBenefits(){
+	public String showgreeting(){
 		logger.info("인사말화면 띄우기");
 		
 		return "user/greeting";
+		
+	}
+	
+	@RequestMapping("/user/position.do")
+	public String showposition(){
+		logger.info("회사위치 화면 띄우기");
+		
+		return "user/position";
+		
+	}
+	
+	@RequestMapping("/user/guide.do")
+	public String showguide(){
+		logger.info("지점안내 화면 띄우기");
+		
+		return "user/guide";
 		
 	}
 }
