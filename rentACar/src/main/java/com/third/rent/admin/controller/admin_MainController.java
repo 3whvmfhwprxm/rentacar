@@ -11,6 +11,7 @@ import com.third.rent.admin.model.AdminService;
 import com.third.rent.admin_User.controller.Admin_UserController;
 
 @Controller
+@RequestMapping("/administrator")
 public class admin_MainController {
 	private static final Logger logger 
 		= LoggerFactory.getLogger(Admin_UserController.class);
@@ -23,22 +24,30 @@ public class admin_MainController {
 		logger.info("Main화면 띄우기");
 		
 		int userCount = adminService.selectCountUser();
-		logger.info("userCount={}", userCount);
+		logger.info("userCount");
 		
 		int companyCount = adminService.selectCountCompany();
-		logger.info("companyCount={}", companyCount);
+		logger.info("companyCount");
 		
 		int reservationCount = adminService.selectCountReservation();
-		logger.info("reservationCount={}", reservationCount);
+		logger.info("reservationCount");
 		
 		int payinfoCount = adminService.selectCountPayinfo();
-		logger.info("payinfoCount={}", payinfoCount);
+		logger.info("payinfoCount");
+		
+		int selectSumPayMoney = adminService.selectSumPayMoney();
+		logger.info("selectSumPayMoney");
+		
+		int selectSumPayDiscount = adminService.selectSumPayDiscount();
+		logger.info("selectSumPayDiscount");
 		
 		model.addAttribute("userCount", userCount);
 		model.addAttribute("companyCount", companyCount);
 		model.addAttribute("reservationCount", reservationCount);
 		model.addAttribute("payinfoCount", payinfoCount);
+		model.addAttribute("selectSumPayMoney", selectSumPayMoney);
+		model.addAttribute("selectSumPayDiscount", selectSumPayDiscount);
 
-		return "admin_Main";
+		return "administrator/admin_Main";
 	}
 }

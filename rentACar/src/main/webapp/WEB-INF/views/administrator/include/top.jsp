@@ -67,7 +67,7 @@
 	<!-- Top container -->
 	<div class="w3-bar w3-top w3-large" style="background-color: gray;">
 		<span class="w3-bar-item w3-left">
-			<a href='<c:url value="/admin_Main.do" />'>
+			<a href='<c:url value="/administrator/admin_Main.do" />'>
 				3조 렌트카
 			</a>
 		</span>
@@ -83,7 +83,7 @@
 			</div>
 			<div class="w3-col s8">
 				<c:if test="${sessionScope.Admin_Id!=null}">
-					<span><strong> Mike님 환영합니다.</strong></span><br><br>					
+					<span><strong>${sessionScope.Admin_Id}님 환영합니다.</strong></span><br><br>					
 					<span>					
 						<a href='<c:url value="/administrator/log/logout.do" />'>
 							<i class="glyphicon glyphicon-log-out"></i> 로그아웃

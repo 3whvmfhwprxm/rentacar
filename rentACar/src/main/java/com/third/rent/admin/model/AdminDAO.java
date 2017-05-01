@@ -8,4 +8,8 @@ public interface AdminDAO {
 	public int selectCountReservation();
 	
 	public int selectCountPayinfo();
+	
+	public int selectSumPayMoney();
+	
+	public int selectSumPayDiscount();
 }

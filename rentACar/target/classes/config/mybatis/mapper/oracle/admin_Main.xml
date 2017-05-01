@@ -18,6 +18,14 @@
 	<select id="selectCountPayinfo" resultType="int">
 		select count(*) from payinfo
 	</select>
+	
+	<select id="selectSumPayMoney" resultType="int">
+		select sum(pay_money) from payInfo
+	</select>
+	
+	<select id="selectSumPayDiscount" resultType="int">
+		select sum(pay_discount) from payInfo
+	</select>	
 </mapper>
 
 

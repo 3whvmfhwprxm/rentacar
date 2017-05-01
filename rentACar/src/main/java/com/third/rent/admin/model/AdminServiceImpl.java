@@ -28,5 +28,15 @@ public class AdminServiceImpl implements AdminService{
 	public int selectCountPayinfo() {
 		return adminDao.selectCountPayinfo();
 	}
+
+	@Override
+	public int selectSumPayMoney() {
+		return adminDao.selectSumPayMoney();
+	}
+
+	@Override
+	public int selectSumPayDiscount() {
+		return adminDao.selectSumPayDiscount();
+	}
 	
 }

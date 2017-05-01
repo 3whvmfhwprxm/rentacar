@@ -49,7 +49,7 @@ public class LogController {
 		if(result==admin_LogService.LOGIN_OK){
 			AdminVO vo = adminLogService.selectByAdminId(Admin_Id);
 			msg = vo.getAdminName()+"님 로그인되었습니다.";
-			url = "/admin_Main.do";
+			url = "/administrator/admin_Main.do";
 			
 			HttpSession session = request.getSession();
 			session.setMaxInactiveInterval(60*60);

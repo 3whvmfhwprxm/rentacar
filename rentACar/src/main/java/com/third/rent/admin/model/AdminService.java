@@ -8,4 +8,8 @@ public interface AdminService {
 	public int selectCountReservation();
 	
 	public int selectCountPayinfo();
+	
+	public int selectSumPayMoney();
+	
+	public int selectSumPayDiscount();
 }

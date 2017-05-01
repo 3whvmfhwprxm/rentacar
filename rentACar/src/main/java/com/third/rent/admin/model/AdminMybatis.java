@@ -27,6 +27,16 @@ public class AdminMybatis extends SqlSessionDaoSupport
 	public int selectCountPayinfo() {
 		return getSqlSession().selectOne(namespace+".selectCountPayinfo");
 	}
+
+	@Override
+	public int selectSumPayMoney() {
+		return getSqlSession().selectOne(namespace+".selectSumPayMoney");
+	}
+
+	@Override
+	public int selectSumPayDiscount() {
+		return getSqlSession().selectOne(namespace+".selectSumPayDiscount");
+	}
 	
 	
 }
