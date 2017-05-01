@@ -3,7 +3,7 @@
 <%@ include file="../include/top.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/admin_Detail.css" />
-
+	
 <div class="row">
 	<div class="col-md-8">
 		<div class="md-macbook-pro md-glare">
@@ -93,8 +93,8 @@
 			</div>
 		</div>
 	</div>
-
 </div>
+
 <div>
 	<a href='<c:url value="/administrator/carModel/modelList.do" />'
 		data-original-title="go to the List" data-toggle="tooltip"

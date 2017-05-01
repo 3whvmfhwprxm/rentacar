@@ -48,55 +48,8 @@ body {
 	height: 31.875em;
 	font-size: 13px;
 	margin: 0 auto;
-	@media
-	(
-	max-width
-	:1199px)
-{
-	font-size
-	:
-	 
-	11
-	px
-	;
-	
-  
 }
 
-@media ( max-width :1024px) {
-	font-size
-	:
-	 
-	10
-	px
-	;
-	
-  
-}
-
-@media ( max-width :767px) {
-	font-size
-	:
-	 
-	7
-	px
-	;
-	
-  
-}
-
-@media ( max-width :320px) {
-	font-size
-	:
-	 
-	5
-	px
-	;
-	
-  
-}
-
-}
 .md-macbook-pro .md-lid {
 	width: 45em;
 	height: 30.625em;

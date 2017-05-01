@@ -56,8 +56,12 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 		return getSqlSession().selectOne(namespace+".selectPwdByAdminId", adminId);
 	}
 
-	public List<CompanyVO> selectOutompany(SearchVO searchVo) {
-		return getSqlSession().selectList(namespace+".selectOutompany", searchVo);
+	public List<CompanyVO> selectInCompany(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectInCompany", searchVo);
+	}
+	
+	public List<CompanyVO> selectOutCompany(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectOutCompany", searchVo);
 	}
 
 	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo){

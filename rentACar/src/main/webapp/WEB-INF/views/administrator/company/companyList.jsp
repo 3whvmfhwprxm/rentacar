@@ -29,11 +29,27 @@
 	<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 </form>
 
-<div class="w3-container" >
+<div class="w3-container">
+	<div class="nav navbar-nav menu-list" style="padding-top: 5px;">
+		<a href='<c:url value="/administrator/company/companyOutList.do" />'>
+			<button type="button" class="btn btn-default">	
+				<i class="fa fa-check" aria-hidden="true"></i>&nbsp;탈퇴업체 리스트	
+			</button>
+		</a>
+		&nbsp;
+		<a href='<c:url value="/administrator/company/companyListByCar.do" />'>
+			<button type="button" class="btn btn-default">
+				<i class="fa fa-check" aria-hidden="true"></i>&nbsp;업체 보유차량
+			</button>
+		</a>
+	</div>
+	
+    <br><br>
+    
 	<h3>Using jQuery plugin allows you to apply paging to standard html table.</h3>
 		The default number of pages is 10 but you can pass a number to the
 		function to have more or less items per page.
-		<br><br>
+		<br>
 	<h4>To Initialize the table use either of the following:</h4>
 	<pre>
 		<code>
@@ -45,7 +61,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<h3>Table Paging</h3>
+			<h3>업체 리스트</h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -84,7 +100,7 @@
 							<td>${vo.comAddress}</td>
 							<td>${vo.comCeo}</td>
 							<td>${vo.comEmail}</td>
-							<td>${vo.comRate}</td>
+							<td>${vo.comRate}%</td>
 							<td><fmt:formatDate value="${vo.comRegdate}"
 									pattern="yyyy-MM-dd" /></td>
 							<td><fmt:formatDate value="${vo.comOutdate}"

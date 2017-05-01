@@ -63,16 +63,16 @@
 	}
 </style>
 
-<body class="w3-light-grey">
+<body class="w3">
 	<!-- Top container -->
-	<div class="w3-bar w3-top w3-large" style="background-color: gray;">
+	<div class="w3-bar w3-top w3-large" style="background-color: skyblue;">
 		<span class="w3-bar-item w3-left">
 			<a href='<c:url value="/administrator/admin_Main.do" />'>
 				3조 렌트카
 			</a>
 		</span>
 	</div>
-	<!-- z-index: 3; w3-bar" style="" -->
+
 	<!-- Sidebar/menu -->
 	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
 		style=" width: 250px;" id="mySidebar">
@@ -98,7 +98,7 @@
 			</div>
 		</div>
 		<hr>
-		<div class="w3-container" style="background-color: gray;">
+		<div class="w3-container" style="background-color: skyblue;">
 			<h5>
 				<i class="fa fa-home"></i>&nbsp; 메뉴
 			</h5>
@@ -154,7 +154,8 @@
 	<!-- Overlay effect when opening sidebar on small screens -->
 	<div class="w3-overlay w3-hide-large w3-animate-opacity"
 		onclick="w3_close()" style="cursor: pointer" title="close side menu"
-		id="myOverlay"></div>
+		id="myOverlay">
+	</div>
 
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 250px; margin-top: 43px;">

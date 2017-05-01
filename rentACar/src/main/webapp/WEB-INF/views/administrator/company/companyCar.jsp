@@ -29,6 +29,8 @@
 	<input type="hidden" name="currentPage">
 	<input type="hidden" name="comId" value="${param.comId}">
 </form>
+
+<div class="w3-container">
 	<div class="row">
 		<div class="col-md-12">
 			<h1 style="text-align: center;">${param.comId} 보유 차량</h1>
@@ -39,9 +41,9 @@
 		<c:forEach var="map" items="${cclist}">
 		<div class="col-sm-6">
 			<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-				<div class="media">
+				<div class="media" style="height: 210px;">
 					<a class="pull-left" href="#" target="_parent">
-						<img width="50px" height="50px" alt="image" class="img-responsive"
+						<img style="width: 300px; height: 210px;" alt="image" class="img-responsive"
 							src='<c:url value="/carImages/${map['CAR_IMG']}" />'>
 					</a>
 					<div class="clearfix visible-sm"></div>
@@ -165,4 +167,5 @@
 			</nav>
 		</div>
 	</div>
+</div>
 <%@ include file="../include/bottom.jsp"%>

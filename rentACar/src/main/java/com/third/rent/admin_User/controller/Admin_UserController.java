@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.third.rent.admin_User.model.Admin_UserService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
-import com.third.rent.common.Utility;
+import com.third.rent.common.admin_Utility;
 import com.third.rent.user.model.UserVO;
 
 
@@ -34,15 +34,15 @@ public class Admin_UserController {
 
 		//2
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_USER_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_USER_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
 		//SearchVO 값 셋팅
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_USER_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 
-		List<UserVO> mlist = adminUserService.selectAll(searchVo);
+		List<UserVO> mlist = adminUserService.selectInUser(searchVo);
 		logger.info("회원목록 조회결과, mlist.size()={}", mlist.size());
 
 		int totalRecord = adminUserService.selectTotalRecord(searchVo);

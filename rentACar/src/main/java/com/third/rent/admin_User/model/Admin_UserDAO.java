@@ -11,4 +11,6 @@ public interface Admin_UserDAO {
 	public int selectTotalRecord(SearchVO searchVo);
 	
 	public UserVO selectByUserId(String userId);
+	
+	public List<UserVO> selectInUser(SearchVO searchVo);	
 }

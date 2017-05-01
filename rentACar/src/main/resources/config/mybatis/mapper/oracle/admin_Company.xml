@@ -19,7 +19,7 @@
 		    (
 		        select * from company 
 		        <include refid="searchWhere"></include>
-		        order by com_regdate
+		        order by com_regdate 
 		    )LIST
 		)
 		<![CDATA[
@@ -91,7 +91,27 @@
 		where admin_id=#{adminId}
 	</select>
 	
-	<select id="selectOutompany" resultType="CompanyVO" 
+	<select id="selectInCompany" resultType="CompanyVO" 
+		parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from company 
+		        <include refid="searchWhere"></include>
+		        where com_outdate is null
+		        order by com_regdate 
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select> 
+	
+	<select id="selectOutCompany" resultType="CompanyVO" 
 		parameterType="SearchVO">
 		select *
 		from

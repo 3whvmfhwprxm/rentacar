@@ -72,8 +72,12 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 		return result;
 	}
 
-	public List<CompanyVO> selectOutompany(SearchVO searchVo) {
-		return adminCompanyDao.selectOutompany(searchVo);
+	public List<CompanyVO> selectInCompany(SearchVO searchVo) {
+		return adminCompanyDao.selectInCompany(searchVo);
+	}
+	
+	public List<CompanyVO> selectOutCompany(SearchVO searchVo) {
+		return adminCompanyDao.selectOutCompany(searchVo);
 	}
 	
 	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo) {

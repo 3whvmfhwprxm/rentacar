@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.admin.model.AdminVO;
-import com.third.rent.admin_CarModel.model.Admin_CarModelService;
 import com.third.rent.admin_Company.model.Admin_CompanyService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
-import com.third.rent.common.Utility;
+import com.third.rent.common.admin_Utility;
 import com.third.rent.company.model.CompanyVO;
 
 @Controller
@@ -33,9 +32,6 @@ public class Admin_CompanyController {
 	@Autowired
 	private Admin_CompanyService adminCompanyService;
 	
-	@Autowired
-	private Admin_CarModelService adminCompanyCarservice;
-	
 	@RequestMapping("/company/companyList.do")
 	public String companyList(@ModelAttribute SearchVO searchVo, Model model){
 		//1
@@ -43,14 +39,14 @@ public class Admin_CompanyController {
 
 		//2
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.ADMIN_COMPANY_BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_COMPANY_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 
-		List<CompanyVO> companyList = adminCompanyService.selectAllCompany(searchVo);
+		List<CompanyVO> companyList = adminCompanyService.selectInCompany(searchVo);
 		logger.info("업체목록 조회결과, companyList.size()={}", companyList.size());
 
 		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
@@ -73,11 +69,11 @@ public class Admin_CompanyController {
 
 		//2
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.ADMIN_COMPANY_BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_COMPANY_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_COMPANY_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 
 		List<CompanyVO> companyList = adminCompanyService.selectAllCompany(searchVo);
@@ -259,14 +255,14 @@ public class Admin_CompanyController {
 		logger.info("업체목록, 파라미터 searchVo={}", searchVo);
 
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.ADMIN_OUT_COMPANY_BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_OUT_COMPANY_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 
-		List<CompanyVO> outCompanyList = adminCompanyService.selectOutompany(searchVo);
+		List<CompanyVO> outCompanyList = adminCompanyService.selectOutCompany(searchVo);
 		logger.info("업체목록 조회결과, outCompanyList.size()={}", outCompanyList.size());
 
 		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
@@ -287,11 +283,11 @@ public class Admin_CompanyController {
 		logger.info("업체차량 전체 보여주기");
 			
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.ADMIN_COMPANY_CAR_BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_COMPANY_CAR_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		

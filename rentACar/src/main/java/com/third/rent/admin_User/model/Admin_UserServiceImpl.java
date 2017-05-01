@@ -24,4 +24,8 @@ public class Admin_UserServiceImpl implements Admin_UserService{
 	public UserVO selectByUserId(String userId) {
 		return adminUserDao.selectByUserId(userId);
 	}
+
+	public List<UserVO> selectInUser(SearchVO searchVo) {
+		return adminUserDao.selectInUser(searchVo);
+	}
 }

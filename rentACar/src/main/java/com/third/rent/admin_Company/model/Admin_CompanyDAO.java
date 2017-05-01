@@ -25,7 +25,9 @@ public interface Admin_CompanyDAO {
 	
 	public String selectPwdByAdminId(String adminId);
 	
-	public List<CompanyVO> selectOutompany(SearchVO searchVo);
+	public List<CompanyVO> selectInCompany(SearchVO searchVo);
+	
+	public List<CompanyVO> selectOutCompany(SearchVO searchVo);
 	
 	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo);
 }

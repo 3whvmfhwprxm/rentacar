@@ -27,4 +27,8 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 	public UserVO selectByUserId(String userId){
 		return getSqlSession().selectOne(namespace+".selectByUserId", userId);
 	}
+
+	public List<UserVO> selectInUser(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectInUser", searchVo);
+	}
 }
