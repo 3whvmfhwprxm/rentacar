@@ -87,6 +87,6 @@ public class LogController {
 		
 		session.invalidate();
 		
-		return "redirect:/administrator/admin_Main.do";
+		return "redirect:/administrator/log/logIn.do";
 	}
 }
