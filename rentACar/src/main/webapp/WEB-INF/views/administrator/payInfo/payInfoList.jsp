@@ -1,10 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp" %>
+<script src="https://service.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
 <script type="text/javascript">	
+	$().ready(function(){
+		IMP.init('imp33307123');
+	});
+	
+	/* function cancelPay(cancelNum, paidmoney){
+			$.ajax({
+	    		url:'https://api.iamport.kr/payments/cancel?_token=c271e519a46c98cba70d1d96b3ec40755b77a888',
+	    		type:'POST',
+	    		data:{merchant_uid:cancelNum,
+	    			  amount:paidmoney,
+	    			  reason:'관리자 취소 처리'},
+	    		dataType:'json',
+	    		success:function(res){
+	    			alert('결제가 취소됐습니다.');
+	    		},error:function(xhr, status, error){
+	    			alert('결제가 취소 실패.');
+	    		}			    		
+	    	});
+	}
+ */
+ 
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
 	}
+ 
 </script>
 	<div class="container">
 	<h1>결제내역 조회/관리</h1>
@@ -33,7 +56,7 @@
 			<th>결제방법</th>
 			<th>결제금액</th>			
 			<th>결제일시</th>
-			<th>결제취소 <input type="checkbox" id="checkAll" name="checkAll"></th>
+			<th>결제취소</th>
 		</tr>
 		
 		<c:if test="${empty plist}">
@@ -51,7 +74,8 @@
 						<td>${vo.payMethod }</td>
 						<td>${vo.payMoney }</td>						
 						<td>${vo.payRegdate }</td>
-						<td><input type="checkbox" id="checkbox" name="checkbox"></td>
+						<td><button id="btCancel" onclick="cancelPay('${vo.payNo }', '${vo.payMoney }')">결제 취소</button></td>
+						
 					</tr>	
 				</c:forEach>				
 		</c:if>		
