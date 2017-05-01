@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
+import com.third.rent.common.DateSearchVO;
 import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reserv_search.model.ReservSearchService;
@@ -41,7 +42,7 @@ public class RealTimeController {
 	@Autowired
 	private UserService uService;
 	
-	@RequestMapping(value="/realTime.do", method=RequestMethod.GET)
+	/*@RequestMapping(value="/realTime.do", method=RequestMethod.GET)
 	public String showRealTime_get(Model model){
 		logger.info("실시간예약화면 띄우기");
 		
@@ -50,24 +51,32 @@ public class RealTimeController {
 		model.addAttribute("catelist", catelist);
 		
 		return "inc_user/realTime";
-	}
+	}*/
 	
-	@RequestMapping(value="/realTime.do", method=RequestMethod.POST)
-	public String showRealTime_post(@RequestParam String searchStartDate, @RequestParam int startHour, @RequestParam String startMin,
-									@RequestParam String searchEndDate, @RequestParam int endHour, @RequestParam String endMin,
-									@RequestParam int carType, Model model){
-		logger.info("예약 대상 검색 기간 조건 searchStartDate={}, searchEndDate={}", searchStartDate, searchEndDate);
-		logger.info("예약 대상 검색 차종 조건 carType={}", carType);
+	@RequestMapping("/realTime.do")
+	public String showRealTime_post(@ModelAttribute DateSearchVO dateSearchVO, Model model){
+		logger.info("예약 대상 검색 기간 조건 dateSearchVO={}", dateSearchVO);
+				
+		if(dateSearchVO.getSearchStartDate()==null){
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+			Date today=new Date();			
+			dateSearchVO.setSearchStartDate(sdf.format(today));
+			dateSearchVO.setStartHour(8);
+			dateSearchVO.setStartMin("00");
+			dateSearchVO.setSearchEndDate(sdf.format(today));
+			dateSearchVO.setEndHour(8);
+			dateSearchVO.setEndMin("00");
+		}
 		
 		//검색 날짜 조건 결합
-		String startDate=searchStartDate+" "+startHour+":"+startMin;
-		String endDate=searchEndDate+" "+endHour+":"+endMin;
+		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
+		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();
 		
 		//검색 조건 해쉬맵에 저장
 		HashMap<String, Object> searchOption=new HashMap<String, Object>();
 		searchOption.put("searchStartDate", startDate);
 		searchOption.put("searchEndDate", endDate);
-		searchOption.put("carType", carType);
+		searchOption.put("carType", dateSearchVO.getCarType());
 		
 		//DB작업
 		List<Map<String, Object>> clist=rService.searchNormal(searchOption);
@@ -82,13 +91,12 @@ public class RealTimeController {
 	}
 	
 	@RequestMapping("/reservInfo.do")
-	public String showReservInfo(@RequestParam String searchStartDate, @RequestParam int startHour, @RequestParam String startMin,
-								 @RequestParam String searchEndDate, @RequestParam int endHour, @RequestParam String endMin,
+	public String showReservInfo(@ModelAttribute DateSearchVO dateSearchVO,
 								 @RequestParam String ccarCarId, Model model, HttpSession session){
 		
 		String userId=(String)session.getAttribute("userId");
 		
-		logger.info("선택한 회사차의 예약 기간 조건 searchStartDate={}, searchEndDate={}", searchStartDate, searchEndDate);
+		logger.info("선택한 회사차의 예약 기간 조건 dateSearchVO={}", dateSearchVO);
 		logger.info("선택한 회사차의 ID값, ccarCarId={}", ccarCarId);
 		logger.info("세션의 유저ID, userId={}", userId);
 		
@@ -108,14 +116,12 @@ public class RealTimeController {
 	
 	@RequestMapping("/reservation.do")
 	public String reservation(@ModelAttribute ReservUserVO reservWho, 			
-							  @RequestParam String searchStartDate, @RequestParam int startHour, @RequestParam String startMin,
-						      @RequestParam String searchEndDate, @RequestParam int endHour, @RequestParam String endMin,																
+							  @ModelAttribute DateSearchVO dateSearchVO,																
 							  @RequestParam String ccarCarId, HttpSession session, Model model) throws ParseException{
 		
 		String userId=(String)session.getAttribute("userId");
 		logger.info("예약하기 - 예약자 로그인 아이디 체크 userid={}", userId);	
 		logger.info("예약하기 - 예약자/운전자 정보 rUvo={}", reservWho);
-		logger.info("예약하기 - 예약기간 searchStartDate={}, searchEndDate={}", searchStartDate, searchEndDate);
 		logger.info("예약하기 - 예약 대상 차 ccarCarId={}", ccarCarId);
 				
 		//예약조건 reserVo에 저장 
@@ -126,8 +132,8 @@ public class RealTimeController {
 		reserVo.setUserTel3(reservWho.getResUTel3());
 		
 		//날짜 문자열 조합
-		String startDate=searchStartDate+" "+startHour+":"+startMin;
-		String endDate=searchEndDate+" "+endHour+":"+endMin;
+		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
+		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();
 		
 		reserVo.setReservStartDate(startDate);		
 		reserVo.setReservEndDate(endDate);

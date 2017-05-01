@@ -96,20 +96,20 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">시작 일시 선택</label>
 				<div class="col-xs-2">
-					<input class="form-control" type="text" id="searchStartDate" name="searchStartDate" value="${param.searchStartDate }" placeholder="시작 날짜 선택">&nbsp;					
+					<input class="form-control" type="text" id="searchStartDate" name="searchStartDate" value="${dateSearchVO.searchStartDate }" placeholder="시작 날짜 선택">&nbsp;					
 				</div>				
 				<div class="col-xs-1">
 					<select class="form-control" name="startHour" id="startHour" title="시간 선택" >
 						<c:forEach begin="8" end="20" var="i">
-							<option value="${i }" <c:if test='${param.startHour==i }'> selected </c:if>>
+							<option value="${i }" <c:if test='${dateSearchVO.startHour==i }'> selected </c:if>>
 							${i }</option>
 						</c:forEach>
 					</select>
 				</div>
 				<div class="col-xs-1">
 					<select class="form-control" name="startMin" id="startMin" title="분 선택" >
-						<option value="00" <c:if test='${param.startMin=="00" }'> selected </c:if>>00</option>
-						<option value="30" <c:if test='${param.startMin=="30" }'> selected </c:if>>30</option>
+						<option value="00" <c:if test='${dateSearchVO.startMin=="00" }'> selected </c:if>>00</option>
+						<option value="30" <c:if test='${dateSearchVO.startMin=="30" }'> selected </c:if>>30</option>
 					</select>
 				</div>
 			</div>
@@ -117,20 +117,20 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">반납 일시 선택</label>
 				<div class="col-xs-2">
-					<input class="form-control" type="text" id="searchEndDate" name="searchEndDate" value="${param.searchEndDate }" placeholder="반납 날짜 선택">&nbsp;
+					<input class="form-control" type="text" id="searchEndDate" name="searchEndDate" value="${dateSearchVO.searchEndDate }" placeholder="반납 날짜 선택">&nbsp;
 				</div>
 				<div class="col-xs-1">
 					<select class="form-control" name="endHour" id="endHour" title="시간 선택">
 						<c:forEach begin="8" end="20" var="i">
-							<option value="${i }" <c:if test='${param.endHour==i }'> selected </c:if>>
+							<option value="${i }" <c:if test='${dateSearchVO.endHour==i }'> selected </c:if>>
 							${i }</option>
 						</c:forEach>
 					</select>							
 				</div>
 				<div class="col-xs-1">
 					<select class="form-control" name="endMin" id="endMin" title="분 선택" >
-						<option value="00" <c:if test='${param.endMin=="00" }'> selected </c:if>>00</option>
-						<option value="30" <c:if test='${param.endMin=="30" }'> selected </c:if>>30</option>
+						<option value="00" <c:if test='${dateSearchVO.endMin=="00" }'> selected </c:if>>00</option>
+						<option value="30" <c:if test='${dateSearchVO.endMin=="30" }'> selected </c:if>>30</option>
 					</select>
 				</div>
 			</div>
@@ -139,9 +139,10 @@
 				<label class="col-sm-2 control-label">차종</label>
 				<div class="col-sm-2">
 					<select class="form-control" name="carType" id="carType" title="차종">
+						<option value="0" <c:if test='${dateSearchVO.carType==carcate.carCategoryNum }'> selected </c:if>>선택</option>
 						<c:forEach var="carcate" items="${catelist }">
 							<option value=${carcate.carCategoryNum } 
-								<c:if test='${param.carType==carcate.carCategoryNum }'> selected </c:if> >
+								<c:if test='${dateSearchVO.carType==carcate.carCategoryNum }'> selected </c:if> >
 								${carcate.carCategoryName } </option>
 						</c:forEach>
 					</select>					
@@ -160,8 +161,8 @@
 <div>
 	<c:if test="${!empty clist }">
 		<div class=form-group>
-			<label class="col-sm-6">검색하신 예약 기간: <span class="fontStyle1">${param.searchStartDate} ${param.startHour}:${param.startMin} 
-				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</span></label>
+			<label class="col-sm-6">검색하신 예약 기간: <span class="fontStyle1">${dateSearchVO.searchStartDate} ${dateSearchVO.startHour}:${dateSearchVO.startMin} 
+				~ ${dateSearchVO.searchEndDate} ${dateSearchVO.endHour}:${dateSearchVO.endMin}</span></label>
 		</div>		
 		<table class="table table-bordered table-hover">
 			<colgroup>
@@ -246,14 +247,14 @@
 								<a href='<c:url 
 								value="/inc_user/reservInfo.do
 								?ccarCarId=${map['CCAR_CAR_ID'] }
-								&searchStartDate=${param.searchStartDate }
-								&startHour=${param.startHour}
-								&startMin=${param.startMin }
-								&searchEndDate=${param.searchEndDate }
-								&endHour=${param.endHour }
-								&endMin=${param.endMin }
+								&searchStartDate=${dateSearchVO.searchStartDate }
+								&startHour=${dateSearchVO.startHour}
+								&startMin=${dateSearchVO.startMin }
+								&searchEndDate=${dateSearchVO.searchEndDate }
+								&endHour=${dateSearchVO.endHour }
+								&endMin=${dateSearchVO.endMin }
 								" />'>
-							<button id="selectThisCar" class="btn btn-success">이 차 예약!</button> </a>
+							<button id="selectThisCar" class="btn btn-success">예약하기</button> </a>
 							</td>					
 						</tr>
 					</c:forEach>
