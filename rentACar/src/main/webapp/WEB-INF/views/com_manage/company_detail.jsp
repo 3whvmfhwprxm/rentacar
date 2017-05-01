@@ -60,6 +60,8 @@ textarea.form-control {
     height: 135px;
    /* margin-top: px;*/
 }
+#comAddress{width: 80%; }
+#submitdiv{text-align: right;}
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -88,17 +90,24 @@ textarea.form-control {
 						 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
 						 $("#comLogo").val("");
 						 return;
+				     } else {
+			            file = $('#comLogo').prop("files")[0];
+			            blobURL = window.URL.createObjectURL(file);
+			            $('#image_preview img').attr('src', blobURL);
+			            $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
 				     }
-				}
-
+			 }
+			 $('#image_preview').show();
 			/* if(!/(\.png|\.PNG|\.jpg|\.JPG|\.bmp|\.BMP|\.gif|\.GIF)$/i.test(str)) {
 	            alert("jpg, png, bmp, gif 파일만 등록할 수 있습니다.");
 	            $("#comLogo").val("");
 	            return;
 	        } */
 		});
-		
+
 	});
+
+	//휴대폰  정규식
 	function validate_hp(hp){
 		var pattern = new RegExp(/^[0-9]*$/g);
 		return pattern.test(hp);
@@ -109,11 +118,22 @@ textarea.form-control {
 		return 값이 true면 정규식을 통과 false면 정규식을 통과하지못했음을 의미
 		*/
 	}
-		</script>
+	
+	//주소  불러오기
+	function goPopup(){
+		window.open("../userzipcode/jusoPopup.do","pop",
+				"width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+	function jusoCallBack(addrDetail){
+		document.frmEdit.comAddress.value = addrDetail;
+	}
+	
+</script>
 </script>
 <section id="contact"><br>
 	<div class="container">
-		<form name="frmEdit" id="frmEdit" method="post" action="<c:url value='/com_manage/company_detail.do' />">
+		<form name="frmEdit" id="frmEdit" method="post" enctype="multipart/form-data"
+		action="<c:url value='/com_manage/company_detail.do' />">
 		<input type="hidden" name="comId" value="${companyVo.comId}">
 		<input type="hidden" name="comName" value="${companyVo.comName}">
 		<input type="hidden" name="comNum" value="${companyVo.comNum}">
@@ -177,7 +197,9 @@ textarea.form-control {
 									</tr>
 									<tr>
 										<td>주소</td>
-										<td><input type="text" name="comAddress" id="comAddress" value="${companyVo.comAddress}"></td>
+										<td><input type="text" name="comAddress" id="comAddress" readonly="readonly"  
+										value="${companyVo.comAddress}" >
+										<input type="Button" value="주소찾기" id="btnZipcode" title="새창열림" onClick="goPopup()"></td>
 									</tr>
 									<tr>
 										<td>이메일</td>
@@ -186,15 +208,18 @@ textarea.form-control {
 									<tr>
 										<td>업체 로고</td>
 										<td>
-										<input type="file" name="comLogo" id="comLogo" value="${companyVo.comLogo}" >
 										<c:if test="${!empty companyVo.comLogo}">
-										<span class="sp1"></span>
-								            <span style="color:darkgreen;font-weight: bold">
-								            	※ 첨부 파일을 새로 지정할 경우 기존파일 
-								            	<img src="<c:url value='/images/file.gif'/>" 
-								            		alt="파일 이미지">
-								            	${companyVo.comLogo } 은 삭제됩니다.	
-								            </span>
+										<div id="image_preview" ><img src="#" /></div>
+										</c:if>
+										<input type="file" name="comLogo" id="comLogo" value="${companyVo.comLogo}" size="36">
+										<c:if test="${!empty companyVo.comLogo}">
+											<span class="sp1"></span>
+									            <span style="color:darkgreen;font-weight: bold">
+									            	※ 첨부 파일을 새로 지정할 경우 기존파일 
+									            	<img src="<c:url value='/images/file.gif'/>" 
+									            		alt="파일 이미지">
+									            	${companyVo.comLogo } 은 삭제됩니다.	
+									            </span>
 										</c:if>
 										</td>
 									</tr>
@@ -202,7 +227,9 @@ textarea.form-control {
 							</table>
 						</div>
 					</div>
-					<input class="btn btn-default submit" type="submit" id="detailSubmit" value="수정">
+					<div id="submitdiv">
+						<input class="btn btn-default submit" type="submit" id="detailSubmit" value="수정">
+					</div>
 				</div>
 			</div>
 		</div>

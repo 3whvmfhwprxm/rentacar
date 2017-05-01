@@ -41,13 +41,6 @@ public class CompanyController {
 		
 		return "login_company/com_login";
 	}
-	@RequestMapping(value="/com_login2.do", method=RequestMethod.GET)
-	public String loginPage_get2(){
-		logger.info("로그인 화면 보여주기");
-		
-		return "login_company/com_login2";
-	}
-	
 	@RequestMapping(value="/com_login.do", method=RequestMethod.POST)
 	public String login_post(HttpServletRequest request,@RequestParam String comId,
 			@RequestParam String comPwd,
