@@ -68,4 +68,10 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 	}
 
 
+	@Override
+	public int ReservTotalRecord(SearchVO searchVo) {
+		return ccarOptionDao.ReservTotalRecord(searchVo);
+	}
+
+
 }

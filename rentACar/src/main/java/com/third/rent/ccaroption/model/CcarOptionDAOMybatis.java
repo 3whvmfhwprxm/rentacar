@@ -62,6 +62,11 @@ public class CcarOptionDAOMybatis extends SqlSessionDaoSupport
 	public List<Map<String, Object>> selectComReserv(SearchVO searchVo) {
 		return getSqlSession().selectList(namespace+".selectComReserv", searchVo);
 	}
+
+	@Override
+	public int ReservTotalRecord(SearchVO searchVo) {
+		return getSqlSession().selectOne(namespace+".ReservTotalRecord", searchVo);
+	}
 	
 }
 

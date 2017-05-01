@@ -331,7 +331,7 @@ public class CcarOptionController {
 		
 		
 
-		int totalRecord = ccarOptionService.selectTotalRecord(searchVo);
+		int totalRecord = ccarOptionService.ReservTotalRecord(searchVo);
 		logger.info("업체 차량목록 조회 - 전체 업체 차량 조회 결과, totalRecord={}",
 				totalRecord);
 

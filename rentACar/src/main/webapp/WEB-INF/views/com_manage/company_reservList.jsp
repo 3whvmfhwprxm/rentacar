@@ -37,8 +37,8 @@
 	
 	jQuery(function(){
 		jQuery("tr").each(function(idx){
-			jQuery("#tra0").hide();
-			jQuery("#trb0").hide();
+			jQuery("#tra"+idx).hide();
+			jQuery("#trb"+idx).hide();
 			
 			jQuery("#bt"+idx).click(function(){
 				jQuery("#tra"+idx).toggle();
@@ -84,6 +84,19 @@
         <!--table-->
        <table class="table table-striped">
        <thead>
+       <colgroup>
+    		<col width="10%">
+    		<col width="10%">
+    		<col width="10%">
+    		<col width="10%">
+    		<col width="10%">
+    		<col width="10%">
+    		<col width="10%">
+    		<col width="10%">
+    		<col width="8%">
+    		<col width="12%">
+    		<col width="10%">
+    	</colgroup>
        		<tr>
   				<th>차량번호</th>
 				<th>모델명</th>
@@ -105,7 +118,7 @@
 			<td>${map['CCAR_CAR_ID'] }</td>
 			<td>${map['CAR_NAME'] }</td>
 			<td>${map['RES_U_NAME'] }</td>
-			<td>${map['RES_U_TEL1'] } - ${map['RES_U_TEL2'] } - ${map['RES_U_TEL3'] }</td>
+			<td>${map['RES_U_TEL1'] }-${map['RES_U_TEL2'] }-${map['RES_U_TEL3'] }</td>
 			<td>${map['PAY_MONEY'] }</td>
 			<td>${map['RESERV_START_DATE'] }</td>
 			<td>${map['RESERV_END_DATE'] }</td>
@@ -122,7 +135,7 @@
         	<td>결제한 날짜</td>
         	<td>진행 상태</td>
         	<td>할인 금액</td>
-        	<td>하나더</td>
+        	<td>보험 여부</td>
         </tr>
         <tr id="trb${i.index }" style="display: show;">
         	<td></td>
@@ -132,8 +145,8 @@
         	<td>${map['RESERV_DATE'] }</td>
         	<td>${map['PAY_REGDATE'] }</td>
         	<td>${map['PAY_CONDITION'] }</td>
-        	<td>#</td>
-        	<td>#</td>
+        	<td>${map['PAY_DISCOUNT'] }</td>
+        	<td>${map['RESERV_INSURANCE'] }</td>
         </tr>
 	</c:forEach>
 	 <!-- 반복끝 --> 
@@ -175,16 +188,16 @@
 	</div>
 		<div class="divSearch">
 				<form name="frmSearch" method="post"
-					action="<c:url value="/com_manage/company_ccarList.do" />">
+					action="<c:url value="/com_manage/company_reservList.do" />">
 					<select name="searchCondition">
-						<option value="com_id"
-							<c:if test="${'com_id'==param.searchCondition}">
+						<option value="ccar_car_id"
+							<c:if test="${'ccar_car_id'==param.searchCondition}">
 		           		selected            	
 		           	</c:if>>차량번호</option>
-						<option value="com_name"
-							<c:if test="${'com_name'==param.searchCondition}">
+						<option value="res_u_name"
+							<c:if test="${'res_u_name'==param.searchCondition}">
 		           		selected            	
-		           	</c:if>>차량모델코드</option>
+		           	</c:if>>예약자이름</option>
 					</select> <input type="text" name="searchKeyword" title="검색어 입력"
 						value="${param.searchKeyword}"> <input type="submit"
 						value="검색">

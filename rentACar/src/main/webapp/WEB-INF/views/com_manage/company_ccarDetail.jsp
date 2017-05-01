@@ -28,6 +28,7 @@
     <div class="row col-md-6 col-md-offset-2 custyle">
     <table class="table table-striped custab">
     <legend>차량 상세 정보</legend>
+    
     	<colgroup>
     		<col width="25%">
     		<col width="33%">

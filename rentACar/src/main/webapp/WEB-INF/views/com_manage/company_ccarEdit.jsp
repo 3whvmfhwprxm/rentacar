@@ -29,6 +29,18 @@
 	
 </script>
 <!-- 차량 수정 하기  -->
+
+	<div class="divList container">
+	<h4>차량정보 수정 가이드</h4> 
+	<pre>
+		<code>
+		     
+		   <span><b>*</b>차량 차대번호는 수정이 불가하며, <br>
+		    모델 코드는 제조사 모델명을 선택하면 자동으로 <br>
+		    입력됩니다.</span>
+    	</code>
+	</pre>
+	</div>
 <div class="divList container">
 		<form class="form-horizontal" id="frmCo" method="post"
 			action="<c:url value='/com_manage/company_ccarEdit.do'/>" >

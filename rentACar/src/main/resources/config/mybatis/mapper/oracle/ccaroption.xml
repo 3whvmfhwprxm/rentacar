@@ -94,6 +94,13 @@
 		where <!-- com_id= 'rentGo' and --> comcar_outdate is null
 		<include refid="searchWhere"></include>
 	</select>
+	
+	<select id="ReservTotalRecord" parameterType="SearchVO" resultType="int">
+		select count(*) 
+			from com_reservView
+		where <!-- com_id= 'rentGo' and --> comcar_outdate is null
+		<include refid="searchWhere"></include>
+	</select>
 
 	<update id="updateCarOption" parameterType="CcarOptionVO">
 		update companycaroption 

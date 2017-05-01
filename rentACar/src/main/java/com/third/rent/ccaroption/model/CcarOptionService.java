@@ -20,4 +20,5 @@ public interface CcarOptionService {
 	public int checkCarId(String ccarCarId);
 	public int updateCarUseYn(CcarOptionVO vo);
 	public List<Map<String, Object>> selectComReserv(SearchVO searchVo);
+	public int ReservTotalRecord(SearchVO searchVo);
 }
