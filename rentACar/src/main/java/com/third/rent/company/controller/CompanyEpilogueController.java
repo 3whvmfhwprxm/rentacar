@@ -1,12 +1,11 @@
 package com.third.rent.company.controller;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,11 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_Board.model.Admin_BoardService;
-import com.third.rent.admin_Company.model.Admin_CompanyService;
 import com.third.rent.common.FileUploadWebUtil;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
@@ -39,7 +35,7 @@ public class CompanyEpilogueController {
 	private static final Logger logger=LoggerFactory.getLogger(CompanyEpilogueController.class);
 	
 	@Autowired
-	private FileUploadWebUtil evtImgUpload;
+	private FileUploadWebUtil fileUploadWebUtil;
 	
 	@Autowired
 	private Admin_BoardService adService;
@@ -114,12 +110,10 @@ public class CompanyEpilogueController {
 	}*/
 	
 	@RequestMapping(value="/company_detail.do", method=RequestMethod.POST)
-	public String companyEdit_post(@ModelAttribute CompanyVO companyVo,@RequestParam String comLogo,
-			HttpServletRequest request, Model model){
+	public String companyEdit_post(@ModelAttribute CompanyVO companyVo,
+			@RequestParam("comlogo") MultipartFile uploadfile, Model model) throws IOException {
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
 		
-		//List<Map<String, Object>> fileList= evtImgUpload.fileUpload(request, FileUploadWebUtil.IMAGE_UPLOAD);
-
 		int cnt = comService.updateCompany(companyVo);
 		logger.info("업체 수정 결과 cnt={}", cnt);
 		
@@ -136,8 +130,7 @@ public class CompanyEpilogueController {
 		
 		return "common/message";
 	}
-	
-	
+
 	@RequestMapping("/company_revenue.do")
 	public String consultation_inquiry(Model model){
 		logger.info("매출 통계 화면 구현");

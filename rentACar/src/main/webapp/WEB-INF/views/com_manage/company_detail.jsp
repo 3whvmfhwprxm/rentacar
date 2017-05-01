@@ -211,7 +211,7 @@ textarea.form-control {
 										<c:if test="${!empty companyVo.comLogo}">
 										<div id="image_preview" ><img src="#" /></div>
 										</c:if>
-										<input type="file" name="comLogo" id="comLogo" value="${companyVo.comLogo}" size="36">
+										<input type="file" name="comlogo" id="comLogo" value="${companyVo.comLogo}" size="36">
 										<c:if test="${!empty companyVo.comLogo}">
 											<span class="sp1"></span>
 									            <span style="color:darkgreen;font-weight: bold">
