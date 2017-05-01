@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LogoutController {
 	private static final Logger logger=LoggerFactory.getLogger(LogoutController.class);
 	
-	@RequestMapping("/inc_user/logout.do")
+	@RequestMapping("/user/logout.do")
 	public String logout(HttpSession session){
 		logger.info("로그아웃 처리, 파라미터");
 
 		session.invalidate();
 		
-		return "redirect:/inc_user/index.do";
+		return "redirect:/user/index.do";
 	}
 }

@@ -27,7 +27,7 @@ public class ConfirmController {
 	@Autowired
 	private ReservationService reservationService;
 	
-	@RequestMapping("/inc_user/confirm.do")
+	@RequestMapping("/user/confirm.do")
 	public String showConfirm(@ModelAttribute SearchVO searchVo, HttpSession session, Model model){
 		String userId=(String)session.getAttribute("userId");
 		logger.info("예약확인 화면 띄우기 userId={}", userId);
@@ -43,7 +43,7 @@ public class ConfirmController {
 		//로그인되었는지 체크
 		if(userId==null || userId.isEmpty()){
 			model.addAttribute("msg", "먼저 로그인하세요");
-			model.addAttribute("url", "/inc_user/login.do");
+			model.addAttribute("url", "/user/login.do");
 			return "common/message";
 		}
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -63,7 +63,7 @@ public class ConfirmController {
 		model.addAttribute("alist", alist);
 		model.addAttribute("pagingInfo", pagingInfo);
 		
-		return "inc_user/confirm";
+		return "user/confirm";
 		
 	}
 }

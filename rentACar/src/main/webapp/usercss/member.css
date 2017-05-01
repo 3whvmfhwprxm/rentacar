@@ -1,0 +1,89 @@
+/* 로그인 */
+.mem_login { width:720px; margin:60px auto;border:5px solid #e2e2e2; overflow:hidden; background:url('/images/member/login_img1.jpg') no-repeat right;  }
+.mem_login .login_box { width:355px; position:relative; margin:30px 0 30px 40px; overflow:hidden; }
+.mem_login .login_box .input_box { float:left; padding-left:5px; padding-right:10px;}
+.mem_login .login_box .input_box input  { width:200px;   }
+.mem_login .login_box .input_box .text01 { display:block; padding:0; margin:0;  }
+.mem_login .login_box .input_box .text02 { display:block; padding:10px 0; margin:0;  }
+
+.mem_login .login_box  a { display:block; float:left; margin-left:10px;  }
+.mem_login .login_box .chk_id { clear:both; padding-left:7px;}
+
+.mem_login .login_box .p_box  { border-top:1px solid #e2e2e2; overflow:hidden; margin-top:25px; padding-top:30px; }
+.mem_login .login_box .p_box p { clear:both; overflow:hidden; width:355px;  }
+.mem_login .login_box .p_box p span img{ padding-top:5px;  }
+.mem_login .login_box .p_box p span{ display:block; float:left; vertical-align:bottom; width:263px;  }
+.mem_login .login_box .p_box p a { display:block; float:left; vertical-align:middle; padding-bottom:10px;  }
+.contents .join-bg { background-color:#f6f6f6; width:716px; padding:15px; text-align:center; margin:20px 0 0 0; }
+
+/* 아이디/비밀번호 찾기 */
+.id_search { margin:0 0 50px 0; overflow:hidden; }
+.id_search .member_tab {  margin-top:30px; overflow:hidden; background:url('/images/mypage/tab_line.gif') repeat-x;}
+.id_search .member_tab li {display:block; float:left; }
+.id_search h3 { padding-top:20px; }
+.id_search .confirm  { border:1px solid #e2e2e2; overflow:hidden; margin-top:10px; padding:50px 0; }
+.id_search .confirm ul { padding-left:10px;  }
+.id_search .confirm ul li { float:left; display:block; padding-left:55px;  }
+.id_search .confirm ul li.first { width:294px; border-right:1px solid #e2e2e2; }
+.id_search p { padding:15px 0; line-height:18px; }
+
+.id_search .result  { border:1px solid #e2e2e2; overflow:hidden; margin-top:10px; padding:30px 0; }
+.id_search .result .img { display:block; float:left; padding:0 50px 0 110px; }
+.id_search .result p { line-height:18px; display:block; float:left; padding-top:30px;  }
+.id_search .result p b { display:block; font-size:14px; font-weight:normal; padding-bottom:10px; }
+
+.id_search .result .pw_t {display:block; float:left; padding-top:15px;}
+.id_search .result .pw_t li {display:block; padding-bottom:10px;}
+.id_search .result .pw_t li img {padding-top:8px; padding-right:60px;}
+.id_search .result .pw_t li img.padding2 {padding-right:58px;}
+.id_search .result .pw_t li img.padding3 {padding-right:36px;}
+
+
+/* 이용약관 */
+.agreement {margin-top:10px; overflow:hidden; line-height:18px;}
+.agreement p {overflow:hidden;font-weight:bold; color:#333; padding:20px 0 10px 0;}
+.agreement th.nont_font { font-weight:normal; }
+.agreement th.align_left { text-align:left; padding-left:20px; font-size:12px;}
+.link {clear:both; margin:0 0 50px 0;}
+.link p {font-weight:bold; padding-top:20px;}
+
+/* 개인정보 */
+.privacy {margin-top:30px; overflow:hidden; line-height:18px;}
+.privacy p {overflow:hidden;font-weight:bold; color:#333; padding:15px 0 10px 0;}
+.privacy th.nont_font { font-weight:normal;}
+.privacy th.align_left { text-align:left; padding-left:20px; font-size:12px;}
+
+
+/* 자동차 정비 -지도보기 */
+.contents .agreement_popup {  width:590px; margin:20px auto; overflow:hidden; padding-bottom:40px; line-height:18px; font-size:12px}
+.contents .agreement_popup table td { font-size:12px}
+.contents .agreement_popup h2{ display:block; padding:10px 0 5px 25px; text-align:left; font-weight:bold; background:url('/images/repair/ic_red_arrow.gif') no-repeat 7px 10px; }
+.contents .agreement_popup p {font-weight:bold; color:#333; padding-top:20px; padding-bottom:10px;}
+.contents .agreement_popup th.nont_font { font-weight:normal;}
+.contents .agreement_popup .underline {text-decoration:underline;color:#333;}
+
+
+/* 이메일 무단수집 거부 */
+.contents .email_box { margin-top:50px; position:relative;}
+.contents .email_box .text_box { overflow:hidden; padding-bottom:40px; background:url(/images/member/dotlline.gif) bottom left repeat-x; }
+.contents .email_box .text_box .text1 { display:block; float:left; padding:27px 0 20px 25px;  }
+.contents .email_box .text_box .img1 { display:block; position:absolute; top:25px; right:10px; }
+
+/* 활성화 */
+.activation-wrap { width:730px; margin:0 auto; position:relative; }
+.activation-wrap .activation-info { width:730px;}
+.activation-wrap .activation-btn-wrap { width:730px; height:40px; }
+.activation-btn-wrap dl { float:left; }
+.activation-btn-wrap dl.leave-wrap { float:right; }
+.activation-btn-wrap dl dt { float:left; padding-top:10px;}
+.activation-btn-wrap dl dd { float:left; padding-left:10px;}
+
+
+/* 이용약관 등 스크롤박스 */
+.text-box {width:724px;height:130px;padding:10px;overflow-y:scroll;border:1px solid #dddddd;font-size:11px;line-height:18px;}
+.text-box table { width:90%; margin:10px auto;}
+.text-box table td { border:1px solid #dddddd; padding:5px; line-height:18px; }
+.text-box table th { text-align:center; padding:5px;}
+
+
+.text-summary.etc { font-size:11px; color:#878787;}

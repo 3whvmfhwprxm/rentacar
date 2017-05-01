@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="top.jsp"%>
+<%@ include file="../inc_user/top.jsp"%>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://service.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/coupon_style.css" />
@@ -21,7 +21,7 @@
 			}, function(rsp) {
 			    if ( rsp.success ) {		    	
 			    	$.ajax({
-			    		url:'<c:url value="/inc_user/payOK.do" />',
+			    		url:'<c:url value="/user/payOK.do" />',
 			    		type:'POST',
 			    		data:{payNo:rsp.merchant_uid, 
 			    			  reservNum:rsp.custom_data.reservNum, 
@@ -35,7 +35,7 @@
 			    		dataType:'json',
 			    		success:function(res){
 			    			alert('결제가 완료됐습니다.');
-			    			location.href="<c:url value='/inc_user/confirm.do' />";
+			    			location.href="<c:url value='/user/confirm.do' />";
 			    		},error:function(xhr, status, error){
 			    			$("#payInfo").html("<span> 결제 정보 입력 실패 </span>");
 			    		}			    		

@@ -20,14 +20,14 @@ public class RegisterController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/inc_user/register.do", method=RequestMethod.GET)
+	@RequestMapping(value="/user/register.do", method=RequestMethod.GET)
 	public String insertLogin_get(){
 		logger.info("회원가입화면 띄우기");
 		
-		return "inc_user/register";
+		return "user/register";
 	}
 	
-	@RequestMapping(value="/inc_user/register.do",method=RequestMethod.POST)
+	@RequestMapping(value="/user/register.do",method=RequestMethod.POST)
 	public String insertLogin_post(@ModelAttribute UserVO userVo, Model model){
 		//1
 		logger.info("회원가입처리, 파라미터 UserVO={}",userVo);
@@ -64,10 +64,10 @@ public class RegisterController {
 		String msg="", url="";
 		if(cnt>0){
 			msg="회원가입되었습니다";
-			url="/inc_user/index.do";
+			url="/user/index.do";
 		}else{
 			msg="회원가입 실패";
-			url="/inc_user/register.do";
+			url="/user/register.do";
 		}
 		//3
 		model.addAttribute("msg", msg);

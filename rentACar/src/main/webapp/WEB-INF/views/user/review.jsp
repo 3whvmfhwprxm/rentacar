@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="top.jsp" %>
+<%@ include file="../inc_user/top.jsp" %>
 
 <div class="container">
 <h2 style="font-family:'Saysettha OT'; src:url(http://foton.com.la/font/Saysettha OT.ttf); color:#6306CE;">Review</h2>
@@ -119,4 +119,4 @@
 
 		var map = new daum.maps.Map(container, options);
 	</script> -->
-<%@ include file="bottom.jsp" %>
+<%@ include file="../inc_user/bottom.jsp" %>

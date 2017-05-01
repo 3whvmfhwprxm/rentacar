@@ -17,7 +17,7 @@ public class CheckUserIdController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/inc_user/checkUserid.do")
+	@RequestMapping("/user/checkUserid.do")
 	public String checkUserid(@RequestParam String userId, Model model){
 		//1
 		logger.info("아이디 중복확인, 파라미터 userid={}", userId);
@@ -34,6 +34,6 @@ public class CheckUserIdController {
 		model.addAttribute("EXIST_ID", UserService.EXIST_ID);
 		model.addAttribute("NONE_EXIST_ID", UserService.NONE_EXIST_ID);
 
-		return "inc_user/checkUserid";
+		return "user/checkUserid";
 	}
 }

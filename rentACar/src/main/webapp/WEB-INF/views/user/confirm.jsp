@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="top.jsp" %>
+<%@ include file="../inc_user/top.jsp" %>
 
 <script type="text/javascript">	
 	function pageFunc(curPage){
@@ -9,7 +9,7 @@
 		frmPage.submit();
 	}
 </script>
-	<form name="frmPage" method="post" action='<c:url value="/inc_user/confirm.do" />'>
+	<form name="frmPage" method="post" action='<c:url value="/user/confirm.do" />'>
 		<input type="hidden" name="currentPage">
 	</form>
 <br><br>
@@ -92,4 +92,4 @@
 		<div class="col-md-4"></div>
 	</div>
 </div>
-<%@ include file="bottom.jsp" %>
+<%@ include file="../inc_user/bottom.jsp" %>

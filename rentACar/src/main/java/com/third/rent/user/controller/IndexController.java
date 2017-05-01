@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 	private static final Logger logger=LoggerFactory.getLogger(IndexController.class);
 	
-	@RequestMapping("/inc_user/index.do")
+	@RequestMapping("/user/index.do")
 	public String showIndex(){
 		logger.info("메인화면 띄우기");
 		
-		return "inc_user/index";
+		return "user/index";
 		
 	}
 }

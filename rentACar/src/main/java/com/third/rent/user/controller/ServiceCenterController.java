@@ -26,7 +26,7 @@ public class ServiceCenterController {
 	@Autowired
 	private Admin_BoardService adService;
 	
-	@RequestMapping(value="/inc_user/serviceCenter.do", method=RequestMethod.GET)
+	@RequestMapping(value="/user/serviceCenter.do", method=RequestMethod.GET)
 	public String showServiceCenter(@ModelAttribute SearchVO searchVo, Model model){
 		//1
 		logger.info("고객센터 화면 띄우기 ");
@@ -50,6 +50,6 @@ public class ServiceCenterController {
 		model.addAttribute("unList", unList);
 		model.addAttribute("pagingInfo", pagingInfo);
 		//뷰페이지 리턴
-		return "inc_user/serviceCenter";
+		return "user/serviceCenter";
 	}
 }

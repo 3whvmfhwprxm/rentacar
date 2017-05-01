@@ -21,7 +21,7 @@ public class RegEditController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/inc_user/regedit.do", method=RequestMethod.GET)
+	@RequestMapping(value="/user/regedit.do", method=RequestMethod.GET)
 	public String userEdit_get(HttpSession session, Model model){
 		String userId=(String)session.getAttribute("userId");
 		logger.info("수정화면 보여주기 userId={}",userId);
@@ -35,10 +35,10 @@ public class RegEditController {
 		UserVO vo=userService.selectByUserid(userId);
 		logger.info("수정화면, 회원정보조회 vo={}",vo);
 		model.addAttribute("vo", vo);
-		return "inc_user/regedit";
+		return "user/regedit";
 	}
 	
-	@RequestMapping(value="/inc_user/regedit.do",method=RequestMethod.POST)
+	@RequestMapping(value="/user/regedit.do",method=RequestMethod.POST)
 	public String userEdit_post(@ModelAttribute UserVO vo, HttpSession session, Model model){
 		logger.info("회원수정, 파라미터 vo={}",vo);
 		String userId=(String)session.getAttribute("userId");
@@ -58,7 +58,7 @@ public class RegEditController {
 
 		
 		int result=userService.loginCheck(vo.getUserId(), vo.getUserPwd());
-		String msg="", url="/inc_user/regedit.do";
+		String msg="", url="/user/regedit.do";
 		if(result==userService.LOGIN_OK){
 			int cnt=userService.updateUser(vo);
 			logger.info("회원수정 결과, cnt={}", cnt);

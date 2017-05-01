@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ClauseController {
 	private static final Logger logger=LoggerFactory.getLogger(ClauseController.class);
 	
-	@RequestMapping("/inc_user/clause.do")
+	@RequestMapping("/user/clause.do")
 	public String showIndex(){
 		logger.info("이용약관 띄우기");
 		
-		return "inc_user/clause";
+		return "user/clause";
 		
 	}
 }

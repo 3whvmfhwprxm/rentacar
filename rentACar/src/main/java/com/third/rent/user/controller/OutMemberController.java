@@ -20,13 +20,13 @@ public class OutMemberController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/inc_user/outMember.do", method=RequestMethod.POST)
+	@RequestMapping(value="/user/outMember.do", method=RequestMethod.POST)
 	public String edit_post(@RequestParam String userPwdmd, HttpSession session, HttpServletResponse response, Model model){
 		String userId=(String) session.getAttribute("userId");
 		logger.info("회원탈퇴 처리, 파라미터 userid={},userPwdmd={}", userId,userPwdmd);
 
 		int result = userService.loginCheck(userId, userPwdmd);
-		String msg="", url="/inc_user/regedit.do";
+		String msg="", url="/user/regedit.do";
 
 		if(result==userService.LOGIN_OK){
 			int cnt = userService.outMember(userId);
@@ -41,7 +41,7 @@ public class OutMemberController {
 				response.addCookie(ck);
 				
 				msg="회원 탈퇴처리되었습니다.";
-				url="/inc_user/index.do";
+				url="/user/index.do";
 			}else{
 				msg="회원탈퇴 실패";
 			}

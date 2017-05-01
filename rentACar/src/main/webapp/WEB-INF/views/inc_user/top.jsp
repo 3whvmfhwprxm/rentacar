@@ -3,12 +3,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
     
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
 <title>유저메인</title>
+<script type="text/javascript">
+	var child;
+ 	function openJoin(){
+ 		child = window.open("<c:url value='/user/clause.do'/>", 'reg',
+			"height=700,width=790,left=200,top=50,toolbar=no,scrollbars=yes,status=no,resizable=yes");
+ 	}
+ 	 window.allright = function(){
+ 		location.href="<c:url value='/user/register.do'/>";
+ 	}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -54,7 +65,7 @@
     <div class="navbar navbar-inverse set-radius-zero">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/inc_user/index.do"">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/user/index.do"">
                     <img src="${pageContext.request.contextPath}/user_img/indexlogo.png" />
                 </a>
             </div>
@@ -82,10 +93,10 @@
                                 </c:if>
                                 <hr />
                                 <c:if test="${!empty sessionScope.userId }">
-	                                <a href="${pageContext.request.contextPath}/inc_user/regedit.do" class="btn btn-info btn-sm">Regedit</a>&nbsp; <a href="${pageContext.request.contextPath}/inc_user/logout.do" class="btn btn-danger btn-sm">Logout</a>
+	                                <a href="${pageContext.request.contextPath}/user/regedit.do" class="btn btn-info btn-sm">Regedit</a>&nbsp; <a href="${pageContext.request.contextPath}/user/logout.do" class="btn btn-danger btn-sm">Logout</a>
                                 </c:if>
                                 <c:if test="${empty sessionScope.userId }">
-	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/inc_user/login.do" class="btn btn-danger btn-sm">Login</a>
+	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/login.do" class="btn btn-danger btn-sm">Login</a>
                                 </c:if>
                                 
                             </div>
@@ -103,22 +114,29 @@
                     <div class="navbar-collapse collapse ">
                     <c:if test="${empty sessionScope.userId }">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="${pageContext.request.contextPath}/inc_user/realTime.do">실시간예약</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/confirm.do">예약확인</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/review.do">이용후기</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/serviceCenter.do">고객센터</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/benefits.do">이용혜택</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/login.do">LOGIN</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/register.do">회원가입</a></li>
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" >회사소개<span class="caret"></span></a>
+                            	<ul class="dropdown-menu" role="menu" style="background-color: #00679a;">
+				                <li><a href="<c:url value="/user/greeting.do"/>">인사말</a></li>
+				                <li><a href="#">회사위치</a></li>
+				                <li><a href="#">지점안내</a></li>
+				              </ul> 
+                            </li>
+                            <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/review.do">이용후기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">고객센터</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">이용혜택</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/login.do">LOGIN</a></li>
+                            <li><a href="javascript:openJoin();">회원가입</a></li>
                         </ul>
                     </c:if>
                      <c:if test="${!empty sessionScope.userId }">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="${pageContext.request.contextPath}/inc_user/realTime.do">실시간예약</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/confirm.do">예약확인</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/review.do">이용후기</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/serviceCenter.do">고객센터</a></li>
-                            <li><a href="${pageContext.request.contextPath}/inc_user/benefits.do">이용혜택</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/review.do">이용후기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">고객센터</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">이용혜택</a></li>
                         </ul>
                     </c:if>
                     </div>

@@ -27,7 +27,7 @@
 
 	<h2>아이디 중복검사</h2>
 	<div>
-		<form name="frmId" method="post" action="<c:url value='/inc_user/checkUserid.do'/>">
+		<form name="frmId" method="post" action="<c:url value='/user/checkUserid.do'/>">
 			<label for="userId">아이디</label>
 			<input type="text" name="userId" id="userId" value="${param.userId}">
 			<input type="submit" value="아이디 확인">

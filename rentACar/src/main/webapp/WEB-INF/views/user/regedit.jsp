@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="top.jsp" %>
+<%@ include file="../inc_user/top.jsp" %>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#frm1").submit(function(){
@@ -72,7 +72,7 @@
 		} 
 		
 		$("#outmember").attr("method","POST");
-		$("#outmember").attr("action","<c:url value='/inc_user/outMember.do'/>");
+		$("#outmember").attr("action","<c:url value='/user/outMember.do'/>");
 		$("#outmember").submit();
 		
 	}
@@ -87,7 +87,7 @@
 
 <div class="container">
 	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-		<form id="frm1" name="frm1" class="form-horizontal" novalidate method="post" action='<c:url value="/inc_user/regedit.do"/>'>
+		<form id="frm1" name="frm1" class="form-horizontal" novalidate method="post" action='<c:url value="/user/regedit.do"/>'>
 			  <br>
 	          <div class="row">
 	            <label class="control-label col-md-3" for="name">아이디 <span class="required">*</span>
@@ -214,7 +214,7 @@
 						<h4 class="modal-title">회원 탈퇴</h4>
 					</div>
 					<div class="modal-body">
-						<form method="post" name="outmember" id="outmember" action="<c:url value="/inc_user/outMember.do"/>">
+						<form method="post" name="outmember" id="outmember" action="<c:url value="/user/outMember.do"/>">
 							<div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">아이디 <span class="required">*</span>
 					            </label>
@@ -244,4 +244,4 @@
 <!-- /.modal -->
 
 
-<%@ include file="bottom.jsp" %>
+<%@ include file="../inc_user/bottom.jsp" %>

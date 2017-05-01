@@ -1,0 +1,71 @@
+/* 
+ * Nanum Gothic (Korean) http://www.google.com/webfonts/earlyaccess
+ */
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot);
+  src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff2) format('x-woff2'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff) format('woff'),
+       url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.ttf) format('truetype');
+}
+
+
+
+label { cursor:pointer}
+a:link, a:visited { text-decoration:none; color:#666;}
+a:hover, a:focus, a:active { text-decoration:none !important; color:#666;}
+
+a, abbr, acronym, address, applet, article, aside, audio,
+b, blockquote, big, body,
+center, canvas, caption, cite, code, command,
+datalist, dd, del, details, dfn, dl, div, dt, 
+em, embed,
+fieldset, figcaption, figure, font, footer, form, 
+h1, h2, h3, h4, h5, h6, header, hgroup, html,
+i, iframe, img, ins,
+kbd, 
+keygen,
+label, legend, li, 
+meter,
+nav, menu,
+object, ol, output,
+p, pre, progress,
+q, 
+s, samp, section, small, span, source, strike, strong, sub, sup,
+table, tbody, tfoot, thead, th, tr, tdvideo, tt,
+u, ul, 
+var { margin:0; padding:0}
+
+h1, h2, h3, h4, h5, h6, th, td, table, input, button, select, textarea, sub{ font-size:1em}
+body, input, button, select, textarea, sub {margin:0;padding:0;font-size:12px; font-family:'Nanum Gothic',"맑은 고딕",MalgunGothic,dotum,Sans-serif;color:#666666;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, span, div { font-family:'Nanum Gothic',"맑은 고딕",MalgunGothic,dotum,Sans-serif;}
+em, cite, address, optgroup { font-style:normal}
+
+img, input, button, select, textarea { vertical-align:middle}
+ul, ol { list-style:none}
+img, fieldset { border:0}
+abbr, acronym { cursor:help; border-bottom:1px dotted black}
+table {	 border-spacing:0}/* border-collapse: collapse; ff에서 border="0" 인 경우 문제 발생 */
+
+legend, hr { overflow:hidden; position:absolute; top:0; left:0}
+legend, hr, caption { visibility:hidden; font-size:0; width:0; height:0; line-height:0}
+
+/* Html5 Getting the new tags to behave */
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video{ display: block}
+mark, rp, rt, ruby, summary, time{ display: inline }
+
+/**{margin:0;padding:0;font-size:11px;}*/
+html,body,h1,h2,h3,h4,div,ol,ul,li,dl,dt,dd,p,form,input,select,textarea {margin:0;padding:0;}
+div, p, span {margin:0px;padding:0px;}
+dl, dt, dd {margin:0px;padding:0px;}
+ul, ol, li {margin:0px;padding:0px; list-style:none;}
+h1, h2, h3, h4, h5, h6 {margin:0px;padding:0px;}
+table, th, td {margin:0px;border:0px;border-collapse:collapse;}
+img,fieldset,iframe{border:0 none; vertical-align:middle; }
+a {text-decoration:none; border:0px;}
+a:hover{text-decoration:none; border:0px;}
+hr, caption, legend {display:none;}
+.png24{tmp:expression(setPng24(this));}

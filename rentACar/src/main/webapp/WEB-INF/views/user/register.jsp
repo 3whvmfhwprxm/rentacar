@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="top.jsp" %>
+<%@ include file="../inc_user/top.jsp" %>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#frm1").submit(function(){
@@ -56,7 +56,7 @@
 			}else{
 				//유효성 검사를 통과하면 아이디 중복검사한다
 				$.ajax({
-					url:'<c:url value="/inc_user/userAjaxCheckId.do"/>',
+					url:'<c:url value="/user/userAjaxCheckId.do"/>',
 					type:'post',
 					data:'userId='+$("#userId").val(),
 					success:function(res){
@@ -114,8 +114,11 @@
 	}
 </style>
 <div class="container">
-	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-		<form id="frm1" name="frm1" class="form-horizontal" novalidate method="post" action='<c:url value="/inc_user/register.do"/>'>
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2"><br>
+		<div class="join-tab mt-20">
+					<img src="<c:url value="/user_img/tab_join_step_02.gif"/>" alt="step2" />
+		</div>
+		<form id="frm1" name="frm1" class="form-horizontal" novalidate method="post" action='<c:url value="/user/register.do"/>'>
 			  <br>
 	          <div class="row">
 	            <label class="control-label col-md-3" for="name">아이디 <span class="required">*</span>
@@ -232,4 +235,4 @@
 </div>
 	
 	
-<%@ include file="bottom.jsp" %>
+<%@ include file="../inc_user/bottom.jsp" %>

@@ -1,0 +1,136 @@
+/* common css */
+
+.fl{ float:left!important}
+.fr{ float:right!important}
+.tc{ text-align:center!important}
+.tl{ text-align:left!important}
+.tr{ text-align:right!important}
+.vat {vertical-align:top!important;}
+
+/* hidden */
+.hidden { visibility:hidden; position:absolute; font-size:0; width:0; height:0; line-height:0; margin:0; padding:0; background:none}
+.divHide {display:none;}
+
+/* padding */
+/*left*/
+.p_l1 {padding-left:1px;}
+.p_l13 {padding-left:13px;}
+.p_l18 {padding-left:18px;}
+.p_l20 {padding-left:20px;}
+
+/*right*/
+.p_r5 {padding-right:5px;}
+.p_r20 {padding-right:20px;}
+
+/*top*/
+.p_t5 {padding-top:5px;}
+.p_t10 {padding-top:10px;}
+.p_t15 {padding-top:15px;}
+.p_t20 {padding-top:20px;}
+.p_t25 {padding-top:25px;}
+.p_t30 {padding-top:30px;}
+.p_t34 {padding-top:34px;}
+.p_t40 {padding-top:40px;}
+.p_t50 {padding-top:50px;}
+
+
+/*bottom*/
+.p_b10 {padding-bottom:10px;}
+.p_b15 {padding-bottom:15px;}
+.p_b20 {padding-bottom:20px;}
+.p_b30 {padding-bottom:30px;}
+.p_b60 {padding-bottom:60px;}
+
+/* select */
+select { padding:2px;}
+select.select-short { min-width:80px;}
+select.select-middle { min-width:120px;}
+select.select-long { min-width:250px;}
+
+/*input*/
+.input{ border:1px solid #dadada; padding:3px 1px; *padding:3px 1px;}
+.input.name { width:150px;}
+.input.phone { width:100px;}
+.input.post { width:30px;}
+.input.address { width:265px;}
+.input.name { width:150px;}
+.input.title { width:540px;}
+.input.input-full { width:95%;}
+.input.input-short { width:50px;}
+.input.input-middle { width:170px;}
+.input.input-long { width:300px;}
+.input.input-num { width:120px;}
+
+.textarea { border:1px solid #dadada; line-height:16px;}
+.textarea.input-full { width:93%; height:200px; padding:5px 5px 0 5px; margin:10px 0;}
+.textarea.userform { width:540px; height:65px; padding:5px 5px 0 5px;}
+.textarea.contents { width:540px; height:150px; padding:5px 5px 0 5px;}
+
+
+/*search*/
+.search_input{ height:24px; border:1px solid #bcbabd; width:185px; padding:0 1px;}
+
+
+/* margin */
+.mt-0 { margin-top:0;}
+.mt-5 { margin-top:5px;}
+.mt-10 { margin-top:10px;}
+.mt-15 { margin-top:15px;}
+.mt-20 { margin-top:20px;}
+.mt-25 { margin-top:25px;}
+.mt-30 { margin-top:30px;}
+.mt-40 { margin-top:40px;}
+.mt-50 { margin-top:50px;}
+.mt-60 { margin-top:60px;}
+.mt-70 { margin-top:70px;}
+.mt-80 { margin-top:80px;}
+.mt-90 { margin-top:90px;}
+.mt-100 { margin-top:100px;}
+.mt-110 { margin-top:110px;}
+.mt-120 { margin-top:120px;}
+.mt-130 { margin-top:130px;}
+.mb-5 { margin-bottom:5px;}
+.mr-15 { margin-right:15px;}
+
+.ml-20 { margin-left:20px;}
+
+
+/* font color */
+.red { color:#d7040d; }
+.orange { color:#ff6f00; }
+.orange_b { color:#ff6f00; font-weight:bold !important; }
+
+/* clear both */
+.clearBoth { clear:both;} 
+
+/* image button */
+.imgButton { cursor:pointer; } 
+
+/* email at */
+.at { color:#cbcbcb;}
+
+
+/* text */
+.etc { color:#d7a400;}
+.etc.customer { color:#3daa43;}
+.reason { color:#fa7700; font-weight:bold;}
+.b { font-weight:bold; }
+.size12 { font-size:12px; }
+.size11 { font-size:11px; }
+.center {text-align:center}
+
+/*a*/
+a { cursor:pointer;}
+/* a:hover */
+a:hover { color:#333333; text-decoration:underline;}
+
+.clearfix:after { 
+   content: "."; 
+   visibility: hidden; 
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+
+
+

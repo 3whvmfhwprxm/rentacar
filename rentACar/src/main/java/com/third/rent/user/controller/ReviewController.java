@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReviewController {
 	private static final Logger logger=LoggerFactory.getLogger(ReviewController.class);
 	
-	@RequestMapping("/inc_user/review.do")
+	@RequestMapping("/user/review.do")
 	public String showReview(){
 		logger.info("이용후기 화면 띄우기");
 		
-		return "inc_user/review";
+		return "user/review";
 		
 	}
 }

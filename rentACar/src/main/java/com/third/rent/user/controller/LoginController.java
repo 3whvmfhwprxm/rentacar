@@ -1,6 +1,7 @@
 package com.third.rent.user.controller;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,36 +30,49 @@ public class LoginController {
 	@Autowired
 	private EmailSender emailSender;
 	
-	@RequestMapping(value="/inc_user/login.do", method=RequestMethod.GET)
+	@RequestMapping(value="/user/login.do", method=RequestMethod.GET)
 	public String showLogin_get(){
 		logger.info("로그인화면 띄우기");
 		
-		return "inc_user/login";
+		return "user/login";
 	}
 	
 	
-	@RequestMapping(value="/inc_user/login.do", method=RequestMethod.POST)
-	public String login_post(@RequestParam String userId, @RequestParam String userPwd,
+	@RequestMapping(value="/user/login.do", method=RequestMethod.POST)
+	public String login_post(@RequestParam String userId, @RequestParam String userPwd, @RequestParam(required=false) String chkSaveId,
 				HttpServletRequest request,HttpServletResponse response, Model model){
 		//1
 		logger.info("로그인 처리, 파라미터 userId={} userPwd={}",userId,userPwd);
+		logger.info("파라미터 chkSaveId={}", chkSaveId);
 		
 		//2
 		int result=userService.loginCheck(userId, userPwd);
 		logger.info("로그인 처리 결과, 파라미터 result={}",result);
 		
-		String msg="", url="/inc_user/login.do";
+		String msg="", url="/user/login.do";
 		if(result==userService.LOGIN_OK){
 			UserVO vo=userService.selectByUserid(userId);
 			
 			msg=vo.getUserName()+"님 로그인 되었습니다.";
-			url="/inc_user/index.do";
+			url="/user/index.do";
 			
 			//세션에 저장
 			HttpSession session= request.getSession();
 			session.setAttribute("userId", userId);
 			session.setAttribute("userName", vo.getUserName());
 			session.setAttribute("userLicense", vo.getUserLicense());
+			
+			//쿠키에 저장
+			Cookie ck = new Cookie("ck_userId", userId);
+			ck.setPath("/");
+			//아이디 저장하기를 체크한 경우
+			if(chkSaveId!=null){
+				ck.setMaxAge(1000*24*60*60); //1000일
+				response.addCookie(ck);
+			}else{
+				ck.setMaxAge(0); //쿠키 삭제
+				response.addCookie(ck);
+			}
 			
 		}else if(result==userService.ID_NONE){
 			msg="해당 아이디가 존재하지 않습니다.";
@@ -74,7 +88,7 @@ public class LoginController {
 		return "common/message";
 	}
 	
-	@RequestMapping("/inc_user/userAjaxCheckId.do")
+	@RequestMapping("/user/userAjaxCheckId.do")
 	@ResponseBody
 	public boolean userAjaxCheckId(@RequestParam String userId){
 		logger.info("ajax-아이디 중복확인, 파라미터 userid={}",userId);
@@ -90,7 +104,7 @@ public class LoginController {
 		return bool;
 	}
 	
-	@RequestMapping(value="/inc_user/userseachid.do")
+	@RequestMapping(value="/user/userseachid.do")
 	@ResponseBody
 	/*public String userseachid(@ModelAttribute UserVO vo, Model model){*/
 	public UserVO userseachid(@RequestParam String userName, @RequestParam String userEmail, Model model){
@@ -107,7 +121,7 @@ public class LoginController {
 		return vo;
 	}
 	
-	@RequestMapping(value="/inc_user/userseachpwd.do")
+	@RequestMapping(value="/user/userseachpwd.do")
 	public String userseachpwd(@RequestParam String userId, @RequestParam String userEmail, Model model){
 		logger.info("비밀번호 찾기");
 		UserVO userVo = new UserVO();
@@ -132,7 +146,7 @@ public class LoginController {
 			e.printStackTrace();
 		}
 		
-		return "redirect:/inc_user/index.do";
+		return "redirect:/user/index.do";
 	}
 	
 	
