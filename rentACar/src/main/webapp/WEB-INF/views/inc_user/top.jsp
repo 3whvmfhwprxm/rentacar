@@ -133,6 +133,13 @@
                     </c:if>
                      <c:if test="${!empty sessionScope.userId }">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
+                        	<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" >회사소개<span class="caret"></span></a>
+                            	<ul class="dropdown-menu" role="menu" style="background-color: #00679a;">
+				                <li><a href="<c:url value="/user/greeting.do"/>">인사말</a></li>
+				                <li><a href="#">회사위치</a></li>
+				                <li><a href="#">지점안내</a></li>
+				              </ul> 
+                            </li>
                             <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
                             <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
                             <li><a href="${pageContext.request.contextPath}/user/review.do">이용후기</a></li>
