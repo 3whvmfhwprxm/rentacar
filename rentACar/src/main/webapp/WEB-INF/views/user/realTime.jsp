@@ -27,13 +27,17 @@
 	    $("#searchStartDate").datepicker({
 	    	dateFormat: 'yy-mm-dd', 
 	    	minDate: 1,
-	    	maxDate: 89
+	    	maxDate: 89,
+	    	dayNamesMin:['일', '월', '화', '수', '목', '금', '토'],
+			monthNames:['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
 	    });
 	    
 	    $("#searchEndDate").datepicker({
 	    	dateFormat: 'yy-mm-dd', 
 	    	minDate: 2,
-	    	maxDate: 90
+	    	maxDate: 90,
+	    	dayNamesMin:['일', '월', '화', '수', '목', '금', '토'],
+			monthNames:['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
 	    });
 		
 	    $("#searchStartDate").change(function(){
@@ -59,7 +63,7 @@
 	    	var endDateCompare=new Date(endDateArr[0],endDateArr[1],endDateArr[2]);
 	    	
 	    	if(startDateCompare.getTime() > endDateCompare.getTime()){
-	    		alert("앞날짜가 뒷날짜보다 크면 안됩니다. 검색기간을 확인해주세요.");
+	    		alert("예약일이 반납일보다 크면 안됩니다. 검색기간을 확인해주세요.");
 	    		$("#searchEndDate").focus();
 	    		return event.preventDefault();
 	    	}/* else if((endDateCompare.getTime()-startDateCompare.getTime())>7){
@@ -69,6 +73,18 @@
 	    	} */
 		}
 	});
+	
+	function imageOn(path){ 
+		var divform = document.getElementById("up"); 
+		divform.style.display = ''; 
+		document.getElementById("upImg").src = path; 
+	} 
+	
+	function imageOut(){ 
+		var divform = document.getElementById("up"); 
+		divform.style.display = 'none'; 
+	}
+
 </script>
 <!-- 1.
 예약시작날짜, 예약종료날짜
@@ -85,11 +101,10 @@
 </style>
 <br>
 <div class="divList container">
-
 <!-- 예약 가능 차 기본 옵션 검색 폼 -->
 <div>
 	<form class="form-horizontal" name="searchForm" id="searchForm" 
-		method="post" action='<c:url value="/inc_user/realTime.do" />'>
+		method="post" action='<c:url value="/user/realTime.do" />'>
 		<fieldset>
 			<legend>실시간 예약하기(예약가능차량 검색 조회/선택)</legend>
 			
@@ -190,7 +205,16 @@
 						<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
 						
 						<tr>				
-							<td class="text-center">${map['CAR_NAME'] }</td>
+							<td class="text-left">
+								<div id="up" style="position:absolute; width:30%; left:700px; top:300px; display:none;">
+									<img id="upImg" src='<c:url value="/carImages/${map['CAR_IMG'] }" />' width="100%" height="100%"/>
+								</div>
+							
+								<img src='<c:url value="/carImages/${map['CAR_IMG'] }" />' 
+										alt="차 이미지" width="30" height="30" align="absmiddle" 
+										onmouseover="imageOn('<c:url value="/carImages/${map['CAR_IMG'] }" />')" onmouseout="imageOut()">
+								${map['CAR_NAME'] }
+							</td>
 							<td class="text-center">${map['COM_NAME'] }</td>
 							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${priceByReservDays }"  /> 원 </td>
 							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${map['CCAR_ARREAR'] }"  /> 원 </td>
@@ -245,7 +269,7 @@
 							</td>
 							<td class="text-center">
 								<a href='<c:url 
-								value="/inc_user/reservInfo.do
+								value="/user/reservInfo.do
 								?ccarCarId=${map['CCAR_CAR_ID'] }
 								&searchStartDate=${dateSearchVO.searchStartDate }
 								&startHour=${dateSearchVO.startHour}

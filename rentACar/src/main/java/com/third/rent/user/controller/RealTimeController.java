@@ -2,6 +2,7 @@ package com.third.rent.user.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,133 +33,142 @@ import com.third.rent.user.model.UserService;
 import com.third.rent.user.model.UserVO;
 
 @Controller
-@RequestMapping("/inc_user")
+@RequestMapping("/user")
 public class RealTimeController {
 	private static final Logger logger=LoggerFactory.getLogger(RealTimeController.class);
-	
+
 	@Autowired
 	private ReservSearchService rService;
-	
+
 	@Autowired
 	private UserService uService;
-	
+
 	/*@RequestMapping(value="/realTime.do", method=RequestMethod.GET)
 	public String showRealTime_get(Model model){
 		logger.info("실시간예약화면 띄우기");
-		
+
 		List<CarCategoryVO> catelist=rService.selectCategoryList();
-		
+
 		model.addAttribute("catelist", catelist);
-		
-		return "inc_user/realTime";
+
+		return "user/realTime";
 	}*/
-	
+
 	@RequestMapping("/realTime.do")
 	public String showRealTime_post(@ModelAttribute DateSearchVO dateSearchVO, Model model){
 		logger.info("예약 대상 검색 기간 조건 dateSearchVO={}", dateSearchVO);
-				
+
 		if(dateSearchVO.getSearchStartDate()==null){
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-			Date today=new Date();			
-			dateSearchVO.setSearchStartDate(sdf.format(today));
+			Date today=new Date();
+
+			//시작일: 오늘에 하루 더해서 세팅
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(today);
+			cal.add(Calendar.DATE, 1); //하루 더하기
+
+			dateSearchVO.setSearchStartDate(sdf.format(cal.getTime()));
 			dateSearchVO.setStartHour(8);
 			dateSearchVO.setStartMin("00");
-			dateSearchVO.setSearchEndDate(sdf.format(today));
+
+			cal.add(Calendar.DATE, 1); //하루 더 더하기
+			//반납일: 오늘에 이틀 더해서 세팅
+			dateSearchVO.setSearchEndDate(sdf.format(cal.getTime()));
 			dateSearchVO.setEndHour(8);
 			dateSearchVO.setEndMin("00");
 		}
-		
+
 		//검색 날짜 조건 결합
 		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
 		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();
-		
+
 		//검색 조건 해쉬맵에 저장
 		HashMap<String, Object> searchOption=new HashMap<String, Object>();
 		searchOption.put("searchStartDate", startDate);
 		searchOption.put("searchEndDate", endDate);
 		searchOption.put("carType", dateSearchVO.getCarType());
-		
+
 		//DB작업
 		List<Map<String, Object>> clist=rService.searchNormal(searchOption);
 		logger.info("예약 대상 검색 차종 리스트 크기 clist.size()={}", clist.size());
-		
+
 		List<CarCategoryVO> catelist=rService.selectCategoryList();
-		
+
 		model.addAttribute("catelist", catelist);		
 		model.addAttribute("clist", clist);
-		
-		return "inc_user/realTime";		
+
+		return "user/realTime";		
 	}
-	
+
 	@RequestMapping("/reservInfo.do")
 	public String showReservInfo(@ModelAttribute DateSearchVO dateSearchVO,
-								 @RequestParam String ccarCarId, Model model, HttpSession session){
-		
+			@RequestParam String ccarCarId, Model model, HttpSession session){
+
 		String userId=(String)session.getAttribute("userId");
-		
+
 		logger.info("선택한 회사차의 예약 기간 조건 dateSearchVO={}", dateSearchVO);
 		logger.info("선택한 회사차의 ID값, ccarCarId={}", ccarCarId);
 		logger.info("세션의 유저ID, userId={}", userId);
-		
+
 		//DB작업 select by ccarCarId
 		Map<String, Object> map=rService.selectedCarInfo(ccarCarId);
 		logger.info("선택한 회사차의 정보, map={}", map);
-		
+
 		//유저에 대한 정보 가져오기
 		UserVO uvo=uService.selectByUserid(userId);
 		logger.info("예약자 회원 정보 uvo={}", uvo);
-		
+
 		model.addAttribute("map", map);
 		model.addAttribute("uvo", uvo);
-		
-		return "inc_user/reservInfo";
+
+		return "user/reservInfo";
 	}
-	
+
 	@RequestMapping("/reservation.do")
 	public String reservation(@ModelAttribute ReservUserVO reservWho, 			
-							  @ModelAttribute DateSearchVO dateSearchVO,																
-							  @RequestParam String ccarCarId, HttpSession session, Model model) throws ParseException{
-		
+			@ModelAttribute DateSearchVO dateSearchVO,																
+			@RequestParam String ccarCarId, HttpSession session, Model model) throws ParseException{
+
 		String userId=(String)session.getAttribute("userId");
 		logger.info("예약하기 - 예약자 로그인 아이디 체크 userid={}", userId);	
 		logger.info("예약하기 - 예약자/운전자 정보 rUvo={}", reservWho);
 		logger.info("예약하기 - 예약 대상 차 ccarCarId={}", ccarCarId);
-				
+
 		//예약조건 reserVo에 저장 
 		ReservationVO reserVo=new ReservationVO();
 		reserVo.setCcarCarId(ccarCarId);
 		reserVo.setUserTel1(reservWho.getResUTel1());
 		reserVo.setUserTel2(reservWho.getResUTel2());
 		reserVo.setUserTel3(reservWho.getResUTel3());
-		
+
 		//날짜 문자열 조합
 		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
 		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();
-		
+
 		reserVo.setReservStartDate(startDate);		
 		reserVo.setReservEndDate(endDate);
 		reserVo.setReservInsurance("자차보험");
 		reserVo.setUserId(userId);
-					
+
 		Map<String, Object> map=rService.selectedCarInfo(ccarCarId);
 		logger.info("선택한 회사차의 정보, map={}", map);
-		
+
 		//DB작업
 		String reservKey=rService.takeReservation(reserVo, reservWho);
 		reserVo.setReservNum(reservKey);
-		
+
 		model.addAttribute("reserVo",reserVo);
 		model.addAttribute("map", map);
-		
-		return "inc_user/payment";
+
+		return "user/payment";
 	}
-	
+
 	@RequestMapping("/payOK.do")
 	@ResponseBody
 	public void payOK(@ModelAttribute PayInfoVO payInfoVO, @RequestParam long payRegdateUnixTimeStamp){
 		logger.info("결제완료 정보 테이블 입력하기 ajax 호출. 파라미터 payInfoVO={}", payInfoVO);
 		logger.info("결제완료 정보 테이블 입력하기 ajax 호출. 유닉스 타임 payRegdateUnixTimeStamp={}", payRegdateUnixTimeStamp);
-		
+
 		//unix timestamp형식 변환 1493027909
 		Date date = new Date(payRegdateUnixTimeStamp*1000L);		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -166,9 +176,9 @@ public class RealTimeController {
 
 		System.out.println(sdf.format(date));
 		payInfoVO.setPayRegdate(sdf.format(date));
-		
+
 		int result=rService.insertPayInfo(payInfoVO);
 		logger.info("결제완료 정보 입력 결과 result={}", result);
 	}
-	
+
 }
