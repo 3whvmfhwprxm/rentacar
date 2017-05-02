@@ -57,7 +57,6 @@ public class PayInfoController {
 		return "administrator/payInfo/payInfoList";
 	}	
 	
-	
 	@RequestMapping("/payCancel.do")
 	public String CancelPaymentByMerchantUid(@RequestParam String payNo) throws Exception {
 		

@@ -76,6 +76,39 @@
 		padding: 0 8px;"></div>
 	
 	<script type="text/javascript">
+		Highcharts.chart('container', {
+	
+		    title: {
+		        text: 'Logarithmic axis demo'
+		    },
+	
+		    xAxis: {
+		        tickInterval: 1
+		    },
+	
+		    yAxis: {
+		        type: 'logarithmic',
+		        minorTickInterval: 0.1
+		    },
+	
+		    tooltip: {
+		        headerFormat: '<b>{series.name}</b><br />',
+		        pointFormat: 'x = {point.x}, y = {point.y}'
+		    },
+	
+		    series: [{
+		        data: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
+		        pointStart: 1
+		    }]
+		});
+	</script>
+</div>
+<!-- <div>
+	HighChart 그래프
+	<div id="container" style="width: 100%; height: 450px; margin: 8px 0 8px 0;
+		padding: 0 8px;"></div>
+	
+	<script type="text/javascript">
 	Highcharts.chart('container', {
 	    chart: {
 	        type: 'column'
@@ -134,7 +167,7 @@
 	});		    
 	</script>		
 	
-	<!-- <script type="text/javascript">
+	<script type="text/javascript">
 		Highcharts.chart('container', {
 		    chart: {
 		        type: 'column'
@@ -197,6 +230,53 @@
 		
 		    }]
 		});
-	</script> -->
+	</script>
+</div> -->
+<div class="w3-row-padding w3-margin-bottom">
+	<div class="row">
+		<div class="col-md-12">
+			<br>
+			<table class="table table-hover">
+				<thead>			
+					<tr class="info">
+						<th scope="col">결제번호</th>
+						<th scope="col">예약번호</th>
+						<th scope="col">회원전화번호</th>
+						<th scope="col">결제방법</th>
+						<th scope="col">결제금액</th>
+						<th scope="col">할인금액</th>
+						<th scope="col">결제일시</th>
+						<th scope="col">진행상태</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<c:if test="${empty PayInfoList}">
+						<tr>
+							<td colspan="8" style="text-align: center;">데이터가 존재하지 않습니다.</td>
+						</tr>
+					</c:if>
+					
+					<c:if test="${!empty PayInfoList}">
+					<c:forEach var="vo" items="${PayInfoList}">
+						<tr style="text-align: center">
+							<td><a
+								href='<c:url value="/administrator/payInfo/payInfoList.do?payNo=${vo.payNo}" />'>
+									${vo.payNo}</a></td>
+							<td style="text-align: center">${vo.reservNum}</td>
+							<td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
+							<td>${vo.payMethod}</td>
+							<td>${vo.payMoney}</td>
+							<td>${vo.payDiscount}</td>
+							<td><fmt:formatDate value="${vo.payRegdate}"
+									pattern="yyyy-MM-dd" /></td>
+							<td>${vo.payCondition}</td>
+						</tr>
+					</c:forEach>
+					</c:if>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 <%@ include file="include/bottom.jsp"%>

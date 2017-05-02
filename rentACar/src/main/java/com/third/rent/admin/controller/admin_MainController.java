@@ -1,14 +1,19 @@
 package com.third.rent.admin.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.third.rent.admin.model.AdminService;
 import com.third.rent.admin_User.controller.Admin_UserController;
+import com.third.rent.payInfo.model.PayInfoService;
+import com.third.rent.payInfo.model.PayInfoVO;
 
 @Controller
 @RequestMapping("/administrator")
@@ -19,8 +24,11 @@ public class admin_MainController {
 	@Autowired
 	private AdminService adminService;
 	
+	@Autowired
+	private PayInfoService payInfoService;
+	
 	@RequestMapping("/admin_Main.do")
-	public String main(Model model) {
+	public String main(@ModelAttribute PayInfoVO payInfoVo, Model model) {
 		logger.info("Main화면 띄우기");
 		
 		int userCount = adminService.selectCountUser();
@@ -41,12 +49,16 @@ public class admin_MainController {
 		int selectSumPayDiscount = adminService.selectSumPayDiscount();
 		logger.info("selectSumPayDiscount");
 		
+		List<PayInfoVO> PayInfoList = payInfoService.selectPayInfo(payInfoVo);
+		logger.info("PayInfoList");
+		
 		model.addAttribute("userCount", userCount);
 		model.addAttribute("companyCount", companyCount);
 		model.addAttribute("reservationCount", reservationCount);
 		model.addAttribute("payinfoCount", payinfoCount);
 		model.addAttribute("selectSumPayMoney", selectSumPayMoney);
 		model.addAttribute("selectSumPayDiscount", selectSumPayDiscount);
+		model.addAttribute("PayInfoList", PayInfoList);
 
 		return "administrator/admin_Main";
 	}
