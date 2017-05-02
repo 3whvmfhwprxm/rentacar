@@ -98,9 +98,16 @@
 		padding:5px 5px 5px 5px;
 		width:35%;
 		height:300px;}
-	#reservUser{float:left;
+		
+	#userLeft{
+		clear:both;
+		float:left;
 		padding:5px 5px 5px 5px;
-		width:60%;}
+		width:50%;}
+	#userRight{
+		float:left;
+		padding:5px 5px 5px 5px;
+		width:50%;}
 </style>
 <div class="container">
 	<br>
@@ -265,10 +272,10 @@
 		    } 
 		});    
 	</script>
-	
+			<br>
 			<!-- 예약자 및 운전자 입력 정보 -->
 			<div id="reservUser">
-				<div>
+				<div id="userLeft">
 					<h4>예약자 정보 입력</h4>
 					<p>
 						<input type="radio" name="insertUserInfo" id="insertUserInfo1" checked>
@@ -309,65 +316,67 @@
 					</div>
 				</div>
 				
-				<h4>운전자 정보 입력</h4>
-				<p>			
-					<input type="radio" name="insertDrvInfo" id="insertDrvInfo1" checked>
-					<label for="insertDrvInfo1">직접 입력</label>
-								
-					<input type="radio" name="insertDrvInfo" id="insertDrvInfo2"> 
-					<label for="insertDrvInfo2">회원과 동일 정보 입력</label>			
-				</p>
-				<div class="form-group">			
-					<label class="col-sm-2 control-label">운전자 이름</label>
-					<div class="col-xs-2">
-						<input class="form-control" type="text" name="resDrvName" id="resDrvName">
+				<div id="userRight">
+					<h4>운전자 정보 입력</h4>
+					<p>			
+						<input type="radio" name="insertDrvInfo" id="insertDrvInfo1" checked>
+						<label for="insertDrvInfo1">직접 입력</label>
+									
+						<input type="radio" name="insertDrvInfo" id="insertDrvInfo2"> 
+						<label for="insertDrvInfo2">회원과 동일 정보 입력</label>			
+					</p>
+					<div class="form-group">			
+						<label class="col-sm-2 control-label">운전자 이름</label>
+						<div class="col-xs-2">
+							<input class="form-control" type="text" name="resDrvName" id="resDrvName">
+						</div>
 					</div>
+					<div class="form-group">			
+						<label class="col-sm-2 control-label">면허증</label>
+						<div class="col-xs-2">
+							<select class="form-control" id="resDrvCategory" name="resDrvCategory" >	           			
+				           			<option value="1종 보통">1종 보통</option>
+				           			<option value="1종 소형">1종 소형</option>
+				           			<option value="1종 대형">1종 대형</option>
+				           			<option value="1종 특수">1종 특수</option>
+				           			<option value="2종 보통">2종 보통</option>
+				           			<option value="2종 소형">2종 소형</option>
+				           	</select>
+						</div>
+					</div>
+					<div class="form-group">			
+						<label class="col-sm-2 control-label">연락처</label>
+						<div class="col-xs-2">
+							<select class="form-control" name="resDrvTel1" id="resDrvTel1">
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="019">019</option>
+							</select>			
+						</div>
+						<div class="col-xs-2">
+							<input class="form-control" type="text" name="resDrvTel2" id="resDrvTel2">
+						</div>
+						<div class="col-xs-2">
+							<input class="form-control" type="text" name="resDrvTel3" id="resDrvTel3">
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-sm-2 control-label">생년월일</label>
+						<div class="col-xs-2">
+							<input class="form-control" type="text" name="resDrvBirth" id="resDrvBirth">
+						</div>
+					</div>
+					
+					<div class=form-group>
+						<label class="col-sm-2 control-label"></label>		
+						<div class="col-sm-6">
+							<input class="btn btn-primary btn-lg btn-block" type="submit" value="예약하기" name="btsubmit" id="btsubmit" >
+						</div>
+					</div>					
 				</div>
-				<div class="form-group">			
-					<label class="col-sm-2 control-label">면허증</label>
-					<div class="col-xs-2">
-						<select class="form-control" id="resDrvCategory" name="resDrvCategory" >	           			
-			           			<option value="1종 보통">1종 보통</option>
-			           			<option value="1종 소형">1종 소형</option>
-			           			<option value="1종 대형">1종 대형</option>
-			           			<option value="1종 특수">1종 특수</option>
-			           			<option value="2종 보통">2종 보통</option>
-			           			<option value="2종 소형">2종 소형</option>
-			           	</select>
-					</div>
-				</div>
-				<div class="form-group">			
-					<label class="col-sm-2 control-label">연락처</label>
-					<div class="col-xs-2">
-						<select class="form-control" name="resDrvTel1" id="resDrvTel1">
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="019">019</option>
-						</select>			
-					</div>
-					<div class="col-xs-2">
-						<input class="form-control" type="text" name="resDrvTel2" id="resDrvTel2">
-					</div>
-					<div class="col-xs-2">
-						<input class="form-control" type="text" name="resDrvTel3" id="resDrvTel3">
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="col-sm-2 control-label">생년월일</label>
-					<div class="col-xs-2">
-						<input class="form-control" type="text" name="resDrvBirth" id="resDrvBirth">
-					</div>
-				</div>
-				
-				<div class=form-group>
-					<label class="col-sm-2 control-label"></label>		
-					<div class="col-sm-6">
-						<input class="btn btn-primary btn-lg btn-block" type="submit" value="예약하기" name="btsubmit" id="btsubmit" >
-					</div>
-				</div>					
 			</div>
 			<!-- 예약자 정보 입력 끝 -->
 			
