@@ -94,6 +94,13 @@
 </script>
 <style type="text/css">
 	.fontStyle1{color: #0033FF; font-weight: bold;}
+	#map{float:left;
+		padding:5px 5px 5px 5px;
+		width:35%;
+		height:300px;}
+	#reservUser{float:left;
+		padding:5px 5px 5px 5px;
+		width:60%;}
 </style>
 <div class="container">
 	<br>
@@ -165,8 +172,7 @@
 				</tbody>					
 			</table>
 		</div>
-		
-		
+		<br>		
 		<%-- <div class="row" id="selectedCar">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default coupon">
@@ -217,7 +223,7 @@
     </div> --%>
     
     <!-- 인수/반납 장소 표시 -->
-    <div id="map" style="width:500px;height:400px;"></div>
+    <div id="map"></div>
     <input type="hidden" id="mapInfo" name="mapInfo" value="${map['COM_RETURN_PLACE']}">    
     <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -262,45 +268,46 @@
 	
 			<!-- 예약자 및 운전자 입력 정보 -->
 			<div id="reservUser">
-				<h4>예약자 정보 입력</h4>
-				<p>
-					<input type="radio" name="insertUserInfo" id="insertUserInfo1" checked>
-					<label for="insertUserInfo1">직접 입력</label>
-								
-					<input type="radio" name="insertUserInfo" id="insertUserInfo2"> 
-					<label for="insertUserInfo2">회원과 동일 정보 입력</label>			
-				</p>
-				<div class="form-group">			
-					<label class="col-sm-2 control-label">예약자 이름</label>
-					<div class="col-xs-2">
-						<input class="form-control" type="text" name="resUName" id="resUName">
+				<div>
+					<h4>예약자 정보 입력</h4>
+					<p>
+						<input type="radio" name="insertUserInfo" id="insertUserInfo1" checked>
+						<label for="insertUserInfo1">직접 입력</label>
+									
+						<input type="radio" name="insertUserInfo" id="insertUserInfo2"> 
+						<label for="insertUserInfo2">회원과 동일 정보 입력</label>			
+					</p>
+					<div class="form-group">			
+						<label class="col-sm-2 control-label">예약자 이름</label>
+						<div class="col-xs-2">
+							<input class="form-control" type="text" name="resUName" id="resUName">
+						</div>
+					</div>
+					<div class="form-group">			
+						<label class="col-sm-2 control-label">이메일</label>
+						<div class="col-xs-2">
+							<input class="form-control" type="email" name="resUMail" id="resUMail">
+						</div>
+					</div>
+					<div class="form-group">			
+						<label class="col-sm-2 control-label">연락처</label>
+						<div class="col-xs-2">
+							<select class="form-control" name="resUTel1" id="resUTel1">
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="019">019</option>
+							</select>			
+						</div>
+						<div class="col-xs-2">
+							<input class="form-control" type="text" name="resUTel2" id="resUTel2">
+						</div>
+						<div class="col-xs-2">
+							<input class="form-control" type="text" name="resUTel3" id="resUTel3">
+						</div>
 					</div>
 				</div>
-				<div class="form-group">			
-					<label class="col-sm-2 control-label">이메일</label>
-					<div class="col-xs-2">
-						<input class="form-control" type="email" name="resUMail" id="resUMail">
-					</div>
-				</div>
-				<div class="form-group">			
-					<label class="col-sm-2 control-label">연락처</label>
-					<div class="col-xs-2">
-						<select class="form-control" name="resUTel1" id="resUTel1">
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="019">019</option>
-						</select>			
-					</div>
-					<div class="col-xs-2">
-						<input class="form-control" type="text" name="resUTel2" id="resUTel2">
-					</div>
-					<div class="col-xs-2">
-						<input class="form-control" type="text" name="resUTel3" id="resUTel3">
-					</div>
-				</div>
-				<br>
 				
 				<h4>운전자 정보 입력</h4>
 				<p>			
