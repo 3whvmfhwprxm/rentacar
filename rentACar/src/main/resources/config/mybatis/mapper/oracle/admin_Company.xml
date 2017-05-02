@@ -28,6 +28,46 @@
 		]]>
 	</select> 
 	
+	<select id="selectInCompany" resultType="CompanyVO" 
+		parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from company 
+		        <include refid="searchWhere"></include>
+		        order by com_regdate 
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		and com_outdate is null
+		]]>
+	</select> 
+	
+	<select id="selectOutCompany" resultType="CompanyVO" 
+		parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from company 
+		        <include refid="searchWhere"></include>
+		        order by com_regdate
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		and com_outdate is not null
+		]]>
+	</select>
+	
 	<select id="selectCompany" resultType="CompanyVO">
 		select*from company;
 	</select>
@@ -89,46 +129,6 @@
 	<select id="selectPwdByAdminId" resultType="String" parameterType="String">
 		select admin_pwd from rent_admin
 		where admin_id=#{adminId}
-	</select>
-	
-	<select id="selectInCompany" resultType="CompanyVO" 
-		parameterType="SearchVO">
-		select *
-		from
-		(
-		    select rownum as RNUM ,LIST.*
-		    from
-		    (
-		        select * from company 
-		        <include refid="searchWhere"></include>
-		        where com_outdate is null
-		        order by com_regdate 
-		    )LIST
-		)
-		<![CDATA[
-		where RNUM>#{firstRecordIndex} 
-		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
-		]]>
-	</select> 
-	
-	<select id="selectOutCompany" resultType="CompanyVO" 
-		parameterType="SearchVO">
-		select *
-		from
-		(
-		    select rownum as RNUM ,LIST.*
-		    from
-		    (
-		        select * from company 
-		        <include refid="searchWhere"></include>
-		        order by com_regdate
-		    )LIST
-		)
-		<![CDATA[
-		where RNUM>#{firstRecordIndex} 
-		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
-		and com_outdate is not null
-		]]>
 	</select>
 	
 	<select id="selectAllCcar" resultType="map" parameterType="SearchVO">

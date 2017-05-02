@@ -1,6 +1,10 @@
 package com.third.rent.common;
 
 public class admin_Utility {
+	//기본
+	public static final int ADMIN_BLOCKSIZE = 10;
+	public static final int ADMIN_RECORDCOUNT_PERPAGE = 5;
+	
 	//관리자 회원 관리
 	public static final int ADMIN_USER_BLOCKSIZE = 10;
 	public static final int ADMIN_USER_RECORDCOUNT_PERPAGE = 5;

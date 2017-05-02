@@ -71,6 +71,21 @@
 				3조 렌트카
 			</a>
 		</span>
+		
+		<span class="w3-bar-item w3-right">
+			<c:if test="${sessionScope.Admin_Id!=null}">			
+				<span>					
+					<a href='<c:url value="/administrator/log/logout.do" />'>
+						<i class="glyphicon glyphicon-log-out"></i> 로그아웃
+					</a>				
+				</span>
+			</c:if>
+			<c:if test="${sessionScope.Admin_Id==null}">
+				<a href='<c:url value="/administrator/log/logIn.do" />'>
+					<i class="glyphicon glyphicon-log-in"></i> 로그인
+				</a>	
+			</c:if>
+		</span>
 	</div>
 
 	<!-- Sidebar/menu -->
@@ -78,24 +93,21 @@
 		style=" width: 250px;" id="mySidebar">
 		<br>
 		<div class="w3-container w3-row">
-			<div class="w3-col s4">
-				<i class="fa fa-user-o fa-5x" style="width: 46px" aria-hidden="true"></i>
-			</div>
-			<div class="w3-col s8">
-				<c:if test="${sessionScope.Admin_Id!=null}">
-					<span><strong>${sessionScope.Admin_Id}님 환영합니다.</strong></span><br><br>					
-					<span>					
-						<a href='<c:url value="/administrator/log/logout.do" />'>
-							<i class="glyphicon glyphicon-log-out"></i> 로그아웃
-						</a>				
-					</span>
-				</c:if>
-				<c:if test="${sessionScope.Admin_Id=null}">
-					<a href='<c:url value="/administrator/log/logIn.do" />'>
-						<i class="glyphicon glyphicon-log-in"></i> 로그인
-					</a>	
-				</c:if>
-			</div>
+			<c:if test="${sessionScope.Admin_Id!=null}">
+				<div class="w3-col s4">
+					<i class="fa fa-user-o fa-5x" style="width: 46px" aria-hidden="true"></i>
+				</div>
+				<div class="w3-col s8">
+						<span><strong>${sessionScope.Admin_Id}님 환영합니다.</strong></span>	
+				</div>
+			</c:if>
+			
+			<c:if test="${sessionScope.Admin_Id==null}">
+				<div class="w3-col s4">
+					<img alt="로그아웃시 이미지" style="width: 220px; height: 90px"
+						src='<c:url value="/images/racoon.jpg" />'>
+				</div>
+			</c:if>
 		</div>
 		<hr>
 		<div class="w3-container" style="background-color: skyblue;">

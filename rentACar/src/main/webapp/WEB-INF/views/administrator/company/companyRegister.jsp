@@ -167,10 +167,11 @@
 		display: none;
 	}
 </style>
-<form class="form-horizontal" id="frm1" name="frm1" method="post"
-	action='<c:url value="/administrator/company/companyRegister.do" />'>
-	<fieldset>
-	<legend>업체 등록</legend>
+
+<div class="w3-container" >
+	<form class="form-horizontal" id="frm1" name="frm1" method="post"
+		action='<c:url value="/administrator/company/companyRegister.do" />'>
+	<h3>업체 등록</h3>
 		<div class="form-group">
 			<label for="CompanyId" class="col-sm-2 control-label">
 				업체 아이디
@@ -355,6 +356,6 @@
 				</button>
 			</div>
 		</div>
-	</fieldset>
-</form>
+	</form>
+</div>
 <%@ include file="../include/bottom.jsp"%>

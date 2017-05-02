@@ -11,9 +11,7 @@
 	
 	<select id="selectAllUser" resultType="UserVO" 
 		parameterType="SearchVO">
-		select user_id, user_pwd, user_name, user_email,
-			user_tel1, user_tel2, user_tel3, user_birth, user_address,
-			user_gender, user_license, user_regdate, user_outdate
+		select*
 		from
 		(
 		    select rownum as RNUM ,LIST.*
@@ -32,9 +30,7 @@
 	
 	<select id="selectInUser" resultType="UserVO" 
 		parameterType="SearchVO">
-		select user_id, user_pwd, user_name, user_email,
-			user_tel1, user_tel2, user_tel3, user_birth, user_address,
-			user_gender, user_license, user_regdate, user_outdate
+		select*
 		from
 		(
 		    select rownum as RNUM ,LIST.*
@@ -42,13 +38,33 @@
 		    (
 		        select * from RENT_USER 
 		        <include refid="searchWhere"></include>
-		        where user_outdate is null
 		        order by user_regdate
 		    )LIST
 		)
 		<![CDATA[
 		where RNUM>#{firstRecordIndex} 
 		and RNUM<=#{firstRecordIndex} + #{recordCountPerPage}
+		and user_outdate is null
+		]]>
+	</select>
+	
+	<select id="selectOutUser" resultType="UserVO" 
+		parameterType="SearchVO">
+		select*
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from RENT_USER 
+		        <include refid="searchWhere"></include>
+		        order by user_regdate
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM<=#{firstRecordIndex} + #{recordCountPerPage}
+		and user_outdate is not null
 		]]>
 	</select>
 	

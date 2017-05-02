@@ -28,4 +28,8 @@ public class Admin_UserServiceImpl implements Admin_UserService{
 	public List<UserVO> selectInUser(SearchVO searchVo) {
 		return adminUserDao.selectInUser(searchVo);
 	}
+
+	public List<UserVO> selectOutUser(SearchVO searchVo) {
+		return adminUserDao.selectOutUser(searchVo);
+	}
 }

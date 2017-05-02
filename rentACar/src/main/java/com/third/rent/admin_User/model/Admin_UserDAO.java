@@ -13,4 +13,6 @@ public interface Admin_UserDAO {
 	public UserVO selectByUserId(String userId);
 	
 	public List<UserVO> selectInUser(SearchVO searchVo);	
+	
+	public List<UserVO> selectOutUser(SearchVO searchVo);
 }
