@@ -36,6 +36,16 @@
 		jQuery("#frmPage").submit();
 	}
 	
+	jQuery(document).ready(function(){
+		jQuery("#frmSearch").submit(function(){
+			if(jQuery("#searchCondition").val()='notsel'){
+				alert('옵션 선택 에러');
+				return false;
+			}		
+		});
+	});
+	
+	
 	
 </script>
 <body>
@@ -207,8 +217,8 @@
 		<div class="divSearch">
 				<form name="frmSearch" method="post"
 					action="<c:url value="/com_manage/company_ccarList.do" />">
-					<select name="searchCondition">
-						<option>::선택::</option>
+					<select name="searchCondition" id="searchCondition">
+						<option value='notsel'>::선택::</option>
 						<option value="ccar_car_id"
 							<c:if test="${'ccar_car_id'==param.searchCondition}">
 		           		selected            	

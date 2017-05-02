@@ -74,7 +74,7 @@ CREATE TABLE Company (
 	com_ceo VARCHAR2(30) NOT NULL, /* 대표자 */
 	com_email VARCHAR2(50) NOT NULL, /* 대표메일 */
 	--com_email2 VARCHAR2(50) NOT NULL, /* 대표메일2 */	
-	com_rate Number default 3 check (com_rate>0 and com_rate<101),  /* 업체 수수류율 17.04.28 추가됨 */
+	com_rate Number default 3 check (com_rate>0 and com_rate<101),  /* 업체 수수료율 17.04.28 추가됨 */
 	com_logo VARCHAR2(200), /* 업체로고 */	
 	com_regdate DATE default sysdate, /* 가입일 */
 	com_outdate DATE /* 탈퇴일 */

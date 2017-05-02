@@ -11,6 +11,10 @@
 		text-align: center;
 	}
 	
+    .line{
+    border-bottom:1px solid blue;
+    border:2;
+    }
 </style>
 <!-- 업체 차량 조회 -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -88,14 +92,14 @@
     		<col width="10%">
     		<col width="10%">
     		<col width="10%">
-    		<col width="10%">
-    		<col width="10%">
+    		<col width="15%">
+    		<col width="15%">
     		<col width="10%">
     		<col width="10%">
     		<col width="10%">
     		<col width="8%">
-    		<col width="12%">
-    		<col width="10%">
+    		<col width="5%">
+    		<col width="5%">
     	</colgroup>
        		<tr>
   				<th>차량번호</th>
@@ -119,34 +123,67 @@
 			<td>${map['CAR_NAME'] }</td>
 			<td>${map['RES_U_NAME'] }</td>
 			<td>${map['RES_U_TEL1'] }-${map['RES_U_TEL2'] }-${map['RES_U_TEL3'] }</td>
-			<td>${map['PAY_MONEY'] }</td>
-			<td>${map['RESERV_START_DATE'] }</td>
-			<td>${map['RESERV_END_DATE'] }</td>
-			<td>${map['REMAININGDAY'] }</td>
+			<c:if test="${empty map['PAY_MONEY'] }">
+				<td>0 원</td>
+			</c:if>
+			<c:if test="${!empty map['PAY_MONEY'] }">
+				<td><fmt:formatNumber value="${map['PAY_MONEY'] }" pattern="#,###" /> 원</td>
+			</c:if>
+			<td><fmt:formatDate value="${map['RESERV_START_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+			<td><fmt:formatDate value="${map['RESERV_END_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+			<td>${map['REMAININGDAY'] } 일</td>
 			<td><button id="bt${i.index }">상세정보보기</button></td>
 			<td><button>취소</button></td>
 		</tr>
 		<tr id="tra${i.index }">
-			<td>${map['CCAR_CAR_ID'] } 예약</td>
+			<td>${map['CCAR_CAR_ID'] } 예약상세정보</td>
+			<td></td>
         	<td>예약자ID</td>
         	<td>운전자 이름</td>
         	<td>운전자 전화번호</td>
-        	<td>예약한 날짜</td>
-        	<td>결제한 날짜</td>
-        	<td>진행 상태</td>
-        	<td>할인 금액</td>
-        	<td>보험 여부</td>
+        	<td>예약일시</td>
+        	<td>결제일시</td>
+        	<td>진행상태</td>
+        	<td>할인금액</td>
+        	<td>보험여부</td>
         </tr>
         <tr id="trb${i.index }" style="display: show;">
-        	<td></td>
-        	<td>${map['USER_ID'] }</td>
-        	<td>${map['RES_DRV_NAME'] }</td>
-        	<td>${map['RES_DRV_TEL1'] }-${map['RES_DRV_TEL2'] }-${map['RES_DRV_TEL3'] }</td>
-        	<td>${map['RESERV_DATE'] }</td>
-        	<td>${map['PAY_REGDATE'] }</td>
-        	<td>${map['PAY_CONDITION'] }</td>
-        	<td>${map['PAY_DISCOUNT'] }</td>
-        	<td>${map['RESERV_INSURANCE'] }</td>
+        	<td class="line"></td>
+        	<td class="line"></td>
+        	<td class="line">${map['USER_ID'] }</td>
+        	<td class="line">${map['RES_DRV_NAME'] }</td>
+        	<td class="line">${map['RES_DRV_TEL1'] }-${map['RES_DRV_TEL2'] }-${map['RES_DRV_TEL3'] }</td>
+        	<td class="line"><fmt:formatDate value="${map['RESERV_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+        	<c:if test="${empty map['PAY_REGDATE']}">
+        		<td class="line">미정</td>
+        	</c:if>
+        	<c:if test="${!empty map['PAY_REGDATE']}">
+        		<td class="line"><fmt:formatDate value="${map['PAY_REGDATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+        	</c:if>
+        	<c:if test="${map['PAY_CONDITION'] == 'paid' }">
+        		<td class="line">결제완료</td>
+        	</c:if>
+        	<c:if test="${map['PAY_CONDITION'] == 'ready' }">
+        		<td class="line">미결제</td>
+        	</c:if>
+        	<c:if test="${map['PAY_CONDITION'] == 'cancelled' }">
+        		<td class="line">결제취소</td>
+        	</c:if>
+        	<c:if test="${map['PAY_CONDITION'] == 'failed' }">
+        		<td class="line">결제실패</td>
+        	</c:if>
+        	<c:if test="${empty map['PAY_DISCOUNT'] }">
+        		<td class="line">없음</td>
+        	</c:if>
+        	<c:if test="${!empty map['PAY_DISCOUNT'] }">
+        		<td class="line">${map['PAY_DISCOUNT'] } }</td>
+        	</c:if>
+        	<c:if test="${empty map['RESERV_INSURANCE'] }">
+        		<td class="line">없음</td>
+        	</c:if>
+        	<c:if test="${!empty map['RESERV_INSURANCE'] }">
+        		<td class="line">${map['RESERV_INSURANCE'] }</td>
+        	</c:if>					
         </tr>
 	</c:forEach>
 	 <!-- 반복끝 --> 
