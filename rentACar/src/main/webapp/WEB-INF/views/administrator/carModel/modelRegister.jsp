@@ -49,24 +49,24 @@
 		display: none;
 	}
 </style>
-<form class="form-horizontal" id="frm1" name="frm1" method="post"
-	action='<c:url value="/administrator/carModel/modelRegister.do" />'>
-	<fieldset>
-	<legend>Register</legend>
+
+<div class="w3-row-padding w3-margin-bottom">
+	<form class="form-horizontal" id="frm1" name="frm1" method="post"
+		action='<c:url value="/administrator/carModel/modelRegister.do" />'>
+		<h3>차량모델 등록</h3>
+		<hr>
 		<div class="form-group">
-			<label for="carCode" class="col-sm-2 control-label">
-				Car Code</label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" name="carCode"
-					id="carCode" placeholder="car Code">		
-			</div>
-			<div class="col-sm-4">
-				<span id="check"></span>
-			</div>
-		</div>
-		
+		    <label for="carCode" class="col-sm-2">차량모델명</label>
+		    <div class="col-sm-2">
+		      <input type="text" class="form-control" id="carCode" name="carCode" placeholder="차량모델명을 입력하세요.">
+		    </div>
+		    <div class="col-sm-2">
+		    	<span id="check"></span>
+		    </div>
+	 	</div>
+	
 		<div class="form-group">
-			<label for="carName" class="col-sm-2 control-label">
+			<label for="carName" class="col-sm-2">
 				Car Name
 			</label>
 			<div class="col-sm-8">
@@ -76,7 +76,7 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="carInc" class="col-sm-2 control-label">
+			<label for="carInc" class="col-sm-2">
 				Car Inc
 			</label>
 			<div class="col-sm-8">
@@ -86,7 +86,7 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="carSize" class="col-sm-2 control-label">
+			<label for="carSize" class="col-sm-2">
 				Car Size
 			</label>
 			<div class="col-sm-8">
@@ -96,7 +96,7 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="carTrans" class="col-sm-2 control-label">
+			<label for="carTrans" class="col-sm-2">
 				Car Trans
 			</label>
 			<div class="col-sm-8">
@@ -106,7 +106,7 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="carType" class="col-sm-2 control-label">
+			<label for="carType" class="col-sm-2">
 				Car Type
 			</label>
 			<div class="col-sm-8">
@@ -116,7 +116,7 @@
 		</div>
 						
 		<div class="form-group">
-			<label for="carImg" class="col-sm-2 control-label">
+			<label for="carImg" class="col-sm-2">
 				Car Img
 			</label>
 			<div class="col-sm-2">
@@ -133,6 +133,6 @@
 				</button>
 			</div>
 		</div>
-	</fieldset>
-</form>
+	</form>
+</div>
 <%@ include file="../include/bottom.jsp"%>

@@ -38,4 +38,20 @@
 		<include refid="searchWhat"></include>
 	</select>
 	
+	<select id="recentTenPayInfo" parameterType="PayInfoVO"
+		resultType="PayInfoVO">
+		select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from payInfo
+		        order by pay_regdate desc
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM<=10
+		]]>
+	</select>
 </mapper>

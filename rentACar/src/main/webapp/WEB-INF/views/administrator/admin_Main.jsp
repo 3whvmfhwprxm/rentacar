@@ -4,7 +4,7 @@
 <!-- Header -->
 <header class="w3-container" style="padding-top: 5px;">
 	<h3>
-		<b><i class="fa fa-line-chart" aria-hidden="true"></i>&nbsp; 현황</b>
+		<b><i class="fa fa-check" aria-hidden="true"></i>&nbsp; 현황</b>
 	</h3>
 </header>
 
@@ -70,7 +70,15 @@
 	</a>
 </div>
 
-<div>
+<div class="w3-container">
+	<h3>
+		<b>
+			<i class="fa fa-line-chart" aria-hidden="true"></i>
+			<a href='<c:url value="/administrator/payInfo/payInfoList.do?payNo=${vo.payNo}" />'>
+				차트
+			</a>
+		</b>
+	</h3>
 	<!-- HighChart 그래프 -->
 	<div id="container" style="width: 100%; height: 450px; margin: 8px 0 8px 0;
 		padding: 0 8px;"></div>
@@ -232,7 +240,16 @@
 		});
 	</script>
 </div> -->
-<div class="w3-row-padding">
+
+<div class="w3-container">
+	<h3>
+		<b>
+			<i class="fa fa-credit-card"></i>
+			<a href='<c:url value="/administrator/payInfo/payInfoList.do?payNo=${vo.payNo}" />'>
+				결제
+			</a>
+		</b>
+	</h3>
 	<div class="row">
 		<div class="col-md-12">
 			<br>
@@ -253,7 +270,7 @@
 				<tbody>
 					<c:if test="${empty PayInfoList}">
 						<tr>
-							<td colspan="8" style="text-align: center;">데이터가 존재하지 않습니다.</td>
+							<td colspan="8">데이터가 존재하지 않습니다.</td>
 						</tr>
 					</c:if>
 					

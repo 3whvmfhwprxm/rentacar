@@ -21,5 +21,10 @@ public class PayInfoServiceImple implements PayInfoService{
 		return pDao.selectTotalRecordPayInfo(pInfo);
 	}
 
+	@Override
+	public List<PayInfoVO> recentTenPayInfo(PayInfoVO payInfoVo) {
+		return pDao.recentTenPayInfo(payInfoVo);
+	}
+
 	
 }
