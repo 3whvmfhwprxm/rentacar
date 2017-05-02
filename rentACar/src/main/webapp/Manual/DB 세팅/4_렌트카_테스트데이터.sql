@@ -71,6 +71,19 @@ insert into rent_user(user_id,user_pwd,user_name,user_email,
 user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license, user_regdate, user_outdate)
 values('kimout1','kim123','김탈퇴','kimout@out.com','010','4444','4444','1970-05-05','서울','남','2종보통', sysdate, sysdate);
 
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license, user_regdate)
+values('hong','1234','홍길동','hong@naver.com','010','5001','1454','1982-01-08','경기도','여','2종보통', sysdate);
+
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license, user_regdate)
+values('park','1234','박찬호','park@naver.com','010','1140','9811','1978-12-24','경기도','남','2종보통', sysdate);
+
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license, user_regdate)
+values('choi','1234','최고맨','choi@naver.com','010','4560','7887','1987-05-18','경기도','여','1종보통', sysdate);
+
+
 select * from rent_user;
 commit;
 
@@ -284,6 +297,7 @@ values(3, '고객용 공지게시판 세번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sy
 insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount, unotice_deldate)
 values(4, '삭제된 고객용 공지게시판 네번째 글!', '고객이 볼수없는 내용 4!!', 'admin1', sysdate, 'N', 0, sysdate);
 
+
 select * from usernotice order by unotice_no desc;
 commit;
 
@@ -318,17 +332,25 @@ commit;
 --사용후기
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
 cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '이번에 써봤는데 정말 좋았어요!', 'kim1', 'rentZoa', 4, 4, 5, '후기1.jpg', '후기2.jpg');
+values(cmt_seq.nextval, '이번에 써봤는데 정말 좋았어요!', 'kim1', 'rentZoa', 4, 4, 5, 'bad1.jpg', '후기2.jpg');
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
 cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '다음에는 사용하고 싶지 않네요...너무 더러웠어요', 'jin1', 'rentGo', 3, 1, 3, '더러워1.jpg', '더러워2.jpg');
+values(cmt_seq.nextval, '다음에는 사용하고 싶지 않네요...너무 더러웠어요', 'jin1', 'rentGo', 3, 1, 3, 'hahaha1.jpg', '더러워2.jpg');
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
 cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '그냥 보통 쓸만한 정도?', 'lee1', 'rentGo', 3, 3, 3, '', '');
+values(cmt_seq.nextval, '그냥 보통 쓸만한 정도?', 'lee1', 'rentGo', 3, 4, 3, 'good2.jpg', '');
+insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
+cmt_img1, cmt_img2)
+values(cmt_seq.nextval, '깔끔하고 또 다시 빌릴거 같네요 ㅎㅎㅎ', 'hong', 'rentGo', 1, 5, 2, 'good1.jpg', '');
+insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
+cmt_img1, cmt_img2)
+values(cmt_seq.nextval, '차 상태도 깔끔하고 저렴하게 타기 좋은거같습니다', 'park', 'rentGo', 1, 5, 2, 'good3.jpg', '');
 
-select * from COMMENTS;
-commit;
+insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
+cmt_img1, cmt_img2)
+values(cmt_seq.nextval, '연비도 괜찬고 딱 가격값정도만 합니다', 'choi', 'rentGo', 1, 5, 2, 'good4.jpg', '');
 
+select*from comments;
 
 --결제정보
 insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2, 
