@@ -94,10 +94,10 @@
                                 </c:if>
                                 <hr />
                                 <c:if test="${!empty sessionScope.userId }">
-	                                <a href="${pageContext.request.contextPath}/user/regedit.do" class="btn btn-info btn-sm">Regedit</a>&nbsp; <a href="${pageContext.request.contextPath}/user/logout.do" class="btn btn-danger btn-sm">Logout</a>
+	                                <a href="${pageContext.request.contextPath}/user/regedit.do" class="btn btn-info btn-sm">회원정보수정</a>&nbsp; <a href="${pageContext.request.contextPath}/user/logout.do" class="btn btn-danger btn-sm">로그아웃</a>
                                 </c:if>
                                 <c:if test="${empty sessionScope.userId }">
-	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/login.do" class="btn btn-danger btn-sm">Login</a>
+	                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/login.do" class="btn btn-danger btn-sm">로그인</a>
                                 </c:if>
                                 
                             </div>
@@ -115,6 +115,11 @@
                     <div class="navbar-collapse collapse ">
                     <c:if test="${empty sessionScope.userId }">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/review.do">이용후기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">고객센터</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">이용혜택</a></li>
                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" >회사소개<span class="caret"></span></a>
                             	<ul class="dropdown-menu" role="menu" style="background-color: #00679a;">
 				                <li><a href="<c:url value="/user/greeting.do"/>">인사말</a></li>
@@ -122,17 +127,17 @@
 				                <li><a href="<c:url value="/user/guide.do"/>">지점안내</a></li>
 				              </ul> 
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/review.do">이용후기</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">고객센터</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">이용혜택</a></li>
                             <li><a href="${pageContext.request.contextPath}/user/login.do">LOGIN</a></li>
                             <li><a href="javascript:openJoin();">회원가입</a></li>
                         </ul>
                     </c:if>
                      <c:if test="${!empty sessionScope.userId }">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/review.do">이용후기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">고객센터</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">이용혜택</a></li>
                         	<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" >회사소개<span class="caret"></span></a>
                             	<ul class="dropdown-menu" role="menu" style="background-color: #00679a;">
 				                <li><a href="<c:url value="/user/greeting.do"/>">인사말</a></li>
@@ -140,11 +145,6 @@
 				                <li><a href="<c:url value="/user/guide.do"/>">지점안내</a></li>
 				              </ul> 
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/review.do">이용후기</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">고객센터</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">이용혜택</a></li>
                         </ul>
                     </c:if>
                     </div>
@@ -152,6 +152,38 @@
 
             </div>
         </div>
+        
+        <!-- <div id="contents">
+		visual
+		<div class="visual">
+			<div class="wrapper">
+				Quickmenu
+				<div class="quickmenu">
+					<span class="line">&nbsp;</span>
+					<ul>
+						<li><a href="/rent/rentcar/short_rent_reseravtion.do#TOP"><img src="/rent/images/btn/quickmenu1.jpg" alt="실시간예약" title="실시간예약" /></a></li>
+						<li><a href="/rent/mypage/my_rent.do"><img src="/rent/images/btn/quickmenu2.jpg" alt="회원예약확인" title="회원예약확인" /></a></li>
+						<li><a href="#" 
+                    onclick="popup('/rent/rentcar/popup_nonmember_login.do','popup',650,420, 'center', 'scroll'); return false;"><img src="/rent/images/btn/quickmenu7.jpg" alt="비회원예약확인" title="비회원예약확인" /></a></li>
+						<li><a href="/rent/event/ongoing_event_list.do"><img src="/rent/images/btn/quickmenu3.jpg" alt="이벤트" title="이벤트" /></a></li>
+						<li><a href="/rent/customer/request_form.do"><img src="/rent/images/btn/quickmenu6.jpg" alt="상담신청" title="상담신청" /></a></li>
+						<li><a href="#none" onclick="window.open('/html/cmsong.html','window','width=300,height=50,scrollbars=yes')"><img src="/rent/images/btn/quickmenu8.jpg" alt="CM송듣기" title="CM송듣기" /></a></li>
+						
+					</ul>
+					
+					<a href="#" class="btntop"><img src="/rent/images/tit/top.jpg" alt="TOP" /></a>
+					
+					
+					<div class="sns">
+                        <a href="http://www.facebook.com/SK.speedmate" target="_blank"><img src="/rent/images/icon/fb.jpg" alt="" /></a>
+                        <a href="http://twitter.com/SK_speedmatecar" target="_blank"><img src="/rent/images/icon/twitter.jpg" alt="" /></a>
+                    </div>
+				
+				</div>
+        	</div>
+        </div>
+        </div> -->
+        	
     </section>
     <!-- MENU SECTION END-->
 		

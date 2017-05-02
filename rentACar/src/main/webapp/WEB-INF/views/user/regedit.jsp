@@ -190,7 +190,7 @@
 	          <div class="ln_solid"></div>
 	          <div class="form-group">
 	            <div class="col-md-6 col-md-offset-3">
-	              <button type="reset" class="btn btn-primary" name="btn2">Cancel</button>
+	              <button type="reset" class="btn btn-primary" name="btn2">취소</button>
 	              <button type="button" class="btn btn-danger" name="btn3" data-toggle="modal" href="#myModal">회원탈퇴</button>
 	              <button type="submit" class="btn btn-success" name="btn1">정보수정</button>
 	              <input type ="hidden" name="chkId" id="chkId">

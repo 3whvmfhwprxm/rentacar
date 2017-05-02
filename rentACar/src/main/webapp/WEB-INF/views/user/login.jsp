@@ -33,6 +33,7 @@
 		}); */
 		$("#pwdSearch").click(function(){
 			alert("찾으신 비밀번호를 이메일로 발송하였습니다.");
+			$("#frmpwd").submit();
 		});
 	});
 </script>
@@ -43,15 +44,15 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/logincss.css"/>
 	<div class="container">
-    <h1 class="welcome text-center">Welcome to <br> RentA Car</h1>
+    <h1 class="welcome text-center">환영합니다<br>3조렌트카</h1>
         <div class="card card-container">
-        <h2 class='login_title text-center'>Login</h2>
+        <h2 class='login_title text-center'>로그인</h2>
         <hr>
             <form class="form-signin" name="frmlogin" method="post" action="<c:url value="/user/login.do"/>">
                 <span id="reauth-email" class="reauth-email"></span>
-                <p class="input_title" >UserID</p>
-                <input name="userId" type="text" id="inputEmail" class="login_box" value="${cookie.ck_userId.value}" placeholder="USER ID" required autofocus>
-                <p class="input_title">Password</p>
+                <p class="input_title" >사용자 아이디</p>
+                <input name="userId" type="text" id="inputEmail" class="login_box" value="${cookie.ck_userId.value}" placeholder="아이디 입력" required autofocus>
+                <p class="input_title">비밀번호</p>
                 <input name="userPwd" type="password" id="inputPassword" class="login_box" placeholder="******" required>
                 
 				<label style="color: silver; padding: 2px;">
@@ -63,7 +64,7 @@
                     <a class="input_title" data-toggle="modal" href="#myModal1">아이디찾기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a class="input_title" data-toggle="modal" href="#myModal2">비밀번호 찾기</a>
                 </div>
-                <button class="btnlogin btn-lg btn-primary" type="submit">Login</button>
+                <button class="btnlogin btn-lg btn-primary" type="submit">로그인</button>
             </form><!-- /form -->
         </div><!-- /card-container -->
     </div><!-- /container -->
@@ -136,32 +137,27 @@
 					<div class="modal-body">
 						<form method="post" name="login_form" id="frmpwd" action="<c:url value="/user/userseachpwd.do"/>">
 							<div class="row">
-					            <label class="control-label col-md-3" for="name" style="text-align: right;">아이디 <span class="required">*</span>
+					            <label class="control-label col-md-3" for="userId" style="text-align: right;">아이디 <span class="required">*</span>
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong123" required="required" type="userId">
+					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="ex) hong123" required="required" type="userId">
 					            </div>
 					        </div><br>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">이메일 <span class="required">*</span>
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" placeholder="ex) hong@naver.com" required="required" type="text">
 					            </div>
 					        </div><br>
-					        <!-- <div class="row">
-					            <label class="control-label col-md-3" for="name" style="text-align: right;" disabled>찾으신 아이디
-					            </label>
-					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text" value="hong123" disabled>
-					            </div>
-					        </div><br> -->
+					        
+					        <div class="modal-footer">
+			           		 <button type="submit" class="btn btn-primary" id="pwdSearch" data-dismiss="modal">이메일발송</button>
+						</div>
 						</form>
 					</div>
 					<!-- <form name="frmid" method="post" action="<c:url value="/user/userseachid.do"/>"> -->
-						<div class="modal-footer">
-			           		 <button type="submit" class="btn btn-primary" id="pwdSearch" data-dismiss="modal">이메일발송</button>
-						</div>
+						
 					<!-- </form> -->
 				</div>
 				<!-- /.modal-content -->
