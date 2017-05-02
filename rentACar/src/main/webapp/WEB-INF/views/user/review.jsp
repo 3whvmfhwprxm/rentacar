@@ -16,25 +16,34 @@
 <h2 style="font-family:'Saysettha OT'; src:url(http://foton.com.la/font/Saysettha OT.ttf); color:#00679a;">이용후기</h2>
 
 <table width="100%" border="0">
+	<c:set var="i"  value="0"/>
 	<c:forEach var="vo" items="${alist }">
-    <tr>
-        <td width="25%">
+		<c:if test="${i%2==0 }">
+			<tr>
+		</c:if>		   
+		<c:if test="${i%2!=0 }">
+			<td width="10%"></td>
+		</c:if>
+        <td width="40%" style="vertical-align:top">
             <h4 style="font-family:'IowanOldSt BT'; src:url(http://foton.com.la/font/iowaosbd.ttf)"><b>${vo.comId}</b></h4>
             <span class="thumbnail">
                 <img src="<c:url value='/user_img/${vo.cmtImg1}'/>">
-                <span>사용자 : ${vo.userId}</span>
+                <div style="padding: 15px;">
+                <span><b>사용자 : ${vo.userId}</b></span>
                	<span style="float: right;">친절도<span>${vo.cmtKindScore }</span>     |     청결도<span>${vo.cmtCleanScore }</span>     |     편의성<span>${vo.cmtConvScore }</span></span>
+                </div>
                	<hr>
-               	<span style="text-align: center;">
-               		<span>${vo.cmtContent }</span><br>
-              		<span>${vo.cmtRegdate}</span>
-                </span>
+               	<div style="padding: 15px;">
+               		<span><b>${vo.cmtContent }</b></span><br>
+              		<span><b>${vo.cmtRegdate}</b></span>
+               	</div>
             </span>
             <hr>
         </td>
-        
-        
-    </tr>
+        <c:if test="${i%2!=0 }">
+			</tr>
+		</c:if>
+		<c:set var="i" value="${i+1 }"/>
     </c:forEach>
 </table>
 </div>
