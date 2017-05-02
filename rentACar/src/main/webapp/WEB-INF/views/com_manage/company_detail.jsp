@@ -62,6 +62,7 @@ textarea.form-control {
 }
 #comAddress{width: 80%; }
 #submitdiv{text-align: right;}
+#image_preview img{width: 200px;height: 100px; }
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -129,7 +130,7 @@ textarea.form-control {
 	}
 	
 </script>
-</script>
+
 <section id="contact"><br>
 	<div class="container">
 		<form name="frmEdit" id="frmEdit" method="post" enctype="multipart/form-data"
@@ -211,7 +212,7 @@ textarea.form-control {
 										<c:if test="${!empty companyVo.comLogo}">
 										<div id="image_preview" ><img src="#" /></div>
 										</c:if>
-										<input type="file" name="comlogo" id="comLogo" value="${companyVo.comLogo}" size="36">
+										<input type="file" name="comlogo" id="comLogo" value="${companyVo.comLogo}">
 										<c:if test="${!empty companyVo.comLogo}">
 											<span class="sp1"></span>
 									            <span style="color:darkgreen;font-weight: bold">

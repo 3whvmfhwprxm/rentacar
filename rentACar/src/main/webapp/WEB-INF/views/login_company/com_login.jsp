@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
-<html>
-<head>
-		
-<script type="text/javascript" 	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<%@ include file="../inc_company/company_top.jsp" %>
+
 <style type="text/css">
 .btn3d {
     position:relative;
@@ -290,8 +283,6 @@ form.login input[type="text"]::-webkit-input-placeholder {color: #33CCFF; font-s
 form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; font-size: 20px;}
 
 </style>
-		
-<title>Admin</title>
 
 <script type="text/javascript">
 	$(function(){
@@ -319,10 +310,8 @@ form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; fo
 		  }); 
 	});
 </script>
-</head>
-	
 
-		
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -335,9 +324,6 @@ form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; fo
                 </div>
             </div>
             <div class="wrap">
-                <p class="form-title">
-                    업체 관리</p>
-                   
                 <form class="login"  method="post" name="loginForm" id="loginForm" action='<c:url value="/login_company/com_login.do" />'>
                 <input type="text" placeholder="아이디" name="comId" id="comId" value="${cookie.ck_comId.value}" />
                 <input type="password" placeholder="비밀번호" name="comPwd" id="comPwd" />
@@ -358,9 +344,9 @@ form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; fo
                     </div>
                 </div>
                 </form>
-                <div class="divImg"><img src="<c:url value='/images/login4.fw.png' />"></div>
             </div>
         </div>
     </div>
 </div>
-		
+
+<%@ include file="../inc_company/company_bottom.jsp" %>

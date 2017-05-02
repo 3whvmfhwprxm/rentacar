@@ -5,7 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -110,9 +114,18 @@ public class CompanyEpilogueController {
 	}*/
 	
 	@RequestMapping(value="/company_detail.do", method=RequestMethod.POST)
-	public String companyEdit_post(@ModelAttribute CompanyVO companyVo,
-			@RequestParam("comlogo") MultipartFile uploadfile, Model model) throws IOException {
+	public String companyEdit_post(HttpServletRequest reuest,
+			@ModelAttribute CompanyVO companyVo,
+			Model model) throws IOException {
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
+		
+		FileUploadWebUtil fileUpload = new FileUploadWebUtil();
+		List<Map<String, Object>> map = fileUpload.fileUpload(reuest, 2);
+		
+		
+		companyVo.setComLogo(map.get(0).get("fileName").toString());
+		map.get(0).get("fileSize");
+		map.get(0).get("originalFileName");
 		
 		int cnt = comService.updateCompany(companyVo);
 		logger.info("업체 수정 결과 cnt={}", cnt);

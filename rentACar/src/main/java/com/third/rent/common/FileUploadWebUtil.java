@@ -63,6 +63,9 @@ public class FileUploadWebUtil {
   				String savePath= getUploadPath(request, uploadWhat); 
   				File file = new File(savePath, fileName);
   				try {
+  					if(!file.exists()){
+  						file.mkdirs();
+  					}
 					tempFile.transferTo(file);
 					logger.info("파일 업로드 완료! 업로드 경로:{},파일명:{}", savePath, fileName);
 				} catch (IllegalStateException e) {
@@ -113,6 +116,9 @@ public class FileUploadWebUtil {
   				String savePath= getUploadPath(request, uploadWhat); 
   				File file = new File(savePath, fileName);
   				try {
+  					if(!file.exists()){
+  						file.mkdirs();
+  					}
 					tempFile.transferTo(file);
 					logger.info("파일 업로드 완료! 업로드 경로:{},파일명:{}", savePath, fileName);
 				} catch (IllegalStateException e) {
@@ -137,7 +143,8 @@ public class FileUploadWebUtil {
 	
 	public String getUploadPath(HttpServletRequest request, int uploadWhat){
 		//파일 업로드 경로 구하기
-		String type=fileProperties.getProperty("file.upload.type");
+		String type="test";
+				//fileProperties.getProperty("file.upload.type");
 		
 		String upPath="", dir="";
 		if(type.equals("test")){
@@ -145,7 +152,8 @@ public class FileUploadWebUtil {
 			if(uploadWhat==FILE_UPLOAD){
 				upPath=fileProperties.getProperty("file.upload.path.test");
 			}else if(uploadWhat==IMAGE_UPLOAD){
-				upPath=fileProperties.getProperty("imageFile.upload.path.test");
+				upPath="C:\\project\\cmt_images";
+						//fileProperties.getProperty("imageFile.upload.path.test");
 			}
 			
 		}else{
