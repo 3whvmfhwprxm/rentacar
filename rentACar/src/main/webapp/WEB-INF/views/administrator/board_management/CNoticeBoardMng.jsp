@@ -15,7 +15,7 @@
 		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
 	</form>
 	<!-- 테이블 화면 시작 -->
-	<table class="table table-bordered table-hover">	
+	<table class="table table-hover">	
 		<tr>			
 			<th>번호</th>
 			<th>제목</th>

@@ -16,7 +16,7 @@
 		<input type="text" name="payRegdate" value="${param.payRegdate}">
 	</form>
 	<!-- 테이블 화면 시작 -->
-	<table class="table table-bordered table-hover">
+	<table class="table table-hover">
 		<colgroup>
 			<col width="10%">
 			<col width="15%">

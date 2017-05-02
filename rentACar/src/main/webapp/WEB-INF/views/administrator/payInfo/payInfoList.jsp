@@ -39,7 +39,7 @@
 		<input type="text" name="payRegdate" value="${param.payRegdate}">
 	</form>
 	<!-- 테이블 화면 시작 -->
-	<table class="table table-bordered table-hover">
+	<table class="table table-hover">
 		<colgroup>
 			<col width="15%">
 			<col width="15%">
@@ -74,7 +74,7 @@
 						<td>${vo.payMethod }</td>
 						<td>${vo.payMoney }</td>						
 						<td>${vo.payRegdate }</td>
-						<td><button id="btCancel" onclick="cancelPay('${vo.payNo }', '${vo.payMoney }')">결제 취소</button></td>
+						<td><a href="<c:url value='/admin/payCancel.do?payNo=${vo.payNo }' />" >결제취소</a></td>
 						
 					</tr>	
 				</c:forEach>				

@@ -88,9 +88,6 @@
 		   <version>0.2.7</version>
 		</dependency>
 
-		
-		            
-
 		<!-- spring - ibatis -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -304,6 +301,30 @@
 		    <artifactId>mail</artifactId>
 		    <version>1.4.7</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.siot.iamport</groupId>
+			<artifactId>iamport-rest-client-java-hc</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- <dependency>
+	        <groupId>org.apache.httpcomponents</groupId>
+	        <artifactId>httpclient</artifactId>
+	        <version>4.3.4</version>
+    	</dependency> -->
+    	
+    	<!-- <dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.2.4</version>
+		</dependency> -->
+		
+		<!-- <dependency>
+		  <groupId>com.squareup.retrofit2</groupId>
+		  <artifactId>retrofit</artifactId>
+		  <version>2.2.0</version>
+		</dependency> -->
         
        <!-- <dependency>
             <groupId>org.apache.poi</groupId>

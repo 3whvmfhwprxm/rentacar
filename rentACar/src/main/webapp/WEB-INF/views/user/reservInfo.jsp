@@ -116,7 +116,58 @@
 		<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
 		
 		<!-- 선택한 차에 대한 정보 -->
-		<div class="row">
+		<div id="selectedCar">
+			<table class="table">
+				<colgroup>
+					<col>
+				</colgroup>				
+				<thead>
+					<tr>
+						<th>예약 선택 기간</th>
+						<th>선택하신 차</th>						
+						<th>차 옵션</th>
+						<th>렌터카 업체</th>
+						<th>업체 연락처</th>
+					</tr>					
+				</thead>				
+				<tbody>
+					<tr>
+						<td>
+							${param.searchStartDate} ${param.startHour}:${param.startMin} 
+								~ ${param.searchEndDate} ${param.endHour}:${param.endMin}
+						</td>						
+						<td>
+							<img src='<c:url value="/carImages/${map['CAR_IMG'] }" />' alt="선택한 차종 이미지" 
+								width="20px" height="20px"> ${map['CAR_NAME'] }
+						</td>
+						<td>
+							<c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
+												       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
+												       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N'
+												       && map['CCAR_SUN_ROOF_YN']=='N' && map['CCAR_BLUETOOTH_YN']=='N' 
+												       && map['CCAR_SMARTKEY_YN']=='N' }"> 옵션 없음 
+							</c:if>
+							<c:if test="${map['CCAR_AUX_YN']!='N' }"> AUX </c:if>
+							<c:if test="${map['CCAR_BLACKBOX_YN']!='N' }"> 블랙박스 </c:if>
+							<c:if test="${map['CCAR_NAVI_YN']!='N' }"> 네비게이션 </c:if>
+							<c:if test="${map['CCAR_SUN_ROOF_YN']!='N' }"> 썬루프 </c:if>
+							<c:if test="${map['CCAR_SMOKE_YN']!='N' }"> 금연차 </c:if>
+							<c:if test="${map['CCAR_REAR_CAMERA_YN']!='N' }"> 후방카메라 </c:if>
+							<c:if test="${map['CCAR_REAR_SENCE_YN']!='N' }"> 후방센서 </c:if>
+							<c:if test="${map['CCAR_BLUETOOTH_YN']!='N' }"> 블루투스 </c:if>
+							<c:if test="${map['CCAR_SMARTKEY_YN']!='N' }"> 스마트키 </c:if>
+						</td>
+						<td>
+							${map['COM_NAME'] }
+						</td>
+						<td>${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }</td>
+					</tr>
+				</tbody>					
+			</table>
+		</div>
+		
+		
+		<%-- <div class="row" id="selectedCar">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default coupon">
               <div class="panel-heading" id="head">
@@ -163,11 +214,11 @@
               </div>
             </div>
     	</div>
-    </div>
+    </div> --%>
     
     <!-- 인수/반납 장소 표시 -->
-    <input type="hidden" id="mapInfo" name="mapInfo" value="${map['COM_RETURN_PLACE']}">
     <div id="map" style="width:500px;height:400px;"></div>
+    <input type="hidden" id="mapInfo" name="mapInfo" value="${map['COM_RETURN_PLACE']}">    
     <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
@@ -208,109 +259,114 @@
 		    } 
 		});    
 	</script>
-		
-		<!-- 예약자 및 운전자 입력 정보 -->
-		<h4>예약자 정보 입력</h4>
-		<p>
-			<input type="radio" name="insertUserInfo" id="insertUserInfo1" checked>
-			<label for="insertUserInfo1">직접 입력</label>
-						
-			<input type="radio" name="insertUserInfo" id="insertUserInfo2"> 
-			<label for="insertUserInfo2">회원과 동일 정보 입력</label>			
-		</p>
-		<div class="form-group">			
-			<label class="col-sm-2 control-label">예약자 이름</label>
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resUName" id="resUName">
+	
+			<!-- 예약자 및 운전자 입력 정보 -->
+			<div id="reservUser">
+				<h4>예약자 정보 입력</h4>
+				<p>
+					<input type="radio" name="insertUserInfo" id="insertUserInfo1" checked>
+					<label for="insertUserInfo1">직접 입력</label>
+								
+					<input type="radio" name="insertUserInfo" id="insertUserInfo2"> 
+					<label for="insertUserInfo2">회원과 동일 정보 입력</label>			
+				</p>
+				<div class="form-group">			
+					<label class="col-sm-2 control-label">예약자 이름</label>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="resUName" id="resUName">
+					</div>
+				</div>
+				<div class="form-group">			
+					<label class="col-sm-2 control-label">이메일</label>
+					<div class="col-xs-2">
+						<input class="form-control" type="email" name="resUMail" id="resUMail">
+					</div>
+				</div>
+				<div class="form-group">			
+					<label class="col-sm-2 control-label">연락처</label>
+					<div class="col-xs-2">
+						<select class="form-control" name="resUTel1" id="resUTel1">
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+							<option value="017">017</option>
+							<option value="019">019</option>
+						</select>			
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="resUTel2" id="resUTel2">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="resUTel3" id="resUTel3">
+					</div>
+				</div>
+				<br>
+				
+				<h4>운전자 정보 입력</h4>
+				<p>			
+					<input type="radio" name="insertDrvInfo" id="insertDrvInfo1" checked>
+					<label for="insertDrvInfo1">직접 입력</label>
+								
+					<input type="radio" name="insertDrvInfo" id="insertDrvInfo2"> 
+					<label for="insertDrvInfo2">회원과 동일 정보 입력</label>			
+				</p>
+				<div class="form-group">			
+					<label class="col-sm-2 control-label">운전자 이름</label>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="resDrvName" id="resDrvName">
+					</div>
+				</div>
+				<div class="form-group">			
+					<label class="col-sm-2 control-label">면허증</label>
+					<div class="col-xs-2">
+						<select class="form-control" id="resDrvCategory" name="resDrvCategory" >	           			
+			           			<option value="1종 보통">1종 보통</option>
+			           			<option value="1종 소형">1종 소형</option>
+			           			<option value="1종 대형">1종 대형</option>
+			           			<option value="1종 특수">1종 특수</option>
+			           			<option value="2종 보통">2종 보통</option>
+			           			<option value="2종 소형">2종 소형</option>
+			           	</select>
+					</div>
+				</div>
+				<div class="form-group">			
+					<label class="col-sm-2 control-label">연락처</label>
+					<div class="col-xs-2">
+						<select class="form-control" name="resDrvTel1" id="resDrvTel1">
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="016">016</option>
+							<option value="017">017</option>
+							<option value="019">019</option>
+						</select>			
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="resDrvTel2" id="resDrvTel2">
+					</div>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="resDrvTel3" id="resDrvTel3">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label">생년월일</label>
+					<div class="col-xs-2">
+						<input class="form-control" type="text" name="resDrvBirth" id="resDrvBirth">
+					</div>
+				</div>
+				
+				<div class=form-group>
+					<label class="col-sm-2 control-label"></label>		
+					<div class="col-sm-6">
+						<input class="btn btn-primary btn-lg btn-block" type="submit" value="예약하기" name="btsubmit" id="btsubmit" >
+					</div>
+				</div>					
 			</div>
-		</div>
-		<div class="form-group">			
-			<label class="col-sm-2 control-label">이메일</label>
-			<div class="col-xs-2">
-				<input class="form-control" type="email" name="resUMail" id="resUMail">
-			</div>
-		</div>
-		<div class="form-group">			
-			<label class="col-sm-2 control-label">연락처</label>
-			<div class="col-xs-2">
-				<select class="form-control" name="resUTel1" id="resUTel1">
-					<option value="010">010</option>
-					<option value="011">011</option>
-					<option value="016">016</option>
-					<option value="017">017</option>
-					<option value="019">019</option>
-				</select>			
-			</div>
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resUTel2" id="resUTel2">
-			</div>
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resUTel3" id="resUTel3">
-			</div>
-		</div>
-		<br>
-		
-		<h4>운전자 정보 입력</h4>
-		<p>			
-			<input type="radio" name="insertDrvInfo" id="insertDrvInfo1" checked>
-			<label for="insertDrvInfo1">직접 입력</label>
-						
-			<input type="radio" name="insertDrvInfo" id="insertDrvInfo2"> 
-			<label for="insertDrvInfo2">회원과 동일 정보 입력</label>			
-		</p>
-		<div class="form-group">			
-			<label class="col-sm-2 control-label">운전자 이름</label>
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resDrvName" id="resDrvName">
-			</div>
-		</div>
-		<div class="form-group">			
-			<label class="col-sm-2 control-label">면허증</label>
-			<div class="col-xs-2">
-				<select class="form-control" id="resDrvCategory" name="resDrvCategory" >	           			
-	           			<option value="1종 보통">1종 보통</option>
-	           			<option value="1종 소형">1종 소형</option>
-	           			<option value="1종 대형">1종 대형</option>
-	           			<option value="1종 특수">1종 특수</option>
-	           			<option value="2종 보통">2종 보통</option>
-	           			<option value="2종 소형">2종 소형</option>
-	           	</select>
-			</div>
-		</div>
-		<div class="form-group">			
-			<label class="col-sm-2 control-label">연락처</label>
-			<div class="col-xs-2">
-				<select class="form-control" name="resDrvTel1" id="resDrvTel1">
-					<option value="010">010</option>
-					<option value="011">011</option>
-					<option value="016">016</option>
-					<option value="017">017</option>
-					<option value="019">019</option>
-				</select>			
-			</div>
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resDrvTel2" id="resDrvTel2">
-			</div>
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resDrvTel3" id="resDrvTel3">
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-2 control-label">생년월일</label>
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="resDrvBirth" id="resDrvBirth">
-			</div>
-		</div>
-		
-		<div class=form-group>
-			<label class="col-sm-2 control-label"></label>		
-			<div class="col-sm-6">
-				<input class="btn btn-primary btn-lg btn-block" type="submit" value="예약하기" name="btsubmit" id="btsubmit" >
-			</div>
-		</div>	
-		</fieldset>
-	</form>
+			<!-- 예약자 정보 입력 끝 -->
+			
+			</fieldset>
+		</form>
+	
 	<br>
 	<br>
 </div>
