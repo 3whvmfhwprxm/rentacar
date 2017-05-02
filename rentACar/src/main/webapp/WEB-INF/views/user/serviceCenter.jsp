@@ -76,7 +76,7 @@
 	}
 </style>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/logincss.css"/>
-	<form name="frmPage" method="get" action='<c:url value="/inc_user/serviceCenter.do" />'>
+	<form name="frmPage" method="get" action='<c:url value="/user/serviceCenter.do" />'>
 		<input type="hidden" name="currentPage">
 	</form>
 <div class="container">

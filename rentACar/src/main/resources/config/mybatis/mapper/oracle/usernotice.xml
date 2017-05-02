@@ -10,7 +10,7 @@
 		    select rownum as RNUM ,LIST.*
 		    from
 		    (
-		        select * from usernotice 
+		        select * from usernotice where unotice_visible='Y'
 		        order by unotice_no desc
 		    )LIST
 		)
@@ -21,7 +21,7 @@
 	</select>
 	
 	<select id="selectByNo" parameterType="int" resultType="UserNoticeVO">
-		select * from usernotice where unotice_no=#{unoticeNo}
+		select * from usernotice where unotice_no=#{unoticeNo} and unotice_visible='Y'
 	</select>
 </mapper>
 
