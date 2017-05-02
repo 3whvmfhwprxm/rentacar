@@ -232,11 +232,11 @@
 		});
 	</script>
 </div> -->
-<div class="w3-row-padding w3-margin-bottom">
+<div class="w3-row-padding">
 	<div class="row">
 		<div class="col-md-12">
 			<br>
-			<table class="table table-hover">
+			<table class="table table-hover" style="text-align: center;">
 				<thead>			
 					<tr class="info">
 						<th scope="col">결제번호</th>
@@ -259,7 +259,7 @@
 					
 					<c:if test="${!empty PayInfoList}">
 					<c:forEach var="vo" items="${PayInfoList}">
-						<tr style="text-align: center">
+						<tr>
 							<td><a
 								href='<c:url value="/administrator/payInfo/payInfoList.do?payNo=${vo.payNo}" />'>
 									${vo.payNo}</a></td>
@@ -268,8 +268,7 @@
 							<td>${vo.payMethod}</td>
 							<td>${vo.payMoney}</td>
 							<td>${vo.payDiscount}</td>
-							<td><fmt:formatDate value="${vo.payRegdate}"
-									pattern="yyyy-MM-dd" /></td>
+							<td>${vo.payRegdate}</td>
 							<td>${vo.payCondition}</td>
 						</tr>
 					</c:forEach>
