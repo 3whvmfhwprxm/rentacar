@@ -50,6 +50,17 @@
 						<span style="font-size: 1.1em; font-weight: bold;">탈퇴일:</span> 
 							${companyVo.comOutdate}<br>
 						</c:if>
+						<br>
+						<a href='<c:url value="/administrator/company/companyList.do" />'
+							data-original-title="go to the List" data-toggle="tooltip"
+							type="button" class="btn btn-default"> <i
+							class="fa fa-list-ul" aria-hidden="true"></i>목록
+						</a> 
+						<a href='<c:url value="/administrator/company/companyEdit.do?comId=${param.comId}"/>'
+							data-original-title="Edit this user" data-toggle="tooltip"
+							type="button" class="btn btn-default"> <i
+							class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
+						</a>
 					</div>
 				</div>
 			</div>
