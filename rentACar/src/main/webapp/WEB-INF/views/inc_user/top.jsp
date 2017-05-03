@@ -10,6 +10,163 @@
 <head>
 <meta charset="utf-8" />
 <title>유저메인</title>
+<style type="text/css">
+	body{font-size:12px;font-family:'Nanum Gothic',"맑은 고딕",MalgunGothic,dotum;color:#666;background:#fff}
+a{text-decoration:none;color:#666}
+strong{font-weight:bold}
+input[type=text],select{color:#666;font-family:'Nanum Gothic',"맑은 고딕",MalgunGothic,dotum}
+input{margin:0;padding:0}
+.wrapper{width:996px;margin:0 auto; min-width:996px;}
+#header { padding-bottom:40px; }
+#header .top{height:30px;border-bottom:1px solid #d3d3d3;background-color:#f7f7f7; width:100%; min-width:996px; }
+#header .top ul{float:left;margin-top:9px}
+#header .top ul li{float:left;padding-left:10px;margin-left:9px;background:url("../images/blt/003.png") no-repeat left center;}
+#header .top ul li:first-child{padding:0;background:none}
+#header .top ul li a{font-size:11px;color:#333}
+#header .top .utility{float:right}
+#header .top .utility .sns{float:left;margin:4px 0 0 10px}
+#header .middle{height:62px}
+#header .middle h1{float:left;margin-top:21px}
+#header .middle .header_right{float:right;}
+#header .middle .header_right span{float:left}
+#header .middle .header_right .btns{margin:5px 10px 0 0;color:#d7d7d7}
+#header .middle .header_right .btns a{float:left;margin:0 16px}
+#header .menu{ width:100%; min-width:996px; height:40px; border-bottom:1px solid #dddddd; background:#e51837; overflow:hidden; position:absolute; top:93px; z-index:10000;}
+/*
+#gnb { width:100%; height:40px; border-bottom:1px solid #dddddd; background:#e51837; overflow:hidden; position:absolute; top:93px; z-index:10000;  }
+*/
+#header .menu .wrapper { width:995px; margin:0 auto; position:relative;}
+#header .menu .wrapper > ul > li{float:left;width:153px;height:40px;}
+#header .menu .wrapper > ul > li > a{display:block;width:100%;height:27px;padding-top:13px;text-align:center}
+#header .menu .wrapper > ul > li.last{width:230px;background:#e51837; }
+#header .menu .wrapper > ul > li.last > a { padding-top:0;height:40px;}
+#header .menu .wrapper > ul > li.on > a, #header .menu .wrapper > ul > li:hover > a {background:#ff6f00;}
+#header .menu .wrapper > ul > li.last > a:hover { background:#e51837;}
+#header .menu .wrapper > .gnb-full-menu { position:absolute; right:-93px; top:10px; z-index:100000; }
+
+.gnb-full { position:relative; float:left; width:100%; min-width:996px; height:225px; border-top:2px solid #fbb100; border-bottom:2px solid #e51837; background:#ffffff; }
+.gnb-full .gnb-sub { width:995px; height:225px; margin:0 auto; border-left:1px solid #dddddd; }
+.gnb-full .gnb-sub > li { float:left; width:152px; height:225px; border-right:1px solid #dddddd; }
+.gnb-full .gnb-sub > li.last { width:151px; }
+.gnb-full .gnb-sub > li > .sub-list { width:152px; margin-top:10px; }
+.gnb-full .gnb-sub > li.last > .sub-list { width:151px; }
+.gnb-full .gnb-sub > li > .sub-list > li { width:132px; padding-left:20px; height:24px; line-height:24px; }
+.gnb-full .gnb-sub > li > .sub-list > li a { text-decoration:none;}
+.gnb-full .gnb-sub > li > .sub-list > li:hover { background:#e51837 url(/images/menu/bg_gnb_active.gif) 140px no-repeat;}
+.gnb-full .gnb-sub > li > .sub-list > li:hover a { color:#ffffff; font-weight:bold;}
+.gnb-full .gnb-sub > li > .sub-list > li.active { background:#e51837 url(/images/menu/bg_gnb_active.gif) 140px no-repeat;}
+.gnb-full .gnb-sub > li > .sub-list > li.active a { color:#ffffff; font-weight:bold;}
+.gnb-full .gnb-sub > li.last > .sub-list > li { width:131px;}
+.gnb-full .gnb-sub > li.find { width:230px; }
+.gnb-full .gnb-sub > li.find .find-form { margin-top:10px;}
+.gnb-full .gnb-sub > li.find .find-form td { height:28px; }
+.gnb-full .gnb-sub > li.find .find-form td select { width:100%;}
+.gnb-full .gnb-sub > li.find .find-form td input { width:90px; margin-right:3px; padding:3px 1px;}
+.gnb-full .gnb-sub > li.find .find-form th.img { padding-top:10px;}
+
+
+#contents .visual{background:#f4f4f4; border-bottom:1px solid #d0d0d0; }
+#contents .visual .wrapper{min-height:355px;position:relative; }
+#contents .visual .copyright{margin-top:56px;position:relative;z-index:99}
+#contents .visual .visual-image{position:relative;}
+#contents .visual .visual-image li{display:none;position:absolute;top:0;left:0;z-index:96;}
+#contents .visual .visual-image li.on{display:block}
+#contents .visual .visual-image li:first-child{z-index:97}
+#contents .visual .visual-image li.on{z-index:98}
+#contents .visual .visual-image li .link1{position:absolute;top:239px;left:20px;z-index:99}
+#contents .visual .visual-menu{margin-top:15px;overflow:hidden;position:relative;z-index:99;}
+#contents .visual .visual-menu li{float:left;padding:0 6px 0 5px}
+
+#contents .visual .vtab-menu{margin-top:30px;overflow:hidden;position:absolute;bottom:0;left:0;z-index:99;}
+#contents .visual .vtab-menu li{float:left;}
+#contents .visual .vtab-menu li+.on a{background:url("/rent/images/bg/bg05.png") repeat-y;padding-left:23px;margin-left:-23px;position:relative;z-index:99}
+#contents .visual .vtab-menu li a,#contents .visual .vtab-menu li a img{display:block}
+
+/*main big banner*/
+#contents .visual .m_visual {float:left; overflow:hidden; width:996px; height:355px;}
+#contents .visual .m_visual .rolling { display:block; position:absolute; top:320px;left:45px; overflow:hidden; z-index:100; }
+#contents .visual .m_visual .rolling li {float:left; padding-left:5px;}
+#contents .visual .m_visual .main-banner{ display:block; float:left;}
+#contents .visual .m_visual .visual-controll { position:absolute; top:313px;left:15px; z-index:100; }
+
+#contents .visual .m_visual .visual-wrap {overflow:hidden; width:996px; height:355px; position:relative; }
+#contents .visual .m_visual .visual-wrap li {width:996px; height:355px; position:absolute; }
+
+
+#contents .visual .booking{position:absolute;top:19px;right:0;z-index:9999;}
+#contents .visual .booking .btns{text-align:right;position:relative;z-index:2;}
+#contents .visual .booking .btns.center{text-align:center;padding:10px 0}
+#contents .visual .booking .reservation{background:#fff;border:3px solid #e0002a;min-width:316px; *width:410px; margin-top:-2px; }
+#contents .visual .booking .reservation .r_head{background:#efefef;margin:0px 0 5px;display:table;width:100%;}
+#contents .visual .booking .reservation .r_head label{display:table-cell;padding-left:10px;width:50%;font-weight:bold;padding:11px 0 10px 10px}
+#contents .visual .booking .reservation .form{padding:10px 10px 0px 10px;}
+#contents .visual .booking .reservation .form input[type=text]{border:1px solid #dedede;padding:0;margin:0;height:21px;font:normal 12px/19px 'Nanum Gothic',"맑은 고딕",MalgunGothic,dotum;padding-left:10px}
+#contents .visual .booking .reservation .form input.ipt1{width:69px;}
+#contents .visual .booking .reservation .form input.ipt2{width:114px;*width:104px;}
+#contents .visual .booking .reservation .form select{border:1px solid #dedede;font:normal 12px/19px 'Nanum Gothic',"맑은 고딕",MalgunGothic,dotum;height:21px;padding:1px;margin:0}
+#contents .visual .booking .reservation .form table{border-top:2px solid #313131;width:100%;}
+#contents .visual .booking .reservation .form table td,#contents .visual .booking .reservation .form table th{border-bottom:1px solid #dedede;vertical-align:middle}
+#contents .visual .booking .reservation .form table th{text-align:left;padding:8px 0 8px 10px}
+#contents .visual .booking .reservation .form table td{padding:4px 0 4px 10px}
+#contents .visual .booking .reservation .form table td+td,#contents .visual .booking .reservation .form table th+th,#contents .visual .booking .reservation .form table th+td,#contents .visual .booking .reservation .form table td+th{border-left:1px solid #dedede}
+#contents .visual .booking .reservation .form table > tbody > tr > th{background:#f9f9f9;}
+#contents .visual .booking .reservation .form table > tbody > tr > th.th2{background:#fffbfa}
+#contents .visual .booking .reservation .form table > tbody > tr >td .btn{display:inline-block;vertical-align:middle}
+#contents .visual .booking .reservation .form .submit{background:url("/rent/images/btn/r003.png") no-repeat;cursor:pointer;width:123px;height:39px;border:0;text-indent:-9999px}
+#contents .content{margin-top:20px;overflow:hidden;}
+#contents .content a{float:left;}
+#contents .content a+a{margin-left:10px}
+#contents .banners{margin:10px 0 30px;overflow:hidden;}
+#contents .banners .banner{float:left;vertical-align:top;}
+#contents .banners .banner+.banner{margin-left:9px;margin-bottom:10px}
+#contents .banners .banner.nl,#contents .banners .banner:first-child{margin-left:1px;clear:left}
+#contents .banners .banner.banner03{border:1px solid #e4e4e4;width:289px;padding:18px 15px 11px 20px; *padding:16px 15px 10px 20px}
+
+/*loling banner*/
+#contents .banners .banner .m_banner {float:left; position:relative; overflow:hidden; border:1px solid #ddd;}
+#contents .banners .banner .m_banner .main-s-rolling { display:block; position:absolute; top:180px;left:45px; overflow:hidden; z-index:100; }
+#contents .banners .banner .m_banner .main-s-rolling li {float:left; padding-left:5px;}
+#contents .banners .banner .m_banner .main-s-banner{ display:block; float:left; width:324px; height:205px; }
+#contents .banners .banner .m_banner .event-controll { position:absolute; top:173px;left:15px; z-index:100; }
+
+#contents .banners .banner .m_banner .event-scroll-wrap {overflow:hidden; width:324px; height:205px; position:relative; }
+#contents .banners .banner .m_banner .event-scroll-wrap li {width:324px; height:205px; position:absolute; }
+
+#contents .btabs .tab-menu{margin-bottom:8px;}
+#contents .btabs .tab-menu .btn-more{position:absolute;top:2px;right:1px}
+#contents .btabs .tab-menu .menu{overflow:hidden;}
+#contents .btabs .tab-menu .menu li{float:left;padding-right:15px;}
+#contents .btabs .tab-menu .menu li+li{border-left:1px solid #dadada;padding-left:15px}
+#contents .btabs .tab-menu .menu li.more { position:relative; float:right;padding-right:15px;}
+#contents .btabs .tab-content{font-size:12px;line-height:22px;}
+#contents .btabs .tab-content .tlist01 li{background:url("/rent/images/blt/002.png") no-repeat 1px 9px;padding-left:8px;position:relative;}
+#contents .btabs .tab-content .tlist01 li span{position:absolute;right:0;top:0}
+.quickmenu{background:#fff;position:absolute;top:257px;right:30px;width:68px;border:1px solid #dcdcdc;margin-top:1px;}
+.quickmenu .line{position:absolute;top:-3px;left:-1px;width:70px;height:2px;background:#e51937}
+.quickmenu ul li{margin-top:15px;text-align:center}
+.quickmenu .btntop{display:block;margin-top:12px;padding-top:7px;text-align:center;background:#b0b0b0}
+.quickmenu .sns { position:absolute; width:70px; text-align:center; bottom:-30px;}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family:'Nanum Gothic',"맑은 고딕","돋움", "굴림";
+}
+</style>
 <script type="text/javascript">
 	var child;
  	function openJoin(){
@@ -47,8 +204,10 @@
     <![endif]-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/script.js"></script>
 <!-- <script data-rocketsrc="http://www.designbootstrap.com/track/ga.js"  type="text/rocketscript"></script> -->
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -152,38 +311,6 @@
 
             </div>
         </div>
-        
-        <!-- <div id="contents">
-		visual
-		<div class="visual">
-			<div class="wrapper">
-				Quickmenu
-				<div class="quickmenu">
-					<span class="line">&nbsp;</span>
-					<ul>
-						<li><a href="/rent/rentcar/short_rent_reseravtion.do#TOP"><img src="/rent/images/btn/quickmenu1.jpg" alt="실시간예약" title="실시간예약" /></a></li>
-						<li><a href="/rent/mypage/my_rent.do"><img src="/rent/images/btn/quickmenu2.jpg" alt="회원예약확인" title="회원예약확인" /></a></li>
-						<li><a href="#" 
-                    onclick="popup('/rent/rentcar/popup_nonmember_login.do','popup',650,420, 'center', 'scroll'); return false;"><img src="/rent/images/btn/quickmenu7.jpg" alt="비회원예약확인" title="비회원예약확인" /></a></li>
-						<li><a href="/rent/event/ongoing_event_list.do"><img src="/rent/images/btn/quickmenu3.jpg" alt="이벤트" title="이벤트" /></a></li>
-						<li><a href="/rent/customer/request_form.do"><img src="/rent/images/btn/quickmenu6.jpg" alt="상담신청" title="상담신청" /></a></li>
-						<li><a href="#none" onclick="window.open('/html/cmsong.html','window','width=300,height=50,scrollbars=yes')"><img src="/rent/images/btn/quickmenu8.jpg" alt="CM송듣기" title="CM송듣기" /></a></li>
-						
-					</ul>
-					
-					<a href="#" class="btntop"><img src="/rent/images/tit/top.jpg" alt="TOP" /></a>
-					
-					
-					<div class="sns">
-                        <a href="http://www.facebook.com/SK.speedmate" target="_blank"><img src="/rent/images/icon/fb.jpg" alt="" /></a>
-                        <a href="http://twitter.com/SK_speedmatecar" target="_blank"><img src="/rent/images/icon/twitter.jpg" alt="" /></a>
-                    </div>
-				
-				</div>
-        	</div>
-        </div>
-        </div> -->
-        	
     </section>
     <!-- MENU SECTION END-->
 		

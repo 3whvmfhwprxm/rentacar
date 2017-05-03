@@ -56,5 +56,16 @@
             </div>
         </div>
     </footer>
+<div class="quickmenu" style="padding: 10;">
+	<span class="line">&nbsp;</span>
+	<ul>
+		<li><a href="<c:url value="/user/realTime.do"/>"><img src="<c:url value="/user_img/quickmenu1.jpg"/>" alt="실시간예약" title="실시간예약" /></a></li>
+		<li><a href="<c:url value="/user/confirm.do"/>"><img src="<c:url value="/user_img/quickmenu2.jpg"/>" alt="회원예약확인" title="회원예약확인" /></a></li>
+		<li><a href="<c:url value="/user/serviceCenter.do"/>" onclick="popup('/rent/rentcar/popup_nonmember_login.do','popup',650,420, 'center', 'scroll'); return false;"><img src="<c:url value="/user_img/quickmenu7.jpg"/>" alt="비회원예약확인" title="비회원예약확인" /></a></li>
+		<li><a href="<c:url value="/user/review.do"/>"><img src="<c:url value="/user_img/quickmenu6.jpg"/>" alt="상담신청" title="상담신청" /></a></li>
+	</ul>
+	
+	<a href="#" class="btntop"><img src="<c:url value="/user_img/top.jpg"/>" alt="TOP" /></a>
+</div>
 </body>
 </html>
