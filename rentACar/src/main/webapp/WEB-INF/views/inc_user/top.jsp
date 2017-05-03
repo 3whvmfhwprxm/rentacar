@@ -305,9 +305,9 @@ time, mark, audio, video{
 		                            	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 회원가입</a></li>
 		                        </c:if>
                             	<c:if test="${!empty sessionScope.userId }">
-		                            <li><a href="*">
+		                            <li><a href="<c:url value="/user/logout.do"/>">
 		                            	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 로그아웃</a></li>
-		                            <li><a href="*">
+		                            <li><a href="<c:url value="/user/regedit.do"/>">
 		                            	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 회원정보수정</a></li>
                             	</c:if>
                         </ul>
