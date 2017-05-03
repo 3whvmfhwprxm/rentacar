@@ -11,7 +11,7 @@
 <div id="container">
 	<div class="content-wrap">
 		<div>
-			<div>
+			<%-- <div>
 				<div>
 					<img id="img" src="${pageContext.request.contextPath}/user_img/benefit_img01.jpg" alt="이미지0">
 				</div>
@@ -25,7 +25,7 @@
 				<div>
 					<img id="img" src="${pageContext.request.contextPath}/user_img/benefit_img03.jpg" alt="이미지2">
 				</div>
-			</div>
+			</div> --%>
 			<div>
 				<div>
 					<img id="img" src="${pageContext.request.contextPath}/user_img/benefit_img04.jpg" alt="이미지3">

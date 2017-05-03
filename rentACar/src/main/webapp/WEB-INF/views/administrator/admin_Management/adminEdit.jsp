@@ -31,7 +31,10 @@
 		*/
 	}
 </script>
-<div class="divList container">
+<style type="text/css">
+.bodyClass{padding-top: 30px;}
+</style>
+<div class="divList w3-container bodyClass">
 	<form class="form-horizontal" name="AdminEditfrm" id="AdminEditfrm" method="post" action="<c:url value='/admin/Mng/adminEdit.do' />">
 	<fieldset>
 		<legend>관리자 정보 수정</legend>

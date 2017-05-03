@@ -100,9 +100,10 @@
 	}
 </script>
 <style type="text/css">
-#checkID{color: red; font-weight: bold;display: none;}	
+#checkID{color: red; font-weight: bold;display: none;}
+.bodyClass{padding-top: 30px;}
 </style>
-<div class="divList container">
+<div class="divList w3-container bodyClass">
 	<form class="form-horizontal" name="AdminInsertfrm" id="AdminInsertfrm" method="post" action="<c:url value='/admin/Mng/adminJoin.do' />">
 	<fieldset>
 		<legend>새 관리자 추가</legend>

@@ -61,7 +61,6 @@
 	
 	<select id="adminAuthcodeSelect" resultType="AuthcodeVO">
 		select * from AD_GRADE
-		where auth_code !=1
 	</select>
 </mapper>
 

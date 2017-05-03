@@ -94,26 +94,23 @@
 </script>
 <style type="text/css">
 	.fontStyle1{color: #0033FF; font-weight: bold;}
-	#map{float:left;
+	#map{
 		padding:5px 5px 5px 5px;
-		width:35%;
+		width:100%;
 		height:300px;}
 		
 	#userLeft{
-		clear:both;
 		float:left;
-		padding:5px 5px 5px 5px;
 		width:50%;}
 	#userRight{
 		float:left;
-		padding:5px 5px 5px 5px;
 		width:50%;}
 </style>
 <div class="container">
 	<br>
 	<form class="form-horizontal" name="insertReservInfo" id="insertReservInfo" method="post" action="<c:url value='/user/reservation.do' />">
 		<fieldset>
-			<legend>예약자 정보 입력</legend>
+			<h3>예약정보 확인</h3>
 		<!-- 선택한 기간 정보 -->
 		<div class="form-group">
 				<!-- 테스트 끝나면 hidden으로 재 설정 -->
@@ -230,6 +227,7 @@
     </div> --%>
     
     <!-- 인수/반납 장소 표시 -->
+    <p>인수/반납 주소: ${map['COM_RETURN_PLACE']}</p>
     <div id="map"></div>
     <input type="hidden" id="mapInfo" name="mapInfo" value="${map['COM_RETURN_PLACE']}">    
     <script>
