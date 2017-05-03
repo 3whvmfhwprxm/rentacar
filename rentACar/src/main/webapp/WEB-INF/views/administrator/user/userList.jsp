@@ -9,7 +9,11 @@
 			$(this).tab('show')
 		});
 		
-		$('#myModal').on('shown.bs.modal', function () {
+		$('#myInModal').on('shown.bs.modal', function () {
+			$('#myInput').focus()
+		});
+		
+		$('#myOutModal').on('shown.bs.modal', function () {
 			$('#myInput').focus()
 		});
 	});
@@ -104,17 +108,17 @@ th {
 								<c:forEach var="vo" items="${userInList}">
 									<tr style="text-align: center">
 										<td>
-											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myInModal">
 												${vo.userId}
 											</button>
-											<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal fade" id="myInModal" tabindex="-1" role="dialog" aria-labelledby="myInModalLabel" aria-hidden="true">
 												<div class="modal-dialog">
 											    	<div class="modal-content">
 											      		<div class="modal-header" style="background-color: skyblue;">
 											       			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											       				<span aria-hidden="true">&times;</span>
 											       			</button>
-											        		<h4 class="modal-title" id="myModalLabel">
+											        		<h4 class="modal-title" id="myInModalLabel">
 											        			<i class="fa fa-user-o"></i>${vo.userName}님의 상세정보
 											        		</h4>
 											      		</div>
@@ -168,9 +172,6 @@ th {
 											    	</div>
 												</div>
 											</div>
-<%-- 											<a href='<c:url value="/administrator/user/userDetail.do?userId=${vo.userId}" />'>
-												${vo.userId}
-											</a> --%>
 										</td>
 										<td style="text-align: center">${vo.userName}</td>
 										<td>${vo.userEmail}</td>
@@ -223,9 +224,70 @@ th {
 								<c:forEach var="vo" items="${userOutList}">
 									<tr style="text-align: center">
 										<td>
-											<a href='<c:url value="/administrator/user/userDetail.do?userId=${vo.userId}" />'>
+											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myOutModal">
 												${vo.userId}
-											</a>
+											</button>
+											<div class="modal fade" id="myOutModal" tabindex="-1" role="dialog" aria-labelledby="myOutModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+											    	<div class="modal-content">
+											      		<div class="modal-header" style="background-color: skyblue;">
+											       			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											       				<span aria-hidden="true">&times;</span>
+											       			</button>
+											        		<h4 class="modal-title" id="myOutModalLabel">
+											        			<i class="fa fa-user-o"></i>${vo.userName}님의 상세정보
+											        		</h4>
+											      		</div>
+													    <div class="modal-body">
+													    	<table class="table table-user-information">
+																<tbody>
+																	<tr>
+																		<td>아이디</td>
+																		<td>${vo.userId}</td>
+																	</tr>
+																	<tr>
+																		<td>성별</td>
+																		<td>${vo.userGender}</td>
+																	</tr>
+																	<tr>
+																		<td>전화번호</td>
+																		<td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
+																	</tr>
+																	<tr>
+																		<td>이메일</td>
+																		<td>${vo.userEmail}</td>
+																	</tr>
+																	<tr>
+																		<td>주소</td>
+																		<td>${vo.userAddress}</td>
+																	</tr>
+																	<tr>
+																		<td>생일</td>
+																		<td>${vo.userBirth}</td>
+																	</tr>
+																	<tr>
+																		<td>면허증</td>
+																		<td>${vo.userLicense}</td>
+																	</tr>
+																	<tr>
+																		<td>가입일</td>
+																		<td>${vo.userRegdate}</td>
+																	</tr>
+																	<tr>
+																		<td>탈퇴일</td>
+																		<td>${vo.userOutdate}</td>
+																	</tr>
+																</tbody>
+															</table>
+													    </div>
+											      		<div class="modal-footer">
+													        <button type="button" class="btn btn-default" data-dismiss="modal">
+													        Close
+													        </button>
+											      		</div>
+											    	</div>
+												</div>
+											</div>
 										</td>
 										<td style="text-align: center">${vo.userName}</td>
 										<td>${vo.userEmail}</td>
