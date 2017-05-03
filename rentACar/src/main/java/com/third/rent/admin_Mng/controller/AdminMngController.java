@@ -34,12 +34,12 @@ public class AdminMngController {
 		logger.info("관리 - 관리자목록 조회조건  searchVO={}", searchVO);
 
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(Utility.ADMIN_OUT_COMPANY_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVO.getCurrentPage());
 		
 		//SearchVO 값 셋팅
-		searchVO.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVO.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
 		searchVO.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 

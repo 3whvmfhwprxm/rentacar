@@ -159,6 +159,7 @@
 			<label class="col-sm-2 control-label">관리자 등급</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="adminAuthcode" id="adminAuthcode">
+					
 					<option value="0">선택</option>
 				    <c:forEach var="auth" items="${authlist }">
 				    	<option value="${auth.authCode }">${auth.authName }</option>
