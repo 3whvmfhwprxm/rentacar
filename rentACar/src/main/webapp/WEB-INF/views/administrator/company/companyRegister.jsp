@@ -340,11 +340,11 @@
 		
 		<div class="form-group">
 			<label for="CompanyLogo" class="col-sm-2 control-label">
-				로고
+				업체 로고
 			</label>
 			<div class="col-sm-2">
 				<input type="file" id="CompanyLogo" name="comLogo"
-					placeholder="회사 로고">	
+					placeholder="업체 로고">	
 			</div>
 		</div>
 		
@@ -352,7 +352,7 @@
 			<label class="col-sm-2 control-label"></label>
 			<div class="col-sm-8">
 				<button type="submit" class="btn btn-primary btn-lg btn-block" id="btCompanyRegister">
-					등록
+					업체 등록
 				</button>
 			</div>
 		</div>

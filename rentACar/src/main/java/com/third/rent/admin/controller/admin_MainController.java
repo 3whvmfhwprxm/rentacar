@@ -1,6 +1,7 @@
 package com.third.rent.admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,22 +44,18 @@ public class admin_MainController {
 		int payinfoCount = adminService.selectCountPayinfo();
 		logger.info("payinfoCount");
 		
-		int selectSumPayMoney = adminService.selectSumPayMoney();
-		logger.info("selectSumPayMoney");
-		
-		int selectSumPayDiscount = adminService.selectSumPayDiscount();
-		logger.info("selectSumPayDiscount");
-		
 		List<PayInfoVO> PayInfoList = payInfoService.recentTenPayInfo(payInfoVo);
 		logger.info("PayInfoList.size()={}", PayInfoList);
+		
+		List<Map<String, Object>> selectSumTotalPay = adminService.selectSumTotalPay();
+		logger.info("selectSumTotalPay.size()={}", selectSumTotalPay);
 		
 		model.addAttribute("userCount", userCount);
 		model.addAttribute("companyCount", companyCount);
 		model.addAttribute("reservationCount", reservationCount);
 		model.addAttribute("payinfoCount", payinfoCount);
-		model.addAttribute("selectSumPayMoney", selectSumPayMoney);
-		model.addAttribute("selectSumPayDiscount", selectSumPayDiscount);
 		model.addAttribute("PayInfoList", PayInfoList);
+		model.addAttribute("selectSumTotalPay", selectSumTotalPay);
 
 		return "administrator/admin_Main";
 	}

@@ -18,9 +18,9 @@
 				alert('제조사 입력하세요.');
 				$("#carInc").focus();
 				return false;
-			}else if($("#carFuel").val()==''){
-				alert('연료 종류를 입력하세요.');
-				$("#carFuel").focus();
+			}else if($("#carTrans").val()==''){
+				alert('변속기를 입력하세요.');
+				$("#carTrans").focus();
 				return false;
 			}else if($("#carSize").val()==''){
 				alert('승차인원을 입력하세요.');
@@ -67,37 +67,37 @@
 	
 		<div class="form-group">
 			<label for="carName" class="col-sm-2">
-				Car Name
+				모델명
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="carName"
-					id="carName" placeholder="car Name">
+					id="carName" placeholder="모델명">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="carInc" class="col-sm-2">
-				Car Inc
+				제조사
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="carInc"
-					id="carInc" placeholder="car Inc">
+					id="carInc" placeholder="제조사">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="carSize" class="col-sm-2">
-				Car Size
+				승차인원
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="carSize"
-					id="carSize" placeholder="car Size">
+					id="carSize" placeholder="승차인원">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="carTrans" class="col-sm-2">
-				Car Trans
+				변속기
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="carTrans"
@@ -107,21 +107,21 @@
 		
 		<div class="form-group">
 			<label for="carType" class="col-sm-2">
-				Car Type
+				차량유형
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="carType"
-					id="carType" placeholder="Car Type">
+					id="carType" placeholder="차량유형">
 			</div>
 		</div>
 						
 		<div class="form-group">
 			<label for="carImg" class="col-sm-2">
-				Car Img
+				차량 이미지
 			</label>
 			<div class="col-sm-2">
 				<input type="file" id="carImg" name="carImg"
-					placeholder="file">	
+					placeholder="차량 이미지">	
 			</div>
 		</div>
 		
@@ -129,7 +129,7 @@
 			<label class="col-sm-2 control-label"></label>
 			<div class="col-sm-8">
 				<button type="submit" class="btn btn-primary btn-lg btn-block" id="btCarModelRegister">
-					Register
+					모델 등록
 				</button>
 			</div>
 		</div>

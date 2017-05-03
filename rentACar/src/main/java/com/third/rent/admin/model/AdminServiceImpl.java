@@ -1,5 +1,8 @@
 package com.third.rent.admin.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,13 +33,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public int selectSumPayMoney() {
-		return adminDao.selectSumPayMoney();
-	}
-
-	@Override
-	public int selectSumPayDiscount() {
-		return adminDao.selectSumPayDiscount();
+	public List<Map<String, Object>> selectSumTotalPay() {
+		return adminDao.selectSumTotalPay();
 	}
 	
 }

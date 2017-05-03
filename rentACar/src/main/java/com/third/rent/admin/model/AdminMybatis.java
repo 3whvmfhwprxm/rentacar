@@ -1,5 +1,8 @@
 package com.third.rent.admin.model;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -29,13 +32,8 @@ public class AdminMybatis extends SqlSessionDaoSupport
 	}
 
 	@Override
-	public int selectSumPayMoney() {
-		return getSqlSession().selectOne(namespace+".selectSumPayMoney");
-	}
-
-	@Override
-	public int selectSumPayDiscount() {
-		return getSqlSession().selectOne(namespace+".selectSumPayDiscount");
+	public List<Map<String, Object>> selectSumTotalPay() {
+		return getSqlSession().selectList(namespace+".selectSumTotalPay");
 	}
 	
 	

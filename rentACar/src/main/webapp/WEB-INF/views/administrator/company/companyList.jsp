@@ -73,6 +73,7 @@
 				</a>
 			</li>
 		</ul>
+		
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<!-- ★★★★★★★★★★업체 리스트★★★★★★★★★★ -->
@@ -154,13 +155,13 @@
 							</thead>
 			
 							<tbody>
-								<c:if test="${empty outCompanyList}">
+								<c:if test="${empty companyOutList}">
 									<tr>
 										<td colspan="12" style="text-align: center;">데이터가 존재하지 않습니다.</td>
 									</tr>
 								</c:if>
 								
-								<c:forEach var="vo" items="${outCompanyList}">
+								<c:forEach var="vo" items="${companyOutList}">
 									<tr style="text-align: center">
 										<td><a
 											href='<c:url value="/administrator/company/companyDetail.do?comId=${vo.comId}" />'>
@@ -241,6 +242,12 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class="col-md-11"></div>
+				<div>
+					<a href='<c:url value="/administrator/company/companyRegister.do" />'>
+						<button type="button" class="btn btn-primary">업체 등록</button>
+					</a>
+				</div>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<nav>

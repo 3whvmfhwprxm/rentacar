@@ -1,150 +1,178 @@
 @CHARSET "UTF-8";
 
-body {
-	font-family: 'Montserrat', sans-serif;
+tab-pane img {
+	max-width: 100%;
 }
 
-.panel-heading:hover {
-	cursor: pointer;
+.preview {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
 }
 
-.panel-heading {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+@media screen and (max-width: 996px) {
+	.preview {
+		margin-bottom: 20px;
+	}
 }
 
-.side-tab:hover {
-	cursor: pointer;
+.preview-pic {
+	-webkit-box-flex: 1;
+	-webkit-flex-grow: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
 }
 
-.panel.panel-default {
+.preview-thumbnail.nav-tabs {
 	border: none;
-	box-shadow: none !important;
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
+	margin-top: 15px;
 }
 
-.panel-heading {
-	border: none;
-	background-color: #eee;
+.preview-thumbnail.nav-tabs li {
+	width: 18%;
+	margin-right: 2.5%;
 }
 
-.panel-body {
-	background-color: #f5f5f5;
-}
-
-.panel-title {
-	font-weight: 400;
-	color: $white;
-}
-
-.md-macbook-pro {
+.preview-thumbnail.nav-tabs li img {
+	max-width: 100%;
 	display: block;
-	width: 55.3125em;
-	height: 31.875em;
-	font-size: 13px;
-	margin: 0 auto;
 }
 
-.md-macbook-pro .md-lid {
-	width: 45em;
-	height: 30.625em;
-	overflow: hidden;
-	margin: 0 auto;
-	position: relative;
-	border-radius: 1.875em;
-	border: solid 0.1875em #cdced1;
-	background: #131313;
+.preview-thumbnail.nav-tabs li a {
+	padding: 0;
+	margin: 0;
 }
 
-.md-macbook-pro .md-camera {
-	width: 0.375em;
-	height: 0.375em;
-	margin: 0 auto;
-	position: relative;
-	top: 1.0625em;
-	background: #000;
-	border-radius: 100%;
-	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.25);
+.preview-thumbnail.nav-tabs li:last-of-type {
+	margin-right: 0;
 }
 
-.md-macbook-pro .md-camera:after {
-	content: "";
-	display: block;
-	width: 0.125em;
-	height: 0.125em;
-	position: absolute;
-	left: 0.125em;
-	top: 0.0625em;
-	background: #353542;
-	border-radius: 100%;
-}
-
-.md-macbook-pro .md-screen {
-	width: 42.25em;
-	height: 26.375em;
-	margin: 0 auto;
-	position: relative;
-	top: 2.0625em; //
-	background: #1d1d1d;
-	background: #fff;
+.tab-content {
 	overflow: hidden;
 }
 
-.md-macbook-pro .md-screen img {
+.tab-content img {
 	width: 100%;
+	-webkit-animation-name: opacity;
+	animation-name: opacity;
+	-webkit-animation-duration: .3s;
+	animation-duration: .3s;
 }
 
-.md-macbook-pro .md-base {
-	width: 100%;
-	height: 0.9375em;
-	position: relative;
-	top: -0.75em;
-	background: #c6c7ca;
+.card {
+	margin-top: 50px;
+	background: #eee;
+	padding: 3em;
+	line-height: 1.5em;
 }
 
-.md-macbook-pro .md-base:after {
-	content: "";
-	display: block;
-	width: 100%;
-	height: 0.5em;
-	margin: 0 auto;
-	position: relative;
-	bottom: -0.1875em;
-	background: #b9babe;
-	border-radius: 0 0 1.25em 1.25em;
+@media screen and (min-width: 997px) {
+	.wrapper {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
 }
 
-.md-macbook-pro .md-base:before {
-	content: "";
-	display: block;
-	width: 7.6875em;
-	height: 0.625em;
-	margin: 0 auto;
-	position: relative;
-	background: #a6a8ad;
-	border-radius: 0 0 0.625em 0.625em;
+.details {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
 }
 
-.md-macbook-pro.md-glare .md-lid:after {
-	content: "";
-	display: block;
-	width: 50%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-radius: 0 1.25em 0 0;
-	background: -webkit-linear-gradient(37deg, rgba(255, 255, 255, 0) 50%,
-		rgba(247, 248, 240, 0.025) 50%, rgba(250, 245, 252, 0.08));
-	background: -moz-linear-gradient(37deg, rgba(255, 255, 255, 0) 50%,
-		rgba(247, 248, 240, 0.025) 50%, rgba(250, 245, 252, 0.08));
-	background: -o-linear-gradient(37deg, rgba(255, 255, 255, 0) 50%,
-		rgba(247, 248, 240, 0.025) 50%, rgba(250, 245, 252, 0.08));
-	background: linear-gradient(53deg, rgba(255, 255, 255, 0) 50%,
-		rgba(247, 248, 240, 0.025) 50%, rgba(250, 245, 252, 0.08));
+.colors {
+	-webkit-box-flex: 1;
+	-webkit-flex-grow: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+}
+
+.product-title, .price, .sizes, .colors {
+	text-transform: UPPERCASE;
+	font-weight: bold;
+}
+
+.checked, .price span {
+	color: #ff9f1a;
+}
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+	margin-bottom: 15px;
+}
+
+.product-title {
+	margin-top: 0;
+}
+
+.size {
+	margin-right: 10px;
+}
+
+.size:first-of-type {
+	margin-left: 40px;
+}
+
+.color {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	height: 2em;
+	width: 2em;
+	border-radius: 2px;
+}
+
+.color:first-of-type {
+	margin-left: 20px;
+}
+
+.add-to-cart, .like {
+	background: #ff9f1a;
+	padding: 1.2em 1.5em;
+	border: none;
+	text-transform: UPPERCASE;
+	font-weight: bold;
+	color: #fff;
+	-webkit-transition: background .3s ease;
+	transition: background .3s ease;
+}
+
+.add-to-cart:hover, .like:hover {
+	background: #b36800;
+	color: #fff;
+}
+
+.not-available {
+	text-align: center;
+	line-height: 2em;
+}
+
+.not-available:before {
+	font-family: fontawesome;
+	content: "\f00d";
+	color: #fff;
+}
+
+.orange {
+	background: #ff9f1a;
+}
+
+.green {
+	background: #85ad00;
+}
+
+.blue {
+	background: #0076ad;
 }

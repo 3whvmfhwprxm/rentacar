@@ -19,13 +19,33 @@
 		select count(*) from payinfo
 	</select>
 	
-	<select id="selectSumPayMoney" resultType="int">
-		select sum(pay_money) from payInfo
+	<select id="selectSumTotalPay" resultType="map">
+		select yyyy,
+		    sum("01") as "1월", sum("02") as "2월", sum("03") as "3월", sum("04") as "4월", sum("05") as "5월", sum("06") as "6월",
+		    sum("07") as "7월", sum("08") as "8월", sum("09") as "9월", sum("10") as "10월", sum("11") as "11월", sum("12") as "12월",
+		    sum(pay_money)-sum(pay_discount) as "매출"
+		from
+		(
+		    select to_char(r.reserv_start_date,'YYYY') AS yyyy, 
+		    to_char(r.reserv_start_date,'MM') AS MM, to_char(r.reserv_start_date,'DD') AS DD, p.pay_money, p.pay_discount
+		    , decode(to_char(r.reserv_start_date,'MM'), '01', p.pay_money-p.pay_discount, 0) AS "01"
+		    , decode(to_char(r.reserv_start_date,'MM'), '02', p.pay_money-p.pay_discount, 0) AS "02"
+		    , decode(to_char(r.reserv_start_date,'MM'), '03', p.pay_money-p.pay_discount, 0) AS "03"
+		    , decode(to_char(r.reserv_start_date,'MM'), '04', p.pay_money-p.pay_discount, 0) AS "04"
+		    , decode(to_char(r.reserv_start_date,'MM'), '05', p.pay_money-p.pay_discount, 0) AS "05"
+		    , decode(to_char(r.reserv_start_date,'MM'), '06', p.pay_money-p.pay_discount, 0) AS "06"
+		    , decode(to_char(r.reserv_start_date,'MM'), '07', p.pay_money-p.pay_discount, 0) AS "07"
+		    , decode(to_char(r.reserv_start_date,'MM'), '08', p.pay_money-p.pay_discount, 0) AS "08"
+		    , decode(to_char(r.reserv_start_date,'MM'), '09', p.pay_money-p.pay_discount, 0) AS "09"
+		    , decode(to_char(r.reserv_start_date,'MM'), '10', p.pay_money-p.pay_discount, 0) AS "10"
+		    , decode(to_char(r.reserv_start_date,'MM'), '11', p.pay_money-p.pay_discount, 0) AS "11"
+		    , decode(to_char(r.reserv_start_date,'MM'), '12', p.pay_money-p.pay_discount, 0) AS "12"
+		    from reservation r join payinfo p
+		    on r.RESERV_NUM=p.RESERV_NUM
+		)  
+		group by yyyy
+		order by yyyy
 	</select>
-	
-	<select id="selectSumPayDiscount" resultType="int">
-		select sum(pay_discount) from payInfo
-	</select>	
 </mapper>
 
 

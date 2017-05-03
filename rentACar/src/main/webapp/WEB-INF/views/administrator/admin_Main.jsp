@@ -74,7 +74,7 @@
 	<h3>
 		<b>
 			<i class="fa fa-line-chart" aria-hidden="true"></i>
-			<a href='<c:url value="/administrator/payInfo/payInfoList.do?payNo=${vo.payNo}" />'>
+			<a href='<c:url value="/administrator/highChart/userHighChart.do" />'>
 				차트
 			</a>
 		</b>
@@ -84,31 +84,50 @@
 		padding: 0 8px;"></div>
 	
 	<script type="text/javascript">
-		Highcharts.chart('container', {
-	
-		    title: {
-		        text: 'Logarithmic axis demo'
-		    },
-	
-		    xAxis: {
-		        tickInterval: 1
-		    },
-	
-		    yAxis: {
-		        type: 'logarithmic',
-		        minorTickInterval: 0.1
-		    },
-	
-		    tooltip: {
-		        headerFormat: '<b>{series.name}</b><br />',
-		        pointFormat: 'x = {point.x}, y = {point.y}'
-		    },
-	
-		    series: [{
-		        data: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
-		        pointStart: 1
-		    }]
-		});
+	Highcharts.chart('container', {
+
+	    title: {
+	        text: '월별매출'
+	    },
+
+	    /* subtitle: {
+	        text: 'Source: thesolarfoundation.com'
+	    }, */
+
+	    yAxis: {
+	        title: {
+	            text: '원'
+	        }
+	    },
+	    legend: {
+	        layout: 'vertical',
+	        align: 'right',
+	        verticalAlign: 'middle'
+	    },
+
+	    plotOptions: {
+	        series: {
+	            pointStart: 2017
+	        }
+	    },
+
+	    series: [{
+	        name: 'Installation',
+	        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+	    }, {
+	        name: 'Manufacturing',
+	        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+	    }, {
+	        name: 'Sales & Distribution',
+	        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+	    }, {
+	        name: 'Project Development',
+	        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+	    }, {
+	        name: 'Other',
+	        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+	    }]
+	});
 	</script>
 </div>
 <!-- <div>

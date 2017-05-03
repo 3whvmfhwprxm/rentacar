@@ -4,38 +4,53 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/admin_Detail.css" />
 
-<style type="text/css">
-	th {
-		text-align: center;
-	}
+<div class=w3-container>
+	<div class="card">
+		<div class="container-fliud">
+			<div class="wrapper row">
+				<div class="preview col-md-6">	
+					<div class="preview-pic tab-content">
+				        <div class="tab-pane active" id="pic-1">
+				            <img src='<c:url value="/companyLogo/${companyVo.comLogo}" />' />
+				        </div>
+					</div>	
+				</div>
+				
+				<div class="details col-md-6">
+					<h1 class="product-title">
+						<i class="fa fa-mixcloud w3-xxxlarge"></i> ${param.comId}의 상세정보
+					</h1>
 	
-	.col-md-4 {
-		float: left;
-		width: 100%;
-		margin: 0 auto;
-		text-align: center;
-	}
-</style>
-
-<div class="row">
-	<div class="col-md-12">
-		<h1 style="text-align: center;">${param.comId} 상세보기</h1>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-sm-6">
-		<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-			<div class="media">
-				<a class="pull-left" href="#" target="_parent">
-					<img width="50px" height="50px" alt="image" class="img-responsive"
-						src='<c:url value="/companyLogo/${companyVo.comLogo}" />'>
-				</a>
-				<div class="clearfix visible-sm"></div>
-
-				<div class="media-body fnt-smaller">
-					<a href="#" target="_parent"></a>
-					
+					<div>
+						<span style="font-size: 1.1em; font-weight: bold;">업체아이디:</span> 
+							${companyVo.comId}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">업체명:</span> 
+							${companyVo.comName}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">사업자번호:</span> 
+							${companyVo.comNum}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">계좌번호:</span> 
+							${companyVo.comAccNum}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">대표번호:</span>> 
+							${companyVo.comTel1}-${companyVo.comTel2}-${companyVo.comTel3}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">휴대폰:</span> 
+							${companyVo.comMobile1}-${companyVo.comMobile2}-${companyVo.comMobile3}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">팩스번호:</span> 
+							${companyVo.comFax1}-${companyVo.comFax2}-${companyVo.comFax3}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">주소:</span> 
+							${companyVo.comAddress}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">대표자:</span> 
+							${companyVo.comCeo}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">대표메일:</span> 
+							${companyVo.comEmail}<br>
+						<span style="font-size: 1.1em; font-weight: bold;">수수료(%):</span> 
+							${companyVo.comRate}%<br>
+						<span style="font-size: 1.1em; font-weight: bold;">가입일:</span> 
+							${companyVo.comRegdate}<br>
+						<c:if test="${!empty companyVo.comOutdate}">
+						<span style="font-size: 1.1em; font-weight: bold;">탈퇴일:</span> 
+							${companyVo.comOutdate}<br>
+						</c:if>
+					</div>
 				</div>
 			</div>
 		</div>

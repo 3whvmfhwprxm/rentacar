@@ -45,7 +45,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<h3>Table Paging</h3>
+			<h3>차량모델 리스트</h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -85,6 +85,12 @@
 		</div>
 		
 		<div class="row">
+			<div class="col-md-10"></div>
+			<div>
+				<a href='<c:url value="/administrator/carModel/modelRegister.do" />'>
+					<button type="button" class="btn btn-primary">차량모델 등록</button>
+				</a>
+			</div>
 			<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<nav>
@@ -139,10 +145,6 @@
 						value="${param.searchKeyword}">
 						<input type="submit" value="검색">
 				</form>
-				<br><br>
-				<a href='<c:url value="/administrator/carModel/modelRegister.do" />'>
-					<button type="button" class="btn btn-primary">Register</button>
-				</a>
 			</div>
 		</div>
 	</div>

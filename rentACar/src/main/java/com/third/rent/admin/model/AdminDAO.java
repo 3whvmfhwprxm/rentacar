@@ -1,5 +1,8 @@
 package com.third.rent.admin.model;
 
+import java.util.List;
+import java.util.Map;
+
 public interface AdminDAO {
 	public int selectCountUser();
 	
@@ -9,7 +12,5 @@ public interface AdminDAO {
 	
 	public int selectCountPayinfo();
 	
-	public int selectSumPayMoney();
-	
-	public int selectSumPayDiscount();
+	public List<Map<String, Object>> selectSumTotalPay();
 }
