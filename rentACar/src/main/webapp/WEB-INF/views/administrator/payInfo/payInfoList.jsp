@@ -29,26 +29,35 @@
 	}
  
 </script>
-	<div class="container">
-	<h1>결제내역 조회/관리</h1>
+<style>
+	.bodyClass{padding-top: 30px;}
+	th, td{text-align: center;}	
+	.col-md-4 {
+		float: left;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+	}
+</style>
+	<div class="w3-container bodyClass">
 	<!-- 페이지 처리용 폼 -->
 	<form name="frmPage" method="post" action='<c:url value="/admin/payInfo.do" />'>
-		<input type="text" name="currentPage"> 
-		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
-		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
-		<input type="text" name="payRegdate" value="${param.payRegdate}">
+		<input type="hidden" name="currentPage"> 
+		<input type="hidden" name="searchCondition" value="${param.searchCondition}"> 
+		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
+		<input type="hidden" name="payRegdate" value="${param.payRegdate}">
 	</form>
+	
+	<h3><i class="fa fa-calendar-check-o"></i> 결제내역 조회/관리 - 조회기간 검색 들어가야됨</h3>
+		<br>
+	<pre>
+* 문구 입력1
+* 문구 입력2
+* 문구 입력3</pre>
+	<br>
+	
 	<!-- 테이블 화면 시작 -->
 	<table class="table table-hover">
-		<colgroup>
-			<col width="15%">
-			<col width="15%">
-			<col width="20%">
-			<col width="10%">
-			<col width="15%">
-			<col width="15%">
-			<col width="10%">
-		</colgroup>
 		<tr>			
 			<th>결제번호</th>
 			<th>예약번호</th>
@@ -74,7 +83,8 @@
 						<td>${vo.payMethod }</td>
 						<td>${vo.payMoney }</td>						
 						<td>${vo.payRegdate }</td>
-						<td><a href="<c:url value='/admin/payCancel.do?payNo=${vo.payNo }' />" >결제취소</a></td>
+						<td><a href="<c:url value='/admin/payCancel.do?payNo=${vo.payNo }' />" >
+							<button>결제취소</button></a></td>
 						
 					</tr>	
 				</c:forEach>				

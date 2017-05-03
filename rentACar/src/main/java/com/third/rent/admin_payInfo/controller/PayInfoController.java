@@ -38,11 +38,11 @@ public class PayInfoController {
 		
 		PaginationInfo pInfo=new PaginationInfo();
 		pInfo.setCurrentPage(pvo.getCurrentPage());
-		pInfo.setBlockSize(Utility.ADMIN_PAYINFO_BLOCKSIZE);
-		pInfo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
+		pInfo.setBlockSize(Utility.ADMIN_OUT_COMPANY_BLOCKSIZE);
+		pInfo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
 		
 		pvo.setFirstRecordIndex(pInfo.getFirstRecordIndex());
-		pvo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pvo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
 		
 		List<PayInfoVO>	plist=pService.selectPayInfo(pvo);
 		logger.info("결제 내역 조회 결과 plist.size()={}", plist.size());
