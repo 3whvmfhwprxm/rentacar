@@ -24,17 +24,29 @@
             </div>
             <table class="table" width="100%">
                 <thead>
-                    <tr class="filters">
+                    <!-- <tr class="filters">
                         <th><input type="text" class="form-control" placeholder="예약번호" disabled></th>
                         <th><input type="text" class="form-control" placeholder="회원아이디" disabled></th>
                         <th><input type="text" class="form-control" placeholder="대여시작일" disabled></th>
-                        <!-- <th><input type="text" class="form-control" placeholder="대여시작시간" disabled></th> -->
+                        <th><input type="text" class="form-control" placeholder="대여시작시간" disabled></th>
                         <th><input type="text" class="form-control" placeholder="반납일" disabled></th>
-                        <!-- <th><input type="text" class="form-control" placeholder="반납시간" disabled></th> -->
+                        <th><input type="text" class="form-control" placeholder="반납시간" disabled></th>
                         <th><input type="text" class="form-control" placeholder="업체보유차량" disabled></th>
                         <th><input type="text" class="form-control" placeholder="보험여부" disabled></th>
                         <th><input type="text" class="form-control" placeholder="예약일시" disabled></th>
                         <th><input type="text" class="form-control" placeholder="전화번호" disabled></th>
+                    </tr> -->
+                    <tr class="filters">
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약번호" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="대여시작일" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="대여반납일" disabled></th>
+                        <!-- <th><input type="text" class="form-control" placeholder="대여시작시간" disabled></th> -->
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="차량넘버" disabled></th>
+                        <!-- <th><input type="text" class="form-control" placeholder="반납시간" disabled></th> -->
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약일시" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="차량대여업체명" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="업체전화번호" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약취소" disabled></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,16 +57,17 @@
 				</c:if> 
                 	<c:forEach var="vo" items="${alist }">
                     <tr>
-                        <td>${vo.reservNum}</td>
-                        <td>${sessionScope.userId}</td>
-                        <td>${vo.reservStartDate}</td>
+                        <td style="text-align: center;"><a href="#">${vo.reservNum}</a></td>
+                        <%-- <td style="text-align: center;"><fmt:formatDate value="${vo.reservStartDate}" pattern="yyyy-MM-dd"/> </td> --%>
+                        <td style="text-align: center;">"${vo.reservStartDate}</td>
+                        <td style="text-align: center;">${vo.reservEndDate}</td>
                         <%-- <td>${vo.reservStartTime} 시</td> --%>
-                        <td>${vo.reservEndDate}</td>
+                        <td style="text-align: center;">09허4055</td>
                         <%-- <td>${vo.reservEndTime} 시</td> --%>
-                        <td>${vo.ccarCarId}</td>
-                        <td>${vo.reservInsurance}</td>
-                        <td>${vo.reservDate}</td>
-                        <td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
+                        <td style="text-align: center;">${vo.reservDate}</td>
+                        <td style="text-align: center;">renGo</td>
+                        <td style="text-align: center;">${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
+                        <td style="text-align: center;"><input type="button" id="cancle" value="취소" width="10"></td>
                     </tr>
                 	</c:forEach>
                 </tbody>
