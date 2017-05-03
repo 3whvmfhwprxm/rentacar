@@ -59,7 +59,7 @@
                     <tr>
                         <td style="text-align: center;"><a href="#">${vo.reservNum}</a></td>
                         <%-- <td style="text-align: center;"><fmt:formatDate value="${vo.reservStartDate}" pattern="yyyy-MM-dd"/> </td> --%>
-                        <td style="text-align: center;">"${vo.reservStartDate}</td>
+                        <td style="text-align: center;">${vo.reservStartDate}</td>
                         <td style="text-align: center;">${vo.reservEndDate}</td>
                         <%-- <td>${vo.reservStartTime} 시</td> --%>
                         <td style="text-align: center;">09허4055</td>
