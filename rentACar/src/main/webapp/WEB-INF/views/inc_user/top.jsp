@@ -209,18 +209,23 @@ time, mark, audio, video{
 </head>
 
 <body>
-    <header>
+    <!-- <header>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <strong>문의: </strong> WheneverYes@rent3.com
-                    <!-- <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="4821262e270831273d3a2c2725292126662b2725">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script> -->
+                    <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="4821262e270831273d3a2c2725292126662b2725">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>
                     &nbsp;&nbsp;
                     <strong>고객센터: </strong>1544-XXXX
                 </div>
             </div>
         </div>
-    </header>
+        상단 띠 이미지 영역
+	
+    </header> -->
+    <div id="topImg" class="top_Img" style="background:url(${pageContext.request.contextPath }/images/top_img1.PNG)  repeat-x">
+		&nbsp;
+	</div>
     <!-- HEADER END-->
     <div class="navbar navbar-inverse set-radius-zero">
         <div class="container">
@@ -272,25 +277,42 @@ time, mark, audio, video{
             <div class="row">
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
-                    <c:if test="${empty sessionScope.userId }">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/review.do">이용후기</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">고객센터</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">이용혜택</a></li>
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" >회사소개<span class="caret"></span></a>
+                            <li><a href="${pageContext.request.contextPath}/user/realTime.do">
+                            	<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 실시간예약</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/confirm.do">
+                            	<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span> 예약확인</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/review.do">
+                            	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 이용후기</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">
+                            	<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 고객센터</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">
+                            	<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> 이용혜택</a></li>
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+                            	<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> 회사소개
+                            	<span class="caret"></span></a>
                             	<ul class="dropdown-menu" role="menu" style="background-color: #00679a;">
 				                <li><a href="<c:url value="/user/greeting.do"/>">인사말</a></li>
 				                <li><a href="<c:url value="/user/position.do"/>">회사위치</a></li>
 				                <li><a href="<c:url value="/user/guide.do"/>">지점안내</a></li>
-				              </ul> 
+				              </ul>
                             </li>
-                            <li><a href="${pageContext.request.contextPath}/user/login.do">LOGIN</a></li>
-                            <li><a href="javascript:openJoin();">회원가입</a></li>
+                            	<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            	<c:if test="${empty sessionScope.userId }">
+		                            <li><a href="${pageContext.request.contextPath}/user/login.do">
+		                            	<span class="glyphicon glyphicon-off" aria-hidden="true"></span> 로그인</a></li>
+		                            <li><a href="javascript:openJoin();">
+		                            	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 회원가입</a></li>
+		                        </c:if>
+                            	<c:if test="${!empty sessionScope.userId }">
+		                            <li><a href="*">
+		                            	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 로그아웃</a></li>
+		                            <li><a href="*">
+		                            	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 회원정보수정</a></li>
+                            	</c:if>
                         </ul>
-                    </c:if>
-                     <c:if test="${!empty sessionScope.userId }">
+                    
+                    <%--  <c:if test="${!empty sessionScope.userId }">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="${pageContext.request.contextPath}/user/realTime.do">실시간예약</a></li>
                             <li><a href="${pageContext.request.contextPath}/user/confirm.do">예약확인</a></li>
@@ -305,7 +327,7 @@ time, mark, audio, video{
 				              </ul> 
                             </li>
                         </ul>
-                    </c:if>
+                    </c:if> --%>
                     </div>
                 </div>
 
