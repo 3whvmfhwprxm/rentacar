@@ -57,7 +57,7 @@ public class PayInfoController {
 		return "administrator/payInfo/payInfoList";
 	}	
 	
-	@RequestMapping("/payCancel.do")
+	/*@RequestMapping("/payCancel.do")
 	public String CancelPaymentByMerchantUid(@RequestParam String payNo) throws Exception {
 		
 		logger.info("결제 취소 하기 파라미터값: payNo={}", payNo);
@@ -79,5 +79,5 @@ public class PayInfoController {
 		logger.info("결제 취소 결과 cancelResult={}", cancelResult);
 		
 		return "administrator/payInfo/payInfoList";
-	}
+	}*/
 }

@@ -179,7 +179,7 @@
 			<label class="col-sm-6">검색하신 예약 기간: <span class="fontStyle1">${dateSearchVO.searchStartDate} ${dateSearchVO.startHour}:${dateSearchVO.startMin} 
 				~ ${dateSearchVO.searchEndDate} ${dateSearchVO.endHour}:${dateSearchVO.endMin}</span></label>
 		</div>		
-		<table class="table table-bordered table-hover">
+		<table class="table table-hover">
 			<colgroup>
 				<col style="width: 20%;" />
 				<col style="width: 15%;" />
