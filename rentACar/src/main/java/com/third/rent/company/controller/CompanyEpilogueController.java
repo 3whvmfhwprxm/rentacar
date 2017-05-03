@@ -83,6 +83,17 @@ public class CompanyEpilogueController {
 		return "com_manage/company_announcement";
 	}
 	
+	/*@RequestMapping("/company_announcement_detail.do")
+	public String detail_announcement(@RequestParam(value="cnoticeNo", defaultValue="0") int cnoticeNo, Model model){
+		//1.
+		logger.info("글 상세보기, 파라미터 cnoticeNo={}", cnoticeNo);
+		if(cnoticeNo==0){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "/com_managed/company_announcement.do");	
+		}
+		return "common/message";
+	}*/
+	
 	@RequestMapping(value="/company_detail.do",method=RequestMethod.GET)
 	public String companyEdit_get(@RequestParam String comId,
 			Model model){

@@ -1,5 +1,6 @@
 package com.third.rent.company.controller;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,10 +14,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.admin_LogState.model.admin_LogService;
 import com.third.rent.company.model.CompanyService;
 import com.third.rent.company.model.CompanyVO;
+import com.third.rent.email.EmailSender;
+import com.third.rent.user.model.UserVO;
 
 @Controller
 @RequestMapping("/login_company")
@@ -24,6 +28,9 @@ public class CompanyController {
 	
 	@Autowired
 	private CompanyService comService;
+	
+	@Autowired
+	private EmailSender emailSender;
 	
 	private static final Logger logger
 		= LoggerFactory.getLogger(CompanyController.class);
@@ -86,6 +93,50 @@ public class CompanyController {
 		model.addAttribute("url", url);
 
 		return "common/message";
+	}
+	@RequestMapping(value="/companyseachid.do")
+	@ResponseBody
+	/*public String userseachid(@ModelAttribute UserVO vo, Model model){*/
+	public CompanyVO userseachid(@RequestParam String comName, @RequestParam String comEmail, Model model){
+		logger.info("아이디 찾기");
+		CompanyVO companyVo = new CompanyVO();
+		companyVo.setComName(comName);
+		companyVo.setComEmail(comEmail);
+		String result = comService.selectSearchid(companyVo);
+		logger.info("결과 result = {}",result);
+		
+		CompanyVO vo = new CompanyVO();
+		vo.setComId(result);
+		
+		return vo;
+	}
+	
+	@RequestMapping(value="/companyseachpwd.do")
+	public String userseachpwd(@RequestParam String comIdSeach, @RequestParam String comEmailSeach, Model model){
+		logger.info("비밀번호 찾기");
+		CompanyVO companyVo = new CompanyVO();
+		companyVo.setComId(comIdSeach);
+		companyVo.setComEmail(comEmailSeach);
+		String result = comService.selectSearchpwd(companyVo);
+		logger.info("결과 result = {}",result);
+		
+		CompanyVO vo = new CompanyVO();
+		vo.setComPwd(result);
+		logger.info("이메일 발송 처리");
+		String subject="비밀번호 문의에 대한 답변입니다.";
+		String content="찾으실 비밀번호 [ "+vo.getComPwd()+" ]";
+		String receiver="horo7777@gmail.com";
+		String sender="admin@herbmall.com";
+		
+		try {
+			emailSender.sendEmail(subject, content, receiver, sender);
+			logger.info("이메일 발송 성공");
+		} catch (MessagingException e) {
+			logger.info("이메일 발송 실패");
+			e.printStackTrace();
+		}
+		
+		return "redirect:/login_company/com_login.do";
 	}
 	
 

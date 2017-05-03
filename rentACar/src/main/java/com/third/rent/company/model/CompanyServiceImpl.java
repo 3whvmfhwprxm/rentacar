@@ -52,6 +52,16 @@ public class CompanyServiceImpl implements CompanyService{
 		return companyDao.updateCompany(vo);
 	}
 
+	@Override
+	public String selectSearchid(CompanyVO vo) {
+		return companyDao.selectSearchid(vo);
+	}
+
+	@Override
+	public String selectSearchpwd(CompanyVO vo) {
+		return companyDao.selectSearchpwd(vo);
+	}
+
 
 
 

@@ -33,6 +33,16 @@ public class CompanyDAOMybatis extends SqlSessionDaoSupport
 				
 	}
 
+	@Override
+	public String selectSearchid(CompanyVO vo) {
+		return getSqlSession().selectOne(namespace+".companyseachid", vo);
+	}
+
+	@Override
+	public String selectSearchpwd(CompanyVO vo) {
+		return getSqlSession().selectOne(namespace+".companyseachpwd", vo);
+	}
+
 	
 
 }

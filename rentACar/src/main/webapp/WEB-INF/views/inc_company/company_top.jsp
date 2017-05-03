@@ -91,8 +91,6 @@ $(document).ready(function () {
     overflow: hidden;
     background-color: #2a8fcf;
 }
-
-
 </style>
 </head>
 <body>

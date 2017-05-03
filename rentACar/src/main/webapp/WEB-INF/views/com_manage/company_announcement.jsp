@@ -174,7 +174,7 @@ th,td{text-align: center;}
 							<tr
 								<c:if test="${!empty vo.cnoticeDeldate }"> class="danger" </c:if>>
 								<td>${vo.cnoticeNo }</td>
-								<td><a href='<c:url value="/com_manage/company_announcement_detail?cnoticeTitle=${vo.cnoticeTitle }" />'>${vo.cnoticeTitle }</a></td>
+								<td><a data-toggle="modal" href="#myModal1">${vo.cnoticeTitle }</a></td>
 								<td>${vo.adminId }</td>
 								<td>${vo.cnoticeRegdate }</td>
 								<td>${vo.cnoticeReadcount }</td>
@@ -238,6 +238,89 @@ th,td{text-align: center;}
 		</div>
 	</div>
 </div>
+
+<div class="container">
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+		<div class="modal fade" id="myModal1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">공지사항 상세보기</h4>
+					</div>
+					<div class="modal-body">
+						<form method="post" name="login_form" id="frmid">
+						<c:if test="${!empty cnList }">
+							
+							<div class="row">
+					            <label class="control-label col-md-3" for="name" 
+					            	style="text-align: right;">번호<span class="required">*</span>					            </label>
+					            <div class="col-md-5">
+					              <input id="title" name="title" class="form-control" 
+						              data-validate-length-range="6" data-validate-words="2" 
+						              name="name"  required="required" type="text" value="${vo.cnoticeNo }">
+					            </div>
+					        </div><br>
+							<div class="row">
+					            <label class="control-label col-md-3" for="name" 
+					            	style="text-align: right;">제목 <span class="required">*</span>					            </label>
+					            <div class="col-md-5">
+					              <input id="title" name="title" class="form-control" 
+						              data-validate-length-range="6" data-validate-words="2" 
+						              name="name"  required="required" type="text" value="${vo.cnoticeTitle }">
+					            </div>
+					        </div><br>
+					        <div class="row">
+					            <label class="control-label col-md-3" for="name" 
+					            style="text-align: right;">작성자<span class="required">*</span>
+					            </label>
+					            <div class="col-md-5">
+					              <input id="admin" name="admin" class="form-control" 
+					              data-validate-length-range="6" data-validate-words="2" 
+					              name="name"  required="required" type="text" value="${vo.adminId }">
+					            </div>
+					        </div><br>
+					        <div class="row">
+					            <label class="control-label col-md-3" for="name" 
+					            style="text-align: right;">작성시간 <span class="required">*</span>					            </label>
+					            <div class="col-md-5">
+					              <input id="title" name="title" class="form-control" 
+					              data-validate-length-range="6" data-validate-words="2" 
+					              name="name"  required="required" type="text" value="${vo.cnoticeRegdate }">
+					            </div>
+					        </div><br>
+					        <div class="row">
+					            <label class="control-label col-md-3" for="name" 
+					            	style="text-align: right;">내용<span class="required">*</span>					            </label>
+					            <div class="col-md-5">
+					              <input id="title" name="title" class="form-control"
+					              	data-validate-length-range="6" data-validate-words="2" 
+					              	name="name"  required="required" type="text" value="${vo.cnoticeReadcount }">
+					            </div>
+					        </div><br>
+						</form>
+					</div>
+					
+					</c:if>
+					<!-- <form name="frmid" method="post" action="<c:url value="/user/userseachid.do"/>"> -->
+						<div class="modal-footer">
+			           		 <button type="button" class="btn btn-primary" id="idSearch" data-dismiss="modal">확인</button>
+						</div>
+					<!-- </form> -->
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+	</div>
+</div>
+<!-- /.modal -->
+
+
+
 </section>
 
 <%@ include file="../inc_company/company_bottom.jsp"%>

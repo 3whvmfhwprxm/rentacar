@@ -60,11 +60,12 @@ textarea.form-control {
     height: 135px;
    /* margin-top: px;*/
 }
-#comAddress{width: 80%; }
+#comAddress,#comReturnPlace{width: 80%; }
 #submitdiv{text-align: right;}
 #image_preview img{width: 200px;height: 100px; }
 </style>
 <script type="text/javascript">
+	var btnType = '';
 	$(document).ready(function() {
 		$("#comPwd").focus();		
 		
@@ -98,14 +99,17 @@ textarea.form-control {
 			            $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
 				     }
 			 }
-			 $('#image_preview').show();
 			/* if(!/(\.png|\.PNG|\.jpg|\.JPG|\.bmp|\.BMP|\.gif|\.GIF)$/i.test(str)) {
 	            alert("jpg, png, bmp, gif 파일만 등록할 수 있습니다.");
 	            $("#comLogo").val("");
 	            return;
 	        } */
 		});
-
+		
+		$("[id^=btnZipcode]").click(function(){
+			btnType = $(this);
+			goPopup();
+		});
 	});
 
 	//휴대폰  정규식
@@ -126,7 +130,11 @@ textarea.form-control {
 				"width=570,height=420, scrollbars=yes, resizable=yes");
 	}
 	function jusoCallBack(addrDetail){
-		document.frmEdit.comAddress.value = addrDetail;
+		if(btnType.attr('id') != 'btnZipcode1'){
+			$('#comReturnPlace').val(addrDetail);
+		}else{
+			$('#comAddress').val(addrDetail);
+		}
 	}
 	
 </script>
@@ -200,7 +208,13 @@ textarea.form-control {
 										<td>주소</td>
 										<td><input type="text" name="comAddress" id="comAddress" readonly="readonly"  
 										value="${companyVo.comAddress}" >
-										<input type="Button" value="주소찾기" id="btnZipcode" title="새창열림" onClick="goPopup()"></td>
+										<input type="Button" value="업체주소찾기" id="btnZipcode1" title="새창열림" ></td>
+									</tr>
+									<tr>
+										<td>인수/반납</td>
+										<td><input type="text" name="comReturnPlace" id="comReturnPlace" readonly="readonly"  
+										value="${companyVo.comReturnPlace}" >
+										<input type="Button" value="인수/반납장소" id="btnZipcode2" title="새창열림" ></td>
 									</tr>
 									<tr>
 										<td>이메일</td>
