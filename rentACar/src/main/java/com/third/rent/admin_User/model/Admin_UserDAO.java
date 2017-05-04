@@ -15,4 +15,8 @@ public interface Admin_UserDAO {
 	public List<UserVO> selectInUser(SearchVO searchVo);	
 	
 	public List<UserVO> selectOutUser(SearchVO searchVo);
+	
+	public int userWithdraw(String userId);
+	
+	public String selectPwdByAdminId(String adminId);
 }

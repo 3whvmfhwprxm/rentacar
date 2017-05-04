@@ -13,21 +13,22 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 	implements Admin_UserDAO{
 	private String namespace="config.mybatis.mapper.oracle.admin_User";
 	
+	@Override
 	public List<UserVO> selectAll(SearchVO searchVo){
-		List<UserVO> alist
-			=getSqlSession().selectList(namespace+".selectAllUser", searchVo);
-
-		return alist;
+		return getSqlSession().selectList(namespace+".selectAllUser", searchVo);
 	}
 	
+	@Override
 	public int selectTotalRecord(SearchVO searchVo) {
 		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
 	
+	@Override
 	public UserVO selectByUserId(String userId){
 		return getSqlSession().selectOne(namespace+".selectByUserId", userId);
 	}
 
+	@Override
 	public List<UserVO> selectInUser(SearchVO searchVo) {
 		return getSqlSession().selectList(namespace+".selectInUser", searchVo);
 	}
@@ -35,5 +36,15 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 	@Override
 	public List<UserVO> selectOutUser(SearchVO searchVo) {
 		return getSqlSession().selectList(namespace+".selectOutUser", searchVo);
+	}
+
+	@Override
+	public int userWithdraw(String userId) {
+		return getSqlSession().update(namespace+".userWithdraw", userId);
+	}
+
+	@Override
+	public String selectPwdByAdminId(String adminId) {
+		return getSqlSession().selectOne(namespace+".selectPwdByAdminId", adminId);
 	}
 }

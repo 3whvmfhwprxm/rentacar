@@ -6,6 +6,13 @@ import com.third.rent.common.SearchVO;
 import com.third.rent.user.model.UserVO;
 
 public interface Admin_UserService {
+	public static final int EXIST_ID=1;
+	public static final int NONE_EXIST_ID=2;
+	
+	public static final int LOGIN_OK=1;
+	public static final int ID_NONE=2;
+	public static final int PWD_DISAGREE=3;
+	
 	public List<UserVO> selectAll(SearchVO searchVo);
 	
 	public int selectTotalRecord(SearchVO searchVo);
@@ -15,4 +22,8 @@ public interface Admin_UserService {
 	public List<UserVO> selectInUser(SearchVO searchVo);
 	
 	public List<UserVO> selectOutUser(SearchVO searchVo);
+	
+	public int userWithdraw(String userId);
+	
+	public int loginCheck(String adminId, String adminPwd);
 }

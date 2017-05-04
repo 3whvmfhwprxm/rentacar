@@ -204,16 +204,19 @@ public class Admin_CompanyController {
 	@RequestMapping(value="/company/companyWithdraw.do", method=RequestMethod.POST)
 	public String companyWithdraw_post(@RequestParam String comId, @RequestParam String pwd, 
 			HttpSession session, Model model){
-		//1.
-		logger.info("삭제처리시 비밀번호  매개변수 pwd={}", pwd);
+
+		logger.info("삭제처리시 비밀번호  매개변수 comId={}, pwd={}", comId, pwd);
 		
 		String Admin_Id = (String)session.getAttribute("Admin_Id");
 		
-		//패스워드 체크하기
 		int result = adminCompanyService.loginCheck(Admin_Id, pwd);
+		logger.info("result={}", result);
+		
 		String msg="", url="/administrator/company/companyWithdraw.do";
 		if(result==Admin_CompanyService.LOGIN_OK){
 			int outResult = adminCompanyService.withdrawCompany(comId);
+			logger.info("outResult={}", outResult);
+			
 			if(outResult>0){
 				msg="삭제 처리 성공";
 				url="/administrator/company/companyList.do";	

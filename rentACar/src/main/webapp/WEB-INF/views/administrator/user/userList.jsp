@@ -153,16 +153,15 @@ th {
 																		<td>가입일</td>
 																		<td>${vo.userRegdate}</td>
 																	</tr>
-																	<tr>
-																		<c:if test="${!empty vo.userOutdate}">
-																			<td>탈퇴일</td>
-																			<td>${vo.userOutdate}</td>
-																		</c:if>
-																	</tr>
 																</tbody>
 															</table>
 													    </div>
 											      		<div class="modal-footer">
+											      		 	<a href='<c:url value="/administrator/user/userWithdraw.do?userId=${vo.userId}" />'>
+											      			<button type="button" class="btn btn-default">
+													            탈퇴
+													        </button>
+													        </a>
 													        <button type="button" class="btn btn-default" data-dismiss="modal">
 													        Close
 													        </button>

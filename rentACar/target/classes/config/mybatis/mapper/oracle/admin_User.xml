@@ -78,7 +78,17 @@
 		select*from RENT_USER 
 		where user_id=#{userId}
 	</select>
-
+	
+	<select id="selectPwdByAdminId" resultType="String" parameterType="String">
+		select admin_pwd from rent_admin
+		where admin_id=#{adminId}
+	</select>
+	
+	<update id="userWithdraw" parameterType="String">
+		update rent_user
+		set user_outdate=sysdate
+		where user_id=#{userId}
+	</update>
 </mapper>
 
 

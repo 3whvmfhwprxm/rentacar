@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp"%>
+
 <script type="text/javascript">
 	$().ready(function(){
 		$("#pwd").focus();
@@ -24,24 +25,25 @@
 						<h3>
 							<i class="fa fa-times fa-4x" aria-hidden="true"></i>
 						</h3>
-						<h2 class="text-center">${param.comId}님을 탈퇴처리하시겠습니까?</h2>
-						<p>업체탈퇴를 하시면 삭제가 아니라, 탈퇴일이 현재날짜로 업데이트</p>
+						<h2 class="text-center">${param.userId}님을 탈퇴처리하시겠습니까?</h2>
+						<p>회원탈퇴를 하시면 삭제가 아니라, 탈퇴일이 현재날짜로 업데이트</p>
 						<div class="panel-body">
 							<form name="frmOut" id="frmOut" method="post"
-								action="<c:url value='/administrator/company/companyWithdraw.do' />" >
+								action="<c:url value='/administrator/user/userWithdraw.do' />" >
+
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="glyphicon glyphicon-remove"></i>
 										</span>
-										<input type="text" name="comId" id="comId" value="${param.comId}">
+										<input type="text" name="userId" id="userId" value="${param.userId}">
 										<input type="password" name="pwd" id="pwd" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="submit" class="btn btn-lg btn-primary btn-block" value="업체 탈퇴">
+									<input type="submit" class="btn btn-lg btn-primary btn-block" value="회원 탈퇴">
 								</div>
-							</form>							
+							</form>
 						</div>
 					</div>
 				</div>
