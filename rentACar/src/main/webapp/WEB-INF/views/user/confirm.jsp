@@ -18,9 +18,7 @@
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 class="panel-title">${sessionScope.userId} 님</h3>
-                <div class="pull-right">
-                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
-                </div>
+                
             </div>
             <table class="table" width="100%">
                 <thead>

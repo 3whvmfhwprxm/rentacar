@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<style type="text/css">
+	#footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+</style>
 	<!-- footer -->
 	<footer>
-        <div class="container">
+        <div class="container"  id="#footer">
             <div class="row">
                 <div class="col-md-9" style="">
                 	<style>
