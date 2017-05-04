@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../inc_user/top.jsp" %>
 
+<style type="text/css">
+	.checked, .price span {color: #ff9f1a; }
+
+</style>
 <script type="text/javascript">	
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
@@ -11,6 +15,9 @@
 	<form name="frmPage" method="get" action='<c:url value="/user/review.do" />'>
 		<input type="hidden" name="currentPage">
 	</form>
+	
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
 <div class="container">
 <h2 style="font-family:'Saysettha OT'; src:url(http://foton.com.la/font/Saysettha OT.ttf); color:#00679a;">이용후기</h2>
@@ -30,7 +37,116 @@
                 <img src="<c:url value='/user_img/${vo.cmtImg1}'/>">
                 <div style="padding: 15px;">
                 <span><b>사용자 : ${vo.userId}</b></span>
-               	<span style="float: right;">친절도<span>${vo.cmtKindScore }</span>     |     청결도<span>${vo.cmtCleanScore }</span>     |     편의성<span>${vo.cmtConvScore }</span></span>
+               	<span style="float: right;">친절도 <c:if test="${1==vo.cmtKindScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${2==vo.cmtKindScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${3==vo.cmtKindScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${4==vo.cmtKindScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${5==vo.cmtKindScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               	
+               									청결도 <c:if test="${1==vo.cmtCleanScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${2==vo.cmtCleanScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${3==vo.cmtCleanScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${4==vo.cmtCleanScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${5==vo.cmtCleanScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               									편의성 <c:if test="${1==vo.cmtConvScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${2==vo.cmtConvScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${3==vo.cmtConvScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${4==vo.cmtConvScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               										 <c:if test="${5==vo.cmtConvScore }">
+               											<div class="stars">
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star checked"></span>
+               											</div>
+               										 </c:if>
+               	</span>
                 </div>
                	<hr>
                	<div style="padding: 15px;">
@@ -53,7 +169,7 @@
 <div class="row">
 	<div class="col-md-4"></div>
 		<div class="col-md-4">
-			<nav>
+			<nav style="text-align: center;">
 				<ul class="pagination">
 					<c:if test="${pagingInfo.firstPage>1 }">
 						<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"

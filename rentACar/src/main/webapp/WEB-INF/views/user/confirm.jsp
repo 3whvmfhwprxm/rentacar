@@ -77,7 +77,7 @@
     <div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
-			<nav>
+			<nav style="text-align: center;">
 				<ul class="pagination">
 					<c:if test="${pagingInfo.firstPage>1 }">
 						<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
