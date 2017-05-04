@@ -20,6 +20,11 @@ public class HighchartsServiceImpl implements HighchartsService{
 	public List<Map<String, Object>> selectSalesByMonth(DateVO dateVo) {
 		return highchartsDao.selectSalesByMonth(dateVo);
 	}
+
+	@Override
+	public List<Map<String, Object>> selectSumTotalPay() {
+		return highchartsDao.selectSumTotalPay();
+	}
 	
 	
 

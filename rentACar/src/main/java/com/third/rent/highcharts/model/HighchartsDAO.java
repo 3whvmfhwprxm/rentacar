@@ -7,4 +7,6 @@ public interface HighchartsDAO {
 	public List<Map<String, Object>> selectSalesByDay(DateVO dateVo);
 	
 	public List<Map<String, Object>> selectSalesByMonth(DateVO dateVo);
+	
+	public List<Map<String, Object>> selectSumTotalPay();
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class HighchartsMybatis extends SqlSessionDaoSupport
 	implements HighchartsDAO{
 	
-	private String namespace="config.mybatis.mapper.oracle.admin_HighChartUser";
+	private String namespace="config.mybatis.mapper.oracle.highchart";
 
 	@Override
 	public List<Map<String, Object>> selectSalesByDay(DateVO dateVo) {
@@ -20,6 +20,11 @@ public class HighchartsMybatis extends SqlSessionDaoSupport
 	@Override
 	public List<Map<String, Object>> selectSalesByMonth(DateVO dateVo) {
 		return getSqlSession().selectList(namespace+".selectSalesByMonth", dateVo);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectSumTotalPay() {
+		return getSqlSession().selectList(namespace+".selectSumTotalPay");
 	}
 	
 }

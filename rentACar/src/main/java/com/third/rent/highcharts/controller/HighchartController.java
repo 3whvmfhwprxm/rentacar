@@ -29,14 +29,13 @@ public class HighchartController {
 			Model model){
 		logger.info("월별매출, 파라미터 dateVo={}", dateVo);
 		
-		List<Map<String, Object>> salesByMonth = null;
-		if(dateVo.getYear()!=null
-				&& !dateVo.getYear().isEmpty()){
-			salesByMonth = highchartService.selectSalesByMonth(dateVo);
-			logger.info("월별매출 결과, salesByMonth.size()={}", salesByMonth.size());
-		}
+		List<Map<String, Object>> salesByMonth = highchartService.selectSalesByMonth(dateVo);
+		logger.info("salesByMonth={}", salesByMonth);
+		logger.info("salesByMonth.size()={}", salesByMonth.size());
+		
 		
 		model.addAttribute("salesByMonth", salesByMonth);
+		logger.info("통과");
 		
 		return "administrator/highChart/sales";
 	}
