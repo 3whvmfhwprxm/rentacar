@@ -68,9 +68,11 @@
 	<div class="w3-bar w3-top w3-large" style="background-color: skyblue;">
 		<span class="w3-bar-item w3-left">
 			<a href='<c:url value="/administrator/admin_Main.do" />'>
-				3조 렌트카
+				<i class="fa fa-heart" aria-hidden="true"></i> 3조 렌트카
 			</a>
 		</span>
+		
+		
 		
 		<span class="w3-bar-item w3-right">
 			<c:if test="${sessionScope.Admin_Id!=null}">			
@@ -85,6 +87,12 @@
 					<i class="glyphicon glyphicon-log-in"></i> 로그인
 				</a>	
 			</c:if>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<span>					
+				<a href='<c:url value="/user/index.do" />'>
+					<i class="fa fa-eye" aria-hidden="true"></i> 홈페이지 바로가기
+				</a>				
+			</span>
 		</span>
 	</div>
 

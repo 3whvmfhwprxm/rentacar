@@ -45,16 +45,12 @@ th {
 </form>
 
 <div class="w3-container">
-	<h3>Using jQuery plugin allows you to apply paging to standard
-		html table.</h3>
-	The default number of pages is 10 but you can pass a number to the
-	function to have more or less items per page. <br> <br>
-	<h4>To Initialize the table use either of the following:</h4>
+	<h3>회원페이지 가이드</h3>
 	<pre>
 		<code>
-		    $('#tableid').page();
-		    <strong>OR</strong>
-		    $('#tableid').page(15);
+		현재 등록된 회원 리스트와 탈퇴회원 리스트를 보여줍니다.
+		아이디 버튼을 누르면 해당 아이디회원의 상세정보를 보여줍니다. 
+		검색은 아이디, 이름으로 가능하며 아이디는 대소문자 구분없이 쓰셔도 검색이 됩니다.
     	</code>
 	</pre>
 
@@ -105,13 +101,13 @@ th {
 									</tr>
 								</c:if>
 
-								<c:forEach var="vo" items="${userInList}">
+								<c:forEach var="vo" items="${userInList}" varStatus="i">
 									<tr style="text-align: center">
 										<td>
-											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myInModal">
+											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myInModal_${i.index}">
 												${vo.userId}
 											</button>
-											<div class="modal fade" id="myInModal" tabindex="-1" role="dialog" aria-labelledby="myInModalLabel" aria-hidden="true">
+											<div class="modal fade" id="myInModal_${i.index}" tabindex="-1" role="dialog" aria-labelledby="myInModalLabel" aria-hidden="true">
 												<div class="modal-dialog">
 											    	<div class="modal-content">
 											      		<div class="modal-header" style="background-color: skyblue;">
@@ -158,8 +154,10 @@ th {
 																		<td>${vo.userRegdate}</td>
 																	</tr>
 																	<tr>
-																		<td>탈퇴일</td>
-																		<td>${vo.userOutdate}</td>
+																		<c:if test="${!empty vo.userOutdate}">
+																			<td>탈퇴일</td>
+																			<td>${vo.userOutdate}</td>
+																		</c:if>
 																	</tr>
 																</tbody>
 															</table>
@@ -221,13 +219,13 @@ th {
 									</tr>
 								</c:if>
 
-								<c:forEach var="vo" items="${userOutList}">
+								<c:forEach var="vo" items="${userOutList}" varStatus="i">
 									<tr style="text-align: center">
 										<td>
-											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myOutModal">
+											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myOutModal_${i.index}">
 												${vo.userId}
 											</button>
-											<div class="modal fade" id="myOutModal" tabindex="-1" role="dialog" aria-labelledby="myOutModalLabel" aria-hidden="true">
+											<div class="modal fade" id="myOutModal_${i.index}" tabindex="-1" role="dialog" aria-labelledby="myOutModalLabel" aria-hidden="true">
 												<div class="modal-dialog">
 											    	<div class="modal-content">
 											      		<div class="modal-header" style="background-color: skyblue;">
@@ -274,8 +272,10 @@ th {
 																		<td>${vo.userRegdate}</td>
 																	</tr>
 																	<tr>
-																		<td>탈퇴일</td>
-																		<td>${vo.userOutdate}</td>
+																		<c:if test="${!empty vo.userOutdate}">
+																			<td>탈퇴일</td>
+																			<td>${vo.userOutdate}</td>
+																		</c:if>
 																	</tr>
 																</tbody>
 															</table>

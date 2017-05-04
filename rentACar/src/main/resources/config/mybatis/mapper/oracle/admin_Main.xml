@@ -21,9 +21,10 @@
 	
 	<select id="selectSumTotalPay" resultType="map">
 		select yyyy,
-		    sum("01") as "1월", sum("02") as "2월", sum("03") as "3월", sum("04") as "4월", sum("05") as "5월", sum("06") as "6월",
-		    sum("07") as "7월", sum("08") as "8월", sum("09") as "9월", sum("10") as "10월", sum("11") as "11월", sum("12") as "12월",
-		    sum(pay_money)-sum(pay_discount) as "매출"
+		    sum("01") as "January", sum("02") as "February", sum("03") as "March", sum("04") as "April", 
+		    sum("05") as "May", sum("06") as "June", sum("07") as "July", sum("08") as "August", 
+		    sum("09") as "September", sum("10") as "October", sum("11") as "November", sum("12") as "December",
+		    sum(pay_money)-sum(pay_discount) as "sales"
 		from
 		(
 		    select to_char(r.reserv_start_date,'YYYY') AS yyyy, 
@@ -45,6 +46,15 @@
 		)  
 		group by yyyy
 		order by yyyy
+	</select>
+	
+	<select id="selectSalesByMonth" parameterType="DateSearchVO"
+		resultType="map">
+		select to_char(orderdate, 'mm') as orderdate, 
+	    sum(totalprice) as totalprice 
+	    from orders
+		where extract(year from orderdate)=#{year}		
+		group by to_char(orderdate, 'mm')	
 	</select>
 </mapper>
 

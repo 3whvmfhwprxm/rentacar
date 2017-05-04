@@ -37,16 +37,14 @@
 </form>
 
 <div class="w3-container">   
-	<h3>Using jQuery plugin allows you to apply paging to standard html table.</h3>
-		The default number of pages is 10 but you can pass a number to the
-		function to have more or less items per page.
-		<br>
-	<h4>To Initialize the table use either of the following:</h4>
+	<h3>업체페이지 가이드</h3>
+
 	<pre>
 		<code>
-		    $('#tableid').page();
-		    <strong>OR</strong>
-		    $('#tableid').page(15);
+		현재 등록된 업체 리스트와 탈퇴업체 리스트, 업체보유차량 리스트를 보여줍니다.
+		아이디 버튼을 누르면 해당 아이디업체의 상세정보를 보여줍니다. 
+		검색은 아이디, 이름으로 가능하며 아이디는 대소문자 구분없이 쓰셔도 검색이 됩니다.
+		업체등록 버튼을 클릭하시면 업체등록 페이지로 이동합니다.
     	</code>
 	</pre>
 	
@@ -76,6 +74,11 @@
 		
 		<!-- Tab panes -->
 		<div class="tab-content">
+			<div style="float: right;">
+				<a href='<c:url value="/administrator/company/companyRegister.do" />'>
+					<button type="button" class="btn btn-info btn-lg btn-block" style="color: black;">업체 등록</button>
+				</a>
+			</div>
 			<!-- ★★★★★★★★★★업체 리스트★★★★★★★★★★ -->
 			<div role="tabpanel" class="tab-pane active" id="companyInList">
 				<div class="row">
@@ -121,7 +124,7 @@
 										<td>${vo.comEmail}</td>
 										<td>${vo.comRate}%</td>
 										<td><fmt:formatDate value="${vo.comRegdate}"
-												pattern="yyyy-MM-dd" /></td>
+												pattern="yyyy-MM-dd" /></td>		
 										<td><fmt:formatDate value="${vo.comOutdate}"
 												pattern="yyyy-MM-dd" /></td>
 									</tr>
@@ -242,12 +245,6 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-11"></div>
-				<div>
-					<a href='<c:url value="/administrator/company/companyRegister.do" />'>
-						<button type="button" class="btn btn-primary">업체 등록</button>
-					</a>
-				</div>
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<nav>
