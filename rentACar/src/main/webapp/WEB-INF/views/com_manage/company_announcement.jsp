@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../inc_company/company_top.jsp"%>
+
 <script type="text/javascript">	
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
@@ -138,6 +139,7 @@ th,td{text-align: center;}
     box-shadow:0 0 0 1px #9a00cd inset, 0 0 0 1px rgba(255,255,255,0.15) inset, 0 1px 3px 1px rgba(0,0,0,0.3);
     background-color: #bb39d7;
 }
+.style{text-align:left}
 </style>
 
 <!-- 공지사항 -->
@@ -152,7 +154,7 @@ th,td{text-align: center;}
 <div class="container">
 	<div class="row1">
 		<div class="col-lg-10">
-			<table class="table table-stripped table-bordered">
+			<table class="table table-stripped">
 				<thead>
 					<tr>
 						<th>글번호</th>
@@ -171,14 +173,27 @@ th,td{text-align: center;}
 
 					<c:if test="${!empty cnList }">
 						<c:forEach var="vo" items="${cnList }">
-							<tr
-								<c:if test="${!empty vo.cnoticeDeldate }"> class="danger" </c:if>>
+							<c:if test='${vo.cnoticeVisible!="N" }'>
+							<tr>
+								<c:if test="${!empty vo.cnoticeDeldate }"> class="danger" </c:if>
 								<td>${vo.cnoticeNo }</td>
-								<td><a data-toggle="modal" href="#myModal1">${vo.cnoticeTitle }</a></td>
+								<td class="style">				
+									<span style="opacity: 0.3">${vo.cnoticeTitle }</span>	
+									<!-- 제목이 긴 경우 일부만 보여주기 -->
+									<a href='<c:url value="/com_manage/countUpdate.do?cnoticeNo=${vo.cnoticeNo}"/>'>
+									<c:if test="${fn:length(vo.cnoticeTitle)>30 }">
+											${fn:substring(vo.cnoticeTitle, 0, 30) }...
+									</c:if>
+									<c:if test="${fn:length(vo.cnoticeTitle)<=30 }">
+											${vo.cnoticeTitle}
+									</c:if>
+									</a>
+								</td>
 								<td>${vo.adminId }</td>
 								<td>${vo.cnoticeRegdate }</td>
 								<td>${vo.cnoticeReadcount }</td>
 							</tr>
+							</c:if>
 						</c:forEach>
 					</c:if>
 				</tbody>
@@ -239,85 +254,7 @@ th,td{text-align: center;}
 	</div>
 </div>
 
-<div class="container">
-	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-		<div class="modal fade" id="myModal1">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title">공지사항 상세보기</h4>
-					</div>
-					<div class="modal-body">
-						<form method="post" name="login_form" id="frmid">
-						<c:if test="${!empty cnList }">
-							
-							<div class="row">
-					            <label class="control-label col-md-3" for="name" 
-					            	style="text-align: right;">번호<span class="required">*</span>					            </label>
-					            <div class="col-md-5">
-					              <input id="title" name="title" class="form-control" 
-						              data-validate-length-range="6" data-validate-words="2" 
-						              name="name"  required="required" type="text" value="${vo.cnoticeNo }">
-					            </div>
-					        </div><br>
-							<div class="row">
-					            <label class="control-label col-md-3" for="name" 
-					            	style="text-align: right;">제목 <span class="required">*</span>					            </label>
-					            <div class="col-md-5">
-					              <input id="title" name="title" class="form-control" 
-						              data-validate-length-range="6" data-validate-words="2" 
-						              name="name"  required="required" type="text" value="${vo.cnoticeTitle }">
-					            </div>
-					        </div><br>
-					        <div class="row">
-					            <label class="control-label col-md-3" for="name" 
-					            style="text-align: right;">작성자<span class="required">*</span>
-					            </label>
-					            <div class="col-md-5">
-					              <input id="admin" name="admin" class="form-control" 
-					              data-validate-length-range="6" data-validate-words="2" 
-					              name="name"  required="required" type="text" value="${vo.adminId }">
-					            </div>
-					        </div><br>
-					        <div class="row">
-					            <label class="control-label col-md-3" for="name" 
-					            style="text-align: right;">작성시간 <span class="required">*</span>					            </label>
-					            <div class="col-md-5">
-					              <input id="title" name="title" class="form-control" 
-					              data-validate-length-range="6" data-validate-words="2" 
-					              name="name"  required="required" type="text" value="${vo.cnoticeRegdate }">
-					            </div>
-					        </div><br>
-					        <div class="row">
-					            <label class="control-label col-md-3" for="name" 
-					            	style="text-align: right;">내용<span class="required">*</span>					            </label>
-					            <div class="col-md-5">
-					              <input id="title" name="title" class="form-control"
-					              	data-validate-length-range="6" data-validate-words="2" 
-					              	name="name"  required="required" type="text" value="${vo.cnoticeReadcount }">
-					            </div>
-					        </div><br>
-						</form>
-					</div>
-					
-					</c:if>
-					<!-- <form name="frmid" method="post" action="<c:url value="/user/userseachid.do"/>"> -->
-						<div class="modal-footer">
-			           		 <button type="button" class="btn btn-primary" id="idSearch" data-dismiss="modal">확인</button>
-						</div>
-					<!-- </form> -->
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
-	</div>
-</div>
-<!-- /.modal -->
+
 
 
 

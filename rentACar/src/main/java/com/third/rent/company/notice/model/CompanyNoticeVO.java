@@ -8,7 +8,7 @@ public class CompanyNoticeVO {
 	private String cnoticeContent;
 	private String adminId;
 	private Timestamp cnoticeRegdate;
-	private Character cnoticeVisible;
+	private String cnoticeVisible;
 	private int cnoticeReadcount;
 	private Timestamp cnoticeDeldate;
 	
@@ -52,11 +52,11 @@ public class CompanyNoticeVO {
 		this.cnoticeRegdate = cnoticeRegdate;
 	}
 	
-	public Character getCnoticeVisible() {
+	public String getCnoticeVisible() {
 		return cnoticeVisible;
 	}
 	
-	public void setCnoticeVisible(Character cnoticeVisible) {
+	public void setCnoticeVisible(String cnoticeVisible) {
 		this.cnoticeVisible = cnoticeVisible;
 	}
 	

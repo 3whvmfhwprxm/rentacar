@@ -224,7 +224,7 @@ textarea.form-control {
 										<td>업체 로고</td>
 										<td>
 										<c:if test="${!empty companyVo.comLogo}">
-										<div id="image_preview" ><img src="#" /></div>
+											<div id="image_preview" ><img src="<c:url value='/companyLogo/${companyVo.comLogo}'/>" /></div>
 										</c:if>
 										<input type="file" name="comlogo" id="comLogo" value="${companyVo.comLogo}">
 										<c:if test="${!empty companyVo.comLogo}">

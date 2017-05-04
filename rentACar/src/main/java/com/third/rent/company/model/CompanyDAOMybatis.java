@@ -43,6 +43,14 @@ public class CompanyDAOMybatis extends SqlSessionDaoSupport
 		return getSqlSession().selectOne(namespace+".companyseachpwd", vo);
 	}
 
+	@Override
+	public int updateReadCount(int no) {
+		int cnt
+		=getSqlSession().update(namespace+".updateReadCount", no);
+		
+		return cnt;
+	}
+
 	
 
 }

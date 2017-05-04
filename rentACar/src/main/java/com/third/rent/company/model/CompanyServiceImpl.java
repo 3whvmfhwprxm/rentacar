@@ -62,6 +62,11 @@ public class CompanyServiceImpl implements CompanyService{
 		return companyDao.selectSearchpwd(vo);
 	}
 
+	@Override
+	public int updateReadCount(int no) {
+		return companyDao.updateReadCount(no);
+	}
+
 
 
 

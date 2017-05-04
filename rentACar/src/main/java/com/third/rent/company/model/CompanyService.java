@@ -20,5 +20,6 @@ public interface CompanyService {
 	public int updateCompany(CompanyVO vo);
 	public String selectSearchid(CompanyVO vo);
 	public String selectSearchpwd(CompanyVO vo);
+	public int updateReadCount(int no);
 	
 }

@@ -130,8 +130,6 @@ $(document).ready(function () {
 	                    <ul class="dropdown-menu mega-dropdown-menu">
 	                        <li><a href="<c:url value='/com_manage/company_reservList.do'/>">예약현황</a></li>
 	                        <li><a href="#">차량현황</a></li>
-	                        <li role="separator" class="divider"></li>
-	                        <li><a href="#">View all</a></li>
 	                    </ul>
 	                </li>
 	                <li class="dropdown list-category">
@@ -141,11 +139,6 @@ $(document).ready(function () {
 	                    <ul class="dropdown-menu mega-dropdown-menu">
 	                        <li><a href='<c:url value="/com_manage/company_ccarList.do"/>'>차량현황</a></li>
 	                        <li><a href='<c:url value="/com_manage/company_optionRegist.do"/>'>차량등록</a></li>
-	                        <li><a href="#">Air Conditioner</a></li>
-	                        <li><a href="#">Radiator</a></li>
-	                        <li><a href="#">Washing Machine</a></li>
-	                        <li role="separator" class="divider"></li>
-	                        <li><a href="#">View all</a></li>
 	                    </ul>
 	                </li>
 	                <li class="dropdown list-category">
@@ -155,8 +148,6 @@ $(document).ready(function () {
 	                    <ul class="dropdown-menu mega-dropdown-menu">
 	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>일별 매출 현황</a></li>
 	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>월별 매출 현황</a></li>
-	                        <li role="separator" class="divider"></li>
-	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>월별 정산 현황</a></li>
 	                    </ul>
 	                </li>
 	               

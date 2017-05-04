@@ -76,6 +76,12 @@
 		where com_id=#{comId} and com_email=#{comEmail}
 	</select>
 	
+	<update id="updateReadCount" parameterType="int">
+		update CompanyNotice
+		set cnoticeReadcount=cnoticeReadcount+1
+		where cnoticeNo=#{cnoticeNo}
+	</update>
+	
 	
 	
 	

@@ -163,15 +163,35 @@ public class CompanyEpilogueController {
 		
 	}
 	
-	@RequestMapping("/company_announcement_detail.do")
+/*	@RequestMapping("/company_announcement_detail.do")
 	public String company_announcementDetail(){
 		
 		logger.info("공지사항 상세 화면 구현");
 		
 		return "com_manage/company_announcement_detail";
 		
-	}
+	}*/
 	
+	/*@RequestMapping("/countUpdate.do")
+	public String countUpdate(
+			@RequestParam(value="no", defaultValue="0") int no,
+			Model model){
+		//1.
+		logger.info("조회수 증가 처리, 파라미터 no={}", no);
+		if(no==0){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "/reBoard/list.do");
+
+			return "common/message";
+		}
+
+		//2.
+		int cnt = comService.updateReadCount(no);
+		logger.info("조회수 증가 결과, cnt={}", cnt);
+
+		//3.
+		return "redirect:/com_manage/company_announcement_detail.do?no="+no;
+	}*/
 	
 
 	
