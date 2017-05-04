@@ -32,11 +32,11 @@ public class Admin_reservInfoController {
 		
 		PaginationInfo pInfo=new PaginationInfo();
 		pInfo.setCurrentPage(rvo.getCurrentPage());
-		pInfo.setBlockSize(Utility.ADMIN_PAYINFO_BLOCKSIZE);
-		pInfo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
+		pInfo.setBlockSize(Utility.ADMIN_OUT_COMPANY_BLOCKSIZE);
+		pInfo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
 		
 		rvo.setFirstRecordIndex(pInfo.getFirstRecordIndex());
-		rvo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		rvo.setRecordCountPerPage(Utility.ADMIN_OUT_COMPANY_RECORDCOUNT_PERPAGE);
 		
 		List<Map<String, Object>> rlist=rService.selectReservPayInfo(rvo);
 		logger.info("예약 내역 조회 결과 map.size()={}", rlist.size());

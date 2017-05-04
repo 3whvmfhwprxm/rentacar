@@ -17,8 +17,9 @@ select * from com_reservView;
 --예약정보에 결제결과와 결제일을 함께 보여주는 view 
 create or replace view reservPayInfoView
 as
-select r.*, p.PAY_CONDITION, p.PAY_REGDATE, p.PAY_CANCELDATE
+select r.*, p.PAY_CONDITION, p.PAY_REGDATE, p.PAY_CANCELDATE, p.PAY_MONEY
 from RESERVATION r join payinfo p
 on r.RESERV_NUM=p.RESERV_NUM(+);
 
 select * from reservPayInfoView;
+commit;

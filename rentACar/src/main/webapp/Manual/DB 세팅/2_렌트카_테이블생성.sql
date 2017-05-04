@@ -249,7 +249,7 @@ CREATE TABLE PayInfo (
 	user_tel3 VARCHAR2(10) NOT NULL, /* 회원전화번호3 */
 	pay_method VARCHAR2(30) NOT NULL, /* 결제방법 */
 	pay_money NUMBER NOT NULL, /* 결제금액 */
-	pay_discount NUMBER default 0, /* 할인금액 */
+	--pay_discount NUMBER default 0, /* 할인금액 2017 05 04 삭제처리 결정*/
 	pay_regdate DATE default sysdate, /* 결제일시 */
 	pay_condition VARCHAR2(20) NOT NULL, /* 진행상태 */
 	pay_cancelDate DATE NULL /* 결제취소일시 */

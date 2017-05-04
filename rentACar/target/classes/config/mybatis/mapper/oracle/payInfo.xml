@@ -7,7 +7,7 @@
 	<sql id="searchWhat">
 		<trim prefix="WHERE" prefixOverrides="AND |OR ">
 				<if test="searchKeyword !=null and searchKeyword !=''">
-					${searchCondition} like '%'|| #{searchKeyword} ||'%'
+					${searchCondition} = #{searchKeyword}
 				</if>
 				<if test="payRegdate !=null and payRegdate !=''">
 					AND pay_regdate >= #{payRegdate}

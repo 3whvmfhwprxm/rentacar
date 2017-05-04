@@ -296,22 +296,7 @@ insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, uno
 values(3, '고객용 공지게시판 세번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
 insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount, unotice_deldate)
 values(4, '삭제된 고객용 공지게시판 네번째 글!', '고객이 볼수없는 내용 4!!', 'admin1', sysdate, 'N', 0, sysdate);
-insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
-values(5, '고객용 공지게시판 다섯번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
-insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
-values(6, '고객용 공지게시판 여섯번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
-insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
-values(7, '고객용 공지게시판 일곱번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
-insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
-values(8, '고객용 공지게시판 여덞번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
-insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
-values(9, '고객용 공지게시판 아홉번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
-insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
-values(10, '고객용 공지게시판 열번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
-insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
-values(11, '고객용 공지게시판 열한번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
-insert into usernotice(unotice_no, unotice_title, unotice_content, admin_id, unotice_regdate, unotice_visible, unotice_readcount)
-values(12, '고객용 공지게시판 열두번째 글!', '고객이 봐야할 내용 3!!', 'admin1', sysdate, 'Y', 0);
+
 
 select * from usernotice order by unotice_no desc;
 commit;
@@ -360,15 +345,10 @@ values(cmt_seq.nextval, '깔끔하고 또 다시 빌릴거 같네요 ㅎㅎㅎ', 'hong', 'rentGo
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
 cmt_img1, cmt_img2)
 values(cmt_seq.nextval, '차 상태도 깔끔하고 저렴하게 타기 좋은거같습니다', 'park', 'rentGo', 1, 5, 2, 'good3.jpg', '');
+
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
 cmt_img1, cmt_img2)
 values(cmt_seq.nextval, '연비도 괜찬고 딱 가격값정도만 합니다', 'choi', 'rentGo', 1, 5, 2, 'good4.jpg', '');
-insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
-cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '적당히 탈만하네요...........', 'kim1', 'rentGo', 1, 5, 2, 'bad1.jpg', '');
-insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
-cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '차량도 너무 더럽고 불친절합니다!!', 'park', 'rentGo', 1, 5, 2, 'good1.jpg', '');
 
 select*from comments;
 
@@ -383,6 +363,4 @@ rollback;
 
 
 --회원등급
-
-
 select * from user_sequences;
