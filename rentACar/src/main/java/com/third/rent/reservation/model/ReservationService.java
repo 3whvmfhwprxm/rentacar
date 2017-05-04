@@ -7,7 +7,7 @@ import com.third.rent.common.SearchVO;
 
 public interface ReservationService {
 	public List<ReservationVO> selectAll(SearchVO searchVo);
-	public List<ReservationVO> selectByUserid(Map<String, Object> map);
+	public List<Map<String, Object>> selectByUserid(Map<String, Object> map);
 	public int selectTotalRecord(String userId);
 	public List<Map<String, Object>> selectReservPayInfo(ReservationVO rvo);
 	public int selectTotalRecordWithPayInfo(ReservationVO rvo);

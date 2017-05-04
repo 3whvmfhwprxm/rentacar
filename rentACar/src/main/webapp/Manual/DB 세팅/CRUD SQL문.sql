@@ -173,3 +173,14 @@ order by pay_regdate desc;
 
 
 
+--예약정보, 차량넘버, 업체명, 업체 전화번호 ~ 유저아이디로 조회해서 가져오기
+select c.*, r.RESERV_NUM, r.RESERV_CANCEL, r.RESERV_DATE, r.RESERV_START_DATE, r.RESERV_END_DATE
+from RESERVATION r join (select com.COM_NAME, com.COM_TEL1, com.COM_TEL2, com.COM_TEL3, comcar.CCAR_CAR_ID
+                        from company com join COMPANYCAROPTION comcar 
+                        on com.COM_ID=comcar.COM_ID) c
+on r.CCAR_CAR_ID=c.CCAR_CAR_ID
+where r.USER_ID='kim1';
+                        
+select com.COM_NAME, com.COM_TEL1, com.COM_TEL2, com.COM_TEL3, comcar.CCAR_CAR_ID
+from company com join COMPANYCAROPTION comcar 
+on com.COM_ID=comcar.COM_ID

@@ -15,7 +15,7 @@ public class ReservationServiceImpl implements ReservationService{
 	private ReservationDAO reservationDao;
 
 	@Override
-	public List<ReservationVO> selectByUserid(Map<String, Object> map){
+	public List<Map<String, Object>> selectByUserid(Map<String, Object> map){
 		return reservationDao.selectByUserid(map);
 	}
 

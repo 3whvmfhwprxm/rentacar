@@ -21,22 +21,24 @@
 		]]>
 	</select> 
 
-	<select id="selectByUserid" parameterType="map" resultType="ReservationVO">
+	<select id="selectByUserid" parameterType="map" resultType="map">
 		select * from
 		(
 		    select rownum as RNUM ,LIST.*
 		    from
 		    (
-		        select * from reservation 
-		        where user_id=#{userId}
+		    	select c.*, r.RESERV_NUM, r.RESERV_CANCEL, r.RESERV_DATE, r.RESERV_START_DATE, r.RESERV_END_DATE
+				from RESERVATION r join (select com.COM_NAME, com.COM_TEL1, com.COM_TEL2, com.COM_TEL3, comcar.CCAR_CAR_ID
+				                        from company com join COMPANYCAROPTION comcar 
+				                        on com.COM_ID=comcar.COM_ID) c
+				on r.CCAR_CAR_ID=c.CCAR_CAR_ID
+				where r.USER_ID=#{userId}
 		    )LIST
 		)
 		<![CDATA[
 		where RNUM>#{firstRecordIndex} 
 		and RNUM<=#{firstRecordIndex} + #{recordCountPerPage}
 		]]> 
-		
-		
 	</select>
 	
 	<select id="selectTotalRecord" parameterType="String" resultType="int">

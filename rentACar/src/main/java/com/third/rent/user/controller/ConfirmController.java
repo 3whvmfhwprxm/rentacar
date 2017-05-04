@@ -53,7 +53,7 @@ public class ConfirmController {
 		map.put("recordCountPerPage", searchVo.getRecordCountPerPage());
 		
 		
-		List<ReservationVO> alist = reservationService.selectByUserid(map);
+		List<Map<String, Object>> alist = reservationService.selectByUserid(map);
 		logger.info("예약화면, 회원정보조회 alist.size()={}",alist.size());
 		
 		int totalRecord = reservationService.selectTotalRecord(userId);

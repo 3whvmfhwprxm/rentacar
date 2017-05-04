@@ -55,18 +55,18 @@
 				  		<td colspan="5" style="text-align: right;"><b>예약 데이터가 존재하지 않습니다.</b></td>
 				  	</tr>
 				</c:if> 
-                	<c:forEach var="vo" items="${alist }">
+                	<c:forEach var="map" items="${alist }">
                     <tr>
-                        <td style="text-align: center;"><a data-toggle="modal" href="#myModal1">${vo.reservNum}</a></td>
+                        <td style="text-align: center;"><a data-toggle="modal" href="#myModal1">${map['RESERV_NUM']}</a></td>
                         <%-- <td style="text-align: center;"><fmt:formatDate value="${vo.reservStartDate}" pattern="yyyy-MM-dd"/> </td> --%>
-                        <td style="text-align: center;">${vo.reservStartDate}</td>
-                        <td style="text-align: center;">${vo.reservEndDate}</td>
+                        <td style="text-align: center;">${map['RESERV_START_DATE'] }</td>
+                        <td style="text-align: center;">${map['RESERV_END_DATE'] }</td>
                         <%-- <td>${vo.reservStartTime} 시</td> --%>
-                        <td style="text-align: center;">09허4055</td>
+                        <td style="text-align: center;">${map['CCAR_CAR_ID'] }</td>
                         <%-- <td>${vo.reservEndTime} 시</td> --%>
-                        <td style="text-align: center;">${vo.reservDate}</td>
-                        <td style="text-align: center;">renGo</td>
-                        <td style="text-align: center;">${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
+                        <td style="text-align: center;">${map['RESERV_DATE']}</td>
+                        <td style="text-align: center;">${map['COM_NAME'] }</td>
+                        <td style="text-align: center;">${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }</td>
                         <td style="text-align: center;"><input data-toggle="modal" href="#myModal2" type="button" id="cancle" value="취소" width="10"></td>
                     </tr>
                 	</c:forEach>
@@ -77,7 +77,7 @@
     <div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
-			<nav style="text-align: center;">
+			<nav>
 				<ul class="pagination">
 					<c:if test="${pagingInfo.firstPage>1 }">
 						<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
