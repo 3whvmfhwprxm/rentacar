@@ -66,8 +66,8 @@ public class ReservSearchServiceImpl implements ReservSearchService{
 	}
 
 	@Override
-	public Map<String, Object> selectedCarInfo(String ccarCarId) {
-		return dao.selectedCarInfo(ccarCarId);
+	public Map<String, Object> selectedCarInfo(HashMap<String, Object> map) {
+		return dao.selectedCarInfo(map);
 	}
 		
 }

@@ -66,11 +66,11 @@
 	    		alert("예약일이 반납일보다 크면 안됩니다. 검색기간을 확인해주세요.");
 	    		$("#searchEndDate").focus();
 	    		return event.preventDefault();
-	    	}/* else if((endDateCompare.getTime()-startDateCompare.getTime())>7){
+	    	}else if((endDateCompare.getDate()-startDateCompare.getDate())>7){
 	    		alert("예약하실 수 있는 기간은 최대 7일까지 입니다");
 	    		$("#searchEndDate").focus();
 	    		return event.preventDefault();
-	    	} */
+	    	}
 		}
 	});
 	
@@ -192,7 +192,7 @@
 				<tr>
 					<th class="text-center thStyle1">차량</th>
 					<th class="text-center thStyle1">업체</th>
-					<th class="text-center thStyle1">계산된 가격(아직X)</th>
+					<th class="text-center thStyle1">계산된 가격</th>
 					<th class="text-center thStyle1">연체료(30분단위)</th>
 					<th class="text-center thStyle1">옵션상세보기</th>
 					<th class="text-center thStyle1">예약하기</th>
@@ -200,9 +200,6 @@
 			</thead>
 			<tbody>
 				<c:forEach var="map" items="${clist }" varStatus="i">
-					
-						<!-- 조건에 따른 가격 계산 처리 (아직 안됨 단순 가격)-->
-						<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
 						
 						<tr>				
 							<td class="text-left">
@@ -216,7 +213,7 @@
 								${map['CAR_NAME'] }
 							</td>
 							<td class="text-center">${map['COM_NAME'] }</td>
-							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${priceByReservDays }"  /> 원 </td>
+							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${map['PRICERESULT'] }"  /> 원 </td>
 							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${map['CCAR_ARREAR'] }"  /> 원 </td>
 							<td class="text-center">
 								<!-- 옵션상세보기 -->

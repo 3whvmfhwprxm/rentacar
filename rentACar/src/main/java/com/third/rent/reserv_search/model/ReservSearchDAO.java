@@ -19,5 +19,5 @@ public interface ReservSearchDAO {
 	public String createReservationKey();
 	public List<CarCategoryVO> selectCategoryList();
 	public int insertPayInfo(PayInfoVO payInfoVO);
-	public Map<String, Object> selectedCarInfo(String ccarCarId);
+	public Map<String, Object> selectedCarInfo(HashMap<String, Object> map);
 }

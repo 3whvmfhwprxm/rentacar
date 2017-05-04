@@ -28,7 +28,7 @@
 	<h3><i class="fa fa-calendar-check-o"></i> 예약내역 조회/관리 - 조회기간 검색 들어가야됨</h3>
 		<br>
 	<pre>
-* 문구 입력1
+* 예약번호를 클릭하시면 해당 결제정보로 넘어갑니다.
 * 문구 입력2
 * 문구 입력3</pre>
 	<br>
@@ -55,7 +55,8 @@
 		<c:if test="${!empty rlist }">			
 				<c:forEach var="map" items="${rlist }">
 					<tr>
-						<td>${map['RESERV_NUM'] }</td>
+						<td><a href='<c:url value="/admin/payInfo.do?searchCondition=reserv_num&searchKeyword=${map['RESERV_NUM'] }" />'>
+						${map['RESERV_NUM'] }</a></td>
 						<td>${map['USER_TEL1'] }-${map['USER_TEL2'] }-${map['USER_TEL3'] }</td>
 						<td>${map['USER_ID'] }</td>
 						<td>${map['RESERV_START_DATE'] }</td>
@@ -63,7 +64,17 @@
 						<td>${map['CCAR_CAR_ID'] }</td>
 						<td>${map['RESERV_DATE'] }</td>
 						<td>${map['RESERV_CANCEL'] }</td>
-						<td>${map['PAY_CONDITION'] }</td>
+						<td>
+							<c:if test="${empty map['PAY_CONDITION']}">
+								결제내역없음
+							</c:if>
+							<c:if test="${!empty map['PAY_CONDITION'] && !empty map['PAY_CANCELDATE']}">
+								${map['PAY_CANCELDATE'] }에 취소됨
+							</c:if>
+							<c:if test="${!empty map['PAY_CONDITION'] && empty map['PAY_CANCELDATE']}}">
+								${map['PAY_CONDITION'] }
+							</c:if>
+						</td>
 					</tr>	
 				</c:forEach>				
 		</c:if>		

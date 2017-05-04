@@ -1,6 +1,8 @@
 package com.third.rent.admin_payInfo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,11 +59,29 @@ public class PayInfoController {
 		return "administrator/payInfo/payInfoList";
 	}	
 	
-	/*@RequestMapping("/payCancel.do")
-	public String CancelPaymentByMerchantUid(@RequestParam String payNo) throws Exception {
+	@RequestMapping("/payCancel.do")
+	public String CancelPaymentByMerchantUid(@RequestParam String reservNum, Model model) throws Exception {
 		
-		logger.info("결제 취소 하기 파라미터값: payNo={}", payNo);
+		logger.info("결제 취소 하기 파라미터값: reservNum={}", reservNum);
 		
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("reservNum", reservNum);
+		map.put("reservCancelWhy", "관리자 취소 처리");
+
+		//예약, 결제정보 취소처리하기
+		int result=pService.cancelPayInfo(map);
+		
+		String url="/admin/payInfo.do", msg="";
+		if(result>0){
+			msg="취소 처리되었습니다.";
+		}else{
+			msg="취소 처리 실패!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		/*
 		String api_key = "2564830999358043";
 		String api_secret = "OfVxUx173DxRXBPWzdxoj0IDo2I8aUrZamw4UycXcJO9lD6VQEj9E2N35wcfrDeB0LGUjSSvCGFXkMTb";
 
@@ -77,7 +97,8 @@ public class PayInfoController {
 		
 		String cancelResult=payment_response.getMessage();
 		logger.info("결제 취소 결과 cancelResult={}", cancelResult);
+		*/
 		
-		return "administrator/payInfo/payInfoList";
-	}*/
+		return "common/message";
+	}
 }

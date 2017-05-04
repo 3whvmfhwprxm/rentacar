@@ -98,7 +98,6 @@
 		padding:5px 5px 5px 5px;
 		width:100%;
 		height:300px;}
-		
 	#userLeft{
 		float:left;
 		width:50%;}
@@ -123,9 +122,6 @@
 				<input type="hidden" name="ccarCarId" value="${map['CCAR_CAR_ID'] }">	
 		</div>
 		
-		<!-- 조건에 따른 가격 계산 처리 (아직 안됨 단순 가격)-->
-		<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
-		
 		<!-- 선택한 차에 대한 정보 -->
 		<div id="selectedCar">
 			<table class="table">
@@ -137,6 +133,7 @@
 						<th>예약 선택 기간</th>
 						<th>선택하신 차</th>						
 						<th>차 옵션</th>
+						<th>계산된 가격</th>
 						<th>렌터카 업체</th>
 						<th>업체 연락처</th>
 					</tr>					
@@ -168,6 +165,7 @@
 							<c:if test="${map['CCAR_BLUETOOTH_YN']!='N' }"> 블루투스 </c:if>
 							<c:if test="${map['CCAR_SMARTKEY_YN']!='N' }"> 스마트키 </c:if>
 						</td>
+						<td class="text-right"><fmt:formatNumber pattern="#,###" value="${map['PRICERESULT'] }"  /> 원 </td>
 						<td>
 							${map['COM_NAME'] }
 						</td>
@@ -176,58 +174,10 @@
 				</tbody>					
 			</table>
 		</div>
-		<br>		
-		<%-- <div class="row" id="selectedCar">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default coupon">
-              <div class="panel-heading" id="head">
-                <div class="panel-title" id="title">
-                    <img src="*" alt="선택한 업체 로고 이미지">
-                    <span class="hidden-xs"> ${map['CAR_NAME'] }</span>
-                    <span class="visible-xs"> ${map['CAR_NAME'] }</span>
-                </div>
-              </div>
-              <div class="panel-body">
-                <img src='<c:url value="/carImages/${map['CAR_IMG'] }" />' class="coupon-img img-rounded" alt="선택한 차종 이미지">
-                <div class="col-md-9">
-                    <ul class="items">
-                    <c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
-												       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
-												       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N' 
-												       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
-												       && map['CCAR_BLUETOOTH_YN']=='N' && map['CCAR_SMARTKEY_YN']=='N' }">
-												       <li>등록된 옵션이 없습니다.</li>
-					</c:if>
-					<c:if test="${map['CCAR_AUX_YN']!='N' }"><li>AUX</li></c:if>
-					<c:if test="${map['CCAR_BLACKBOX_YN']!='N' }"><li>블랙박스</li></c:if>
-					<c:if test="${map['CCAR_NAVI_YN']!='N' }"><li>네비게이션</li></c:if>
-					<c:if test="${map['CCAR_SUN_ROOF_YN']!='N' }"><li>썬루프</li></c:if>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <div class="offer">
-                        <span class="number"><fmt:formatNumber pattern="#,###" value="${priceByReservDays }" /> </span>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <p class="disclosure">연락처: ${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }</p>
-                </div>
-              </div>
-              <div class="panel-footer">
-                <div class="coupon-code">
-                    <span class="print">
-                        <a href="<c:url value='/user/realTime.do' />" class="btn btn-link">다른 차량 선택하기</a>
-                    </span>
-                </div>
-                <div class="exp">선택하신 예약 기간: ${param.searchStartDate} ${param.startHour}:${param.startMin} 
-				~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</div>
-              </div>
-            </div>
-    	</div>
-    </div> --%>
+		<br>
     
     <!-- 인수/반납 장소 표시 -->
-    <p>인수/반납 주소: ${map['COM_RETURN_PLACE']}</p>
+    <p><strong>인수/반납 주소: </strong>${map['COM_RETURN_PLACE']}</p>
     <div id="map"></div>
     <input type="hidden" id="mapInfo" name="mapInfo" value="${map['COM_RETURN_PLACE']}">    
     <script>

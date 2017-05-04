@@ -62,9 +62,6 @@
 	<form class="form-horizontal" name="payForm" id="payForm" method="post">
 		<fieldset>
 			<legend>결제하기</legend>
-			
-			<!-- 결제하신 예약내용 표시 -->
-	<c:set var="priceByReservDays" value="${map['CCAR_NORMAL_PRICE'] }" />
 		
 		<!-- 선택한 차에 대한 정보 -->
 		<div class="row">
@@ -96,7 +93,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="offer">
-                        <span class="number"><fmt:formatNumber pattern="#,###" value="${priceByReservDays }" /> </span>
+                        <span class="number"><fmt:formatNumber pattern="#,###" value="${map['PRICERESULT'] }" /> </span>
                     </div>
                 </div>
                 <div class="col-md-12">

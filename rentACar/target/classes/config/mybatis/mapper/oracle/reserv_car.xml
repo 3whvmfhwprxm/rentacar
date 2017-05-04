@@ -8,7 +8,10 @@
 		<![CDATA[
 		select a.*, b.COM_NAME
 		from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
-		        from (select * from COMPANYCAROPTION
+		        from (select c.*, 
+		        (to_date(#{searchEndDate}, 'yyyy/mm/dd hh24:mi')-to_date(#{searchStartDate}, 'yyyy/mm/dd hh24:mi')) * CCAR_NORMAL_PRICE
+		        as "PRICERESULT"  
+		        from COMPANYCAROPTION c
 		        where car_code in (
 		        select car_code from car]]>
 		        <if test="carType!=0">
@@ -28,10 +31,12 @@
 		]]>
 	</select>
 	
-	<select id="selectedCarInfo" parameterType="String" resultType="map">
+	<select id="selectedCarInfo" parameterType="map" resultType="map">
 		<![CDATA[
 		select a.*, b.COM_NAME, b.COM_TEL1, b.COM_TEL2, b.COM_TEL3, b.COM_RETURN_PLACE
-		from (	select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
+		from (	select comc.*, 
+		        (to_date(#{searchEndDate}, 'yyyy/mm/dd hh24:mi')-to_date(#{searchStartDate}, 'yyyy/mm/dd hh24:mi')) * comc.CCAR_NORMAL_PRICE
+		        as "PRICERESULT", c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
 		        from COMPANYCAROPTION comc join car c
 		   		on comc.car_code=c.car_code) a join company b
 		on a.com_id=b.com_id

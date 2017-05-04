@@ -77,6 +77,12 @@
 		select count(*) from reservPayInfoView
 		<include refid="searchWhat"></include>
 	</select>
+	
+	<update id="cancelReservation" parameterType="map">
+		update reservation
+		set reserv_cancel=sysdate, reserv_cancel_why=#{reservCancelWhy}
+		where reserv_num=#{reservNum}
+	</update>
 </mapper>
 
 

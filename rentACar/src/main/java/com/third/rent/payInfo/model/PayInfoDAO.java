@@ -8,4 +8,7 @@ public interface PayInfoDAO {
 	public int selectTotalRecordPayInfo(PayInfoVO pInfo);
 	
 	public List<PayInfoVO> recentTenPayInfo(PayInfoVO payInfoVo);
+	
+	//결제 취소처리 (업데이트)
+	public int updatePayCancel(String payNo);
 }

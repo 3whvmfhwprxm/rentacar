@@ -17,5 +17,5 @@ public interface ReservSearchService {
 	public String takeReservation(ReservationVO reserVo, ReservUserVO reservWho);
 	public List<CarCategoryVO> selectCategoryList();
 	public int insertPayInfo(PayInfoVO payInfoVO);
-	public Map<String, Object> selectedCarInfo(String ccarCarId); 
+	public Map<String, Object> selectedCarInfo(HashMap<String, Object> map); 
 }

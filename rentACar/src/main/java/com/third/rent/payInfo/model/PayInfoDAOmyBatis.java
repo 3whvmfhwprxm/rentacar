@@ -24,5 +24,10 @@ public class PayInfoDAOmyBatis extends SqlSessionDaoSupport implements PayInfoDA
 	public List<PayInfoVO> recentTenPayInfo(PayInfoVO payInfoVo) {
 		return getSqlSession().selectList(nameSpace+".recentTenPayInfo", payInfoVo);
 	}
+
+	@Override
+	public int updatePayCancel(String payNo) {
+		return getSqlSession().update(nameSpace+".updatePayCancel", payNo);
+	}
 	
 }

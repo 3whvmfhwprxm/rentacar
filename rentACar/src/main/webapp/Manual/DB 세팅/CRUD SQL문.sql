@@ -20,16 +20,23 @@ where car_type=1;
 select ccar_car_id from RESERVATION
 where reserv_end_date >= '17-04-29' and reserv_start_date <= '17-05-01';
 
+--두 날짜 사이의 간격으로 가격 계산하기
+--두 날짜 사이의 간격을 계산하고 그 값을 30분 단위로 측정 (곱하기 48). 거기에 하루 기준값을 48로 나눈 값을 곱한다
+select (to_date('2017-05-01 09:00', 'yyyy/mm/dd hh24:mi')-to_date('2017-04-30 09:00', 'yyyy/mm/dd hh24:mi')) * 48 * (500) 
+from dual;
+
 --3번 검색 조건(1,2번 결합)
-select * from COMPANYCAROPTION
+select c.*, (to_date('2017-05-02 09:30', 'yyyy/mm/dd hh24:mi')-to_date('2017-05-01 09:00', 'yyyy/mm/dd hh24:mi')) * CCAR_NORMAL_PRICE
+as "priceResult"  
+from COMPANYCAROPTION c
 where car_code in (
-select car_code from car
-where car_type=5
+    select car_code from car
+    where car_type=5
 ) 
 and ccar_car_id not in (
-select ccar_car_id from RESERVATION
-where reserv_end_date >= to_date('2017-04-29 08:00', 'yyyy/mm/dd hh24:mi')
-and reserv_start_date <= to_date('2017-05-01 09:30', 'yyyy/mm/dd hh24:mi')
+    select ccar_car_id from RESERVATION
+    where reserv_end_date >= to_date('2017-04-29 08:00', 'yyyy/mm/dd hh24:mi')
+    and reserv_start_date <= to_date('2017-05-01 09:30', 'yyyy/mm/dd hh24:mi')
 )
 and comcar_outdate is null;
 
@@ -54,7 +61,10 @@ on comc.car_code=c.car_code;
 --5번 위 내용에 업체 이름정보 조인
 select a.*, b.COM_NAME
 from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
-        from (select * from COMPANYCAROPTION
+        from (select c.*, 
+        (to_date('2017-05-02 09:30', 'yyyy/mm/dd hh24:mi')-to_date('2017-05-01 09:00', 'yyyy/mm/dd hh24:mi')) * CCAR_NORMAL_PRICE
+        as "PRICERESULT"  
+        from COMPANYCAROPTION c
         where car_code in (
         select car_code from car
         where car_type=5
@@ -69,22 +79,8 @@ from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, c
     on comc.car_code=c.car_code) a join company b
 on a.com_id=b.com_id;
 
-
-
-
-
-
-
-
-
-
 select * from COMPANYCAROPTION 
 where ccar_car_id='rentZoa_0001';
-
-
-
-
-
 
 select lpad(Reservation_seq.nextval, 8, '0') from dual;
 
@@ -150,9 +146,11 @@ from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, c
 on a.com_id=b.com_id 
 order by car_name;
 
---
+--선택한 차 정보 및 계산된 가격 정보
 select a.*, b.COM_NAME, b.COM_TEL1, b.COM_TEL2, b.COM_TEL3 
-from (	select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
+from (	select comc.*, (to_date('2017-05-02 09:30', 'yyyy/mm/dd hh24:mi')-to_date('2017-05-01 09:00', 'yyyy/mm/dd hh24:mi')) * comc.CCAR_NORMAL_PRICE
+        as "priceResult",
+        c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img        
         from COMPANYCAROPTION comc join car c
         on comc.car_code=c.car_code) a join company b
 on a.com_id=b.com_id

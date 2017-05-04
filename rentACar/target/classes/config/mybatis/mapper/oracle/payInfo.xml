@@ -54,4 +54,10 @@
 		where RNUM<=10
 		]]>
 	</select>
+	
+	<update id="updatePayCancel" parameterType="String">
+		update payInfo
+		set pay_cancelDate=sysdate
+		where reserv_num=#{reservNum}
+	</update>
 </mapper>

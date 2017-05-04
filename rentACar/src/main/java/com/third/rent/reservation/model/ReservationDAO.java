@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.third.rent.common.SearchVO;
-import com.third.rent.user.model.UserVO;
 
 public interface ReservationDAO {
 	public List<ReservationVO> selectAll(SearchVO searchVo);
@@ -12,4 +11,5 @@ public interface ReservationDAO {
 	public int selectTotalRecord(String userId);
 	public List<Map<String, Object>> selectReservPayInfo(ReservationVO rvo);
 	public int selectTotalRecordWithPayInfo(ReservationVO rvo);
+	public int updateReservCancel(Map<String, Object> map);
 }

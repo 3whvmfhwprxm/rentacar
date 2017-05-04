@@ -36,5 +36,9 @@ public class ReservationDAOMybatis extends SqlSessionDaoSupport implements Reser
 	public int selectTotalRecordWithPayInfo(ReservationVO rvo) {
 		return getSqlSession().selectOne(namespace+".selectWithReservPayInfoViewTotalRecord", rvo);
 	}
-	
+
+	@Override
+	public int updateReservCancel(Map<String, Object> map) {
+		return getSqlSession().update(namespace+".cancelReservation", map);
+	}	
 }

@@ -43,17 +43,6 @@ public class RealTimeController {
 	@Autowired
 	private UserService uService;
 
-	/*@RequestMapping(value="/realTime.do", method=RequestMethod.GET)
-	public String showRealTime_get(Model model){
-		logger.info("실시간예약화면 띄우기");
-
-		List<CarCategoryVO> catelist=rService.selectCategoryList();
-
-		model.addAttribute("catelist", catelist);
-
-		return "user/realTime";
-	}*/
-
 	@RequestMapping("/realTime.do")
 	public String showRealTime_post(@ModelAttribute DateSearchVO dateSearchVO, Model model){
 		logger.info("예약 대상 검색 기간 조건 dateSearchVO={}", dateSearchVO);
@@ -110,8 +99,18 @@ public class RealTimeController {
 		logger.info("선택한 회사차의 ID값, ccarCarId={}", ccarCarId);
 		logger.info("세션의 유저ID, userId={}", userId);
 
+		//검색 날짜 조건 결합
+		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
+		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();
+
+		//검색 조건 해쉬맵에 저장
+		HashMap<String, Object> searchOption=new HashMap<String, Object>();
+		searchOption.put("searchStartDate", startDate);
+		searchOption.put("searchEndDate", endDate);
+		searchOption.put("ccarCarId", ccarCarId);
+		
 		//DB작업 select by ccarCarId
-		Map<String, Object> map=rService.selectedCarInfo(ccarCarId);
+		Map<String, Object> map=rService.selectedCarInfo(searchOption);
 		logger.info("선택한 회사차의 정보, map={}", map);
 
 		//유저에 대한 정보 가져오기
@@ -149,8 +148,15 @@ public class RealTimeController {
 		reserVo.setReservEndDate(endDate);
 		reserVo.setReservInsurance("자차보험");
 		reserVo.setUserId(userId);
+		
 
-		Map<String, Object> map=rService.selectedCarInfo(ccarCarId);
+		//검색 조건 해쉬맵에 저장
+		HashMap<String, Object> searchOption=new HashMap<String, Object>();
+		searchOption.put("searchStartDate", startDate);
+		searchOption.put("searchEndDate", endDate);
+		searchOption.put("ccarCarId", ccarCarId);
+
+		Map<String, Object> map=rService.selectedCarInfo(searchOption);
 		logger.info("선택한 회사차의 정보, map={}", map);
 
 		//DB작업

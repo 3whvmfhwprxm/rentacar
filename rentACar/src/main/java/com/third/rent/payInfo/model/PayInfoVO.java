@@ -13,6 +13,7 @@ public class PayInfoVO extends SearchVO{
 	private int payDiscount; /* 할인금액 */
 	private String payRegdate; /* 결제일시 */
 	private String payCondition; /* 진행상태 */
+	private String payCancelDate; /* 결제취소일 */
 	
 	public String getPayNo() {
 		return payNo;
@@ -74,13 +75,19 @@ public class PayInfoVO extends SearchVO{
 	public void setPayCondition(String payCondition) {
 		this.payCondition = payCondition;
 	}
+	public String getPayCancelDate() {
+		return payCancelDate;
+	}
+	public void setPayCancelDate(String payCancelDate) {
+		this.payCancelDate = payCancelDate;
+	}
 	
 	@Override
 	public String toString() {
 		return "PayInfoVO [payNo=" + payNo + ", reservNum=" + reservNum + ", userTel1=" + userTel1 + ", userTel2="
 				+ userTel2 + ", userTel3=" + userTel3 + ", payMethod=" + payMethod + ", payMoney=" + payMoney
 				+ ", payDiscount=" + payDiscount + ", payRegdate=" + payRegdate + ", payCondition=" + payCondition
-				+ ", toString()=" + super.toString() + "]";
+				+ ", payCancelDate=" + payCancelDate + ", toString()=" + super.toString() + "]";
 	}
 	
 }

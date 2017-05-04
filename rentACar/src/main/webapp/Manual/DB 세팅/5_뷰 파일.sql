@@ -11,13 +11,13 @@ and cco.CCAR_CAR_ID = rv.CCAR_CAR_ID
 and rv.RESERV_NUM = rvu.RESERV_NUM
 and p.RESERV_NUM (+) = rvu.RESERV_NUM;
 
-select * from com_reservView
+select * from com_reservView;
    
 
 --예약정보에 결제결과와 결제일을 함께 보여주는 view 
 create or replace view reservPayInfoView
 as
-select r.*, p.PAY_CONDITION, p.PAY_REGDATE
+select r.*, p.PAY_CONDITION, p.PAY_REGDATE, p.PAY_CANCELDATE
 from RESERVATION r join payinfo p
 on r.RESERV_NUM=p.RESERV_NUM(+);
 

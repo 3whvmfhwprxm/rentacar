@@ -4,6 +4,14 @@
 <script type="text/javascript">	
 	$().ready(function(){
 		IMP.init('imp33307123');
+		
+		$("#payCancelForm").submit(function(){
+			if(confirm("정말로 결제를 취소하시겠습니까? \n결제,예약이 모두 취소되며 \n사용자에게 알림 메일이 보내집니다.")){
+	 			return true;
+	 		}else{
+	 			return false;
+	 		}
+		});
 	});
 	
 	/* function cancelPay(cancelNum, paidmoney){
@@ -48,7 +56,7 @@
 		<input type="hidden" name="payRegdate" value="${param.payRegdate}">
 	</form>
 	
-	<h3><i class="fa fa-calendar-check-o"></i> 결제내역 조회/관리 - 조회기간 검색 들어가야됨</h3>
+	<h3><i class="fa fa-credit-card"></i> 결제내역 조회/관리 - 조회기간 검색 들어가야됨</h3>
 		<br>
 	<pre>
 * 문구 입력1
@@ -83,9 +91,17 @@
 						<td>${vo.payMethod }</td>
 						<td>${vo.payMoney }</td>						
 						<td>${vo.payRegdate }</td>
-						<td><a href="<c:url value='/admin/payCancel.do?payNo=${vo.payNo }' />" >
-							<button>결제취소</button></a></td>
-						
+						<td>
+							<c:if test="${empty vo.payCancelDate }">
+								<form id="payCancelForm" method="post" action="<c:url value='/admin/payCancel.do' />">
+									<input type="hidden" name="reservNum" value="${vo.reservNum }">
+									<input type="submit" value="결제취소">
+								</form>
+							</c:if>
+							<c:if test="${!empty vo.payCancelDate }">
+								${vo.payCancelDate }에 취소됨
+							</c:if>
+						</td>
 					</tr>	
 				</c:forEach>				
 		</c:if>		
