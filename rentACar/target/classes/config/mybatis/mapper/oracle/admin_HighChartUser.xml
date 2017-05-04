@@ -3,9 +3,29 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="config.mybatis.mapper.oracle.admin_HighChartUser">
-	<select id="selectAllUserByChart" resultType="UserVO">
-		select*from RENT_USER
+	<select id="selectSalesByDay" parameterType="DateVO"
+		resultType="map">
+		select to_char(reserv_start_date, 'yyyy-mm-dd') as orderdate, 
+	    sum(pay_money)-sum(pay_discount) as totalprice 
+	    from orders
+		where extract(year from reserv_start_date)=#{year}
+		and extract(month from reserv_start_date)=#{month}
+		group by to_char(reserv_start_date, 'yyyy-mm-dd')	
 	</select>
+	
+	<select id="selectSalesByMonth" parameterType="DateVO"
+		resultType="map">
+		select to_char(reserv_start_date, 'mm') as salesByMonth, 
+	    sum(pay_money)-sum(pay_discount) as totalprice
+		from
+		(
+		    select*
+		    from reservation r join payinfo p
+		    on r.reserv_num=p.reserv_num
+		)
+		where extract(year from reserv_start_date)=#{year}
+		group by to_char(reserv_start_date, 'mm')	
+	</select>	
 </mapper>
 
 

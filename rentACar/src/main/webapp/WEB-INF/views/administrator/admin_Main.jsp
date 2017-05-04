@@ -74,7 +74,7 @@
 	<h3>
 		<b>
 			<i class="fa fa-line-chart" aria-hidden="true"></i>
-			<a href='<c:url value="/administrator/highChart/userHighChart.do" />'>
+			<a href='<c:url value="/administrator/highChart/sales.do" />'>
 				차트
 			</a>
 		</b>
@@ -90,42 +90,31 @@
 	        text: '월별매출'
 	    },
 
-	    /* subtitle: {
-	        text: 'Source: thesolarfoundation.com'
-	    }, */
-
+	    xAxis: { 
+	    	categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] 
+	    },
+	       
 	    yAxis: {
 	        title: {
 	            text: '원'
 	        }
 	    },
+	    
 	    legend: {
 	        layout: 'vertical',
 	        align: 'right',
 	        verticalAlign: 'middle'
 	    },
 
-	    plotOptions: {
+/* 	    plotOptions: {
 	        series: {
-	            pointStart: 2017
+	            pointStart: 1
 	        }
-	    },
+	    }, */
 
 	    series: [{
-	        name: 'Installation',
-	        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-	    }, {
-	        name: 'Manufacturing',
-	        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-	    }, {
-	        name: 'Sales & Distribution',
-	        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-	    }, {
-	        name: 'Project Development',
-	        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-	    }, {
-	        name: 'Other',
-	        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+	        name: '월별 매출',
+	        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
 	    }]
 	});
 	</script>
