@@ -120,7 +120,7 @@
 						<h4 class="modal-title">예약정보</h4>
 					</div>
 					<div class="modal-body">
-						<form method="post" name="login_form" id="frmpwd" action="<c:url value="/user/userseachpwd.do"/>">
+						<form method="post" name="login_form" id="condetail" action="<c:url value="/user/confirm.do"/>">
 							<div class="row">
 					            <label class="control-label col-md-3" for="userId" style="text-align: right;">예약번호
 					            </label>
@@ -183,7 +183,7 @@
 								<!-- 1. 지도 노드 -->
 					            <!-- * Daum 지도 - 지도퍼가기 -->
 									<div id="daumRoughmapContainer1493816565568" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-					        </div>
+					        </div><br>
 							
 							<!--
 								2. 설치 스크립트
@@ -228,10 +228,10 @@
 						<h4 class="modal-title">예약취소을 취소하겠습니까?</h4>
 					</div>
 					<div class="modal-body">
-						<form method="post" name="login_form" id="frmpwd" action="<c:url value="/user/userseachpwd.do"/>">
+						<form method="post" name="login_form" id="cancle" action="<c:url value="/user/#"/>">
 					        <div class="modal-footer">
-			           		 <button type="button" class="btn btn-primary" id="pwdSearch" data-dismiss="modal">이전단계로</button>
-			           		 <button type="submit" class="btn btn-primary" id="pwdSearch" data-dismiss="modal">예약취소</button>
+			           		 <button type="reset" class="btn btn-primary" id="reset" data-dismiss="modal">이전단계로</button>
+			           		 <button type="submit" class="btn btn-primary" id="cancleBtn" data-dismiss="modal">예약취소</button>
 						</div>
 						</form>
 					</div>

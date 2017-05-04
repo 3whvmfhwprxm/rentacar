@@ -15,6 +15,7 @@ import com.third.rent.admin_Board.model.Admin_BoardService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
+import com.third.rent.common.userUtility;
 import com.third.rent.user.notice.model.UserNoticeService;
 import com.third.rent.user.notice.model.UserNoticeVO;
 
@@ -32,12 +33,12 @@ public class ServiceCenterController {
 		logger.info("고객센터 화면 띄우기 ");
 		//2
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(userUtility.RESERVATION_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(userUtility.RESERVATION_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 		
 		//SearchVO 값 셋팅
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(userUtility.RESERVATION_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		List<UserNoticeVO> unList=usernoticeService.selectUN(searchVo);

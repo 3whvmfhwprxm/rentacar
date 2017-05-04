@@ -16,6 +16,7 @@ import com.third.rent.Comments.model.CommentsVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
+import com.third.rent.common.userUtility;
 
 
 
@@ -31,11 +32,11 @@ public class ReviewController {
 		logger.info("이용후기 화면 띄우기");
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(userUtility.REVIEW_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(userUtility.REVIEW_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(userUtility.REVIEW_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 
 

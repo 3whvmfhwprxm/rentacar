@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
+import com.third.rent.common.userUtility;
 import com.third.rent.reservation.model.ReservationService;
 import com.third.rent.reservation.model.ReservationVO;
 
@@ -33,11 +34,11 @@ public class ConfirmController {
 		logger.info("예약확인 화면 띄우기 userId={}", userId);
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(userUtility.CONFIRM_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(userUtility.CONFIRM_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(userUtility.REVIEW_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		//로그인되었는지 체크
