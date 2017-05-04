@@ -5,9 +5,13 @@
 footer{
     padding: 10px;
     color: #fff;
-    font-size: 12px;
+    font-size: 14px;
     background-color: #2a8fcf;
     margin-top: 100px;
+    position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
 }
 </style>
 	<footer>

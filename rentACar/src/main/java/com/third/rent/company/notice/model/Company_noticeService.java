@@ -7,6 +7,7 @@ import com.third.rent.company.model.CompanyVO;
 
 public interface Company_noticeService {
 	public List<CompanyNoticeVO> companyAnnouncement(SearchVO searchVo);
+	public CompanyNoticeVO selectByNo(int cnoticeNo);
 
 /*	public int companyIdChk(CompanyVO param);
 

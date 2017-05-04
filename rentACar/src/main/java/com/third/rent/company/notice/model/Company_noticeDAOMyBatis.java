@@ -11,11 +11,16 @@ import com.third.rent.company.model.CompanyVO;
 @Repository
 public class Company_noticeDAOMyBatis extends SqlSessionDaoSupport implements Company_noticeDAO{
 	
-	private String nameSpace="config.mybatis.mapper.oracle.company_announcement.";
-
+	private String nameSpace="config.mybatis.mapper.oracle.company";
+	
 	@Override
 	public List<CompanyNoticeVO> companyAnnouncement(SearchVO searchVo) {
-		return getSqlSession().selectList(nameSpace+"selectCNotice",searchVo);
+		return getSqlSession().selectList(nameSpace+".selectCNotice",searchVo);
+	}
+
+	@Override
+	public CompanyNoticeVO selectByNo(int cnoticeNo) {
+		return getSqlSession().selectOne(nameSpace+".selectByNo",cnoticeNo);
 	}
 
 	/*@Override

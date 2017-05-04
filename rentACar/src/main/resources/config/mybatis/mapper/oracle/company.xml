@@ -78,9 +78,13 @@
 	
 	<update id="updateReadCount" parameterType="int">
 		update CompanyNotice
-		set cnoticeReadcount=cnoticeReadcount+1
-		where cnoticeNo=#{cnoticeNo}
+		set cnotice_readcount=cnotice_readcount+1
+		where cnotice_no=#{cnoticeNo}
 	</update>
+	
+	<select id="selectByNo" parameterType="int" resultType="CompanyNoticeVO">
+		select * from companynotice where cnotice_no=#{cnoticeNo}
+	</select>
 	
 	
 	

@@ -177,8 +177,7 @@ th,td{text-align: center;}
 							<tr>
 								<c:if test="${!empty vo.cnoticeDeldate }"> class="danger" </c:if>
 								<td>${vo.cnoticeNo }</td>
-								<td class="style">				
-									<span style="opacity: 0.3">${vo.cnoticeTitle }</span>	
+								<td class="style">					
 									<!-- 제목이 긴 경우 일부만 보여주기 -->
 									<a href='<c:url value="/com_manage/countUpdate.do?cnoticeNo=${vo.cnoticeNo}"/>'>
 									<c:if test="${fn:length(vo.cnoticeTitle)>30 }">

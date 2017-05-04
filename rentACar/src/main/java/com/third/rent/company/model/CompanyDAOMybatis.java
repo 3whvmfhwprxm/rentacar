@@ -45,9 +45,7 @@ public class CompanyDAOMybatis extends SqlSessionDaoSupport
 
 	@Override
 	public int updateReadCount(int no) {
-		int cnt
-		=getSqlSession().update(namespace+".updateReadCount", no);
-		
+		int cnt = getSqlSession().update(namespace+".updateReadCount", no);
 		return cnt;
 	}
 

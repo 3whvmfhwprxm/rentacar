@@ -30,6 +30,7 @@ import com.third.rent.common.Utility;
 import com.third.rent.company.model.CompanyService;
 import com.third.rent.company.model.CompanyVO;
 import com.third.rent.company.notice.model.CompanyNoticeVO;
+import com.third.rent.company.notice.model.Company_noticeService;
 
 
 @Controller
@@ -46,6 +47,9 @@ public class CompanyEpilogueController {
 	
 	@Autowired
 	private CompanyService comService;
+	
+	@Autowired
+	private Company_noticeService comNoService;
 	
 	@RequestMapping("/company_epilogue.do")
 	public String consel_index(){
@@ -83,16 +87,45 @@ public class CompanyEpilogueController {
 		return "com_manage/company_announcement";
 	}
 	
-	/*@RequestMapping("/company_announcement_detail.do")
-	public String detail_announcement(@RequestParam(value="cnoticeNo", defaultValue="0") int cnoticeNo, Model model){
+	@RequestMapping("/countUpdate.do")
+	public String countUpdate(
+			@RequestParam(value="cnoticeNo", defaultValue="0") int cnoticeNo,
+			Model model){
 		//1.
-		logger.info("글 상세보기, 파라미터 cnoticeNo={}", cnoticeNo);
+		logger.info("조회수 증가 처리, 파라미터 no={}", cnoticeNo);
 		if(cnoticeNo==0){
 			model.addAttribute("msg", "잘못된 url입니다");
-			model.addAttribute("url", "/com_managed/company_announcement.do");	
+			model.addAttribute("url", "/com_manage/company_announcement.do");
+
+			return "common/message";
 		}
-		return "common/message";
-	}*/
+
+		//2.
+		int cnt = comService.updateReadCount(cnoticeNo);
+		logger.info("조회수 증가 결과, cnt={}", cnt);
+
+		//3.
+		return "redirect:/com_manage/company_announcement_detail.do?cnoticeNo="+cnoticeNo;
+	}
+	
+	@RequestMapping(value="/company_announcement_detail.do",method=RequestMethod.GET)
+	public String detail_announcement_get(@RequestParam int cnoticeNo, Model model){
+		//1.
+		logger.info("업체공지사항 상세보기, 파라미터 cnoticeNo={}", cnoticeNo);
+		if(cnoticeNo==0){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "/com_manage/company_announcement.do");	
+			
+			return "common/message";
+		}
+		CompanyNoticeVO vo = comNoService.selectByNo(cnoticeNo);
+			logger.info("업체화면 조회결과 companyVo={}", vo);
+		
+		model.addAttribute("companyVo", vo);
+		
+		return "com_manage/company_announcement_detail";
+	}
+	
 	
 	@RequestMapping(value="/company_detail.do",method=RequestMethod.GET)
 	public String companyEdit_get(@RequestParam String comId,
@@ -163,35 +196,9 @@ public class CompanyEpilogueController {
 		
 	}
 	
-/*	@RequestMapping("/company_announcement_detail.do")
-	public String company_announcementDetail(){
-		
-		logger.info("공지사항 상세 화면 구현");
-		
-		return "com_manage/company_announcement_detail";
-		
-	}*/
+
 	
-	/*@RequestMapping("/countUpdate.do")
-	public String countUpdate(
-			@RequestParam(value="no", defaultValue="0") int no,
-			Model model){
-		//1.
-		logger.info("조회수 증가 처리, 파라미터 no={}", no);
-		if(no==0){
-			model.addAttribute("msg", "잘못된 url입니다");
-			model.addAttribute("url", "/reBoard/list.do");
-
-			return "common/message";
-		}
-
-		//2.
-		int cnt = comService.updateReadCount(no);
-		logger.info("조회수 증가 결과, cnt={}", cnt);
-
-		//3.
-		return "redirect:/com_manage/company_announcement_detail.do?no="+no;
-	}*/
+	
 	
 
 	

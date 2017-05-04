@@ -54,6 +54,9 @@ $(document).ready(function () {
     
 </style>
 <style type="text/css">
+// 페이지의 높이를 브라우저 높이로 선언
+html,body { height: 100%; margin: 0; padding: 0; }
+
 .text-right1{
 	padding-left: 80%;
 }

@@ -19,6 +19,11 @@ public class Com_noServiceImpl implements Company_noticeService {
 		return cnoticeDao.companyAnnouncement(searchVo);
 	}
 
+	@Override
+	public CompanyNoticeVO selectByNo(int cnoticeNo) {
+		return cnoticeDao.selectByNo(cnoticeNo);
+	}
+
 	/*@Override
 	public int companyIdChk(CompanyVO param) {
 		int chk = cnoticeDao.companyIdChk(param);

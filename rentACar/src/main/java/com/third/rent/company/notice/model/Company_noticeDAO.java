@@ -13,4 +13,6 @@ public interface Company_noticeDAO {
 	public int companyPwdChk(CompanyVO param);
 
 	public CompanyVO selectByComAdmin(CompanyVO companyVo);*/
+	
+	public CompanyNoticeVO selectByNo(int cnoticeNo);
 }
