@@ -73,6 +73,17 @@
 	    	}
 		}
 	});
+	
+	function imageOn(path){ 
+		var divform = document.getElementById("up"); 
+		divform.style.display = ''; 
+		document.getElementById("upImg").src = path; 
+	} 
+	
+	function imageOut(){ 
+		var divform = document.getElementById("up"); 
+		divform.style.display = 'none'; 
+	}
 
 </script>
 <!-- 1.
@@ -87,83 +98,80 @@
 <style type="text/css">
 	.fontStyle1{color: #0033FF; font-weight: bold;}
 	.thStyle1{background-color: skyblue;}
-	input[type=text], select{height: 20px; vertical-align: middle;}
-	input[type=text]{width: 90px;}
-	table{
-		width: 100%;
-	    border-collapse: collapse;
-	    border-spacing: 0;
-	    table-layout: fixed;
-	    word-wrap: break-word;
-	    word-break: keep-all;
-    }
-    .carItems{
-    	display: block;
-	    list-style-type: disc;
-	    -webkit-margin-before: 1em;
-	    -webkit-margin-after: 1em;
-	    -webkit-margin-start: 0px;
-	    -webkit-margin-end: 0px;
-	    -webkit-padding-start: 40px;
-    }
-    li{list-style: none;}
-    td{
-    display: table-cell;
-    vertical-align: inherit;
-	}
 </style>
 <br>
-<div class="container">
+<div class="divList container">
 <!-- 예약 가능 차 기본 옵션 검색 폼 -->
 <div>
-	<form name="searchForm" id="searchForm" 
+	<form class="form-horizontal" name="searchForm" id="searchForm" 
 		method="post" action='<c:url value="/user/realTime.do" />'>
 		<fieldset>
 			<legend>실시간 예약하기(예약가능차량 검색 조회/선택)</legend>
 			
-			<div>
-				<label>시작 일시 선택: </label>
-					<input type="text" id="searchStartDate" name="searchStartDate" value="${dateSearchVO.searchStartDate }" placeholder="시작 날짜 선택">					
-					<select name="startHour" id="startHour" title="시간 선택" >
+			<div class="form-group">
+				<label class="col-sm-2 control-label">시작 일시 선택</label>
+				<div class="col-xs-2">
+					<input class="form-control" type="text" id="searchStartDate" name="searchStartDate" value="${dateSearchVO.searchStartDate }" placeholder="시작 날짜 선택">&nbsp;					
+				</div>				
+				<div class="col-xs-1">
+					<select class="form-control" name="startHour" id="startHour" title="시간 선택" >
 						<c:forEach begin="8" end="20" var="i">
 							<option value="${i }" <c:if test='${dateSearchVO.startHour==i }'> selected </c:if>>
 							${i }</option>
 						</c:forEach>
-					</select> 시
-
-					<select name="startMin" id="startMin" title="분 선택" >
+					</select>
+				</div>
+				<div class="col-xs-1">
+					<select class="form-control" name="startMin" id="startMin" title="분 선택" >
 						<option value="00" <c:if test='${dateSearchVO.startMin=="00" }'> selected </c:if>>00</option>
 						<option value="30" <c:if test='${dateSearchVO.startMin=="30" }'> selected </c:if>>30</option>
-					</select> 분&nbsp;&nbsp;&nbsp;&nbsp;
-				<label>반납 일시 선택: </label>
-					<input type="text" id="searchEndDate" name="searchEndDate" value="${dateSearchVO.searchEndDate }" placeholder="반납 날짜 선택">
-					<select name="endHour" id="endHour" title="시간 선택">
+					</select>
+				</div>
+			</div>
+					
+			<div class="form-group">
+				<label class="col-sm-2 control-label">반납 일시 선택</label>
+				<div class="col-xs-2">
+					<input class="form-control" type="text" id="searchEndDate" name="searchEndDate" value="${dateSearchVO.searchEndDate }" placeholder="반납 날짜 선택">&nbsp;
+				</div>
+				<div class="col-xs-1">
+					<select class="form-control" name="endHour" id="endHour" title="시간 선택">
 						<c:forEach begin="8" end="20" var="i">
 							<option value="${i }" <c:if test='${dateSearchVO.endHour==i }'> selected </c:if>>
 							${i }</option>
 						</c:forEach>
-					</select> 시						
-					<select name="endMin" id="endMin" title="분 선택" >
+					</select>							
+				</div>
+				<div class="col-xs-1">
+					<select class="form-control" name="endMin" id="endMin" title="분 선택" >
 						<option value="00" <c:if test='${dateSearchVO.endMin=="00" }'> selected </c:if>>00</option>
 						<option value="30" <c:if test='${dateSearchVO.endMin=="30" }'> selected </c:if>>30</option>
-					</select> 분&nbsp;&nbsp;&nbsp;
+					</select>
+				</div>
+			</div>
 			
-				<label >차종</label>
-					<select name="carType" id="carType" title="차종">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">차종</label>
+				<div class="col-sm-2">
+					<select class="form-control" name="carType" id="carType" title="차종">
 						<option value="0" <c:if test='${dateSearchVO.carType==carcate.carCategoryNum }'> selected </c:if>>선택</option>
 						<c:forEach var="carcate" items="${catelist }">
 							<option value=${carcate.carCategoryNum } 
 								<c:if test='${dateSearchVO.carType==carcate.carCategoryNum }'> selected </c:if> >
 								${carcate.carCategoryName } </option>
 						</c:forEach>
-					</select>&nbsp;&nbsp;
-					<input class="btn btn-primary" type="submit" value="조건에 맞는 차량 찾기" name="btsubmit" id="btsubmit" >
-
+					</select>					
+				</div>
+			</div>			
+			<div class=form-group>
+				<label class="col-sm-2 control-label"></label>		
+				<div class="col-sm-6">
+					<input class="btn btn-primary btn-lg btn-block" type="submit" value="조건에 맞는 차량 찾기" name="btsubmit" id="btsubmit" >
+				</div>
 			</div>
 		</fieldset>
 	</form>
 </div>
-<hr>
 <!-- 예약 가능 차 리스트 표시 시작 -->
 <div>
 	<c:if test="${!empty clist }">
@@ -171,42 +179,68 @@
 			<label class="col-sm-6">검색하신 예약 기간: <span class="fontStyle1">${dateSearchVO.searchStartDate} ${dateSearchVO.startHour}:${dateSearchVO.startMin} 
 				~ ${dateSearchVO.searchEndDate} ${dateSearchVO.endHour}:${dateSearchVO.endMin}</span></label>
 		</div>		
-		<table>
+		<table class="table table-hover">
 			<colgroup>
-				<col width="25%">
-				<col width="25%">
-				<col width="25%">
-				<col width="25%">
+				<col style="width: 20%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
 			</colgroup>
+			<thead>		
+				<tr>
+					<th class="text-center thStyle1">차량</th>
+					<th class="text-center thStyle1">업체</th>
+					<th class="text-center thStyle1">계산된 가격</th>
+					<th class="text-center thStyle1">연체료(30분단위)</th>
+					<th class="text-center thStyle1">옵션상세보기</th>
+					<th class="text-center thStyle1">예약하기</th>
+				</tr>
+			</thead>
 			<tbody>
-				<c:set var="k" value="0" /> 
-				<c:set var="j" value="4" />
 				<c:forEach var="map" items="${clist }" varStatus="i">
-					<c:if test="${k%j==0 }">	
-						<tr>
-					</c:if>		
-							<td>
-								<ul class="carItems">
-									<li>
-										<div>
-											<img src='<c:url value="/carImages/${map['CAR_IMG'] }" />' 
-										alt="차 이미지" width="120" height="80">
+						
+						<tr>				
+							<td class="text-left">
+								<div id="up" style="position:absolute; width:30%; left:700px; top:300px; display:none;">
+									<img id="upImg" src='<c:url value="/carImages/${map['CAR_IMG'] }" />' width="100%" height="100%"/>
+								</div>
+							
+								<img src='<c:url value="/carImages/${map['CAR_IMG'] }" />' 
+										alt="차 이미지" width="30" height="30" align="absmiddle" 
+										onmouseover="imageOn('<c:url value="/carImages/${map['CAR_IMG'] }" />')" onmouseout="imageOut()">
+								${map['CAR_NAME'] }
+							</td>
+							<td class="text-center">${map['COM_NAME'] }</td>
+							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${map['PRICERESULT'] }"  /> 원 </td>
+							<td class="text-right"><fmt:formatNumber pattern="#,###" value="${map['CCAR_ARREAR'] }"  /> 원 </td>
+							<td class="text-center">
+								<!-- 옵션상세보기 -->
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<div class="address">
+											<button type="button" class="btn btn-info"
+												data-toggle="modal" data-target='#ordine_${i.index }'>옵션상세보기</button>
 										</div>
-									</li>
-									<li><a href='<c:url 
-											value="/user/reservInfo.do
-											?ccarCarId=${map['CCAR_CAR_ID'] }
-											&searchStartDate=${dateSearchVO.searchStartDate }
-											&startHour=${dateSearchVO.startHour}
-											&startMin=${dateSearchVO.startMin }
-											&searchEndDate=${dateSearchVO.searchEndDate }
-											&endHour=${dateSearchVO.endHour }
-											&endMin=${dateSearchVO.endMin }
-											" />'>
-										${map['COM_NAME'] } ${map['CAR_NAME'] }</a>									
-									</li>
-									<li>
-										<c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
+									</div>
+									<div class="col-md-2"></div>
+								</div> 
+								
+								<!-- Modal -->
+								<div id="ordine_${i.index }" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+					
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">×</button>
+												<h4 class="modal-title">${map['COM_NAME'] }의 ${map['CAR_NAME'] } 옵션사항</h4>
+											</div>
+											<div class="modal-body">
+												<p>
+													<c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
 												       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
 												       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N' 
 												       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
@@ -221,17 +255,29 @@
 													<c:if test="${map['CCAR_SUN_ROOF_YN']!='N' }">썬루프</c:if>
 													<c:if test="${map['CCAR_BLUETOOTH_YN']!='N' }"> 블루투스</c:if>
 													<c:if test="${map['CCAR_SMARTKEY_YN']!='N' }"> 스마트키</c:if>
-									</li>
-									<li><fmt:formatNumber pattern="#,###" value="${map['PRICERESULT'] }"  /> 원 </li>
-									<li><fmt:formatNumber pattern="#,###" value="${map['CCAR_ARREAR'] }"  /> 원 </li>
-								</ul>
-							</td>	
-							
+												</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+											</div>
+										</div>								
+									</div>
+								</div>
 							</td>
-						<c:if test="${k%j==j-1 }">					
-							</tr>
-						</c:if>
-						<c:set var="k" value="${k+1 }" />
+							<td class="text-center">
+								<a href='<c:url 
+								value="/user/reservInfo.do
+								?ccarCarId=${map['CCAR_CAR_ID'] }
+								&searchStartDate=${dateSearchVO.searchStartDate }
+								&startHour=${dateSearchVO.startHour}
+								&startMin=${dateSearchVO.startMin }
+								&searchEndDate=${dateSearchVO.searchEndDate }
+								&endHour=${dateSearchVO.endHour }
+								&endMin=${dateSearchVO.endMin }
+								" />'>
+							<button id="selectThisCar" class="btn btn-success">예약하기</button> </a>
+							</td>					
+						</tr>
 					</c:forEach>
 			</tbody>
 		</table>
