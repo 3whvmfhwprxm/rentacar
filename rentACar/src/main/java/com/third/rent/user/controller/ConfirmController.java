@@ -13,11 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
 import com.third.rent.common.userUtility;
+import com.third.rent.payInfo.model.PayInfoService;
 import com.third.rent.reservation.model.ReservationService;
 import com.third.rent.reservation.model.ReservationVO;
 
@@ -27,6 +29,9 @@ public class ConfirmController {
 	
 	@Autowired
 	private ReservationService reservationService;
+	
+	@Autowired
+	private PayInfoService pService;
 	
 	@RequestMapping("/user/confirm.do")
 	public String showConfirm(@ModelAttribute SearchVO searchVo, HttpSession session, Model model){
@@ -66,5 +71,30 @@ public class ConfirmController {
 		
 		return "user/confirm";
 		
+	}
+	
+	@RequestMapping("/user/reservCancel.do")
+	public String CancelPaymentByMerchantUid(@RequestParam String reservNum, Model model) throws Exception {
+		
+		logger.info("결제 취소 하기 파라미터값: reservNum={}", reservNum);
+		
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("reservNum", reservNum);
+		map.put("reservCancelWhy", "사용자 취소 처리");
+
+		//예약, 결제정보 취소처리하기
+		int result=pService.cancelPayInfo(map);
+		
+		String url="/user/confirm.do", msg="";
+		if(result>0){
+			msg="취소 처리되었습니다.";
+		}else{
+			msg="취소 처리 실패!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+
+		return "common/message";
 	}
 }

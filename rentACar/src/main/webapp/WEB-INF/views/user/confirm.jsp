@@ -3,7 +3,18 @@
 
 <%@ include file="../inc_user/top.jsp" %>
 
-<script type="text/javascript">	
+<script type="text/javascript">
+	$().ready(function(){
+		
+		$("#payCancelForm").submit(function(){
+			if(confirm("정말로 예약을 취소하시겠습니까? \n선택하신 예약과 결제가 모두 취소됩니다.")){
+	 			return true;
+	 		}else{
+	 			return false;
+	 		}
+		});
+	});
+
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
@@ -65,7 +76,19 @@
                         <td style="text-align: center;">${map['RESERV_DATE']}</td>
                         <td style="text-align: center;">${map['COM_NAME'] }</td>
                         <td style="text-align: center;">${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }</td>
-                        <td style="text-align: center;"><input data-toggle="modal" href="#myModal2" type="button" id="cancle" value="취소" width="10"></td>
+                        <td style="text-align: center;">
+                        	<!-- 모달 쓰는 방법을 잘 몰라서 모달취소부분 주석 처리 -->
+                        	<!-- <input data-toggle="modal" href="#myModal2" type="button" id="cancle" value="취소" width="10"> -->
+                        	<c:if test="${empty map['RESERV_CANCEL'] }">
+	                        	<form action='<c:url value="/user/reservCancel.do" />' method="post" name="payCancelForm">
+	                        		<input type="hidden" name="reservNum" value="${map['RESERV_NUM']}">
+	                        		<input type="submit" value="예약취소">
+	                        	</form>
+                        	</c:if>
+                        	<c:if test="${!empty map['RESERV_CANCEL'] }">
+                        		${map['RESERV_CANCEL'] }에 예약취소
+                        	</c:if>
+                        </td>
                     </tr>
                 	</c:forEach>
                 </tbody>
