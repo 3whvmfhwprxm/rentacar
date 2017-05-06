@@ -156,7 +156,7 @@ insert into car
 values('hd001', '현대소나타17', '현대', 4, 'AUTO', sysdate, 4, 'hd00101.jpg');
 
 insert into car
-values('hd002', '현대액센트17', '현대', 4, 'AUTO', sysdate, 3, 'hd00201.jpg');
+values('hd002', '현대아반떼17', '현대', 4, 'AUTO', sysdate, 3, 'hd00201.jpg');
 
 insert into car
 values('kia001', '기아k5_17', 'KIA', 4, 'Trans', sysdate, 4, 'kia00101.jpg');
@@ -192,54 +192,60 @@ select * from company;
 commit;
 
 
---업체 차량정보 //휘발류, 경유, LPG, 전기, 하이브리드
+--업체 차량정보 //휘발유, 경유, LPG, 전기, 하이브리드
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentZoa_0001','hd001', 'rentZoa', 'N', '휘발류', 'N', 'N', 'Y', 'N', 'Y', 'Y', 'Y', 'N', 'N', 1, 30000, 40000, 60000, 80000, 5000, '2017-01-02');
+values('rentZoa_0001','hd001', 'rentZoa', 'Y', '휘발유', 'N', 'N', 'Y', 'N', 'Y', 'Y', 'Y', 'N', 'N', 1, 30000, 40000, 60000, 80000, 5000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentZoa_0002','kia002', 'rentZoa', 'N', '휘발류','Y', 'N', 'N', 'N', 'Y', 'Y', 'Y', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+values('rentZoa_0002','kia002', 'rentZoa', 'Y', '휘발유','Y', 'N', 'N', 'N', 'Y', 'Y', 'Y', 'N', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentZoa_0003','kia001', 'rentZoa', 'N', '휘발류','Y', 'N', 'Y', 'N', 'N', 'Y', 'N', 'Y', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+values('rentZoa_0003','kia001', 'rentZoa', 'Y', '휘발유','Y', 'N', 'Y', 'N', 'N', 'Y', 'N', 'Y', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0001','hd001', 'rentGo', 'N', '휘발류','N', 'N', 'Y', 'N', 'Y', 'Y', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
+values('rentGo_0001','hd001', 'rentGo', 'Y', '휘발유','N', 'N', 'Y', 'N', 'Y', 'Y', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0002','kia002', 'rentGo', 'N', '휘발류', 'Y', 'N', 'N', 'Y', 'N', 'N', 'Y', 'Y', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+values('rentGo_0002','kia002', 'rentGo', 'Y', '휘발유', 'Y', 'N', 'N', 'Y', 'N', 'N', 'Y', 'Y', 'N', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0003','lambo001', 'rentGo', 'Y', '휘발류', 'Y', 'Y', 'N', 'Y', 'N', 'Y', 'N', 'Y', 'N', 1, 60000, 70000, 80000, 90000, 10000, '2017-01-02');
+values('rentGo_0003','lambo001', 'rentGo', 'Y', '휘발유', 'Y', 'Y', 'N', 'Y', 'N', 'Y', 'N', 'Y', 'N', 1, 60000, 70000, 80000, 90000, 10000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0005','hd001', 'rentGo', 'N', '휘발류','N', 'Y', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
+values('rentGo_0005','hd001', 'rentGo', 'Y', '휘발유','N', 'Y', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'N', 1, 25000, 30000, 50000, 70000, 3000, '2017-01-02');
 
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('rentGo_0006','kia001', 'rentGo', 'N', '휘발류','Y', 'N', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+values('rentGo_0006','kia001', 'rentGo', 'Y', '휘발유','Y', 'N', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 1, 15000, 20000, 40000, 60000, 3000, '2017-01-02');
+
+insert into companycaroption
+(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
+ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
+ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
+values('49허1232','hd002', 'rentZoa', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
 
 select * from companycaroption;
 commit;

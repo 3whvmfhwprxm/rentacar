@@ -4,7 +4,75 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.reserv_car">
 
-	<select id="searchCar" parameterType="map" resultType="map">
+	<select id="searchCar" parameterType="DateSearchVO" resultType="map">
+		select*
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		       <![CDATA[
+				select a.*, b.COM_NAME
+				from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
+				        from (select c.*, 
+				        (to_date(#{searchEndDate}, 'yyyy-mm-dd hh24:mi')-to_date(#{searchStartDate}, 'yyyy-mm-dd hh24:mi')) * CCAR_NORMAL_PRICE
+				        as "PRICERESULT"  
+				        from COMPANYCAROPTION c
+				        where car_code in (
+				        select car_code from car]]>
+				        <if test="carType!=0">
+				        	where car_type=#{carType}
+						</if>		        
+				        )
+				        <![CDATA[and ccar_car_id not in (
+				        select ccar_car_id from RESERVATION
+				        where reserv_end_date >= TO_DATE(#{searchStartDate},'yyyy-mm-dd hh24:mi') 
+						and reserv_start_date <= TO_DATE(#{searchEndDate},'yyyy-mm-dd hh24:mi')
+				        )
+				        and comcar_outdate is null
+				    ) comc join car c
+				    on comc.car_code=c.car_code) a join company b
+				on a.com_id=b.com_id
+				order by a.car_name
+				]]>
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="searchingCarTotalRecord" parameterType="DateSearchVO" resultType="int">
+		select count(*) from (
+			<![CDATA[
+				select a.*, b.COM_NAME
+				from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
+				        from (select c.*, 
+				        (to_date(#{searchEndDate}, 'yyyy-mm-dd hh24:mi')-to_date(#{searchStartDate}, 'yyyy-mm-dd hh24:mi')) * CCAR_NORMAL_PRICE
+				        as "PRICERESULT"  
+				        from COMPANYCAROPTION c
+				        where car_code in (
+				        select car_code from car]]>
+				        <if test="carType!=0">
+				        	where car_type=#{carType}
+						</if>		        
+				        )
+				        <![CDATA[and ccar_car_id not in (
+				        select ccar_car_id from RESERVATION
+				        where reserv_end_date >= TO_DATE(#{searchStartDate},'yyyy-mm-dd hh24:mi') 
+						and reserv_start_date <= TO_DATE(#{searchEndDate},'yyyy-mm-dd hh24:mi')
+				        )
+				        and comcar_outdate is null
+				    ) comc join car c
+				    on comc.car_code=c.car_code) a join company b
+				on a.com_id=b.com_id
+				order by a.car_name
+				]]>
+		)
+	</select>
+
+	<!-- <select id="searchCar" parameterType="DateSearchVO" resultType="map">
 		<![CDATA[
 		select a.*, b.COM_NAME
 		from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
@@ -29,7 +97,7 @@
 		on a.com_id=b.com_id
 		order by a.car_name
 		]]>
-	</select>
+	</select> -->
 	
 	<select id="selectedCarInfo" parameterType="map" resultType="map">
 		<![CDATA[

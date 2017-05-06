@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
+import com.third.rent.common.DateSearchVO;
 import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reservation.model.ReservationVO;
@@ -25,8 +26,13 @@ public class ReservSearchServiceImpl implements ReservSearchService{
 	private ReservSearchDAO dao;
 	
 	@Override
-	public List<Map<String, Object>> searchNormal(HashMap<String, Object> map) {
-		return dao.searchNormal(map);
+	public List<Map<String, Object>> searchNormal(DateSearchVO dvo) {
+		return dao.searchNormal(dvo);
+	}
+	
+	@Override
+	public int searchNormalTotalCount(DateSearchVO dvo) {
+		return dao.searchNormalTotalCount(dvo);
 	}
 
 	@Override

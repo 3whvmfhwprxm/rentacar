@@ -23,4 +23,8 @@ public class Utility {
 	//관리자 결제정보 페이지 처리용
 	public static final int ADMIN_PAYINFO_BLOCKSIZE=10;
 	public static final int ADMIN_PAYINFO_RECORDCOUNT_PERPAGE=10;
+	
+	//사용자 예약가능 차량 페이징 처리용
+	public static final int USER_RESERV_BLOCKSIZE=5;
+	public static final int USER_RESERV_RECORDCOUNT_PERPAGE=8;
 }

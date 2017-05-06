@@ -141,8 +141,7 @@
 				<tbody>
 					<tr>
 						<td>
-							${param.searchStartDate} ${param.startHour}:${param.startMin} 
-								~ ${param.searchEndDate} ${param.endHour}:${param.endMin}
+							${param.searchStartDate} ~ ${param.searchEndDate}
 						</td>						
 						<td>
 							<img src='<c:url value="/carImages/${map['CAR_IMG'] }" />' alt="선택한 차종 이미지" 

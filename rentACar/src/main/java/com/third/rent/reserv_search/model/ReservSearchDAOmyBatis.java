@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
+import com.third.rent.common.DateSearchVO;
 import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reservation.model.ReservationVO;
@@ -19,8 +20,13 @@ public class ReservSearchDAOmyBatis extends SqlSessionDaoSupport implements Rese
 	private String nameSpace="config.mybatis.mapper.oracle.reserv_car";
 	
 	@Override
-	public List<Map<String, Object>> searchNormal(HashMap<String, Object> map) {
-		return getSqlSession().selectList(nameSpace+".searchCar", map);
+	public List<Map<String, Object>> searchNormal(DateSearchVO dvo) {
+		return getSqlSession().selectList(nameSpace+".searchCar", dvo);
+	}
+	
+	@Override
+	public int searchNormalTotalCount(DateSearchVO dvo) {
+		return getSqlSession().selectOne(nameSpace+".searchingCarTotalRecord", dvo);
 	}
 
 	@Override

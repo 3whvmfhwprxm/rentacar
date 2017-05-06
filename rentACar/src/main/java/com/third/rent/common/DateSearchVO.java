@@ -2,10 +2,10 @@ package com.third.rent.common;
 
 public class DateSearchVO extends SearchVO{
 	private String searchStartDate;
-	private int startHour;
+	private String startHour;
 	private String startMin;
 	private String searchEndDate;
-	private int endHour;
+	private String endHour;
 	private String endMin;
 	private int carType;
 	
@@ -15,10 +15,10 @@ public class DateSearchVO extends SearchVO{
 	public void setSearchStartDate(String searchStartDate) {
 		this.searchStartDate = searchStartDate;
 	}
-	public int getStartHour() {
+	public String getStartHour() {
 		return startHour;
 	}
-	public void setStartHour(int startHour) {
+	public void setStartHour(String startHour) {
 		this.startHour = startHour;
 	}
 	public String getStartMin() {
@@ -33,10 +33,10 @@ public class DateSearchVO extends SearchVO{
 	public void setSearchEndDate(String searchEndDate) {
 		this.searchEndDate = searchEndDate;
 	}
-	public int getEndHour() {
+	public String getEndHour() {
 		return endHour;
 	}
-	public void setEndHour(int endHour) {
+	public void setEndHour(String endHour) {
 		this.endHour = endHour;
 	}
 	public String getEndMin() {

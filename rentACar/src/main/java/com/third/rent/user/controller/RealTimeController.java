@@ -25,6 +25,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.third.rent.car.model.CarCategoryVO;
 import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.DateSearchVO;
+import com.third.rent.common.PaginationInfo;
+import com.third.rent.common.Utility;
+import com.third.rent.common.userUtility;
 import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reserv_search.model.ReservSearchService;
@@ -46,7 +49,15 @@ public class RealTimeController {
 	@RequestMapping("/realTime.do")
 	public String showRealTime_post(@ModelAttribute DateSearchVO dateSearchVO, Model model){
 		logger.info("예약 대상 검색 기간 조건 dateSearchVO={}", dateSearchVO);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.USER_RESERV_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.USER_RESERV_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(dateSearchVO.getCurrentPage());
 
+		dateSearchVO.setRecordCountPerPage(Utility.USER_RESERV_RECORDCOUNT_PERPAGE);
+		dateSearchVO.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		
 		if(dateSearchVO.getSearchStartDate()==null){
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 			Date today=new Date();
@@ -57,32 +68,41 @@ public class RealTimeController {
 			cal.add(Calendar.DATE, 1); //하루 더하기
 
 			dateSearchVO.setSearchStartDate(sdf.format(cal.getTime()));
-			dateSearchVO.setStartHour(8);
+			dateSearchVO.setStartHour("08");
 			dateSearchVO.setStartMin("00");
 
 			cal.add(Calendar.DATE, 1); //하루 더 더하기
 			//반납일: 오늘에 이틀 더해서 세팅
 			dateSearchVO.setSearchEndDate(sdf.format(cal.getTime()));
-			dateSearchVO.setEndHour(8);
+			dateSearchVO.setEndHour("08");
 			dateSearchVO.setEndMin("00");
 		}
 
 		//검색 날짜 조건 결합
-		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
-		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();
-
-		//검색 조건 해쉬맵에 저장
+		if(dateSearchVO.getSearchStartDate().length()<14){		
+			String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
+			String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();		
+			dateSearchVO.setSearchStartDate(startDate);
+			dateSearchVO.setSearchEndDate(endDate);
+		}
+		/*//검색 조건 해쉬맵에 저장
 		HashMap<String, Object> searchOption=new HashMap<String, Object>();
 		searchOption.put("searchStartDate", startDate);
 		searchOption.put("searchEndDate", endDate);
-		searchOption.put("carType", dateSearchVO.getCarType());
-
+		searchOption.put("carType", dateSearchVO.getCarType());*/
+		logger.info("예약 검색 값 dateSearchVO={}", dateSearchVO);
 		//DB작업
-		List<Map<String, Object>> clist=rService.searchNormal(searchOption);
-		logger.info("예약 대상 검색 차종 리스트 크기 clist.size()={}", clist.size());
+		List<Map<String, Object>> clist=rService.searchNormal(dateSearchVO);
+		logger.info("예약 대상 검색 - 검색된 예약가능차 리스트 크기 clist.size()={}", clist.size());
+		
+		int totalRecord =rService.searchNormalTotalCount(dateSearchVO);
+		logger.info("예약 대상 검색 - 전체레코드 개수조회 결과, totalRecord={}", totalRecord);
+		pagingInfo.setTotalRecord(totalRecord);
 
 		List<CarCategoryVO> catelist=rService.selectCategoryList();
-
+		logger.info("예약 대상 검색 - 차종 카테고리 리스트 크기 catelist.size()={}", catelist.size());
+		
+		model.addAttribute("pagingInfo", pagingInfo);
 		model.addAttribute("catelist", catelist);		
 		model.addAttribute("clist", clist);
 
@@ -100,13 +120,17 @@ public class RealTimeController {
 		logger.info("세션의 유저ID, userId={}", userId);
 
 		//검색 날짜 조건 결합
-		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
-		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();
+		if(dateSearchVO.getSearchStartDate().length()<14){		
+			String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
+			String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();		
+			dateSearchVO.setSearchStartDate(startDate);
+			dateSearchVO.setSearchEndDate(endDate);
+		}
 
 		//검색 조건 해쉬맵에 저장
 		HashMap<String, Object> searchOption=new HashMap<String, Object>();
-		searchOption.put("searchStartDate", startDate);
-		searchOption.put("searchEndDate", endDate);
+		searchOption.put("searchStartDate", dateSearchVO.getSearchStartDate());
+		searchOption.put("searchEndDate", dateSearchVO.getSearchEndDate());
 		searchOption.put("ccarCarId", ccarCarId);
 		
 		//DB작업 select by ccarCarId
@@ -141,19 +165,24 @@ public class RealTimeController {
 		reserVo.setUserTel3(reservWho.getResUTel3());
 
 		//날짜 문자열 조합
-		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
-		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();
+		//검색 날짜 조건 결합
+		if(dateSearchVO.getSearchStartDate().length()<14){		
+			String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
+			String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();		
+			dateSearchVO.setSearchStartDate(startDate);
+			dateSearchVO.setSearchEndDate(endDate);
+		}
 
-		reserVo.setReservStartDate(startDate);		
-		reserVo.setReservEndDate(endDate);
+		reserVo.setReservStartDate(dateSearchVO.getSearchStartDate());		
+		reserVo.setReservEndDate(dateSearchVO.getSearchEndDate());
 		reserVo.setReservInsurance("자차보험");
 		reserVo.setUserId(userId);
 		
 
 		//검색 조건 해쉬맵에 저장
 		HashMap<String, Object> searchOption=new HashMap<String, Object>();
-		searchOption.put("searchStartDate", startDate);
-		searchOption.put("searchEndDate", endDate);
+		searchOption.put("searchStartDate", dateSearchVO.getSearchStartDate());
+		searchOption.put("searchEndDate", dateSearchVO.getSearchEndDate());
 		searchOption.put("ccarCarId", ccarCarId);
 
 		Map<String, Object> map=rService.selectedCarInfo(searchOption);
