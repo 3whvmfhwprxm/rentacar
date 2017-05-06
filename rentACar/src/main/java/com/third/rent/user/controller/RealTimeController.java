@@ -18,16 +18,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.car.model.CarCategoryVO;
-import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.DateSearchVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.Utility;
-import com.third.rent.common.userUtility;
 import com.third.rent.payInfo.model.PayInfoVO;
 import com.third.rent.reservUser.model.ReservUserVO;
 import com.third.rent.reserv_search.model.ReservSearchService;
@@ -58,6 +55,7 @@ public class RealTimeController {
 		dateSearchVO.setRecordCountPerPage(Utility.USER_RESERV_RECORDCOUNT_PERPAGE);
 		dateSearchVO.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
+		//처음 검색 페이지 들어왔을때 오늘 날짜 기준으로 조건 셋팅
 		if(dateSearchVO.getSearchStartDate()==null){
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 			Date today=new Date();
@@ -78,19 +76,14 @@ public class RealTimeController {
 			dateSearchVO.setEndMin("00");
 		}
 
-		//검색 날짜 조건 결합
-		if(dateSearchVO.getSearchStartDate().length()<14){		
-			String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
-			String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();		
-			dateSearchVO.setSearchStartDate(startDate);
-			dateSearchVO.setSearchEndDate(endDate);
-		}
-		/*//검색 조건 해쉬맵에 저장
-		HashMap<String, Object> searchOption=new HashMap<String, Object>();
-		searchOption.put("searchStartDate", startDate);
-		searchOption.put("searchEndDate", endDate);
-		searchOption.put("carType", dateSearchVO.getCarType());*/
+		//검색 날짜 조건 결합	
+		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
+		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();		
+		dateSearchVO.setCombinedSearchStartDate(startDate);
+		dateSearchVO.setCombinedSearchEndDate(endDate);
+		
 		logger.info("예약 검색 값 dateSearchVO={}", dateSearchVO);
+		
 		//DB작업
 		List<Map<String, Object>> clist=rService.searchNormal(dateSearchVO);
 		logger.info("예약 대상 검색 - 검색된 예약가능차 리스트 크기 clist.size()={}", clist.size());
@@ -118,19 +111,17 @@ public class RealTimeController {
 		logger.info("선택한 회사차의 예약 기간 조건 dateSearchVO={}", dateSearchVO);
 		logger.info("선택한 회사차의 ID값, ccarCarId={}", ccarCarId);
 		logger.info("세션의 유저ID, userId={}", userId);
-
-		//검색 날짜 조건 결합
-		if(dateSearchVO.getSearchStartDate().length()<14){		
-			String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
-			String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();		
-			dateSearchVO.setSearchStartDate(startDate);
-			dateSearchVO.setSearchEndDate(endDate);
-		}
+		
+		//검색 날짜 조건 결합	
+		String startDate=dateSearchVO.getSearchStartDate()+" "+dateSearchVO.getStartHour()+":"+dateSearchVO.getStartMin();
+		String endDate=dateSearchVO.getSearchEndDate()+" "+dateSearchVO.getEndHour()+":"+dateSearchVO.getEndMin();		
+		dateSearchVO.setCombinedSearchStartDate(startDate);
+		dateSearchVO.setCombinedSearchEndDate(endDate);		
 
 		//검색 조건 해쉬맵에 저장
 		HashMap<String, Object> searchOption=new HashMap<String, Object>();
-		searchOption.put("searchStartDate", dateSearchVO.getSearchStartDate());
-		searchOption.put("searchEndDate", dateSearchVO.getSearchEndDate());
+		searchOption.put("searchStartDate", dateSearchVO.getCombinedSearchStartDate());
+		searchOption.put("searchEndDate", dateSearchVO.getCombinedSearchEndDate());
 		searchOption.put("ccarCarId", ccarCarId);
 		
 		//DB작업 select by ccarCarId

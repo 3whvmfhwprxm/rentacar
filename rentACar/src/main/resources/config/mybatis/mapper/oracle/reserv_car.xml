@@ -15,7 +15,7 @@
 				select a.*, b.COM_NAME
 				from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
 				        from (select c.*, 
-				        (to_date(#{searchEndDate}, 'yyyy-mm-dd hh24:mi')-to_date(#{searchStartDate}, 'yyyy-mm-dd hh24:mi')) * CCAR_NORMAL_PRICE
+				        (to_date(#{combinedSearchEndDate}, 'yyyy-mm-dd hh24:mi')-to_date(#{combinedSearchStartDate}, 'yyyy-mm-dd hh24:mi')) * CCAR_NORMAL_PRICE
 				        as "PRICERESULT"  
 				        from COMPANYCAROPTION c
 				        where car_code in (
@@ -26,8 +26,8 @@
 				        )
 				        <![CDATA[and ccar_car_id not in (
 				        select ccar_car_id from RESERVATION
-				        where reserv_end_date >= TO_DATE(#{searchStartDate},'yyyy-mm-dd hh24:mi') 
-						and reserv_start_date <= TO_DATE(#{searchEndDate},'yyyy-mm-dd hh24:mi')
+				        where reserv_end_date >= TO_DATE(#{combinedSearchStartDate},'yyyy-mm-dd hh24:mi') 
+						and reserv_start_date <= TO_DATE(#{combinedSearchEndDate},'yyyy-mm-dd hh24:mi')
 				        )
 				        and comcar_outdate is null
 				    ) comc join car c
@@ -49,7 +49,7 @@
 				select a.*, b.COM_NAME
 				from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, car_img
 				        from (select c.*, 
-				        (to_date(#{searchEndDate}, 'yyyy-mm-dd hh24:mi')-to_date(#{searchStartDate}, 'yyyy-mm-dd hh24:mi')) * CCAR_NORMAL_PRICE
+				        (to_date(#{combinedSearchEndDate}, 'yyyy-mm-dd hh24:mi')-to_date(#{combinedSearchStartDate}, 'yyyy-mm-dd hh24:mi')) * CCAR_NORMAL_PRICE
 				        as "PRICERESULT"  
 				        from COMPANYCAROPTION c
 				        where car_code in (
@@ -60,8 +60,8 @@
 				        )
 				        <![CDATA[and ccar_car_id not in (
 				        select ccar_car_id from RESERVATION
-				        where reserv_end_date >= TO_DATE(#{searchStartDate},'yyyy-mm-dd hh24:mi') 
-						and reserv_start_date <= TO_DATE(#{searchEndDate},'yyyy-mm-dd hh24:mi')
+				        where reserv_end_date >= TO_DATE(#{combinedSearchStartDate},'yyyy-mm-dd hh24:mi') 
+						and reserv_start_date <= TO_DATE(#{combinedSearchEndDate},'yyyy-mm-dd hh24:mi')
 				        )
 				        and comcar_outdate is null
 				    ) comc join car c

@@ -104,6 +104,8 @@
 	#userRight{
 		float:left;
 		width:50%;}
+	th{background-color: #EEEEEE; text-align: center;}
+	td{text-align: center;}
 </style>
 <div class="container">
 	<br>
@@ -124,30 +126,24 @@
 		
 		<!-- 선택한 차에 대한 정보 -->
 		<div id="selectedCar">
-			<table class="table">
-				<colgroup>
-					<col>
-				</colgroup>				
+			<table class="table table-bordered">			
 				<thead>
 					<tr>
 						<th>예약 선택 기간</th>
 						<th>선택하신 차</th>						
-						<th>차 옵션</th>
-						<th>계산된 가격</th>
-						<th>렌터카 업체</th>
-						<th>업체 연락처</th>
+						<th colspan="2">차 옵션</th>
 					</tr>					
 				</thead>				
 				<tbody>
 					<tr>
 						<td>
-							${param.searchStartDate} ~ ${param.searchEndDate}
+							${param.searchStartDate} ${param.startHour}:${param.startMin} ~ ${param.searchEndDate} ${param.endHour}:${param.endMin}
 						</td>						
 						<td>
 							<img src='<c:url value="/carImages/${map['CAR_IMG'] }" />' alt="선택한 차종 이미지" 
 								width="20px" height="20px"> ${map['CAR_NAME'] }
 						</td>
-						<td>
+						<td colspan="2">
 							<c:if test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
 												       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
 												       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N'
@@ -164,7 +160,16 @@
 							<c:if test="${map['CCAR_BLUETOOTH_YN']!='N' }"> 블루투스 </c:if>
 							<c:if test="${map['CCAR_SMARTKEY_YN']!='N' }"> 스마트키 </c:if>
 						</td>
-						<td class="text-right"><fmt:formatNumber pattern="#,###" value="${map['PRICERESULT'] }"  /> 원 </td>
+					</tr>
+					<tr>
+						<th>선택 기간의 가격</th>
+						<th>연체료(30분 단위)</th>
+						<th>렌터카 업체</th>
+						<th>업체 연락처</th>
+					</tr>
+					<tr>
+						<td><fmt:formatNumber pattern="#,###" value="${map['PRICERESULT'] }"  /> 원 </td>
+						<td><fmt:formatNumber pattern="#,###" value="${map['CCAR_ARREAR'] }"  /> 원 </td>
 						<td>
 							${map['COM_NAME'] }
 						</td>

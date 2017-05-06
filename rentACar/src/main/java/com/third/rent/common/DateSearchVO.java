@@ -1,6 +1,8 @@
 package com.third.rent.common;
 
 public class DateSearchVO extends SearchVO{
+	private String combinedSearchStartDate;
+	private String combinedSearchEndDate;
 	private String searchStartDate;
 	private String startHour;
 	private String startMin;
@@ -9,6 +11,18 @@ public class DateSearchVO extends SearchVO{
 	private String endMin;
 	private int carType;
 	
+	public String getCombinedSearchStartDate() {
+		return combinedSearchStartDate;
+	}
+	public void setCombinedSearchStartDate(String combinedSearchStartDate) {
+		this.combinedSearchStartDate = combinedSearchStartDate;
+	}
+	public String getCombinedSearchEndDate() {
+		return combinedSearchEndDate;
+	}
+	public void setCombinedSearchEndDate(String combinedSearchEndDate) {
+		this.combinedSearchEndDate = combinedSearchEndDate;
+	}
 	public String getSearchStartDate() {
 		return searchStartDate;
 	}
@@ -54,9 +68,10 @@ public class DateSearchVO extends SearchVO{
 	
 	@Override
 	public String toString() {
-		return "DateSearchVO [searchStartDate=" + searchStartDate + ", startHour=" + startHour + ", startMin="
-				+ startMin + ", searchEndDate=" + searchEndDate + ", endHour=" + endHour + ", endMin=" + endMin
-				+ ", carType=" + carType + ", toString()=" + super.toString() + "]";
+		return "DateSearchVO [combinedSearchStartDate=" + combinedSearchStartDate + ", combinedSearchEndDate="
+				+ combinedSearchEndDate + ", searchStartDate=" + searchStartDate + ", startHour=" + startHour
+				+ ", startMin=" + startMin + ", searchEndDate=" + searchEndDate + ", endHour=" + endHour + ", endMin="
+				+ endMin + ", carType=" + carType + ", toString()=" + super.toString() + "]";
 	}
 
 }
