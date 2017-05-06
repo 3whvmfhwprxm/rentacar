@@ -28,13 +28,25 @@
 				        select ccar_car_id from RESERVATION
 				        where reserv_end_date >= TO_DATE(#{combinedSearchStartDate},'yyyy-mm-dd hh24:mi') 
 						and reserv_start_date <= TO_DATE(#{combinedSearchEndDate},'yyyy-mm-dd hh24:mi')
-				        )
+				        )]]>
 				        and comcar_outdate is null
 				    ) comc join car c
 				    on comc.car_code=c.car_code) a join company b
 				on a.com_id=b.com_id
-				order by a.car_name
-				]]>
+				<if test="sortBy != null">
+					<if test="sortBy == 'name'">
+						order by car_name asc
+					</if>
+					<if test="sortBy == 'lowPrice'">
+						order by PRICERESULT asc
+					</if>
+					<if test="sortBy == 'highPrice'">
+						order by PRICERESULT desc
+					</if>
+				</if>
+				<if test="sortBy == null">
+					order by car_name
+				</if>
 		    )LIST
 		)
 		<![CDATA[

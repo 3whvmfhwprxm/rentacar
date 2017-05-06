@@ -78,6 +78,11 @@
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
 	}
+	
+	function fncSort(sortWhat){
+		document.frmPage.sortBy.value=sortWhat;
+		frmPage.submit();
+	}
 </script>
 <!-- 1.
 예약시작날짜, 예약종료날짜
@@ -116,12 +121,13 @@
     td{
     display: table-cell;
     vertical-align: inherit;
+    border-bottom:1px dotted #dcdac2;
 	}
 </style>
 <br>
 <div class="container">
 	<form name="frmPage" method="post" action='<c:url value="/user/realTime.do" />'>
-			<input type="hidden" name="currentPage">
+			<input type="hidden" name="currentPage" value="${dateSearchVO.currentPage }">
 			<input type="hidden" name="searchStartDate" value="${dateSearchVO.searchStartDate }">
 			<input type="hidden" name="startHour" value="${dateSearchVO.startHour }">
 			<input type="hidden" name="startMin" value="${dateSearchVO.startMin}">
@@ -129,6 +135,7 @@
 			<input type="hidden" name="endHour" value="${dateSearchVO.endHour }">
 			<input type="hidden" name="endMin" value="${dateSearchVO.endMin}">
 			<input type="hidden" name="carType" value="${dateSearchVO.carType}">
+			<input type="hidden" name="sortBy" value="${dateSearchVO.sortBy}">
 	</form>
 
 	<!-- 예약 가능 차 기본 옵션 검색 폼 -->
@@ -136,8 +143,8 @@
 		<form name="searchForm" id="searchForm" 
 			method="post" action='<c:url value="/user/realTime.do" />'>
 			<fieldset>
-				<legend>실시간 예약하기(예약가능차량 검색 조회/선택)</legend>
-				
+				<strong class="fontStyle2">[실시간 예약하기(예약가능차량 검색 조회/선택)]</strong>
+				<hr>
 				<div>
 					<label>시작 일시 선택: </label>
 						<input type="text" id="searchStartDate" name="searchStartDate" value="${dateSearchVO.searchStartDate }" placeholder="시작 날짜 선택">					
@@ -183,7 +190,10 @@
 	<!-- 예약 가능 차 리스트 표시 시작 -->
 	<div>
 		<div class=form-group>
-				<label class="col-sm-6">검색하신 예약 기간: <span class="fontStyle1">${dateSearchVO.combinedSearchStartDate} ~ ${dateSearchVO.combinedSearchEndDate}</span></label>
+				<label class="col-sm-6">검색하신 예약 기간: 
+					<span class="fontStyle1">${dateSearchVO.combinedSearchStartDate} ~ ${dateSearchVO.combinedSearchEndDate}</span>
+				</label>
+				<label class="col-sm-6 text-right"><a href="javascript:fncSort('name')"> 차모델명순 </a> | <a href="javascript:fncSort('highPrice')"> 가격높은순 </a> | <a href="javascript:fncSort('lowPrice')"> 가격낮은순 </a></label>
 		</div>
 						
 			<table>

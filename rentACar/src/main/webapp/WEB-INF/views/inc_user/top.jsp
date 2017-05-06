@@ -166,6 +166,7 @@ time, mark, audio, video{
 	vertical-align: baseline;
 	font-family:'Nanum Gothic',"맑은 고딕","돋움", "굴림";
 }
+.text-right{padding-right: 20px;}
 </style>
 <script type="text/javascript">
 	var child;
@@ -183,7 +184,7 @@ time, mark, audio, video{
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Free Responsive Admin Theme - ZONTAL</title>
+    <title> 3조 렌터카 </title>
     <!-- BOOTSTRAP CORE STYLE  -->
      <script type="text/javascript">
 //<![CDATA[
@@ -223,8 +224,10 @@ time, mark, audio, video{
         상단 띠 이미지 영역
 	
     </header> -->
-    <div id="topImg" class="top_Img" style="background:url(${pageContext.request.contextPath }/images/top_img1.PNG)  repeat-x">
-		&nbsp;
+    <div class="text-right">
+		<a href="<c:url value="#"/>">업체 등록 신청</a> | 
+		<a href="<c:url value="/login_company/com_login.do"/>">업체 관리 페이지로 이동</a> | 
+		<a href="<c:url value="/administrator/log/logIn.do"/>">관리자 페이지로 이동</a>
 	</div>
     <!-- HEADER END-->
     <div class="navbar navbar-inverse set-radius-zero">
@@ -235,7 +238,7 @@ time, mark, audio, video{
                 </a>
             </div>
 		<!-- dropdown -->
-            <div class="left-div">
+            <%-- <div class="left-div">
                 <div class="user-settings-wrapper">
                     <ul class="nav">
                         <li class="dropdown">
@@ -268,7 +271,7 @@ time, mark, audio, video{
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --%>
         </div>
     </div>
     <!-- LOGO HEADER END-->

@@ -10,7 +10,14 @@ public class DateSearchVO extends SearchVO{
 	private String endHour;
 	private String endMin;
 	private int carType;
+	private String sortBy;
 	
+	public String getSortBy() {
+		return sortBy;
+	}
+	public void setSortBy(String sortBy) {
+		this.sortBy = sortBy;
+	}
 	public String getCombinedSearchStartDate() {
 		return combinedSearchStartDate;
 	}
@@ -71,7 +78,7 @@ public class DateSearchVO extends SearchVO{
 		return "DateSearchVO [combinedSearchStartDate=" + combinedSearchStartDate + ", combinedSearchEndDate="
 				+ combinedSearchEndDate + ", searchStartDate=" + searchStartDate + ", startHour=" + startHour
 				+ ", startMin=" + startMin + ", searchEndDate=" + searchEndDate + ", endHour=" + endHour + ", endMin="
-				+ endMin + ", carType=" + carType + ", toString()=" + super.toString() + "]";
+				+ endMin + ", carType=" + carType + ", sortBy=" + sortBy + ", toString()=" + super.toString() + "]";
 	}
-
+	
 }
