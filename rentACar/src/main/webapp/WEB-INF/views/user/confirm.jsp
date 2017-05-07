@@ -128,6 +128,7 @@
 </div>
 
 <!-- 예약번호클릭시 정보보기 -->
+<c:forEach var="map" items="${alist }">
 <div class="container">
 	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 		<div class="modal fade" id="myModal1">
@@ -146,56 +147,56 @@
 					            <label class="control-label col-md-3" for="userId" style="text-align: right;">예약번호
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" value="${vo.reservNum}" type="text" disabled>
+					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" value="${map['RESERV_NUM']}" type="text" disabled>
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">예약자 이름
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" required="required" type="text" disabled>
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" required="required" type="text" disabled value="${map['USER_NAME'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">대여시작일
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled>
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['RESERV_START_DATE'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">대역반납일
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled>
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['RESERV_END_DATE'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">차량넘버
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled>
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['CCAR_CAR_ID'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">예약일시
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled>
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['RESERV_DATE']}">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">차량대여 업체명
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled>
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['COM_NAME'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">업체 전화번호
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled>
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }">
 					            </div>
 					        </div><br>
 					        <div class="row">
@@ -232,6 +233,7 @@
 		</div>
 	</div>
 </div>
+</c:forEach>
 <!-- /.modal -->
 
 
