@@ -11,9 +11,11 @@ public class SearchVO {
     private int lastRecordIndex = 1;
     private int recordCountPerPage;
     
-    //업체 리스트 정렬용 변수
+    //업체 리스트 정렬용 변수, 업체 아이디 변수
     private String sortingKeyword;
-
+    private String companyId;
+    
+    
     public void setSearchVO(SearchVO bean){
     	this.currentPage = bean.currentPage;
     	this.searchCondition = bean.getSearchCondition();
@@ -113,6 +115,16 @@ public class SearchVO {
 	public void setSortingKeyword(String sortingKeyword) {
 		this.sortingKeyword = sortingKeyword;
 	}
+
+	public String getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
+	}
+	
+	
 	
 }
  

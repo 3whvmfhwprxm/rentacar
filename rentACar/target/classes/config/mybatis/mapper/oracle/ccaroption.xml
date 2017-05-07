@@ -48,9 +48,9 @@
 		        select c.car_name, c.car_inc, c.car_size, c.car_trans, c.car_type, cco.*
 				from car c join companycaroption cco
 				on c.car_code = cco.car_code
-				<!-- where cco.com_id='rentGo' -->
+				where cco.com_id=#{companyId}
 				<include refid="searchWhere"></include>
-				where cco.comcar_outdate is null
+				and cco.comcar_outdate is null
 				<if test="sortingKeyword != null">
 					<if test="sortingKeyword == 'model'">
 						order by c.car_name asc
@@ -91,14 +91,14 @@
 		select count(*)
 			from car c join companycaroption cco
 			on c.car_code = cco.car_code
-		where <!-- com_id= 'rentGo' and --> comcar_outdate is null
+		where com_id= #{companyId} and comcar_outdate is null
 		<include refid="searchWhere"></include>
 	</select>
 	
 	<select id="ReservTotalRecord" parameterType="SearchVO" resultType="int">
 		select count(*) 
 			from com_reservView
-		where <!-- com_id= 'rentGo' and --> comcar_outdate is null
+		where com_id= #{companyId} and comcar_outdate is null
 		<include refid="searchWhere"></include>
 	</select>
 
@@ -131,7 +131,7 @@
  		where ccar_car_id=#{ccarCarId} and com_id=#{comId} 
  	</update>
  	
- 	<select id="selectComReserv" resultType="map">
+ 	<select id="selectComReserv" resultType="map" parameterType="SearchVO">
 	 select *
 		from
 		(
@@ -139,6 +139,7 @@
 		    from
 		    (
 		        select * from com_reservView
+		        where 
 		    )LIST
 		)
 		<![CDATA[

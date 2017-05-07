@@ -36,6 +36,7 @@
 		jQuery("#frmPage").submit();
 	}
 	
+	// 처리해야함
 	jQuery(document).ready(function(){
 		jQuery("#frmSearch").submit(function(){
 			if(jQuery("#searchCondition").val()='notsel'){
@@ -66,6 +67,19 @@
         <legend>차량 현황</legend>
         <!--dropdown menu-->
         <div class="collapse navbar-collapse" id="MainMenu">
+        
+       	<pre>
+		<code>
+		우리업체의 현재 등록된 차량모델 리스트를 보여주며, 페이지당 15개의 목록을 보여줍니다.
+		차량번호를 클릭하시면 차량의 상세정보 페이지로 이동합니다.
+		옵션상세보기 버튼은 해당차량의 등록된 옵션을 보여주며 여부변경버튼은 차량의 상태를 변경시킴으로써 관리의 이점이 있습니다.
+		검색은 차량번호, 모델명으로 가능하며 대소문자 구분없이 쓰셔도 검색이 됩니다.
+		정렬기준 선택시 다양하게 목록 기준을 바꿀 수 있습니다.
+		**차량 삭제기능은 <strong>DB(데이터베이스)</strong>에서 지워지지 않으며 해당리스트에서만 사라집니다.
+		**<strong>DB(데이터베이스)</strong> 관리는 관리자에게만 주어지는 기능이나 임의 삭제는 불가하며, 요청시 사 내 규정에 따라 처리됩니다.
+    	</code>
+		</pre>
+    	    	
             <ul class="nav navbar-nav menu-list">
             	 <li class="dropdown list-category">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -84,6 +98,18 @@
         <!--table-->
        <table class="table table-striped">
        <thead>
+       		  <colgroup>
+       		  	<col width="5%">
+	    		<col width="13%">
+	    		<col width="10%">
+	    		<col width="*%">
+	    		<col width="8%">
+	    		<col width="12%">
+	    		<col width="8%">
+	    		<col width="10%">
+	    		<col width="8%">
+	    		<col width="10%">
+    		</colgroup>
        		<tr>
        			<th><input type="checkbox" id="" name=""></th>
   				<th>차량번호</th>

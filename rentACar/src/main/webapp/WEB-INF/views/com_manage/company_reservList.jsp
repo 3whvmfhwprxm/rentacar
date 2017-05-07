@@ -67,7 +67,18 @@
 		<input type="hidden" name="comId" id="comId">
 	</form>
     <div class="container">
-        <legend>예약 현황</legend>
+  	    <legend>예약 현황</legend>
+    	
+       	<pre>
+		<code>
+		우리업체의 현재 예약된 차량 리스트를 보여주며, 페이지당 15개의 목록을 보여줍니다.
+		상세정보보기 버튼을 클릭하시면 해당 예약차량의 좀더 자세한 내용을 보여줍니다.
+		예약취소는 해당 차량의 예약을 취소 시키며, 취소 철회는 되지않습니다.
+		정렬기준 선택으로 리스트를 세분화 시킬수 있습니다.
+		검색은 차량번호, 예약자명, 대여일, 반납일로 가능합니다.
+    	</code>
+		</pre>
+
         <!--dropdown menu-->
         <div class="collapse navbar-collapse" id="MainMenu">
             <ul class="nav navbar-nav menu-list">
@@ -76,12 +87,10 @@
                         <i class="fa fa-navicon"></i> 정렬기준 <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu mega-dropdown-menu">
-                    	<li><a href="javascript:fncSort('date')">최근예약순</a></li>
-                    	<li><a href="javascript:fncSort('num')">차량번호순</a></li>
-                        <li><a href="javascript:fncSort('model')">차량모델순</a></li>
-                        <li><a href="javascript:fncSort('fuel')">남은일수순</a></li>
-                        <li><a href="javascript:fncSort('usey')">사용가능한 차량만 보기</a></li>
-                        <li><a href="javascript:fncSort('usen')">정비중인 차량만 보기</a></li>
+                    	<li><a href="javascript:fncSort('stday')">대여일이 있는 차량만 보기</a></li>
+                    	<li><a href="javascript:fncSort('paidCar')">결제완료 차량만 보기</a></li>
+                        <li><a href="javascript:fncSort('sday')">남은일수순</a></li>
+                        <li><a href="javascript:fncSort('rvAll')">차량예약현황 전체보기</a></li>
                     </ul>
                 </li>
         <br><br>

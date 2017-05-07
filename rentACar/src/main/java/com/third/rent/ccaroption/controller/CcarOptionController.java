@@ -125,7 +125,8 @@ public class CcarOptionController {
 
 
 	@RequestMapping("/company_ccarList.do")
-	public String list(@ModelAttribute SearchVO searchVo,			
+	public String list(@ModelAttribute SearchVO searchVo,
+			HttpSession session,
 			Model model){
 		logger.info("업체차량 전체현황 보여주기");
 			
@@ -137,6 +138,9 @@ public class CcarOptionController {
 		searchVo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
+		String comId = (String)session.getAttribute("comId");
+		searchVo.setCompanyId(comId);
+		logger.info("#############파라미터 회사아이디:" +comId);
 		List<Map<String, Object>> cclist =
 				ccarOptionService.selectAllComCar(searchVo);
 		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
@@ -306,10 +310,8 @@ public class CcarOptionController {
 		
 		int cnt = ccarOptionService.updateCarUseYn(vo);
 		String msg="", url="/com_manage/company_ccarList.do";
-		if(cnt>0){
-			msg="차량상태 "+ccarUseYn+" 에서" +useYn+ " 으로 변경 처리 되었습니다" ;
-		}else{
-			msg="차량상태 변경 실패!";
+		if(cnt<=0){
+			msg="차량상태 변경에 실패했습니다!";
 		}
 		
 		model.addAttribute("msg", msg);
