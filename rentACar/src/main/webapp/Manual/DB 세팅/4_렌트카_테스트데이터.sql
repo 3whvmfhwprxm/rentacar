@@ -255,28 +255,54 @@ commit;
 insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
-values('001', '011','1111','1111', to_date('2017-05-10 09:30','yyyy/mm/dd hh24:mi'), 
-to_date('2017-05-13 13:30','yyyy/mm/dd hh24:mi'),'rentGo_0003', '자차보험', sysdate ,'kim1');
+values('00000001', '011','1111','1111', to_date('2017-04-01 09:30','yyyy/mm/dd hh24:mi'), 
+to_date('2017-04-02 13:30','yyyy/mm/dd hh24:mi'),'rentGo_0003', '자차보험', sysdate ,'kim1');
 
 insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
-values('002', '010','2200','2200', to_date('2017-04-30 11:00','yyyy/mm/dd hh24:mi'), 
-to_date('2017-05-02 14:30','yyyy/mm/dd hh24:mi'), 'rentGo_0002', '자차보험', sysdate ,'jin1');
+values(lpad(Reservation_seq.nextval, 8, '0'), '011','1111','1111', to_date('2017-04-8 09:30','yyyy/mm/dd hh24:mi'), 
+to_date('00000002','yyyy/mm/dd hh24:mi'),'rentGo_0003', '자차보험', sysdate ,'kim1');
+
+
+insert into RESERVATION(
+reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
+ccar_car_id, reserv_insurance, reserv_date, user_id)
+values(lpad(Reservation_seq.nextval, 8, '0'), '010','2200','2200', to_date('2017-04-30 11:00','yyyy/mm/dd hh24:mi'), 
+to_date('00000003','yyyy/mm/dd hh24:mi'), 'rentGo_0002', '자차보험', sysdate ,'jin1');
 
 select * from RESERVATION order by reserv_date desc;
 commit;
+rollback;
 
 --예약 회원(회원정보와는 다른 예약하는 당사자)
 --예) 회원(자식), 예약자/운전자 정보를 받을때(예약자-엄마, 운전자-아빠)받을수 있게
 
 insert into reserv_user
-values('001', '김엄마', '011', '1111', '1111', 'kim2@naver.com', '김아빠', '011', '1112', '1112', '600102', '1종보통');
+values('00000001', '김엄마', '011', '1111', '1111', 'kim2@naver.com', '김아빠', '011', '1112', '1112', '600102', '1종보통');
 insert into reserv_user
-values('002', '진누나', '010', '2200', '2200', 'jin2@naver.com', '진남친', '011', '2200', '2201', '880102', '2종보통');
+values('00000002', '김엄마', '011', '1111', '1111', 'kim2@naver.com', '김아빠', '011', '1112', '1112', '600102', '1종보통');
+
+insert into reserv_user
+values('00000003', '진누나', '010', '2200', '2200', 'jin2@naver.com', '진남친', '011', '2200', '2201', '880102', '2종보통');
 
 select * from reserv_user;
 commit;
+
+--결제정보
+insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2, 
+user_tel3, pay_method, pay_money, pay_condition, pay_regdate)
+values('p001234', '00000001', '010', '1234', '1234', 'card', 59000, 'paid', '2017-04-01');
+insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2, 
+user_tel3, pay_method, pay_money, pay_condition, pay_regdate)
+values('p002234', '00000002', '010', '1234', '1234', 'card', 62000, 'paid', '2017-04-08');
+insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2, 
+user_tel3, pay_method, pay_money, pay_condition, pay_regdate)
+values('p003234', '00000003', '010', '1234', '1234', 'card', 55000, 'paid', '2017-05-01');
+
+select * from PAYINFO order by pay_regdate desc;
+commit;
+rollback;
 
 --업체 공지
 delete from companynotice;
@@ -357,15 +383,6 @@ cmt_img1, cmt_img2)
 values(cmt_seq.nextval, '연비도 괜찬고 딱 가격값정도만 합니다', 'choi', 'rentGo', 1, 5, 2, 'good4.jpg', '');
 
 select*from comments;
-
---결제정보
-insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2, 
-user_tel3, pay_method, pay_money, pay_condition, pay_regdate)
-values('p00123', '001', '010', '1234', '1234', 'card', 100, 'paid', '2017-04-22');
-
-select * from PAYINFO order by pay_regdate desc;
-commit;
-rollback;
 
 
 --회원등급

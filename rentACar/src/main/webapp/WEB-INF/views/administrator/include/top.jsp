@@ -146,10 +146,10 @@
 			</a>
 				
 			<a href="<c:url value="/admin/payInfo.do" />" class="w3-bar-item w3-button w3-padding">
-				<i class="fa fa-credit-card"></i>&nbsp; 결재내역관리
+				<i class="fa fa-credit-card"></i>&nbsp; 결제내역관리
 			</a>
 			
-			<a href="<c:url value="/administrator/highChart/sales.do" />"
+			<a href="<c:url value="/admin/sales/salesDay.do" />"
 				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-line-chart"></i>&nbsp; 통계/정산
 			</a>

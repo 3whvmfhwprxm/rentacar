@@ -184,3 +184,16 @@ where r.USER_ID='kim1';
 select com.COM_NAME, com.COM_TEL1, com.COM_TEL2, com.COM_TEL3, comcar.CCAR_CAR_ID
 from company com join COMPANYCAROPTION comcar 
 on com.COM_ID=comcar.COM_ID
+
+--매출 보기 PAYINFO 
+select * from PAYINFO;
+
+select to_char(PAY_REGDATE, 'yyyy-MM-dd') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+from PAYINFO
+where extract(year from PAY_REGDATE)='2017'
+and extract(month from PAY_REGDATE)='4'
+and PAY_CANCELDATE is null
+group by to_char(PAY_REGDATE, 'yyyy-MM-dd')
+order by PAYDATE;
+
+
