@@ -28,6 +28,7 @@
 				        select ccar_car_id from RESERVATION
 				        where reserv_end_date >= TO_DATE(#{combinedSearchStartDate},'yyyy-mm-dd hh24:mi') 
 						and reserv_start_date <= TO_DATE(#{combinedSearchEndDate},'yyyy-mm-dd hh24:mi')
+						and RESERV_CANCEL is null
 				        )]]>
 				        and comcar_outdate is null
 				    ) comc join car c
@@ -74,6 +75,7 @@
 				        select ccar_car_id from RESERVATION
 				        where reserv_end_date >= TO_DATE(#{combinedSearchStartDate},'yyyy-mm-dd hh24:mi') 
 						and reserv_start_date <= TO_DATE(#{combinedSearchEndDate},'yyyy-mm-dd hh24:mi')
+						and RESERV_CANCEL is null
 				        )
 				        and comcar_outdate is null
 				    ) comc join car c

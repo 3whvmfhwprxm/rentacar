@@ -11,4 +11,5 @@ public interface ReservationService {
 	public int selectTotalRecord(String userId);
 	public List<Map<String, Object>> selectReservPayInfo(ReservationVO rvo);
 	public int selectTotalRecordWithPayInfo(ReservationVO rvo);
+	public int multiCancelReserv(List<ReservationVO> rlist);
 }

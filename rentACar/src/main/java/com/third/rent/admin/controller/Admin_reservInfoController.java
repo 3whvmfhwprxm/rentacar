@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.Utility;
+import com.third.rent.reservation.model.ReservListVO;
 import com.third.rent.reservation.model.ReservationService;
 import com.third.rent.reservation.model.ReservationVO;
 
@@ -50,5 +52,26 @@ public class Admin_reservInfoController {
 		model.addAttribute("pagingInfo", pInfo);
 		
 		return "administrator/reserv/reservInfo";
+	}
+	
+	@RequestMapping(value="/reservMultiCancel.do", method=RequestMethod.POST)
+	public String reservMultiCancel(@ModelAttribute ReservListVO rlistvo, Model model){
+		logger.info("관리자 - 선택한 예약 목록 취소 파라미터 rlistvo={}", rlistvo);
+		
+		List<ReservationVO> reservlist=rlistvo.getReservItems();
+		int result=rService.multiCancelReserv(reservlist);
+		logger.info("관리자 - 선택한 예약 목록 취소 결과 result={}", result);
+		
+		String url="/admin/reserv/reservInfo.do", msg="";
+		if(result!=-1){
+			msg="선택한 예약 목록이 취소되었습니다.";
+		}else{
+			msg="선택한 예약 목록 취소가 실패했습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
 }

@@ -101,7 +101,7 @@
                 </div>
               </div>
               <div class="panel-footer">
-                <div class="exp">선택하신 예약 기간: ${param.searchStartDate} ~ ${param.searchEndDate}</div>
+                <div class="exp">선택하신 예약 기간: ${param.searchStartDate} ${param.startHour}:${param.startMin} ~ ${param.searchEndDate} ${param.endHour}:${param.endMin}</div>
               </div>
             </div>
     	</div>

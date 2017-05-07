@@ -1,6 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp" %>
-<script type="text/javascript">	
+<script type="text/javascript">
+	$().ready(function(){
+		$("input[name='chkAll']").click(function(){				
+			$("tbody input[type=checkbox]").prop("checked", this.checked);
+			//this.checked => true, false값이 반환됨
+		});
+		
+		$("#btCancelMulti").click(function(){	
+			if($('tbody input:checkbox:checked').length==0){
+				//tbody input[type=checkbox]:checked
+				alert("취소할 예약을 하나라도 선택하셔야 합니다");
+				return;
+			}else if(confirm("정말로 예약을 취소하시겠습니까? \n결제,예약이 모두 취소되며 \n사용자에게 알림 메일이 보내집니다.")){
+				$("#frmReservList").attr("action","<c:url value='/admin/reserv/reservMultiCancel.do' />");
+				$("#frmReservList").submit();	
+			}											
+		});
+	});
+
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
@@ -15,6 +33,7 @@
 		margin: 0 auto;
 		text-align: center;
 	}
+	.divRight{text-align:right;}
 </style>
 	<div class="w3-container bodyClass">
 	<!-- 페이지 처리용 폼 -->
@@ -32,75 +51,101 @@
 * 문구 입력2
 * 문구 입력3</pre>
 	<br>
-	<!-- 테이블 화면 시작 -->
-	<table class="table table-hover">
-		<tr>						
-			<th>예약번호</th>
-			<th>예약자 연락처</th>
-			<th>예약자 ID</th>
-			<th>인수일시</th>
-			<th>반납일시</th>			
-			<th>예약차 번호</th>
-			<th>예약일</th>
-			<th>취소여부</th>			
-			<th>결제여부</th>
-		</tr>
-		
-		<c:if test="${empty rlist}">
-					<tr>
-						<td colspan="9" class="align_center">예약 내역이 존재하지 않습니다.</td>
-					</tr>
-		</c:if>
-		
-		<c:if test="${!empty rlist }">			
-				<c:forEach var="map" items="${rlist }">
-					<tr>
-						<td><a href='<c:url value="/admin/payInfo.do?searchCondition=reserv_num&searchKeyword=${map['RESERV_NUM'] }" />'>
-						${map['RESERV_NUM'] }</a></td>
-						<td>${map['USER_TEL1'] }-${map['USER_TEL2'] }-${map['USER_TEL3'] }</td>
-						<td>${map['USER_ID'] }</td>
-						<td>${map['RESERV_START_DATE'] }</td>
-						<td>${map['RESERV_END_DATE'] }</td>
-						<td>${map['CCAR_CAR_ID'] }</td>
-						<td>${map['RESERV_DATE'] }</td>
-						<td>${map['RESERV_CANCEL'] }</td>
-						<td>
-							<c:if test="${empty map['PAY_CONDITION']}">
-								결제내역없음
-							</c:if>
-							<c:if test="${!empty map['PAY_CONDITION'] && !empty map['PAY_CANCELDATE']}">
-								${map['PAY_CANCELDATE'] }에 취소됨
-							</c:if>
-							<c:if test="${!empty map['PAY_CONDITION'] && empty map['PAY_CANCELDATE']}}">
-								${map['PAY_CONDITION'] }
-							</c:if>
-						</td>
-					</tr>	
-				</c:forEach>				
-		</c:if>		
-	</table>
-		<div class="divPage container">
-			<c:if test="${pagingInfo.firstPage>1 }">
-				<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
-					<img src='${pageContext.request.contextPath}/images/first.JPG' alt="이전블럭으로">
-				</a>
-			</c:if>
 	
-			<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
-				<c:if test="${i==pagingInfo.currentPage }">
-					<span style="color: blue; font-weight: bold;">${i}</span>
-				</c:if>
-				<c:if test="${i!=pagingInfo.currentPage }">
-					<a href="#" onclick="pageFunc(${i})">[${i}]</a>
-				</c:if>
-			</c:forEach>
-	
-			<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
-				<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"> 
-					<img src='${pageContext.request.contextPath}/images/last.JPG' alt="다음블럭으로">
-				</a>
+		<form name="frmReservList" id="frmReservList" method="post">
+		
+		<!-- 테이블 화면 시작 -->
+		<table class="table table-hover">
+			<thead>
+				<tr>	
+					<th><input type="checkbox" name="chkAll"></th>					
+					<th>예약번호</th>
+					<th>예약자 연락처</th>
+					<th>예약자 ID</th>
+					<th>인수일시</th>
+					<th>반납일시</th>			
+					<th>예약차 번호</th>
+					<th>예약일</th>
+					<th>취소여부</th>			
+					<th>결제여부</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:if test="${empty rlist}">
+						<tr>
+							<td colspan="10" class="align_center">예약 내역이 존재하지 않습니다.</td>
+						</tr>
 			</c:if>
-		</div>
+			
+			<c:if test="${!empty rlist}">		
+					<c:set value="0" var="i"/>	
+					<c:forEach var="map" items="${rlist }">
+						<tr>
+							<td>
+								<c:if test="${empty map['RESERV_CANCEL']}">
+									<input type="checkbox" id="chk_${i }" name="reservItems[${i}].reservNum" value="${map['RESERV_NUM']}">
+								</c:if>
+							</td>
+							<td>
+								<a href='<c:url value="/admin/payInfo.do?searchCondition=reserv_num&searchKeyword=${map['RESERV_NUM'] }" />'>
+								${map['RESERV_NUM'] }</a>
+							</td>
+							<td>
+								${map['USER_TEL1'] }-${map['USER_TEL2'] }-${map['USER_TEL3'] }
+							</td>
+							<td>${map['USER_ID'] }</td>
+							<td><fmt:formatDate value="${map['RESERV_START_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+							<td><fmt:formatDate value="${map['RESERV_END_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+							<td>${map['CCAR_CAR_ID'] }</td>
+							<td><fmt:formatDate value="${map['RESERV_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+							<td><fmt:formatDate value="${map['RESERV_CANCEL'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+							<td>
+								<c:if test="${empty map['PAY_CONDITION']}">
+									결제내역없음
+								</c:if>
+								<c:if test="${!empty map['PAY_CONDITION'] && !empty map['PAY_CANCELDATE']}">
+									<fmt:formatDate value="${map['PAY_CANCELDATE'] }" pattern="yyyy-MM-dd HH:mm"/>에 취소
+								</c:if>
+								<c:if test="${!empty map['PAY_CONDITION'] && empty map['PAY_CANCELDATE']}">
+									${map['PAY_CONDITION'] }
+								</c:if>
+							</td>
+						</tr>
+						<c:set var="i" value="${i+1}"/>	
+					</c:forEach>				
+				</c:if>
+				</tbody>	
+			</table>
+			
+			<!-- 페이징처리 -->
+			<div class="divPage container">
+				<c:if test="${pagingInfo.firstPage>1 }">
+					<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
+						<img src='${pageContext.request.contextPath}/images/first.JPG' alt="이전블럭으로">
+					</a>
+				</c:if>
+		
+				<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
+					<c:if test="${i==pagingInfo.currentPage }">
+						<span style="color: blue; font-weight: bold;">${i}</span>
+					</c:if>
+					<c:if test="${i!=pagingInfo.currentPage }">
+						<a href="#" onclick="pageFunc(${i})">[${i}]</a>
+					</c:if>
+				</c:forEach>
+		
+				<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+					<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"> 
+						<img src='${pageContext.request.contextPath}/images/last.JPG' alt="다음블럭으로">
+					</a>
+				</c:if>
+			</div>
+			<div class="divRight">
+				선택한 예약을 <input type="button" id="btCancelMulti" value="취소 처리" >
+			</div>
+		</form>
+		
+		<!-- 검색 입력폼 -->
 		<div class="divSearch container">
 			<form name="frmSearch" method="post" action="<c:url value="/admin/reserv/reservInfo.do" />">
 				<select name="searchCondition">				

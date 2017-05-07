@@ -67,12 +67,12 @@ from (select comc.*, c.car_name, c.car_inc, c.car_size, c.car_trans, car_type, c
         from COMPANYCAROPTION c
         where car_code in (
         select car_code from car
-        where car_type=5
         )
         and ccar_car_id not in (
         select ccar_car_id from RESERVATION
         where reserv_end_date >= to_date('2017-04-29 08:00', 'yyyy/mm/dd hh24:mi')
         and reserv_start_date <= to_date('2017-05-01 09:30', 'yyyy/mm/dd hh24:mi')
+        and RESERV_CANCEL is null
         )
         and comcar_outdate is null
     ) comc join car c
