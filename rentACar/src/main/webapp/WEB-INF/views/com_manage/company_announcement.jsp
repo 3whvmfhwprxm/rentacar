@@ -9,14 +9,16 @@
 	}
 </script>
 <style>
+.col-lg-10{margin-top: 5%;}
 .col-md-8 {
- padding-top: 6px;
+ padding-top: 20px;
 }
 .container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+   
 }
 .row1{margin-left: 100px;}
 .row{margin-right: 25px; 
@@ -150,7 +152,7 @@ th,td{text-align: center;}
 		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 	</form>
 	
-<section id="contact"><br>
+
 <div class="container">
 	<div class="row1">
 		<div class="col-lg-10">
@@ -251,12 +253,33 @@ th,td{text-align: center;}
 			</div>
 		</div>
 	</div>
-</div>
+
+<style>
+footer{
+    padding: 10px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #2a8fcf;
+    margin-top: 100px;
+    bottom:0;
+    position: absolute;
+	width: 100%;
+	height: 80px;
+}
+</style>
+	<footer>
+            <div class="row">
+                <div class="col-md-12" style="size: 12px; text-align: center;">
+                    뉴프랜 - 3조렌터카  대표 : 현대스쿨 사업자 번호 485-46-94541 통신판매번호 제 2014-서울광진-0718 호
+					주소 : 서울특별시 영등포구 당산동 287-14<br>
+					이메일 : 3teamRentCar@naver.com  전국대표번호 : 1530-5500(HP. 010-7844-0114)  팩스번호 : 0505-554-7000<br>
+					Copyright ⓒ 3조렌터카. All Rights Reserved
+                </div>
+            </div>
+    </footer>
+</body>
+</html>
 
 
 
 
-
-</section>
-
-<%@ include file="../inc_company/company_bottom.jsp"%>

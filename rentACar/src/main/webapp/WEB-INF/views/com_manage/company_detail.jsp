@@ -8,6 +8,7 @@
 <style>
 .col-md-offset-3{
 	margin-left: 15%;
+	margin-top: 5%;
 }
 .col-lg-4{
 	width: 30%;

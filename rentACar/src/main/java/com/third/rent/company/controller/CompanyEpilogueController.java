@@ -1,11 +1,6 @@
 package com.third.rent.company.controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
+import com.third.rent.Comments.model.CommentsService;
+import com.third.rent.Comments.model.CommentsVO;
 import com.third.rent.admin_Board.model.Admin_BoardService;
 import com.third.rent.common.FileUploadWebUtil;
 import com.third.rent.common.PaginationInfo;
@@ -51,13 +47,38 @@ public class CompanyEpilogueController {
 	@Autowired
 	private Company_noticeService comNoService;
 	
+	@Autowired
+	private CommentsService commentsSv;
+	
 	@RequestMapping("/company_epilogue.do")
-	public String consel_index(){
+	public String company_epilogue(@ModelAttribute SearchVO searchVo, Model model){
 		
-		logger.info("후기화면 구현");
+		logger.info("업체 후기 화면표시 searchVo={}", searchVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(Utility.COM_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+		
+		//SearchVO 값 셋팅
+		searchVo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+		
+		List<CommentsVO> cList=commentsSv.selectAll(searchVo);
+		logger.info("업체 이용후기 리스트 수, cList.size()={}", cList.size());
+		
+		int totalRecord=commentsSv.selectTotalRecord(searchVo);
+		logger.info("업체 이용후기 전체수 조회 결과, totalRecord={}", totalRecord);
+		
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		model.addAttribute("cList", cList);
+		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "com_manage/company_epilogue";
 	}
+	
+	
 	
 	
 	@RequestMapping("/company_announcement.do")
@@ -119,9 +140,9 @@ public class CompanyEpilogueController {
 			return "common/message";
 		}
 		CompanyNoticeVO vo = comNoService.selectByNo(cnoticeNo);
-			logger.info("업체화면 조회결과 companyVo={}", vo);
+			logger.info("업체공지사항 조회결과 companyVo={}", vo);
 		
-		model.addAttribute("companyVo", vo);
+		model.addAttribute("CompanyNoticeVo", vo);
 		
 		return "com_manage/company_announcement_detail";
 	}

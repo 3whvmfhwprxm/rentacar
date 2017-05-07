@@ -3,136 +3,186 @@
 <%@ include file="../inc_company/company_top.jsp" %>
 
 <!--전체 후기  -->
+<form id="frmPage" name="frmPage" method="POST"
+		action='<c:url value="/com_manage/company_ccarList.do" />'>
+		<input type="hidden" name="currentPage" value="${pagingInfo.currentPage }">
+		<input type="hidden" name="searchCondition" value="${param.searchCondition}">
+		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
+		<input type="hidden" name="sortingKeyword" id="sortingKeyword" value="${param.sortingKeyword }"/>
+		<input type="hidden" name="" id="" value="" />
+	</form>
+	<form id="frmUse" name="frmUse" method="POST">
+		<input type="hidden" name="ccarUseYn" id="ccarUseYn">
+		<input type="hidden" name="ccarCarId" id="ccarCarId">
+		<input type="hidden" name="comId" id="comId">
+	</form>
+    <div class="container">
+        <!--dropdown menu-->
+        <div class="collapse navbar-collapse" id="MainMenu">
+            <ul class="nav navbar-nav menu-list">
+            	 <li class="dropdown list-category">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-navicon"></i> 정렬기준 <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu mega-dropdown-menu">
+                    	<li><a href="javascript:fncSort('date')">최근등록순</a></li>
+                    	<li><a href="javascript:fncSort('num')">차량번호순</a></li>
+                        <li><a href="javascript:fncSort('model')">차량모델순</a></li>
+                        <li><a href="javascript:fncSort('fuel')">연료타입순</a></li>
+                        <li><a href="javascript:fncSort('usey')">사용가능한 차량만 보기</a></li>
+                        <li><a href="javascript:fncSort('usen')">정비중인 차량만 보기</a></li>
+                    </ul>
+                </li>
+        <br><br>
+        <!--table-->
+       <table class="table table-striped">
+       <thead>
+       		<tr>
+       			<th><input type="checkbox" id="" name=""></th>
+  				<th>번호</th>
+				<th>후기내용</th>
+				<th>회원아이디</th>
+				<th>친절도</th>
+				<th>청결도</th>
+				<th>편의성</th>
+				<th>후기이미지</th>
+				<th>작성일</th>
+			</tr>
+        </thead>
+        <tbody>
+        <!-- 반복시작 -->
+		<c:if test="${empty cList }">
+			<td colspan="10">데이터가 없습니다.</td>
+		</c:if>
+		<c:if test="${!empty cList }">
+		<c:forEach var="map" items="${cList }" varStatus="i">
+		
+		<tr>
+			<td><input type="checkbox" id="" name=""></td>
+			<td>${map['CMT_NO']}</td>
+			<td>${map['CMT_CONTENT'] }</td>
+			<td>${map['USER_ID'] }</td>
+			<td>${cookie.ck_comId.value}</td>
+			<td><!-- <a href="#">옵션상세보기</a> -->
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="address">
+						<button type="button" class="btn btn-info"
+							data-toggle="modal" data-target='#ordine_${i.index }'>옵션상세보기</button>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div> <!-- Modal -->
+			<div id="ordine_${i.index }" class="modal fade" role="dialog">
+				<div class="modal-dialog">
 
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Warm</th>
-        <th>Hot</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Full Leg </td>
-        <td>£28.00</td>
-        <td>£32.00</td>
-      </tr>
-       <tr>
-        <td>Full Leg & Bikini</td>
-        <td>£35.00</td>
-        <td>£42.00</td>
-      </tr>
-       <tr>
-        <td>Full Leg & Brazilian</td>
-        <td>£45.00</td>
-        <td>£58.00</td>
-      </tr>
-       <tr>
-        <td>Full Leg & Hollywood</td>
-        <td>£55.00</td>
-        <td>£65.50</td>
-      </tr>
-       <tr>
-        <td>Lower Leg</td>
-        <td>£15.00</td>
-        <td>£15.00</td>
-      </tr>
-       <tr>
-        <td>Thigh</td>
-        <td>£17.00</td>
-        <td>£21.00</td>
-      </tr>
-       <tr>
-        <td>Thigh & Bikini</td>
-        <td>£25.00</td>
-        <td>£29.00</td>
-      </tr>
-       <tr>
-        <td>3/4 Leg </td>
-        <td>£28.00</td>
-        <td>£30.50</td>
-      </tr>
-       <tr>
-        <td>Bikini</td>
-        <td>£13.50</td>
-        <td>£14.50</td>
-      </tr>
-       <tr>
-        <td>High Bikini</td>
-        <td>£16.00</td>
-        <td>£17.00</td>
-      </tr>
-       <tr>
-        <td>Brazilian</td>
-        <td>£28.00</td>
-        <td>£33.00</td>
-      </tr>
-       <tr>
-        <td>Hollywood</td>
-        <td>£33.00</td>
-        <td>£38.00</td>
-      </tr>
-       <tr>
-        <td>Full Arm</td>
-        <td>£20.00</td>
-        <td>£22.00</td>
-      </tr>
-      <tr>
-        <td>Half Arm</td>
-        <td>£15.00</td>
-        <td>£17.00</td>
-      </tr>
-      <tr>
-        <td>Under Arm</td>
-        <td>£10.00</td>
-        <td>£11.50</td>
-      </tr>
-      <tr>
-        <td>Lip</td>
-        <td>£7.50</td>
-        <td>7.50</td>
-      </tr>
-       <tr>
-        <td>Chin</td>
-        <td>£7.50</td>
-        <td>£7.50</td>
-      </tr>
-      <tr>
-        <td>Lip & Chin</td>
-        <td>£12.50</td>
-        <td>£12.50</td>
-      </tr>
-      <tr>
-        <td>Eyebrows</td>
-        <td>£9.50</td>
-        <td>£9.50</td>
-      </tr>
-      <tr>
-        <td>Sides of Face</td>
-        <td>£9.00</td>
-        <td>£10.00</td>
-      </tr>	
-      <tr>
-        <td>Stomach</td>
-        <td>£13.00</td>
-        <td>£13.00</td>
-      </tr>
-      <tr>
-        <td>Lower Back</td>
-        <td>£10.00</td>
-        <td>£10.00</td>
-      </tr>
-      <tr>
-        <td>Buttocks</td>
-        <td>£10.00</td>
-        <td>£10.00</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">×</button>
+							<h4 class="modal-title">${map['CCAR_CAR_ID'] }의 옵션사항</h4>
+						</div>
+						<div class="modal-body">
+							<p>
+								<c:if
+									test="${map['CCAR_AUX_YN']=='N' && map['CCAR_BLACKBOX_YN']=='N' 
+	       && map['CCAR_SMOKE_YN']=='N' && map['CCAR_REAR_CAMERA_YN']=='N' 
+	       && map['CCAR_REAR_SENCE_YN']=='N' && map['CCAR_NAVI_YN']=='N' 
+	       && map['CCAR_NAVI_YN']=='N' && map['CCAR_SUN_ROOF_YN']=='N' 
+	       && map['CCAR_BLUETOOTH_YN']=='N' && map['CCAR_SMARTKEY_YN']=='N' }">등록된 옵션이 없습니다.
+       </c:if>
+		<c:if test="${map['CCAR_AUX_YN']=='Y' }"> AUX</c:if>
+		<c:if test="${map['CCAR_BLACKBOX_YN']=='Y' }"> 블랙박스</c:if>
+		<c:if test="${map['CCAR_SMOKE_YN']=='Y' }"> 금연차</c:if>
+		<c:if test="${map['CCAR_REAR_CAMERA_YN']=='Y' }"> 후방카메라</c:if>
+		<c:if test="${map['CCAR_REAR_SENCE_YN']=='Y' }"> 후방센서</c:if>
+		<c:if test="${map['CCAR_NAVI_YN']=='Y' }"> 네비게이션</c:if>
+		<c:if test="${map['CCAR_SUN_ROOF_YN']=='Y' }">썬루프</c:if>
+		<c:if test="${map['CCAR_BLUETOOTH_YN']=='Y' }"> 블루투스</c:if>
+		<c:if test="${map['CCAR_SMARTKEY_YN']=='Y' }"> 스마트키</c:if>
+		</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info"
+							data-dismiss="modal">Close</button>
+					</div>
+				</div>
+		
+				</div>
+			</div>
+		</td>
+			<c:if test="${map['CCAR_USE_YN']=='Y' }"><td>사용가능</td>  </c:if>
+			<c:if test="${map['CCAR_USE_YN']=='N' }"><td>정비중</td>  </c:if>
+			<td>
+			
+			<button class="btn btn-warning" onclick="javascript:cg('${map['CCAR_USE_YN']}','${map['CCAR_CAR_ID'] }','${map['COM_ID'] }')">
+				여부변경</button>
+			</td>
+			<td><fmt:formatDate value="${map['COMCAR_REGDATE'] }" pattern="yyyy/MM/dd"/></td>
+			<td>
+			<button><a href="<c:url value='/com_manage/company_ccarEdit.do?ccarCarId=${map["CCAR_CAR_ID"] }' />">수정</a></button>
+			<button><a href="<c:url value='/com_manage/company_ccarDelete.do?ccarCarId=${map["CCAR_CAR_ID"] }'/>">삭제</a></button>
+			
+			</td>
+		</tr>
+		
+	</c:forEach>
+	 <!-- 반복끝 --> 
+        
+        
+        </tbody>
+    </table>
+    </div>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<nav>
+				<ul class="pagination">
+					<c:if test="${pagingInfo.firstPage>1 }">
+						<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:if>
 
-</div>
+					<c:forEach var="i" begin="${pagingInfo.firstPage}"
+						end="${pagingInfo.lastPage}">
+						<c:if test="${i==pagingInfo.currentPage}">
+							<li class="active"><a href="#">${i}</a></li>
+						</c:if>
+						<c:if test="${i!=pagingInfo.currentPage}">
+							<li><a href="#" onclick="pageFunc(${i})">${i}</a></li>
+						</c:if>
+					</c:forEach>
 
-<%@ include file="../inc_company/company_bottom.jsp" %>
+					<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+						<li><a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:if>
+				</ul>
+			</nav>
+		</div>
+				</c:if>
+		<div class="col-md-4"></div>
+	</div>
+		<div class="divSearch">
+				<form name="frmSearch" method="post"
+					action="<c:url value="/com_manage/company_ccarList.do" />">
+					<select name="searchCondition" id="searchCondition">
+						<option value='notsel'>::선택::</option>
+						<option value="ccar_car_id"
+							<c:if test="${'ccar_car_id'==param.searchCondition}">
+		           		selected            	
+		           	</c:if>>차량번호</option>
+						<option value="car_inc"
+							<c:if test="${'car_inc'==param.searchCondition}">
+		           		selected            	
+		           	</c:if>>모델명</option>
+					</select> <input type="text" name="searchKeyword" title="검색어 입력"
+						value="${param.searchKeyword}" placeholder="검색어 입력"> <input type="submit"
+						value="검색">
+				</form>
+			</div>
+		</div>
+

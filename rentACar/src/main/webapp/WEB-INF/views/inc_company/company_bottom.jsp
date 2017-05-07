@@ -2,19 +2,18 @@
     pageEncoding="UTF-8"%>
 	<!-- footer -->
 <style>
-footer{
+.footer{
     padding: 10px;
     color: #fff;
     font-size: 14px;
     background-color: #2a8fcf;
     margin-top: 100px;
     position: absolute;
-	bottom: 0;
 	width: 100%;
-	height: 60px;
+	height: 80px;
 }
 </style>
-	<footer>
+	<footer class="footer">
             <div class="row">
                 <div class="col-md-12" style="size: 12px; text-align: center;">
                     뉴프랜 - 3조렌터카  대표 : 현대스쿨 사업자 번호 485-46-94541 통신판매번호 제 2014-서울광진-0718 호
