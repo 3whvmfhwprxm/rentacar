@@ -33,6 +33,11 @@ public class BalCalcServiceImple implements BalCalcService{
 	}
 
 	@Override
+	public int selectCountExist(BalCalcVO bvo) {
+		return bdao.selectCountExist(bvo);
+	}
+
+	@Override
 	@Transactional
 	public int insertMulti(List<BalCalcVO> ballist){
 		int cnt=0;
@@ -40,14 +45,17 @@ public class BalCalcServiceImple implements BalCalcService{
 		try{
 			for (BalCalcVO vo : ballist) {
 				if(vo.getComId()!=null){
-					cnt=bdao.insertBalCalc(vo);
+					//해당 기업의 해당년월의 정산정보가 이미 등록되어 있는지 확인 
+					int result=bdao.selectCountExist(vo);
+					if(result==0){
+						cnt=bdao.insertBalCalc(vo);
+					}
 				}
 			}
 		}catch(RuntimeException e){
 			e.printStackTrace();
 			cnt=-1;
-		}
-		
+		}		
 		return cnt;
 	}
 	
@@ -78,6 +86,8 @@ public class BalCalcServiceImple implements BalCalcService{
 		try{
 			for (BalCalcVO vo : ballist) {
 				if(vo.getComId()!=null){
+					
+					
 					cnt=bdao.updateBalCalcNO(vo.getBalNum());
 				}
 			}

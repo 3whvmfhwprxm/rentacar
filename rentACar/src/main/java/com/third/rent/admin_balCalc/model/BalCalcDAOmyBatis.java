@@ -30,5 +30,9 @@ public class BalCalcDAOmyBatis extends SqlSessionDaoSupport implements BalCalcDA
 		return getSqlSession().selectList(nameSpace+".selectBalanceCal", targetDate);
 	}
 
-	
+	@Override
+	public int selectCountExist(BalCalcVO bvo) {
+		return getSqlSession().selectOne(nameSpace+".selectCountExist", bvo);
+	}
+
 }

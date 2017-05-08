@@ -229,12 +229,12 @@ and extract(month from p.PAY_REGDATE)='05'
 
 --¿Ï¼º
 insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
-values(Balance_acc_seq.nextval, 'rentGo', (select count(RESERV_NUM) as reserv from company_paymoney
-where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'), 
-'2017-05', (select sum(PAY_MONEY) as sales from company_paymoney
-where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'), 
-(select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentGo' and extract(year from PAY_REGDATE)='2017'
-and extract(month from PAY_REGDATE)='05')*(select COM_RATE/100 from company where COM_ID='rentGo'));
+values(Balance_acc_seq.nextval, 'rentGo', nvl((select count(RESERV_NUM) as reserv from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'),0), 
+'2017-05', nvl((select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'),0), 
+nvl((select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentGo' and extract(year from PAY_REGDATE)='2017'
+and extract(month from PAY_REGDATE)='05'),0)*(select COM_RATE/100 from company where COM_ID='rentGo'));
 
 update Balance_acc
 set BAL_DECISION_DATE=null
@@ -245,6 +245,11 @@ where BAL_TARGET_DATE='2017-05';
 
 select * from Balance_acc;
 rollback;
+commit;
+select com_id from COMPANY;
 
-select com_id 
-from COMPANY;
+select count(*) from Balance_acc
+where com_id='rentGo'
+and BAL_TARGET_DATE='2017-05';
+
+delete from Balance_acc;
