@@ -51,12 +51,33 @@ public class Admin_CompanyController {
 		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 
-		List<CompanyVO> companyAllList = adminCompanyService.selectAllCompany(searchVo);
-		logger.info("업체목록 조회결과, companyAllList.size()={}", companyAllList.size());
-		
 		List<CompanyVO> companyInList = adminCompanyService.selectInCompany(searchVo);
 		logger.info("업체목록 조회결과, companyInList.size()={}", companyInList.size());
 		
+		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
+		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
+				totalRecord);
+
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		model.addAttribute("companyInList", companyInList);
+		model.addAttribute("pagingInfo", pagingInfo);
+
+		return "administrator/company/companyList";
+	}
+	
+	@RequestMapping("/company/companyOutList.do")
+	public String companyOutList(@ModelAttribute SearchVO searchVo, Model model){
+		logger.info("업체목록, 파라미터 searchVo={}", searchVo);
+
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+
 		List<CompanyVO> companyOutList = adminCompanyService.selectOutCompany(searchVo);
 		logger.info("업체목록 조회결과, companyOutList.size()={}", companyOutList.size());
 		
@@ -65,13 +86,37 @@ public class Admin_CompanyController {
 				totalRecord);
 
 		pagingInfo.setTotalRecord(totalRecord);
-		
-		model.addAttribute("companyAllList", companyAllList);
-		model.addAttribute("companyInList", companyInList);
 		model.addAttribute("companyOutList", companyOutList);
 		model.addAttribute("pagingInfo", pagingInfo);
 
-		return "administrator/company/companyList";
+		return "administrator/company/companyOutList";
+	}
+	
+	@RequestMapping("/company/companyCarList.do")
+	public String companyCarList(@ModelAttribute SearchVO searchVo, Model model){
+		logger.info("업체목록, 파라미터 searchVo={}", searchVo);
+
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+
+		List<CompanyVO> companyAllList = adminCompanyService.selectAllCompany(searchVo);
+		logger.info("업체목록 조회결과, companyAllList.size()={}", companyAllList.size());
+
+		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
+		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
+				totalRecord);
+
+		pagingInfo.setTotalRecord(totalRecord);
+		
+		model.addAttribute("companyAllList", companyAllList);
+		model.addAttribute("pagingInfo", pagingInfo);
+
+		return "administrator/company/companyCarList";
 	}
 	
 	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.GET)
@@ -241,11 +286,11 @@ public class Admin_CompanyController {
 		logger.info("업체차량 전체 보여주기");
 			
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(admin_Utility.ADMIN_COMPANY_CAR_BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_COMPANY_CAR_RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		

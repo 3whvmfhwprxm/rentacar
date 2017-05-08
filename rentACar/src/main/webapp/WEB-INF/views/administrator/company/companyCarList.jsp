@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp"%>
 
-<script type="text/javascript">		
+<script type="text/javascript">	
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
@@ -23,7 +23,7 @@
 </style>
 
 <form name="frmPage" method="post"
-	action='<c:url value="/administrator/company/companyList.do" />'>
+	action='<c:url value="/administrator/company/companyCarList.do" />'>
 	<input type="hidden" name="currentPage">
 	<input type="hidden" name="searchCondition" value="${param.searchCondition}">
 	<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
@@ -46,7 +46,7 @@
 	<div role="tabpanel">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation" class="active">
+			<li role="presentation">
 				<a href='<c:url value="/administrator/company/companyList.do" />' aria-controls="companyInList" role="tab">
 					업체 리스트 
 				</a>
@@ -58,7 +58,7 @@
 				</a>
 			</li>
 			
-			<li role="presentation">
+			<li role="presentation" class="active">
 				<a href='<c:url value="/administrator/company/companyCarList.do" />' aria-controls="companyCarList" role="tab">
 					업체보유차량 리스트
 				</a>
@@ -72,8 +72,8 @@
 					<button type="button" class="btn btn-info btn-lg btn-block" style="color: black;">업체 등록</button>
 				</a>
 			</div>
-			<!-- ★★★★★★★★★★업체 리스트★★★★★★★★★★ -->
-			<div role="tabpanel" class="tab-pane active" id="companyInList">
+			<!-- <!-- ★★★★★★★★★★업체보유차량 리스트★★★★★★★★★★ -->
+			<div role="tabpanel" class="tab-pane active" id="companyCarList">
 				<div class="row">
 					<div class="col-md-12">
 						<br>
@@ -96,16 +96,16 @@
 							</thead>
 			
 							<tbody>
-								<c:if test="${empty companyInList}">
+								<c:if test="${empty companyAllList}">
 									<tr>
 										<td colspan="12" style="text-align: center;">데이터가 존재하지 않습니다.</td>
 									</tr>
 								</c:if>
-			
-								<c:forEach var="vo" items="${companyInList}">
+								
+								<c:forEach var="vo" items="${companyAllList}">
 									<tr style="text-align: center">
 										<td><a
-											href='<c:url value="/administrator/company/companyDetail.do?comId=${vo.comId}" />'>
+											href='<c:url value="/administrator/company/companyCar.do?comId=${vo.comId}" />'>
 												${vo.comId}</a></td>
 										<td style="text-align: center">${vo.comName}</td>
 										<td>${vo.comNum}</td>
@@ -115,9 +115,9 @@
 										<td>${vo.comAddress}</td>
 										<td>${vo.comCeo}</td>
 										<td>${vo.comEmail}</td>
-										<td>${vo.comRate}%</td>
+										<td>${vo.comRate}%</td>	
 										<td><fmt:formatDate value="${vo.comRegdate}"
-												pattern="yyyy-MM-dd" /></td>		
+												pattern="yyyy-MM-dd" /></td>
 										<td><fmt:formatDate value="${vo.comOutdate}"
 												pattern="yyyy-MM-dd" /></td>
 									</tr>
@@ -172,7 +172,7 @@
 			<div class="divSearch container">
 				<div class="col-md-4">
 					<form name="frmSearch" method="post"
-						action="<c:url value="/administrator/company/companyList.do" />">
+						action="<c:url value="/administrator/company/companyCarList.do" />">
 						<select name="searchCondition">
 							<option value="com_id"
 								<c:if test="${'com_id'==param.searchCondition}">

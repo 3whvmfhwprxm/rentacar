@@ -17,7 +17,7 @@ import com.third.rent.admin_Company.controller.Admin_CompanyController;
 import com.third.rent.car.model.CarVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
-import com.third.rent.common.Utility;
+import com.third.rent.common.admin_Utility;
 
 @Controller
 @RequestMapping("/administrator")
@@ -37,11 +37,11 @@ public class Admin_CarModelController {
 
 		//2
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 
 		List<CarVO> carList = adminCarModelService.selectAll(searchVo);
