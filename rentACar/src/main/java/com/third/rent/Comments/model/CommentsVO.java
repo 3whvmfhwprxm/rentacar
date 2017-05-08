@@ -13,10 +13,10 @@ public class CommentsVO {
 	private int cmtConvScore; 		/* 편의성 */
 	private String cmtImg1; 		/* 후기이미지1 */
 	private String cmtImg2; 		/* 후기이미지2 */
+	private String cmtImg3; 		/* 후기이미지3 */
 	private Timestamp cmtRegdate;   /* 기록일 */
 	private Timestamp cmtDeldate;   /* 삭제일 */
 	private String adminId; 		/* 관리자아이디 */
-	
 	public int getCmtNo() {
 		return cmtNo;
 	}
@@ -71,6 +71,12 @@ public class CommentsVO {
 	public void setCmtImg2(String cmtImg2) {
 		this.cmtImg2 = cmtImg2;
 	}
+	public String getCmtImg3() {
+		return cmtImg3;
+	}
+	public void setCmtImg3(String cmtImg3) {
+		this.cmtImg3 = cmtImg3;
+	}
 	public Timestamp getCmtRegdate() {
 		return cmtRegdate;
 	}
@@ -93,9 +99,11 @@ public class CommentsVO {
 	public String toString() {
 		return "CommentsVO [cmtNo=" + cmtNo + ", cmtContent=" + cmtContent + ", userId=" + userId + ", comId=" + comId
 				+ ", cmtKindScore=" + cmtKindScore + ", cmtCleanScore=" + cmtCleanScore + ", cmtConvScore="
-				+ cmtConvScore + ", cmtImg1=" + cmtImg1 + ", cmtImg2=" + cmtImg2 + ", cmtRegdate=" + cmtRegdate
-				+ ", cmtDeldate=" + cmtDeldate + ", adminId=" + adminId + "]";
+				+ cmtConvScore + ", cmtImg1=" + cmtImg1 + ", cmtImg2=" + cmtImg2 + ", cmtImg3=" + cmtImg3
+				+ ", cmtRegdate=" + cmtRegdate + ", cmtDeldate=" + cmtDeldate + ", adminId=" + adminId + "]";
 	}
+	
+	
 	
 	
 	

@@ -146,6 +146,10 @@ input{margin:0;padding:0}
 .quickmenu ul li{margin-top:15px;text-align:center}
 .quickmenu .btntop{display:block;margin-top:12px;padding-top:7px;text-align:center;background:#b0b0b0}
 .quickmenu .sns { position:absolute; width:70px; text-align:center; bottom:-30px;}
+html, body {
+	height: 100%;
+	position: relative;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

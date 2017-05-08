@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <style type="text/css">
-	#footer {
-    position:fixed;
-    bottom:0;
-    width:100%;
-}
+	footer {
+	    margin-top: 100px;
+	}
+	#carousel-example-generic {
+		margin-bottom: -100px;
+	}
 </style>
 	<!-- footer -->
 	<footer>

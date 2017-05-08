@@ -11,19 +11,19 @@
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">회원아이디</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name=""	id="" disabled value="${sessionScope.userId}">
+						<input type="text" class="form-control" name="userId"	id="userId" disabled value="${sessionScope.userId}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="carCode" class="col-sm-2 control-label">사용후기</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name="" id="" placeholder="간단한 리뷰를 남겨주세요">
+						<input type="text" class="form-control" name="cmtContent" id="cmtContent" placeholder="간단한 리뷰를 남겨주세요">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="com1" class="col-sm-2 control-label">친절도</label>
 					<div class="col-xs-2">
-						<select class="form-control" name="carInc" id="">
+						<select class="form-control" name="cmtKindScore" id="cmtKindScore">
 							<option selected>::선택::</option>
 								<option>1 점</option>
 								<option>2 점</option>
@@ -34,7 +34,7 @@
 					</div>
 					<label for="com1" class="col-sm-1 control-label">청결도</label>
 					<div class="col-xs-2">
-						<select class="form-control" name="carInc" id="carInc">
+						<select class="form-control" name="cmtCleanScore" id="cmtCleanScore">
 							<option selected>::선택::</option>
 								<option>1 점</option>
 								<option>2 점</option>
@@ -45,7 +45,7 @@
 					</div>
 					<label for="com1" class="col-sm-1 control-label">편의성</label>
 					<div class="col-xs-2">
-						<select class="form-control" name="carInc" id="carInc">
+						<select class="form-control" name="cmtConvScore" id="cmtConvScore">
 							<option selected>::선택::</option>
 								<option>1 점</option>
 								<option>2 점</option>
@@ -58,19 +58,19 @@
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">사용후기사진 1</label>
 					<div class="col-sm-6">
-						<input type="file" name=""	id="">
+						<input type="file" name="cmtImg1" id="cmtImg1">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">사용후기사진 2</label>
 					<div class="col-sm-6">
-						<input type="file" name=""	id="">
+						<input type="file" name="cmtImg2" id="cmtImg2">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">사용후기사진 3</label>
 					<div class="col-sm-6">
-						<input type="file" name=""	id="">
+						<input type="file" name="cmtImg3" id="cmtImg3">
 					</div>
 				</div>
 			</fieldset>
