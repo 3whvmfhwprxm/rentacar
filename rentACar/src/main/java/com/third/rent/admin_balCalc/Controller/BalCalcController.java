@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.admin_Company.model.Admin_CompanyService;
 import com.third.rent.admin_balCalc.model.BalCalcService;
@@ -65,5 +69,17 @@ public class BalCalcController {
 	   int result=bCservice.insertMulti(blist);
 	   logger.info("등록처리 결과 result={}", result);
 
+	}
+	
+	@RequestMapping("/admin/balCalc/balCalcShow.do")
+	public String selectBalCalclist(@RequestParam String year, @RequestParam String month, Model model){
+		logger.info("정산 조회 호출 파라미터값 year={}, month={}", year, month);
+		
+		List<Map<String, Object>> map=bCservice.selectBalCalc(year+"-"+month);
+		logger.info("정산 조회 결과값 map={}", map);
+		
+		model.addAttribute("map", map);
+		
+		return "administrator/balance_calc/bal_calc";
 	}
 }

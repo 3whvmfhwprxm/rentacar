@@ -1,6 +1,7 @@
 package com.third.rent.admin_balCalc.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class BalCalcServiceImple implements BalCalcService{
 	}
 
 	@Override
-	public List<BalCalcVO> selectBalCalc(String targetDate) {
+	public List<Map<String, Object>> selectBalCalc(String targetDate) {
 		return bdao.selectBalCalc(targetDate);
 	}
 

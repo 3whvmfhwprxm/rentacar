@@ -28,8 +28,10 @@
 		where BAL_NUM=#{balNum}
 	</update>
 	
-	<select id="selectBalanceCal" parameterType="String">
-		select * from Balance_acc
+	<select id="selectBalanceCalcList" parameterType="String" resultType="map">		
+		select b.*, c.COM_NAME, c.COM_RATE
+		from Balance_acc b join Company c
+		on b.COM_ID = c.COM_ID
 		where BAL_TARGET_DATE=#{balTargetDate}
 	</select>
 	
@@ -39,12 +41,5 @@
 		and BAL_TARGET_DATE=#{balTargetDate}	
 	</select>
 </mapper>
-
-
-
-
-
-
-
 
 

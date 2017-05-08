@@ -230,11 +230,11 @@ and extract(month from p.PAY_REGDATE)='05'
 --완성
 insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
 values(Balance_acc_seq.nextval, 'rentGo', nvl((select count(RESERV_NUM) as reserv from company_paymoney
-where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'),0), 
-'2017-05', nvl((select sum(PAY_MONEY) as sales from company_paymoney
-where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'),0), 
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='06'),0), 
+'2017-06', nvl((select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='06'),0), 
 nvl((select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentGo' and extract(year from PAY_REGDATE)='2017'
-and extract(month from PAY_REGDATE)='05'),0)*(select COM_RATE/100 from company where COM_ID='rentGo'));
+and extract(month from PAY_REGDATE)='06'),0)*(select COM_RATE/100 from company where COM_ID='rentGo'));
 
 update Balance_acc
 set BAL_DECISION_DATE=null
@@ -243,7 +243,6 @@ where BAL_NUM=13;
 select * from Balance_acc
 where BAL_TARGET_DATE='2017-05';
 
-select * from Balance_acc;
 rollback;
 commit;
 select com_id from COMPANY;
@@ -253,3 +252,9 @@ where com_id='rentGo'
 and BAL_TARGET_DATE='2017-05';
 
 delete from Balance_acc;
+
+--업체 정산정보 join 업체이름,업체수수료율
+select b.*, c.COM_NAME, c.COM_RATE
+from Balance_acc b join Company c
+on b.COM_ID = c.COM_ID
+where bal_target_date='2017-04';

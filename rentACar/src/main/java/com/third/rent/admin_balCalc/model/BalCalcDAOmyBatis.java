@@ -1,6 +1,7 @@
 package com.third.rent.admin_balCalc.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -26,8 +27,8 @@ public class BalCalcDAOmyBatis extends SqlSessionDaoSupport implements BalCalcDA
 	}
 
 	@Override
-	public List<BalCalcVO> selectBalCalc(String targetDate) {
-		return getSqlSession().selectList(nameSpace+".selectBalanceCal", targetDate);
+	public List<Map<String, Object>> selectBalCalc(String targetDate) {
+		return getSqlSession().selectList(nameSpace+".selectBalanceCalcList", targetDate);
 	}
 
 	@Override
