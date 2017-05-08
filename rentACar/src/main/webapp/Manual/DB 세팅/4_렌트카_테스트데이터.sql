@@ -261,15 +261,15 @@ to_date('2017-04-02 13:30','yyyy/mm/dd hh24:mi'),'rentGo_0003', '자차보험', sysd
 insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
-values(lpad(Reservation_seq.nextval, 8, '0'), '011','1111','1111', to_date('2017-04-8 09:30','yyyy/mm/dd hh24:mi'), 
-to_date('00000002','yyyy/mm/dd hh24:mi'),'rentGo_0003', '자차보험', sysdate ,'kim1');
+values('00000002', '011','1111','1111', to_date('2017-04-8 09:30','yyyy/mm/dd hh24:mi'), 
+to_date('2017-04-09 13:30','yyyy/mm/dd hh24:mi'),'rentGo_0003', '자차보험', sysdate ,'kim1');
 
 
 insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
-values(lpad(Reservation_seq.nextval, 8, '0'), '010','2200','2200', to_date('2017-04-30 11:00','yyyy/mm/dd hh24:mi'), 
-to_date('00000003','yyyy/mm/dd hh24:mi'), 'rentGo_0002', '자차보험', sysdate ,'jin1');
+values('00000003', '010','2200','2200', to_date('2017-04-30 11:00','yyyy/mm/dd hh24:mi'), 
+to_date('2017-05-02 11:00','yyyy/mm/dd hh24:mi'), 'rentGo_0002', '자차보험', sysdate ,'jin1');
 
 select * from RESERVATION order by reserv_date desc;
 commit;
