@@ -287,18 +287,28 @@ form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; fo
 
 <script type="text/javascript">
 	 $(function(){
+		 
  		$("#idSearch").click(function(){
- 			$.ajax({
- 				url:'<c:url value="/login_company/companyseachid.do"/>',
- 				type:'post',
- 				dataType:'json',
- 				data: $("#frmid").serialize(),
- 				success:function(res){
- 					alert("찾으신 아이디는 [ "+res.comId+" ]입니다!");
- 				},
- 				error:function(xhr, status, error){
- 				}
- 			});
+ 			if($("#comName").val()==''){
+				alert('이름을 입력하세요');
+				$("#comName").focus();
+				return false;
+			}else if($("#comEmail").val()==''){
+				alert('이메일을 입력하세요');
+				$("#comEmail").focus();
+				return false;
+			}
+	 			$.ajax({
+	 				url:'<c:url value="/login_company/companyseachid.do"/>',
+	 				type:'post',
+	 				dataType:'json',
+	 				data: $("#frmid").serialize(),
+	 				success:function(res){			
+		 					alert("찾으신 아이디는 [ "+res.comId+" ]입니다!");
+	 				},	
+	 				error:function(xhr, status, error){
+	 				}
+	 			});
  			//alert("이름,이메일주소가 틀립니다.");
  		});
  		
@@ -322,7 +332,7 @@ form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; fo
   
 	});
 </script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/logincss.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/companylogincss.css"/>
 	<div class="container">
     <h1 class="welcome text-center">환영합니다</h1>
         <div class="card card-container">
@@ -375,7 +385,7 @@ form.login input[type="password"]::-webkit-input-placeholder {color: #33CCFF; fo
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">이메일 <span class="required">*</span>
 					            </label>
 					            <div class="col-md-5">
-					              <input id="comEmail" name="comEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text">
+					              <input id="comEmail" name="comEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="ex) hong@naver.com" required="required" type="text" value="${companyVo.getComEmail}">
 					            </div>
 					        </div><br>
 					        <!-- <div class="row">

@@ -9,6 +9,9 @@
 	}
 </script>
 <style>
+table tr th{background-color: #c9c9c9;text-align: center;}	
+table tr td{text-align: center;}
+pre{margin-top: 2%;}
 .col-lg-10{margin-top: 5%;}
 .col-md-8 {
  padding-top: 20px;
@@ -20,9 +23,7 @@
     margin-left: auto;
    
 }
-.row1{margin-left: 100px;}
-.row{margin-right: 25px; 
-	margin-left: -15px;
+.row{margin-left: -15px;
 }
 .pagination {
     display: inline-block;
@@ -154,8 +155,16 @@ th,td{text-align: center;}
 	
 
 <div class="container">
+	<pre>
+		<code>
+		업체에 공지사항를 보여주며, 페이지당 10개의 목록을 보여줍니다.
+		검색은 제목, 내용, 작성자 으로 검색이 가능하며 대소문자 구분없이 쓰셔도 검색이 됩니다.
+		글제목을 클릭할 경우 상세정보 페이지가 나오며 더 자세한 볼수 있습니다
+		**<strong>DB(데이터베이스)</strong> 관리는 관리자에게만 주어지는 기능이나 임의 삭제는 불가하며, 요청시 사 내 규정에 따라 처리됩니다.
+    	</code>
+	</pre>
 	<div class="row1">
-		<div class="col-lg-10">
+		<div class="col-lg-12">
 			<table class="table table-stripped">
 				<thead>
 					<tr>
@@ -191,7 +200,7 @@ th,td{text-align: center;}
 									</a>
 								</td>
 								<td>${vo.adminId }</td>
-								<td>${vo.cnoticeRegdate }</td>
+								<td><fmt:formatDate value="${vo.cnoticeRegdate }" pattern="yyyy-MM-dd hh:mm"/></td>
 								<td>${vo.cnoticeReadcount }</td>
 							</tr>
 							</c:if>

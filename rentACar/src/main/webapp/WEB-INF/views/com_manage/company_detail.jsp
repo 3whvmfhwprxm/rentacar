@@ -142,6 +142,14 @@ textarea.form-control {
 
 <section id="contact"><br>
 	<div class="container">
+	<pre>
+		<code>
+		업체의 현재 등록된 세부정보를 보여주며, 아이디,사업자 번호,대표자 를 제외한 나머지 부분들은 수정이 가능합니다
+		
+		**<strong>DB(데이터베이스)</strong> 관리는 관리자에게만 주어지는 기능이나 임의 삭제는 불가하며, 요청시 사 내 규정에 따라 처리됩니다.
+    	</code>
+		</pre>
+	
 		<form name="frmEdit" id="frmEdit" method="post" enctype="multipart/form-data"
 		action="<c:url value='/com_manage/company_detail.do' />">
 		<input type="hidden" name="comId" value="${companyVo.comId}">

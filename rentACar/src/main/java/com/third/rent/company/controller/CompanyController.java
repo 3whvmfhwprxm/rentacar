@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,7 +51,7 @@ public class CompanyController {
 	}
 	@RequestMapping(value="/com_login.do", method=RequestMethod.POST)
 	public String login_post(HttpServletRequest request,@RequestParam String comId,
-			@RequestParam String comPwd,
+			@RequestParam String comPwd,@ModelAttribute CompanyVO companyVo,
 			Model model, HttpServletResponse response,
 			 @RequestParam(required=false) String chkSaveId) {
 		// 1
@@ -65,13 +66,15 @@ public class CompanyController {
 		if (result == admin_LogService.LOGIN_OK) {
 			CompanyVO vo = comService.selectBycomId(comId);
 			msg = vo.getComName() + "님 로그인되었습니다.";
-			url = "../login_company/companyMain.do";
+			url = "../com_manage/company_ccarList.do";
 
 			HttpSession session = request.getSession();
 			session.setMaxInactiveInterval(60 * 60);
 			session.setAttribute("comId", comId);
 			session.setAttribute("comName", vo.getComName());
-
+			
+			model.addAttribute("companyVo", companyVo);
+			
 			Cookie ck = new Cookie("ck_comId", comId);
 			ck.setPath("/");
 			if (chkSaveId != null) {
@@ -96,7 +99,6 @@ public class CompanyController {
 	}
 	@RequestMapping(value="/companyseachid.do")
 	@ResponseBody
-	/*public String userseachid(@ModelAttribute UserVO vo, Model model){*/
 	public CompanyVO userseachid(@RequestParam String comName, @RequestParam String comEmail, Model model){
 		logger.info("아이디 찾기");
 		CompanyVO companyVo = new CompanyVO();
