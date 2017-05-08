@@ -27,7 +27,7 @@ commit;
 --특정 기업의 매출을 보여주는 view 사용할때 년,월,특정 업체
 create or replace view company_paymoney
 as
-select c.COM_ID, p.PAY_REGDATE, p.PAY_MONEY, r.RESERV_NUM  
+select c.COM_ID, c.COM_NAME, p.PAY_REGDATE, p.PAY_MONEY, r.RESERV_NUM  
 from COMPANYCAROPTION cc join company c
 on cc.COM_ID = c.COM_ID join RESERVATION r
 on r.CCAR_CAR_ID=cc.CCAR_CAR_ID join PAYINFO p

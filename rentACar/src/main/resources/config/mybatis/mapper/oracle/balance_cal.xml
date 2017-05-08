@@ -16,9 +16,15 @@
 		and extract(month from PAY_REGDATE)=#{month})*(select COM_RATE/100 from company where COM_ID=#{comId}))
 	</insert>
 	
-	<update id="updatebaldecision" parameterType="int">
+	<update id="updatebaldecisionYES" parameterType="String">
 		update Balance_acc
 		set BAL_DECISION_DATE=sysdate
+		where BAL_NUM=#{balNum}
+	</update>
+	
+	<update id="updatebaldecisionNO" parameterType="String">
+		update Balance_acc
+		set BAL_DECISION_DATE=null
 		where BAL_NUM=#{balNum}
 	</update>
 	

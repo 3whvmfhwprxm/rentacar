@@ -30,4 +30,8 @@ public interface Admin_CompanyDAO {
 	public List<CompanyVO> selectOutCompany(SearchVO searchVo);
 	
 	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo);
+	
+	public List<CompanyVO> selectAllCompanyID();
+	
+	
 }

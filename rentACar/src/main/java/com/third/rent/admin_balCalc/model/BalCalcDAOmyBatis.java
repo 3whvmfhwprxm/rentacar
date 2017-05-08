@@ -16,8 +16,13 @@ public class BalCalcDAOmyBatis extends SqlSessionDaoSupport implements BalCalcDA
 	}
 
 	@Override
-	public int updateBalCalc(int balNum) {
-		return getSqlSession().update(nameSpace+".updatebaldecision", balNum);
+	public int updateBalCalcYES(String balNum) {
+		return getSqlSession().update(nameSpace+".updatebaldecisionYES", balNum);
+	}
+
+	@Override
+	public int updateBalCalcNO(String balNum) {
+		return getSqlSession().update(nameSpace+".updatebaldecisionNO", balNum);
 	}
 
 	@Override

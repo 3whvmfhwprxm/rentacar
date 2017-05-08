@@ -237,7 +237,7 @@ where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month 
 and extract(month from PAY_REGDATE)='05')*(select COM_RATE/100 from company where COM_ID='rentGo'));
 
 update Balance_acc
-set BAL_DECISION_DATE=sysdate
+set BAL_DECISION_DATE=null
 where BAL_NUM=13;
 
 select * from Balance_acc
@@ -246,4 +246,5 @@ where BAL_TARGET_DATE='2017-05';
 select * from Balance_acc;
 rollback;
 
-
+select com_id 
+from COMPANY;

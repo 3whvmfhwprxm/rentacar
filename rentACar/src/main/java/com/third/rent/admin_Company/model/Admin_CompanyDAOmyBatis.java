@@ -67,4 +67,9 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo){
 		return getSqlSession().selectList(namespace+".selectAllCcar", searchVo);
 	}
+
+	public List<CompanyVO> selectAllCompanyID() {
+		return getSqlSession().selectList(namespace+".selectAllcompanyID");
+	}
+	
 }

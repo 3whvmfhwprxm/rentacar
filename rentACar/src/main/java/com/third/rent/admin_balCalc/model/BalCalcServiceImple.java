@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BalCalcServiceImple implements BalCalcService{
@@ -17,8 +18,13 @@ public class BalCalcServiceImple implements BalCalcService{
 	}
 
 	@Override
-	public int updateBalCalc(int balNum) {
-		return bdao.updateBalCalc(balNum);
+	public int updateBalCalcYES(String balNum) {
+		return bdao.updateBalCalcYES(balNum);
+	}
+
+	@Override
+	public int updateBalCalcNO(String balNum) {
+		return bdao.updateBalCalcNO(balNum);
 	}
 
 	@Override
@@ -27,9 +33,60 @@ public class BalCalcServiceImple implements BalCalcService{
 	}
 
 	@Override
-	public int updateMulti(List<BalCalcVO> ballist) {
+	@Transactional
+	public int insertMulti(List<BalCalcVO> ballist){
+		int cnt=0;
 		
-		return 0;
+		try{
+			for (BalCalcVO vo : ballist) {
+				if(vo.getComId()!=null){
+					cnt=bdao.insertBalCalc(vo);
+				}
+			}
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			cnt=-1;
+		}
+		
+		return cnt;
+	}
+	
+	@Override
+	@Transactional
+	public int updateMultiYES(List<BalCalcVO> ballist) {
+		int cnt=0;
+		
+		try{
+			for (BalCalcVO vo : ballist) {
+				if(vo.getComId()!=null){
+					cnt=bdao.updateBalCalcYES(vo.getBalNum());
+				}
+			}
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			cnt=-1;
+		}
+		
+		return cnt;
+	}
+	
+	@Override
+	@Transactional
+	public int updateMultiNO(List<BalCalcVO> ballist) {
+		int cnt=0;
+		
+		try{
+			for (BalCalcVO vo : ballist) {
+				if(vo.getComId()!=null){
+					cnt=bdao.updateBalCalcNO(vo.getBalNum());
+				}
+			}
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			cnt=-1;
+		}
+		
+		return cnt;
 	}
 
 }

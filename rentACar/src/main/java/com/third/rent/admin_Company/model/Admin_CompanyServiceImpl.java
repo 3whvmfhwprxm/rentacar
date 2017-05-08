@@ -83,4 +83,9 @@ public class Admin_CompanyServiceImpl implements Admin_CompanyService {
 	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo) {
 		return adminCompanyDao.selectAllComCar(searchVo);
 	}
+
+	public List<CompanyVO> selectAllCompanyID() {
+		return adminCompanyDao.selectAllCompanyID();
+	}
+	
 }

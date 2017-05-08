@@ -148,6 +148,10 @@
 		where RNUM>#{firstRecordIndex} 
 		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
 		]]>
+	</select>
+	
+	<select id="selectAllcompanyID" resultType="CompanyVO">
+		select com_id from COMPANY
 	</select> 
 </mapper>
 
