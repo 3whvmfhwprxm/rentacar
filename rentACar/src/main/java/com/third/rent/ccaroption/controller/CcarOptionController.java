@@ -320,8 +320,12 @@ public class CcarOptionController {
 	}
 	
 	@RequestMapping("/company_reservList.do")
-	public String reservList(@ModelAttribute SearchVO searchVo, Model model){
-		logger.info("업체관리, 예약현황 보여주기");
+	public String reservList(@ModelAttribute SearchVO searchVo,
+			HttpSession session,
+			Model model){
+		String companyId = (String)session.getAttribute("comId");
+		logger.info("업체관리, 예약현황 보여주기, 파라미터 comId={}",companyId);
+		searchVo.setCompanyId(companyId);
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(Utility.COM_BLOCKSIZE);

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.third.rent.Comments.model.CommentsService;
 import com.third.rent.Comments.model.CommentsVO;
 import com.third.rent.admin_Board.model.Admin_BoardService;
+import com.third.rent.common.DateSearchVO2;
 import com.third.rent.common.FileUploadWebUtil;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
@@ -210,8 +212,21 @@ public class CompanyEpilogueController {
 	}
 
 	@RequestMapping("/company_revenue.do")
-	public String consultation_inquiry(Model model){
-		logger.info("매출 통계 화면 구현");
+	public String consultation_inquiry(@ModelAttribute DateSearchVO2 dvo,
+			HttpSession session, Model model){
+		String companyId = (String)session.getAttribute("comId");
+		logger.info("매출 통계 화면 구현, 파라미터 comId={}", companyId);
+		dvo.setCompanyId(companyId);
+		logger.info("####################################파라미터 year={}", dvo.getYear());
+		
+		List<Map<String, Object>> slist=null;
+		
+		if(dvo.getYear()!=null && !dvo.getYear().isEmpty()){
+			slist=comService.ComselectSalesByMonth(dvo);
+			logger.info("월별 매출 조회 결과는 slist.size()={}", slist.size());
+		}
+		
+		model.addAttribute("slist", slist);
 		
 		return "com_manage/company_revenue";
 		

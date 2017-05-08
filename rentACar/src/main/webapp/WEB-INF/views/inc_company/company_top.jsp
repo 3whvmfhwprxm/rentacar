@@ -151,6 +151,9 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	                    <ul class="dropdown-menu mega-dropdown-menu">
 	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>일별 매출 현황</a></li>
 	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>월별 매출 현황</a></li>
+	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>기간별 매출 현황</a></li>
+	                        <li class="divider"></li>
+	                        <li><a href='<c:url value="/com_manage/company_revenue.do"/>'>월별 수수료 정산 현황</a></li>
 	                    </ul>
 	                </li>
 	               

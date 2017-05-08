@@ -6,6 +6,8 @@ import java.util.Map;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.third.rent.common.DateSearchVO2;
+
 @Repository
 public class CompanyDAOMybatis extends SqlSessionDaoSupport 
  implements CompanyDAO{
@@ -47,6 +49,21 @@ public class CompanyDAOMybatis extends SqlSessionDaoSupport
 	public int updateReadCount(int no) {
 		int cnt = getSqlSession().update(namespace+".updateReadCount", no);
 		return cnt;
+	}
+
+	@Override
+	public List<Map<String, Object>> ComselectSalesByDate(DateSearchVO2 dateSearchVO) {
+		return getSqlSession().selectList(namespace+".", dateSearchVO);
+	}
+
+	@Override
+	public List<Map<String, Object>> ComselectSalesByMonth(DateSearchVO2 dateSearchVO) {
+		return getSqlSession().selectList(namespace+".ComSelectSalesByMonth", dateSearchVO);
+	}
+
+	@Override
+	public List<Map<String, Object>> ComselectSalesByTerm(DateSearchVO2 dateSearchVO) {
+		return getSqlSession().selectList(namespace+".", dateSearchVO);
 	}
 
 	

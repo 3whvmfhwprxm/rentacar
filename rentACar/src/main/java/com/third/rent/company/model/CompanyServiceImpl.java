@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.third.rent.common.DateSearchVO2;
+
 @Service
 public class CompanyServiceImpl implements CompanyService{
 
@@ -65,6 +67,11 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public int updateReadCount(int no) {
 		return companyDao.updateReadCount(no);
+	}
+
+	@Override
+	public List<Map<String, Object>> ComselectSalesByMonth(DateSearchVO2 dateSearchVO) {
+		return companyDao.ComselectSalesByMonth(dateSearchVO);
 	}
 
 

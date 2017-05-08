@@ -139,7 +139,24 @@
 		    from
 		    (
 		        select * from com_reservView
-		        where 
+		        where com_id= #{companyId}
+		        <if test="sortingKeyword != null">
+					<if test="sortingKeyword == 'stday'">
+						and reserv_start_date >= to_char(sysdate,'yyyy/MM/dd')
+					</if>
+					<if test="sortingKeyword == 'paidCar'">
+						 and pay_condition = 'paid'
+					</if>
+					<if test="sortingKeyword == 'reday'">
+						 order by remainingday desc
+					</if>
+					<if test="sortingKeyword == 'rvAll'">
+					
+					</if>
+				</if>
+				<if test="sortingKeyword == null">
+					order by reserv_date desc
+				</if>
 		    )LIST
 		)
 		<![CDATA[

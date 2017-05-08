@@ -4,7 +4,7 @@ create or replace view com_reservView
 as
 select c.car_name, cco.*, rv.RESERV_START_DATE, rv.RESERV_END_DATE,rv.USER_ID,
 rv.RESERV_DATE, trunc(to_date(rv.reserv_start_date)-sysdate,0) as remainingday,
-rvu.*, p.pay_money, p.PAY_REGDATE, p.PAY_CONDITION
+rvu.*, p.pay_money, p.PAY_REGDATE, p.PAY_CONDITION, p.PAY_CANCELDATE
 from companycaroption cco, car c, reservation rv, reserv_user rvu, payinfo p
 where cco.CAR_CODE = c.CAR_CODE
 and cco.CCAR_CAR_ID = rv.CCAR_CAR_ID

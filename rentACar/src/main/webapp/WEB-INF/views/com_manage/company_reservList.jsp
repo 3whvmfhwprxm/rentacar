@@ -35,7 +35,7 @@
 	
 	function fncSort(val){
 		jQuery("#sortingKeyword").val(val);
-		jQuery("#frmPage").attr("action" , "<c:url value='/com_manage/company_ccarList.do'/>");
+		jQuery("#frmPage").attr("action" , "<c:url value='/com_manage/company_reservList.do'/>");
 		jQuery("#frmPage").submit();
 	}
 	
@@ -87,9 +87,9 @@
                         <i class="fa fa-navicon"></i> 정렬기준 <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu mega-dropdown-menu">
-                    	<li><a href="javascript:fncSort('stday')">대여일이 있는 차량만 보기</a></li>
+                    	<li><a href="javascript:fncSort('stday')">오늘이후 예약차량만 보기</a></li>
                     	<li><a href="javascript:fncSort('paidCar')">결제완료 차량만 보기</a></li>
-                        <li><a href="javascript:fncSort('sday')">남은일수순</a></li>
+                        <li><a href="javascript:fncSort('reday')">남은일수순</a></li>
                         <li><a href="javascript:fncSort('rvAll')">차량예약현황 전체보기</a></li>
                     </ul>
                 </li>
@@ -101,14 +101,14 @@
     		<col width="10%">
     		<col width="10%">
     		<col width="10%">
-    		<col width="15%">
+    		<col width="13%">
     		<col width="15%">
     		<col width="10%">
     		<col width="10%">
     		<col width="10%">
     		<col width="8%">
     		<col width="5%">
-    		<col width="5%">
+    		<col width="*%">
     	</colgroup>
        		<tr>
   				<th>차량번호</th>
@@ -125,6 +125,12 @@
         </thead>
         <tbody>
         <!-- 반복시작 -->
+        <c:if test="${empty crList }">
+        	<tr>
+        		<td colspan="10">데이터가 없습니다.</td>
+        	</tr>
+        </c:if>
+        
 		<c:forEach var="map" items="${crList }" varStatus="i">
 		
 		<tr>

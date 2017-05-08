@@ -3,6 +3,8 @@
 <%@ include file="../inc_company/company_top.jsp"%>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
+		jQuery("#ccarUseYn").is("checked").val('Y');
+		
 		jQuery(".Yn").click(function(){
 			if(jQuery('#ccarUseYn').is(":checked")){
 				jQuery(this).val('Y');
@@ -204,7 +206,7 @@
 				</div>
 				<div class="form-group">
 					<label for="ccarUseYn" class="col-sm-2 control-label">차량사용가능여부</label>
-					<input type="checkbox" class = "Yn" name="ccarUseYn" id="ccarUseYn" value="N">사용가능할경우 체크
+					<input type="checkbox" class = "Yn" name="ccarUseYn" id="ccarUseYn" value="Y" checked>사용불가일 경우 체크 해제
 				</div>
 				<div class="form-group">
 					<label for="option" class="col-sm-2 control-label">옵션등록</label>

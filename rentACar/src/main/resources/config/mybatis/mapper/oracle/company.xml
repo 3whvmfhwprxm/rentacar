@@ -86,7 +86,35 @@
 		select * from companynotice where cnotice_no=#{cnoticeNo}
 	</select>
 	
+	<!-- <select id="ComSelectSalesByDate" parameterType="DateSearchVO2" resultType="map">
+		select to_char(PAY_REGDATE, 'yyyy-MM-dd') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+		from PAYINFO
+		where extract(year from PAY_REGDATE)=#{year}
+		and extract(month from PAY_REGDATE)=#{month}
+		and PAY_CANCELDATE is null
+		group by to_char(PAY_REGDATE, 'yyyy-MM-dd')
+		order by PAYDATE
+	</select> -->
 	
+	<select id="ComSelectSalesByMonth" parameterType="DateSearchVO2" resultType="map">
+		select to_char(PAY_REGDATE, 'MM') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+		from com_reservView
+		where extract(year from PAY_REGDATE)=#{year}
+		and PAY_CANCELDATE is null
+		and com_id= 'rentGo'
+		group by to_char(PAY_REGDATE, 'MM')
+		order by PAYDATE
+	</select>
+	
+	<!-- <select id="ComSelectSalesByTerm" parameterType="DateSearchVO2" resultType="map">
+		select to_char(PAY_REGDATE, 'yyyy-MM-dd') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+		from PAYINFO
+		where PAY_REGDATE>=#{startDay}
+		and PAY_CANCELDATE is null
+		<![CDATA[and PAY_REGDATE< to_date(#{endDay})+1]]>
+		group by to_char(PAY_REGDATE, 'yyyy-MM-dd')
+		order by PAYDATE
+	</select> -->
 	
 	
 </mapper>
