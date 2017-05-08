@@ -87,7 +87,7 @@
                         <i class="fa fa-navicon"></i> 정렬기준 <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu mega-dropdown-menu">
-                    	<li><a href="javascript:fncSort('stday')">오늘이후 예약차량만 보기</a></li>
+                    	<li><a href="javascript:fncSort('stday')">오늘이후 대여될 차량만 보기</a></li>
                     	<li><a href="javascript:fncSort('paidCar')">결제완료 차량만 보기</a></li>
                         <li><a href="javascript:fncSort('reday')">남은일수순</a></li>
                         <li><a href="javascript:fncSort('rvAll')">차량예약현황 전체보기</a></li>

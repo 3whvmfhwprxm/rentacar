@@ -1,12 +1,16 @@
 package com.third.rent.company.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.map.util.JSONPObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.Comments.model.CommentsService;
 import com.third.rent.Comments.model.CommentsVO;
@@ -207,38 +212,68 @@ public class CompanyEpilogueController {
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
-		
 		return "common/message";
 	}
 
-	@RequestMapping("/company_revenue.do")
-	public String consultation_inquiry(@ModelAttribute DateSearchVO2 dvo,
-			HttpSession session, Model model){
+	@RequestMapping("/company_revenueMonth.do") 
+	public String revenueMonth(@ModelAttribute DateSearchVO2 dvo, HttpSession session, Model model){
 		String companyId = (String)session.getAttribute("comId");
 		logger.info("매출 통계 화면 구현, 파라미터 comId={}", companyId);
 		dvo.setCompanyId(companyId);
 		logger.info("####################################파라미터 year={}", dvo.getYear());
 		
 		List<Map<String, Object>> slist=null;
+		List<String> listPay = new ArrayList<String>();
+		List<String> listMonth = new ArrayList<String>();
+		if(dvo.getYear()!=null && !dvo.getYear().isEmpty()){
+			slist=comService.ComselectSalesByMonth(dvo);
+			logger.info("월별 매출 조회 결과는 slist.size()={}", slist.size());
+			
+			for(int i = 0 ; i < slist.size() ; i++){
+				Map<String, Object> bean = slist.get(i);
+				listPay.add(bean.get("PAYDATE")+"");
+				listMonth.add(bean.get("TOTALPAY")+"");
+			}
+			logger.info("월별 매출현황 listPay={}, listMonth={}", listPay, listMonth);
+			
+			model.addAttribute("listPay", listPay);
+			model.addAttribute("listMonth", listMonth);
+		}
+		model.addAttribute("slist", slist);
+		
+		return "com_manage/company_revenueMonth";
+	}
+	
+	@RequestMapping("/company_revenueDay.do") 
+	public String revenueDay(@ModelAttribute DateSearchVO2 dvo, HttpSession session, Model model){
+		String companyId = (String)session.getAttribute("comId");
+		logger.info("매출 통계 화면 구현, 파라미터 comId={}", companyId);
+		dvo.setCompanyId(companyId);
+		logger.info("파라미터 year={}, month={}", dvo.getYear(), dvo.getMonth());
+		
+		List<Map<String, Object>> slist=null;
+		List<String> listPay = new ArrayList<String>();
+		List<String> listMonth = new ArrayList<String>();
+		List<String> listDay = new ArrayList<String>();
 		
 		if(dvo.getYear()!=null && !dvo.getYear().isEmpty()){
 			slist=comService.ComselectSalesByMonth(dvo);
 			logger.info("월별 매출 조회 결과는 slist.size()={}", slist.size());
+			
+			for(int i = 0 ; i < slist.size() ; i++){
+				Map<String, Object> bean = slist.get(i);
+				listPay.add(bean.get("PAYDATE")+"");
+				listMonth.add(bean.get("TOTALPAY")+"");
+			}
+			
+			logger.info("월별 매출현황 listPay={}, listMonth={}", listPay, listMonth);
+			
+			model.addAttribute("listPay", listPay);
+			model.addAttribute("listMonth", listMonth);
 		}
-		
 		model.addAttribute("slist", slist);
 		
-		return "com_manage/company_revenue";
-		
+		return "com_manage/company_revenueDay";
 	}
-	
-
-	
-	
-	
-
-	
-
-	
-	
 }
+ 

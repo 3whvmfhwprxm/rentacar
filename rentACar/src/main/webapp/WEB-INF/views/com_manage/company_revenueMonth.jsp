@@ -16,24 +16,22 @@
 }
 </style>
 <script type="text/javascript">
-$(function () {
-    // Set up the chart
+$(function(){
+	
     var chart = new Highcharts.Chart({
         chart: {
             renderTo: 'container',
-            type: 'column',
-            options3d: {
-                enabled: true,
-                alpha: 15,
-                beta: 15,
-                depth: 50,
-                viewDistance: 25
-            }
+            type: 'column'
         },
         title: {
             text: '우리 업체 매출 현황'
         },
-        subtitle: {
+        
+        xAxis: {
+            categories: ${listPay}
+        },
+        
+        subtitle: { 
             text: '월별 매출 현황'
         },
         plotOptions: {
@@ -41,28 +39,26 @@ $(function () {
                 depth: 10
             }
         },
-        series: [{
-            data: [
-            	0, 100, 106.4, 500, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4, 10, 10, 10, 10 ,10 ,20, 50
-            	]
-        }]
+        series:[{
+	    	data : ${listMonth} 	
+	    }]
     });
-
-    function showValues() {
+	    
+/*     function showValues() {
         $('#alpha-value').html(chart.options.chart.options3d.alpha);
         $('#beta-value').html(chart.options.chart.options3d.beta);
         $('#depth-value').html(chart.options.chart.options3d.depth);
     }
-
+	
     // Activate the sliders
     $('#sliders input').on('input change', function () {
         chart.options.chart.options3d[this.id] = this.value;
         showValues();
         chart.redraw(false);
     });
-
-    showValues();
-});
+	
+    showValues(); */
+}); 
 		</script>
 <script>
 	$().ready(function(){
@@ -97,42 +93,25 @@ $(function () {
 
 </head>
 <body>
+	<legend>월별 매출 현황</legend>
+	<form name="frmSales" id="frmSales" method="post"
+		action='<c:url value="/com_manage/company_revenueMonth.do" />'>
+		<select name="year" id="year">
+			<option value="">::선택::</option>
+		</select> 년 <input type="submit" value="검색">
+	</form>
+	
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
 	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 	<div id="container"></div>
-	<div id="sliders">
-		<table>
-			<tr>
-				<td>Alpha Angle</td>
-				<td><input id="alpha" type="range" min="0" max="45" value="15" />
-					<span id="alpha-value" class="value"></span></td>
-			</tr>
-			<tr>
-				<td>Beta Angle</td>
-				<td><input id="beta" type="range" min="-45" max="45" value="15" />
-					<span id="beta-value" class="value"></span></td>
-			</tr>
-			<tr>
-				<td>Depth</td>
-				<td><input id="depth" type="range" min="20" max="100"
-					value="50" /> <span id="depth-value" class="value"></span></td>
-			</tr>
-		</table>
-	</div>
 	<div class="divRe">
-		<a href='<c:url value="/admin/sales/salesDay.do" />'>일별 매출</a> | <a
-			href='<c:url value="/admin/sales/salesMonth.do" />'>월별 매출</a> | <a
-			href='<c:url value="/admin/sales/salesTerm.do" />'>기간별 매출</a> |
+		<a href='<c:url value="/com_manage/company_revenueDay.do" />'>일별 매출</a> | <a
+			href='<c:url value="/com_manage/company_revenueMonth.do" />'>월별 매출</a> | <a
+			href='<c:url value="/com_manage/company_revenueTerm.do" />'>기간별 매출</a> |
 	</div>
-	<h3>월별 매출</h3>
-	<form name="frmSales" id="frmSales" method="post"
-		action='<c:url value="/com_manage/company_revenue.do" />'>
-		<select name="year" id="year">
-			<option value="">선택하세요</option>
-		</select> 년 <input type="submit" value="검색">
-	</form>
+	
 
 	<div class="divSales">
 		<table class="table table-bordered" summary="월별 매출액에 관한 표">
@@ -173,6 +152,4 @@ $(function () {
 			</tbody>
 		</table>
 	</div>
-
-
 	<%@ include file="../inc_company/company_bottom.jsp"%>

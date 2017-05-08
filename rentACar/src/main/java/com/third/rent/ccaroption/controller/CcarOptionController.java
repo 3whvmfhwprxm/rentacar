@@ -253,8 +253,10 @@ public class CcarOptionController {
 	}
 	
 	@RequestMapping(value="/company_ccarDelete.do", method=RequestMethod.POST)
-	public String ccardelete_post(@RequestParam String comId, @RequestParam String ccarCarId
+	public String ccardelete_post(HttpSession session, @RequestParam String ccarCarId1
 			,Model model){
+		String ccarCarId= ccarCarId1;
+		String comId = (String)session.getAttribute("comId");
 		logger.info("차량 삭제처리, 파라미터=ccarCarId{},comId={}",ccarCarId,comId);
 		CcarOptionVO vo = new CcarOptionVO();
 		vo.setComId(comId);

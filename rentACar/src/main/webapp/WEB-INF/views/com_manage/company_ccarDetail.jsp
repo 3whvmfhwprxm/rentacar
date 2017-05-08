@@ -3,17 +3,12 @@
 <%@ include file="../inc_company/company_top.jsp" %>
 <!-- 차량 상세보기  -->
 <script type="text/javascript">
-	/* jQuery(document).ready(function(){
-		jQuery("#btDelete").click(function(){
-			location.href="<c:url value='/com_manage/company_ccarDelete.do'/>"
-		});
-	}); */
 	function fncDelete(){
-		if(jQuery("#ccarCarId").val() == "" || jQuery("#ccarCarId").val() == null){
+		if(jQuery("#ccarCarId1").val() == "" || jQuery("#ccarCarId1").val() == null){
 			alert("등록 해지할 차량번호를 입력해주세요");
 			return false;
 		}
-		if(jQuery("#readCarId").val() != jQuery("#ccarCarId").val()){
+		if(jQuery("#readCarId").val() != jQuery("#ccarCarId1").val()){
 			alert("차량번호가 일치하지 않습니다.");
 			return false;
 		} 
@@ -143,8 +138,7 @@
 									차량번호1<input type="text" name="readCarId" id="readCarId" disabled="true" value=${map['CCAR_CAR_ID']}>
 									모델명<input type="text" name="readCarName" id="readCarName" disabled="true" value="${map['CAR_NAME'] }"><br>
 									<br><span style="color:red">등록 해지 하시려는 차량의 차대 번호를 입력하세요.</span><br>
-									차량번호<input type="text" name="ccarCarId" id="ccarCarId" placeholder="서울가1234">
-											<input type="hidden" name="comId" id="comId" value="${map['COM_ID'] }">
+									차량번호<input type="text" name="ccarCarId1" id="ccarCarId1" placeholder="서울가1234">
 								</div>
 									<button type="button" id="btDelete" class="btn btn-danger"
 										data-dismiss="modal" onclick="fncDelete()">삭제</button>
