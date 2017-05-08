@@ -23,6 +23,7 @@ DROP TABLE RENT_ADMIN CASCADE CONSTRAINTS;
 DROP TABLE AD_GRADE CASCADE CONSTRAINTS;
 DROP TABLE MEMBER_GRADE CASCADE CONSTRAINTS;
 DROP TABLE RESERV_USER CASCADE CONSTRAINTS;
+DROP TABLE BALANCE_ACC CASCADE CONSTRAINTS;
 */
 /* Car 차모델 */
 CREATE TABLE Car (
@@ -261,6 +262,17 @@ ALTER TABLE PayInfo
 		PRIMARY KEY (
 			pay_no
 		);
+
+/* Balance_acc 정산 */
+CREATE TABLE Balance_acc (
+	bal_num VARCHAR2(20) primary key NOT NULL, /* 정산번호 */
+	com_id VARCHAR2(30) references COMPANY(com_id) NOT NULL, /* 업체아이디 */
+	bal_reserv_cnt NUMBER NOT NULL, /* 예약건수 */
+	bal_target_date VARCHAR2(30) NOT NULL, /* 정산대상년월 */
+	bal_sales NUMBER NOT NULL, /* 매출금액 */
+	bal_commission NUMBER NOT NULL, /* 정산금액(수수료) */
+	bal_decision_date DATE /* 정산일 */
+);
 
 
 /* Event 이벤트 */

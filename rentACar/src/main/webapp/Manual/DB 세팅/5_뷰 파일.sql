@@ -23,3 +23,30 @@ on r.RESERV_NUM=p.RESERV_NUM(+);
 
 select * from reservPayInfoView;
 commit;
+
+--특정 기업의 매출을 보여주는 view 사용할때 년,월,특정 업체
+create or replace view company_paymoney
+as
+select c.COM_ID, p.PAY_REGDATE, p.PAY_MONEY, r.RESERV_NUM  
+from COMPANYCAROPTION cc join company c
+on cc.COM_ID = c.COM_ID join RESERVATION r
+on r.CCAR_CAR_ID=cc.CCAR_CAR_ID join PAYINFO p
+on r.RESERV_NUM=p.RESERV_NUM
+where p.PAY_CANCELDATE is null;
+/*
+and c.COM_ID='rentGo'
+and extract(year from p.PAY_REGDATE)='2017'
+and extract(month from p.PAY_REGDATE)='05'
+*/ 
+select * from company_paymoney;
+
+--사용 예시
+select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentGo'   --특정기업
+and extract(year from PAY_REGDATE)='2017'   --특정년도
+and extract(month from PAY_REGDATE)='05';   --특정월
+
+select count(RESERV_NUM) as reserv from company_paymoney
+where COM_ID='rentGo'   --특정기업
+and extract(year from PAY_REGDATE)='2017'   --특정년도
+and extract(month from PAY_REGDATE)='05';   --특정월

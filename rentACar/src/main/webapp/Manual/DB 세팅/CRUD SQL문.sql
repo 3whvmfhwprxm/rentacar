@@ -197,3 +197,53 @@ group by to_char(PAY_REGDATE, 'yyyy-MM-dd')
 order by PAYDATE;
 
 
+--정산 입력 관련
+select * from Balance_acc;
+select * from company;
+select * from PAYINFO;
+select * from RESERVATION;
+select * from COMPANYCAROPTION;
+
+select COM_RATE/100 from company where COM_ID='rentZoa';
+
+--rentZoa의 pay_money 가져오기(pay_canceldate가 null인것만)
+select p.PAY_MONEY, p.PAY_REGDATE, c.COM_ID
+from COMPANYCAROPTION cc join company c
+on cc.COM_ID = c.COM_ID join RESERVATION r
+on r.CCAR_CAR_ID=cc.CCAR_CAR_ID join PAYINFO p
+on r.RESERV_NUM=p.RESERV_NUM
+where p.PAY_CANCELDATE is null
+and c.COM_ID='rentGo'
+and extract(year from p.PAY_REGDATE)='2017'
+and extract(month from p.PAY_REGDATE)='05';
+
+select sum(p.PAY_MONEY)
+from COMPANYCAROPTION cc join company c
+on cc.COM_ID = c.COM_ID join RESERVATION r
+on r.CCAR_CAR_ID=cc.CCAR_CAR_ID join PAYINFO p
+on r.RESERV_NUM=p.RESERV_NUM
+where p.PAY_CANCELDATE is null
+and c.COM_ID='rentGo'
+and extract(year from p.PAY_REGDATE)='2017'
+and extract(month from p.PAY_REGDATE)='05'
+
+--완성
+insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
+values(Balance_acc_seq.nextval, 'rentGo', (select count(RESERV_NUM) as reserv from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'), 
+'2017-05', (select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'), 
+(select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentGo' and extract(year from PAY_REGDATE)='2017'
+and extract(month from PAY_REGDATE)='05')*(select COM_RATE/100 from company where COM_ID='rentGo'));
+
+update Balance_acc
+set BAL_DECISION_DATE=sysdate
+where BAL_NUM=13;
+
+select * from Balance_acc
+where BAL_TARGET_DATE='2017-05';
+
+select * from Balance_acc;
+rollback;
+
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.balance_cal">
+	<insert id="insertBalCalc" parameterType="map">
+		<selectKey keyProperty="balNum" order="BEFORE" resultType="int">
+			select Balance_acc_seq.nextval from dual
+		</selectKey>	
+		insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
+		values(#{balNum}, #{comId}, (select count(RESERV_NUM) as reserv from company_paymoney
+		where COM_ID=#{comId} and extract(year from PAY_REGDATE)=#{year} and extract(month from PAY_REGDATE)=#{month}), #{balTargetDate}, 
+		(select sum(PAY_MONEY) as sales from company_paymoney
+		where COM_ID=#{comId} and extract(year from PAY_REGDATE)=#{year} and extract(month from PAY_REGDATE)=#{month}), 
+		(select sum(PAY_MONEY) as sales from company_paymoney where COM_ID=#{comId} and extract(year from PAY_REGDATE)=#{year}
+		and extract(month from PAY_REGDATE)=#{month})*(select COM_RATE/100 from company where COM_ID=#{comId}))
+	</insert>
+	
+	<update id="updatebaldecision" parameterType="int">
+		update Balance_acc
+		set BAL_DECISION_DATE=sysdate
+		where BAL_NUM=#{balNum}
+	</update>
+	
+	<select id="selectBalanceCal" parameterType="String">
+		select * from Balance_acc
+		where BAL_TARGET_DATE=#{balTargetDate}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+

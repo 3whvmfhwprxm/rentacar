@@ -6,7 +6,6 @@
 	#img{
 		width: 100%;
 	}
-	
 </style> 
 <div id="container">
 	<div class="content-wrap">

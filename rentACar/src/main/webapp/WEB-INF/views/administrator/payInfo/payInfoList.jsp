@@ -39,13 +39,7 @@
 </script>
 <style>
 	.bodyClass{padding-top: 30px;}
-	th, td{text-align: center;}	
-	.col-md-4 {
-		float: left;
-		width: 100%;
-		margin: 0 auto;
-		text-align: center;
-	}
+	th, td{text-align: center;}
 </style>
 	<div class="w3-container bodyClass">
 	<!-- 페이지 처리용 폼 -->
