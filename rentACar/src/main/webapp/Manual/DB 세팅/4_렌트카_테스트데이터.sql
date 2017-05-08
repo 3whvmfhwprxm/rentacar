@@ -363,27 +363,27 @@ commit;
 
 --사용후기
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
-cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '이번에 써봤는데 정말 좋았어요!', 'kim1', 'rentZoa', 4, 4, 5, 'bad1.jpg', '후기2.jpg');
+cmt_img1, cmt_img2, cmt_img3)
+values(cmt_seq.nextval, '이번에 써봤는데 정말 좋았어요!', 'kim1', 'rentZoa', 4, 4, 5, 'bad1.jpg', '후기2.jpg','');
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
-cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '다음에는 사용하고 싶지 않네요...너무 더러웠어요', 'jin1', 'rentGo', 3, 1, 3, 'hahaha1.jpg', '더러워2.jpg');
+cmt_img1, cmt_img2, cmt_img3)
+values(cmt_seq.nextval, '다음에는 사용하고 싶지 않네요...너무 더러웠어요', 'jin1', 'rentGo', 3, 1, 3, 'hahaha1.jpg', '더러워2.jpg','');
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
-cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '그냥 보통 쓸만한 정도?', 'lee1', 'rentGo', 3, 4, 3, 'good2.jpg', '');
+cmt_img1, cmt_img2, cmt_img3)
+values(cmt_seq.nextval, '그냥 보통 쓸만한 정도?', 'lee1', 'rentGo', 3, 4, 3, 'good2.jpg', '','');
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
-cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '깔끔하고 또 다시 빌릴거 같네요 ㅎㅎㅎ', 'hong', 'rentGo', 1, 5, 2, 'good1.jpg', '');
+cmt_img1, cmt_img2, cmt_img3)
+values(cmt_seq.nextval, '깔끔하고 또 다시 빌릴거 같네요 ㅎㅎㅎ', 'hong', 'rentGo', 1, 5, 2, 'good1.jpg', '','');
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
-cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '차 상태도 깔끔하고 저렴하게 타기 좋은거같습니다', 'park', 'rentGo', 1, 5, 2, 'good3.jpg', '');
+cmt_img1, cmt_img2, cmt_img3)
+values(cmt_seq.nextval, '차 상태도 깔끔하고 저렴하게 타기 좋은거같습니다', 'park', 'rentGo', 1, 5, 2, 'good3.jpg', '','');
 
 insert into COMMENTS(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
-cmt_img1, cmt_img2)
-values(cmt_seq.nextval, '연비도 괜찬고 딱 가격값정도만 합니다', 'choi', 'rentGo', 1, 5, 2, 'good4.jpg', '');
+cmt_img1, cmt_img2, cmt_img3)
+values(cmt_seq.nextval, '연비도 괜찬고 딱 가격값정도만 합니다', 'choi', 'rentGo', 1, 5, 2, 'good4.jpg', '','');
 
 select*from comments;
-
+commit;
 
 --회원등급
 select * from user_sequences;

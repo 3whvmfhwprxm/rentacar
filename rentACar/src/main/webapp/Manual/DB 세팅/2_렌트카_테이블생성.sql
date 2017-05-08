@@ -228,6 +228,7 @@ CREATE TABLE comments (
 	cmt_conv_score NUMBER NOT NULL, /* 편의성 */
 	cmt_img1 VARCHAR2(200), /* 후기이미지1 */
 	cmt_img2 VARCHAR2(200), /* 후기이미지2 */
+	cmt_img3 VARCHAR2(200), /* 후기이미지3 */
 	cmt_regdate DATE default sysdate, /* 기록일 */
 	cmt_deldate DATE, /* 삭제일 */
 	admin_id VARCHAR2(30) /* 관리자아이디 */

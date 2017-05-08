@@ -56,6 +56,7 @@
                         <th><input style="text-align: center;" type="text" class="form-control" placeholder="차량대여업체명" disabled></th>
                         <th><input style="text-align: center;" type="text" class="form-control" placeholder="업체전화번호" disabled></th>
                         <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약취소" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="이용상태" disabled></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,7 +64,7 @@
                 	<tr>
 				  		<td colspan="5" style="text-align: right;"><b>예약 데이터가 존재하지 않습니다.</b></td>
 				  	</tr>
-				</c:if> 
+				</c:if>
                 	<c:forEach var="map" items="${alist }">
                     <tr>
                         <td style="text-align: center;"><a data-toggle="modal" href="#myModal1">${map['RESERV_NUM']}</a></td>
@@ -89,6 +90,11 @@
                         		${map['RESERV_CANCEL'] }에 예약취소
                         	</c:if>
                         </td>
+                        
+                        <td style="text-align: center;">
+                        	<label>사용 종료</label><br>
+                        	<a href="<c:url value="/user/reviewWrite.do"/>"><input type="submit" value="이용후기 작성"></a>
+                        </td>
                     </tr>
                 	</c:forEach>
                 </tbody>
@@ -98,7 +104,7 @@
     <div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
-			<nav>
+			<nav style="text-align: center;">
 				<ul class="pagination">
 					<c:if test="${pagingInfo.firstPage>1 }">
 						<li><a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
