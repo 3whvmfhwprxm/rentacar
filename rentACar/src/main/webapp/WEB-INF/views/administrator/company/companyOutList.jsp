@@ -2,7 +2,24 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp"%>
 
-<script type="text/javascript">		
+<script type="text/javascript">
+	$(function(){
+		$("input[name='chkAll']").click(function(){
+			$("tbody input[type=checkbox]").prop("checked", this.checked);
+		});
+		
+		$("#btReregisterMulti").click(function(){	
+			if($("tbody input[type=checkbox]:checked").length==0){
+				alert("재등록할 업체를 선택해주세요.");
+				return;
+			}else if(confirm("재등록 처리 시 해당 업체는 업체리스트로 이동합니다.")){
+				$("#frmList").prop("action", 
+					"<c:url value='/administrator/company/companyMultiReregister.do'/>");
+				$("#frmList").submit();
+			}
+		});
+	});
+	
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
@@ -69,17 +86,22 @@
 		<div class="tab-content">
 			<div style="float: right;">
 				<a href='<c:url value="/administrator/company/companyRegister.do" />'>
-					<button type="button" class="btn btn-info btn-lg btn-block" style="color: black;">업체 등록</button>
+					<button type="button" class="btn btn-default btn-lg" style="color: black;">업체 등록</button>
 				</a>
+				<button type="button" class="btn btn-default btn-lg"
+						id="btReregisterMulti" style="color: black;">업체 재등록</button>
 			</div>
 			<!-- ★★★★★★★★★★탈퇴업체 리스트★★★★★★★★★★ -->
 			<div role="tabpanel" class="tab-pane active" id="companyOutList">
 				<div class="row">
 					<div class="col-md-12">
 						<br>
+						<form name="frmList" id="frmList" method="post"
+							action='<c:url value="/administrator/company/companyOutList.do" />'>
 						<table class="table table-hover">
 							<thead>
 								<tr class="info">
+									<th><input type="checkbox" name="chkAll"></th>
 									<th scope="col">업체아이디</th>
 									<th scope="col">업체명</th>
 									<th scope="col">사업자번호</th>
@@ -98,12 +120,17 @@
 							<tbody>
 								<c:if test="${empty companyOutList}">
 									<tr>
-										<td colspan="12" style="text-align: center;">데이터가 존재하지 않습니다.</td>
+										<td colspan="13" style="text-align: center;">데이터가 존재하지 않습니다.</td>
 									</tr>
 								</c:if>
-			
+								
+								<c:set var="i" value="0" />
 								<c:forEach var="vo" items="${companyOutList}">
 									<tr style="text-align: center">
+										<td>
+										<input type="checkbox" id="chk_${i}"
+												name="companyItems[${i}].comId" value="${vo.comId}">
+										</td>
 										<td><a
 											href='<c:url value="/administrator/company/companyDetail.do?comId=${vo.comId}" />'>
 												${vo.comId}</a></td>
@@ -121,9 +148,11 @@
 										<td><fmt:formatDate value="${vo.comOutdate}"
 												pattern="yyyy-MM-dd" /></td>
 									</tr>
+									<c:set var="i" value="${i+1}" />
 								</c:forEach>
 							</tbody>
 						</table>
+						</form>
 					</div>
 				</div>
 			</div>

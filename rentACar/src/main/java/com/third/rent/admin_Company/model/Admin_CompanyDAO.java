@@ -33,5 +33,5 @@ public interface Admin_CompanyDAO {
 	
 	public List<CompanyVO> selectAllCompanyID();
 	
-	
+	public int reRegisterCompany(String comId);
 }

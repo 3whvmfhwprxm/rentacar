@@ -22,6 +22,7 @@ import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.admin_Utility;
 import com.third.rent.company.model.CompanyVO;
+import com.third.rent.company.model.companyListVO;
 
 @Controller
 @RequestMapping("/administrator")
@@ -309,6 +310,48 @@ public class Admin_CompanyController {
 		model.addAttribute("cclist", cclist);
 		
 		return "administrator/company/companyCar";
+	}
+	
+	@RequestMapping(value="/company/companyMultiWithdraw.do", method=RequestMethod.POST)
+	public String companyMultiWithdraw_List(@ModelAttribute companyListVO companyListVo, Model model){
+		logger.info("관리자 - 선택한 예약 목록 취소 파라미터 companyListVo={}", companyListVo);
+		
+		List<CompanyVO> companyList = companyListVo.getCompanyItems();
+		int cnt = adminCompanyService.companyMultiWithdraw(companyList);
+		logger.info("관리자 - 선택한 예약 목록 취소 결과 cnt={}", cnt);
+		
+		String msg="", url="/administrator/company/companyList.do";
+		if(cnt>0){
+			msg="선택한 업체가 탈퇴처리 되었습니다.";
+		}else{
+			msg="선택한 업체 탈퇴처리 중 에러가 발생했습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/company/companyMultiReregister.do", method=RequestMethod.POST)
+	public String companyMultiWithdraw_OutList(@ModelAttribute companyListVO companyListVo, Model model){
+		logger.info("관리자 - 선택한 예약 목록 취소 파라미터 companyListVo={}", companyListVo);
+		
+		List<CompanyVO> companyList = companyListVo.getCompanyItems();
+		int cnt = adminCompanyService.companyMultiReregister(companyList);
+		logger.info("관리자 - 선택한 예약 목록 취소 결과 cnt={}", cnt);
+		
+		String msg="", url="/administrator/company/companyOutList.do";
+		if(cnt>0){
+			msg="선택한 업체가 탈퇴처리 되었습니다.";
+		}else{
+			msg="선택한 업체 탈퇴처리 중 에러가 발생했습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
 }
 

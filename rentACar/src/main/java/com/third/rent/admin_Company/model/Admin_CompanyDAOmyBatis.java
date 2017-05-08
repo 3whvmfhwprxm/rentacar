@@ -71,5 +71,11 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 	public List<CompanyVO> selectAllCompanyID() {
 		return getSqlSession().selectList(namespace+".selectAllcompanyID");
 	}
+
+	@Override
+	public int reRegisterCompany(String comId) {
+		return getSqlSession().update(namespace+".reRegisterCompany", comId);
+	}
+
 	
 }

@@ -89,6 +89,12 @@
 		set user_outdate=sysdate
 		where user_id=#{userId}
 	</update>
+	
+	<update id="userReregister" parameterType="String">
+		update rent_user
+		set user_outdate = null
+		where user_id=#{userId}
+	</update>
 </mapper>
 
 

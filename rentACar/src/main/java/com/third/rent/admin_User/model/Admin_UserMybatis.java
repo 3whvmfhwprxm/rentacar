@@ -47,4 +47,9 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 	public String selectPwdByAdminId(String adminId) {
 		return getSqlSession().selectOne(namespace+".selectPwdByAdminId", adminId);
 	}
+
+	@Override
+	public int reRegisterUser(String userId) {
+		return getSqlSession().update(namespace+".reRegisterCompany", userId);
+	}
 }

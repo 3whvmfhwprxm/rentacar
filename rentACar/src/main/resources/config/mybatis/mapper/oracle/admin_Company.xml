@@ -153,6 +153,12 @@
 	<select id="selectAllcompanyID" resultType="CompanyVO">
 		select com_id from COMPANY
 	</select> 
+	
+	<update id="reRegisterCompany" parameterType="String">
+		update company
+		set com_outdate=null
+		where com_id=#{comId}
+	</update>
 </mapper>
 
 

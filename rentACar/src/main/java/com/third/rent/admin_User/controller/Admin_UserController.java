@@ -18,6 +18,7 @@ import com.third.rent.admin_User.model.Admin_UserService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.admin_Utility;
+import com.third.rent.user.model.UserListVO;
 import com.third.rent.user.model.UserVO;
 
 
@@ -30,7 +31,7 @@ public class Admin_UserController {
 	@Autowired
 	private Admin_UserService adminUserService;
 	
-	@RequestMapping("/user/userList.do")
+	@RequestMapping("/user/userInList.do")
 	public String userInList(@ModelAttribute SearchVO searchVo, Model model){
 		logger.info("회원목록, 파라미터 searchVo={}", searchVo);
 
@@ -45,6 +46,30 @@ public class Admin_UserController {
 		List<UserVO> userInList = adminUserService.selectInUser(searchVo);
 		logger.info("회원목록 조회결과, userInList.size()={}", userInList.size());
 		
+		int totalRecord = adminUserService.selectTotalRecord(searchVo);
+		logger.info("회원목록 조회 - 전체 회원수 조회 결과, totalRecord={}",
+				totalRecord);
+
+		pagingInfo.setTotalRecord(totalRecord);
+
+		model.addAttribute("userInList", userInList);
+		model.addAttribute("pagingInfo", pagingInfo);
+
+		return "administrator/user/userInList";
+	}
+	
+	@RequestMapping("/user/userOutList.do")
+	public String userOutList(@ModelAttribute SearchVO searchVo, Model model){
+		logger.info("회원목록, 파라미터 searchVo={}", searchVo);
+
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(admin_Utility.ADMIN_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
+
+		searchVo.setRecordCountPerPage(admin_Utility.ADMIN_RECORDCOUNT_PERPAGE);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
+
 		List<UserVO> userOutList = adminUserService.selectOutUser(searchVo);
 		logger.info("회원목록 조회결과, userOutList.size()={}", userOutList.size());		
 		
@@ -54,11 +79,10 @@ public class Admin_UserController {
 
 		pagingInfo.setTotalRecord(totalRecord);
 
-		model.addAttribute("userInList", userInList);
 		model.addAttribute("userOutList", userOutList);
 		model.addAttribute("pagingInfo", pagingInfo);
 
-		return "administrator/user/userList";
+		return "administrator/user/userOutList";
 	}
 	
 	@RequestMapping(value="/user/userWithdraw.do", method=RequestMethod.GET)
@@ -95,6 +119,48 @@ public class Admin_UserController {
 			msg="비밀번호를 확인해주세요";
 		}else{
 			msg="비밀번호 체크 에러발생";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/user/userMultiWithdraw.do", method=RequestMethod.POST)
+	public String companyMultiWithdraw_List(@ModelAttribute UserListVO userListVo, Model model){
+		logger.info("선택한 회원 목록 탈퇴 파라미터 userListVo={}", userListVo);
+		
+		List<UserVO> userList = userListVo.getUserItems();
+		int cnt = adminUserService.userMultiWithdraw(userList);;
+		logger.info("선택한 회원 목록 탈퇴 결과 cnt={}", cnt);
+		
+		String msg="", url="/administrator/user/userInList.do";
+		if(cnt>0){
+			msg="선택한 업체가 탈퇴처리 되었습니다.";
+		}else{
+			msg="선택한 업체 탈퇴처리 중 에러가 발생했습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/user/userMultiReregister.do", method=RequestMethod.POST)
+	public String companyMultiWithdraw_OutList(@ModelAttribute UserListVO userListVo, Model model){
+		logger.info("선택한 회원 목록 탈퇴 파라미터 userListVo={}", userListVo);
+		
+		List<UserVO> userList = userListVo.getUserItems();
+		int cnt = adminUserService.userMultiReregister(userList);
+		logger.info("관리자 - 선택한 예약 목록 취소 결과 cnt={}", cnt);
+		
+		String msg="", url="/administrator/user/userOutList.do";
+		if(cnt>0){
+			msg="선택한 업체가 탈퇴처리 되었습니다.";
+		}else{
+			msg="선택한 업체 탈퇴처리 중 에러가 발생했습니다.";
 		}
 		
 		model.addAttribute("msg", msg);

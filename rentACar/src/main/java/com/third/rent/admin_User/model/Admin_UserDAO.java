@@ -19,4 +19,6 @@ public interface Admin_UserDAO {
 	public int userWithdraw(String userId);
 	
 	public String selectPwdByAdminId(String adminId);
+	
+	public int reRegisterUser(String userId);
 }

@@ -39,4 +39,8 @@ public interface Admin_CompanyService {
 	public List<Map<String, Object>> selectAllComCar(SearchVO searchVo);
 	
 	public List<CompanyVO> selectAllCompanyID();
+	
+	public int companyMultiWithdraw(List<CompanyVO> companyList);
+	
+	public int companyMultiReregister(List<CompanyVO> companyList);
 }

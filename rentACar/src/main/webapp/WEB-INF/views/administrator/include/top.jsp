@@ -125,7 +125,7 @@
 		</div>
 		
 		<div class="w3-bar-block">
-			<a href="<c:url value="/administrator/user/userList.do" />" 
+			<a href="<c:url value="/administrator/user/userInList.do" />" 
 				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-users fa-fw"></i>&nbsp; 회원
 			</a>

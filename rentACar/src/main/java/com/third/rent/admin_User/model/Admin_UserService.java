@@ -26,4 +26,8 @@ public interface Admin_UserService {
 	public int userWithdraw(String userId);
 	
 	public int loginCheck(String adminId, String adminPwd);
+	
+	public int userMultiWithdraw(List<UserVO> userList);
+	
+	public int userMultiReregister(List<UserVO> userList);
 }

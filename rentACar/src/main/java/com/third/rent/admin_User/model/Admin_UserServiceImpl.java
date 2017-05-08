@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.third.rent.admin_LogState.model.admin_LogService;
 import com.third.rent.common.SearchVO;
@@ -59,5 +60,41 @@ public class Admin_UserServiceImpl implements Admin_UserService{
 			}
 		}		
 		return result;
+	}
+
+	@Override
+	@Transactional
+	public int userMultiWithdraw(List<UserVO> userList) {
+		int cnt = 0;
+		try {
+			for (UserVO userVo : userList) {
+				if (userVo.getUserId()!=null) {
+					cnt = adminUserDao.userWithdraw(userVo.getUserId());
+				}
+			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt = -1;
+		}
+
+		return cnt;
+	}
+
+	@Override
+	@Transactional
+	public int userMultiReregister(List<UserVO> userList) {
+		int cnt = 0;
+		try {
+			for (UserVO userVo : userList) {
+				if (userVo.getUserId()!=null) {
+					cnt = adminUserDao.reRegisterUser(userVo.getUserId());
+				}
+			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt = -1;
+		}
+
+		return cnt;
 	}
 }
