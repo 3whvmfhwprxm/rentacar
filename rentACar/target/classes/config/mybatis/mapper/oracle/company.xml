@@ -116,6 +116,28 @@
 		order by PAYDATE
 	</select> -->
 	
+	<select id="selectAllComment" resultType="CommentsVO" parameterType="SearchVO">
+		select*
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from comments
+		        <include refid="searchWhat"></include> 
+		        order by cmt_no desc
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectTotalRecord" parameterType="SearchVO"	resultType="int">
+		select count(*) from comments where com_id=#{comId}
+	</select>
+	
 	
 </mapper>
 

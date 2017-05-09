@@ -5,66 +5,7 @@
 <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<style>
-.col-md-offset-3{
-	margin-left: 15%;
-	margin-top: 5%;
-}
-.col-lg-4{
-	width: 30%;
-	height: 27px;
-}
-.submit{
-  font-size: 1.1em;
-  background-color: transparent;
-  color: #0066FF;
-  margin-bottom: 10px;
-}
-.btn-default{
-   border-color: #0066FF;
-}
-/*Contact sectiom*/
-.content-header{
-  font-family: 'Oleo Script', cursive;
-  color:#fcc500;
-  font-size: 45px;
-}
-
-.section-content{
-  text-align: center; 
-
-}
-.contact-section{
-  padding-top: 40px;
-}
-.contact-section .col-md-6{
-  width: 50%;
-}
-
-.form-line{
-  border-right: 1px solid #B29999;
-}
-
-.form-group{
-  margin-top: 10px;
-}
-label{
-  font-size: 1.3em;
-  line-height: 1em;
-  font-weight: normal;
-}
-.form-control{
-  font-size: 1.3em;
-  color: #080808;
-}
-textarea.form-control {
-    height: 135px;
-   /* margin-top: px;*/
-}
-#comAddress,#comReturnPlace{width: 80%; }
-#submitdiv{text-align: right;}
-#image_preview img{width: 200px;height: 100px; }
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/company.css/company_detail.css"/>
 <script type="text/javascript">
 	var btnType = '';
 	$(document).ready(function() {

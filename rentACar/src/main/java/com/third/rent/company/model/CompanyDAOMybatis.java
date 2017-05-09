@@ -6,7 +6,9 @@ import java.util.Map;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.third.rent.Comments.model.CommentsVO;
 import com.third.rent.common.DateSearchVO2;
+import com.third.rent.common.SearchVO;
 
 @Repository
 public class CompanyDAOMybatis extends SqlSessionDaoSupport 
@@ -64,6 +66,16 @@ public class CompanyDAOMybatis extends SqlSessionDaoSupport
 	@Override
 	public List<Map<String, Object>> ComselectSalesByTerm(DateSearchVO2 dateSearchVO) {
 		return getSqlSession().selectList(namespace+".", dateSearchVO);
+	}
+
+	@Override
+	public List<CommentsVO> selectAll(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectAllComment", searchVo);
+	}
+
+	@Override
+	public int selectTotalRecord(SearchVO searchVo) {
+		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
 
 	

@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.third.rent.Comments.model.CommentsVO;
 import com.third.rent.common.DateSearchVO2;
+import com.third.rent.common.SearchVO;
 
 @Service
 public class CompanyServiceImpl implements CompanyService{
@@ -72,6 +74,16 @@ public class CompanyServiceImpl implements CompanyService{
 	@Override
 	public List<Map<String, Object>> ComselectSalesByMonth(DateSearchVO2 dateSearchVO) {
 		return companyDao.ComselectSalesByMonth(dateSearchVO);
+	}
+
+	@Override
+	public List<CommentsVO> selectAll(SearchVO searchVo) {
+		return companyDao.selectAll(searchVo);
+	}
+
+	@Override
+	public int selectTotalRecord(SearchVO searchVo) {
+		return companyDao.selectTotalRecord(searchVo);
 	}
 
 

@@ -54,8 +54,6 @@ public class CompanyEpilogueController {
 	@Autowired
 	private Company_noticeService comNoService;
 	
-	@Autowired
-	private CommentsService commentsSv;
 	
 	@RequestMapping("/company_epilogue.do")
 	public String company_epilogue(@ModelAttribute SearchVO searchVo, Model model){
@@ -71,10 +69,10 @@ public class CompanyEpilogueController {
 		searchVo.setRecordCountPerPage(Utility.COM_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
-		List<CommentsVO> cList=commentsSv.selectAll(searchVo);
+		List<CommentsVO> cList=comService.selectAll(searchVo);
 		logger.info("업체 이용후기 리스트 수, cList.size()={}", cList.size());
 		
-		int totalRecord=commentsSv.selectTotalRecord(searchVo);
+		int totalRecord=comService.selectTotalRecord(searchVo);
 		logger.info("업체 이용후기 전체수 조회 결과, totalRecord={}", totalRecord);
 		
 		pagingInfo.setTotalRecord(totalRecord);
