@@ -238,8 +238,8 @@ and extract(month from PAY_REGDATE)='06'),0)*(select COM_RATE/100 from company w
 
 update Balance_acc
 set BAL_DECISION_DATE=null
-where BAL_NUM=13;
-
+where BAL_NUM=10;
+rollback;
 select * from Balance_acc
 where BAL_TARGET_DATE='2017-05';
 

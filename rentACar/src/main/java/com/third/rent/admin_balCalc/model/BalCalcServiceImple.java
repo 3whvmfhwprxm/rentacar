@@ -67,7 +67,7 @@ public class BalCalcServiceImple implements BalCalcService{
 		
 		try{
 			for (BalCalcVO vo : ballist) {
-				if(vo.getComId()!=null){
+				if(vo.getBalNum()!=null){
 					cnt=bdao.updateBalCalcYES(vo.getBalNum());
 				}
 			}

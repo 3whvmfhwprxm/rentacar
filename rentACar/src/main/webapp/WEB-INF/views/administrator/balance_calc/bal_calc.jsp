@@ -2,7 +2,7 @@
 <%@ include file="../include/top.jsp" %>
 <style>
 	.divSales{margin: 10px 0;}
-	.bodyClass{padding-top: 30px;}
+	.bodyClass{padding-top: 30px; width: 80%; padding-left: 80px;}
 	th{background-color: #EEEEEE;}
 </style>
 <script>
@@ -26,13 +26,13 @@
 			$("tbody input[type=checkbox]").prop("checked", this.checked);
 		});
 		
-		$("#btCancelMulti").click(function(){	
+		$("#btMultiDecision").click(function(){	
 			if($('tbody input:checkbox:checked').length==0){
 				alert("정산처리할 대상을 하나라도 선택하셔야 합니다");
 				return;
-			}else if(confirm("정말로 정산처리하시겠습니까?")){
-				$("#frmReservList").attr("action","<c:url value='/admin/reserv/reservMultiCancel.do' />");
-				$("#frmReservList").submit();	
+			}else if(confirm("정말로 정산처리 하시겠습니까?")){
+				$("#frmBalanceCalc").attr("action","<c:url value='/admin/balCalc/balMultiDecision.do' />");
+				$("#frmBalanceCalc").submit();	
 			}											
 		});
 	});
@@ -86,19 +86,20 @@
 			<table class="table table-bordered" summary="해당 월의 업체별정산에 관한 표">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="chkAll"></th>
-						<th>정산업체명</th>
-						<th>예약건수</th>
-						<th>매출액</th>
-						<th>수수료율</th>
-						<th>수수료</th>
-						<th>정산처리여부</th>
+						<th class="text-center">정산업체명</th>
+						<th class="text-right">예약건수</th>
+						<th class="text-right">매출액</th>
+						<th class="text-right">수수료율</th>
+						<th class="text-right">수수료</th>
+						<th class="text-center">정산처리여부</th>
+						<th class="text-center">정산처리 <input type="checkbox" name="chkAll"> </th>
+						<th class="text-center">정산취소 </th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:if test="${empty blist}">
 						<tr>
-							<td colspan="7" class="text-center">해당 월의 정산내역이 없습니다.</td>
+							<td colspan="8" class="text-center">해당 월의 정산내역이 없습니다.</td>
 						</tr>
 					</c:if>
 					<c:if test="${!empty blist}">
@@ -109,9 +110,8 @@
 						<c:set value="0" var="i"/>
 						<c:forEach var="map" items="${blist }">
 							<tr>
-								<td></td>
 								<td class="text-center">${map['COM_NAME'] }</td>
-								<td class="text-center">${map['BAL_RESERV_CNT'] }</td>
+								<td class="text-right">${map['BAL_RESERV_CNT'] } 건 </td>
 								<td class="text-right">
 									<fmt:formatNumber pattern="#,###" value="${map['BAL_SALES'] }"  /> 원
 								</td>
@@ -130,37 +130,52 @@
 										<c:set value="${map['BAL_SALES']+YesSumSales }" var="YesSumSales" />
 										<c:set value="${map['BAL_COMMISSION']+YesSumCommission }" var="YesSumCommission" />
 									</c:if>
-								</td>								
+								</td>
+								<td class="text-center">
+									<c:if test="${empty map['BAL_DECISION_DATE']}">
+										<input type="checkbox" id="chk_${i }" name="balanceItems[${i}].balNum" value="${map['BAL_NUM']}">
+									</c:if>
+								</td>
+								<td class="text-center">
+									<c:if test="${!empty map['BAL_DECISION_DATE']}">
+										<a href='<c:url value="/admin/balCalc/balCancel.do?balNum=${map['BAL_NUM']}"/>'>
+										<input type="button" value="정산취소"></a>
+									</c:if>
+								</td>						
 							</tr>
-							
+							<c:set var="i" value="${i+1}"/>	
 						</c:forEach>
 						<tr>
 							<th class="text-right" colspan="4"> 정산 안된 매출 금액 합계 </th>
-							<th class="text-right" colspan="3"> 정산 안된 수수료 금액 합계 </th>
+							<th class="text-right" colspan="4"> 정산 안된 수수료 금액 합계 </th>
 						</tr>
 						<tr>
 							<td class="text-right" colspan="4">
 								<fmt:formatNumber pattern="#,###" value="${NoSumSales }"  /> 원
 							</td>
-							<td class="text-right" colspan="3">
+							<td class="text-right" colspan="4">
 								<fmt:formatNumber pattern="#,###" value="${NoSumCommission }"  /> 원
 							</td>
 						</tr>
 						<tr>
 							<th class="text-right" colspan="4"> 정산된 매출 금액 합계 </th>
-							<th class="text-right" colspan="3"> 정산된 수수료 금액 합계 </th>
+							<th class="text-right" colspan="4"> 정산된 수수료 금액 합계 </th>
 						</tr>
 						<tr>
 							<td class="text-right" colspan="4">
 								<fmt:formatNumber pattern="#,###" value="${YesSumSales }"  /> 원
 							</td>
-							<td class="text-right" colspan="3">
+							<td class="text-right" colspan="4">
 								<fmt:formatNumber pattern="#,###" value="${YesSumCommission }"  /> 원
 							</td>
 						</tr>
 					</c:if>
 				</tbody>
 			</table>
+		</div>
+		
+		<div class="text-right">
+				<input type="button" id="btMultiDecision" value="선택한 대상을 정산 처리" >
 		</div>
 	</form>
 </div>

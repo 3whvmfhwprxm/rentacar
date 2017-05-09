@@ -3,18 +3,19 @@ package com.third.rent.admin_balCalc.model;
 import java.util.List;
 
 public class BalCalcVOlist {
-	private List<BalCalcVO> ballist;
+	private List<BalCalcVO> balanceItems;
 
-	public List<BalCalcVO> getBallist() {
-		return ballist;
+	public List<BalCalcVO> getBalanceItems() {
+		return balanceItems;
 	}
 
-	public void setBallist(List<BalCalcVO> ballist) {
-		this.ballist = ballist;
+	public void setBalanceItems(List<BalCalcVO> balanceItems) {
+		this.balanceItems = balanceItems;
 	}
 
 	@Override
 	public String toString() {
-		return "BalCalcVOlist [ballist=" + ballist + "]";
+		return "BalCalcVOlist [balanceItems=" + balanceItems + "]";
 	}
+	
 }
