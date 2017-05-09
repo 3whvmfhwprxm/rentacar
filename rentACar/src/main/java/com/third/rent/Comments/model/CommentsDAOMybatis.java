@@ -20,4 +20,9 @@ public class CommentsDAOMybatis extends SqlSessionDaoSupport implements Comments
 	public int selectTotalRecord(SearchVO searchVo) {
 		return getSqlSession().selectOne(namespace+".selectTotalRecord", searchVo);
 	}
+
+	@Override
+	public int writeComment(CommentsVO commentsVo) {
+		return getSqlSession().insert(namespace+".writeComment", commentsVo);
+	}
 }

@@ -21,4 +21,9 @@ public class CommentsServiceImpl implements CommentsService{
 	public int selectTotalRecord(SearchVO searchVo) {
 		return commentsDao.selectTotalRecord(searchVo);
 	}
+
+	@Override
+	public int writeComment(CommentsVO commentsVo) {
+		return commentsDao.writeComment(commentsVo);
+	}
 }
