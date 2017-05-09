@@ -1,8 +1,6 @@
 package com.third.rent.admin_payInfo.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,14 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.siot.IamportRestHttpClientJava.IamportClient;
-import com.siot.IamportRestHttpClientJava.request.CancelData;
-import com.siot.IamportRestHttpClientJava.response.IamportResponse;
-import com.siot.IamportRestHttpClientJava.response.Payment;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.Utility;
+import com.third.rent.payInfo.model.PayInfoListVO;
 import com.third.rent.payInfo.model.PayInfoService;
 import com.third.rent.payInfo.model.PayInfoVO;
 
@@ -28,7 +23,7 @@ public class PayInfoController {
 	
 	private static final Logger logger=LoggerFactory.getLogger(PayInfoController.class);
 	
-	private IamportClient client;
+	/*private IamportClient client;*/
 	
 	@Autowired
 	private PayInfoService pService;
@@ -59,27 +54,25 @@ public class PayInfoController {
 		return "administrator/payInfo/payInfoList";
 	}	
 	
-	@RequestMapping("/payCancel.do")
-	public String CancelPaymentByMerchantUid(@RequestParam String reservNum, Model model) throws Exception {
+	@RequestMapping(value="/payCancel.do", method=RequestMethod.POST)
+	public String CancelPaymentByMerchantUid(@ModelAttribute PayInfoListVO pvo, Model model) {
 		
-		logger.info("결제 취소 하기 파라미터값: reservNum={}", reservNum);
-		
-		Map<String, Object> map=new HashMap<String, Object>();
-		map.put("reservNum", reservNum);
-		map.put("reservCancelWhy", "관리자 취소 처리");
-
-		//예약, 결제정보 취소처리하기
-		int result=pService.cancelPayInfo(map);
+		logger.info("결제 취소 하기 파라미터값: pvo={}", pvo);
+	
+		List<PayInfoVO> plist=pvo.getPayItems();
+		int result=pService.multiCancelPayInfo(plist);
+		logger.info("관리자 - 선택한 예약 목록 취소 결과 result={}", result);
 		
 		String url="/admin/payInfo.do", msg="";
-		if(result>0){
-			msg="취소 처리되었습니다.";
+		if(result!=-1){
+			msg="선택한 결제 목록이 취소되었습니다.";
 		}else{
-			msg="취소 처리 실패!";
+			msg="선택한 결제 목록 취소가 실패했습니다.";
 		}
 		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
+		
 		
 		/*
 		String api_key = "2564830999358043";

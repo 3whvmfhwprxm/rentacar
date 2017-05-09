@@ -30,6 +30,17 @@
 	<select id="selectTotalRecord" parameterType="SearchVO"	resultType="int">
 		select count(*) from comments
 	</select>
+	
+	<insert id="writeComment" parameterType="CommentsVO">
+		<selectKey keyProperty="cmtNo" order="BEFORE" resultType="int">
+			select cmt_seq.nextval from dual
+		</selectKey>
+	
+		insert into comments(cmt_no, cmt_content, user_id, com_id, cmt_kind_score, cmt_clean_score, cmt_conv_score, 
+								cmt_img1, cmt_img2, cmt_img3)
+		values(#{cmtNo},#{cmtContent},#{userId},#{comId},#{cmtKindScore},#{cmtCleanScore},#{cmtConvScore},
+			#{cmtImg1},#{cmtImg2},#{cmtImg3})
+	</insert>
 </mapper>
 
 

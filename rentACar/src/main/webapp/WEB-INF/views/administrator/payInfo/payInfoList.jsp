@@ -3,14 +3,18 @@
 <script src="https://service.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
 <script type="text/javascript">	
 	$().ready(function(){
-		IMP.init('imp33307123');
+		$("input[name='chkAll']").click(function(){				
+			$("tbody input[type=checkbox]").prop("checked", this.checked);
+		});
 		
-		$("#payCancelForm").submit(function(){
-			if(confirm("정말로 결제를 취소하시겠습니까? \n결제,예약이 모두 취소되며 \n사용자에게 알림 메일이 보내집니다.")){
-	 			return true;
-	 		}else{
-	 			return false;
-	 		}
+		$("#btCancelMulti").click(function(){	
+			if($('tbody input:checkbox:checked').length==0){
+				alert("취소할 결제를 하나라도 선택하셔야 합니다");
+				return;
+			}else if(confirm("정말로 결제를 취소하시겠습니까? \n결제,예약이 모두 취소되며 \n사용자에게 알림 메일이 보내집니다.")){
+				$("#frmPayList").attr("action","<c:url value='/admin/payCancel.do' />");
+				$("#frmPayList").submit();	
+			}											
 		});
 	});
 	
@@ -58,16 +62,19 @@
 * 문구 입력3</pre>
 	<br>
 	
+	<form name="frmPayList" id="frmPayList" method="post">
+	
 	<!-- 테이블 화면 시작 -->
 	<table class="table table-hover">
-		<tr>			
+		<tr>	
+			<th><input type="checkbox" name="chkAll"></th>			
 			<th>결제번호</th>
 			<th>예약번호</th>
 			<th>결제자 연락처</th>
 			<th>결제방법</th>
 			<th>결제금액</th>			
 			<th>결제일시</th>
-			<th>결제취소</th>
+			<th>취소여부</th>
 		</tr>
 		
 		<c:if test="${empty plist}">
@@ -76,9 +83,15 @@
 					</tr>
 		</c:if>
 		
-		<c:if test="${!empty plist }">			
+		<c:if test="${!empty plist }">
+				<c:set value="0" var="i"/>		
 				<c:forEach var="vo" items="${plist }">
 					<tr>
+						<td>
+							<c:if test="${empty vo.payCancelDate }">
+								<input type="checkbox" id="chk_${i }" name="payItems[${i}].reservNum" value="${vo.reservNum }">
+							</c:if>							
+						</td>
 						<td>${vo.payNo }</td>
 						<td>${vo.reservNum }</td>
 						<td>${vo.userTel1 }-${vo.userTel2 }-${vo.userTel3 }</td>
@@ -86,20 +99,17 @@
 						<td>${vo.payMoney }</td>						
 						<td>${vo.payRegdate }</td>
 						<td>
-							<c:if test="${empty vo.payCancelDate }">
-								<form id="payCancelForm" method="post" action="<c:url value='/admin/payCancel.do' />">
-									<input type="hidden" name="reservNum" value="${vo.reservNum }">
-									<input type="submit" value="결제취소">
-								</form>
-							</c:if>
 							<c:if test="${!empty vo.payCancelDate }">
 								${vo.payCancelDate }에 취소됨
 							</c:if>
-						</td>
-					</tr>	
+						</td>					
+					</tr>
+					<c:set var="i" value="${i+1}"/>		
 				</c:forEach>				
 		</c:if>		
 	</table>
+	
+		<!-- 페이징처리 -->
 		<div class="divPage container">
 			<c:if test="${pagingInfo.firstPage>1 }">
 				<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
@@ -122,6 +132,12 @@
 				</a>
 			</c:if>
 		</div>
+		
+		<div class="text-left">
+				<input type="button" id="btCancelMulti" value="선택한 결제를 취소 처리" >
+			</div>
+		</form>
+		
 		<div class="divSearch container">
 			<form name="frmSearch" method="post" action="<c:url value="/admin/payInfo.do" />">
 				<select name="searchCondition">				

@@ -26,13 +26,7 @@
 </script>
 <style>
 	.bodyClass{padding-top: 30px;}
-	th, td{text-align: center;}	
-	.col-md-4 {
-		float: left;
-		width: 100%;
-		margin: 0 auto;
-		text-align: center;
-	}
+	th, td{text-align: center;}
 	.divRight{text-align:right;}
 </style>
 	<div class="w3-container bodyClass">
@@ -140,8 +134,8 @@
 					</a>
 				</c:if>
 			</div>
-			<div class="divRight">
-				선택한 예약을 <input type="button" id="btCancelMulti" value="취소 처리" >
+			<div class="text-left">
+				<input type="button" id="btCancelMulti" value="선택한 예약을 취소 처리" >
 			</div>
 		</form>
 		
