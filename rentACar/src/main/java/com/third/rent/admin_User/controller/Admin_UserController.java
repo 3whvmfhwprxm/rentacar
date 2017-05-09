@@ -158,9 +158,9 @@ public class Admin_UserController {
 		
 		String msg="", url="/administrator/user/userOutList.do";
 		if(cnt>0){
-			msg="선택한 업체가 탈퇴처리 되었습니다.";
+			msg="선택한 업체가 재등록처리 되었습니다.";
 		}else{
-			msg="선택한 업체 탈퇴처리 중 에러가 발생했습니다.";
+			msg="선택한 업체 재등록처리 중 에러가 발생했습니다.";
 		}
 		
 		model.addAttribute("msg", msg);

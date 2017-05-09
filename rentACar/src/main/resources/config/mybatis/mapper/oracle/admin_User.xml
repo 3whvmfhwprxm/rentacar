@@ -92,7 +92,7 @@
 	
 	<update id="userReregister" parameterType="String">
 		update rent_user
-		set user_outdate = null
+		set user_outdate=null
 		where user_id=#{userId}
 	</update>
 </mapper>

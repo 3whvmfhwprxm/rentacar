@@ -12,7 +12,7 @@
 			$("tbody input[type=checkbox]").prop("checked", this.checked);
 		});
 		
-		$("#btWithdrawMulti").click(function(){	
+		$("#btReregisterMulti").click(function(){	
 			if($("tbody input[type=checkbox]:checked").length==0){
 				alert("탈퇴처리할 업체를 선택해주세요.");
 				return;
@@ -91,6 +91,19 @@ th {
 						<form name="frmList" id="frmList" method="post"
 							action='<c:url value="/administrator/user/userOutList.do" />'>
 						<table class="table table-hover">
+							<colgroup>
+				       		  	<col width="5%">
+					    		<col width="13%">
+					    		<col width="10%">
+					    		<col width="*%">
+					    		<col width="8%">
+					    		<col width="12%">
+					    		<col width="8%">
+					    		<col width="10%">
+					    		<col width="8%">
+					    		<col width="10%">
+					    		<col width="10%">
+				    		</colgroup>
 							<thead>
 								<tr class="info">
 									<th><input type="checkbox" name="chkAll"></th>
@@ -110,16 +123,16 @@ th {
 							<tbody>
 								<c:if test="${empty userOutList}">
 									<tr>
-										<td colspan="10" style="text-align: center;">데이터가 존재하지 않습니다.</td>
+										<td colspan="11" style="text-align: center;">데이터가 존재하지 않습니다.</td>
 									</tr>
 								</c:if>
 								
-								<c:set var="i" value="0" />
+								<c:set var="u" value="0" />
 								<c:forEach var="vo" items="${userOutList}" varStatus="i">
 									<tr style="text-align: center">
 										<td>
-											<input type="checkbox" id="chk_${i}"
-												name="userItems[${i}].userId" value="${vo.userId}">
+											<input type="checkbox" id="chk_${u}"
+												name="userItems[${u}].userId" value="${vo.userId}">
 										</td>
 										<td>
 											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myOutModal_${i.index}">
@@ -203,7 +216,7 @@ th {
 											<fmt:formatDate value="${vo.userOutdate}" pattern="yyyy-MM-dd" />
 										</td>
 									</tr>
-									<c:set var="i" value="${i+1}" />	
+									<c:set var="u" value="${u+1}" />	
 								</c:forEach>	
 							</tbody>
 						</table>
