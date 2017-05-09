@@ -110,7 +110,7 @@ th {
 							<tbody>
 								<c:if test="${empty userOutList}">
 									<tr>
-										<td colspan="10" class="align_center">데이터가 존재하지 않습니다.</td>
+										<td colspan="10" style="text-align: center;">데이터가 존재하지 않습니다.</td>
 									</tr>
 								</c:if>
 								
@@ -203,8 +203,8 @@ th {
 											<fmt:formatDate value="${vo.userOutdate}" pattern="yyyy-MM-dd" />
 										</td>
 									</tr>
-									<c:set var="i" value="${i+1}" />
-								</c:forEach>
+									<c:set var="i" value="${i+1}" />	
+								</c:forEach>	
 							</tbody>
 						</table>
 						</form>

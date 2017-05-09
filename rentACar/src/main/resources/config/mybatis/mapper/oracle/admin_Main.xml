@@ -4,23 +4,23 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.admin_Main">
 	<select id="selectCountUser" resultType="int">
-		select count(*) from
-		rent_user
+		select count(*) from rent_user
+		where user_outdate is null
 	</select>
 
 	<select id="selectCountCompany" resultType="int">
-		select count(*) from
-		company
+		select count(*) from company
+		where com_outdate is null
 	</select>
 
 	<select id="selectCountReservation" resultType="int">
-		select count(*)
-		from reservation
+		select count(*) from reservation
+		where reserv_cancel is null
 	</select>
 
 	<select id="selectCountPayinfo" resultType="int">
-		select count(*) from
-		payinfo
+		select count(*) from payinfo
+		where pay_canceldate is null
 	</select>
 
 	<select id="selectSumTotalPay" resultType="map">

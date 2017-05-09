@@ -61,6 +61,12 @@
 		select admin_pwd from rent_admin
 		where admin_id=#{adminId}
 	</select>
+	
+	<update id="withdrawCompany" parameterType="String">
+		update company
+		set com_outdate=sysdate
+		where com_id=#{comId}
+	</update>
 </mapper>
 
 

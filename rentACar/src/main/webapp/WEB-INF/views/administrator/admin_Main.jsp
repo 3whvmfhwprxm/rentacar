@@ -9,7 +9,7 @@
 </header>
 
 <div class="w3-row-padding w3-margin-bottom">
-	<a href='<c:url value="/administrator/user/userList.do" />'>
+	<a href='<c:url value="/administrator/user/userInList.do" />'>
 		<div class="w3-quarter">
 			<div class="w3-container w3-orange w3-text-white w3-padding-16">
 				<div class="w3-left">
@@ -24,7 +24,7 @@
 		</div>
 	</a>
 	
-	<a href='<c:url value="/administrator/user/userList.do" />'>
+	<a href='<c:url value="/administrator/company/companyList.do" />'>
 	<div class="w3-quarter">
 		<div class="w3-container w3-red w3-padding-16">
 			<div class="w3-left">
@@ -39,7 +39,7 @@
 	</div>
 	</a>
 	
-	<a href='<c:url value="/administrator/user/userList.do" />'>
+	<a href='<c:url value="/admin/reserv/reservInfo.do" />'>
 	<div class="w3-quarter">
 		<div class="w3-container w3-blue w3-padding-16">
 			<div class="w3-left">
@@ -54,7 +54,7 @@
 	</div>
 	</a>
 	
-	<a href='<c:url value="/administrator/user/userList.do" />'>
+	<a href='<c:url value="/admin/payInfo.do" />'>
 	<div class="w3-quarter">
 		<div class="w3-container w3-teal w3-padding-16">
 			<div class="w3-left">

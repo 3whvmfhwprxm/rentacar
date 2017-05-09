@@ -41,9 +41,9 @@
 		<c:forEach var="map" items="${cclist}">
 		<div class="col-sm-6">
 			<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-				<div class="media" style="height: 210px;">
-					<a class="pull-left" href="#" target="_parent">
-						<img style="width: 300px; height: 210px;" alt="image" class="img-responsive"
+				<div class="media" style="height: 250px;">
+					<a class="pull-left" href='<c:url value="/administrator/carModel/modelDetail.do?carCode=${map['CAR_CODE']}" />' target="_parent">
+						<img style="width: 300px; height: 250px;" alt="image" class="img-responsive"
 							src='<c:url value="/carImages/${map['CAR_IMG']}" />'>
 					</a>
 					<div class="clearfix visible-sm"></div>

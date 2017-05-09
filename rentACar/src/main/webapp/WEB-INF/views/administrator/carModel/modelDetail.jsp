@@ -40,16 +40,17 @@
 									pattern="yyyy-MM-dd" />
 							</span>
 						</p>
-						<a href='<c:url value="/administrator/carModel/modelList.do" />'
-							data-original-title="go to the List" data-toggle="tooltip"
-							type="button" class="btn btn-default"> <i
-							class="fa fa-list-ul" aria-hidden="true"></i>목록
-						</a> 
-						<a href='<c:url value="/administrator/carModel/modelEdit.do?carCode=${carVo.carCode}"/>'
-							data-original-title="Edit this user" data-toggle="tooltip"
-							type="button" class="btn btn-default"> <i
-							class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
-						</a>	
+						<a href='<c:url value="/administrator/carModel/modelEdit.do?carCode=${carVo.carCode}"/>'>
+						<button type="submit" class="btn btn-default">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
+						</button>
+						</a>
+						
+						<a href='<c:url value="/administrator/carModel/modelList.do" />'>
+						<button type="button" class="btn btn-default">	
+							<i class="fa fa-list-ul" aria-hidden="true"></i>목록
+						</button>
+						</a>
 					</div>
 				</div>
 			</div>
