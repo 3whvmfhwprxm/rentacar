@@ -68,7 +68,7 @@
 	<div class="w3-bar w3-top w3-large" style="background-color: skyblue;">
 		<span class="w3-bar-item w3-left">
 			<a href='<c:url value="/administrator/admin_Main.do" />'>
-				<i class="fa fa-heart" aria-hidden="true"></i> 3조 렌트카
+				3조 렌트카
 			</a>
 		</span>
 		

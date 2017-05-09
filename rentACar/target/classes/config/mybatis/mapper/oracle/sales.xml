@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="config.mybatis.mapper.oracle.sales">
+	<select id="selectSalesByDate" parameterType="DateSearchVO2" resultType="map">
+		select to_char(PAY_REGDATE, 'yyyy-MM-dd') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+		from PAYINFO
+		where extract(year from PAY_REGDATE)=#{year}
+		and extract(month from PAY_REGDATE)=#{month}
+		and PAY_CANCELDATE is null
+		group by to_char(PAY_REGDATE, 'yyyy-MM-dd')
+		order by PAYDATE
+	</select>
+	
+	<select id="selectSalesByMonth" parameterType="DateSearchVO2" resultType="map">
+		select to_char(PAY_REGDATE, 'MM') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+		from PAYINFO
+		where extract(year from PAY_REGDATE)=#{year}
+		and PAY_CANCELDATE is null
+		group by to_char(PAY_REGDATE, 'MM')
+		order by PAYDATE
+	</select>
+	
+	<select id="selectSalesByTerm" parameterType="DateSearchVO2" resultType="map">
+		select to_char(PAY_REGDATE, 'yyyy-MM-dd') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+		from PAYINFO
+		where PAY_REGDATE>=#{startDay}
+		and PAY_CANCELDATE is null
+		<![CDATA[and PAY_REGDATE< to_date(#{endDay})+1]]>
+		group by to_char(PAY_REGDATE, 'yyyy-MM-dd')
+		order by PAYDATE
+	</select>
+</mapper>
+

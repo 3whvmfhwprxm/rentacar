@@ -253,7 +253,7 @@
 	<h3>
 		<b>
 			<i class="fa fa-credit-card"></i>
-			<a href='<c:url value="/administrator/payInfo/payInfoList.do?payNo=${vo.payNo}" />'>
+			<a href='<c:url value="/administrator/payInfo/payInfoList.do" />'>
 				결제
 			</a>
 		</b>
@@ -266,10 +266,9 @@
 					<tr class="info">
 						<th scope="col">결제번호</th>
 						<th scope="col">예약번호</th>
-						<th scope="col">회원전화번호</th>
+						<th scope="col">결제자 연락처</th>
 						<th scope="col">결제방법</th>
-						<th scope="col">결제금액</th>
-						<th scope="col">할인금액</th>
+						<th scope="col">결제금액</th>			
 						<th scope="col">결제일시</th>
 						<th scope="col">진행상태</th>
 					</tr>
@@ -278,7 +277,7 @@
 				<tbody>
 					<c:if test="${empty PayInfoList}">
 						<tr>
-							<td colspan="8">데이터가 존재하지 않습니다.</td>
+							<td colspan="7">데이터가 존재하지 않습니다.</td>
 						</tr>
 					</c:if>
 					
@@ -286,13 +285,12 @@
 					<c:forEach var="vo" items="${PayInfoList}">
 						<tr>
 							<td><a
-								href='<c:url value="/administrator/payInfo/payInfoList.do?payNo=${vo.payNo}" />'>
+								href='<c:url value="/administrator/payInfo/payInfoList.do" />'>
 									${vo.payNo}</a></td>
-							<td style="text-align: center">${vo.reservNum}</td>
+							<td>${vo.reservNum}</td>
 							<td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
 							<td>${vo.payMethod}</td>
 							<td>${vo.payMoney}</td>
-							<td>${vo.payDiscount}</td>
 							<td>${vo.payRegdate}</td>
 							<td>${vo.payCondition}</td>
 						</tr>
