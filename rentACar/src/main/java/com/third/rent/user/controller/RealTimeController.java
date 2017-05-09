@@ -129,7 +129,10 @@ public class RealTimeController {
 		logger.info("선택한 회사차의 정보, map={}", map);
 
 		//유저에 대한 정보 가져오기
-		UserVO uvo=uService.selectByUserid(userId);
+		UserVO uvo=null;
+		if(userId!=null){
+			uvo=uService.selectByUserid(userId);
+		}
 		logger.info("예약자 회원 정보 uvo={}", uvo);
 
 		model.addAttribute("map", map);

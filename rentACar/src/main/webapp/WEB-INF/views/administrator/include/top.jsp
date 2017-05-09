@@ -164,10 +164,10 @@
 				<i class="fa fa-list"></i>&nbsp; 게시판관리
 			</a>
 			
-			<a href="#" 
+			<!-- <a href="#" 
 				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-gift"></i>&nbsp; 이벤트관리
-			</a>
+			</a> -->
 			
 			<a href="<c:url value="/admin/Mng/adminList.do" />" 
 				class="w3-bar-item w3-button w3-padding">

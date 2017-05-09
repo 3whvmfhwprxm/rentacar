@@ -293,8 +293,8 @@ time, mark, audio, video{
                             	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 이용후기</a></li>
                             <li><a href="${pageContext.request.contextPath}/user/serviceCenter.do">
                             	<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 고객센터</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/benefits.do">
-                            	<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> 이용혜택</a></li>
+                            <%-- <li><a href="${pageContext.request.contextPath}/user/benefits.do">
+                            	<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> 이용혜택</a></li> --%>
                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                             	<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> 회사소개
                             	<span class="caret"></span></a>

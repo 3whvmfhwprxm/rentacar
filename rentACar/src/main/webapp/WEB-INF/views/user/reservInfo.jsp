@@ -225,7 +225,12 @@
 		});    
 	</script>
 			<br>
+			
 			<!-- 예약자 및 운전자 입력 정보 -->
+			<c:if test="${empty uvo}">
+				로그인 하시면 예약하실수 있습니다.
+			</c:if>			
+			<c:if test="${!empty uvo}">
 			<div id="reservUser">
 				<div id="userLeft">
 					<h4>예약자 정보 입력</h4>
@@ -331,7 +336,7 @@
 				</div>
 			</div>
 			<!-- 예약자 정보 입력 끝 -->
-			
+			</c:if>
 			</fieldset>
 		</form>
 	
