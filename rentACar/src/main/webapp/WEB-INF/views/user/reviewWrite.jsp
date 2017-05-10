@@ -2,27 +2,52 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../inc_user/top.jsp"%>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#frm1").submit(function(){
+		if(!$("#cmtContent").val()){
+			alert('후기내용을 입력해주세요');
+			$("#cmtContent").focus();
+			return false;
+		}else if($("#cmtKindScore").val()=="::선택::"){
+			alert('친절도 점수를 평가해주세요');
+			$("#cmtKindScore").focus();
+			return false;
+		}else if($("#cmtCleanScore").val()=="::선택::"){
+			alert('청결도 점수를 평가해주세요');
+			$("#cmtCleanScore").focus();
+			return false;
+		}else if($("#cmtConvScore").val()=="::선택::"){
+			alert('편의성 점수를 평가해주세요');
+			$("#cmtConvScore").focus();
+			return false;
+		}
+	});
+});
+</script>
+
 <br><br>
 <div class="divList container">
 		<form class="form-horizontal" id="frm1" method="post" action="<c:url value='/user/reviewWrite.do'/>">
+			<input type="hidden" id="adminId" name="adminId" value="admin1">
 			<fieldset><br>
 			<legend><b>이용후기 작성</b></legend>
 				<div class="form-group">
 					<label for="userId" class="col-sm-2 control-label">회원아이디</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name="userId" id="userId" disabled value="${sessionScope.userId}">
+						<input type="text" class="form-control" name="userId" id="userId" readonly="readonly" value="${sessionScope.userId}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">차량대여업체</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name="comId" id="comId" disabled value="${comId}">
+						<input type="text" class="form-control" name="comId" id="comId" readonly="readonly" value="${map['COM_ID']}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="cmtContent" class="col-sm-2 control-label">사용후기</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name="cmtContent" id="cmtContent" placeholder="간단한 리뷰를 남겨주세요">
+						<textarea style="resize:none;" rows="4" class="form-control" name="cmtContent" id="cmtContent" placeholder="간단한 리뷰를 남겨주세요."></textarea>
 					</div>
 				</div>
 				<div class="form-group">

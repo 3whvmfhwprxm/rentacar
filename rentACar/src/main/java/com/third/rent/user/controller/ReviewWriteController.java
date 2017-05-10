@@ -1,6 +1,10 @@
 package com.third.rent.user.controller;
 
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.Comments.model.CommentsService;
 import com.third.rent.Comments.model.CommentsVO;
+import com.third.rent.common.UserFileUploadWebUtil;
 
 @Controller
 public class ReviewWriteController {
@@ -36,10 +41,21 @@ public class ReviewWriteController {
 	}
 	
 	@RequestMapping(value="/user/reviewWrite.do", method=RequestMethod.POST)
-	public String showReviewWrite_post(@ModelAttribute CommentsVO commentsVo, Model model){
-		logger.info("리뷰작성처리, 파라미터 ");
+	public String showReviewWrite_post(@ModelAttribute CommentsVO commentsVo, Model model, HttpServletRequest request,
+			HttpSession session){
+		String userId = (String)session.getAttribute("userId");
+		commentsVo.setUserId(userId);
+		logger.info("리뷰작성처리, 파라미터 userId={}, adminId={}", userId, commentsVo.getAdminId());
 		
 		int cnt=commentsService.writeComment(commentsVo);
+		
+		UserFileUploadWebUtil fileUpload = new UserFileUploadWebUtil();
+		List<Map<String, Object>> map = fileUpload.fileUpload(request, 2);
+		
+		commentsVo.setCmtImg1(map.get(0).get("fileName").toString());
+		map.get(0).get("fileSize");
+		map.get(0).get("originalFileName");
+		
 		String msg="", url="";
 		if(cnt>0){
 			msg="사용후기 등록이 완료되었습니다";
