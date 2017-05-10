@@ -177,6 +177,7 @@ public class CcarRDataController {
 		String status="";
 		String msg="", url="";
 		int cnt= 0;
+		/* 대여상태(status) 에 따라 메서드를 호출하여 상태를 변경하게 함 */
 		if(ccarStatus.equals("HOLD")){
 			logger.info("상태 홀드");
 			status="RENT";

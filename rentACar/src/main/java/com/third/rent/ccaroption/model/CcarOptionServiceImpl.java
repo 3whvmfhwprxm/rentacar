@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.third.rent.common.SearchVO;
+import com.third.rent.user.model.UserVO;
 
 @Service
 public class CcarOptionServiceImpl implements CcarOptionService {
@@ -123,5 +125,23 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 		return ccarOptionDao.updateStatusCgHold(vo);
 	}
 
+
+	@Override
+	@Transactional
+	public int moveHold(List<Map<String, Object>> cCarList) {
+		int cnt = 0;
+		/*try {
+			for (Map<String, Object> map: cCarList) {
+				
+				if (userVo.getUserId()!=null) { ccar_car_id , com_id, ccar_status 
+					cnt = adminUserDao.userWithdraw(userVo.getUserId());
+				}
+			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt = -1;
+		}*/
+		return cnt;
+	}
 
 }

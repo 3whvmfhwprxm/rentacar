@@ -1,5 +1,6 @@
 package com.third.rent.ccaroption.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.third.rent.car.model.CarService;
 import com.third.rent.car.model.CarVO;
+import com.third.rent.ccaroption.model.CcarListVO;
 import com.third.rent.ccaroption.model.CcarOptionService;
 import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.PaginationInfo;
@@ -67,6 +69,7 @@ public class CcarOptionController {
 		String sunroof = vo.getCcarSunRoofYn();
 		String caruse = vo.getCcarUseYn();
 
+		/* 체크박스의 값이 안들어온 경우 값을 N으로 셋팅 */
 		if(aux==null || aux.isEmpty()) aux = "N"; 
 		if(blackbox==null || blackbox.isEmpty()) blackbox = "N";
 		if(bluetooth==null || bluetooth.isEmpty()) bluetooth = "N";
@@ -140,7 +143,7 @@ public class CcarOptionController {
 		
 		String comId = (String)session.getAttribute("comId");
 		searchVo.setCompanyId(comId);
-		logger.info("#############파라미터 회사아이디:" +comId);
+		logger.info("파라미터 회사아이디={}" +comId);
 		List<Map<String, Object>> cclist =
 				ccarOptionService.selectAllComCar(searchVo);
 		logger.info("업체 차량목록 조회결과, cclist.size()={}", cclist.size());
@@ -302,6 +305,7 @@ public class CcarOptionController {
 		vo.setCcarCarId(ccarCarId);
 		vo.setComId(comId);
 		String useYn="";
+		/* 상태변경 하는 경우 UseYn 들어온 파라미터 값이 Y면 N 으로 N이면 Y로 상태를 변경 */
 		if(ccarUseYn.equals("Y")){
 			useYn="N";
 			vo.setCcarUseYn(useYn);
@@ -355,6 +359,13 @@ public class CcarOptionController {
 		return "com_manage/company_reservList";
 	}
 	
+	@RequestMapping("/chkAllCgHold.do")
+	public String CarList(@ModelAttribute CcarListVO cCarListVo, Model model){
+		logger.info("선택한 대여중 이동 파라미터 cCarListVo={}", cCarListVo);
+		
+		List<Map<String, Object>> alist = new ArrayList<Map<String, Object>>();
+		return "";
+	}
 }
 
 

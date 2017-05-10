@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.third.rent.common.SearchVO;
+import com.third.rent.user.model.UserVO;
 
 public interface CcarOptionService {
 	//차량번호 사용에 관련한 상수
@@ -30,4 +31,5 @@ public interface CcarOptionService {
 	public int updateStatusCgRent(CcarOptionVO vo);
 	public int updateStatusCgReturn(CcarOptionVO vo);
 	public int updateStatusCgHold(CcarOptionVO vo);
+	public int moveHold(List<Map<String, Object>> cCarList);
 }
