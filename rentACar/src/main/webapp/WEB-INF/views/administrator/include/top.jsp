@@ -113,7 +113,7 @@
 			<c:if test="${sessionScope.Admin_Id==null}">
 				<div class="w3-col s4">
 					<img alt="로그아웃시 이미지" style="width: 220px; height: 90px"
-						src='<c:url value="/images/racoon.jpg" />'>
+						src='<c:url value="/user_img/indexlogo.png" />'>
 				</div>
 			</c:if>
 		</div>

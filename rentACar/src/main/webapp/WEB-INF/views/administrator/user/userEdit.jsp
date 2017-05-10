@@ -32,7 +32,17 @@
 <form class="form-horizontal" id="frm1" name="frm1" method="post"
 	action='<c:url value="/administrator/user/userEdit.do" />'>
 	<fieldset>
-	<legend>회원 수정</legend>		
+	<legend>회원 수정</legend>
+		<div class="form-group">
+			<label for="userId" class="col-sm-2 control-label">
+				회원 아이디
+			</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="userId"
+					id="userId" value="${userVo.userId}" readonly>
+			</div>
+		</div>
+		
 		<div class="form-group">
 			<label for="userName" class="col-sm-2 control-label">
 				회원 이름
@@ -90,12 +100,23 @@
 		
 		<div class="form-group">
 			<label for="userLicense" class="col-sm-2 control-label">
-				대표자
+				운전면허증
 			</label>
-			<div class="col-sm-8">
+			<div class="col-sm-2">
+				<select class="form-control" name="userLicense" id="userLicense" title="운전면허">
+		            <option value="1종 대형">1종 대형</option>
+		            <option value="1종 보통">1종 보통</option>
+		            <option value="1종 소형">1종 소형</option>
+		            <option value="1종 특수">1종 특수</option>
+		            <option value="2종 보통">2종 보통</option>
+		            <option value="2종 소형">2종 소형</option>
+		            <option value="원동기장치/자전거">원동기장치/자전거</option>
+		       	</select>
+	       	</div>
+			<%-- <div class="col-sm-8">
 				<input type="text" class="form-control" name="userLicense"
 					id="userLicense" value="${userVo.userLicense}">
-			</div>
+			</div> --%>
 		</div>
 		
 		<div class="form-group">

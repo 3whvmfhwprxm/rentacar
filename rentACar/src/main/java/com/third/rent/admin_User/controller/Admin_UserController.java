@@ -202,10 +202,10 @@ public class Admin_UserController {
 		
 		String msg = "", url = "";
 		if(cnt>0){
-			msg = "업체 수정 성공";
-			url = "/administrator/user/userEdit.do?userId="+userVo.getUserId();
+			msg = "회원 수정 성공";
+			url = "/administrator/user/userInList.do";
 		}else{
-			msg = "업체 수정 실패";
+			msg = "회원 수정 실패";
 		}
 
 		model.addAttribute("msg", msg);

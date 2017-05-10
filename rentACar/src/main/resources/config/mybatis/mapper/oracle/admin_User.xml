@@ -97,7 +97,7 @@
 	</update>
 	
 	<update id="updateUser" parameterType="UserVO">
-		update rent_user 
+		update rent_user
 		set 
 		    user_name=#{userName}, user_email=#{userEmail}, 
 		    user_tel1=#{userTel1}, user_tel2=#{userTel2}, 

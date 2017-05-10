@@ -18,18 +18,18 @@
 	</select>
 	
 	<select id="totalPayByMonth" parameterType="DateVO" resultType="map">
-		select decode(to_char(PAY_REGDATE,'MM'), 01, '01',
-                                         02, '02',
-                                         03, '03',
-                                         04, '04',
-                                         05, '05',
-                                         06, '06',
-                                         07, '07',
-                                         08, '08',
-                                         09, '09',
-                                         10, '10',
-                                         11, '11',
-                                         12, '12') "PAYDATE",
+		select decode(to_char(PAY_REGDATE,'MM'), 01, nvl2(to_char(PAY_REGDATE,'MM'), 01, 01), 
+		                                         02, nvl2(to_char(PAY_REGDATE,'MM'), 02, 02),
+		                                         03, nvl2(to_char(PAY_REGDATE,'MM'), 03, 03),
+		                                         04, nvl2(to_char(PAY_REGDATE,'MM'), 04, 04),
+		                                         05, nvl2(to_char(PAY_REGDATE,'MM'), 05, 05),
+		                                         06, nvl2(to_char(PAY_REGDATE,'MM'), 06, 06),
+		                                         07, nvl2(to_char(PAY_REGDATE,'MM'), 07, 07),
+		                                         08, nvl2(to_char(PAY_REGDATE,'MM'), 08, 08),
+		                                         09, nvl2(to_char(PAY_REGDATE,'MM'), 09, 09),
+		                                         10, nvl2(to_char(PAY_REGDATE,'MM'), 10, 10),
+		                                         11, nvl2(to_char(PAY_REGDATE,'MM'), 11, 11),
+		                                         12, nvl2(to_char(PAY_REGDATE,'MM'), 12, 12)) "PAYDATE",
 		       decode(to_char(PAY_REGDATE,'MM'), 01, sum(nvl(PAY_MONEY,0)),
 		                                         02, sum(nvl(PAY_MONEY,0)),
 		                                         03, sum(nvl(PAY_MONEY,0)),
@@ -46,6 +46,7 @@
 		where extract(year from PAY_REGDATE) = extract(year from sysdate)
 		and PAY_CANCELDATE is null
 		group by to_char(PAY_REGDATE,'MM')
+		order by to_char(PAY_REGDATE,'MM')
 	</select>
 </mapper>
 

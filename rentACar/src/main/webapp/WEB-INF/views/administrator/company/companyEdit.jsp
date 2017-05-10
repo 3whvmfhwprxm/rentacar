@@ -39,7 +39,7 @@
 			</label>
 			<div class="col-sm-2">
 				<input type="text" class="form-control" name="comId"
-					id="CompanyId" value="${companyVo.comId}">		
+					id="CompanyId" value="${companyVo.comId}" readonly>		
 			</div>
 		</div>
 		
@@ -59,7 +59,7 @@
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comNum"
-					id="CompanyNo" value="${companyVo.comNum}">
+					id="CompanyNo" value="${companyVo.comNum}" readonly>
 			</div>
 		</div>
 		
@@ -180,15 +180,19 @@
 			</div>
 		</div>
 		
-		<div class="center">
-			<button type="submit" class="btn btn-default">
-				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
-			</button>
-			
-            <a href='<c:url value="/administrator/company/companyList.do" />'
-				type="button" class="btn btn-default"> 
-				<i class="fa fa-list-ul" aria-hidden="true"></i>목록
-			</a>
+		<div class="form-group">
+			<label for="bt" class="col-sm-2 control-label"></label>
+			<div class="col-sm-8">
+				<button type="submit" class="btn btn-default">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
+				</button>
+				
+	            <a href='<c:url value="/administrator/company/companyList.do" />'>
+					<button type="button" id="bt2" class="btn btn-default">	
+						<i class="fa fa-list-ul" aria-hidden="true"></i>목록
+					</button>
+				</a>
+			</div>
         </div>
 	</fieldset>
 </form>
