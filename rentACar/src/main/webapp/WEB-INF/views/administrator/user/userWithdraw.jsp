@@ -26,7 +26,7 @@
 							<i class="fa fa-times fa-4x" aria-hidden="true"></i>
 						</h3>
 						<h2 class="text-center">${param.userId}님을 탈퇴처리하시겠습니까?</h2>
-						<p>회원탈퇴를 하시면 삭제가 아니라, 탈퇴일이 현재날짜로 업데이트</p>
+						<p>회원탈퇴를 하시면 삭제가 아니라, 탈퇴일이 현재날짜로 업데이트됩니다.</p>
 						<div class="panel-body">
 							<form name="frmOut" id="frmOut" method="post"
 								action="<c:url value='/administrator/user/userWithdraw.do' />" >
@@ -36,7 +36,7 @@
 										<span class="input-group-addon">
 											<i class="glyphicon glyphicon-remove"></i>
 										</span>
-										<input type="text" name="userId" id="userId" value="${param.userId}">
+										<input type="hidden" name="userId" id="userId" value="${param.userId}">
 										<input type="password" name="pwd" id="pwd" class="form-control">
 									</div>
 								</div>

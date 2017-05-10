@@ -30,4 +30,6 @@ public interface Admin_UserService {
 	public int userMultiWithdraw(List<UserVO> userList);
 	
 	public int userMultiReregister(List<UserVO> userList);
+	
+	public int updateUser(String userId);
 }

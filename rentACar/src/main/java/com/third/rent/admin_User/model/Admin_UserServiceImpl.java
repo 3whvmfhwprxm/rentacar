@@ -97,4 +97,9 @@ public class Admin_UserServiceImpl implements Admin_UserService{
 
 		return cnt;
 	}
+
+	@Override
+	public int updateUser(String userId) {
+		return adminUserDao.updateUser(userId);
+	}
 }

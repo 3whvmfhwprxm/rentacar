@@ -21,4 +21,6 @@ public interface Admin_UserDAO {
 	public String selectPwdByAdminId(String adminId);
 	
 	public int reRegisterUser(String userId);
+	
+	public int updateUser(String userId);
 }
