@@ -36,9 +36,9 @@ CREATE TABLE Car (
 	car_trans VARCHAR2(6) NOT NULL, /* 변속기 */
 	car_regdate DATE default sysdate, /* 등록일 */
 	car_type VARCHAR2(30) NOT NULL, /* 차량유형 */
-	car_img VARCHAR2(200) NOT NULL /* 이미지 */
-	--car_img2 VARCHAR2(200) NOT NULL, /* 이미지2 */--차공식 사진 관련 1개만 올리도록 수정 예정
-	--car_img3 VARCHAR2(200) NOT NULL /* 이미지3 */--차공식 사진 관련 1개만 올리도록 수정 예정
+	car_img VARCHAR2(200) NOT NULL, /* 이미지 */
+	car_img2 VARCHAR2(200) NULL, /* 이미지2 */--차공식 사진 관련 1개만 올리도록 수정 예정
+	car_img3 VARCHAR2(200) NULL /* 이미지3 */--차공식 사진 관련 1개만 올리도록 수정 예정
 );
 
 ALTER TABLE Car

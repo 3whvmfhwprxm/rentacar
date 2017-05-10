@@ -11,6 +11,24 @@ public class CarVO {
 	private Timestamp carRegdate;
 	private String carType;
 	private String carImg;
+	private String car_img2;
+	private String car_img3;
+	
+	public String getCar_img2() {
+		return car_img2;
+	}
+
+	public void setCar_img2(String car_img2) {
+		this.car_img2 = car_img2;
+	}
+
+	public String getCar_img3() {
+		return car_img3;
+	}
+
+	public void setCar_img3(String car_img3) {
+		this.car_img3 = car_img3;
+	}
 
 	public String getCarCode() {
 		return carCode;
@@ -80,7 +98,7 @@ public class CarVO {
 	public String toString() {
 		return "CarVO [carCode=" + carCode + ", carName=" + carName + ", carInc=" + carInc + ", carSize=" + carSize
 				+ ", carTrans=" + carTrans + ", carRegdate=" + carRegdate + ", carType=" + carType + ", carImg="
-				+ carImg + "]";
+				+ carImg + ", car_img2=" + car_img2 + ", car_img3=" + car_img3 + "]";
 	}
 
 }
