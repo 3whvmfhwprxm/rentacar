@@ -79,7 +79,7 @@
         <br><br>
         <!--table-->
          <!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
+		<ul class="nav nav-tabs text-right" role="tablist">
 			<li role="presentation">
 				<a href='<c:url value="/com_manage/rentalData/todayRentalCar.do"/>' aria-controls="todayRentalCar" role="tab">
 					대여 현황 목록
@@ -142,7 +142,7 @@
         
         </tbody>
     </table>
-    </div>
+    
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
@@ -195,7 +195,7 @@
 		</div>
 	</div>
 	
-
+</div>
 
 
 
