@@ -11,9 +11,13 @@
 				alert("감추기할 공지를 하나라도 선택하셔야 합니다");
 				return;
 			}else if(confirm("해당 공지들을 감추기 처리 하시겠습니까?")){
-				$("#tableFrm").attr("action","<c:url value='/admin/Board/comNoticeVisibleMultiYes.do' />");
+				$("#tableFrm").attr("action","<c:url value='/admin/Board/comNoticeVisibleMultiNo.do' />");
 				$("#tableFrm").submit();	
 			}											
+		});
+		
+		$("#bt_cNoInsert").click(function(){
+			location.href="<c:url value='/admin/Board/comNoticeInsert.do' />";
 		});
 	});
 

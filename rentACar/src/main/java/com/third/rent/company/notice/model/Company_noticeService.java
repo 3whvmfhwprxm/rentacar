@@ -17,6 +17,8 @@ public interface Company_noticeService {
 	public int updateComNoticeVisibleYes(int cnoticeNo);
 	
 	public int updateComNoticeVisibleNo(int cnoticeNo);
+	
+	public int updateComNoticeMultiVisibleNo(List<CompanyNoticeVO> cnlist);
 
 /*	public int companyIdChk(CompanyVO param);
 

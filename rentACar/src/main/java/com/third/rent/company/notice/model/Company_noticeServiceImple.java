@@ -1,11 +1,15 @@
 package com.third.rent.company.notice.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.third.rent.common.SearchVO;
+import com.third.rent.payInfo.model.PayInfoVO;
 
 @Service
 public class Company_noticeServiceImple implements Company_noticeService {
@@ -46,6 +50,23 @@ public class Company_noticeServiceImple implements Company_noticeService {
 	@Override
 	public int updateComNoticeVisibleNo(int cnoticeNo) {
 		return cnoticeDao.updateComNoticeVisibleNo(cnoticeNo);
+	}
+
+	@Override
+	@Transactional
+	public int updateComNoticeMultiVisibleNo(List<CompanyNoticeVO> cnlist) {
+		int cnt=0;
+		try{
+			for(CompanyNoticeVO cvo : cnlist){
+				if(cvo.getCnoticeVisible()!=null){
+					cnt=cnoticeDao.updateComNoticeVisibleNo(cvo.getCnoticeNo());
+				}
+			}			
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			cnt=-1;
+		}
+		return cnt;
 	}
 
 	

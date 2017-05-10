@@ -2,16 +2,14 @@ package com.third.rent.company.notice.model;
 
 import java.util.List;
 
-import com.third.rent.company.model.CompanyVO;
-
 public class CompanyNoticeVOList {
-	private List<CompanyVO> cvolist;
+	private List<CompanyNoticeVO> cvolist;
 
-	public List<CompanyVO> getCvolist() {
+	public List<CompanyNoticeVO> getCvolist() {
 		return cvolist;
 	}
 
-	public void setCvolist(List<CompanyVO> cvolist) {
+	public void setCvolist(List<CompanyNoticeVO> cvolist) {
 		this.cvolist = cvolist;
 	}
 

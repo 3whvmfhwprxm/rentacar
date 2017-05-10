@@ -202,11 +202,26 @@ public class Admin_BoardController {
 		return "common/message";
 	}
 	
-	@RequestMapping("/comNoticeVisibleMultiYes")
+	@RequestMapping("/comNoticeVisibleMultiNo.do")
 	public String comNoticeUpdateVisibleMultiNo(@ModelAttribute CompanyNoticeVOList cnvolist, Model model){
 		logger.info("관리자 시스템 - 선택된 공지들 한번에 감추기 처리 cnvolist={}", cnvolist);
 		
-		return "";
+		List<CompanyNoticeVO> cnlist=cnvolist.getCvolist();
+		
+		int result=comNoService.updateComNoticeMultiVisibleNo(cnlist);
+		logger.info("관리자 시스템 - 선택한 공지 목록 감추기 결과 result={}", result);
+		
+		String url="/admin/Board/cNotice.do", msg="";
+		if(result!=-1){
+			msg="선택한 공지 목록이 감추기 처리되었습니다.";
+		}else{
+			msg="선택한 공지 목록 감추기가 실패했습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
 	
 	@RequestMapping("/comNoticeVisibleYes")
