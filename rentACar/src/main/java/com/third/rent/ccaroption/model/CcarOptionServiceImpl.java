@@ -74,4 +74,39 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 	}
 
 
+	@Override
+	public List<Map<String, Object>> selectRentalData(SearchVO searchVo) {
+		return ccarOptionDao.selectRentalData(searchVo);
+	}
+
+
+	@Override
+	public int todayRentalTR(SearchVO searchVo) {
+		return ccarOptionDao.todayRentalTR(searchVo);
+	}
+
+
+	@Override
+	public List<Map<String, Object>> selectReturnData(SearchVO searchVo) {
+		return ccarOptionDao.selectReturnData(searchVo);
+	}
+
+
+	@Override
+	public int todayReturnTR(SearchVO searchVo) {
+		return ccarOptionDao.todayReturnTR(searchVo);
+	}
+
+
+	@Override
+	public List<Map<String, Object>> selectRentalIng(SearchVO searchVo) {
+		return ccarOptionDao.selectRentalIng(searchVo);
+	}
+
+	@Override
+	public int rentalIngTR(SearchVO searchVo) {
+		return ccarOptionDao.rentalIngTR(searchVo);
+	}
+
+
 }

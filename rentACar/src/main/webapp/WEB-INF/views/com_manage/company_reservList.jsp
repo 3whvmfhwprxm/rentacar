@@ -100,15 +100,15 @@
        <colgroup>
     		<col width="10%">
     		<col width="10%">
-    		<col width="10%">
+    		<col width="8%">
     		<col width="13%">
-    		<col width="15%">
+    		<col width="13%">
+    		<col width="10%">
     		<col width="10%">
     		<col width="10%">
     		<col width="10%">
     		<col width="8%">
     		<col width="5%">
-    		<col width="*%">
     	</colgroup>
        		<tr>
   				<th>차량번호</th>
@@ -119,7 +119,7 @@
 				<th>대여일</th>
 				<th>반납일</th>
 				<th>대여일까지 남은일수</th>
-				<th>상세정보보기</th>
+				<th>예약상세정보</th>
 				<th>예약취소</th>
 			</tr>
         </thead>
@@ -147,20 +147,20 @@
 			<td><fmt:formatDate value="${map['RESERV_START_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
 			<td><fmt:formatDate value="${map['RESERV_END_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
 			<td>${map['REMAININGDAY'] } 일</td>
-			<td><button id="bt${i.index }">상세정보보기</button></td>
+			<td><button id="bt${i.index }">열기/닫기</button></td>
 			<td><button>취소</button></td>
 		</tr>
 		<tr id="tra${i.index }">
-			<td>${map['CCAR_CAR_ID'] } 예약상세정보</td>
+			<td><strong>${map['CCAR_CAR_ID'] } 예약상세정보</strong></td>
 			<td></td>
-        	<td>예약자ID</td>
-        	<td>운전자 이름</td>
-        	<td>운전자 전화번호</td>
-        	<td>예약일시</td>
-        	<td>결제일시</td>
-        	<td>진행상태</td>
-        	<td>할인금액</td>
-        	<td>보험여부</td>
+        	<td><strong>예약자ID</strong></td>
+        	<td><strong>운전자 이름</strong></td>
+        	<td><strong>운전자 전화번호</strong></td>
+        	<td><strong>예약일시</strong></td>
+        	<td><strong>결제일시</strong></td>
+        	<td><strong>진행상태</strong></td>
+        	<td><strong>할인금액</strong></td>
+        	<td><strong>보험여부</strong></td>
         </tr>
         <tr id="trb${i.index }" style="display: show;">
         	<td class="line"></td>
@@ -250,6 +250,14 @@
 							<c:if test="${'res_u_name'==param.searchCondition}">
 		           		selected            	
 		           	</c:if>>예약자이름</option>
+		           	<option value="reserv_start_date"
+							<c:if test="${'reserv_start_date'==param.searchCondition}">
+		           		selected            	
+		           	</c:if>>대여일</option>
+		           	<option value="reserv_end_date"
+							<c:if test="${'reserv_end_date'==param.searchCondition}">
+		           		selected            	
+		           	</c:if>>반납일</option>
 					</select> <input type="text" name="searchKeyword" title="검색어 입력"
 						value="${param.searchKeyword}"> <input type="submit"
 						value="검색">

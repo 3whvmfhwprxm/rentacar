@@ -101,7 +101,30 @@
 		where com_id= #{companyId} and comcar_outdate is null
 		<include refid="searchWhere"></include>
 	</select>
-
+	
+	<select id="todayRentalTR" parameterType="SearchVO" resultType="int">
+		select count(*) 
+			from com_reservView
+		where com_id= #{companyId} and comcar_outdate is null
+		and to_char(reserv_start_date,'yyyy-MM-dd')=to_char(sysdate,'yyyy-MM-dd')
+		<include refid="searchWhere"></include>
+	</select>
+	
+	<select id="todayReturnTR" parameterType="SearchVO" resultType="int">
+		select count(*) 
+			from com_reservView
+		where com_id= #{companyId} and comcar_outdate is null
+		and to_char(reserv_end_date,'yyyy-MM-dd')=to_char(sysdate,'yyyy-MM-dd')
+		<include refid="searchWhere"></include>
+	</select>
+	
+	<select id="rentalIngTR" parameterType="SearchVO" resultType="int">
+		select count(*) from com_reservview
+		<![CDATA[
+		where reserv_start_date <=sysdate and sysdate<=reserv_end_date
+		]]>
+		<include refid="searchWhere"></include>
+	</select>
 	<update id="updateCarOption" parameterType="CcarOptionVO">
 		update companycaroption 
 		set ccar_car_id=#{ccarCarId}, ccar_use_yn=#{ccarUseYn},ccar_blackbox_yn=#{ccarBlackboxYn}, ccar_rear_camera_yn=#{ccarRearCameraYn},ccar_smoke_yn=#{ccarSmokeYn},
@@ -122,7 +145,7 @@
 	
 	<select id="checkCarId" parameterType="String" resultType="int">
 		select count(*) from  companycaroption 
-		where Ccar_car_id = #{ccarCarId };
+		where Ccar_car_id = #{ccarCarId }
  	</select>
  	
  	<update id="updateCarUseYn" parameterType="CcarOptionVO">
@@ -140,6 +163,7 @@
 		    (
 		        select * from com_reservView
 		        where com_id= #{companyId}
+		        <include refid="searchWhere"></include>
 		        <if test="sortingKeyword != null">
 					<if test="sortingKeyword == 'stday'">
 						and reserv_start_date >= to_char(sysdate,'yyyy/MM/dd')
@@ -165,6 +189,118 @@
 		]]>
 	</select>
 	
+	
+	<select id="selectRentalData" resultType="map" parameterType="SearchVO">
+	 select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select car_name, ccar_car_id, reserv_start_date, res_u_name, res_drv_name, 
+				res_drv_tel1, res_drv_tel2, res_drv_tel3, pay_condition
+				from com_reservview
+			 	where com_id= #{companyId}
+			 	and to_char(reserv_start_date,'yyyy-MM-dd')=to_char(sysdate,'yyyy-MM-dd')
+			 	<include refid="searchWhere"></include>
+			 	 <if test="sortingKeyword != null">
+			 	 	<if test="sortingKeyword == 'stDate'">
+						order by reserv_start_date
+					</if>
+					<if test="sortingKeyword == 'tStDate'">
+						<![CDATA[
+						and to_char(sysdate,'yyyy-MM-dd HH:mm') 
+						< to_char(reserv_start_date,'yyyy-MM-dd HH:mm')
+						]]>
+						 order by reserv_start_date
+					</if>
+					<if test="sortingKeyword == 'name'">
+						order by res_drv_name desc
+					</if>
+					<if test="sortingKeyword == 'carNum'">
+						order by ccar_car_id desc
+					</if>
+				</if>
+				<if test="sortingKeyword == null">
+					order by reserv_start_date
+				</if>
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectReturnData" resultType="map" parameterType="SearchVO">
+	 select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select car_name, ccar_car_id, reserv_end_date, res_u_name, res_drv_name, 
+				res_drv_tel1, res_drv_tel2, res_drv_tel3, pay_condition
+				from com_reservview
+			 	where com_id= #{companyId}
+			 	and to_char(reserv_end_date,'yyyy-MM-dd')=to_char(sysdate,'yyyy-MM-dd')
+			 	<include refid="searchWhere"></include>
+			 	 <if test="sortingKeyword != null">
+			 	 	<if test="sortingKeyword == 'stdate'">
+						order by reserv_start_date
+					</if>
+					<if test="sortingKeyword == 'name'">
+						 order by res_drv_name
+					</if>
+					<if test="sortingKeyword == 'namedesc'">
+						order by res_drv_name desc
+					</if>
+				</if>
+				<if test="sortingKeyword == null">
+					order by reserv_end_date
+				</if>
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectRentalIng" resultType="map" parameterType="SearchVO">
+	 select *
+		from
+		(
+		    select rownum as RNUM ,LIST.*
+		    from
+		    (
+		        select * from com_reservview
+				<![CDATA[
+				where reserv_start_date <= sysdate and sysdate <=reserv_end_date
+				]]>
+				and com_id=#{companyId}
+			 	<include refid="searchWhere"></include>
+			 	 <if test="sortingKeyword != null">
+			 	 	<if test="sortingKeyword == 'carNum'">
+						order by ccar_car_id desc
+					</if>
+					<if test="sortingKeyword == 'name'">
+						 order by res_drv_name desc
+					</if>
+					<if test="sortingKeyword == 'lateCar'">
+						order by res_drv_name desc
+					</if>
+				</if>
+				<if test="sortingKeyword == null">
+					order by reserv_end_date
+				</if>
+		    )LIST
+		)
+		<![CDATA[
+		where RNUM>#{firstRecordIndex} 
+		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
+		]]>
+	</select>
 </mapper>
 
 

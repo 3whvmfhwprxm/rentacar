@@ -14,6 +14,9 @@
 #container {
 	height: 400px;
 }
+	.divSales{margin: 10px 0;}
+	.bodyClass{padding-top: 30px;}
+	th{background-color: #EEEEEE;}
 </style>
 <script type="text/javascript">
 $(function(){

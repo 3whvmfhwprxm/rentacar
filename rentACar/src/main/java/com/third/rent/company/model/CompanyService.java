@@ -29,4 +29,5 @@ public interface CompanyService {
 	public int selectTotalRecord(SearchVO searchVo);
 	
 	public List<Map<String, Object>> ComselectSalesByMonth(DateSearchVO2 dateSearchVO);
+	public List<Map<String, Object>> ComselectSalesByDate(DateSearchVO2 dateSearchVO);
 }

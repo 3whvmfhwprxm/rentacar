@@ -14,6 +14,9 @@
 #container {
 	height: 400px;
 }
+	.divSales{margin: 10px 0;}
+	.bodyClass{padding-top: 30px;}
+	th{background-color: #EEEEEE;}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -28,11 +31,11 @@ $(function(){
         },
         
         xAxis: {
-            categories: ${listPay}
+            categories: [1,2,4,5]
         },
         
         subtitle: { 
-            text: '일별 매출 현황'
+            text: '기간별 매출 현황'
         },
         plotOptions: {
             column: {
@@ -40,10 +43,9 @@ $(function(){
             }
         },
         series:[{
-	    	data : ${listMonth} 	
+	    	data : [1,2,3,4]
 	    }]
     });
-	    
 /*     function showValues() {
         $('#alpha-value').html(chart.options.chart.options3d.alpha);
         $('#beta-value').html(chart.options.chart.options3d.beta);
@@ -122,9 +124,9 @@ $(function(){
 	</form>
 	
 	<div>
-		<a href='<c:url value="/admin/sales/salesDay.do" />'>일별 매출</a> | 
-		<a href='<c:url value="/admin/sales/salesMonth.do" />'>월별 매출</a> | 
-		<a href='<c:url value="/admin/sales/salesTerm.do" />'>기간별 매출</a> | 
+		<a href='<c:url value="/com_manage/company_revenueDay.do" />'>일별 매출</a> | <a
+			href='<c:url value="/com_manage/company_revenueMonth.do" />'>월별 매출</a> | <a
+			href='<c:url value="/com_manage/company_revenueTerm.do" />'>기간별 매출</a> |
 	</div>
 	
 	

@@ -243,7 +243,7 @@ public class CompanyEpilogueController {
 	}
 	
 	@RequestMapping("/company_revenueDay.do") 
-	public String revenueDay(@ModelAttribute DateSearchVO2 dvo, HttpSession session, Model model){
+	public String revenueDate(@ModelAttribute DateSearchVO2 dvo, HttpSession session, Model model){
 		String companyId = (String)session.getAttribute("comId");
 		logger.info("매출 통계 화면 구현, 파라미터 comId={}", companyId);
 		dvo.setCompanyId(companyId);
@@ -255,8 +255,8 @@ public class CompanyEpilogueController {
 		List<String> listDay = new ArrayList<String>();
 		
 		if(dvo.getYear()!=null && !dvo.getYear().isEmpty()){
-			slist=comService.ComselectSalesByMonth(dvo);
-			logger.info("월별 매출 조회 결과는 slist.size()={}", slist.size());
+			slist=comService.ComselectSalesByDate(dvo);
+			logger.info("일별 매출 조회 결과는 slist.size()={}", slist.size());
 			
 			for(int i = 0 ; i < slist.size() ; i++){
 				Map<String, Object> bean = slist.get(i);
@@ -264,7 +264,7 @@ public class CompanyEpilogueController {
 				listMonth.add(bean.get("TOTALPAY")+"");
 			}
 			
-			logger.info("월별 매출현황 listPay={}, listMonth={}", listPay, listMonth);
+			logger.info("일별 매출현황 listPay={}, listMonth={}", listPay, listMonth);
 			
 			model.addAttribute("listPay", listPay);
 			model.addAttribute("listMonth", listMonth);

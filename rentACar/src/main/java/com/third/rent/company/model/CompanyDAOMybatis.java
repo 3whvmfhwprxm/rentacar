@@ -55,7 +55,7 @@ public class CompanyDAOMybatis extends SqlSessionDaoSupport
 
 	@Override
 	public List<Map<String, Object>> ComselectSalesByDate(DateSearchVO2 dateSearchVO) {
-		return getSqlSession().selectList(namespace+".", dateSearchVO);
+		return getSqlSession().selectList(namespace+".ComSelectSalesByDate", dateSearchVO);
 	}
 
 	@Override

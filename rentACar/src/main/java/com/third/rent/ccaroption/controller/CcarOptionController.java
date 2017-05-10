@@ -326,7 +326,7 @@ public class CcarOptionController {
 			HttpSession session,
 			Model model){
 		String companyId = (String)session.getAttribute("comId");
-		logger.info("업체관리, 예약현황 보여주기, 파라미터 comId={}",companyId);
+		logger.info("업체 예약목록 관리 예약현황보여주기, 파라미터 comId={}",companyId);
 		searchVo.setCompanyId(companyId);
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
@@ -338,9 +338,8 @@ public class CcarOptionController {
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		
-
 		int totalRecord = ccarOptionService.ReservTotalRecord(searchVo);
-		logger.info("업체 차량목록 조회 - 전체 업체 차량 조회 결과, totalRecord={}",
+		logger.info("업체 예약목록 관리, 예약목록 조회결과 totalRecord={}",
 				totalRecord);
 
 		pagingInfo.setTotalRecord(totalRecord);

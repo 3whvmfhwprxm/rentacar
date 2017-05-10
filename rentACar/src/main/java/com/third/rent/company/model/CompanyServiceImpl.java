@@ -86,7 +86,10 @@ public class CompanyServiceImpl implements CompanyService{
 		return companyDao.selectTotalRecord(searchVo);
 	}
 
-
+	@Override
+	public List<Map<String, Object>> ComselectSalesByDate(DateSearchVO2 dateSearchVO) {
+		return companyDao.ComselectSalesByDate(dateSearchVO);
+	}
 
 
 }

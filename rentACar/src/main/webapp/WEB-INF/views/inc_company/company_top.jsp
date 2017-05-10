@@ -66,7 +66,7 @@ html,body { height: 100%; margin: 0; padding: 0; }
     font-size: 18px;
 }
 .container1{
-	font-family: 'Nanum Gothic Coding'; font-size: 18px;
+	font-family: 'Nanum Gothic Coding'; font-size: 15px;
     margin-left: auto;
     width: 970px;
     padding-right: 15px;
@@ -131,9 +131,11 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	                        <i class="fa fa-navicon"></i> 예약 관리 <i class="fa fa-angle-down" aria-hidden="true"></i>
 	                    </a>
 	                    <ul class="dropdown-menu mega-dropdown-menu">
-	                        <li><a href="<c:url value='/com_manage/company_reservList.do'/>">예약현황</a></li>
-	                        <li><a href="#">오늘 대여차량 현황</a></li>
-	                        <li><a href="#">오늘 반납차량 현황</a></li>
+	                        <li><a href="<c:url value='/com_manage/company_reservList.do'/>">예약 현황</a></li>
+	                        <li><a href="<c:url value='/com_manage/rentalData/rentalIngCar.do '/>">대여중인 차량 현황</a></li>
+	                        <li><a href="<c:url value='/com_manage/rentalData/todayRentalCar.do '/>">오늘 대여차량 현황</a></li>
+	                        <li><a href="<c:url value='/com_manage/rentalData/todayReturnCar.do '/>">오늘 반납차량 현황</a></li>
+	                        <li><a href="<c:url value='/com_manage/rentalData/endRentalCar.do '/>">반납완료 차량 현황</a></li>
 	                    </ul>
 	                </li>
 	                <li class="dropdown list-category">
@@ -142,7 +144,6 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	                    </a>
 	                    <ul class="dropdown-menu mega-dropdown-menu">
 	                        <li><a href='<c:url value="/com_manage/company_ccarList.do"/>'>차량현황</a></li>
-	                        <li><a href='<c:url value="/com_manage/company_ccarList.do"/>'>주요차량 즐겨찾기현황</a></li>
 	                        <li><a href='<c:url value="/com_manage/company_optionRegist.do"/>'>차량등록</a></li>
 	                    </ul>
 	                </li>

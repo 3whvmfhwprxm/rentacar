@@ -113,19 +113,17 @@
        <table class="table table-striped">
        <thead>
        		  <colgroup>
-       		  	<col width="5%">
 	    		<col width="13%">
 	    		<col width="10%">
 	    		<col width="*%">
 	    		<col width="8%">
-	    		<col width="12%">
+	    		<col width="15%">
 	    		<col width="8%">
 	    		<col width="10%">
 	    		<col width="8%">
 	    		<col width="10%">
     		</colgroup>
        		<tr>
-       			<th><input type="checkbox" id="" name=""></th>
   				<th>차량번호</th>
 				<th>차량모델코드</th>
 				<th>모델명</th>
@@ -143,10 +141,9 @@
 			<td colspan="10">데이터가 없습니다.</td>
 		</c:if>
 		<c:if test="${!empty cclist }">
-		<c:forEach var="map" items="${cclist }" varStatus="i">
 		
+		<c:forEach var="map" items="${cclist }" varStatus="i">
 		<tr>
-			<td><input type="checkbox" id="" name=""></td>
 			<td><a href="<c:url value='/com_manage/company_ccarDetail.do?ccarCarId=${map["CCAR_CAR_ID"] }' /> " />${map['CCAR_CAR_ID']}</td>
 			<td>${map['CAR_CODE'] }</td>
 			<td>${map['CAR_NAME'] }</td>

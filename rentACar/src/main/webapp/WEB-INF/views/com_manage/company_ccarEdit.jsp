@@ -50,14 +50,14 @@
 					<label for="comId" class="col-sm-2 control-label">업체아이디</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" name="comId"
-							id="comId" value="${map['COM_ID']}">
+							id="comId" value="${map['COM_ID']}" readOnly="readonly">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="ccarCarId" class="col-sm-2 control-label">차량번호</label>
 					<div class="col-sm-2">
-						<select class="form-control" name="area" id="area">
+						<select class="form-control" name="area" id="area" readOnly="readonly">
 							<option>선택하세요</option>
 							<option selected>서울</option>
 							<option>경기</option>
@@ -79,7 +79,7 @@
 						</select>
 					</div>
 					<div class="col-sm-2">
-						<select class="form-control" name="secondCarNum" id="secondCarNum">
+						<select class="form-control" name="secondCarNum" id="secondCarNum" readOnly="readonly">
 							<option>선택하세요</option>
 							<option>하</option>
 							<option selected>허</option>
@@ -88,7 +88,7 @@
 					</div>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="ccarCarId"
-							id="ccarCarId" placeholder="1234" value="${map['CCAR_CAR_ID'] }">
+							id="ccarCarId" placeholder="1234" value="${map['CCAR_CAR_ID'] }" readOnly="readonly">
 					</div>
 				</div>
 				

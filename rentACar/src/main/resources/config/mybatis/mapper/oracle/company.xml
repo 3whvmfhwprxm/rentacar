@@ -86,15 +86,15 @@
 		select * from companynotice where cnotice_no=#{cnoticeNo}
 	</select>
 	
-	<!-- <select id="ComSelectSalesByDate" parameterType="DateSearchVO2" resultType="map">
+	<select id="ComSelectSalesByDate" parameterType="DateSearchVO2" resultType="map">
 		select to_char(PAY_REGDATE, 'yyyy-MM-dd') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
-		from PAYINFO
+		from com_reservView
 		where extract(year from PAY_REGDATE)=#{year}
 		and extract(month from PAY_REGDATE)=#{month}
 		and PAY_CANCELDATE is null
 		group by to_char(PAY_REGDATE, 'yyyy-MM-dd')
 		order by PAYDATE
-	</select> -->
+	</select>
 	
 	<select id="ComSelectSalesByMonth" parameterType="DateSearchVO2" resultType="map">
 		select to_char(PAY_REGDATE, 'MM') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 

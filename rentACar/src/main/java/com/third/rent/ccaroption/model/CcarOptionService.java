@@ -21,4 +21,11 @@ public interface CcarOptionService {
 	public int updateCarUseYn(CcarOptionVO vo);
 	public List<Map<String, Object>> selectComReserv(SearchVO searchVo);
 	public int ReservTotalRecord(SearchVO searchVo);
+	public List<Map<String, Object>> selectRentalData(SearchVO searchVo);
+	public int todayRentalTR(SearchVO searchVo);
+	public List<Map<String, Object>> selectReturnData(SearchVO searchVo);
+	public int todayReturnTR(SearchVO searchVo);
+	public List<Map<String, Object>> selectRentalIng(SearchVO searchVo);
+	public int rentalIngTR(SearchVO searchVo);
+	
 }
