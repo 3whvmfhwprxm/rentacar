@@ -111,7 +111,7 @@
 	<br>
 	<form class="form-horizontal" name="insertReservInfo" id="insertReservInfo" method="post" action="<c:url value='/user/reservation.do' />">
 		<fieldset>
-			<h3>예약정보 확인</h3>
+			<h3>선택정보 확인</h3>
 		<!-- 선택한 기간 정보 -->
 		<div class="form-group">
 				<!-- 테스트 끝나면 hidden으로 재 설정 -->
@@ -241,36 +241,31 @@
 						<input type="radio" name="insertUserInfo" id="insertUserInfo2"> 
 						<label for="insertUserInfo2">회원과 동일 정보 입력</label>			
 					</p>
-					<div class="form-group">			
-						<label class="col-sm-2 control-label">예약자 이름</label>
-						<div class="col-xs-2">
-							<input class="form-control" type="text" name="resUName" id="resUName">
-						</div>
-					</div>
-					<div class="form-group">			
-						<label class="col-sm-2 control-label">이메일</label>
-						<div class="col-xs-2">
-							<input class="form-control" type="email" name="resUMail" id="resUMail">
-						</div>
-					</div>
-					<div class="form-group">			
-						<label class="col-sm-2 control-label">연락처</label>
-						<div class="col-xs-2">
-							<select class="form-control" name="resUTel1" id="resUTel1">
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="019">019</option>
-							</select>			
-						</div>
-						<div class="col-xs-2">
-							<input class="form-control" type="text" name="resUTel2" id="resUTel2">
-						</div>
-						<div class="col-xs-2">
-							<input class="form-control" type="text" name="resUTel3" id="resUTel3">
-						</div>
-					</div>
+					<table>
+						<tr>
+							<td class="text-right">예약자 이름: </td>
+							<td class="text-left"><input  type="text" name="resUName" id="resUName"></td>
+						</tr>
+						<tr>
+							<td class="text-right">이메일: </td>
+							<td class="text-left"><input  type="email" name="resUMail" id="resUMail"></td>
+						</tr>
+						<tr>
+							<td class="text-right">연락처: </td>
+							<td class="text-left">
+								<select  name="resUTel1" id="resUTel1">
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="019">019</option>
+								</select> -			
+								<input type="text" name="resUTel2" id="resUTel2"> -
+								<input type="text" name="resUTel3" id="resUTel3">
+							</td>
+						</tr>
+					</table>
+					
 				</div>
 				
 				<div id="userRight">
@@ -282,58 +277,51 @@
 						<input type="radio" name="insertDrvInfo" id="insertDrvInfo2"> 
 						<label for="insertDrvInfo2">회원과 동일 정보 입력</label>			
 					</p>
-					<div class="form-group">			
-						<label class="col-sm-2 control-label">운전자 이름</label>
-						<div class="col-xs-2">
-							<input class="form-control" type="text" name="resDrvName" id="resDrvName">
-						</div>
-					</div>
-					<div class="form-group">			
-						<label class="col-sm-2 control-label">면허증</label>
-						<div class="col-xs-2">
-							<select class="form-control" id="resDrvCategory" name="resDrvCategory" >	           			
+					<table>
+						<tr>
+							<td class="text-right">운전자 이름: </td>
+							<td class="text-left"><input type="text" name="resDrvName" id="resDrvName"></td>
+						</tr>
+						<tr>
+							<td class="text-right">면허증: </td>
+							<td class="text-left">
+								<select class="" id="resDrvCategory" name="resDrvCategory" >	           			
 				           			<option value="1종 보통">1종 보통</option>
 				           			<option value="1종 소형">1종 소형</option>
 				           			<option value="1종 대형">1종 대형</option>
 				           			<option value="1종 특수">1종 특수</option>
 				           			<option value="2종 보통">2종 보통</option>
 				           			<option value="2종 소형">2종 소형</option>
-				           	</select>
-						</div>
-					</div>
-					<div class="form-group">			
-						<label class="col-sm-2 control-label">연락처</label>
-						<div class="col-xs-2">
-							<select class="form-control" name="resDrvTel1" id="resDrvTel1">
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="019">019</option>
-							</select>			
-						</div>
-						<div class="col-xs-2">
-							<input class="form-control" type="text" name="resDrvTel2" id="resDrvTel2">
-						</div>
-						<div class="col-xs-2">
-							<input class="form-control" type="text" name="resDrvTel3" id="resDrvTel3">
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="col-sm-2 control-label">생년월일</label>
-						<div class="col-xs-2">
-							<input class="form-control" type="text" name="resDrvBirth" id="resDrvBirth">
-						</div>
+				           		</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="text-right">연락처: </td>
+							<td class="text-left">
+								<select class="" name="resDrvTel1" id="resDrvTel1">
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="016">016</option>
+									<option value="017">017</option>
+									<option value="019">019</option>
+								</select> -			
+								<input type="text" name="resDrvTel2" id="resDrvTel2"> -
+								<input type="text" name="resDrvTel3" id="resDrvTel3">
+							</td>
+						</tr>
+						<tr>
+							<td class="text-right">생년월일: </td>
+							<td class="text-left"><input type="text" name="resDrvBirth" id="resDrvBirth"></td>
+						</tr>
+					</table>
 					</div>
 					
-					<div class=form-group>
-						<label class="col-sm-2 control-label"></label>		
-						<div class="col-sm-6">
+					<div class="text-center">	
+						<div class="col-sm-12">
 							<input class="btn btn-primary btn-lg btn-block" type="submit" value="예약하기" name="btsubmit" id="btsubmit" >
 						</div>
 					</div>					
-				</div>
+				
 			</div>
 			<!-- 예약자 정보 입력 끝 -->
 			</c:if>

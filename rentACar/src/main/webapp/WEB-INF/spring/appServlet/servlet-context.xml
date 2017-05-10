@@ -46,7 +46,16 @@
 		<interceptor>
 			<mapping path="/com_manage/*.do" />
 			<beans:ref bean ="companyInterceptor" />
-		</interceptor>	 
+		</interceptor>	
+		
+		<interceptor>
+			<mapping path="/admin/*.do" />
+			<mapping path="/admin/*/*.do" />
+			<mapping path="/administrator/*.do" />
+			<mapping path="/administrator/*/*.do" />
+			<beans:ref bean ="adminInterceptor" />
+		</interceptor>	
+		 
 	</interceptors>
 	
 </beans:beans>

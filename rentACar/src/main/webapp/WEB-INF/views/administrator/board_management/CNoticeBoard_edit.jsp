@@ -45,7 +45,7 @@
 	});
 </script>
 <style>
-	.bodyClass{padding-top: 30px;}
+	.bodyClass{padding-top: 30px;width: 80%;padding-left: 40px;}
 </style>
 <script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
 <div class="w3-container bodyClass">

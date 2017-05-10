@@ -24,7 +24,7 @@
 	
 </script>
 <style>
-	.bodyClass{padding-top: 30px;}
+	.bodyClass{padding-top: 30px;width: 80%;padding-left: 40px;}
 </style>
 
 <div class="w3-container bodyClass">

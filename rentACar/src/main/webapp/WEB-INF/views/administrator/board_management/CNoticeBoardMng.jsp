@@ -27,8 +27,9 @@
 	}
 </script>
 <style>
-	.bodyClass{padding-top: 30px;}
+	.bodyClass{padding-top: 30px;width: 80%;padding-left: 40px;}
 	th, td{text-align: center;}
+	th {background-color: #EEEEEE;}
 </style>
 	<div class="w3-container bodyClass">
 	<h3><i class="fa fa-list"></i>&nbsp; 업체용 공지 게시판 관리</h3>

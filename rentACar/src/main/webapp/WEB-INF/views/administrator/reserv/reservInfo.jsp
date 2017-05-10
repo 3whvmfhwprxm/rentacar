@@ -25,9 +25,22 @@
 	}
 </script>
 <style>
-	.bodyClass{padding-top: 30px;}
-	th, td{text-align: center;}
-	.divRight{text-align:right;}
+
+th, td{text-align: center;}
+.divRight{text-align:right;}
+.divSales {
+	margin: 10px 0;
+}
+
+.bodyClass {
+	padding-top: 30px;
+	width: 80%;
+	padding-left: 40px;
+}
+
+th {
+	background-color: #EEEEEE;
+}
 </style>
 	<div class="w3-container bodyClass">
 	<!-- 페이지 처리용 폼 -->
@@ -49,6 +62,7 @@
 		<form name="frmReservList" id="frmReservList" method="post">
 		
 		<!-- 테이블 화면 시작 -->
+		<div class="divSales">
 		<table class="table table-hover">
 			<thead>
 				<tr>	
@@ -110,6 +124,7 @@
 				</c:if>
 				</tbody>	
 			</table>
+			</div>
 			
 			<!-- 페이징처리 -->
 			<div class="divPage container">
