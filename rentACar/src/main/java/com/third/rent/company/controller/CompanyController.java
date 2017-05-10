@@ -66,7 +66,7 @@ public class CompanyController {
 		if (result == admin_LogService.LOGIN_OK) {
 			CompanyVO vo = comService.selectBycomId(comId);
 			msg = vo.getComName() + "님 로그인되었습니다.";
-			url = "../com_manage/company_ccarList.do";
+			url = "../com_manage/rentalData/todayRentalCar.do";
 
 			HttpSession session = request.getSession();
 			session.setMaxInactiveInterval(60 * 60);

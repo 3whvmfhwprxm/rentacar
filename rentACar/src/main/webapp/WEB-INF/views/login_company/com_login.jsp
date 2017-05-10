@@ -5,7 +5,6 @@
 
 <script type="text/javascript">
 	 $(function(){
-		 
  		$("#idSearch").click(function(){
  			if($("#comName").val()==''){
 				alert('이름을 입력하세요');
