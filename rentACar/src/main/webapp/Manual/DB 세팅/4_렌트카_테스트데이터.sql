@@ -83,6 +83,35 @@ insert into rent_user(user_id,user_pwd,user_name,user_email,
 user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license, user_regdate)
 values('choi','1234','최고맨','choi@naver.com','010','4560','7887','1987-05-18','경기도','여','1종보통', sysdate);
 
+--이희준 사용자 테스트데이터 ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license)
+values('marco','marco123','이희준','marco@naver.com','010','1234','5678','1980-08-08','경기도','남','1종보통');
+
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license)
+values('highnoon','highnoon123','하이눈','highnoon@gmail.com','010','4321','8765','1990-06-02','충청도','남','2종보통');
+
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license)
+values('jinx','jinx123','징크스','jinx@nate.com','010','2345','6789','1998-01-02','강원도','여','1종보통');
+
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license)
+values('jin','jin123','진','jin@gmail.com','010','5432','9876','1970-05-05','서울','남','2종보통');
+
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license)
+values('faker','faker123','페이커','faker@naver.com','010','3456','6543','1982-01-08','경기도','여','2종보통');
+
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license)
+values('dade','dade123','다데','dade@daum.net','010','6789','1234','1978-12-24','경기도','남','2종보통');
+
+insert into rent_user(user_id,user_pwd,user_name,user_email,
+user_tel1,user_tel2,user_tel3,user_birth,user_address,user_gender,user_license)
+values('wraith','wraith123','레이스','wraith@naver.com','010','3412','5674','1987-05-18','경기도','여','1종보통');
+
 
 select * from rent_user;
 commit;
@@ -188,6 +217,23 @@ insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, co
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo, com_regdate,  com_outdate)
 values('rentDie', '렌트죽음', '1', '100-81-00000', '신한:3333-03-33333', '02', '0300', '0300', '010', '0300', '0300',  '02', '0300', '0301', 
 '제주공항 근처', '제주특별자치도 제주시 다호북길 13', '박렌트', 'rentDie1@rentDie.com', 'rentDie_logo.png', sysdate, sysdate);
+
+--이희준 테스트 데이터 업체 ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo)
+values('rentJava', '렌트자바', '1', '100-80-01000', '하나:356-0468-22212', '02', '2443', '5456', '010', '2361', '8960',  '02', '2443', '5456', 
+'제주도 한라산 아래', '제주특별자치도 제주시 다호북길 13', '김자바', 'rentJava@naver.com', 'rentJava_logo.png');
+
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo)
+values('rentJsp', '렌트제이에스피', '1', '100-80-02000', '농협:352-1265-02-22222', '02', '6484', '4732', '010', '7578', '3158',  '02', '6484', '4732', 
+'제주도 한라산 아래', '제주특별자치도 제주시 다호북길 13', '이렌트', 'rentJsp@nate.com', 'rentJsp_logo.png');
+
+insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
+com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo)
+values('rentSpring', '렌트스프링', '1', '100-80-03000', '신한:456-2741-2374-333', '02', '9458', '3488', '010', '5735', '9759',  '02', '9458', '3488', 
+'제주공항 근처', '제주특별자치도 제주시 다호북길 13', '박렌트', 'rentSpring@daum.net', 'rentSpring_logo.png');
+
 select * from company;
 commit;
 
