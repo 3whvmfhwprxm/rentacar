@@ -23,8 +23,6 @@ import com.third.rent.admin_balCalc.model.BalCalcService;
 import com.third.rent.admin_balCalc.model.BalCalcVO;
 import com.third.rent.admin_balCalc.model.BalCalcVOlist;
 import com.third.rent.company.model.CompanyVO;
-import com.third.rent.payInfo.model.PayInfoListVO;
-import com.third.rent.payInfo.model.PayInfoVO;
 
 @Controller
 public class BalCalcController {
@@ -36,8 +34,7 @@ public class BalCalcController {
 	@Autowired
 	private BalCalcService bCservice;
 
-	@Scheduled(cron="0 03 23 9 * * ")	/*초 분 시 일 월 요일 (fixedRate=30000) 매월 1일 실행되는 메서드 테스트할때는 시간 바꿀것*/
-	public void doSchedule() {
+	@Scheduled(fixedRate=120000) /*초 분 시 일 월 요일 (cron="0 0 0 1 * * ") 매월 1일 실행되는 메서드 테스트는 2분마다 업데이트하는것으로 바꿈*/	public void doSchedule() {
 		logger.info("정산 스케쥴러 호출");
 
 		//오늘 날짜를 구하고, 그 기준으로 한달전 년월을 구한다
