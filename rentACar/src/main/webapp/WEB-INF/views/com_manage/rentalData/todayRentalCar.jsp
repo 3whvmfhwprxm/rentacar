@@ -132,6 +132,7 @@
 	    		<col width="13%">
 	    		<col width="*%">
 	    		<col width="7%">
+	    		<col width="7%">
     		</colgroup>
        		<tr>
        			<th><input type="checkbox"  name="chkAll"></th>
@@ -141,6 +142,7 @@
 				<th>예약자명</th>
 				<th colspan="2">운전자 정보</th>
 				<th>결제진행상태</th>
+				<th>대여상태</th>
 				<th>대여중</th>
 			</tr>
         </thead>
@@ -176,6 +178,7 @@
 		        	<c:if test="${map['PAY_CONDITION'] == 'failed' }">
 		        		<td class="line">결제실패</td>
 		        	</c:if>	
+		        	<td>${map['CCAR_STATUS'] }</td>
 		        	<td><button id="bt_${i.index }" onclick="javascript:cg('${map['CCAR_STATUS']}','${map['CCAR_CAR_ID'] }','${map['COM_ID'] }')">보내기</button></td>
 				</tr>
 				</c:if>

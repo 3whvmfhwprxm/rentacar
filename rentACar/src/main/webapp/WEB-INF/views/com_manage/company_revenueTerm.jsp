@@ -35,7 +35,7 @@ $(function(){
         },
         
         subtitle: { 
-            text: '기간별 매출 현황'
+            text: '월별 매출 현황'
         },
         plotOptions: {
             column: {
@@ -96,9 +96,10 @@ $(function(){
 
 </head>
 <body>
-	<legend>기간별 매출 현황</legend>
+	<div class="container">
+	<legend>월별 매출 현황</legend>
 	<form name="frmSales" id="frmSales" method="post"
-		action='<c:url value="/com_manage/company_revenue.do" />'>
+		action='<c:url value="/com_manage/company_revenueMonth.do" />'>
 		<select name="year" id="year">
 			<option value="">::선택::</option>
 		</select> 년 <input type="submit" value="검색">
@@ -155,4 +156,5 @@ $(function(){
 			</tbody>
 		</table>
 	</div>
+</div>
 	<%@ include file="../inc_company/company_bottom.jsp"%>

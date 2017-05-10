@@ -51,8 +51,10 @@ public class CompanyEpilogueController {
 	
 	
 	@RequestMapping("/company_epilogue.do")
-	public String company_epilogue(@ModelAttribute SearchVO searchVo, Model model){
-		
+	public String company_epilogue(@ModelAttribute SearchVO searchVo, Model model,
+			HttpSession session){
+		String comId = (String)session.getAttribute("comId");
+		searchVo.setcomId(comId);
 		logger.info("업체 후기 화면표시 searchVo={}", searchVo);
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
@@ -224,8 +226,8 @@ public class CompanyEpilogueController {
 			
 			for(int i = 0 ; i < slist.size() ; i++){
 				Map<String, Object> bean = slist.get(i);
-				listPay.add(bean.get("PAYDATE")+"");
-				listMonth.add(bean.get("TOTALPAY")+"");
+				listPay.add(bean.get("TOTALPAY")+"");
+				listMonth.add(bean.get("PAYDATE")+"");
 			}
 			logger.info("월별 매출현황 listPay={}, listMonth={}", listPay, listMonth);
 			
@@ -246,7 +248,6 @@ public class CompanyEpilogueController {
 		
 		List<Map<String, Object>> slist=null;
 		List<String> listPay = new ArrayList<String>();
-		List<String> listMonth = new ArrayList<String>();
 		List<String> listDay = new ArrayList<String>();
 		
 		if(dvo.getYear()!=null && !dvo.getYear().isEmpty()){
@@ -255,14 +256,16 @@ public class CompanyEpilogueController {
 			
 			for(int i = 0 ; i < slist.size() ; i++){
 				Map<String, Object> bean = slist.get(i);
-				listPay.add(bean.get("PAYDATE")+"");
-				listMonth.add(bean.get("TOTALPAY")+"");
+				listPay.add(bean.get("TOTALPAY")+"");
+				
+				String _payDate = bean.get("PAYDATE")+"";
+				String payDate = _payDate.substring(_payDate.length()-2, _payDate.length());
+				listDay.add(payDate);
 			}
 			
-			logger.info("일별 매출현황 listPay={}, listMonth={}", listPay, listMonth);
-			
 			model.addAttribute("listPay", listPay);
-			model.addAttribute("listMonth", listMonth);
+			model.addAttribute("listDay", listDay);
+			 
 		}
 		model.addAttribute("slist", slist);
 		

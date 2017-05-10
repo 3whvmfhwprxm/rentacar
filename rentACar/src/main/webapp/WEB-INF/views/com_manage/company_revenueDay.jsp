@@ -31,11 +31,11 @@ $(function(){
         },
         
         xAxis: {
-            categories: [1,2,4,5]
+            categories: ${listDay}
         },
         
         subtitle: { 
-            text: '기간별 매출 현황'
+            text: '일별 매출 현황'
         },
         plotOptions: {
             column: {
@@ -43,7 +43,7 @@ $(function(){
             }
         },
         series:[{
-	    	data : [1,2,3,4]
+	    	data : ${listPay}
 	    }]
     });
 /*     function showValues() {
@@ -108,20 +108,23 @@ $(function(){
 
 </head>
 <body>
+	<div class="container">
 	<legend>일별 매출 현황</legend>
-	<div class="w3-container bodyClass">
-	<h3>일별 매출</h3>
-	<form name="frmSales" id="frmSales" method="post" action='<c:url value="/com_manage/company_revenueDay.do" />'>
+	<form name="frmSales" id="frmSales" method="post" 
+		action='<c:url value="/com_manage/company_revenueDay.do" />'>
 		<select name="year" id="year">
-			<option value="">선택하세요</option>
+			<option value="">::선택::</option>
 		</select> 년
-		
 		<select name="month" id="month">
-			<option value="">선택하세요</option>
+			<option value="">::선택::</option>
 		</select> 월
-		
 		<input type="submit" value="검색">	
 	</form>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+	<div id="container"></div>
 	
 	<div>
 		<a href='<c:url value="/com_manage/company_revenueDay.do" />'>일별 매출</a> | <a
@@ -171,5 +174,6 @@ $(function(){
 			</tbody>
 		</table>
 	</div>
+</div>
 </div>
 	<%@ include file="../inc_company/company_bottom.jsp"%>

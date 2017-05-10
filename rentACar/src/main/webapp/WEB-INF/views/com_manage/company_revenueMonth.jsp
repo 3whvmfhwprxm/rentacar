@@ -96,6 +96,7 @@ $(function(){
 
 </head>
 <body>
+	<div class="container">
 	<legend>월별 매출 현황</legend>
 	<form name="frmSales" id="frmSales" method="post"
 		action='<c:url value="/com_manage/company_revenueMonth.do" />'>
@@ -155,4 +156,5 @@ $(function(){
 			</tbody>
 		</table>
 	</div>
+</div>
 	<%@ include file="../inc_company/company_bottom.jsp"%>

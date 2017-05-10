@@ -124,6 +124,7 @@
 		    from
 		    (
 		        select * from comments
+		        where com_id=#{comId}
 		        <include refid="searchWhat"></include> 
 		        order by cmt_no desc
 		    )LIST
