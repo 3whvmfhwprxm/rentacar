@@ -197,9 +197,6 @@ th {
 													            	<i class="fa fa-times"></i>탈퇴
 													        </button>
 													        </a>
-													        <button type="button" class="btn btn-default" data-dismiss="modal">
-													        Close
-													        </button>
 											      		</div>
 											    	</div>
 												</div>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_User.model.Admin_UserService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
@@ -163,6 +164,50 @@ public class Admin_UserController {
 			msg="선택한 업체 재등록처리 중 에러가 발생했습니다.";
 		}
 		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/user/userEdit.do", method=RequestMethod.GET)
+	public String userEdit_get(@RequestParam String userId,
+			Model model){
+		logger.info("회원수정화면 보여주기, 파라미터 userId={}", userId);
+		
+		if(userId==null || userId.isEmpty()){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "administrator/user/userInList");
+			
+			return "common/message";
+		}
+		
+		UserVO userVo
+			= adminUserService.selectByUserId(userId);
+		logger.info("업체수정화면 조회결과 userVo={}", userVo);
+		
+		model.addAttribute("userVo", userVo);
+		
+		return "administrator/user/userEdit";
+	}
+	
+	@RequestMapping(value="/user/userEdit.do", method=RequestMethod.POST)
+	public String companyEdit_post(@ModelAttribute UserVO userVo,
+			@ModelAttribute AdminVO adminVo,
+			Model model){
+		logger.info("회원 수정 처리, 파라미터 userVo={}", userVo);
+		
+		int cnt = adminUserService.updateUser(userVo);
+		logger.info("회원 수정 결과 cnt={}", cnt);
+		
+		String msg = "", url = "";
+		if(cnt>0){
+			msg = "업체 수정 성공";
+			url = "/administrator/user/userEdit.do?userId="+userVo.getUserId();
+		}else{
+			msg = "업체 수정 실패";
+		}
+
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		

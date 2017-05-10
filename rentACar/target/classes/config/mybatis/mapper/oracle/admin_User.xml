@@ -99,10 +99,9 @@
 	<update id="updateUser" parameterType="UserVO">
 		update rent_user 
 		set 
-		    user_pwd=#{userPwd}, user_name=#{userName},
-		    user_email=#{userEmail}, user_tel1=#{userTel1},
-		    user_tel2=#{userTel2}, user_tel3=#{userTel3},
-		    user_address=#{userAddress},
+		    user_name=#{userName}, user_email=#{userEmail}, 
+		    user_tel1=#{userTel1}, user_tel2=#{userTel2}, 
+		    user_tel3=#{userTel3}, user_address=#{userAddress},
 		    user_license=#{userLicense}
 		where user_id=#{userId}
 	</update>

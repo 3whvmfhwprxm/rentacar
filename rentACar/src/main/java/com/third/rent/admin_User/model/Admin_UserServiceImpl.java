@@ -99,7 +99,7 @@ public class Admin_UserServiceImpl implements Admin_UserService{
 	}
 
 	@Override
-	public int updateUser(String userId) {
-		return adminUserDao.updateUser(userId);
+	public int updateUser(UserVO userVo) {
+		return adminUserDao.updateUser(userVo);
 	}
 }

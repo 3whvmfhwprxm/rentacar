@@ -31,5 +31,5 @@ public interface Admin_UserService {
 	
 	public int userMultiReregister(List<UserVO> userList);
 	
-	public int updateUser(String userId);
+	public int updateUser(UserVO userVo);
 }

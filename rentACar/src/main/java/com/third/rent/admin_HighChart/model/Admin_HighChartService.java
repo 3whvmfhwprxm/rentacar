@@ -1,5 +1,10 @@
 package com.third.rent.admin_HighChart.model;
 
-public class Admin_HighChartService {
+import java.util.List;
+import java.util.Map;
 
+import com.third.rent.highcharts.model.DateVO;
+
+public interface Admin_HighChartService {
+	public List<Map<String, Object>> totalPayByMonth(DateVO dateVo);
 }

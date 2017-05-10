@@ -54,7 +54,7 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 	}
 
 	@Override
-	public int updateUser(String userId) {
-		return getSqlSession().update(namespace+".updateUser", userId);
+	public int updateUser(UserVO userVo) {
+		return getSqlSession().update(namespace+".updateUser", userVo);
 	}
 }

@@ -30,75 +30,36 @@
 </style>
 
 <form class="form-horizontal" id="frm1" name="frm1" method="post"
-	action='<c:url value="/administrator/company/companyEdit.do" />'>
+	action='<c:url value="/administrator/user/userEdit.do" />'>
 	<fieldset>
-	<legend>회원 수정</legend>
+	<legend>회원 수정</legend>		
 		<div class="form-group">
-			<label for="CompanyId" class="col-sm-2 control-label">
-				업체 아이디
-			</label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" name="comId"
-					id="CompanyId" value="${companyVo.comId}">		
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label for="CompanyName" class="col-sm-2 control-label">
-				업체 이름
+			<label for="userName" class="col-sm-2 control-label">
+				회원 이름
 			</label>
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="comName"
-					id="CompanyName" value="${companyVo.comName}">
+				<input type="text" class="form-control" name="userName"
+					id="userName" value="${userVo.userName}">
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<label for="CompanyNo" class="col-sm-2 control-label">
-				사업자 번호
+			<label for="userEmail" class="col-sm-2 control-label">
+				회원 이메일
 			</label>
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="comNum"
-					id="CompanyNo" value="${companyVo.comNum}">
+				<input type="email" class="form-control" name="userEmail"
+					id="userEmail" value="${userVo.userEmail}">
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<label for="comAccNum" class="col-sm-2 control-label">
-				계좌번호
-			</label>
-			<div class="col-sm-8">
-				<input type="text" class="form-control" name="comAccNum"
-					id="comAccNum" value="${companyVo.comAccNum}">
-			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-2 control-label">
-				대표번호
-			</label>
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="comTel1"
-					id="CompanyTel1" maxlength="4" value="${companyVo.comTel1}">
-			</div>
-			
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="comTel2"
-					id="CompanyTel2" maxlength="4" value="${companyVo.comTel2}">
-			</div>
-			
-			<div class="col-xs-2">
-				<input class="form-control" type="text" name="comTel3"
-					id="CompanyTel3" maxlength="4" value="${companyVo.comTel3}">
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="CompanyMobile11" class="col-sm-2 control-label">
+			<label for="userTel1" class="col-sm-2 control-label">
 				휴대폰
 			</label>
 			<div class="col-xs-2">
-				<select class="form-control" id="comMobile1" name="comMobile1"
-					value="${companyVo.comMobile1}">
+				<select class="form-control" id="userTel1" name="userTel1"
+					value="${userVo.userTel1}">
 					<option value="010">010</option>
 					<option value="011">011</option>
 					<option value="016">016</option>
@@ -108,88 +69,49 @@
 				</select>
 			</div>
 			<div class="col-xs-2">
-				<input type="text" class="form-control" name="comMobile2"
-					id="CompanyMobile2" value="${companyVo.comMobile2}">
+				<input type="text" class="form-control" name="userTel2"
+					id="userTel2" value="${userVo.userTel2}">
 			</div>
 			<div class="col-xs-2">
-				<input type="text" class="form-control" name="comMobile3"
-					id="CompanyMobile3" value="${companyVo.comMobile3}">
+				<input type="text" class="form-control" name="userTel3"
+					id="userTel3" value="${userVo.userTel3}">
 			</div>
 		</div>
+		
 		<div class="form-group">
-			<label for="CompanyFax" class="col-sm-2 control-label">
-				팩스
-			</label>
-			<div class="col-xs-2">
-				<input type="text" class="form-control" name="comFax1"
-					id="CompanyFax1" value="${companyVo.comFax1}">
-			</div>
-			<div class="col-xs-2">
-				<input type="text" class="form-control" name="comFax2"
-					id="CompanyFax2" value="${companyVo.comFax2}">
-			</div>
-			<div class="col-xs-2">
-				<input type="text" class="form-control" name="comFax3"
-					id="CompanyFax3" value="${companyVo.comFax3}">
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="CompanyAddress" class="col-sm-2 control-label">
+			<label for="userAddress" class="col-sm-2 control-label">
 				주소
 			</label>
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="comAddress"
-					id="CompanyAddress" value="${companyVo.comAddress}">
+				<input type="text" class="form-control" name="userAddress"
+					id="userAddress" value="${userVo.userAddress}">
 			</div>
 		</div>
+		
 		<div class="form-group">
-			<label for="CompanyCeo" class="col-sm-2 control-label">
+			<label for="userLicense" class="col-sm-2 control-label">
 				대표자
 			</label>
 			<div class="col-sm-8">
-				<input type="text" class="form-control" name="comCeo"
-					id="CompanyCeo" value="${companyVo.comCeo}">
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="CompanyEmail" class="col-sm-2 control-label">
-				이메일
-			</label>
-			<div class="col-md-8">
-				<input type="email" class="form-control" name="comEmail"
-					id="CompanyEmail" value="${companyVo.comEmail}">
+				<input type="text" class="form-control" name="userLicense"
+					id="userLicense" value="${userVo.userLicense}">
 			</div>
 		</div>
 		
 		<div class="form-group">
-			<label for="CompanyRate" class="col-sm-2 control-label">
-				수수료
-			</label>
-			<div class="col-md-8">
-				<input type="text" class="form-control" name="comRate"
-					id="CompanyRate" value="${companyVo.comRate}%">
+			<label for="bt" class="col-sm-2 control-label"></label>
+			<div class="col-sm-8">
+				<button type="submit" id="bt1" class="btn btn-default">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
+				</button>
+				
+				<a href='<c:url value="/administrator/user/userInList.do" />'>
+				<button type="button" id="bt2" class="btn btn-default">	
+					<i class="fa fa-list-ul" aria-hidden="true"></i>목록
+				</button>
+				</a>
 			</div>
 		</div>
-		
-		<div class="form-group">
-			<label for="CompanyLogo" class="col-sm-2 control-label">
-				로고
-			</label>
-			<div class="col-sm-2">
-				<input type="file" id="CompanyLogo" name="comLogo">	
-			</div>
-		</div>
-		
-		<div class="center">
-			<button type="submit" class="btn btn-default">
-				<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
-			</button>
-			
-            <a href='<c:url value="/administrator/company/companyList.do" />'
-				type="button" class="btn btn-default"> 
-				<i class="fa fa-list-ul" aria-hidden="true"></i>목록
-			</a>
-        </div>
 	</fieldset>
 </form>
 <%@ include file="../include/bottom.jsp"%>

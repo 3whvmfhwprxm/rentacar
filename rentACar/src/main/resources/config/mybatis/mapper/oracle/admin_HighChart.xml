@@ -17,35 +17,35 @@
 		group by to_char(reserv_start_date, 'mm')	
 	</select>
 	
-	<select id="selectSumTotalPay" resultType="map">
-		select yyyy,
-		sum("01") as "January", sum("02") as "February", sum("03") as "March",
-		sum("04") as "April", sum("05") as "May", sum("06") as "June", 
-		sum("07") as "July", sum("08") as "August",
-		sum("09") as "September", sum("10") as "October", sum("11") as "November",
-		sum("12") as "December", sum(pay_money) as "sales"
-		from
-		(
-			select to_char(r.reserv_start_date,'YYYY') AS yyyy,
-			to_char(r.reserv_start_date,'MM') AS MM, 
-			to_char(r.reserv_start_date,'DD') AS DD, p.pay_money
-			, decode(to_char(r.reserv_start_date,'MM'), '01', p.pay_money, 0) AS "01"
-			, decode(to_char(r.reserv_start_date,'MM'), '02', p.pay_money, 0) AS "02"
-			, decode(to_char(r.reserv_start_date,'MM'), '03', p.pay_money, 0) AS "03"
-			, decode(to_char(r.reserv_start_date,'MM'), '04', p.pay_money, 0) AS "04"
-			, decode(to_char(r.reserv_start_date,'MM'), '05', p.pay_money, 0) AS "05"
-			, decode(to_char(r.reserv_start_date,'MM'), '06', p.pay_money, 0) AS "06"
-			, decode(to_char(r.reserv_start_date,'MM'), '07', p.pay_money, 0) AS "07"
-			, decode(to_char(r.reserv_start_date,'MM'), '08', p.pay_money, 0) AS "08"
-			, decode(to_char(r.reserv_start_date,'MM'), '09', p.pay_money, 0) AS "09"
-			, decode(to_char(r.reserv_start_date,'MM'), '10', p.pay_money, 0) AS "10"
-			, decode(to_char(r.reserv_start_date,'MM'), '11', p.pay_money, 0) AS "11"
-			, decode(to_char(r.reserv_start_date,'MM'), '12', p.pay_money, 0) AS "12"
-			from reservation r join payinfo p
-			on r.RESERV_NUM=p.RESERV_NUM
-		)
-		group by yyyy
-		order by yyyy
+	<select id="totalPayByMonth" parameterType="DateVO" resultType="map">
+		select decode(to_char(PAY_REGDATE,'MM'), 01, '01',
+                                         02, '02',
+                                         03, '03',
+                                         04, '04',
+                                         05, '05',
+                                         06, '06',
+                                         07, '07',
+                                         08, '08',
+                                         09, '09',
+                                         10, '10',
+                                         11, '11',
+                                         12, '12') "PAYDATE",
+		       decode(to_char(PAY_REGDATE,'MM'), 01, sum(nvl(PAY_MONEY,0)),
+		                                         02, sum(nvl(PAY_MONEY,0)),
+		                                         03, sum(nvl(PAY_MONEY,0)),
+		                                         04, sum(nvl(PAY_MONEY,0)),
+		                                         05, sum(nvl(PAY_MONEY,0)),
+		                                         06, sum(nvl(PAY_MONEY,0)),
+		                                         07, sum(nvl(PAY_MONEY,0)),
+		                                         08, sum(nvl(PAY_MONEY,0)),
+		                                         09, sum(nvl(PAY_MONEY,0)),
+		                                         10, sum(nvl(PAY_MONEY,0)),
+		                                         11, sum(nvl(PAY_MONEY,0)),
+		                                         12, sum(nvl(PAY_MONEY,0))) "TOTALPAY"
+		from PAYINFO
+		where extract(year from PAY_REGDATE) = extract(year from sysdate)
+		and PAY_CANCELDATE is null
+		group by to_char(PAY_REGDATE,'MM')
 	</select>
 </mapper>
 
