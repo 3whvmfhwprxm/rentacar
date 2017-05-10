@@ -42,8 +42,9 @@
  
 </script>
 <style>
-	.bodyClass{padding-top: 30px;}
 	th, td{text-align: center;}
+	.bodyClass{padding-top: 30px; width: 80%; padding-left: 80px;}
+	th{background-color: #EEEEEE;}
 </style>
 	<div class="w3-container bodyClass">
 	<!-- 페이지 처리용 폼 -->

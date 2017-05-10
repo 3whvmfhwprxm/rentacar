@@ -2,7 +2,7 @@
 <%@ include file="../include/top.jsp" %>
 <style>
 	.divSales{margin: 10px 0;}
-	.bodyClass{padding-top: 30px;}
+	.bodyClass{padding-top: 30px; width: 80%; padding-left: 80px;}
 	th{background-color: #EEEEEE;}
 </style>
 <script>

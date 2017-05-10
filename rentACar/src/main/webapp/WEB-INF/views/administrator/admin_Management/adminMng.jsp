@@ -6,8 +6,7 @@
 		searchFrm.submit();
 	}
 </script>
-<style>
-	.bodyClass{padding-top: 30px;}
+<style>	
 	th, td{text-align: center;}	
 	.col-md-4 {
 		float: left;
@@ -15,6 +14,9 @@
 		margin: 0 auto;
 		text-align: center;
 	}
+	.bodyClass{padding-top: 30px; width: 80%; padding-left: 80px;}
+	th{background-color: #EEEEEE;}
+
 </style>
 <div class="w3-container bodyClass">
 	<div>
@@ -140,30 +142,7 @@
 				</div>
 				<div class="col-md-4"></div>
 			</div>
-		
-		<%-- <div class="divPage container">
-			<c:if test="${pagingInfo.firstPage>1 }">
-				<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
-					<img src='${pageContext.request.contextPath}/images/first.JPG' alt="이전블럭으로">
-				</a>
-			</c:if>
-	
-			<c:forEach var="i" begin="${pagingInfo.firstPage}" end="${pagingInfo.lastPage}">
-				<c:if test="${i==pagingInfo.currentPage }">
-					<span style="color: blue; font-weight: bold;">${i}</span>
-				</c:if>
-				<c:if test="${i!=pagingInfo.currentPage }">
-					<a href="#" onclick="pageFunc(${i})">[${i}]</a>
-				</c:if>
-			</c:forEach>
-	
-			<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
-				<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"> 
-					<img src='${pageContext.request.contextPath}/images/last.JPG' alt="다음블럭으로">
-				</a>
-			</c:if>
-		</div> --%>
-			
+				
 		<div class="divSearch container">
 			<div class="col-md-4">
 			<form name="frmSearch" method="post" action="<c:url value="/admin/Mng/adminList.do" />">

@@ -6,12 +6,12 @@
 			$("tbody input[type=checkbox]").prop("checked", this.checked);
 		});
 		
-		$("#btCancelMulti").click(function(){	
+		$("#bt_cNoMultiHide").click(function(){	
 			if($('tbody input:checkbox:checked').length==0){
 				alert("감추기할 공지를 하나라도 선택하셔야 합니다");
 				return;
 			}else if(confirm("해당 공지들을 감추기 처리 하시겠습니까?")){
-				$("#tableFrm").attr("action","<c:url value='/admin/Board/cNoticeMultiCancel.do' />");
+				$("#tableFrm").attr("action","<c:url value='/admin/Board/comNoticeVisibleMultiYes.do' />");
 				$("#tableFrm").submit();	
 			}											
 		});
@@ -27,7 +27,7 @@
 	th, td{text-align: center;}
 </style>
 	<div class="w3-container bodyClass">
-	<h1>업체용 공지 게시판 관리</h1>
+	<h3><i class="fa fa-list"></i>&nbsp; 업체용 공지 게시판 관리</h3>
 	<!-- 페이지 처리용 폼 -->
 	<form name="frmPage" method="post" action='<c:url value="/admin/Board/cNotice.do" />'>
 		<input type="hidden" name="currentPage"> 
@@ -37,8 +37,9 @@
 	
 <pre>
 * 업체에 공지사항를 보여주며, 페이지당 10개의 목록을 보여줍니다.
-* 검색은 제목, 내용, 작성자 으로 검색이 가능합니다
-* 관리자는 해당 내용을 보이지않게 처리 할 수도 있고, 상황에 따라 삭제하실 수 도 있습니다.
+* 검색은 제목, 내용, 작성자(관리자ID)로 검색이 가능합니다.
+* 관리자는 공지는 감추기 또는 보이기 처리 할 수도 있습니다.
+* 관리자는 공지를 삭제하실 수 도 있습니다. 삭제된 공지는 빨간색으로 표시됩니다.
 </pre>
 	
 	<form name="tableFrm" method="post">
@@ -141,6 +142,9 @@
 				</select> 
 				<input type="text" name="searchKeyword" title="검색어 입력"	value="${param.searchKeyword}"> 
 				<input type="submit" value="검색">
+				
+				<input type="button" value="공지글 작성" name="bt_cNoInsert" id="bt_cNoInsert">
+	    		<input type="button" value="선택글 감추기" name="bt_cNoMultiHide" id="bt_cNoMultiHide"> 
 			</form>
 		</div>	
 	</div>

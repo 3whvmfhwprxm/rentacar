@@ -100,8 +100,10 @@
 	}
 </script>
 <style type="text/css">
-#checkID{color: red; font-weight: bold;display: none;}
-.bodyClass{padding-top: 30px;}
+	#checkID{color: red; font-weight: bold;display: none;}
+	.divSales{margin: 10px 0;}
+	.bodyClass{padding-top: 30px; width: 80%; padding-left: 80px;}
+	th{background-color: #EEEEEE;}
 </style>
 <div class="divList w3-container bodyClass">
 	<form class="form-horizontal" name="AdminInsertfrm" id="AdminInsertfrm" method="post" action="<c:url value='/admin/Mng/adminJoin.do' />">

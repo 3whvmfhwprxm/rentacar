@@ -66,7 +66,7 @@
 		<a href='<c:url value="/admin/" />'>업체별 정산</a> | 
 		<a href='<c:url value="/admin/" />'></a> | 
 	</div> --%>
-	<h3>정산내역</h3>
+	<h3><i class="fa fa-calculator"></i>&nbsp;정산내역</h3><br>
 	<form name="frmSales" id="frmSales" method="post" action='<c:url value="/admin/balCalc/balCalcShow.do" />'>
 		<select name="year" id="year">
 			<option value="">선택하세요</option>

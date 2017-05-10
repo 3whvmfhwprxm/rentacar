@@ -156,7 +156,7 @@
 			
 			<a href="<c:url value="/admin/balCalc/balCalcShow.do" />"
 				class="w3-bar-item w3-button w3-padding">
-				<i class="fa fa-line-chart"></i>&nbsp; 정산 관리
+				<i class="fa fa-calculator"></i>&nbsp; 정산 관리
 			</a>
 			
 			<a href="<c:url value="/admin/Board/cNotice.do" />" 
