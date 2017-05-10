@@ -20,11 +20,12 @@
 
 <script type="text/javascript"
 	src='<c:url value="/jquery/jquery-3.1.1.min.js"/>'></script>
-	
+
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/company.css/company_top.css"/>
+
 <script type="text/javascript">
 $(document).ready(function () {
     //Hover Menu in Header
@@ -37,64 +38,6 @@ $(document).ready(function () {
     });
 });
 </script>
-<style >
-@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-@import url(http://fonts.googleapis.com/earlyaccess/kopubbatang.css);
-      .hh {font-family: 'Hanna'; }
-      .nbs {font-family: 'Nanum Brush Script';}
-      .ng {font-family: 'Nanum Gothic';}
-      .ngc {font-family: 'Nanum Gothic Coding';}
-      .nm {font-family: 'Nanum Myeongjo';}
-      .h3{font-family: 'Nanum Pen Script'; font-size: 50px;}
-    
-</style>
-<style type="text/css">
-// 페이지의 높이를 브라우저 높이로 선언
-html,body { height: 100%; margin: 0; padding: 0; }
-
-.text-right1{
-	padding-left: 80%;
-}
-.navbar-brand1{
-    height: 50px;
-    padding: 15px 0px 10px 15px;
-    font-size: 18px;
-}
-.container1{
-	font-family: 'Nanum Gothic Coding'; font-size: 15px;
-    margin-left: auto;
-    width: 970px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-}
-
-/*탑 하위 메뉴  */
-.dropdown-menu>li>a {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: 400;
-    line-height: 1.42857143;
-    color: #333;
-    white-space: nowrap;
-    font-size: 15px;
-}
-.dropdown-menu>li>a:HOVER{
-	background-color: #2a8fcf;
-}
-.dropdown-menu .divider {
-    height: 1px;
-    margin: 9px 0;
-    overflow: hidden;
-    background-color: #2a8fcf;
-}
-</style>
 </head>
 <body>
 	<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>

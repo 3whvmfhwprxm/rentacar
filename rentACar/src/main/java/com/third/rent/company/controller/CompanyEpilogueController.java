@@ -191,8 +191,8 @@ public class CompanyEpilogueController {
 		
 		
 		companyVo.setComLogo(map.get(0).get("fileName").toString());
-		map.get(0).get("fileSize");
-		map.get(0).get("originalFileName");
+/*		map.get(0).get("fileSize");
+		map.get(0).get("originalFileName");*/
 		
 		int cnt = comService.updateCompany(companyVo);
 		logger.info("업체 수정 결과 cnt={}", cnt);
