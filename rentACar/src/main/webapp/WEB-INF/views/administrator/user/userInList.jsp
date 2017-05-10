@@ -44,7 +44,7 @@ th {
 
 .bodyClass {
 	padding-top: 30px;
-	width: 80%;
+	width: 85%;
 	padding-left: 40px;
 }
 </style>

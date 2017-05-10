@@ -41,18 +41,25 @@ th {
 	margin: 0 auto;
 	text-align: center;
 }
+
+.bodyClass {
+	padding-top: 30px;
+	width: 85%;
+	padding-left: 40px;
+}
 </style>
 
 <form name="frmPage" method="post"
 	action='<c:url value="/administrator/user/userOutList.do" />'>
-	<input type="hidden" name="currentPage">
-	<input type="hidden" name="searchCondition" value="${param.searchCondition}">
-	<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
+	<input type="hidden" name="currentPage"> <input type="hidden"
+		name="searchCondition" value="${param.searchCondition}"> <input
+		type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 </form>
 
-<div class="w3-container">
-	<h3>회원페이지 가이드</h3>
-	<pre>
+<div class="bodyClass">
+	<div class="w3-container">
+		<h3>회원페이지 가이드</h3>
+		<pre>
 		<code>
 		현재 등록된 회원 리스트와 탈퇴회원 리스트를 보여줍니다.
 		아이디 버튼을 누르면 해당 아이디회원의 상세정보를 보여줍니다. 
@@ -60,235 +67,224 @@ th {
     	</code>
 	</pre>
 
-	<br>
+		<br>
 
-	<div role="tabpanel">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation">
-				<a href='<c:url value="/administrator/user/userInList.do" />' aria-controls="userInList" role="tab">
-					회원 리스트 
-				</a>
-			</li>
+		<div role="tabpanel">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation"><a
+					href='<c:url value="/administrator/user/userInList.do" />'
+					aria-controls="userInList" role="tab"> 회원 리스트 </a></li>
 
-			<li role="presentation" class="active">
-				<a href='<c:url value="/administrator/user/userOutList.do" />' aria-controls="userOutList" role="tab">
-					탈퇴회원 리스트
-				</a>
-			</li>
-		</ul>
-		<!-- Tab panels -->
-		<div class="tab-content">
-			<div style="float: right;">
-				<button type="button" class="btn btn-default btn-lg"
+				<li role="presentation" class="active"><a
+					href='<c:url value="/administrator/user/userOutList.do" />'
+					aria-controls="userOutList" role="tab"> 탈퇴회원 리스트 </a></li>
+			</ul>
+			<!-- Tab panels -->
+			<div class="tab-content">
+				<div style="float: right;">
+					<button type="button" class="btn btn-default btn-lg"
 						id="btReregisterMulti" style="color: black;">회원 재등록</button>
-			</div>
-			<!-- <!-- ★★★★★★★★★★탈퇴회원 리스트★★★★★★★★★★ -->
-			<div role="tabpanel" class="tab-pane active" id="userOutList">
-				<div class="row">
-					<div class="col-md-12">
-						<br>
-						<form name="frmList" id="frmList" method="post"
-							action='<c:url value="/administrator/user/userOutList.do" />'>
-						<table class="table table-hover">
-							<colgroup>
-				       		  	<col width="5%">
-					    		<col width="13%">
-					    		<col width="10%">
-					    		<col width="*%">
-					    		<col width="8%">
-					    		<col width="12%">
-					    		<col width="8%">
-					    		<col width="10%">
-					    		<col width="8%">
-					    		<col width="10%">
-					    		<col width="10%">
-				    		</colgroup>
-							<thead>
-								<tr class="info">
-									<th><input type="checkbox" name="chkAll"></th>
-									<th scope="col">아이디</th>
-									<th scope="col">이름</th>
-									<th scope="col">이메일</th>
-									<th scope="col">전화번호</th>
-									<th scope="col">생일</th>
-									<th scope="col">주소</th>
-									<th scope="col">성별</th>
-									<th scope="col">면허증</th>
-									<th scope="col">가입일</th>
-									<th scope="col">탈퇴일</th>
-								</tr>
-							</thead>
+				</div>
+				<!-- <!-- ★★★★★★★★★★탈퇴회원 리스트★★★★★★★★★★ -->
+				<div role="tabpanel" class="tab-pane active" id="userOutList">
+					<div class="row">
+						<div class="col-md-12">
+							<br>
+							<form name="frmList" id="frmList" method="post"
+								action='<c:url value="/administrator/user/userOutList.do" />'>
+								<table class="table table-hover">
+									<colgroup>
+										<col width="5%">
+										<col width="13%">
+										<col width="10%">
+										<col width="*%">
+										<col width="8%">
+										<col width="12%">
+										<col width="8%">
+										<col width="10%">
+										<col width="8%">
+										<col width="10%">
+										<col width="10%">
+									</colgroup>
+									<thead>
+										<tr class="info">
+											<th><input type="checkbox" name="chkAll"></th>
+											<th scope="col">아이디</th>
+											<th scope="col">이름</th>
+											<th scope="col">이메일</th>
+											<th scope="col">전화번호</th>
+											<th scope="col">생일</th>
+											<th scope="col">주소</th>
+											<th scope="col">성별</th>
+											<th scope="col">면허증</th>
+											<th scope="col">가입일</th>
+											<th scope="col">탈퇴일</th>
+										</tr>
+									</thead>
 
-							<tbody>
-								<c:if test="${empty userOutList}">
-									<tr>
-										<td colspan="11" style="text-align: center;">데이터가 존재하지 않습니다.</td>
-									</tr>
+									<tbody>
+										<c:if test="${empty userOutList}">
+											<tr>
+												<td colspan="11" style="text-align: center;">데이터가 존재하지
+													않습니다.</td>
+											</tr>
+										</c:if>
+
+										<c:set var="u" value="0" />
+										<c:forEach var="vo" items="${userOutList}" varStatus="i">
+											<tr style="text-align: center">
+												<td><input type="checkbox" id="chk_${u}"
+													name="userItems[${u}].userId" value="${vo.userId}">
+												</td>
+												<td>
+													<button type="button" class="btn btn-default"
+														data-toggle="modal" data-target="#myOutModal_${i.index}">
+														${vo.userId}</button>
+													<div class="modal fade" id="myOutModal_${i.index}"
+														tabindex="-1" role="dialog"
+														aria-labelledby="myOutModalLabel" aria-hidden="true">
+														<div class="modal-dialog">
+															<div class="modal-content">
+																<div class="modal-header"
+																	style="background-color: skyblue;">
+																	<button type="button" class="close"
+																		data-dismiss="modal" aria-label="Close">
+																		<span aria-hidden="true">&times;</span>
+																	</button>
+																	<h4 class="modal-title" id="myOutModalLabel">
+																		<i class="fa fa-user-o"></i>${vo.userName}님의 상세정보
+																	</h4>
+																</div>
+																<div class="modal-body">
+																	<table class="table table-user-information">
+																		<tbody>
+																			<tr>
+																				<td>아이디</td>
+																				<td>${vo.userId}</td>
+																			</tr>
+																			<tr>
+																				<td>성별</td>
+																				<td>${vo.userGender}</td>
+																			</tr>
+																			<tr>
+																				<td>전화번호</td>
+																				<td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
+																			</tr>
+																			<tr>
+																				<td>이메일</td>
+																				<td>${vo.userEmail}</td>
+																			</tr>
+																			<tr>
+																				<td>주소</td>
+																				<td>${vo.userAddress}</td>
+																			</tr>
+																			<tr>
+																				<td>생일</td>
+																				<td>${vo.userBirth}</td>
+																			</tr>
+																			<tr>
+																				<td>면허증</td>
+																				<td>${vo.userLicense}</td>
+																			</tr>
+																			<tr>
+																				<td>가입일</td>
+																				<td>${vo.userRegdate}</td>
+																			</tr>
+																			<tr>
+																				<c:if test="${!empty vo.userOutdate}">
+																					<td>탈퇴일</td>
+																					<td>${vo.userOutdate}</td>
+																				</c:if>
+																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default"
+																		data-dismiss="modal">Close</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</td>
+												<td style="text-align: center">${vo.userName}</td>
+												<td>${vo.userEmail}</td>
+												<td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
+												<td>${vo.userBirth}</td>
+												<td>${vo.userAddress}</td>
+												<td>${vo.userGender}</td>
+												<td>${vo.userLicense}</td>
+												<td><fmt:formatDate value="${vo.userRegdate}"
+														pattern="yyyy-MM-dd" /></td>
+												<td><fmt:formatDate value="${vo.userOutdate}"
+														pattern="yyyy-MM-dd" /></td>
+											</tr>
+											<c:set var="u" value="${u+1}" />
+										</c:forEach>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<nav>
+							<ul class="pagination">
+								<c:if test="${pagingInfo.firstPage>1}">
+									<li><a href="#"
+										onclick="pageFunc(${pagingInfo.firstPage-1})"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									</a></li>
 								</c:if>
-								
-								<c:set var="u" value="0" />
-								<c:forEach var="vo" items="${userOutList}" varStatus="i">
-									<tr style="text-align: center">
-										<td>
-											<input type="checkbox" id="chk_${u}"
-												name="userItems[${u}].userId" value="${vo.userId}">
-										</td>
-										<td>
-											<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myOutModal_${i.index}">
-												${vo.userId}
-											</button>
-											<div class="modal fade" id="myOutModal_${i.index}" tabindex="-1" role="dialog" aria-labelledby="myOutModalLabel" aria-hidden="true">
-												<div class="modal-dialog">
-											    	<div class="modal-content">
-											      		<div class="modal-header" style="background-color: skyblue;">
-											       			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											       				<span aria-hidden="true">&times;</span>
-											       			</button>
-											        		<h4 class="modal-title" id="myOutModalLabel">
-											        			<i class="fa fa-user-o"></i>${vo.userName}님의 상세정보
-											        		</h4>
-											      		</div>
-													    <div class="modal-body">
-													    	<table class="table table-user-information">
-																<tbody>
-																	<tr>
-																		<td>아이디</td>
-																		<td>${vo.userId}</td>
-																	</tr>
-																	<tr>
-																		<td>성별</td>
-																		<td>${vo.userGender}</td>
-																	</tr>
-																	<tr>
-																		<td>전화번호</td>
-																		<td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
-																	</tr>
-																	<tr>
-																		<td>이메일</td>
-																		<td>${vo.userEmail}</td>
-																	</tr>
-																	<tr>
-																		<td>주소</td>
-																		<td>${vo.userAddress}</td>
-																	</tr>
-																	<tr>
-																		<td>생일</td>
-																		<td>${vo.userBirth}</td>
-																	</tr>
-																	<tr>
-																		<td>면허증</td>
-																		<td>${vo.userLicense}</td>
-																	</tr>
-																	<tr>
-																		<td>가입일</td>
-																		<td>${vo.userRegdate}</td>
-																	</tr>
-																	<tr>
-																		<c:if test="${!empty vo.userOutdate}">
-																			<td>탈퇴일</td>
-																			<td>${vo.userOutdate}</td>
-																		</c:if>
-																	</tr>
-																</tbody>
-															</table>
-													    </div>
-											      		<div class="modal-footer">
-													        <button type="button" class="btn btn-default" data-dismiss="modal">
-													        Close
-													        </button>
-											      		</div>
-											    	</div>
-												</div>
-											</div>
-										</td>
-										<td style="text-align: center">${vo.userName}</td>
-										<td>${vo.userEmail}</td>
-										<td>${vo.userTel1}-${vo.userTel2}-${vo.userTel3}</td>
-										<td>${vo.userBirth}</td>
-										<td>${vo.userAddress}</td>
-										<td>${vo.userGender}</td>
-										<td>${vo.userLicense}</td>
-										<td>
-											<fmt:formatDate value="${vo.userRegdate}" pattern="yyyy-MM-dd" />
-										</td>
-										<td>
-											<fmt:formatDate value="${vo.userOutdate}" pattern="yyyy-MM-dd" />
-										</td>
-									</tr>
-									<c:set var="u" value="${u+1}" />	
-								</c:forEach>	
-							</tbody>
-						</table>
+
+								<c:forEach var="i" begin="${pagingInfo.firstPage}"
+									end="${pagingInfo.lastPage}">
+									<c:if test="${i==pagingInfo.currentPage}">
+										<li class="active"><a href="#">${i}</a></li>
+									</c:if>
+
+									<c:if test="${i!=pagingInfo.currentPage}">
+										<li><a href="#" onclick="pageFunc(${i})">${i}</a></li>
+									</c:if>
+								</c:forEach>
+
+								<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+									<li><a href="#"
+										onclick="pageFunc(${pagingInfo.lastPage+1})" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+									</a></li>
+								</c:if>
+							</ul>
+						</nav>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+				<div class="divSearch container">
+					<div class="col-md-4">
+						<form name="frmSearch" method="post"
+							action="<c:url value="/administrator/user/userOutList.do" />">
+							<select name="searchCondition">
+								<option value="user_id"
+									<c:if test="${'user_id'==param.searchCondition}">
+		            				selected            	
+		            			</c:if>>회원아이디
+								</option>
+								<option value="user_name"
+									<c:if test="${'user_name'==param.searchCondition}">
+		            				selected            	
+		            			</c:if>>회원이름
+								</option>
+							</select> <input type="text" name="searchKeyword" title="검색어 입력"
+								value="${param.searchKeyword}"> <input type="submit"
+								value="검색">
 						</form>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<nav>
-						<ul class="pagination">
-							<c:if test="${pagingInfo.firstPage>1}">
-								<li>
-									<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"
-										aria-label="Previous">
-										<span aria-hidden="true">&laquo;</span>
-									</a>
-								</li>
-							</c:if>
-	
-							<c:forEach var="i" begin="${pagingInfo.firstPage}"
-								end="${pagingInfo.lastPage}">
-								<c:if test="${i==pagingInfo.currentPage}">
-									<li class="active">
-										<a href="#">${i}</a>
-									</li>
-								</c:if>
-								
-								<c:if test="${i!=pagingInfo.currentPage}">
-									<li>
-										<a href="#" onclick="pageFunc(${i})">${i}</a>
-									</li>
-								</c:if>
-							</c:forEach>
-	
-							<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
-								<li>
-									<a href="#" onclick="pageFunc(${pagingInfo.lastPage+1})"
-										aria-label="Next">
-										<span aria-hidden="true">&raquo;</span>
-									</a>
-								</li>
-							</c:if>
-						</ul>
-					</nav>
-				</div>
-				<div class="col-md-4"></div>
-			</div>
-			<div class="divSearch container">
-				<div class="col-md-4">
-					<form name="frmSearch" method="post"
-						action="<c:url value="/administrator/user/userOutList.do" />">
-						<select name="searchCondition">
-							<option value="user_id"
-								<c:if test="${'user_id'==param.searchCondition}">
-		            				selected            	
-		            			</c:if>>회원아이디
-							</option>
-							<option value="user_name"
-								<c:if test="${'user_name'==param.searchCondition}">
-		            				selected            	
-		            			</c:if>>회원이름
-							</option>
-						</select>
-						<input type="text" name="searchKeyword" title="검색어 입력"
-							value="${param.searchKeyword}">
-						<input type="submit" value="검색">
-					</form>
-				</div>
-			</div>
-		</div>		
+		</div>
 	</div>
 </div>
 <%@ include file="../include/bottom.jsp"%>
