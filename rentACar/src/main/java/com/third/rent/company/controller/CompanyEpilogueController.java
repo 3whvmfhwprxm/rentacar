@@ -252,7 +252,7 @@ public class CompanyEpilogueController {
 		
 		if(dvo.getYear()!=null && !dvo.getYear().isEmpty()){
 			slist=comService.ComselectSalesByDate(dvo);
-			logger.info("일별 매출 조회 결과는 slist.size()={}", slist.size());
+			logger.info("##일별 매출 조회 결과는 slist.size()={}", slist.size());
 			
 			for(int i = 0 ; i < slist.size() ; i++){
 				Map<String, Object> bean = slist.get(i);
