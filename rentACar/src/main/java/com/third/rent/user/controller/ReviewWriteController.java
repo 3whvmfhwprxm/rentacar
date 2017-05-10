@@ -48,7 +48,6 @@ public class ReviewWriteController {
 		commentsVo.setUserId(userId);
 		logger.info("리뷰작성처리, 파라미터 userId={}, adminId={}", userId, commentsVo.getAdminId());
 		
-		int cnt=commentsService.writeComment(commentsVo);
 		
 		UserFileUploadWebUtil fileUpload = new UserFileUploadWebUtil();
 		List<Map<String, Object>> map = fileUpload.fileUpload(request, 2);
@@ -57,6 +56,7 @@ public class ReviewWriteController {
 		map.get(0).get("fileSize");
 		map.get(0).get("originalFileName");
 		
+		int cnt=commentsService.writeComment(commentsVo);
 		String msg="", url="";
 		if(cnt>0){
 			msg="사용후기 등록이 완료되었습니다";
