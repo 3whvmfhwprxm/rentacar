@@ -152,19 +152,19 @@ and car_category_num=1;
 --차 모델 입력 현대차 2종류, 기아차 2종류, 외제차 1종류
 delete from car;
 
-insert into car
+insert into car(CAR_CODE, CAR_NAME, CAR_INC, CAR_SIZE, CAR_TRANS, CAR_REGDATE, CAR_TYPE, CAR_IMG)
 values('hd001', '현대소나타17', '현대', 4, 'AUTO', sysdate, 4, 'hd00101.jpg');
 
-insert into car
+insert into car(CAR_CODE, CAR_NAME, CAR_INC, CAR_SIZE, CAR_TRANS, CAR_REGDATE, CAR_TYPE, CAR_IMG)
 values('hd002', '현대아반떼17', '현대', 4, 'AUTO', sysdate, 3, 'hd00201.jpg');
 
-insert into car
+insert into car(CAR_CODE, CAR_NAME, CAR_INC, CAR_SIZE, CAR_TRANS, CAR_REGDATE, CAR_TYPE, CAR_IMG)
 values('kia001', '기아k5_17', 'KIA', 4, 'Trans', sysdate, 4, 'kia00101.jpg');
 
-insert into car
+insert into car(CAR_CODE, CAR_NAME, CAR_INC, CAR_SIZE, CAR_TRANS, CAR_REGDATE, CAR_TYPE, CAR_IMG)
 values('kia002', '기아뉴모닝_17', 'KIA', 4, 'AUTO', sysdate, 2, 'kia00201.jpg');
 
-insert into car
+insert into car(CAR_CODE, CAR_NAME, CAR_INC, CAR_SIZE, CAR_TRANS, CAR_REGDATE, CAR_TYPE, CAR_IMG)
 values('lambo001', '람보르기니_센테나리오', 'Lamborghini', 2, 'Trans', sysdate, 5, 'lb00101.jpg');
 
 select * from car;
