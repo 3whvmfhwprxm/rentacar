@@ -152,7 +152,7 @@ public class UserFileUploadWebUtil {
 			if(uploadWhat==FILE_UPLOAD){
 				upPath=fileProperties.getProperty("file.upload.path.test");
 			}else if(uploadWhat==IMAGE_UPLOAD){
-				upPath="D:\\lecture\\workspace_list\\sp_ws\\rentacar\\rentACar\\src\\main\\webapp\\WEB-INF\\views\\inc_user";
+				upPath="D:\\lecture\\workspace_list\\sp_ws\\rentacar\\rentACar\\src\\main\\webapp\\user_img";
 						//fileProperties.getProperty("imageFile.upload.path.test");
 			}
 			

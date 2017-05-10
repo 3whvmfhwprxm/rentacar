@@ -1,5 +1,6 @@
 package com.third.rent.user.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class ReviewWriteController {
 	
 	@RequestMapping(value="/user/reviewWrite.do", method=RequestMethod.POST)
 	public String showReviewWrite_post(@ModelAttribute CommentsVO commentsVo, Model model, HttpServletRequest request,
-			HttpSession session){
+			HttpSession session) throws IOException{
 		String userId = (String)session.getAttribute("userId");
 		commentsVo.setUserId(userId);
 		logger.info("리뷰작성처리, 파라미터 userId={}, adminId={}", userId, commentsVo.getAdminId());
@@ -52,7 +53,7 @@ public class ReviewWriteController {
 		UserFileUploadWebUtil fileUpload = new UserFileUploadWebUtil();
 		List<Map<String, Object>> map = fileUpload.fileUpload(request, 2);
 		
-		commentsVo.setCmtImg1(map.get(0).get("fileName").toString());
+		commentsVo.setCmtImg1(map.get(0).get("cmtImg1").toString());
 		map.get(0).get("fileSize");
 		map.get(0).get("originalFileName");
 		
