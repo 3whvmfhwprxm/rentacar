@@ -267,3 +267,5 @@ from RESERVATION r join COMPANYCAROPTION cc
 on r.CCAR_CAR_ID = cc.CCAR_CAR_ID join COMPANY c
 on cc.COM_ID = c.COM_ID
 where r.RESERV_NUM='00000001';
+
+select * from COMPANYNOTICE;

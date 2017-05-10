@@ -159,7 +159,7 @@
 				<i class="fa fa-line-chart"></i>&nbsp; 정산 관리
 			</a>
 			
-			<a href="#" 
+			<a href="<c:url value="/admin/Board/cNotice.do" />" 
 				class="w3-bar-item w3-button w3-padding">
 				<i class="fa fa-list"></i>&nbsp; 게시판관리
 			</a>
