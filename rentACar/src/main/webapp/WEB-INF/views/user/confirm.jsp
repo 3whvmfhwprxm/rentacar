@@ -93,7 +93,7 @@
                         
                         <td style="text-align: center;">
                         	<label>사용 종료</label><br>
-                        	<a href="<c:url value="/user/reviewWrite.do"/>"><input type="submit" value="이용후기 작성"></a>
+                        	<a href="<c:url value="/user/reviewWrite.do?reservNum=${map['RESERV_NUM']}"/>"><input type="submit" value="이용후기 작성"></a>
                         </td>
                     </tr>
                 	</c:forEach>

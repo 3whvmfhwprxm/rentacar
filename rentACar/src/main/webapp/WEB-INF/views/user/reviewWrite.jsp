@@ -10,13 +10,13 @@
 				<div class="form-group">
 					<label for="userId" class="col-sm-2 control-label">회원아이디</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name="userId" id="userId" disabled value="${userId}">
+						<input type="text" class="form-control" name="userId" id="userId" disabled value="${sessionScope.userId}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">차량대여업체</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" name="comId" id="comId" disabled value="${comName}">
+						<input type="text" class="form-control" name="comId" id="comId" disabled value="${comId}">
 					</div>
 				</div>
 				<div class="form-group">
