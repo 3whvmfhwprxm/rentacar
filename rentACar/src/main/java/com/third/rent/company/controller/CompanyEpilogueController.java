@@ -259,7 +259,7 @@ public class CompanyEpilogueController {
 				listMonth.add(bean.get("TOTALPAY")+"");
 			}
 			
-			logger.info("일별 매출현황## listPay={}, listMonth={}", listPay, listMonth);
+			logger.info("일별 매출현황 listPay={}, listMonth={}", listPay, listMonth);
 			
 			model.addAttribute("listPay", listPay);
 			model.addAttribute("listMonth", listMonth);
