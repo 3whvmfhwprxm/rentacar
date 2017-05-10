@@ -1,6 +1,7 @@
 package com.third.rent.Comments.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,4 +27,10 @@ public class CommentsServiceImpl implements CommentsService{
 	public int writeComment(CommentsVO commentsVo) {
 		return commentsDao.writeComment(commentsVo);
 	}
+
+	@Override
+	public Map<String, Object> selectComidByReservNum(String reservNum) {
+		return commentsDao.selectComidByReservNum(reservNum);
+	}
+	
 }

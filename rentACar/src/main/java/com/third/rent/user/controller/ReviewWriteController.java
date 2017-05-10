@@ -1,5 +1,7 @@
 package com.third.rent.user.controller;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,12 @@ public class ReviewWriteController {
 	
 	@RequestMapping(value="/user/reviewWrite.do", method=RequestMethod.GET)
 	public String showReviewWrite_get(@RequestParam String reservNum, Model model){
-		logger.info("리뷰작성화면 띄우기");
+		logger.info("리뷰작성화면 띄우기 - 파라미터값 reservNum={}", reservNum);
 		
+		Map<String, Object> map=commentsService.selectComidByReservNum(reservNum);
+		logger.info("리뷰작성화면 띄우기 - 조회 결과값 map={}", map);
 		
+		model.addAttribute("map", map);
 		
 		return "user/reviewWrite";
 		
