@@ -174,8 +174,8 @@ order by pay_regdate desc;
 
 
 --예약정보, 차량넘버, 업체명, 업체 전화번호 ~ 유저아이디로 조회해서 가져오기
-select c.*, r.RESERV_NUM, r.RESERV_CANCEL, r.RESERV_DATE, r.RESERV_START_DATE, r.RESERV_END_DATE, ru.RES_U_NAME, ru.RES_U_TEL1,
-ru.RES_U_TEL2, ru.RES_U_TEL3 
+select c.*, r.RESERV_NUM, r.RESERV_CANCEL, r.RESERV_DATE, r.RESERV_START_DATE, r.RESERV_END_DATE, 
+ru.RES_U_NAME, ru.RES_U_TEL1, ru.RES_U_TEL2, ru.RES_U_TEL3 
 from RESERVATION r join (select com.COM_NAME, com.COM_TEL1, com.COM_TEL2, com.COM_TEL3, comcar.CCAR_CAR_ID
                         from company com join COMPANYCAROPTION comcar 
                         on com.COM_ID=comcar.COM_ID) c
@@ -260,3 +260,10 @@ select b.*, c.COM_NAME, c.COM_RATE
 from Balance_acc b join Company c
 on b.COM_ID = c.COM_ID
 where bal_target_date='2017-04';
+
+--해당 예약의 회사ID, 회사이름을 가져오는 구문
+select c.COM_ID, c.COM_NAME
+from RESERVATION r join COMPANYCAROPTION cc
+on r.CCAR_CAR_ID = cc.CCAR_CAR_ID join COMPANY c
+on cc.COM_ID = c.COM_ID
+where r.RESERV_NUM='00000001';
