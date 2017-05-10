@@ -2,6 +2,9 @@ package com.third.rent.admin_Board.controller;
 
 import java.util.List;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,8 +164,11 @@ public class Admin_BoardController {
 	}
 	
 	@RequestMapping(value="/comNoticeInsert.do", method=RequestMethod.POST)
-	public String comNoticeInsert_post(@ModelAttribute CompanyNoticeVO cvo, Model model){
-		logger.info("관리자 시스템 - 업체 공지 입력 처리 파라미터 cvo={}", cvo);
+	public String comNoticeInsert_post(@ModelAttribute CompanyNoticeVO cvo, HttpSession session, Model model){
+		String adminid=(String)session.getAttribute("Admin_Id");
+		
+		logger.info("관리자 시스템 - 업체 공지 입력 처리 파라미터 cvo={}, adminid={}", cvo, adminid);
+		cvo.setAdminId(adminid);
 		
 		int result=comNoService.insertComNotice(cvo);
 		logger.info("관리자 시스템 - 업체 공지 입력 결과 result={}", result);

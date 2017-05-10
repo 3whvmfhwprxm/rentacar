@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp" %>
+<script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#cNoInsert").click(function(){
+						
 			if($("#cnoticeTitle").val()==''){
 				alert("공지 제목을 입력하셔야 합니다.");
-				return;
-			}else if($("#cnoticeContent").val()==''){
-				alert("공지 내용을 입력하세요.");
 				return;
 			}else{
 				$("#frmInsert").prop("action", "<c:url value='/admin/Board/comNoticeInsert.do' />");
@@ -21,11 +20,13 @@
 			}
 		});
 	});
+	
+	
 </script>
 <style>
 	.bodyClass{padding-top: 30px;}
 </style>
-<script src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
+
 <div class="w3-container bodyClass">
 <h3><i class="fa fa-list"></i>&nbsp; 업체 공지 입력하기 </h3>
 <pre>
@@ -47,10 +48,10 @@
 	        </tr>
 	      </tbody>
 	    </table>
-	    <div class="form-group">     
-			<textarea id="cnoticeContent" name="cnoticeContent" class="form-control" rows="40" >${cnvo.cnoticeContent}</textarea>
-		</div>
-		<script>CKEDITOR.replace('cnoticeContent');</script>
+	    <div>	    	  
+			<textarea id="cnoticeContent" name="cnoticeContent" class="form-control" rows="40" ></textarea>
+			<script>CKEDITOR.replace('cnoticeContent');</script>   
+		</div>		
 	    <br>
 	    <input type="button" value="목록" name="cNoList" id="cNoList">
 	    <input type="button" value="입력" name="cNoInsert" id="cNoInsert"> <strong>(*입력하셔도 글이 바로 노출되지 않습니다.)</strong>  

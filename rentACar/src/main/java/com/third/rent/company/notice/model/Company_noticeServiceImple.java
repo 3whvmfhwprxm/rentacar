@@ -58,7 +58,7 @@ public class Company_noticeServiceImple implements Company_noticeService {
 		int cnt=0;
 		try{
 			for(CompanyNoticeVO cvo : cnlist){
-				if(cvo.getCnoticeVisible()!=null){
+				if(cvo.getCnoticeNo()>0){
 					cnt=cnoticeDao.updateComNoticeVisibleNo(cvo.getCnoticeNo());
 				}
 			}			

@@ -11,8 +11,8 @@
 				alert("감추기할 공지를 하나라도 선택하셔야 합니다");
 				return;
 			}else if(confirm("해당 공지들을 감추기 처리 하시겠습니까?")){
-				$("#tableFrm").attr("action","<c:url value='/admin/Board/comNoticeVisibleMultiNo.do' />");
-				$("#tableFrm").submit();	
+				$("#cnoticeFrm").attr("action","<c:url value='/admin/Board/comNoticeVisibleMultiNo.do' />");
+				$("#cnoticeFrm").submit();	
 			}											
 		});
 		
@@ -46,7 +46,7 @@
 * 관리자는 공지를 삭제하실 수 도 있습니다. 삭제된 공지는 빨간색으로 표시됩니다.
 </pre>
 	
-	<form name="tableFrm" method="post">
+	<form name="cnoticeFrm" id="cnoticeFrm" method="post">
 	<!-- 테이블 화면 시작 -->
 	<table class="table table-hover">	
 		<tr>			
