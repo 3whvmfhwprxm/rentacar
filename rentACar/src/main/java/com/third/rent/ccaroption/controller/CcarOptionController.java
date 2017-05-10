@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.third.rent.car.model.CarService;
 import com.third.rent.car.model.CarVO;
 import com.third.rent.ccaroption.model.CcarListVO;
+import com.third.rent.ccaroption.model.CcarOptionDAO;
 import com.third.rent.ccaroption.model.CcarOptionService;
 import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.PaginationInfo;
@@ -362,8 +363,12 @@ public class CcarOptionController {
 	@RequestMapping("/chkAllCgHold.do")
 	public String CarList(@ModelAttribute CcarListVO cCarListVo, Model model){
 		logger.info("선택한 대여중 이동 파라미터 cCarListVo={}", cCarListVo);
-		
+		int cnt=0;
 		List<Map<String, Object>> alist = new ArrayList<Map<String, Object>>();
+	/*	for(Map<String, Object> map: cCarListVo){
+			String comId= (String)map.get("comId)";
+			cnt = ccarOptionService.updateStatusCgHold(comId);
+		}*/
 		return "";
 	}
 }
