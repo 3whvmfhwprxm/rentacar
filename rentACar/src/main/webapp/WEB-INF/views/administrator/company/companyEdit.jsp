@@ -129,6 +129,7 @@
 					id="CompanyFax3" value="${companyVo.comFax3}">
 			</div>
 		</div>
+		
 		<div class="form-group">
 			<label for="CompanyAddress" class="col-sm-2 control-label">
 				주소 </label>
@@ -137,6 +138,16 @@
 					id="CompanyAddress" value="${companyVo.comAddress}">
 			</div>
 		</div>
+		
+		<div class="form-group">
+			<label for="comReturnPlace" class="col-sm-2 control-label">
+				차량인수, 반납장소 </label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="comReturnPlace"
+					id="comReturnPlace" value="${companyVo.comReturnPlace}">
+			</div>
+		</div>
+		
 		<div class="form-group">
 			<label for="CompanyCeo" class="col-sm-2 control-label"> 대표자 </label>
 			<div class="col-sm-8">

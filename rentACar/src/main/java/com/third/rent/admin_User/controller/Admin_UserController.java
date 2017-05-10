@@ -112,7 +112,7 @@ public class Admin_UserController {
 			
 			if(outResult>0){
 				msg="탈퇴 처리 성공";
-				url="/administrator/user/userList.do";	
+				url="/administrator/user/userOutList.do";	
 			}else{
 				msg="탈퇴 처리 실패";
 			}

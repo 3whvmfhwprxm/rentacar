@@ -45,7 +45,7 @@ public class LogController {
 		int result = adminLogService.loginCheck(Admin_Id, pwd);
 		logger.info("로그인 처리결과, result={}", result);
 		
-		String msg = "", url = "/administrator/log/logIn.do";
+		String msg = "", url = "/administrator/admin_Main.do";
 		if(result==admin_LogService.LOGIN_OK){
 			AdminVO vo = adminLogService.selectByAdminId(Admin_Id);
 			msg = vo.getAdminName()+"님 로그인되었습니다.";

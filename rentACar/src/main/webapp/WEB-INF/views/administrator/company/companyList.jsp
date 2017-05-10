@@ -122,8 +122,9 @@ th {
 									<tbody>
 										<c:if test="${empty companyInList}">
 											<tr>
-												<td colspan="12" style="text-align: center;">데이터가 존재하지
-													않습니다.</td>
+												<td colspan="12" style="text-align: center;">
+													데이터가 존재하지 않습니다.
+												</td>
 											</tr>
 										</c:if>
 

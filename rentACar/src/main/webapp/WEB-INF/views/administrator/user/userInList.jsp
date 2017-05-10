@@ -94,6 +94,7 @@ th {
 							<form name="frmList" id="frmList" method="post"
 								action='<c:url value="/administrator/user/userInList.do" />'>
 								<table class="table table-hover">
+									<thead>
 									<colgroup>
 										<col width="5%">
 										<col width="13%">
@@ -106,19 +107,18 @@ th {
 										<col width="8%">
 										<col width="10%">
 									</colgroup>
-									<thead>
-										<tr class="info">
-											<th><input type="checkbox" name="chkAll"></th>
-											<th scope="col">아이디</th>
-											<th scope="col">이름</th>
-											<th scope="col">이메일</th>
-											<th scope="col">전화번호</th>
-											<th scope="col">생일</th>
-											<th scope="col">주소</th>
-											<th scope="col">성별</th>
-											<th scope="col">면허증</th>
-											<th scope="col">가입일</th>
-										</tr>
+									<tr class="info">
+										<th scope="col"><input type="checkbox" name="chkAll"></th>
+										<th scope="col">아이디</th>
+										<th scope="col">이름</th>
+										<th scope="col">이메일</th>
+										<th scope="col">전화번호</th>
+										<th scope="col">생일</th>
+										<th scope="col">주소</th>
+										<th scope="col">성별</th>
+										<th scope="col">면허증</th>
+										<th scope="col">가입일</th>
+									</tr>
 									</thead>
 
 									<tbody>

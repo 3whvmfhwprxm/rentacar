@@ -265,7 +265,7 @@ public class Admin_CompanyController {
 			
 			if(outResult>0){
 				msg="삭제 처리 성공";
-				url="/administrator/company/companyList.do";	
+				url="/administrator/company/companyOutList.do";	
 			}else{
 				msg="삭제 처리 실패";
 			}
@@ -320,7 +320,7 @@ public class Admin_CompanyController {
 		int cnt = adminCompanyService.companyMultiWithdraw(companyList);
 		logger.info("관리자 - 선택한 예약 목록 취소 결과 cnt={}", cnt);
 		
-		String msg="", url="/administrator/company/companyList.do";
+		String msg="", url="/administrator/company/companyOutList.do";
 		if(cnt>0){
 			msg="선택한 업체가 탈퇴처리 되었습니다.";
 		}else{
@@ -341,11 +341,11 @@ public class Admin_CompanyController {
 		int cnt = adminCompanyService.companyMultiReregister(companyList);
 		logger.info("관리자 - 선택한 예약 목록 취소 결과 cnt={}", cnt);
 		
-		String msg="", url="/administrator/company/companyOutList.do";
+		String msg="", url="/administrator/company/companyList.do";
 		if(cnt>0){
-			msg="선택한 업체가 탈퇴처리 되었습니다.";
+			msg="선택한 업체가 재등록처리 되었습니다.";
 		}else{
-			msg="선택한 업체 탈퇴처리 중 에러가 발생했습니다.";
+			msg="선택한 업체 재등록 처리 중 에러가 발생했습니다.";
 		}
 		
 		model.addAttribute("msg", msg);

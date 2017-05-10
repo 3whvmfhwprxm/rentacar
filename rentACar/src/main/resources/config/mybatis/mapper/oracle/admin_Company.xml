@@ -69,7 +69,7 @@
 	</select>
 	
 	<select id="selectCompany" resultType="CompanyVO">
-		select*from company;
+		select*from company
 	</select>
 	
 	<select id="selectTotalRecord" parameterType="SearchVO"
@@ -114,8 +114,9 @@
 	    	com_tel3=#{comTel3}, com_mobile1=#{comMobile1}, 
 	    	com_mobile2=#{comMobile2}, com_mobile3=#{comMobile3}, 
 	    	com_fax1=#{comFax1}, com_fax2=#{comFax2}, 
-	    	com_fax3=#{comFax3}, com_address=#{comAddress}, 
-	    	com_ceo=#{comCeo}, com_rate=#{comRate}
+	    	com_fax3=#{comFax3}, com_address=#{comAddress},
+	    	com_return_place=#{comReturnPlace}, 
+	    	com_ceo=#{comCeo}, com_rate=#{comRate},
 	    	com_email=#{comEmail}, com_logo=#{comLogo}
 		where com_id=#{comId}
 	</update>
