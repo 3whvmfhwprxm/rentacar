@@ -41,6 +41,15 @@
 		values(#{cmtNo},#{cmtContent},#{userId},#{comId},#{cmtKindScore},#{cmtCleanScore},#{cmtConvScore},
 			#{cmtImg1},#{cmtImg2},#{cmtImg3})
 	</insert>
+	
+	<!-- 예약번호에 해당하는 업체명, 업체아이디를 가져오는 구문 -->
+	<select id="selectComidByReservNum" parameterType="String" resultType="map">
+		select c.COM_ID, c.COM_NAME
+		from RESERVATION r join COMPANYCAROPTION cc
+		on r.CCAR_CAR_ID = cc.CCAR_CAR_ID join COMPANY c
+		on cc.COM_ID = c.COM_ID
+		where r.RESERV_NUM=#{reservNum}
+	</select>
 </mapper>
 
 

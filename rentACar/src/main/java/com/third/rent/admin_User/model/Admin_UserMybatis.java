@@ -52,4 +52,9 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 	public int reRegisterUser(String userId) {
 		return getSqlSession().update(namespace+".userReregister", userId);
 	}
+
+	@Override
+	public int updateUser(String userId) {
+		return getSqlSession().update(namespace+".updateUser", userId);
+	}
 }

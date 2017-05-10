@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp" %>
 <script type="text/javascript">	
+	$().ready(function(){
+		$("input[name='chkAll']").click(function(){				
+			$("tbody input[type=checkbox]").prop("checked", this.checked);
+		});
+		
+		$("#btCancelMulti").click(function(){	
+			if($('tbody input:checkbox:checked').length==0){
+				alert("삭제할 공지를 하나라도 선택하셔야 합니다");
+				return;
+			}else if(confirm("정말로 공지를 삭제하시겠습니까?")){
+				$("#tableFrm").attr("action","<c:url value='/admin/Board/cNoticeMultiCancel.do' />");
+				$("#tableFrm").submit();	
+			}											
+		});
+	});
+
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
 		frmPage.submit();
@@ -10,10 +26,18 @@
 	<h1>업체용 공지 게시판 관리</h1>
 	<!-- 페이지 처리용 폼 -->
 	<form name="frmPage" method="post" action='<c:url value="/admin/Board/cNotice.do" />'>
-		<input type="text" name="currentPage"> 
-		<input type="text" name="searchCondition" value="${param.searchCondition}"> 
-		<input type="text" name="searchKeyword" value="${param.searchKeyword}">
+		<input type="hidden" name="currentPage"> 
+		<input type="hidden" name="searchCondition" value="${param.searchCondition}"> 
+		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 	</form>
+	
+<pre>
+* 업체에 공지사항를 보여주며, 페이지당 10개의 목록을 보여줍니다.
+* 검색은 제목, 내용, 작성자 으로 검색이 가능합니다
+* 관리자는 해당 내용을 보이지않게 처리 할 수도 있고, 상황에 따라 삭제하실 수 도 있습니다.
+</pre>
+	
+	<form name="tableFrm" method="post">
 	<!-- 테이블 화면 시작 -->
 	<table class="table table-hover">	
 		<tr>			
@@ -24,7 +48,7 @@
 			<th>등록일</th>			
 			<th>삭제여부</th>
 			<th>노출여부</th>
-			<th>보이기 <input type="checkbox" id="checkAll" name="checkAll"></th>
+			<th>보이기 <input type="checkbox" id="chkAll" name="chkAll"></th>
 		</tr>
 		
 		<c:if test="${empty cnList}">
@@ -33,21 +57,43 @@
 					</tr>
 		</c:if>
 		
+		<c:set value="0" var="i"/>
 		<c:if test="${!empty cnList }">			
 				<c:forEach var="vo" items="${cnList }">
 					<tr <c:if test="${!empty vo.cnoticeDeldate }"> class="danger" </c:if>>
 						<td>${vo.cnoticeNo }</td>
-						<td><a href='<c:url value="/admin/Board/cNoticeDetail.do?cnoticeNo=${vo.cnoticeNo}" />'>${vo.cnoticeTitle }</a></td>
+						<td>
+							<c:if test="${empty vo.cnoticeDeldate }">
+								<a href='<c:url value="/admin/Board/comNoticeEdit.do?cnoticeNo=${vo.cnoticeNo}" />'>
+							</c:if>
+							<c:if test="${fn:length(vo.cnoticeTitle)>30 }">
+									${fn:substring(vo.cnoticeTitle, 0, 30) }...
+							</c:if>
+							<c:if test="${fn:length(vo.cnoticeTitle)<=30 }">
+									${vo.cnoticeTitle}
+							</c:if>
+							<c:if test="${empty vo.cnoticeDeldate }">
+								</a>
+							</c:if>
+						</td>
 						<td>${vo.adminId }</td>
 						<td>${vo.cnoticeReadcount }</td>
-						<td>${vo.cnoticeRegdate }</td>						
-						<td>${vo.cnoticeDeldate }</td>
+						<td><fmt:formatDate value="${vo.cnoticeRegdate }" pattern="yyyy-MM-dd hh:mm"/></td>
+						<td><fmt:formatDate value="${vo.cnoticeDeldate }" pattern="yyyy-MM-dd hh:mm"/></td>
 						<td>${vo.cnoticeVisible }</td>
-						<td><input type="checkbox" id="checkbox" name="checkbox"></td>
-					</tr>	
+						<td>
+							<c:if test="${vo.cnoticeVisible=='Y' }">
+								<input type="checkbox" id="chk_${i }" name="cvolist[${i}].cnoticeNo" value="${vo.cnoticeNo }">
+							</c:if>
+						</td>
+					</tr>
+				<c:set var="i" value="${i+1}"/>	
 				</c:forEach>				
 		</c:if>		
 	</table>
+	<!-- 테이블 표시 끝 -->
+	</form>
+	
 		<div class="divPage container">
 			<c:if test="${pagingInfo.firstPage>1 }">
 				<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})"> 
