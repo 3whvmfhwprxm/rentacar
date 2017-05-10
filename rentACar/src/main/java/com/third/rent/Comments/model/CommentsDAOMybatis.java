@@ -31,5 +31,10 @@ public class CommentsDAOMybatis extends SqlSessionDaoSupport implements Comments
 	public Map<String, Object> selectComidByReservNum(String reservNum) {
 		return getSqlSession().selectOne(namespace+".selectComidByReservNum", reservNum);
 	}
+
+	@Override
+	public CommentsVO selectByCmtNo(int cmtNo) {
+		return getSqlSession().selectOne(namespace+".selectByCmtNo",cmtNo);
+	}
 	
 }

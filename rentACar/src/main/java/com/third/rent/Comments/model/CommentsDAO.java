@@ -11,4 +11,5 @@ public interface CommentsDAO {
 	public int selectTotalRecord(SearchVO searchVo);
 	public int writeComment(CommentsVO commentsVo);
 	public Map<String, Object> selectComidByReservNum(String reservNum);
+	public CommentsVO selectByCmtNo(int cmtNo);
 }

@@ -1,5 +1,22 @@
 @CHARSET "UTF-8";
 
+
+input,select{border-radius: 10px;}
+
+.a3{
+	clear:both;
+	text-align: center;
+} 
+.a2{
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    border-radius:3px;
+   	padding: 10px;
+}
+
 .col-md-8 {
     z-index: 2;
     color: #fff;
@@ -14,18 +31,18 @@
 select{
 	height: 26px;
 	margin-right: 10px;
-	border-radius: 3px;
+	border-radius: 10px;
 }
-input{border-radius:5px; }
-
 .row {
     margin-right: -15px;
     margin-left: -15px;
     margin-bottom: 0px;
     margin-top: 0px;
-    text-align: center;
 }
-.divSearch{float: right;
+.divSearch{
+	float: right;
+    margin-right: 30px;
+    margin-top: 30px;
 }
 table tr th{background-color: #c9c9c9;text-align: center;}
 table tr td{text-align: center;}

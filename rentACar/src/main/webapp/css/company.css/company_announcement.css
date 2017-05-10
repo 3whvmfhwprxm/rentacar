@@ -1,5 +1,14 @@
 @CHARSET "UTF-8";
 
+
+input,select{border-radius: 10px;}
+.a4{
+ 	text-align: right;
+}
+.a3{
+	clear:both;
+	text-align: center;
+} 
 .a2{
     z-index: 2;
     color: #fff;
@@ -15,7 +24,7 @@ table tr td{text-align: center;}
 pre{margin-top: 2%;}
 .col-lg-10{margin-top: 5%;}
 .col-md-8 {
- padding-top: 20px;
+ padding-top: 10px;
 }
 .container {
     padding-right: 15px;
@@ -23,8 +32,11 @@ pre{margin-top: 2%;}
     margin-right: auto;
     margin-left: auto;
    
+   
 }
-.row{margin-left: -15px;
+.row{
+	margin-left: -15px;
+	rgin-bottom: 30px;
 }
 .pagination {
     display: inline-block;

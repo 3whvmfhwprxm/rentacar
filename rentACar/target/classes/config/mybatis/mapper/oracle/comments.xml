@@ -50,6 +50,10 @@
 		on cc.COM_ID = c.COM_ID
 		where r.RESERV_NUM=#{reservNum}
 	</select>
+	
+	<select id="selectByCmtNo" parameterType="int" resultType="CommentsVO">
+		select * from comments where cmt_no=#{cmtNo}
+	</select>
 </mapper>
 
 

@@ -32,5 +32,10 @@ public class CommentsServiceImpl implements CommentsService{
 	public Map<String, Object> selectComidByReservNum(String reservNum) {
 		return commentsDao.selectComidByReservNum(reservNum);
 	}
+
+	@Override
+	public CommentsVO selectByCmtNo(int cmtNo) {
+		return commentsDao.selectByCmtNo(cmtNo);
+	}
 	
 }

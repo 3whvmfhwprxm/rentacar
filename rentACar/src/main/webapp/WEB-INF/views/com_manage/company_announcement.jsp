@@ -73,7 +73,7 @@
 				</tbody>
 			</table>
 			<div class="row">
-				<div class="col-md-8">
+				<div class="a3">
 					<c:if test="${pagingInfo.firstPage>1 }">
 						<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})">
 							<img
@@ -99,7 +99,8 @@
 						</a>
 					</c:if>
 				</div>
-		<div class="divSearch container">
+			</div>
+		<div class="a4">
 			<form name="frmSearch" id="frmSearch" method="post"
 				action="<c:url value="/com_manage/company_announcement.do" />">
 				<select name="searchCondition">				
@@ -122,7 +123,6 @@
 				<input type="submit" value="검색" class="btn btn-primary btn-sm btn3d">
 			</form>
 		</div>
-			</div>
 			</div>
 		</div>
 	</div>

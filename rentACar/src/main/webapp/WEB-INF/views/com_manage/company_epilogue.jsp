@@ -60,7 +60,8 @@
 	<c:forEach var="vo" items="${cList }" varStatus="i">
 		<tr>
 			<td>${vo.cmtNo}</td>
-			<td>${vo.cmtContent}</td>
+			<td><a href='<c:url value="/com_manage/company_epilogue_detail.do?cmtNo=${vo.cmtNo}"/>'>
+			${vo.cmtContent}</td>
 			<td>${vo.userId}</td>
 			<c:if test="${vo.cmtKindScore=='0'}">
 				<td><img src="<c:url value='/images/star/rating0.png'/>"></td>
@@ -127,33 +128,31 @@
     </table>
     </div>
 	<div class="row">
-		<div class="col-md-4">
-			<div class="col-md-8">
-					<c:if test="${pagingInfo.firstPage>1 }">
-						<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})">
-							<img
-							src='${pageContext.request.contextPath}/images/first.JPG'
-							alt="이전블럭으로">
-						</a>
+		<div class="a3">
+				<c:if test="${pagingInfo.firstPage>1 }">
+					<a href="#" onclick="pageFunc(${pagingInfo.firstPage-1})">
+						<img
+						src='${pageContext.request.contextPath}/images/first.JPG'
+						alt="이전블럭으로">
+					</a>
+				</c:if>
+				<c:forEach var="i" begin="${pagingInfo.firstPage}"
+					end="${pagingInfo.lastPage}">
+					<c:if test="${i==pagingInfo.currentPage }">
+						<span class="a2">${i}</span>
 					</c:if>
-					<c:forEach var="i" begin="${pagingInfo.firstPage}"
-						end="${pagingInfo.lastPage}">
-						<c:if test="${i==pagingInfo.currentPage }">
-							<span class="a2">${i}</span>
-						</c:if>
-						<c:if test="${i!=pagingInfo.currentPage }">
-							<a class="a1" href="#" onclick="pageFunc(${i})">[${i}]</a>
-						</c:if>
-					</c:forEach>
+					<c:if test="${i!=pagingInfo.currentPage }">
+						<a class="a1" href="#" onclick="pageFunc(${i})">[${i}]</a>
+					</c:if>
+				</c:forEach>
 
-					<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
-						<a class="a1" href="#" onclick="pageFunc(${pagingInfo.lastPage+1})">
-							<img
-							src='${pageContext.request.contextPath}/images/last.JPG'
-							alt="다음블럭으로">
-						</a>
-					</c:if>
-				</div>
+				<c:if test="${pagingInfo.lastPage < pagingInfo.totalPage}">
+					<a class="a1" href="#" onclick="pageFunc(${pagingInfo.lastPage+1})">
+						<img
+						src='${pageContext.request.contextPath}/images/last.JPG'
+						alt="다음블럭으로">
+					</a>
+				</c:if>
 		</div>
 	</div>
 		<div class="divSearch">

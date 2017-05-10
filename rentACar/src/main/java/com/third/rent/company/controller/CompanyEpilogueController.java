@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.third.rent.Comments.model.CommentsService;
 import com.third.rent.Comments.model.CommentsVO;
 import com.third.rent.admin_Board.model.Admin_BoardService;
 import com.third.rent.common.DateSearchVO2;
@@ -49,6 +50,8 @@ public class CompanyEpilogueController {
 	@Autowired
 	private Company_noticeService comNoService;
 	
+	@Autowired
+	private CommentsService commentService;
 	
 	@RequestMapping("/company_epilogue.do")
 	public String company_epilogue(@ModelAttribute SearchVO searchVo, Model model,
@@ -78,6 +81,23 @@ public class CompanyEpilogueController {
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "com_manage/company_epilogue";
+	}
+	@RequestMapping(value="/company_epilogue_detail.do",method=RequestMethod.GET)
+	public String epilogue_detail_get(@RequestParam int cmtNo, Model model){
+		//1.
+		logger.info("업체공지사항 상세보기, 파라미터 cmtNo={}", cmtNo);
+		if(cmtNo==0){
+			model.addAttribute("msg", "잘못된 url입니다");
+			model.addAttribute("url", "/com_manage/company_epilogue.do");	
+			
+			return "common/message";
+		}
+		CommentsVO vo = commentService.selectByCmtNo(cmtNo);
+			logger.info("업체공지사항 조회결과 companyVo={}", vo);
+		
+		model.addAttribute("commentsVo", vo);
+		
+		return "com_manage/company_epilogue_detail";
 	}
 	
 	
@@ -172,13 +192,6 @@ public class CompanyEpilogueController {
 		
 		return "com_manage/company_detail";
 	}
-	/*@RequestMapping(value="/company_edit.do", method=RequestMethod.GET)
-	public String companyEdit_get(){
-		logger.info("업체수정화면 조회결과");
-		
-		return "/com_manage/company_edit";
-		
-	}*/
 	
 	@RequestMapping(value="/company_detail.do", method=RequestMethod.POST)
 	public String companyEdit_post(HttpServletRequest reuest,
