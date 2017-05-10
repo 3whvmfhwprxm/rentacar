@@ -21,15 +21,22 @@
 	}
 </script>
 	<form name="frmPage" method="post" action='<c:url value="/user/confirm.do" />'>
+		<input type="hidden" name="startDay" value="${dateSearchVO2.startDay }">
+		<input type="hidden" name="endDay" value="${dateSearchVO2.endDay}">
 		<input type="hidden" name="currentPage">
 	</form>
 <br><br>
 <div class="container">	
+	
 	<div class="row">
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 class="panel-title">${sessionScope.userId} 님</h3>
-                
+                <!-- 조회기간 include -->
+    <form name="frm1" method="post" action='<c:url value="/user/confirm.do" />' >
+		<%@ include file="../inc_user/dateTerm.jsp" %>
+		<input type="submit" value="조회" style="color: black;">
+	</form>
             </div>
             <table class="table" width="100%">
                 <thead>

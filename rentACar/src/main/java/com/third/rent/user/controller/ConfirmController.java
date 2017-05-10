@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
-import com.third.rent.common.Utility;
 import com.third.rent.common.userUtility;
 import com.third.rent.payInfo.model.PayInfoService;
 import com.third.rent.reservation.model.ReservationService;
-import com.third.rent.reservation.model.ReservationVO;
 
 @Controller
 public class ConfirmController {
