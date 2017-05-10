@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.third.rent.common.SearchVO;
-import com.third.rent.company.model.CompanyVO;
 
 @Service
-public class Com_noServiceImpl implements Company_noticeService {
+public class Company_noticeServiceImple implements Company_noticeService {
 
 	@Autowired
 	private Company_noticeDAO cnoticeDao;
@@ -22,6 +21,21 @@ public class Com_noServiceImpl implements Company_noticeService {
 	@Override
 	public CompanyNoticeVO selectByNo(int cnoticeNo) {
 		return cnoticeDao.selectByNo(cnoticeNo);
+	}
+
+	@Override
+	public int insertComNotice(CompanyNoticeVO cvo) {
+		return 0;
+	}
+
+	@Override
+	public int updateComNotice(CompanyNoticeVO cvo) {
+		return 0;
+	}
+
+	@Override
+	public int updateComNoticeDelFlag(int cnoticeNo) {
+		return 0;
 	}
 
 	/*@Override

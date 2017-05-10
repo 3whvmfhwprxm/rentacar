@@ -114,7 +114,7 @@ public class Admin_BoardController {
 	}
 	
 	@RequestMapping(value="/comNoticeEdit.do", method=RequestMethod.GET)
-	public String detail_announcement_get(@RequestParam int cnoticeNo, Model model){
+	public String comNoticeEdit_get(@RequestParam int cnoticeNo, Model model){
 
 		logger.info("관리자 시스템 - 업체공지사항 상세보기, 파라미터 cnoticeNo={}", cnoticeNo);
 		if(cnoticeNo==0){
@@ -130,6 +130,14 @@ public class Admin_BoardController {
 		model.addAttribute("cnvo", cnvo);
 		
 		return "administrator/board_management/CNoticeBoard_edit";
+	}
+	
+	@RequestMapping(value="/comNoticeEdit.do", method=RequestMethod.POST)
+	public String comNoticeEdit_post(@ModelAttribute CompanyNoticeVO cvo, Model model){
+		logger.info("관리자 시스템 - 업체 공지 사항 수정 파라미터 cvo={}", cvo);
+		
+		
+		return "";
 	}
 	
 }
