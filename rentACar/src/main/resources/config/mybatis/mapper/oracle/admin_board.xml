@@ -98,6 +98,18 @@
 		where cnotice_no=#{cnoticeNo}
 	</update>
 	
+	<update id="updateComNoticeVisibleYes" parameterType="int">
+		update companynotice
+		set cnotice_visible='Y'
+		where cnotice_no=#{cnoticeNo}
+	</update>
+	
+	<update id="updateComNoticeVisibleNo" parameterType="int">
+		update companynotice
+		set cnotice_visible='N'
+		where cnotice_no=#{cnoticeNo}
+	</update>
+	
 	<insert id="insertUserNotice" parameterType="UserNoticeVO">
 		<selectKey keyProperty="cnoticeNo" order="BEFORE" resultType="int">
 			select CompanyNotice_seq.nextval from dual

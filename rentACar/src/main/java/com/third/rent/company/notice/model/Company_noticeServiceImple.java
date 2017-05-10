@@ -25,19 +25,30 @@ public class Company_noticeServiceImple implements Company_noticeService {
 
 	@Override
 	public int insertComNotice(CompanyNoticeVO cvo) {
-		return 0;
+		return cnoticeDao.insertComNotice(cvo);
 	}
 
 	@Override
 	public int updateComNotice(CompanyNoticeVO cvo) {
-		return 0;
+		return cnoticeDao.updateComNotice(cvo);
 	}
 
 	@Override
 	public int updateComNoticeDelFlag(int cnoticeNo) {
-		return 0;
+		return cnoticeDao.updateComNoticeDelFlag(cnoticeNo);
 	}
 
+	@Override
+	public int updateComNoticeVisibleYes(int cnoticeNo) {
+		return cnoticeDao.updateComNoticeVisibleYes(cnoticeNo);
+	}
+
+	@Override
+	public int updateComNoticeVisibleNo(int cnoticeNo) {
+		return cnoticeDao.updateComNoticeVisibleNo(cnoticeNo);
+	}
+
+	
 	/*@Override
 	public int companyIdChk(CompanyVO param) {
 		int chk = cnoticeDao.companyIdChk(param);

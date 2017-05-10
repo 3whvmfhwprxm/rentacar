@@ -20,4 +20,8 @@ public interface Company_noticeDAO {
 	public int updateComNotice(CompanyNoticeVO cvo);
 	
 	public int updateComNoticeDelFlag(int cnoticeNo);
+	
+	public int updateComNoticeVisibleYes(int cnoticeNo);
+	
+	public int updateComNoticeVisibleNo(int cnoticeNo);
 }

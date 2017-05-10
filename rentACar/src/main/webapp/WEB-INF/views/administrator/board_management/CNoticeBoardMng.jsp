@@ -8,9 +8,9 @@
 		
 		$("#btCancelMulti").click(function(){	
 			if($('tbody input:checkbox:checked').length==0){
-				alert("삭제할 공지를 하나라도 선택하셔야 합니다");
+				alert("감추기할 공지를 하나라도 선택하셔야 합니다");
 				return;
-			}else if(confirm("정말로 공지를 삭제하시겠습니까?")){
+			}else if(confirm("해당 공지들을 감추기 처리 하시겠습니까?")){
 				$("#tableFrm").attr("action","<c:url value='/admin/Board/cNoticeMultiCancel.do' />");
 				$("#tableFrm").submit();	
 			}											
@@ -22,7 +22,11 @@
 		frmPage.submit();
 	}
 </script>
-	<div class="container">
+<style>
+	.bodyClass{padding-top: 30px;}
+	th, td{text-align: center;}
+</style>
+	<div class="w3-container bodyClass">
 	<h1>업체용 공지 게시판 관리</h1>
 	<!-- 페이지 처리용 폼 -->
 	<form name="frmPage" method="post" action='<c:url value="/admin/Board/cNotice.do" />'>
@@ -48,7 +52,7 @@
 			<th>등록일</th>			
 			<th>삭제여부</th>
 			<th>노출여부</th>
-			<th>보이기 <input type="checkbox" id="chkAll" name="chkAll"></th>
+			<th>감추기 <input type="checkbox" id="chkAll" name="chkAll"></th>
 		</tr>
 		
 		<c:if test="${empty cnList}">
@@ -79,7 +83,7 @@
 						<td>${vo.adminId }</td>
 						<td>${vo.cnoticeReadcount }</td>
 						<td><fmt:formatDate value="${vo.cnoticeRegdate }" pattern="yyyy-MM-dd hh:mm"/></td>
-						<td><fmt:formatDate value="${vo.cnoticeDeldate }" pattern="yyyy-MM-dd hh:mm"/></td>
+						<td><c:if test="${!empty vo.cnoticeDeldate }"><fmt:formatDate value="${vo.cnoticeDeldate }" pattern="yyyy-MM-dd hh:mm"/>에 삭제됨</c:if></td>
 						<td>${vo.cnoticeVisible }</td>
 						<td>
 							<c:if test="${vo.cnoticeVisible=='Y' }">

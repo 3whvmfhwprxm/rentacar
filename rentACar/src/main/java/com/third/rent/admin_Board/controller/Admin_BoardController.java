@@ -17,6 +17,7 @@ import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
 import com.third.rent.company.notice.model.CompanyNoticeVO;
+import com.third.rent.company.notice.model.CompanyNoticeVOList;
 import com.third.rent.company.notice.model.Company_noticeService;
 import com.third.rent.service.notice.model.ServiceCenterNoticeVO;
 import com.third.rent.user.notice.model.UserNoticeVO;
@@ -38,12 +39,12 @@ public class Admin_BoardController {
 		logger.info("관리자 시스템 - 고객 공지사항 관리 화면표시 searchVo={}", searchVo);
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(Utility.ADMIN_PAYINFO_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 		
 		//SearchVO 값 셋팅
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		List<UserNoticeVO> unList=adService.selectUN(searchVo);
@@ -65,12 +66,12 @@ public class Admin_BoardController {
 		logger.info("관리자 시스템 - 상담센터 공지사항 관리 화면표시 searchVo={}", searchVo);
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(Utility.ADMIN_PAYINFO_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 		
 		//SearchVO 값 셋팅
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		List<ServiceCenterNoticeVO> scnList=adService.selectSN(searchVo);
@@ -91,12 +92,12 @@ public class Admin_BoardController {
 		logger.info("관리자 시스템 - 업체 공지사항 관리 화면표시 searchVo={}", searchVo);
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
-		pagingInfo.setBlockSize(Utility.BLOCKSIZE);
-		pagingInfo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		pagingInfo.setBlockSize(Utility.ADMIN_PAYINFO_BLOCKSIZE);
+		pagingInfo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage());
 		
 		//SearchVO 값 셋팅
-		searchVo.setRecordCountPerPage(Utility.RECORDCOUNT_PERPAGE);
+		searchVo.setRecordCountPerPage(Utility.ADMIN_PAYINFO_RECORDCOUNT_PERPAGE);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex());
 		
 		List<CompanyNoticeVO> cnList=adService.selectCN(searchVo);
@@ -136,8 +137,117 @@ public class Admin_BoardController {
 	public String comNoticeEdit_post(@ModelAttribute CompanyNoticeVO cvo, Model model){
 		logger.info("관리자 시스템 - 업체 공지 사항 수정 파라미터 cvo={}", cvo);
 		
+		int result=comNoService.updateComNotice(cvo);
+		logger.info("관리자 시스템 - 업체 공지 수정 결과 result={}", result);
+		
+		String url="/admin/Board/comNoticeEdit.do?cnoticeNo="+cvo.getCnoticeNo(), msg="";
+		if(result>0){
+			msg="해당 업체 공지가 수정되었습니다.";
+		}else{
+			msg="해당 업체 공지 수정 실패!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/comNoticeInsert.do", method=RequestMethod.GET)
+	public String comNoticeInsert_get(){
+		logger.info("관리자 시스템 - 업체 공지 입력 화면 표시");
+		
+		return "administrator/board_management/CNoticeBoard_insert";
+	}
+	
+	@RequestMapping(value="/comNoticeInsert.do", method=RequestMethod.POST)
+	public String comNoticeInsert_post(@ModelAttribute CompanyNoticeVO cvo, Model model){
+		logger.info("관리자 시스템 - 업체 공지 입력 처리 파라미터 cvo={}", cvo);
+		
+		int result=comNoService.insertComNotice(cvo);
+		logger.info("관리자 시스템 - 업체 공지 입력 결과 result={}", result);
+		
+		String url="/admin/Board/comNoticeInsert.do", msg="";				
+		if(result>0){
+			url="/admin/Board/cNotice.do";
+			msg="업체 공지가 성공적으로 입력되었습니다.";
+		}else{
+			msg="업체 공지 등록 시도중 실패하였습니다.";
+		}
+		
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping("/comNoticeDel.do")
+	public String comNoticeUpdateDelFlag(@RequestParam int cnoticeNo, Model model){
+		logger.info("관리자 시스템 - 업체 공지 삭제 업데이트 파라미터 값 cnoticeNo={}", cnoticeNo);
+		
+		int result=comNoService.updateComNoticeDelFlag(cnoticeNo);
+		logger.info("관리자 시스템 - 업체 공지 삭제 업데이트 결과 result={}", result);
+		
+		String url="/admin/Board/cNotice.do", msg="";				
+		if(result>0){			
+			msg="업체 공지가 성공적으로 삭제처리되었습니다.";
+		}else{
+			url="/admin/Board/comNoticeEdit.do?cnoticeNo="+cnoticeNo;
+			msg="업체 공지 삭제 시도중 실패하였습니다.";
+		}
+		
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping("/comNoticeVisibleMultiYes")
+	public String comNoticeUpdateVisibleMultiNo(@ModelAttribute CompanyNoticeVOList cnvolist, Model model){
+		logger.info("관리자 시스템 - 선택된 공지들 한번에 감추기 처리 cnvolist={}", cnvolist);
 		
 		return "";
 	}
 	
+	@RequestMapping("/comNoticeVisibleYes")
+	public String comNoticeUpdateVisibleYes(@RequestParam int cnoticeNo, Model model){
+		logger.info("관리자 시스템 - 해당 업체 공지 보이기 처리 파라미터 cnoticeNo={}", cnoticeNo);
+		
+		int result=comNoService.updateComNoticeVisibleYes(cnoticeNo);
+		logger.info("관리자 시스템 - 공지 보이기 처리 결과 result={}", result);
+		
+		String url="/admin/Board/cNotice.do", msg="";				
+		if(result>0){			
+			msg="해당 업체 공지가 보이기 처리되었습니다.";
+		}else{
+			url="/admin/Board/comNoticeEdit.do?cnoticeNo="+cnoticeNo;
+			msg="해당 업체 공지 보이기 시도중 실패하였습니다.";
+		}
+		
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping("/comNoticeVisibleNo")
+	public String comNoticeUpdateVisibleNo(@RequestParam int cnoticeNo, Model model){
+		logger.info("관리자 시스템 - 해당 업체 공지 감추기 처리 파라미터 cnoticeNo={}", cnoticeNo);
+		
+		int result=comNoService.updateComNoticeVisibleNo(cnoticeNo);
+		logger.info("관리자 시스템 - 공지 감추기 처리 결과 result={}", result);
+		
+		String url="/admin/Board/cNotice.do", msg="";				
+		if(result>0){			
+			msg="해당 업체 공지가 감추기 처리되었습니다.";
+		}else{
+			url="/admin/Board/comNoticeEdit.do?cnoticeNo="+cnoticeNo;
+			msg="해당 업체 공지 감추기 시도중 실패하였습니다.";
+		}
+		
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		
+		return "common/message";
+	}
 }

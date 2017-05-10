@@ -12,6 +12,8 @@ public class Company_noticeDAOMyBatis extends SqlSessionDaoSupport implements Co
 	
 	private String nameSpace="config.mybatis.mapper.oracle.company";
 	
+	private String nameSpace2="config.mybatis.mapper.oracle.admin_board";
+	
 	@Override
 	public List<CompanyNoticeVO> companyAnnouncement(SearchVO searchVo) {
 		return getSqlSession().selectList(nameSpace+".selectCNotice",searchVo);
@@ -24,17 +26,27 @@ public class Company_noticeDAOMyBatis extends SqlSessionDaoSupport implements Co
 
 	@Override
 	public int insertComNotice(CompanyNoticeVO cvo) {
-		return getSqlSession().insert(nameSpace+".insertComNotice", cvo);
+		return getSqlSession().insert(nameSpace2+".insertComNotice", cvo);
 	}
 
 	@Override
 	public int updateComNotice(CompanyNoticeVO cvo) {
-		return getSqlSession().update(nameSpace+".updateComNotice", cvo);
+		return getSqlSession().update(nameSpace2+".updateComNotice", cvo);
 	}
 
 	@Override
 	public int updateComNoticeDelFlag(int cnoticeNo) {
-		return getSqlSession().update(nameSpace+".updateComNoticeDelFlag", cnoticeNo);
+		return getSqlSession().update(nameSpace2+".updateComNoticeDelFlag", cnoticeNo);
+	}
+
+	@Override
+	public int updateComNoticeVisibleYes(int cnoticeNo) {
+		return getSqlSession().update(nameSpace2+".updateComNoticeVisibleYes", cnoticeNo);
+	}
+	
+	@Override
+	public int updateComNoticeVisibleNo(int cnoticeNo) {
+		return getSqlSession().update(nameSpace2+".updateComNoticeVisibleNo", cnoticeNo);
 	}
 	
 	/*@Override
