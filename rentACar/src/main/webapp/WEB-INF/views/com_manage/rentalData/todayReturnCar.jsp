@@ -26,6 +26,14 @@
 		jQuery("input[name='chkAll']").click(function(){
 			jQuery("tbody input[type=checkbox]").prop("checked", this.checked);
 		});	
+		
+		jQuery("#frmSearch").submit(function(){
+			if(jQuery("#searchCondition").val()=='0'){
+				alert('옵션을 선택하세요.');
+				return false;
+			}
+			return true;
+		});
 	});
 	
 	function fncSort(val){
@@ -33,7 +41,15 @@
 		jQuery("#frmPage").attr("action" , "<c:url value='/com_manage/rentalData/todayReturnCar.do'/>");
 		jQuery("#frmPage").submit();
 	}
-
+	
+	function cg(yn,carId,compId){
+		jQuery("#ccarStatus").val(yn);
+		jQuery("#ccarCarId").val(carId);
+		jQuery("#comId").val(compId);
+		jQuery("#frmUse").attr("action","<c:url value='/com_manage/rentalData/updateStatusCg.do' />");
+		jQuery("#frmUse").submit();
+	}
+	
 
 	
 </script>
@@ -47,7 +63,7 @@
 		<input type="hidden" name="" id="" value="" />
 	</form>
 	<form id="frmUse" name="frmUse" method="POST">
-		<input type="hidden" name="ccarUseYn" id="ccarUseYn">
+		<input type="hidden" name="ccarStatus" id="ccarStatus">
 		<input type="hidden" name="ccarCarId" id="ccarCarId">
 		<input type="hidden" name="comId" id="comId">
 	</form>
@@ -58,9 +74,9 @@
 		우리업체의 오늘 반납될 차량목록을 보여주며, 페이지당 15개의 목록을 보여줍니다.
 		검색은 차량번호, 운전자명, 예약자명으로 가능하며 대소문자 구분없이 쓰셔도 검색이 됩니다.
 		정렬기준 선택시 다양하게 목록 기준을 바꿀 수 있습니다.
-		오늘 반납차량 목록에서 제외시킬 차량(들)은 해당차량의 체크박스 선택후 보내기 버튼을 클릭하면 목록에서 지워지며
+		오늘 반납차량 목록에서 해당차량의 체크박스 선택후 보내기 버튼을 클릭하면 목록에서 지워지며
 		반납완료 현황 목록으로 넘어갑니다. 
-		**차량 삭제기능은 <strong>DB(데이터베이스)</strong>에서 지워지지 않으며 해당리스트에서만 사라집니다.
+		일괄처리를 위하여 체크박스 선택후 보내기 일괄처리 버튼을 클릭하면 일괄처리됩니다.
     	</code>
 		</pre>
 		        <!--dropdown menu-->
@@ -101,6 +117,9 @@
 					반납완료 현황 목록
 				</a>
 			</li>
+			<li role="presentation" style="float:right" >
+				<button>보내기 일괄처리</button>
+			</li>
 		</ul>
        <table class="table table-striped">
        <thead>
@@ -114,6 +133,7 @@
 	    		<col width="13%">
 	    		<col width="*%">
 	    		<col width="7%">
+	    		<col width="7%">
     		</colgroup>
        		<tr>
        			<th><input type="checkbox"  name="chkAll"></th>
@@ -123,6 +143,7 @@
 				<th>예약자명</th>
 				<th colspan="2">운전자 정보</th>
 				<th>연체상태</th>
+				<th>대여상태</th>
 				<th>반납완료</th>
 			</tr>
         </thead>
@@ -146,6 +167,7 @@
 					<td style="text-aglin:right">${map['RES_DRV_NAME'] }</td>
 					<td style="text-aglin:left">${map['RES_DRV_TEL1'] }-${map['RES_DRV_TEL2'] }-${map['RES_DRV_TEL3'] }</td>
 					<td>연체아님</td>
+					<td>${map['CCAR_STATUS'] }</td>
 		        	<td><button>보내기</button></td>		
 				</tr>
 		 	<!-- 반복끝 --> 
@@ -187,10 +209,10 @@
 		<div class="col-md-4"></div>
 	</div>
 		<div class="divSearch">
-				<form name="frmSearch" method="post"
+				<form name="frmSearch" id="frmSearch" method="post"
 					action="<c:url value="/com_manage/rentalData/todayReturnCar.do" />">
 					<select name="searchCondition" id="searchCondition">
-						<option value='notsel'>::선택::</option>
+						<option value='0'>::선택::</option>
 						<option value="ccar_car_id"
 							<c:if test="${'ccar_car_id'==param.searchCondition}">
 		           		selected            	

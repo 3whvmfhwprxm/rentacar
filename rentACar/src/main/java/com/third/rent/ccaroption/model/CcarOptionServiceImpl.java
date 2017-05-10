@@ -108,5 +108,20 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 		return ccarOptionDao.rentalIngTR(searchVo);
 	}
 
+	@Override
+	public int updateStatusCgRent(CcarOptionVO vo) {
+		return ccarOptionDao.updateStatusCgRent(vo);
+	}
+
+	@Override
+	public int updateStatusCgReturn(CcarOptionVO vo) {
+		return ccarOptionDao.updateStatusCgReturn(vo);
+	}
+
+	@Override
+	public int updateStatusCgHold(CcarOptionVO vo) {
+		return ccarOptionDao.updateStatusCgHold(vo);
+	}
+
 
 }

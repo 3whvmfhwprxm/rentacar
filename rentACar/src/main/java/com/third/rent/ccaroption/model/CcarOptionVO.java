@@ -23,6 +23,7 @@ public class CcarOptionVO {
 	private int ccarPeakPrice;  		/* 성수기예약가격 */
 	private int ccarSPeakPrice; 		/* 극성수기예약가격 */
 	private int ccarArrear; 			/* 연체료(표기용) */
+	private String ccarStatus;				/* 대여상태 */
 	private Timestamp comcarRegdate;  	/* 차량등록일 */
 	private Timestamp comcarOutdate;	/* 차량삭제일 */
 	
@@ -147,6 +148,13 @@ public class CcarOptionVO {
 	public void setCcarArrear(int ccarArrear) {
 		this.ccarArrear = ccarArrear;
 	}
+	
+	public String getCcarStatus() {
+		return ccarStatus;
+	}
+	public void setCcarStatus(String ccarStatus) {
+		this.ccarStatus = ccarStatus;
+	}
 	public Timestamp getComcarRegdate() {
 		return comcarRegdate;
 	}
@@ -168,8 +176,8 @@ public class CcarOptionVO {
 				+ ccarBluetoothYn + ", ccarAuxYn=" + ccarAuxYn + ", ccarSmartkeyYn=" + ccarSmartkeyYn
 				+ ", ccarRentalcount=" + ccarRentalcount + ", ccarNormalPrice=" + ccarNormalPrice
 				+ ", ccarWeekendPrice=" + ccarWeekendPrice + ", ccarPeakPrice=" + ccarPeakPrice + ", ccarSPeakPrice="
-				+ ccarSPeakPrice + ", ccarArrear=" + ccarArrear + ", comcarRegdate=" + comcarRegdate
-				+ ", comcarOutdate=" + comcarOutdate + "]";
+				+ ccarSPeakPrice + ", ccarArrear=" + ccarArrear + ", ccarStatus=" + ccarStatus + ", comcarRegdate="
+				+ comcarRegdate + ", comcarOutdate=" + comcarOutdate + "]";
 	}
 	
 	

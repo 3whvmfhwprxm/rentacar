@@ -25,4 +25,7 @@ public interface CcarOptionDAO {
 	public List<Map<String, Object>> selectRentalData(SearchVO searchVo);
 	public List<Map<String, Object>> selectReturnData(SearchVO searchVo);
 	public List<Map<String, Object>> selectRentalIng(SearchVO searchVo);
+	public int updateStatusCgRent(CcarOptionVO vo);
+	public int updateStatusCgReturn(CcarOptionVO vo);
+	public int updateStatusCgHold(CcarOptionVO vo);
 }

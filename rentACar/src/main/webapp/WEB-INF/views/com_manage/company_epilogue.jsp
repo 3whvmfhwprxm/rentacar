@@ -18,6 +18,7 @@
 	</form>
 
     <div class="container">
+    <legend>업체후기</legend>
         <!--dropdown menu-->
         <div class="collapse navbar-collapse" id="MainMenu"><br><br>
         <pre>

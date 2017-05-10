@@ -83,6 +83,7 @@
 
 <section id="contact"><br>
 	<div class="container">
+	<legend>내 업체 정보</legend>
 	<pre>
 		<code>
 		업체의 현재 등록된 세부정보를 보여주며, 아이디,사업자 번호,대표자 를 제외한 나머지 부분들은 수정이 가능합니다

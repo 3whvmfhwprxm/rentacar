@@ -198,7 +198,7 @@
 		    from
 		    (
 		        select car_name, ccar_car_id, reserv_start_date, res_u_name, res_drv_name, 
-				res_drv_tel1, res_drv_tel2, res_drv_tel3, pay_condition
+				res_drv_tel1, res_drv_tel2, res_drv_tel3, pay_condition, ccar_status
 				from com_reservview
 			 	where com_id= #{companyId}
 			 	and to_char(reserv_start_date,'yyyy-MM-dd')=to_char(sysdate,'yyyy-MM-dd')
@@ -240,7 +240,7 @@
 		    from
 		    (
 		        select car_name, ccar_car_id, reserv_end_date, res_u_name, res_drv_name, 
-				res_drv_tel1, res_drv_tel2, res_drv_tel3, pay_condition
+				res_drv_tel1, res_drv_tel2, res_drv_tel3, pay_condition, ccar_status
 				from com_reservview
 			 	where com_id= #{companyId}
 			 	and to_char(reserv_end_date,'yyyy-MM-dd')=to_char(sysdate,'yyyy-MM-dd')
@@ -301,6 +301,25 @@
 		and RNUM <=#{firstRecordIndex} + #{recordCountPerPage}
 		]]>
 	</select>
+	
+	<update id="updateStatusCgRent" parameterType="CcarOptionVO">
+ 		update companycaroption
+		set ccar_status = #{ccarStatus}
+		where ccar_Car_id=#{ccarCarId}
+ 	</update>
+ 	
+ 	<update id="updateStatusCgReturn" parameterType="CcarOptionVO">
+ 		update companycaroption
+		set ccar_status = #{ccarStatus}
+		where ccar_Car_id=#{ccarCarId}
+ 	</update>
+
+ 	<update id="updateStatusCgHold" parameterType="CcarOptionVO">
+ 		update companycaroption
+		set ccar_status = #{ccarStatus}
+		where ccar_Car_id=#{ccarCarId}
+ 	</update>
+ 	
 </mapper>
 
 

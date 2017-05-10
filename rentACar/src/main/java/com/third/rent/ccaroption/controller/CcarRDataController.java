@@ -13,8 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.ccaroption.model.CcarOptionService;
+import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
 import com.third.rent.common.Utility;
@@ -158,5 +160,50 @@ public class CcarRDataController {
 		model.addAttribute("rlist", alist);*/
 		
 		return "com_manage/rentalData/endRentalCar";
+	}
+	
+	@RequestMapping("/updateStatusCg.do")
+	public String StatusCg(@RequestParam String ccarStatus,
+			@RequestParam String ccarCarId, HttpSession session,
+			@ModelAttribute SearchVO searchVo,
+			Model model){
+		String companyId = (String)session.getAttribute("comId");
+		searchVo.setCompanyId(companyId);
+		logger.info("대여상태 변경 처리하기, 파라미터 comId={}, ccarStatus={}", companyId, ccarStatus);
+		logger.info("파라미터 ccarCarId={}", ccarCarId);
+		CcarOptionVO vo = new CcarOptionVO();
+		vo.setCcarCarId(ccarCarId);
+		vo.setComId(companyId);
+		String status="";
+		String msg="", url="";
+		int cnt= 0;
+		if(ccarStatus.equals("HOLD")){
+			logger.info("상태 홀드");
+			status="RENT";
+			vo.setCcarStatus(status);
+			cnt = csService.updateStatusCgHold(vo);
+			url="/com_manage/rentalData/todayRentalCar.do";
+		}else if(ccarStatus.equals("RENT")){
+			logger.info("상태 렌트");
+			status="RETURN";
+			vo.setCcarStatus(status);
+			cnt = csService.updateStatusCgRent(vo);
+			url="/com_manage/rentalData/rentalIngCar.do";
+		}else if(ccarStatus.equals("RETURN")){
+			logger.info("상태 리턴");
+			status="HOLD";
+			vo.setCcarStatus(status);
+			cnt=csService.updateStatusCgReturn(vo);
+			url="/com_manage/rentalData/todayReturnCar.do";
+		}
+		
+		if(cnt<=0){
+			msg="차량상태 변경에 실패했습니다!";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
 }

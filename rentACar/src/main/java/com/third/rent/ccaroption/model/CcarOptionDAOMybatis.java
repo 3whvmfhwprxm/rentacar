@@ -97,6 +97,21 @@ public class CcarOptionDAOMybatis extends SqlSessionDaoSupport
 	public List<Map<String, Object>> selectRentalIng(SearchVO searchVo) {
 		return getSqlSession().selectList(namespace+".selectRentalIng", searchVo);
 	}
+
+	@Override
+	public int updateStatusCgRent(CcarOptionVO vo) {
+		return getSqlSession().update(namespace+".updateStatusCgRent", vo);
+	}
+
+	@Override
+	public int updateStatusCgReturn(CcarOptionVO vo) {
+		return getSqlSession().update(namespace+".updateStatusCgReturn", vo);
+	}
+
+	@Override
+	public int updateStatusCgHold(CcarOptionVO vo) {
+		return getSqlSession().update(namespace+".updateStatusCgHold", vo);
+	}
 	
 }
 

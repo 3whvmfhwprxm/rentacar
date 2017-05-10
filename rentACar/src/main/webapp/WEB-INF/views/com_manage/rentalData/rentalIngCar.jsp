@@ -26,6 +26,13 @@
 		jQuery("input[name='chkAll']").click(function(){
 			jQuery("tbody input[type=checkbox]").prop("checked", this.checked);
 		});	
+		jQuery("#frmSearch").submit(function(){
+			if(jQuery("#searchCondition").val()=='0'){
+				alert('옵션을 선택하세요.');
+				return false;
+			}
+			return true;
+		});
 	});
 	
 	function fncSort(val){
@@ -33,7 +40,14 @@
 		jQuery("#frmPage").attr("action" , "<c:url value='/com_manage/rentalData/rentalIngCar.do'/>");
 		jQuery("#frmPage").submit();
 	}
-
+	
+	function cg(yn,carId,compId){
+		jQuery("#ccarStatus").val(yn);
+		jQuery("#ccarCarId").val(carId);
+		jQuery("#comId").val(compId);
+		jQuery("#frmUse").attr("action","<c:url value='/com_manage/rentalData/updateStatusCg.do' />");
+		jQuery("#frmUse").submit();
+	}
 
 	
 </script>
@@ -44,10 +58,9 @@
 		<input type="hidden" name="searchCondition" value="${param.searchCondition}">
 		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
 		<input type="hidden" name="sortingKeyword" id="sortingKeyword" value="${param.sortingKeyword }"/>
-		<input type="hidden" name="" id="" value="" />
 	</form>
 	<form id="frmUse" name="frmUse" method="POST">
-		<input type="hidden" name="ccarUseYn" id="ccarUseYn">
+		<input type="hidden" name="ccarStatus" id="ccarStatus">
 		<input type="hidden" name="ccarCarId" id="ccarCarId">
 		<input type="hidden" name="comId" id="comId">
 	</form>
@@ -56,11 +69,9 @@
        	<pre>
 		<code>
 		우리업체의 현재 대여 중인 차량목록을 보여주며, 페이지당 15개의 목록을 보여줍니다.
-		검색은 차량번호, 운전자명, 예약자명으로 가능하며 대소문자 구분없이 쓰셔도 검색이 됩니다.
+		검색은 차량번호, 운전자명으로 가능하며 대소문자 구분없이 쓰셔도 검색이 됩니다.
 		정렬기준 선택시 다양하게 목록 기준을 바꿀 수 있습니다.
-		현재 대여 중인 차량 목록에서 제외시킬 차량(들)은 해당차량의 체크박스 선택후 보내기 버튼을 클릭하면 목록에서 지워지며
-		반납완료 현황 목록으로 넘어갑니다. 
-		**차량 삭제기능은 <strong>DB(데이터베이스)</strong>에서 지워지지 않으며 해당리스트에서만 사라집니다.
+		열기 버튼 클릭시 운전자 및 예약자의 상세정보를 볼 수 있습니다.
     	</code>
 		</pre>
 		        <!--dropdown menu-->
@@ -129,15 +140,18 @@
 			<!-- 반복시작 -->
 			<c:set var="u" value="0" />
 			<c:forEach var="map" items="${rlist }">
+			<c:if test="${map['CCAR_STATUS'] == 'RENT' }"> 
 				<tr>
 					<td>${map['CCAR_CAR_ID'] }</td>
 					<td>${map['CAR_NAME'] }</td>
 					<td>${map['RES_DRV_NAME'] }</td>
 					<td><button>열기</button></td>
-					<td>대여중이겟지</td>
+					<td>${map['CCAR_STATUS'] }</td>
 				</tr>
+			</c:if>
 		 	<!-- 반복끝 --> 
 	        </c:forEach>
+	        
         </c:if>
         
         </tbody>
@@ -175,10 +189,10 @@
 		<div class="col-md-4"></div>
 	</div>
 		<div class="divSearch">
-				<form name="frmSearch" method="post"
+				<form name="frmSearch" id="frmSearch" method="post"
 					action="<c:url value="/com_manage/rentalData/rentalIngCar.do" />">
 					<select name="searchCondition" id="searchCondition">
-						<option value='notsel'>::선택::</option>
+						<option value='0'>::선택::</option>
 						<option value="ccar_car_id"
 							<c:if test="${'ccar_car_id'==param.searchCondition}">
 		           		selected            	

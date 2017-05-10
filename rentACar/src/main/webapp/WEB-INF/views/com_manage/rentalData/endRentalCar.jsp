@@ -26,6 +26,13 @@
 		jQuery("input[name='chkAll']").click(function(){
 			jQuery("tbody input[type=checkbox]").prop("checked", this.checked);
 		});	
+		jQuery("#frmSearch").submit(function(){
+			if(jQuery("#searchCondition").val()=='0'){
+				alert('옵션을 선택하세요.');
+				return false;
+			}
+			return true;
+		});
 	});
 	
 	function fncSort(val){
@@ -56,9 +63,12 @@
        	<pre>
 		<code>
 		우리업체의 반납완료 된 차량목록을 보여주며, 페이지당 15개의 목록을 보여줍니다.
-		검색은 차량번호, 운전자명, 예약자명으로 가능하며 대소문자 구분없이 쓰셔도 검색이 됩니다.
+		검색은 차량번호, 운전자명으로 가능하며 대소문자 구분없이 쓰셔도 검색이 됩니다.
 		정렬기준 선택시 다양하게 목록 기준을 바꿀 수 있습니다.
-		**삭제기능은 <strong>DB(데이터베이스)</strong>에서 지워지지 않으며 해당리스트에서만 사라집니다.
+		반납상태의 마지막 단계입니다. 삭제버튼 클릭시 해당데이터가 사라져 복구 할수 없습니다.
+		**삭제기능은 <strong>DB(데이터베이스)</strong>에서는 지워지지 않고 해당리스트에서만 사라지지만
+		  업체 관리자에서는 데이터 복구가 불가능 합니다.
+		**관리자에게 문의바랍니다.  
     	</code>
 		</pre>
 		        <!--dropdown menu-->
@@ -97,6 +107,9 @@
 				<a href='<c:url value="/com_manage/rentalData/endRentalCar.do"/>' aria-controls="endRentalCar" role="tab">
 					반납완료 현황 목록
 				</a>
+			</li>
+			<li role="presentation" style="float:right" >
+				<button>삭제 일괄처리</button>
 			</li>
 		</ul>
        <table class="table table-striped">
@@ -195,10 +208,10 @@
 		<div class="col-md-4"></div>
 	</div>
 		<div class="divSearch">
-				<form name="frmSearch" method="post"
+				<form name="frmSearch" id="frmSearch" method="post"
 					action="<c:url value="/com_manage/rentalData/rentalIngCar.do" />">
 					<select name="searchCondition" id="searchCondition">
-						<option value='notsel'>::선택::</option>
+						<option value='0'>::선택::</option>
 						<option value="ccar_car_id"
 							<c:if test="${'ccar_car_id'==param.searchCondition}">
 		           		selected            	

@@ -50,16 +50,15 @@
 		jQuery("#form1").submit();
 	}
 	
-	// 처리해야함
 	jQuery(document).ready(function(){
 		jQuery("#frmSearch").submit(function(){
-			if(jQuery("#searchCondition").val()='notsel'){
-				alert('옵션 선택 에러');
+			if(jQuery("#searchCondition").val()=='0'){
+				alert('옵션을 선택하세요.');
 				return false;
-			}		
+			}
+			return true;
 		});
 	});
-	
 	
 	
 </script>
@@ -281,10 +280,10 @@
 		<div class="col-md-4"></div>
 	</div>
 		<div class="divSearch">
-				<form name="frmSearch" method="post"
+				<form name="frmSearch" id="frmSearch" method="post"
 					action="<c:url value="/com_manage/company_ccarList.do" />">
 					<select name="searchCondition" id="searchCondition">
-						<option value='notsel'>::선택::</option>
+						<option value='0'>::선택::</option>
 						<option value="ccar_car_id"
 							<c:if test="${'ccar_car_id'==param.searchCondition}">
 		           		selected            	

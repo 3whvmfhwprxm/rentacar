@@ -39,7 +39,7 @@
 		jQuery("#frmPage").submit();
 	}
 	
-	jQuery(function(){
+	jQuery(document).ready(function(){
 		jQuery("tr").each(function(idx){
 			jQuery("#tra"+idx).hide();
 			jQuery("#trb"+idx).hide();
@@ -48,8 +48,19 @@
 				jQuery("#tra"+idx).toggle();
 				jQuery("#trb"+idx).toggle();
 			});
-		});	 
+		});
+		
+		jQuery("#frmSearch").submit(function(){
+			if(jQuery("#searchCondition").val()=='0'){
+				alert('옵션을 선택하세요.');
+				return false;
+			}
+			return true;
+		});
 	});
+	
+	
+		
 	
 </script>
 <body>
@@ -158,7 +169,7 @@
         	<td><strong>운전자 전화번호</strong></td>
         	<td><strong>예약일시</strong></td>
         	<td><strong>결제일시</strong></td>
-        	<td><strong>진행상태</strong></td>
+        	<td><strong>결제상태</strong></td>
         	<td><strong>할인금액</strong></td>
         	<td><strong>보험여부</strong></td>
         </tr>
@@ -206,7 +217,7 @@
         
         </tbody>
     </table>
-    </div>
+    
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
@@ -239,9 +250,10 @@
 		<div class="col-md-4"></div>
 	</div>
 		<div class="divSearch">
-				<form name="frmSearch" method="post"
+				<form name="frmSearch" id="frmSearch" method="post"
 					action="<c:url value="/com_manage/company_reservList.do" />">
-					<select name="searchCondition">
+					<select name="searchCondition" id="searchCondition">
+						<option value='0'>::선택::</option>
 						<option value="ccar_car_id"
 							<c:if test="${'ccar_car_id'==param.searchCondition}">
 		           		selected            	
@@ -264,4 +276,5 @@
 				</form>
 			</div>
 		</div>
+	</div>
 <%@ include file="../inc_company/company_bottom.jsp" %>

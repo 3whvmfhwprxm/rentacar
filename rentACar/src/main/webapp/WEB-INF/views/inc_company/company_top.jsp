@@ -132,8 +132,16 @@ html,body { height: 100%; margin: 0; padding: 0; }
 	                    </a>
 	                    <ul class="dropdown-menu mega-dropdown-menu">
 	                        <li><a href="<c:url value='/com_manage/company_reservList.do'/>">예약 현황</a></li>
-	                        <li><a href="<c:url value='/com_manage/rentalData/rentalIngCar.do '/>">대여중인 차량 현황</a></li>
+	                        <li><a href="<c:url value='/com_manage/company_reservList.do'/>">예약취소 현황</a></li>
+	                    </ul>
+	                </li>
+	                 <li class="dropdown list-category">
+	                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	                        <i class="fa fa-navicon"></i> 대여 관리 <i class="fa fa-angle-down" aria-hidden="true"></i>
+	                    </a>
+	                    <ul class="dropdown-menu mega-dropdown-menu">
 	                        <li><a href="<c:url value='/com_manage/rentalData/todayRentalCar.do '/>">오늘 대여차량 현황</a></li>
+	                        <li><a href="<c:url value='/com_manage/rentalData/rentalIngCar.do '/>">대여중인 차량 현황</a></li>
 	                        <li><a href="<c:url value='/com_manage/rentalData/todayReturnCar.do '/>">오늘 반납차량 현황</a></li>
 	                        <li><a href="<c:url value='/com_manage/rentalData/endRentalCar.do '/>">반납완료 차량 현황</a></li>
 	                    </ul>

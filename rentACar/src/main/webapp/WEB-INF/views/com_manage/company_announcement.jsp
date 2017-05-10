@@ -18,6 +18,7 @@
 	
 
 <div class="container">
+<legend>공지사항</legend>
 	<pre>
 		<code>
 		업체에 공지사항를 보여주며, 페이지당 10개의 목록을 보여줍니다.

@@ -27,5 +27,7 @@ public interface CcarOptionService {
 	public int todayReturnTR(SearchVO searchVo);
 	public List<Map<String, Object>> selectRentalIng(SearchVO searchVo);
 	public int rentalIngTR(SearchVO searchVo);
-	
+	public int updateStatusCgRent(CcarOptionVO vo);
+	public int updateStatusCgReturn(CcarOptionVO vo);
+	public int updateStatusCgHold(CcarOptionVO vo);
 }
