@@ -6,7 +6,6 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.third.rent.common.SearchVO;
-import com.third.rent.company.model.CompanyVO;
 
 @Repository
 public class Company_noticeDAOMyBatis extends SqlSessionDaoSupport implements Company_noticeDAO{
@@ -23,6 +22,21 @@ public class Company_noticeDAOMyBatis extends SqlSessionDaoSupport implements Co
 		return getSqlSession().selectOne(nameSpace+".selectByNo",cnoticeNo);
 	}
 
+	@Override
+	public int insertComNotice(CompanyNoticeVO cvo) {
+		return getSqlSession().insert(nameSpace+".insertComNotice", cvo);
+	}
+
+	@Override
+	public int updateComNotice(CompanyNoticeVO cvo) {
+		return getSqlSession().update(nameSpace+".updateComNotice", cvo);
+	}
+
+	@Override
+	public int updateComNoticeDelFlag(int cnoticeNo) {
+		return getSqlSession().update(nameSpace+".updateComNoticeDelFlag", cnoticeNo);
+	}
+	
 	/*@Override
 	public int companyIdChk(CompanyVO param) {
 		return getSqlSession().selectOne(nameSpace+"companyIdChk", param);

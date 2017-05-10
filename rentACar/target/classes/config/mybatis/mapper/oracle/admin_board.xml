@@ -78,6 +78,45 @@
 		<include refid="searchWhat"></include>
 	</select>	
 	
+	<insert id="insertComNotice" parameterType="CompanyNoticeVO">
+		<selectKey keyProperty="cnoticeNo" order="BEFORE" resultType="int">
+			select CompanyNotice_seq.nextval from dual
+		</selectKey>
+		insert into companynotice(cnotice_no, cnotice_title, cnotice_content, admin_id)
+		values(#{cnoticeNo}, #{cnoticeTitle}, #{cnoticeContent}, #{adminId});
+	</insert>
+	
+	<update id="updateComNotice" parameterType="CompanyNoticeVO">
+		update companynotice
+		set cnotice_title=#{cnoticeTitle}, cnotice_content=#{cnoticeContent}
+		where cnotice_no=#{cnoticeNo}
+	</update>
+	
+	<update id="updateComNoticeDelFlag" parameterType="int">
+		update companynotice
+		set cnotice_visible='N', CNOTICE_DELDATE=sysdate
+		where cnotice_no=#{cnoticeNo}
+	</update>
+	
+	<insert id="insertUserNotice" parameterType="UserNoticeVO">
+		<selectKey keyProperty="cnoticeNo" order="BEFORE" resultType="int">
+			select CompanyNotice_seq.nextval from dual
+		</selectKey>
+		insert into companynotice(cnotice_no, cnotice_title, cnotice_content, admin_id)
+		values(#{cnoticeNo}, #{cnoticeTitle}, #{cnoticeContent}, #{adminId});
+	</insert>
+	
+	<update id="updateUserNotice" parameterType="UserNoticeVO">
+		update companynotice
+		set cnotice_title=#{cnoticeTitle}, cnotice_content=#{cnoticeContent}
+		where cnotice_no=#{cnoticeNo}
+	</update>
+	
+	<update id="updateUserNoticeDelFlag" parameterType="int">
+		update companynotice
+		set cnotice_visible='N', CNOTICE_DELDATE=sysdate
+		where cnotice_no=#{cnoticeNo}
+	</update>
 </mapper>
 
 

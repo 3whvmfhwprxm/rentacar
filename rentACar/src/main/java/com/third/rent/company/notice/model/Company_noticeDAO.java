@@ -3,7 +3,6 @@ package com.third.rent.company.notice.model;
 import java.util.List;
 
 import com.third.rent.common.SearchVO;
-import com.third.rent.company.model.CompanyVO;
 
 public interface Company_noticeDAO {
 	public List<CompanyNoticeVO> companyAnnouncement(SearchVO searchVo);
@@ -15,4 +14,10 @@ public interface Company_noticeDAO {
 	public CompanyVO selectByComAdmin(CompanyVO companyVo);*/
 	
 	public CompanyNoticeVO selectByNo(int cnoticeNo);
+	
+	public int insertComNotice(CompanyNoticeVO cvo);
+	
+	public int updateComNotice(CompanyNoticeVO cvo);
+	
+	public int updateComNoticeDelFlag(int cnoticeNo);
 }
