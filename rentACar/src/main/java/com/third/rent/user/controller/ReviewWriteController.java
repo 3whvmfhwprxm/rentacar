@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.Comments.model.CommentsService;
 import com.third.rent.Comments.model.CommentsVO;
+import com.third.rent.common.FileUploadWebUtil;
 import com.third.rent.common.UserFileUploadWebUtil;
 
 @Controller
@@ -27,6 +28,9 @@ public class ReviewWriteController {
 	
 	@Autowired
 	private CommentsService commentsService;
+	
+	@Autowired
+	private UserFileUploadWebUtil userfileUploadWebUtil;
 	
 	@RequestMapping(value="/user/reviewWrite.do", method=RequestMethod.GET)
 	public String showReviewWrite_get(@RequestParam String reservNum, Model model){
@@ -48,13 +52,23 @@ public class ReviewWriteController {
 		commentsVo.setUserId(userId);
 		logger.info("리뷰작성처리, 파라미터 userId={}, adminId={}", userId, commentsVo.getAdminId());
 		
-		
-		UserFileUploadWebUtil fileUpload = new UserFileUploadWebUtil();
+		/*UserFileUploadWebUtil fileUpload = new UserFileUploadWebUtil();
 		List<Map<String, Object>> map = fileUpload.fileUpload(request, 2);
-		
 		commentsVo.setCmtImg1(map.get(0).get("cmtImg1").toString());
 		map.get(0).get("fileSize");
-		map.get(0).get("originalFileName");
+		map.get(0).get("originalFileName");*/
+		
+		//파일 업로드 처리
+		/*List<Map<String, Object>> fileList=userfileUploadWebUtil.fileUpload(request, FileUploadWebUtil.FILE_UPLOAD);
+
+		String cmtImg1="";
+		if(!fileList.isEmpty()){
+			for(Map<String, Object> map : fileList){
+				cmtImg1 = (String) map.get("cmtImg1");
+			}//for
+		}//if
+
+		commentsVo.setCmtImg1(cmtImg1);*/
 		
 		int cnt=commentsService.writeComment(commentsVo);
 		String msg="", url="";

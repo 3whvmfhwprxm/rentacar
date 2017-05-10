@@ -153,56 +153,56 @@
 					            <label class="control-label col-md-3" for="userId" style="text-align: right;">예약번호
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" value="${map['RESERV_NUM']}" type="text" disabled>
+					              <input id="userId" name="userId" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" value="${map['RESERV_NUM']}" type="text" readonly="readonly">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">예약자 이름
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" required="required" type="text" disabled value="${map['RES_U_NAME'] }">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2" required="required" type="text" readonly="readonly" value="${map['RES_U_NAME'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">대여시작일
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['RESERV_START_DATE'] }">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" readonly="readonly" value="${map['RESERV_START_DATE'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">대역반납일
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['RESERV_END_DATE'] }">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" readonly="readonly" value="${map['RESERV_END_DATE'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">차량넘버
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['CCAR_CAR_ID'] }">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" readonly="readonly" value="${map['CCAR_CAR_ID'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">예약일시
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['RESERV_DATE']}">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" readonly="readonly" value="${map['RESERV_DATE']}">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">차량대여 업체명
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['COM_NAME'] }">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" readonly="readonly" value="${map['COM_NAME'] }">
 					            </div>
 					        </div>
 					        <div class="row">
 					            <label class="control-label col-md-3" for="name" style="text-align: right;">업체 전화번호
 					            </label>
 					            <div class="col-md-5">
-					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" disabled value="${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }">
+					              <input id="userEmail" name="userEmail" class="form-control" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" readonly="readonly" value="${map['COM_TEL1'] }-${map['COM_TEL2'] }-${map['COM_TEL3'] }">
 					            </div>
 					        </div><br>
 					        <div class="row">
@@ -212,22 +212,6 @@
 					            <!-- * Daum 지도 - 지도퍼가기 -->
 									<div id="daumRoughmapContainer1493816565568" class="root_daum_roughmap root_daum_roughmap_landing"></div>
 					        </div><br>
-							
-							<!--
-								2. 설치 스크립트
-								* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
-							-->
-							<script charset="UTF-8" class="daum_roughmap_loader_script" src="http://dmaps.daum.net/map_js_init/roughmapLoader.js"></script>
-							
-							<!-- 3. 실행 스크립트 -->
-							<script charset="UTF-8">
-								new daum.roughmap.Lander({
-									"timestamp" : "1493816565568",
-									"key" : "hhv9",
-									"mapWidth" : "300",
-									"mapHeight" : "200"
-								}).render();
-							</script>
 					        
 					        <div class="modal-footer">
 			           		 <button type="submit" class="btn btn-primary" id="pwdSearch" data-dismiss="modal">확인</button>
@@ -240,6 +224,19 @@
 	</div>
 </div>
 </c:forEach>
+							<!--2. 설치 스크립트
+								* 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.-->
+							<script charset="UTF-8" class="daum_roughmap_loader_script" src="http://dmaps.daum.net/map_js_init/roughmapLoader.js"></script>
+							
+							<!-- 3. 실행 스크립트 -->
+							<script charset="UTF-8">
+								new daum.roughmap.Lander({
+									"timestamp" : "1493816565568",
+									"key" : "hhv9",
+									"mapWidth" : "300",
+									"mapHeight" : "200"
+								}).render();
+							</script>
 <!-- /.modal -->
 
 
