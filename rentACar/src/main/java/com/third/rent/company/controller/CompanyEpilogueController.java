@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.functors.IfClosure;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -201,9 +202,11 @@ public class CompanyEpilogueController {
 
 		FileUploadWebUtil fileUpload = new FileUploadWebUtil();
 		List<Map<String, Object>> map = fileUpload.fileUpload(reuest, 2);
-		companyVo.setComLogo(map.get(0).get("fileName").toString());
-		
-/*		map.get(0).get("fileSize");
+		if (map.size()!=0) {
+			companyVo.setComLogo(map.get(0).get("fileName").toString());						
+		}
+
+		/*map.get(0).get("fileSize");	
 		map.get(0).get("originalFileName");*/
 		
 		int cnt = comService.updateCompany(companyVo);

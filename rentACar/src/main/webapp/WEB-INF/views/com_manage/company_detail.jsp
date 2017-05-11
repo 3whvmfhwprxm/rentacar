@@ -26,6 +26,7 @@
 				return false;
 			}
 		});
+		
 		$("#comlogo").change(function(str){
 			// 확장자 가져오기
 			if( $("#comlogo").val() != "" ){
@@ -40,6 +41,7 @@
 			            $('#image_preview img').attr('src', blobURL);
 			            $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
 				     }
+					
 			 }
 			/* if(!/(\.png|\.PNG|\.jpg|\.JPG|\.bmp|\.BMP|\.gif|\.GIF)$/i.test(str)) {
 	            alert("jpg, png, bmp, gif 파일만 등록할 수 있습니다.");

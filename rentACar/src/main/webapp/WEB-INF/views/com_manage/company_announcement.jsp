@@ -117,7 +117,7 @@
 	            	<option value="admin_id"
 						<c:if test="${'admin_id'==param.searchCondition}">
 	            		selected            	
-	            	</c:if>>작성자</option>	            	
+	            	</c:if>>관리자</option>	            	
 				</select> 
 				<input type="text" name="searchKeyword" title="검색어 입력"	value="${param.searchKeyword}"> 
 				<input type="submit" value="검색" class="btn btn-primary btn-sm btn3d">
