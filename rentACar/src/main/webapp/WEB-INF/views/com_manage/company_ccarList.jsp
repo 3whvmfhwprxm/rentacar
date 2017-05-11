@@ -1,21 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc_company/company_top.jsp" %>
-<style type="text/css">
-	table tr th{
-		background-color: #c9c9c9;
-		text-align: center;
-	}
-	
-	table tr td{
-		text-align: center;
-	}
-	
 
-</style>
 <!-- 업체 차량 조회 -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/company.css/company_ccarList.css"/>
 <script type="text/javascript">	
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
@@ -294,7 +284,7 @@
 		           	</c:if>>모델명</option>
 					</select> <input type="text" name="searchKeyword" title="검색어 입력"
 						value="${param.searchKeyword}" placeholder="검색어 입력"> <input type="submit"
-						value="검색">
+						value="검색" class="btn btn-primary btn-sm btn3d">
 				</form>
 			</div>
 		</div>

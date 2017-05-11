@@ -1,21 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc_company/company_top.jsp" %>
-<style type="text/css">
-	table tr th{
-		background-color: #c9c9c9;
-		text-align: center;
-	}
-	table tr td{
-		text-align: center;
-	}
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/company.css/todayReturnCar.css"/>
 
-	.nav nav-tabs{
-		text-align: right;
-		float: right;
-	}
-	
-</style>
 <script type="text/javascript">
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
@@ -223,7 +210,7 @@
 		           	</c:if>>운전자이름</option>
 					</select> <input type="text" name="searchKeyword" title="검색어 입력"
 						value="${param.searchKeyword}" placeholder="검색어 입력"> <input type="submit"
-						value="검색">
+						value="검색" class="btn btn-primary btn-sm btn3d">
 				</form>
 			</div>
 		</div>
