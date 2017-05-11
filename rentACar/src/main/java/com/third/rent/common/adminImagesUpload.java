@@ -26,8 +26,9 @@ public class adminImagesUpload {
 	@Resource(name="fileUploadProperties")
 	private Properties fileProperties;
 
-	public static final int FILE_UPLOAD=1;
-	public static final int companyLogo_UPLOAD=2;
+	public static final int FILE_UPLOAD = 1;
+	public static final int companyLogo_UPLOAD = 2;
+	public static final int carImg_UPLOAD = 2;
 		
 	private static final Logger logger
 		= LoggerFactory.getLogger(adminImagesUpload.class);
@@ -84,6 +85,72 @@ public class adminImagesUpload {
 			}else if(uploadWhat==companyLogo_UPLOAD){
 				upPath = "D:\\rentCar\\rentacar\\rentACar\\src\\main\\webapp\\companyLogo_upload";
 				/*upPath = "companyLogo.upload.path.test";*/
+			}
+			
+		}else{
+			if(uploadWhat==FILE_UPLOAD){
+				dir = fileProperties.getProperty("companyLogoUpload.upload.path");				
+			}else if(uploadWhat==companyLogo_UPLOAD){
+				dir = fileProperties.getProperty("companyLogo.upload.path");
+			}
+			upPath = request.getSession().getServletContext().getRealPath(dir);			
+		}
+		
+		return upPath;		
+	}
+	
+	//★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+	public List<Map<String, Object>> carImgUpload(HttpServletRequest request, int uploadWhat){
+		
+		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+		
+		Map<String, MultipartFile> fileMap = multiRequest.getFileMap();
+		
+		List<Map<String, Object>> fileList = new ArrayList<Map<String,Object>>();
+		
+ 		Iterator<String> iter = fileMap.keySet().iterator();
+ 		while(iter.hasNext()){
+ 			String key = iter.next();
+  			MultipartFile tempFile = fileMap.get(key);
+  			
+  			if(!tempFile.isEmpty()){
+  				String originCarImg = tempFile.getOriginalFilename();
+  				String carImg = getUniqueFileName(originCarImg);
+ 				
+  				String savePath = getLogoUploadPath(request, uploadWhat); 
+  				File file = new File(savePath, carImg);
+  				try {
+  					if(!file.exists()){
+  						file.mkdirs();
+  					}
+					tempFile.transferTo(file);
+					logger.info("파일 업로드 완료! 업로드 경로={}, 파일명={}", savePath, carImg);
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+  				  				
+  				Map<String, Object> map = new HashMap<String, Object>();
+  				map.put("carImg", carImg);
+  				map.put("originCarImg", originCarImg);
+  				
+  				fileList.add(map);
+  			}
+ 		}
+ 		
+ 		return fileList;
+	}
+	
+	public String getcarImgUploadPath(HttpServletRequest request, int uploadWhat){
+		String type = "test";
+		
+		String upPath = "", dir = "";
+		if(type.equals("test")){
+			if(uploadWhat==FILE_UPLOAD){
+				upPath = fileProperties.getProperty("companyLogoUpload.upload.path.test");
+			}else if(uploadWhat==companyLogo_UPLOAD){
+				upPath = "D:\\rentCar\\rentacar\\rentACar\\src\\main\\webapp\\carImages_upload";
 			}
 			
 		}else{

@@ -1,6 +1,9 @@
 package com.third.rent.admin_CarModel.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,7 @@ import com.third.rent.admin_Company.controller.Admin_CompanyController;
 import com.third.rent.car.model.CarVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
+import com.third.rent.common.adminImagesUpload;
 import com.third.rent.common.admin_Utility;
 
 @Controller
@@ -28,6 +32,9 @@ public class Admin_CarModelController {
 	
 	@Autowired
 	private Admin_CarModelServiceImpl adminCarModelService;
+	
+	@Autowired
+	private adminImagesUpload adminImgUpload;
 	
 	@RequestMapping("/carModel/modelList.do")
 	public String CarModelList(@ModelAttribute SearchVO searchVo,
@@ -68,9 +75,24 @@ public class Admin_CarModelController {
 	}
 	
 	@RequestMapping(value="/carModel/modelRegister.do", method=RequestMethod.POST)
-	public String companyRegister_post(@ModelAttribute CarVO carVo, Model model){
+	public String companyRegister_post(@ModelAttribute CarVO carVo, 
+			HttpServletRequest request, Model model){
 		logger.info("차량등록 처리, 파라미터 carVo={}", carVo);
 
+		List<Map<String, Object>> comImgList
+			= adminImgUpload.carImgUpload(request, adminImagesUpload.carImg_UPLOAD);
+	
+		if(comImgList.size()==1){
+			carVo.setCarImg(comImgList.get(0).get("carImg").toString());
+		}else if(comImgList.size()==2){
+			carVo.setCarImg(comImgList.get(0).get("carImg").toString());
+			carVo.setCarImg2(comImgList.get(1).get("carImg").toString());
+		}else if(comImgList.size()==3){
+			carVo.setCarImg(comImgList.get(0).get("carImg").toString());
+			carVo.setCarImg2(comImgList.get(1).get("carImg").toString());
+			carVo.setCarImg3(comImgList.get(2).get("carImg").toString());
+		}
+		
 		int cnt = adminCarModelService.insertCarModel(carVo);
 		String msg="", url="";
 		if(cnt>0){

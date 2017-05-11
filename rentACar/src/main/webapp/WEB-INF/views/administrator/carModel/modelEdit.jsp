@@ -87,7 +87,7 @@
 </style>
 
 <div class="bodyClass">
-	<form class="form-horizontal" id="frm1" name="frm1" method="post"
+	<form class="form-horizontal" id="frm1" name="frm1" method="post" enctype="multipart/form-data"
 		action='<c:url value="/administrator/carModel/modelEdit.do" />'>
 		<legend>차량모델 수정</legend>
 		<div class="form-group">

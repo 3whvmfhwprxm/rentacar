@@ -29,7 +29,7 @@
 			} else if ($("#carImg").val() == '') {
 				alert('이미지을 선택해주세요.');
 				return false;
-			}
+			} 
 		});
 		
 		$("#carImg").change(function(str){
@@ -108,7 +108,7 @@
 </style>
 
 <div class="bodyClass">
-	<form class="form-horizontal" id="frm1" name="frm1" method="post"
+	<form class="form-horizontal" id="frm1" name="frm1" method="post" enctype="multipart/form-data"
 		action='<c:url value="/administrator/carModel/modelRegister.do" />'>
 		<legend>차량모델 등록</legend>
 		<div class="form-group">
@@ -165,21 +165,21 @@
 		<div class="form-group">
 			<label for="carImg" class="col-sm-2 control-label"> 차량 이미지1 </label>
 			<div class="col-sm-2">
-				<input type="file" id="carImg" name="carImg" placeholder="차량 이미지1">
+				<input type="file" id="carImg" name="carimg" placeholder="차량 이미지1">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="carImg2" class="col-sm-2 control-label"> 차량 이미지2 </label>
 			<div class="col-sm-2">
-				<input type="file" id="carImg2" name="carImg2" placeholder="차량 이미지2">
+				<input type="file" id="carImg2" name="carimg2" placeholder="차량 이미지2">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="carImg3" class="col-sm-2 control-label"> 차량 이미지3 </label>
 			<div class="col-sm-2">
-				<input type="file" id="carImg3" name="carImg3" placeholder="차량 이미지3">
+				<input type="file" id="carImg3" name="carimg3" placeholder="차량 이미지3">
 			</div>
 		</div>
 		
