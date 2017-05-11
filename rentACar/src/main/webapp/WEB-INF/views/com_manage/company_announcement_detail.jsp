@@ -5,6 +5,12 @@
 
 <div class="container">
 <legend>공지사항 상세페이지</legend>
+			<pre>
+			<code>
+			업체의 현재 등록된 공지사항 상세페이지를 보여준다 
+			**<strong>DB(데이터베이스)</strong> 관리는 관리자에게만 주어지는 기능이나 임의 삭제는 불가하며, 요청시 사 내 규정에 따라 처리됩니다.
+	    	</code>
+		</pre>
       <div class="row">
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >

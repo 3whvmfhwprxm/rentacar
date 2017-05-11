@@ -1,54 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc_company/company_top.jsp" %>
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/company.css/company_epilogue_detail.css"/>
 <!--전체 후기  -->
-
 <style>
-.user-row {
-    margin-bottom: 14px;
-}
 
-.user-row:last-child {
-    margin-bottom: 0;
-}
-
-.dropdown-user {
-    margin: 13px 0;
-    padding: 5px;
-    height: 100%;
-}
-
-.dropdown-user:hover {
-    cursor: pointer;
-}
-
-.table-user-information > tbody > tr {
-    border-top: 1px solid rgb(221, 221, 221);
-}
-
-.table-user-information > tbody > tr:first-child {
-    border-top: 0;
-}
-
-
-.table-user-information > tbody > tr > td {
-    border-top: 0;
-}
-.toppad{margin-top:5%;}
-.row{ margin-right: -15px;
-    margin-left: 0px;
-}
-table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-    padding: 8px;
-    line-height: 1.42857143;
-    vertical-align: top;
-    border-top: 1px solid #ddd;
-    width: 1px;
-}
 </style>
 <div class="container">
 <legend>이용후기 상세페이지</legend>
+		<pre>
+			<code>
+			업체의 현재 등록된 후기상세페이지를 보여준다 
+			**<strong>DB(데이터베이스)</strong> 관리는 관리자에게만 주어지는 기능이나 임의 삭제는 불가하며, 요청시 사 내 규정에 따라 처리됩니다.
+	    	</code>
+		</pre>
       <div class="row">
       </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >

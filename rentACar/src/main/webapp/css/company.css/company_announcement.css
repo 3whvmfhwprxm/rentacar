@@ -1,6 +1,9 @@
 @CHARSET "UTF-8";
 
-
+.col-lg-12 {
+    width: 100%;
+    margin-top: 3%;
+}
 input,select{border-radius: 10px;}
 .a4{
  	text-align: right;

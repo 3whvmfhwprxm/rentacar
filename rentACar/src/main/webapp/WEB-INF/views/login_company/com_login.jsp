@@ -43,7 +43,27 @@
  			});
  		}); */
  		$("#pwdSearch").click(function(){
- 			alert("찾으신 비밀번호를 이메일로 발송하였습니다.");
+ 			if($("#comIdSeach").val()==''){
+				alert('아이디를 입력하세요');
+				$("#comIdSeach").focus();
+				return false;
+			}else if($("#comEmailSeach").val()==''){
+				alert('이메일을 입력하세요');
+				$("#comEmailSeach").focus();
+				return false;
+			}
+	 			$.ajax({
+	 				url:'<c:url value="/login_company/companyseachpwd.do"/>',
+	 				type:'post',
+	 				dataType:'json',
+	 				data: $("#frmpwd").serialize(),
+	 				success:function(res){			
+	 					alert("찾으신 비밀번호를 이메일로 발송하였습니다.");
+	 				},	
+	 				error:function(xhr, status, error){
+	 				}
+	 			});
+ 			
  			$("#frmpwd").submit();
  		});
   
@@ -173,16 +193,6 @@
 	</div>
 </div>
 <!-- /.modal -->
-
-
-
-
-
-
-
-
-
-
 
 
 <%@ include file="../inc_company/company_bottom.jsp" %>

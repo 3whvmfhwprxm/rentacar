@@ -198,12 +198,11 @@ public class CompanyEpilogueController {
 			@ModelAttribute CompanyVO companyVo,
 			Model model) throws IOException {
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
-		
+
 		FileUploadWebUtil fileUpload = new FileUploadWebUtil();
 		List<Map<String, Object>> map = fileUpload.fileUpload(reuest, 2);
-		
-		
 		companyVo.setComLogo(map.get(0).get("fileName").toString());
+		
 /*		map.get(0).get("fileSize");
 		map.get(0).get("originalFileName");*/
 		

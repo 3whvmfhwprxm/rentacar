@@ -26,16 +26,16 @@
 				return false;
 			}
 		});
-		$("#comLogo").change(function(str){
+		$("#comlogo").change(function(str){
 			// 확장자 가져오기
-			if( $("#comLogo").val() != "" ){
-				var ext = $('#comLogo').val().split('.').pop().toLowerCase();
+			if( $("#comlogo").val() != "" ){
+				var ext = $('#comlogo').val().split('.').pop().toLowerCase();
 				     if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
 						 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
-						 $("#comLogo").val("");
+						 $("#comlogo").val("");
 						 return;
 				     } else {
-			            file = $('#comLogo').prop("files")[0];
+			            file = $('#comlogo').prop("files")[0];
 			            blobURL = window.URL.createObjectURL(file);
 			            $('#image_preview img').attr('src', blobURL);
 			            $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
@@ -177,7 +177,7 @@
 										<c:if test="${!empty companyVo.comLogo}">
 											<div id="image_preview" ><img src="<c:url value='/companyLogo/${companyVo.comLogo}'/>" /></div>
 										</c:if>
-										<input type="file" name="comlogo" id="comLogo" value="${companyVo.comLogo}">
+										<input type="file" name=comlogo id="comlogo" value="${companyVo.comLogo}">
 										<c:if test="${!empty companyVo.comLogo}">
 											<span class="sp1"></span>
 									            <span style="color:darkgreen;font-weight: bold">
