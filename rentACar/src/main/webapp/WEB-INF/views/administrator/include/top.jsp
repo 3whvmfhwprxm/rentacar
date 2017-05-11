@@ -18,11 +18,15 @@
 	
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/jquery/jquery-3.1.1.min.js">
 </script>
 
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
 

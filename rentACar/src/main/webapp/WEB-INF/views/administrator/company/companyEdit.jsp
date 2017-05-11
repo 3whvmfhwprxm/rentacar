@@ -10,6 +10,22 @@
 				return false;
 			}
 		});
+		
+		$("#comLogo").change(function(str){
+			if( $("#comLogo").val() != "" ){
+				var ext = $('#comLogo').val().split('.').pop().toLowerCase();
+				     if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+						 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+						 $("#comLogo").val("");
+						 return;
+				     } else {
+			            file = $('#comLogo').prop("files")[0];
+			            blobURL = window.URL.createObjectURL(file);
+			            $('#image_preview img').attr('src', blobURL);
+			            $('#image_preview').slideDown();
+				     }
+			 }
+		});
 	});
 </script>
 
@@ -36,18 +52,31 @@
 </style>
 
 <div class="bodyClass">
-	<form class="form-horizontal" id="frm1" name="frm1" method="post"
+	<form class="form-horizontal" id="frm1" name="frm1" method="post" enctype="multipart/form-data"
 		action='<c:url value="/administrator/company/companyEdit.do" />'>
+		
+		<input type="hidden" name="oldFileName" 
+            	value="${companyVo.comLogo}" />
+		
 		<legend>업체 수정</legend>
 		<div class="form-group">
-			<label for="CompanyId" class="col-sm-2 control-label"> 업체 아이디
+			<label for="comId" class="col-sm-2 control-label"> 업체 아이디
 			</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" name="comId" id="CompanyId"
-					value="${companyVo.comId}" readonly>
+				<input type="text" class="form-control" name="comId" id="comId"
+					value="${companyVo.comId}">
 			</div>
 		</div>
-
+		
+		<div class="form-group">
+			<label for="comPwd" class="col-sm-2 control-label"> 업체 비밀번호
+			</label>
+			<div class="col-sm-2">
+				<input type="text" class="form-control" name="comPwd" id="comPwd"
+					value="${companyVo.comPwd}">
+			</div>
+		</div>
+		
 		<div class="form-group">
 			<label for="CompanyName" class="col-sm-2 control-label"> 업체
 				이름 </label>
@@ -62,7 +91,7 @@
 			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="comNum" id="CompanyNo"
-					value="${companyVo.comNum}" readonly>
+					value="${companyVo.comNum}">
 			</div>
 		</div>
 
@@ -95,14 +124,31 @@
 			<label for="CompanyMobile11" class="col-sm-2 control-label">
 				휴대폰 </label>
 			<div class="col-xs-2">
-				<select class="form-control" id="comMobile1" name="comMobile1"
-					value="${companyVo.comMobile1}">
-					<option value="010">010</option>
-					<option value="011">011</option>
-					<option value="016">016</option>
-					<option value="017">017</option>
-					<option value="018">018</option>
-					<option value="019">019</option>
+				<select class="form-control" id="comMobile1" name="comMobile1">
+					<option value="010"
+						<c:if test="${userVo.userTel1 == '010'}">            	
+            				selected="selected"
+            			</c:if>>010</option>
+					<option value="011"
+						<c:if test="${userVo.userTel1 == '011'}">            	
+            				selected="selected"
+            			</c:if>>011</option>
+					<option value="016"
+						<c:if test="${userVo.userTel1 == '016'}">            	
+            				selected="selected"
+            			</c:if>>016</option>
+					<option value="017"
+						<c:if test="${userVo.userTel1 == '017'}">            	
+            				selected="selected"
+            			</c:if>>017</option>
+					<option value="018"
+						<c:if test="${userVo.userTel1 == '018'}">            	
+            				selected="selected"
+            			</c:if>>018</option>
+					<option value="019"
+						<c:if test="${userVo.userTel1 == '019'}">            	
+            				selected="selected"
+            			</c:if>>019</option>
 				</select>
 			</div>
 			<div class="col-xs-2">
@@ -167,19 +213,29 @@
 		<div class="form-group">
 			<label for="CompanyRate" class="col-sm-2 control-label"> 수수료
 			</label>
-			<div class="col-md-8">
+			<div class="col-sm-1">
 				<input type="text" class="form-control" name="comRate"
-					id="CompanyRate" value="${companyVo.comRate}%">
+					id="CompanyRate" value="${companyVo.comRate}">
+			</div>
+			<div>
+				<i class="fa fa-percent" aria-hidden="true"></i>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label for="CompanyLogo" class="col-sm-2 control-label"> 로고 </label>
 			<div class="col-sm-2">
-				<input type="file" id="CompanyLogo" name="comLogo">
+				<input type="file" id="CompanyLogo" name="comlogo"">
 			</div>
 		</div>
-
+		
+		<div class="form-group">
+			<label for="comLogoImg" class="col-sm-2 control-label"></label>
+			<div id="image_preview" class="col-sm-1">
+				<img id="comLogoImg" src="#" style="width: 100px; height: 100px;" />
+			</div>
+		</div>
+		
 		<div class="form-group">
 			<label for="bt" class="col-sm-2 control-label"></label>
 			<div class="col-sm-8">

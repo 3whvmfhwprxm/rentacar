@@ -38,7 +38,7 @@
             	<form name="frmLogin" id="frmLogin" method="post"
             		action='<c:url value="/administrator/log/logIn.do" />'>
                     <fieldset>
-                        <legend>로그인</legend>
+                        <legend>3조 렌트카 관리자</legend>
                         <div class="form-group">
                             <label for="Admin_Id">아이디</label>
                             <input type="text" id="Admin_Id" name="Admin_Id" class="form-control"
@@ -59,7 +59,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-default btn-login-submit btn-block m-t-md" value="Log In" />
+                            <input type="submit" class="btn btn-default btn-login-submit btn-block m-t-md" value="로그인" />
                         </div>      
                     </fieldset>
                 </form>   

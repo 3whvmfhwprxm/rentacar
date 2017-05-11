@@ -63,8 +63,9 @@ public class adminImagesUpload {
 					e.printStackTrace();
 				}
   				  				
-  				Map<String, Object> map=new HashMap<String, Object>();
+  				Map<String, Object> map = new HashMap<String, Object>();
   				map.put("comLogo", comLogo);
+  				map.put("origincomLogo", origincomLogo);
   				
   				fileList.add(map);
   			}
@@ -81,7 +82,8 @@ public class adminImagesUpload {
 			if(uploadWhat==FILE_UPLOAD){
 				upPath = fileProperties.getProperty("companyLogoUpload.upload.path.test");
 			}else if(uploadWhat==companyLogo_UPLOAD){
-				upPath = "companyLogo.upload.path.test";
+				upPath = "D:\\rentCar\\rentacar\\rentACar\\src\\main\\webapp\\companyLogo_upload";
+				/*upPath = "companyLogo.upload.path.test";*/
 			}
 			
 		}else{

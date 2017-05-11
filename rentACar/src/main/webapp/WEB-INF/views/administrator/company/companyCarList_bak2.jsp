@@ -81,56 +81,53 @@ th {
 						<div class="col-md-12">
 							<br>
 							<table class="table table-hover">
+								<caption>주문 내역</caption>
+								<colgroup>
+									<col style="width: 9%" />
+									<col style="width: 12%" />
+									<col style="width: 40%" />
+									<col style="width: 12%" />
+									<col style="width: 12%" />
+								</colgroup>
 								<thead>
-									<tr class="info">
-										<th scope="col">업체아이디</th>
+									<tr>
 										<th scope="col">업체명</th>
-										<th scope="col">사업자번호</th>
-										<th scope="col">대표번호</th>
-										<th scope="col">휴대폰</th>
-										<th scope="col">팩스번호</th>
-										<th scope="col">주소</th>
 										<th scope="col">대표자</th>
-										<th scope="col">대표메일</th>
-										<th scope="col">수수료(%)</th>
-										<th scope="col">가입일</th>
-										<th scope="col">탈퇴일</th>
+										<th scope="col">대표번호</th>
+										<th scope="col">보유 차량 수</th>
+										<th scope="col">보유차량</th>
 									</tr>
 								</thead>
-
 								<tbody>
 									<c:if test="${empty companyAllList}">
 										<tr>
-											<td colspan="12" style="text-align: center;">데이터가 존재하지
-												않습니다.</td>
+											<td colspan="5">데이터가 존재하지 않습니다.</td>
 										</tr>
 									</c:if>
-
-									<c:forEach var="vo" items="${companyAllList}">
-										<tr style="text-align: center">
-											<td><a
-												href='<c:url value="/administrator/company/companyCar.do?comId=${vo.comId}" />'>
-													${vo.comId}</a></td>
-											<td style="text-align: center">${vo.comName}</td>
-											<td>${vo.comNum}</td>
-											<td>${vo.comTel1}-${vo.comTel2}-${vo.comTel3}</td>
-											<td>${vo.comMobile1}-${vo.comMobile2}-${vo.comMobile3}</td>
-											<td>${vo.comFax1}-${vo.comFax2}-${vo.comFax3}</td>
-											<td>${vo.comAddress}</td>
-											<td>${vo.comCeo}</td>
-											<td>${vo.comEmail}</td>
-											<td>${vo.comRate}%</td>
-											<td><fmt:formatDate value="${vo.comRegdate}"
-													pattern="yyyy-MM-dd" /></td>
-											<td><fmt:formatDate value="${vo.comOutdate}"
-													pattern="yyyy-MM-dd" /></td>
-										</tr>
-									</c:forEach>
+									<c:if test="${!empty companyAllList}">
+										<c:forEach var="vo" items="${companyAllList}">
+											<tr>
+												<td>${vo.comName}</td>
+												<td>${vo.comCeo}</td>
+												<td>${vo.comTel1}-${vo.comTel2}-${vo.comTel3}</td>
+												<td>${vo.carCount}</td>
+												<td><%-- <c:forEach var="map"
+														items="${orderAllVo.orderDetailList}">
+														<img alt="업체 보유차량 이미지" width='40'
+															align="absmiddle"
+															src="<c:url value='/carImages_upload/${vo.carImg}'/>">
+													</c:forEach> --%>
+												</td>
+											</tr>
+										</c:forEach>
+										<!-- 반복 끝 -->
+									</c:if>
 								</tbody>
 							</table>
 						</div>
 					</div>
 				</div>
+
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">

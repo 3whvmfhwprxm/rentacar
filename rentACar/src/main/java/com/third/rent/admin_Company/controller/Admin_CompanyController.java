@@ -1,5 +1,6 @@
 package com.third.rent.admin_Company.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -112,6 +113,9 @@ public class Admin_CompanyController {
 		List<CompanyVO> companyAllList = adminCompanyService.selectAllCompany(searchVo);
 		logger.info("업체목록 조회결과, companyAllList.size()={}", companyAllList.size());
 
+		int carCount = adminCompanyService.selectCarTotalRecord(searchVo);
+		logger.info("업체차량 수 조회결과, carCount={}", carCount);
+		
 		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
 		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
 				totalRecord);
@@ -119,6 +123,7 @@ public class Admin_CompanyController {
 		pagingInfo.setTotalRecord(totalRecord);
 		
 		model.addAttribute("companyAllList", companyAllList);
+		model.addAttribute("carCount", carCount);
 		model.addAttribute("pagingInfo", pagingInfo);
 
 		return "administrator/company/companyCarList";
@@ -164,34 +169,6 @@ public class Admin_CompanyController {
 		
 		return "common/message";
 	}
-	
-	/*@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.POST)
-	public String companyRegister_post(@ModelAttribute CompanyVO comVo, Model model){
-		logger.info("업체등록 처리, 파라미터 comVo={}", comVo);
-		
-		String tel2 = comVo.getComTel2();
-		String tel3 = comVo.getComTel3();
-		if(tel2==null || tel2.isEmpty() || tel3==null || tel3.isEmpty()){
-			comVo.setComTel1("");
-			comVo.setComTel2("");
-			comVo.setComTel3("");
-		}
-		
-		int cnt = adminCompanyService.insertCompany(comVo);
-		String msg="", url="";
-		if(cnt>0){
-			msg="업체등록 성공";
-			url="/administrator/company/companyList.do";
-		}else{
-			msg="업체등록 실패";
-			url="/administrator/company/companyRegister.do";
-		}
-		
-		model.addAttribute("msg", msg);
-		model.addAttribute("url", url);
-		
-		return "common/message";
-	}*/
 	
 	@RequestMapping("/company/CheckCompanyId.do")
 	@ResponseBody
@@ -252,18 +229,38 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping(value="/company/companyEdit.do", method=RequestMethod.POST)
-	public String companyEdit_post(@ModelAttribute CompanyVO companyVo,
-			@ModelAttribute AdminVO adminVo,
-			Model model){
+	public String companyEdit_post(@ModelAttribute CompanyVO companyVo, @ModelAttribute AdminVO adminVo,
+			@RequestParam String oldFileName, HttpServletRequest request, Model model){
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
 		
+		List<Map<String, Object>> comLogoList
+			= adminImgUpload.companyLogoUpload(request, adminImagesUpload.companyLogo_UPLOAD);
+		
+		String comLogo = "";
+		if(!comLogoList.isEmpty()){
+			for(Map<String, Object> map : comLogoList){
+				comLogo = (String) map.get("comLogo");
+			}
+
+			if(oldFileName!=null && !oldFileName.isEmpty()){
+				String upPath = adminImgUpload.getLogoUploadPath(request, adminImagesUpload.FILE_UPLOAD);
+				File oldFile = new File(upPath, oldFileName);
+				if(oldFile.exists()){
+					boolean bool = oldFile.delete();
+					logger.info("기존 파일 삭제 여부:{}", bool);
+				}
+			}
+		}
+		
+		companyVo.setComLogo(comLogo);
+	
 		int cnt = adminCompanyService.updateCompany(companyVo);
 		logger.info("업체 수정 결과 cnt={}", cnt);
 		
 		String msg = "", url = "";
 		if(cnt>0){
 			msg = "업체 수정 성공";
-			url = "/administrator/company/companyEdit.do?comId="+companyVo.getComId();
+			url = "/administrator/company/companyDetail.do?comId="+companyVo.getComId();
 		}else{
 			msg = "업체 수정 실패";
 		}

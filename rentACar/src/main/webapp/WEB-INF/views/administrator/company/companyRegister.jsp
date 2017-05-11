@@ -2,161 +2,140 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp"%>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
+	$(document).ready(
+		function() {
+			$("#CompanyId").focus();
+
+			$("#btCompanyRegister").click(
+				function() {
+					if (!validate_CompanyId($("#CompanyId").val())) {
+						alert('아이디는 영문대소문자, 숫자만 가능합니다');
 						$("#CompanyId").focus();
+						return false;
+					} else if ($("#CompanyId").val() == '') {
+						alert('아이디를 입력하세요.');
+						$("#CompanyId").focus();
+						return false;
+					} else if ($("#CompanyId").val().length < 6) {
+						alert('아이디는 6글자 이상이어야합니다.');
+						$("#CompanyId").focus();
+						return false;
+					} else if ($("#CompanyName").val() == '') {
+						alert('업체명을 입력하세요');
+						$("#CompanyName").focus();
+						return false;
+					} else if (!$("#CompanyPwd").val()) {
+						alert('비밀번호를 입력하세요');
+						$("#CompanyPwd").focus();
+						return false;
+					} else if ($("#CompanyPwd").val() != $("#CompanyPwd2").val()) {
+						alert('비밀번호가 일치하지 않습니다');
+						$("#CompanyPwd2").focus();
+						return false;
+					} else if ($("#CompanyNo").val() == '') {
+						alert('사업자번호를 입력해야 합니다.');
+						$('#CompanyNo').focus();
+						return false;
+					} else if ($("#comAccNum").val() == '') {
+						alert('계좌번호를 입력해야 합니다.');
+						$('#comAccNum').focus();
+						return false;
+					} else if ($("#CompanyTel2").val() == ''
+							|| $("#CompanyTel3").val() == '') {
+						alert('대표번호를 입력하세요.');
+						$("#CompanyTel2").focus();
+						return false;
+					} else if (!validate_tel($("#CompanyTel2").val()) || !validate_tel($("#CompanyTel3").val())) {
+						alert('대표번호는 숫자를 입력하셔야 합니다');
+						$("#CompanyTel2").focus();
+						return false;
+					} else if ($("#CompanyMobile2").val() == '' || $("#CompanyMobile3").val() == '') {
+						alert('휴대폰번호를 입력하세요');
+						$("#CompanyMobile2").focus();
+						return false;
+					} else if (!validate_mobile($("#CompanyMobile2").val()) || !validate_mobile($("#CompanyMobile3").val())) {
+						alert('휴대폰번호는 숫자를 입력하셔야 합니다');
+						$("#CompanyMobile2").focus();
+						return false;
+					} else if ($("#CompanyFax2").val() == '' || $("#CompanyFax3").val() == '') {
+						alert('팩스번호를 입력하세요');
+						$("#CompanyFax1").focus();
+						return false;
+					} else if (!validate_fax($("#CompanyFax2").val()) || !validate_fax($("#CompanyFax3").val())) {
+						alert('팩스번호는 숫자를 입력하셔야 합니다');
+						$("#CompanyFax1").focus();
+						return false;
+					} else if ($("#CompanyAddress").val() == '') {
+						alert('회사주소를 입력하세요');
+						$("#CompanyAddress").focus();
+						return false;
+					} else if ($("#CompanyCeo").val() == '') {
+						alert('대표자를 입력하세요');
+						$("#CompanyCeo").focus();
+						return false;
+					} else if ($("#comLogo").val() == '') {
+						alert('업체로고를 등록하세요.');
+						$("#comLogo").focus();
+						return false;
+					}
+				});
+			
+			$("#comLogo").change(function(str){
+				if( $("#comLogo").val() != "" ){
+					var ext = $('#comLogo').val().split('.').pop().toLowerCase();
+					     if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+							 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+							 $("#comLogo").val("");
+							 return;
+					     } else {
+				            file = $('#comLogo').prop("files")[0];
+				            blobURL = window.URL.createObjectURL(file);
+				            $('#image_preview img').attr('src', blobURL);
+				            $('#image_preview').slideDown();
+					     }
+				 }
+			});
+			
+			$("#CompanyId").keyup(
+				function() {
+					if (!validate_CompanyId($("#CompanyId").val())) {
+						$("#check").html('아이디는 영문이나 숫자만 입력하셔야 합니다.');
+						$("#check").show();
+					} else if ($("#CompanyId").val() == '') {
+						$("#check").html('아이디를 입력하세요');
+						$("#chkId").val("");
+						$("#check").show();
+					} else if ($("#CompanyId").val().length < 6) {
+						$("#check").html('아이디는 6글자 이상이어야합니다.');
+						$("#chkId").val("");
+						$("#check").show();
+					} else {
+						$.ajax({
+							url : '<c:url value="/administrator/company/CheckCompanyId.do" />',
+							type : 'post',
+							data : 'CompanyId=' + $("#CompanyId").val(),
+							dataType : 'json',
+							success : function(res) {
+								var msg = "";
+								var chkId = "";
 
-						$("#btCompanyRegister")
-								.click(
-										function() {
-											if (!validate_CompanyId($(
-													"#CompanyId").val())) {
-												alert('아이디는 영문대소문자, 숫자만 가능합니다');
-												$("#CompanyId").focus();
-												return false;
-											} else if ($("#CompanyId").val() == '') {
-												alert('아이디를 입력하세요.');
-												$("#CompanyId").focus();
-												return false;
-											} else if ($("#CompanyId").val().length < 6) {
-												alert('아이디는 6글자 이상이어야합니다.');
-												$("#CompanyId").focus();
-												return false;
-											} else if ($("#CompanyName").val() == '') {
-												alert('업체명을 입력하세요');
-												$("#CompanyName").focus();
-												return false;
-											} else if (!$("#CompanyPwd").val()) {
-												alert('비밀번호를 입력하세요');
-												$("#CompanyPwd").focus();
-												return false;
-											} else if ($("#CompanyPwd").val() != $(
-													"#CompanyPwd2").val()) {
-												alert('비밀번호가 일치하지 않습니다');
-												$("#CompanyPwd2").focus();
-												return false;
-											} else if ($("#CompanyNo").val() == '') {
-												alert('사업자번호를 입력해야 합니다.');
-												$('#CompanyNo').focus();
-												return false;
-											} else if ($("#comAccNum").val() == '') {
-												alert('계좌번호를 입력해야 합니다.');
-												$('#comAccNum').focus();
-												return false;
-											} else if ($("#CompanyTel2").val() == ''
-													|| $("#CompanyTel3").val() == '') {
-												alert('대표번호를 입력하세요.');
-												$("#CompanyTel2").focus();
-												return false;
-											} else if (!validate_tel($(
-													"#CompanyTel2").val())
-													|| !validate_tel($(
-															"#CompanyTel3")
-															.val())) {
-												alert('대표번호는 숫자를 입력하셔야 합니다');
-												$("#CompanyTel2").focus();
-												return false;
-											} else if ($("#CompanyMobile2")
-													.val() == ''
-													|| $("#CompanyMobile3")
-															.val() == '') {
-												alert('휴대폰번호를 입력하세요');
-												$("#CompanyMobile2").focus();
-												return false;
-											} else if (!validate_mobile($(
-													"#CompanyMobile2").val())
-													|| !validate_mobile($(
-															"#CompanyMobile3")
-															.val())) {
-												alert('휴대폰번호는 숫자를 입력하셔야 합니다');
-												$("#CompanyMobile2").focus();
-												return false;
-											} else if ($("#CompanyFax2").val() == ''
-													|| $("#CompanyFax3").val() == '') {
-												alert('팩스번호를 입력하세요');
-												$("#CompanyFax1").focus();
-												return false;
-											} else if (!validate_fax($(
-													"#CompanyFax2").val())
-													|| !validate_fax($(
-															"#CompanyFax3")
-															.val())) {
-												alert('팩스번호는 숫자를 입력하셔야 합니다');
-												$("#CompanyFax1").focus();
-												return false;
-											} else if ($("#CompanyAddress")
-													.val() == '') {
-												alert('회사주소를 입력하세요');
-												$("#CompanyAddress").focus();
-												return false;
-											} else if ($("#CompanyCeo").val() == '') {
-												alert('대표자를 입력하세요');
-												$("#CompanyCeo").focus();
-												return false;
-											}
-										});
-
-						$("#CompanyId")
-								.keyup(
-										function() {
-											if (!validate_CompanyId($(
-													"#CompanyId").val())) {
-												$("#check")
-														.html(
-																'아이디는 영문이나 숫자만 입력하셔야 합니다.');
-												$("#check").show();
-											} else if ($("#CompanyId").val() == '') {
-												$("#check").html('아이디를 입력하세요');
-												$("#chkId").val("");
-												$("#check").show();
-											} else if ($("#CompanyId").val().length < 6) {
-												$("#check").html(
-														'아이디는 6글자 이상이어야합니다.');
-												$("#chkId").val("");
-												$("#check").show();
-											} else {
-												$
-														.ajax({
-															url : '<c:url value="/administrator/company/CheckCompanyId.do" />',
-															type : 'post',
-															data : 'CompanyId='
-																	+ $(
-																			"#CompanyId")
-																			.val(),
-															dataType : 'json',
-															success : function(
-																	res) {
-																var msg = "";
-																var chkId = "";
-
-																if (res) {
-																	//아이디가 이미 존재
-																	msg = "해당 아이디가 이미 존재합니다.";
-																} else {
-																	msg = "해당 아이디 사용가능";
-																	chkId = "Y";
-																}
-																$("#check")
-																		.html(
-																				msg);
-																$("#chkId")
-																		.val(
-																				chkId);
-																$("#check")
-																		.show();
-															},
-															error : function(
-																	xhr,
-																	status,
-																	error) {
-																alert("error: "
-																		+ error);
-															}
-														});
-											}
-										});
-					});
+								if (res) {
+									msg = "해당 아이디가 이미 존재합니다.";
+								} else {
+									msg = "해당 아이디 사용가능";
+									chkId = "Y";
+								}
+								$("#check").html(msg);
+								$("#chkId").val(chkId);
+								$("#check").show();
+							},
+							error : function(xhr, status, error) {
+								alert("error: " + error);
+							}
+						});
+					}
+				});
+	});
 
 	function goPopup() {
 		window.open("../zipcode/jusoPopup.do", "pop",
@@ -210,7 +189,7 @@
 </style>
 
 <div class="bodyClass">
-	<form class="form-horizontal" id="frm1" name="frm1" method="post"
+	<form class="form-horizontal" id="frm1" name="frm1" method="post" enctype="multipart/form-data"
 		action='<c:url value="/administrator/company/companyRegister.do" />'>
 		<legend>업체 등록</legend>
 		<div class="form-group">
@@ -338,6 +317,15 @@
 					onClick="goPopup()">
 			</div>
 		</div>
+		
+		<div class="form-group">
+			<label for="comReturnPlace" class="col-sm-2 control-label">
+				차량인수/반납장소 </label>
+			<div class="col-sm-6">
+				<input type="text" class="form-control" name="comReturnPlace"
+					id="comReturnPlace" placeholder="차량인수/반납장소">
+			</div>
+		</div>
 
 		<div class="form-group">
 			<label for="CompanyCeo" class="col-sm-2 control-label"> 대표자 </label>
@@ -364,11 +352,17 @@
 		</div>
 
 		<div class="form-group">
-			<label for="CompanyLogo" class="col-sm-2 control-label"> 업체
+			<label for="comlogo" class="col-sm-2 control-label"> 업체
 				로고 </label>
 			<div class="col-sm-2">
-				<input type="file" id="CompanyLogo" name="comLogo"
-					placeholder="업체 로고">
+				<input type="file" id="comLogo" name="comlogo">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="comLogoImg" class="col-sm-2 control-label"></label>
+			<div id="image_preview" class="col-sm-1">
+				<img id="comLogoImg" src="#" style="width: 100px; height: 100px;" />
 			</div>
 		</div>
 
