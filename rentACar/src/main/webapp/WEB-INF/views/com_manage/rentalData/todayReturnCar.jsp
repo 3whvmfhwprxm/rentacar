@@ -24,7 +24,7 @@
 		
 		jQuery("#btMulti").click(function(){
 			alert("옴?");
-			jQuery("#frmSend").attr("action","<c:url value='/com_manage/rentalData/updateStatusCg.do' />");
+			jQuery("#frmSend").attr("action","<c:url value='/com_manage/rentalData/multiUpdateStatusCgRent.do' />");
 			jQuery("#frmSend").submit();
 		});
 	});

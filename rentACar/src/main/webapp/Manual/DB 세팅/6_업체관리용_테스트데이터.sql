@@ -7,31 +7,37 @@ where pay_condition='paid';
 
 delete from reserv_user
 where res_drv_tel1='010';
+delete from reserv_user
+where res_drv_tel1='011';
 
 delete from reservation
 where reserv_insurance='자차보험';
 
-
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('서울허2222','hd002', 'rentZoa', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
+values('서울허1234','hd002', 'rentGo', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('서울허3333','hd002', 'rentZoa', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
+values('서울허2222','hd002', 'rentGo', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('서울허5555','hd002', 'rentZoa', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
+values('서울허3333','hd002', 'rentGo', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
 insert into companycaroption
 (ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
 ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
 ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('서울허6666','hd002', 'rentZoa', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
+values('서울허5555','hd002', 'rentGo', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
+insert into companycaroption
+(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
+ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
+ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
+values('서울허6666','hd002', 'rentGo', 'Y', '디젤','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-05-02');
 insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
