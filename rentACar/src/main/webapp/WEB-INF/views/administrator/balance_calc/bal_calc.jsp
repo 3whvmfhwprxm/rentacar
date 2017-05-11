@@ -87,9 +87,10 @@ th {
 		<a href='<c:url value="/admin/" />'></a> | 
 	</div> --%>
 	<h3>
-		<i class="fa fa-calculator"></i>&nbsp;정산내역
+		<i class="fa fa-calculator"></i>&nbsp;정산내역 
 	</h3>
-	<br>
+	(*정책:매월 1일 스케쥴러를 통해 이전달의 매출을 자동으로 정리 정산관리 테이블에 입력. 현재는 테스트용으로 2분마다 돌아감)
+	<br><br>
 	<form name="frmSales" id="frmSales" method="post"
 		action='<c:url value="/admin/balCalc/balCalcShow.do" />'>
 		<select name="year" id="year">

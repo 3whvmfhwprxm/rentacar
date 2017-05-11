@@ -324,7 +324,7 @@ CREATE TABLE CompanyCarOption (
 	ccar_peak_price NUMBER NOT NULL, /* 성수기예약가격 */
 	ccar_s_peak_price NUMBER NOT NULL, /* 극성수기예약가격 */
 	ccar_arrear NUMBER NOT NULL, /* 연체료(표기용) */
-	ccar_status VARCHAR2(25) default 'HOLD', /* 차량상태 */
+	ccar_status VARCHAR2(25) default 'HOLD', /* 차량 차고지에 유무(차고지에 있으며 예약잡힌 상태:HOLD, 나간상태:RENT, 예약이 끝나고 차고지로:RETURN  */
 	comcar_regdate DATE default sysdate, /* 차량등록일 */
 	comcar_outdate DATE /* 차량삭제일 */
 );
