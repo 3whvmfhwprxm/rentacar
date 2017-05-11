@@ -1,5 +1,7 @@
 package com.third.rent.user.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.third.rent.common.DateSearchVO2;
 import com.third.rent.common.PaginationInfo;
-import com.third.rent.common.SearchVO;
 import com.third.rent.common.userUtility;
 import com.third.rent.payInfo.model.PayInfoService;
 import com.third.rent.reservation.model.ReservationService;
@@ -32,9 +34,20 @@ public class ConfirmController {
 	private PayInfoService pService;
 	
 	@RequestMapping("/user/confirm.do")
-	public String showConfirm(@ModelAttribute SearchVO searchVo, HttpSession session, Model model){
+	public String showConfirm(@ModelAttribute DateSearchVO2 searchVo, HttpSession session, Model model){
 		String userId=(String)session.getAttribute("userId");
 		logger.info("예약확인 화면 띄우기 userId={}", userId);
+		
+		//조회버튼을 클릭하지 않은 경우-상단 메뉴에서 바로 들어오는 경우
+		//=> 현재일자를 searchVo에 setting
+		if(searchVo.getStartDay()==null 
+				|| searchVo.getStartDay().isEmpty()){
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String today = sdf.format(date);
+			searchVo.setStartDay(today);
+			searchVo.setEndDay(today);			
+		}
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(userUtility.CONFIRM_BLOCKSIZE);

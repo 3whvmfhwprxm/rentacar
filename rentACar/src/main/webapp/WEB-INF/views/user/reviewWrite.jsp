@@ -28,7 +28,7 @@ $(document).ready(function(){
 
 <br><br>
 <div class="divList container">
-		<form class="form-horizontal" id="frm1" method="post" action="<c:url value='/user/reviewWrite.do'/>">
+		<form class="form-horizontal" id="frm1" method="post" enctype="multipart/form-data" action="<c:url value='/user/reviewWrite.do'/>">
 			<input type="hidden" id="adminId" name="adminId" value="admin1">
 			<fieldset><br>
 			<legend><b>이용후기 작성</b></legend>

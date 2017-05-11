@@ -53,17 +53,17 @@
                         <th><input type="text" class="form-control" placeholder="전화번호" disabled></th>
                     </tr> -->
                     <tr class="filters">
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약번호" disabled></th>
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="대여시작일" disabled></th>
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="대여반납일" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약번호" readonly="readonly"></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="대여시작일" readonly="readonly"></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="대여반납일" readonly="readonly"></th>
                         <!-- <th><input type="text" class="form-control" placeholder="대여시작시간" disabled></th> -->
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="차량넘버" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="차량넘버" readonly="readonly"></th>
                         <!-- <th><input type="text" class="form-control" placeholder="반납시간" disabled></th> -->
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약일시" disabled></th>
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="차량대여업체명" disabled></th>
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="업체전화번호" disabled></th>
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약취소" disabled></th>
-                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="이용상태" disabled></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약일시" readonly="readonly"></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="차량대여업체명" readonly="readonly"></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="업체전화번호" readonly="readonly"></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="예약취소" readonly="readonly"></th>
+                        <th><input style="text-align: center;" type="text" class="form-control" placeholder="이용상태" readonly="readonly"></th>
                     </tr>
                 </thead>
                 <tbody>
