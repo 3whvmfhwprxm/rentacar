@@ -79,7 +79,7 @@
 	}
 </script>
     
-조회기간
+<b>조회기간</b>
 	<input type="button" id="btWeek" value="1주일" style="color: black;">
 	<input type="button" id="btMonth1" value="1개월" style="color: black;">
 	<input type="button" id="btMonth3" value="3개월" style="color: black;">

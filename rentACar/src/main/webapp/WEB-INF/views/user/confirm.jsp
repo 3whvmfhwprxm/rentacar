@@ -31,11 +31,15 @@
 	<div class="row">
         <div class="panel panel-primary filterable">
             <div class="panel-heading">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 class="panel-title">${sessionScope.userId} 님</h3>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3 class="panel-title"><b>${sessionScope.userId}</b> 님의 사용내역 입니다.</h3>
+                <br>
                 <!-- 조회기간 include -->
     <form name="frm1" method="post" action='<c:url value="/user/confirm.do" />' >
 		<%@ include file="../inc_user/dateTerm.jsp" %>
 		<input type="submit" value="조회" style="color: black;">
+		<p>
+		${dateSearchVO2.startDay } ~ ${dateSearchVO2.endDay } 까지의 주문내역	총 ${pagingInfo.totalRecord }건 입니다.
+		</p>
 	</form>
             </div>
             <table class="table" width="100%">

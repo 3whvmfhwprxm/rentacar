@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.third.rent.Comments.model.CommentsService;
 import com.third.rent.Comments.model.CommentsVO;
+import com.third.rent.common.FileUploadWebUtil;
 import com.third.rent.common.UserFileUploadWebUtil;
 
 @Controller
@@ -29,8 +30,7 @@ public class ReviewWriteController {
 	private CommentsService commentsService;
 	
 	@Autowired
-	private UserFileUploadWebUtil userFileUploadWebUtil;
-	
+	private UserFileUploadWebUtil userfileUploadWebUtil;
 	
 	@RequestMapping(value="/user/reviewWrite.do", method=RequestMethod.GET)
 	public String showReviewWrite_get(@RequestParam String reservNum, Model model){
@@ -47,34 +47,26 @@ public class ReviewWriteController {
 	
 	@RequestMapping(value="/user/reviewWrite.do", method=RequestMethod.POST)
 	public String showReviewWrite_post(@ModelAttribute CommentsVO commentsVo, Model model, HttpServletRequest request,
-			HttpSession session){
+			HttpSession session) throws IOException{
 		String userId = (String)session.getAttribute("userId");
 		commentsVo.setUserId(userId);
 		logger.info("리뷰작성처리, 파라미터 userId={}, adminId={}", userId, commentsVo.getAdminId());
 		
-		/*UserFileUploadWebUtil fileUpload = new UserFileUploadWebUtil();
-		List<Map<String, Object>> map = fileUpload.fileUpload(request, UserFileUploadWebUtil.IMAGE_UPLOAD);
-		
-		
-		commentsVo.setCmtImg1(map.get(0).get("fileName").toString());*/
-		
-		//파일 업로드 처리
-		List<Map<String, Object>> fileList=userFileUploadWebUtil.fileUpload(request, UserFileUploadWebUtil.IMAGE_UPLOAD);
-
-		String cmtImg1="";
-		if(!fileList.isEmpty()){
-			for(Map<String, Object> map : fileList){
-				cmtImg1 = (String) map.get("fileName");
-			}//for
-		}//if
-
-		commentsVo.setCmtImg1(cmtImg1);
-		
-		//로그인되었는지 체크
-		if(userId==null || userId.isEmpty()){
-			model.addAttribute("msg", "먼저 로그인하세요");
-			model.addAttribute("url", "/user/login.do");
-			return "common/message";
+		UserFileUploadWebUtil fileUpload = new UserFileUploadWebUtil();
+		List<Map<String, Object>> map = fileUpload.fileUpload(request, 2);
+		/*commentsVo.setCmtImg1(map.get(0).get("fileName").toString());
+		commentsVo.setCmtImg2(map.get(1).get("fileName").toString());
+		commentsVo.setCmtImg3(map.get(2).get("fileName").toString());*/
+		logger.info("");
+		if(map.size()==1){
+			commentsVo.setCmtImg1(map.get(0).get("fileName").toString());
+		}else if(map.size()==2){
+			commentsVo.setCmtImg1(map.get(0).get("fileName").toString());
+			commentsVo.setCmtImg2(map.get(1).get("fileName").toString());
+		}else if(map.size()==3){
+			commentsVo.setCmtImg1(map.get(0).get("fileName").toString());
+			commentsVo.setCmtImg2(map.get(1).get("fileName").toString());
+			commentsVo.setCmtImg3(map.get(2).get("fileName").toString());
 		}
 		
 		int cnt=commentsService.writeComment(commentsVo);

@@ -88,19 +88,19 @@ $(document).ready(function(){
 				<div class="form-group">
 					<label for="cmtImg1" class="col-sm-2 control-label">사용후기사진 1</label>
 					<div class="col-sm-6">
-						<input type="file" name="cmtImg1" id="cmtImg1">
+						<input type="file" name="cmtimg1" id="cmtimg1">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="cmtImg2" class="col-sm-2 control-label">사용후기사진 2</label>
 					<div class="col-sm-6">
-						<input type="file" name="cmtImg2" id="cmtImg2">
+						<input type="file" name="cmtimg2" id="cmtimg2">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="cmtImg3" class="col-sm-2 control-label">사용후기사진 3</label>
 					<div class="col-sm-6">
-						<input type="file" name="cmtImg3" id="cmtImg3">
+						<input type="file" name="cmtimg3" id="cmtimg3">
 					</div>
 				</div>
 				<div class=form-group>

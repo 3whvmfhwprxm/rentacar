@@ -67,6 +67,8 @@ public class ConfirmController {
 		map.put("userId", userId);
 		map.put("firstRecordIndex", searchVo.getFirstRecordIndex());
 		map.put("recordCountPerPage", searchVo.getRecordCountPerPage());
+		map.put("startDay", searchVo.getStartDay());
+		map.put("endDay", searchVo.getEndDay());
 		
 		
 		List<Map<String, Object>> alist = reservationService.selectByUserid(map);

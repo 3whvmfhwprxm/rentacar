@@ -1,10 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../inc_user/top.jsp" %>
-
+<script type="text/javascript">
+	var btnType = '';
+	$(document).ready(function() {
+		$("#cmtimg1").change(function(str){
+			// 확장자 가져오기
+			if( $("#cmtimg1").val() != "" ){
+				var ext = $('#cmtimg1').val().split('.').pop().toLowerCase();
+				     if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+						 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+						 $("#cmtimg1").val("");
+						 return;
+				     } else {
+			            file = $('#cmtimg1').prop("files")[0];
+			            blobURL = window.URL.createObjectURL(file);
+			            $('#image_preview img').attr('src', blobURL);
+			            $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+				     }
+			 }
+			/* if(!/(\.png|\.PNG|\.jpg|\.JPG|\.bmp|\.BMP|\.gif|\.GIF)$/i.test(str)) {
+	            alert("jpg, png, bmp, gif 파일만 등록할 수 있습니다.");
+	            $("#comLogo").val("");
+	            return;
+	        } */
+		});
+	});
+</script>
 <style type="text/css">
 	.checked, .price span {color: #ff9f1a; }
-
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 0px solid #eee;
+}
 </style>
 <script type="text/javascript">	
 	function pageFunc(curPage){
@@ -34,7 +64,7 @@
         <td width="40%" style="vertical-align:top">
             <h4 style="font-family:'IowanOldSt BT'; src:url(http://foton.com.la/font/iowaosbd.ttf)"><b>${vo.comId}</b></h4>
             <span class="thumbnail">
-                <img src="<c:url value='/user_img/${vo.cmtImg1}'/>">
+                <img id="cmtimg1" src="<c:url value='/user_img/${vo.cmtImg1}'/>">
                 <div style="padding: 15px;">
                 <span><b>사용자 : ${vo.userId}</b></span>
                	<span style="float: right;">친절도 <c:if test="${1==vo.cmtKindScore }">
