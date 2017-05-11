@@ -46,6 +46,14 @@
 					value="${userVo.userId}" readonly>
 			</div>
 		</div>
+		
+		<div class="form-group">
+			<label for="userPwd" class="col-sm-2 control-label"> 회원 비밀번호 </label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="userPwd" id="userPwd"
+					value="${userVo.userPwd}" readonly>
+			</div>
+		</div>
 
 		<div class="form-group">
 			<label for="userName" class="col-sm-2 control-label"> 회원 이름 </label>
@@ -67,14 +75,31 @@
 		<div class="form-group">
 			<label for="userTel1" class="col-sm-2 control-label"> 휴대폰 </label>
 			<div class="col-xs-2">
-				<select class="form-control" id="userTel1" name="userTel1"
-					value="${userVo.userTel1}">
-					<option value="010">010</option>
-					<option value="011">011</option>
-					<option value="016">016</option>
-					<option value="017">017</option>
-					<option value="018">018</option>
-					<option value="019">019</option>
+				<select class="form-control" id="userTel1" name="userTel1">
+					<option value="010"
+						<c:if test="${userVo.userTel1 == '010'}">            	
+            				selected="selected"
+            			</c:if>>010</option>
+					<option value="011"
+						<c:if test="${userVo.userTel1 == '011'}">            	
+            				selected="selected"
+            			</c:if>>011</option>
+					<option value="016"
+						<c:if test="${userVo.userTel1 == '016'}">            	
+            				selected="selected"
+            			</c:if>>016</option>
+					<option value="017"
+						<c:if test="${userVo.userTel1 == '017'}">            	
+            				selected="selected"
+            			</c:if>>017</option>
+					<option value="018"
+						<c:if test="${userVo.userTel1 == '018'}">            	
+            				selected="selected"
+            			</c:if>>018</option>
+					<option value="019"
+						<c:if test="${userVo.userTel1 == '019'}">            	
+            				selected="selected"
+            			</c:if>>019</option>
 				</select>
 			</div>
 			<div class="col-xs-2">
@@ -105,9 +130,17 @@
 		
 		<div class="form-group">
 			<label for="userGender" class="col-sm-2 control-label"> 성별 </label>
-			<div class="col-sm-8">
-				<input type="text" class="form-control" name="userGender"
-					id="userGender" value="${userVo.userGender}">
+			<div class="col-sm-2">
+				<select class="form-control" id="userGender" name="userGender">
+					<option value="남자"
+						<c:if test="${userVo.userGender=='남자'}">            	
+            				selected="selected"
+            			</c:if>>남자</option>
+					<option value="여자"
+						<c:if test="${userVo.userGender=='여자'}">            	
+            				selected="selected"
+            			</c:if>>여자</option>
+				</select>
 			</div>
 		</div>
 
@@ -117,19 +150,32 @@
 			<div class="col-sm-2">
 				<select class="form-control" name="userLicense" id="userLicense"
 					title="운전면허">
-					<option value="1종 대형">1종 대형</option>
-					<option value="1종 보통">1종 보통</option>
-					<option value="1종 소형">1종 소형</option>
-					<option value="1종 특수">1종 특수</option>
-					<option value="2종 보통">2종 보통</option>
-					<option value="2종 소형">2종 소형</option>
-					<option value="원동기장치/자전거">원동기장치/자전거</option>
+					<option value="1종 대형"
+						<c:if test="${userVo.userLicense=='1종 대형'}">            	
+            				selected="selected"
+            			</c:if>>1종 대형</option>
+					<option value="1종 보통"
+						<c:if test="${userVo.userLicense=='1종 보통'}">            	
+            				selected="selected"
+            			</c:if>>1종 보통</option>
+					<option value="1종 소형">
+						<c:if test="${userVo.userLicense=='1종 소형'}">            	
+            				selected="selected"
+            			</c:if>1종 소형</option>
+					<option value="1종 특수"
+						<c:if test="${userVo.userLicense=='1종 특수'}">            	
+            				selected="selected"
+            			</c:if>>1종 특수</option>
+					<option value="2종 보통"
+						<c:if test="${userVo.userLicense=='2종 보통'}">            	
+            				selected="selected"
+            			</c:if>>2종 보통</option>
+					<option value="2종 소형"
+						<c:if test="${userVo.userLicense=='2종 소형'}">            	
+            				selected="selected"
+            			</c:if>>2종 소형</option>
 				</select>
 			</div>
-			<%-- <div class="col-sm-8">
-				<input type="text" class="form-control" name="userLicense"
-					id="userLicense" value="${userVo.userLicense}">
-			</div> --%>
 		</div>
 
 		<div class="form-group">

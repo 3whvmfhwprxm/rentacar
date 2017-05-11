@@ -21,23 +21,24 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Component
-public class adminCarImagesUpload {
+public class adminImagesUpload {
 	
-	private static final Logger logger
-		= LoggerFactory.getLogger(adminCarImagesUpload.class);
-	
-	public static final int FILE_UPLOAD=1;
-	public static final int carImg_UPLOAD=2;
-		
 	@Resource(name="fileUploadProperties")
 	private Properties fileProperties;
+
+	public static final int FILE_UPLOAD=1;
+	public static final int companyLogo_UPLOAD=2;
+		
+	private static final Logger logger
+		= LoggerFactory.getLogger(adminImagesUpload.class);
 	
-	public List<Map<String, Object>> carImgUpload(HttpServletRequest request, int uploadWhat){
+	public List<Map<String, Object>> companyLogoUpload(HttpServletRequest request, int uploadWhat){
+		
 		MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 		
 		Map<String, MultipartFile> fileMap = multiRequest.getFileMap();
 		
-		List<Map<String, Object>> fileList = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> fileList = new ArrayList<Map<String,Object>>();
 		
  		Iterator<String> iter = fileMap.keySet().iterator();
  		while(iter.hasNext()){
@@ -45,26 +46,17 @@ public class adminCarImagesUpload {
   			MultipartFile tempFile = fileMap.get(key);
   			
   			if(!tempFile.isEmpty()){
-  				String originFileName = tempFile.getOriginalFilename();
-  				String carImg = getUniqueFileName(originFileName);
-  				String carImg2 = getUniqueFileName(originFileName);
-  				String carImg3 = getUniqueFileName(originFileName);
-  				 				
-  				String savePath = getUploadPath(request, uploadWhat); 
-  				File file1 = new File(savePath, carImg);
-  				File file2 = new File(savePath, carImg2);
-  				File file3 = new File(savePath, carImg3);
+  				String origincomLogo = tempFile.getOriginalFilename();
+  				String comLogo = getUniqueFileName(origincomLogo);
+ 				
+  				String savePath = getLogoUploadPath(request, uploadWhat); 
+  				File file = new File(savePath, comLogo);
   				try {
-  					if(!file1.exists()){
-  						file1.mkdirs();
+  					if(!file.exists()){
+  						file.mkdirs();
   					}
-					tempFile.transferTo(file1);
-					tempFile.transferTo(file2);
-					tempFile.transferTo(file3);
-					
-					logger.info("파일 업로드 완료! savePath={}, carImg={}", savePath, carImg);
-					logger.info("파일 업로드 완료! savePath={}, carImg2={}", savePath, carImg2);
-					logger.info("파일 업로드 완료! savePath={}, carImg3={}", savePath, carImg3);
+					tempFile.transferTo(file);
+					logger.info("파일 업로드 완료! 업로드 경로={}, 파일명={}", savePath, comLogo);
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -72,9 +64,7 @@ public class adminCarImagesUpload {
 				}
   				  				
   				Map<String, Object> map=new HashMap<String, Object>();
-  				map.put("carImg", carImg);
-  				map.put("carImg2", carImg2);
-  				map.put("carImg3", carImg3);
+  				map.put("comLogo", comLogo);
   				
   				fileList.add(map);
   			}
@@ -83,23 +73,22 @@ public class adminCarImagesUpload {
  		return fileList;
 	}
 	
-	public String getUploadPath(HttpServletRequest request, int uploadWhat){
+	public String getLogoUploadPath(HttpServletRequest request, int uploadWhat){
 		String type = "test";
 		
 		String upPath = "", dir = "";
 		if(type.equals("test")){
-			//테스트 경로
 			if(uploadWhat==FILE_UPLOAD){
-				upPath = fileProperties.getProperty("carImagesUpload.upload.path.test");
-			}else if(uploadWhat==carImg_UPLOAD){
-				upPath = "carImages.upload.path.test";
+				upPath = fileProperties.getProperty("companyLogoUpload.upload.path.test");
+			}else if(uploadWhat==companyLogo_UPLOAD){
+				upPath = "companyLogo.upload.path.test";
 			}
 			
 		}else{
 			if(uploadWhat==FILE_UPLOAD){
-				dir = fileProperties.getProperty("carImagesUpload.upload.path");				
-			}else if(uploadWhat==carImg_UPLOAD){
-				dir = fileProperties.getProperty("carImages.upload.path");
+				dir = fileProperties.getProperty("companyLogoUpload.upload.path");				
+			}else if(uploadWhat==companyLogo_UPLOAD){
+				dir = fileProperties.getProperty("companyLogo.upload.path");
 			}
 			upPath = request.getSession().getServletContext().getRealPath(dir);			
 		}

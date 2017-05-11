@@ -331,7 +331,7 @@
 				주소 </label>
 			<div class="col-sm-6">
 				<input type="text" class="form-control" name="comAddress"
-					id="CompanyAddress" placeholder="회사 주소" readonly="readonly">
+					id="CompanyAddress" placeholder="회사 주소">
 			</div>
 			<div class="col-sm-2">
 				<input type="button" class="btn btn-default" value="주소찾기"

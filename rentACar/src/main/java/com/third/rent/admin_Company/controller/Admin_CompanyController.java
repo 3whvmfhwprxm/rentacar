@@ -3,6 +3,8 @@ package com.third.rent.admin_Company.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_Company.model.Admin_CompanyService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
+import com.third.rent.common.adminImagesUpload;
 import com.third.rent.common.admin_Utility;
 import com.third.rent.company.model.CompanyVO;
 import com.third.rent.company.model.companyListVO;
@@ -30,6 +33,9 @@ public class Admin_CompanyController {
 	
 	@Autowired
 	private Admin_CompanyService adminCompanyService;
+	
+	@Autowired
+	private adminImagesUpload adminImgUpload;
 	
 	@RequestMapping("/company/companyMain.do")
 	public String companyMain(){
@@ -126,11 +132,43 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.POST)
-	public String companyRegister_post(@ModelAttribute CompanyVO comVo, Model model){
-		//1
+	public String companyRegister_post(@ModelAttribute CompanyVO comVo, 
+			HttpServletRequest request, Model model){
 		logger.info("업체등록 처리, 파라미터 comVo={}", comVo);
 		
-		//2
+		String tel2 = comVo.getComTel2();
+		String tel3 = comVo.getComTel3();
+		if(tel2==null || tel2.isEmpty() || tel3==null || tel3.isEmpty()){
+			comVo.setComTel1("");
+			comVo.setComTel2("");
+			comVo.setComTel3("");
+		}
+		
+		List<Map<String, Object>> comLogoList
+			= adminImgUpload.companyLogoUpload(request, adminImagesUpload.companyLogo_UPLOAD);
+		
+		comVo.setComLogo(comLogoList.get(0).get("comLogo").toString());
+		
+		int cnt = adminCompanyService.insertCompany(comVo);
+		String msg="", url="";
+		if(cnt>0){
+			msg="업체등록 성공";
+			url="/administrator/company/companyList.do";
+		}else{
+			msg="업체등록 실패";
+			url="/administrator/company/companyRegister.do";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	/*@RequestMapping(value="/company/companyRegister.do", method=RequestMethod.POST)
+	public String companyRegister_post(@ModelAttribute CompanyVO comVo, Model model){
+		logger.info("업체등록 처리, 파라미터 comVo={}", comVo);
+		
 		String tel2 = comVo.getComTel2();
 		String tel3 = comVo.getComTel3();
 		if(tel2==null || tel2.isEmpty() || tel3==null || tel3.isEmpty()){
@@ -149,12 +187,11 @@ public class Admin_CompanyController {
 			url="/administrator/company/companyRegister.do";
 		}
 		
-		//3
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
 		return "common/message";
-	}
+	}*/
 	
 	@RequestMapping("/company/CheckCompanyId.do")
 	@ResponseBody
