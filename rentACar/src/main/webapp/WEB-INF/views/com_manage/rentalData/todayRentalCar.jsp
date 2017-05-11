@@ -19,6 +19,11 @@
 			}
 			return true;
 		});
+		
+		jQuery("#btMulti").click(function(){
+			jQuery("#frmSend").attr("action","<c:url value='/com_manage/rentalData/multiUpdateStatusCgHold.do' />");
+			jQuery("#frmSend").submit();
+		});
 	});
 	
 	function fncSort(val){
@@ -31,10 +36,9 @@
 		jQuery("#ccarStatus").val(yn);
 		jQuery("#ccarCarId").val(carId);
 		jQuery("#comId").val(compId);
-		jQuery("#frmUse").attr("action","<c:url value='/com_manage/rentalData/updateStatusCg.do' />");
-		jQuery("#frmUse").submit();
+		jQuery("#frmSend").attr("action","<c:url value='/com_manage/rentalData/updateStatusCg.do' />");
+		jQuery("#frmSend").submit();
 	}
-
 	
 </script>
 <body>
@@ -46,11 +50,8 @@
 		<input type="hidden" name="sortingKeyword" id="sortingKeyword" value="${param.sortingKeyword }"/>
 		<input type="hidden" name="" id="" value="" />
 	</form>
-	<form id="frmUse" name="frmUse" method="POST">
-		<input type="hidden" name="ccarStatus" id="ccarStatus">
-		<input type="hidden" name="ccarCarId" id="ccarCarId">
-		<input type="hidden" name="comId" id="comId">
-	</form>
+	
+	
     <div class="container" role="tabpanel">
         <legend>오늘 대여 차량 현황</legend>
        	<pre>
@@ -102,34 +103,38 @@
 				</a>
 			</li>
 			<li role="presentation" style="float:right" >
-				<button>보내기 일괄처리</button>
+				<button id="btMulti">일괄처리</button>
 			</li>
 		</ul>
-		
+	<form id="frmSend" name="frmSend" method="POST">
+		<input type="hidden" name="ccarStatus" id="ccarStatus">
+		<input type="hidden" name="ccarCarId" id="ccarCarId">
+		<input type="hidden" name="comId" id="comId">
        <table class="table table-striped">
        <thead>
        		  <colgroup>
-       		  	<col width="5%">
-	    		<col width="13%">
+	    		<col width="9%">
 	    		<col width="10%">
-	    		<col width="15%">
-	    		<col width="8%">
-	    		<col width="15%">
-	    		<col width="13%">
+	    		<col width="12%">
+	    		<col width="10%">
+	    		<col width="10%">
+	    		<col width="12%">
 	    		<col width="*%">
-	    		<col width="7%">
-	    		<col width="7%">
+	    		<col width="9%">
+	    		<col width="10%">
+	    		<col width="8%">
     		</colgroup>
        		<tr>
-       			<th><input type="checkbox"  name="chkAll"></th>
     			<th>대여시간</th>
   				<th>차량번호</th>
 				<th>모델명</th>
 				<th>예약자명</th>
-				<th colspan="2">운전자 정보</th>
+				<th>운전자명</th>
+				<th>운전번호</th>
 				<th>결제진행상태</th>
 				<th>대여상태</th>
-				<th>대여중</th>
+				<th>대여중으로</th>
+				<th>일괄처리 <input type="checkbox"  name="chkAll"></th>
 			</tr>
         </thead>
         <tbody>
@@ -145,7 +150,6 @@
 			<c:forEach var="map" items="${rlist }" varStatus="i">
 				<c:if test="${map['CCAR_STATUS'] == 'HOLD' }"> 
 				<tr>
-					<td><input type="checkbox"  id="chk_${u}" name="chk_${u}"/></td>
 					<td><fmt:formatDate value="${map['RESERV_START_DATE'] }" pattern="HH시 mm분"/></td>
 					<td>${map['CCAR_CAR_ID'] }</td>
 					<td>${map['CAR_NAME'] }</td>
@@ -165,9 +169,11 @@
 		        		<td class="line">결제실패</td>
 		        	</c:if>	
 		        	<td>${map['CCAR_STATUS'] }</td>
-		        	<td><button id="bt_${i.index }" onclick="javascript:cg('${map['CCAR_STATUS']}','${map['CCAR_CAR_ID'] }','${map['COM_ID'] }')">보내기</button></td>
+		        	<td><button id="bt_${i.index }" onclick="javascript:cg('${map['CCAR_STATUS']}','${map['CCAR_CAR_ID'] }','${sessionScope.comId }')">보내기</button></td>
+		        	<td><input type="checkbox"  id="chk_${u}" name="cCarItems[${u}].ccarCarId" value="${map['CCAR_CAR_ID'] }"/></td>
 				</tr>
 				</c:if>
+				<c:set var="u" value="${u+1 }" />
 		 	<!-- 반복끝 --> 
 	        </c:forEach>
         </c:if>
@@ -175,7 +181,7 @@
         
         </tbody>
     </table>
-    
+	</form>    
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
@@ -231,6 +237,6 @@
 
 
 
-<%@ include file="../../inc_company/company_bottom2.jsp" %>
+<%@ include file="../../inc_company/company_bottom.jsp" %>
 
 

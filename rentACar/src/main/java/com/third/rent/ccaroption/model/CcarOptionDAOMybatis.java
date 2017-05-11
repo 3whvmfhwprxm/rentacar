@@ -112,6 +112,11 @@ public class CcarOptionDAOMybatis extends SqlSessionDaoSupport
 	public int updateStatusCgHold(CcarOptionVO vo) {
 		return getSqlSession().update(namespace+".updateStatusCgHold", vo);
 	}
+
+	@Override
+	public CcarOptionVO selectByCCarId(String ccarCarId) {
+		return getSqlSession().selectOne(namespace+".selectByCCarId", ccarCarId);
+	}
 	
 }
 

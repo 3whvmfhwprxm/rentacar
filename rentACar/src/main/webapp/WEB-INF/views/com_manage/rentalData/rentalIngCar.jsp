@@ -128,6 +128,7 @@
 				<th>운전자명</th>
 				<th>운전자 상세정보</th>
 				<th>대여상태</th>
+				<th>반납일자</th>
 			</tr>
         </thead>
         <tbody>
@@ -148,6 +149,7 @@
 					<td>${map['RES_DRV_NAME'] }</td>
 					<td><button>열기</button></td>
 					<td>${map['CCAR_STATUS'] }</td>
+					<td><fmt:formatDate value="${map['RESERV_END_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
 				</tr>
 			</c:if>
 		 	<!-- 반복끝 --> 
@@ -215,6 +217,6 @@
 
 
 
-<%@ include file="../../inc_company/company_bottom2.jsp" %>
+<%@ include file="../../inc_company/company_bottom.jsp" %>
 
 

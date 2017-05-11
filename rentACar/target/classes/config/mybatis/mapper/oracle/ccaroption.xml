@@ -121,7 +121,7 @@
 	<select id="rentalIngTR" parameterType="SearchVO" resultType="int">
 		select count(*) from com_reservview
 		<![CDATA[
-		where reserv_start_date <=sysdate and sysdate<=reserv_end_date
+		where reserv_start_date <=sysdate
 		]]>
 		<include refid="searchWhere"></include>
 	</select>
@@ -276,7 +276,7 @@
 		    (
 		        select * from com_reservview
 				<![CDATA[
-				where reserv_start_date <= sysdate and sysdate <=reserv_end_date
+				where reserv_start_date <= sysdate
 				]]>
 				and com_id=#{companyId}
 			 	<include refid="searchWhere"></include>
@@ -320,6 +320,9 @@
 		where ccar_Car_id=#{ccarCarId}
  	</update>
  	
+ 	<select id="selectByCCarId" parameterType="string" resultType="CcarOptionVO">
+ 		select * from companycaroption where ccar_car_id=#{ccarCarId}
+ 	</select>
 </mapper>
 
 

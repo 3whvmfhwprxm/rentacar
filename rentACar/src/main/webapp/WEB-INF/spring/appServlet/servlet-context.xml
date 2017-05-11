@@ -49,6 +49,11 @@
 		</interceptor>	
 		
 		<interceptor>
+			<mapping path="/com_manage/rentalData/*.do" />
+			<beans:ref bean ="companyInterceptor" />
+		</interceptor>	
+		
+		<interceptor>
 			<mapping path="/admin/*.do" />
 			<mapping path="/admin/*/*.do" />
 			<mapping path="/administrator/*.do" />

@@ -31,5 +31,7 @@ public interface CcarOptionService {
 	public int updateStatusCgRent(CcarOptionVO vo);
 	public int updateStatusCgReturn(CcarOptionVO vo);
 	public int updateStatusCgHold(CcarOptionVO vo);
-	public int moveHold(List<Map<String, Object>> cCarList);
+	public int multiMoveHold(List<CcarOptionVO> cCarList);
+	public int multiMoveRent(List<CcarOptionVO> cCarList);
+	public int multiMoveReturn(List<CcarOptionVO> cCarList);
 }

@@ -28,4 +28,5 @@ public interface CcarOptionDAO {
 	public int updateStatusCgRent(CcarOptionVO vo);
 	public int updateStatusCgReturn(CcarOptionVO vo);
 	public int updateStatusCgHold(CcarOptionVO vo);
+	public CcarOptionVO selectByCCarId(String ccarCarId);
 }

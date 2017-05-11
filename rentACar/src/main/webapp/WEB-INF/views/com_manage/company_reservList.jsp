@@ -44,10 +44,6 @@
 			return true;
 		});
 	});
-	
-	
-		
-	
 </script>
 <body>
 	<form id="frmPage" name="frmPage" method="POST"

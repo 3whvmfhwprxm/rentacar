@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.third.rent.ccaroption.model.CcarListVO;
 import com.third.rent.ccaroption.model.CcarOptionService;
 import com.third.rent.ccaroption.model.CcarOptionVO;
 import com.third.rent.common.PaginationInfo;
@@ -189,13 +190,13 @@ public class CcarRDataController {
 			status="RETURN";
 			vo.setCcarStatus(status);
 			cnt = csService.updateStatusCgRent(vo);
-			url="/com_manage/rentalData/rentalIngCar.do";
+			url="/com_manage/rentalData/todayReturnCar.do";
 		}else if(ccarStatus.equals("RETURN")){
 			logger.info("상태 리턴");
 			status="HOLD";
 			vo.setCcarStatus(status);
 			cnt=csService.updateStatusCgReturn(vo);
-			url="/com_manage/rentalData/todayReturnCar.do";
+			url="/com_manage/rentalData/todayEndnCar.do";
 		}
 		
 		if(cnt<=0){
@@ -207,4 +208,77 @@ public class CcarRDataController {
 		
 		return "common/message";
 	}
+	
+	@RequestMapping("/multiUpdateStatusCgHold.do")
+	public String multiHold(@ModelAttribute CcarListVO cCarItems, HttpSession session,
+			@ModelAttribute SearchVO searchVo,
+			Model model){
+		String companyId = (String)session.getAttribute("comId");
+		logger.info("대여상태 변경 처리하기, 파라미터 cCarList={}", cCarItems);
+		List<CcarOptionVO> cvoList = cCarItems.getcCarItems();
+		int cnt = csService.multiMoveHold(cvoList);
+		logger.info("선택항목 보내기 결과 cnt ={}", cnt);
+		
+		String msg="", url="/com_manage/rentalData/todayRentalCar.do";
+		if(cnt>0){
+			msg="선택한 항목 보내기성공!";
+		}else{
+			msg="선택항목 보내기 처리 중 에러가 발생했습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping("/multiUpdateStatusCgRent.do")
+	public String multiRent(@ModelAttribute CcarListVO cCarItems, HttpSession session,
+			@ModelAttribute SearchVO searchVo,
+			Model model){
+		String companyId = (String)session.getAttribute("comId");
+		logger.info("대여상태 변경 처리하기, 파라미터 cCarList={}", cCarItems);
+		List<CcarOptionVO> cvoList = cCarItems.getcCarItems();
+		int cnt = csService.multiMoveRent(cvoList);
+		logger.info("선택항목 보내기 결과 cnt ={}", cnt);
+		
+		String msg="", url="/com_manage/rentalData/todayReturnCar.do";
+		if(cnt>0){
+			msg="선택한 항목 보내기성공!";
+		}else{
+			msg="선택항목 보내기 처리 중 에러가 발생했습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping("/multiUpdateStatusCgReturn.do")
+	public String multiReturn(@ModelAttribute CcarListVO cCarItems, HttpSession session,
+			@ModelAttribute SearchVO searchVo,
+			Model model){
+		String companyId = (String)session.getAttribute("comId");
+		logger.info("대여상태 변경 처리하기, 파라미터 cCarList={}", cCarItems);
+		List<CcarOptionVO> cvoList = cCarItems.getcCarItems();
+		int cnt = csService.multiMoveReturn(cvoList);
+		logger.info("선택항목 보내기 결과 cnt ={}", cnt);
+		
+		String msg="", url="/com_manage/rentalData/todayRentalCar.do";
+		if(cnt>0){
+			msg="선택한 항목 삭제성공!";
+		}else{
+			msg="선택항목 보내기 처리 중 에러가 발생했습니다.";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
 }
+
+
+
+

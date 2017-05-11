@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,9 @@ import com.third.rent.user.model.UserVO;
 
 @Service
 public class CcarOptionServiceImpl implements CcarOptionService {
-
+	private static final Logger logger = 
+			LoggerFactory.getLogger(CcarOptionServiceImpl.class);
+	
 	@Autowired
 	private CcarOptionDAO ccarOptionDao;
 	
@@ -128,20 +132,69 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 
 	@Override
 	@Transactional
-	public int moveHold(List<Map<String, Object>> cCarList) {
-		int cnt = 0;
-		/*try {
-			for (Map<String, Object> map: cCarList) {
-				
-				if (userVo.getUserId()!=null) { ccar_car_id , com_id, ccar_status 
-					cnt = adminUserDao.userWithdraw(userVo.getUserId());
+	public int multiMoveHold(List<CcarOptionVO> cCarList) {
+		int cnt=0;
+		try {
+			for (CcarOptionVO cvo : cCarList) {
+				if(cvo.getCcarCarId()!=null){
+					CcarOptionVO vo = new CcarOptionVO();
+					vo = ccarOptionDao.selectByCCarId(cvo.getCcarCarId());
+					String status= "RENT";
+					cvo.setCcarStatus(status);
+					cnt = ccarOptionDao.updateStatusCgHold(cvo);
 				}
 			}
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 			cnt = -1;
-		}*/
+		}
 		return cnt;
 	}
+
+
+	@Override
+	@Transactional
+	public int multiMoveRent(List<CcarOptionVO> cCarList) {
+		int cnt=0;
+		try {
+			for (CcarOptionVO cvo : cCarList) {
+				if(cvo.getCcarCarId()!=null){
+					CcarOptionVO vo = new CcarOptionVO();
+					vo = ccarOptionDao.selectByCCarId(cvo.getCcarCarId());
+					String status= "Return";
+					cvo.setCcarStatus(status);
+					cnt = ccarOptionDao.updateStatusCgHold(cvo);
+				}
+			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt = -1;
+		}
+		return cnt;
+	}
+
+
+
+	@Override
+	@Transactional
+	public int multiMoveReturn(List<CcarOptionVO> cCarList) {
+		int cnt=0;
+		try {
+			for (CcarOptionVO cvo : cCarList) {
+				if(cvo.getCcarCarId()!=null){
+					CcarOptionVO vo = new CcarOptionVO();
+					vo = ccarOptionDao.selectByCCarId(cvo.getCcarCarId());
+					String status= "HOLD";
+					cvo.setCcarStatus(status);
+					cnt = ccarOptionDao.updateStatusCgHold(cvo);
+				}
+			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt = -1;
+		}
+		return cnt;
+	}
+
 
 }
