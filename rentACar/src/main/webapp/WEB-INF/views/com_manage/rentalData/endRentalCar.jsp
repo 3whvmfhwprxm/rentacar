@@ -110,31 +110,30 @@
 				</a>
 			</li>
 			<li role="presentation" style="float:right" >
-				<button>삭제 일괄처리</button>
+				<button>선택항목 삭제처리</button>
 			</li>
 		</ul>
        <table class="table table-striped">
        <thead>
        		  <colgroup>
-       		  	<col width="5%">
 	    		<col width="13%">
 	    		<col width="10%">
+	    		<col width="13%">
 	    		<col width="15%">
-	    		<col width="8%">
 	    		<col width="15%">
 	    		<col width="13%">
 	    		<col width="*%">
-	    		<col width="7%">
+	    		<col width="10%">
     		</colgroup>
        		<tr>
-       			<th><input type="checkbox"  name="chkAll"></th>
-    			<th>대여시간</th>
   				<th>차량번호</th>
 				<th>모델명</th>
-				<th>예약자명</th>
-				<th colspan="2">운전자 정보</th>
-				<th>결제진행상태</th>
+				<th>운전자명</th>
+				<th>운전자번호</th>
+				<th>연체상태</th>
+				<th>연체료</th>
 				<th>삭제</th>
+				<th>일괄처리<input type="checkbox"  name="chkAll"></th>
 			</tr>
         </thead>
         <tbody>
@@ -156,20 +155,9 @@
 					<td>${map['RES_U_NAME'] }</td>
 					<td style="text-aglin:right">${map['RES_DRV_NAME'] }</td>
 					<td style="text-aglin:left">${map['RES_DRV_TEL1'] }-${map['RES_DRV_TEL2'] }-${map['RES_DRV_TEL3'] }</td>
-					<c:if test="${map['PAY_CONDITION'] == 'paid' }">
-		        		<td class="line">결제완료</td>
-		        	</c:if>
-		        	<c:if test="${map['PAY_CONDITION'] == 'ready' }">
-		        		<td class="line">미결제</td>
-		        	</c:if>
-		        	<c:if test="${map['PAY_CONDITION'] == 'cancelled' }">
-		        		<td class="line">결제취소</td>
-		        	</c:if>
-		        	<c:if test="${map['PAY_CONDITION'] == 'failed' }">
-		        		<td class="line">결제실패</td>
-		        	</c:if>	
 		        	<td><button>삭제</button></td>		
 				</tr>
+				<c:set var="u" value="${u+1 }" />
 		 	<!-- 반복끝 --> 
 	        </c:forEach>
         </c:if>
