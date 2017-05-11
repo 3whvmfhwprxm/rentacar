@@ -11,10 +11,20 @@
 	
 	<insert id="insertCarModel" parameterType="CarVO">
 		insert into car(car_code, car_name, car_inc, car_size,
-			car_trans, car_type, car_img)
+			car_trans, car_type, car_img, car_img2, car_img3)
 		values(#{carCode}, #{carName},#{carInc}, #{carSize},
-			#{carTrans}, #{carType}, #{carImg})
+			#{carTrans}, #{carType}, #{carImg}, #{carImg2}, #{carImg3})
 	</insert>
+	
+	<update id="updateCarModel" parameterType="CarVO">
+		update car
+		set 
+	    	car_code=#{carCode}, car_name=#{carName},
+	    	car_inc=#{carInc}, car_size=#{carSize},
+	    	car_trans=#{carTrans}, car_type=#{carType},
+	    	car_img=#{carImg}, car_img2=#{carImg2}, car_img3=#{carImg3}
+		where car_code=#{carCode}
+	</update>
 	
 	<select id="selectAllCarModel" resultType="CarVO"
 		parameterType="SearchVO">
@@ -46,16 +56,6 @@
 		select*from car 
 		where car_code=#{carCode}
 	</select>
-
-	<update id="updateCarModel" parameterType="CarVO">
-		update car
-		set 
-	    	car_code=#{carCode}, car_name=#{carName},
-	    	car_inc=#{carInc}, car_size=#{carSize},
-	    	car_trans=#{carTrans}, car_type=#{carType},
-	    	car_img=#{carImg}
-		where car_code=#{carCode}
-	</update>
 
 	<select id="selectPwdByAdminId" resultType="String" parameterType="String">
 		select admin_pwd from rent_admin

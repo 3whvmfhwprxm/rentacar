@@ -1,6 +1,10 @@
 package com.third.rent.admin_CarModel.controller;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +21,7 @@ import com.third.rent.admin_Company.controller.Admin_CompanyController;
 import com.third.rent.car.model.CarVO;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
+import com.third.rent.common.adminCarImagesUpload;
 import com.third.rent.common.admin_Utility;
 
 @Controller
@@ -68,6 +73,35 @@ public class Admin_CarModelController {
 	}
 	
 	@RequestMapping(value="/carModel/modelRegister.do", method=RequestMethod.POST)
+	public String companyRegister_post(@ModelAttribute CarVO carVo, 
+			HttpServletRequest request, Model model) throws IOException{
+		logger.info("차량등록 처리, 파라미터 carVo={}", carVo);
+		
+		adminCarImagesUpload carImgUpload = new adminCarImagesUpload();
+		List<Map<String, Object>> imgList = carImgUpload.carImgUpload(request, 2);
+
+		
+		carVo.setCarImg(imgList.get(0).get("carImg").toString());
+		carVo.setCarImg2(imgList.get(1).get("carImg2").toString());
+		carVo.setCarImg3(imgList.get(2).get("carImg3").toString());
+		
+		int cnt = adminCarModelService.insertCarModel(carVo);
+		String msg="", url="";
+		if(cnt>0){
+			msg="차량등록 성공";
+			url="/administrator/carModel/modelList.do";
+		}else{
+			msg="차량등록 실패";
+			url="/administrator/carModel/modelRegister.do";
+		}
+		
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
+	/*@RequestMapping(value="/carModel/modelRegister.do", method=RequestMethod.POST)
 	public String companyRegister_post(@ModelAttribute CarVO carVo, Model model){
 		logger.info("차량등록 처리, 파라미터 carVo={}", carVo);
 
@@ -85,7 +119,7 @@ public class Admin_CarModelController {
 		model.addAttribute("url", url);
 		
 		return "common/message";
-	}
+	}*/
 	
 	@RequestMapping(value="/carModel/modelEdit.do", method=RequestMethod.GET)
 	public String modelEdit_get(@RequestParam String carCode,

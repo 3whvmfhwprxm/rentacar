@@ -88,10 +88,26 @@
 		</div>
 
 		<div class="form-group">
+			<label for="userBirth" class="col-sm-2 control-label"> 생일 </label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="userBirth"
+					id="userBirth" value="${userVo.userBirth}">
+			</div>
+		</div>
+
+		<div class="form-group">
 			<label for="userAddress" class="col-sm-2 control-label"> 주소 </label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="userAddress"
 					id="userAddress" value="${userVo.userAddress}">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="userGender" class="col-sm-2 control-label"> 성별 </label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="userGender"
+					id="userGender" value="${userVo.userGender}">
 			</div>
 		</div>
 

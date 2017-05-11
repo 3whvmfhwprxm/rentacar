@@ -31,6 +31,57 @@
 				return false;
 			}
 		});
+		
+		$("#carImg").change(function(str){
+			if( $("#carImg").val() != "" ){
+				var ext = $('#carImg').val().split('.').pop().toLowerCase();
+				     if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+						 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+						 $("#carImg").val("");
+						 return;
+				     } else {
+			            file = $('#carImg').prop("files")[0];
+			            blobURL = window.URL.createObjectURL(file);
+			            $('#image_preview1 img').attr('src', blobURL);
+			            $('#image_preview1').slideDown();
+				     }
+			 }
+
+		});
+		
+		$("#carImg2").change(function(str){
+			if( $("#carImg2").val() != "" ){
+				var ext = $('#carImg2').val().split('.').pop().toLowerCase();
+				     if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+						 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+						 $("#carImg2").val("");
+						 return;
+				     } else {
+			            file = $('#carImg2').prop("files")[0];
+			            blobURL = window.URL.createObjectURL(file);
+			            $('#image_preview2 img').attr('src', blobURL);
+			            $('#image_preview2').slideDown();
+				     }
+			 }
+
+		});
+		
+		$("#carImg3").change(function(str){
+			if( $("#carImg3").val() != "" ){
+				var ext = $('#carImg3').val().split('.').pop().toLowerCase();
+				     if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+						 alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+						 $("#carImg3").val("");
+						 return;
+				     } else {
+			            file = $('#carImg3').prop("files")[0];
+			            blobURL = window.URL.createObjectURL(file);
+			            $('#image_preview3 img').attr('src', blobURL);
+			            $('#image_preview3').slideDown();
+				     }
+			 }
+
+		});
 	});
 </script>
 
@@ -112,12 +163,39 @@
 		</div>
 
 		<div class="form-group">
-			<label for="carImg" class="col-sm-2 control-label"> 차량 이미지 </label>
+			<label for="carImg" class="col-sm-2 control-label"> 차량 이미지1 </label>
 			<div class="col-sm-2">
-				<input type="file" id="carImg" name="carImg" placeholder="차량 이미지">
+				<input type="file" id="carImg" name="carImg" placeholder="차량 이미지1">
 			</div>
 		</div>
-
+		
+		<div class="form-group">
+			<label for="carImg2" class="col-sm-2 control-label"> 차량 이미지2 </label>
+			<div class="col-sm-2">
+				<input type="file" id="carImg2" name="carImg2" placeholder="차량 이미지2">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="carImg3" class="col-sm-2 control-label"> 차량 이미지3 </label>
+			<div class="col-sm-2">
+				<input type="file" id="carImg3" name="carImg3" placeholder="차량 이미지3">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="carImage" class="col-sm-2 control-label"></label>
+			<div id="image_preview1" class="col-sm-1">
+				<img id="carImage" src="#" style="width: 100px; height: 100px;" />
+			</div>
+			<div id="image_preview2" class="col-sm-1">
+				<img id="carImage" src="#" style="width: 100px; height: 100px;"/>
+			</div>
+			<div id="image_preview3" class="col-sm-1">
+				<img id="carImage" src="#" style="width: 100px; height: 100px;"/>
+			</div>
+		</div>
+		
 		<div class=form-group>
 			<label class="col-sm-2 control-label"></label>
 			<div class="col-sm-8">
