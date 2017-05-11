@@ -202,7 +202,9 @@ th {
 																</div>
 																<div class="modal-footer">
 																	<button type="button" class="btn btn-default"
-																		data-dismiss="modal">Close</button>
+																		data-dismiss="modal">
+																		<i class="fa fa-times" aria-hidden="true"></i> 닫기
+																	</button>
 																</div>
 															</div>
 														</div>

@@ -196,12 +196,7 @@ th {
 																	<a
 																		href='<c:url value="/administrator/user/userEdit.do?userId=${vo.userId}" />'>
 																		<button type="button" class="btn btn-default">
-																			<i class="fa fa-pencil-square-o"></i>수정
-																		</button>
-																	</a> <a
-																		href='<c:url value="/administrator/user/userWithdraw.do?userId=${vo.userId}" />'>
-																		<button type="button" class="btn btn-default">
-																			<i class="fa fa-times"></i>탈퇴
+																			<i class="fa fa-pencil-square-o"></i> 수정
 																		</button>
 																	</a>
 																</div>

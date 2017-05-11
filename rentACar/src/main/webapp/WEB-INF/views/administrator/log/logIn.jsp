@@ -38,14 +38,14 @@
             	<form name="frmLogin" id="frmLogin" method="post"
             		action='<c:url value="/administrator/log/logIn.do" />'>
                     <fieldset>
-                        <legend>Sign In</legend>
+                        <legend>로그인</legend>
                         <div class="form-group">
-                            <label for="Admin_Id">Admin_Id</label>
+                            <label for="Admin_Id">아이디</label>
                             <input type="text" id="Admin_Id" name="Admin_Id" class="form-control"
                             	value="${cookie.ck_admin_Id.value}" placeholder="Admin_Id" />
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Password</label>
+                            <label for="pwd">비밀번호</label>
                             <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Password" />
                         </div>
                         <div class="input-group">
@@ -54,7 +54,7 @@
                               <input type="checkbox" id="chkId" name="chkSaveId"
                               	<c:if test="${!empty cookie.ck_admin_Id}">
 									checked="checked"
-								</c:if>> Remember me
+								</c:if>> 아이디 저장
                             </label>
                           </div>
                         </div>

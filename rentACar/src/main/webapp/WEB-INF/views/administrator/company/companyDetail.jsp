@@ -65,11 +65,6 @@
 							type="button" class="btn btn-default"> <i
 							class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
 						</a>
-						<a href='<c:url value="/administrator/company/companyWithdraw.do?comId=${companyVo.comId}" />'
-							data-original-title="withdraw this user" data-toggle="tooltip"
-							type="button" class="btn btn-default"> <i 
-							class="fa fa-times" aria-hidden="true"></i>탈퇴
-						</a>
 					</div>
 				</div>
 				

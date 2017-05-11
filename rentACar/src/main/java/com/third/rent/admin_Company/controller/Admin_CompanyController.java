@@ -239,48 +239,6 @@ public class Admin_CompanyController {
 		return "common/message";
 	}
 	
-	@RequestMapping(value="/company/companyWithdraw.do", method=RequestMethod.GET)
-	public String companyWithdraw_get(){
-		//1.
-		logger.info("삭제화면 보여주기");
-		
-		return "administrator/company/companyWithdraw";
-	}
-	
-	@RequestMapping(value="/company/companyWithdraw.do", method=RequestMethod.POST)
-	public String companyWithdraw_post(@RequestParam String comId, @RequestParam String pwd, 
-			HttpSession session, Model model){
-
-		logger.info("삭제처리시 비밀번호  매개변수 comId={}, pwd={}", comId, pwd);
-		
-		String Admin_Id = (String)session.getAttribute("Admin_Id");
-		
-		int result = adminCompanyService.loginCheck(Admin_Id, pwd);
-		logger.info("result={}", result);
-		
-		String msg="", url="/administrator/company/companyWithdraw.do";
-		if(result==Admin_CompanyService.LOGIN_OK){
-			int outResult = adminCompanyService.withdrawCompany(comId);
-			logger.info("outResult={}", outResult);
-			
-			if(outResult>0){
-				msg="삭제 처리 성공";
-				url="/administrator/company/companyOutList.do";	
-			}else{
-				msg="삭제 처리 실패";
-			}
-		}else if(result==Admin_CompanyService.PWD_DISAGREE){
-			msg="비밀번호를 확인해주세요";
-		}else{
-			msg="비밀번호 체크 에러발생";
-		}
-		
-		model.addAttribute("msg", msg);
-		model.addAttribute("url", url);
-		
-		return "common/message";
-	}
-	
 	@RequestMapping("/company/companyCar.do")
 	public String list(@ModelAttribute SearchVO searchVo, @RequestParam String comId,	
 			Model model){

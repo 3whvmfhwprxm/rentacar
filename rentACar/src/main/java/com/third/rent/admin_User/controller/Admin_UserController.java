@@ -86,48 +86,6 @@ public class Admin_UserController {
 		return "administrator/user/userOutList";
 	}
 	
-	@RequestMapping(value="/user/userWithdraw.do", method=RequestMethod.GET)
-	public String userWithdraw_get(){
-		//1.
-		logger.info("삭제화면 보여주기");
-		
-		return "administrator/user/userWithdraw";
-	}
-	
-	@RequestMapping(value="/user/userWithdraw.do", method=RequestMethod.POST)
-	public String userWithdraw_post(@RequestParam String userId, @RequestParam String pwd, 
-			HttpSession session, Model model){
-		logger.info("삭제처리시 비밀번호  매개변수 userId={}, pwd={}", userId, pwd);
-		
-		String Admin_Id = (String)session.getAttribute("Admin_Id");
-		logger.info("회원탈퇴 처리, 파라미터 Admin_Id={}", Admin_Id);
-		
-		int result = adminUserService.loginCheck(Admin_Id, pwd);
-		logger.info("result={}", result);
-		
-		String msg="", url="/administrator/user/userWithdraw.do";
-		if(result==Admin_UserService.LOGIN_OK){
-			int outResult = adminUserService.userWithdraw(userId);
-			logger.info("회원탈퇴 결과, outResult={}", outResult);
-			
-			if(outResult>0){
-				msg="탈퇴 처리 성공";
-				url="/administrator/user/userOutList.do";	
-			}else{
-				msg="탈퇴 처리 실패";
-			}
-		}else if(result==Admin_UserService.PWD_DISAGREE){
-			msg="비밀번호를 확인해주세요";
-		}else{
-			msg="비밀번호 체크 에러발생";
-		}
-		
-		model.addAttribute("msg", msg);
-		model.addAttribute("url", url);
-		
-		return "common/message";
-	}
-	
 	@RequestMapping(value="/user/userMultiWithdraw.do", method=RequestMethod.POST)
 	public String companyMultiWithdraw_List(@ModelAttribute UserListVO userListVo, Model model){
 		logger.info("선택한 회원 목록 탈퇴 파라미터 userListVo={}", userListVo);
@@ -138,9 +96,9 @@ public class Admin_UserController {
 		
 		String msg="", url="/administrator/user/userInList.do";
 		if(cnt>0){
-			msg="선택한 업체가 탈퇴처리 되었습니다.";
+			msg="선택한 회원이 탈퇴처리 되었습니다.";
 		}else{
-			msg="선택한 업체 탈퇴처리 중 에러가 발생했습니다.";
+			msg="선택한 회원 탈퇴처리 중 에러가 발생했습니다.";
 		}
 		
 		model.addAttribute("msg", msg);
@@ -159,9 +117,9 @@ public class Admin_UserController {
 		
 		String msg="", url="/administrator/user/userOutList.do";
 		if(cnt>0){
-			msg="선택한 업체가 재등록처리 되었습니다.";
+			msg="선택한 회원이 재등록처리 되었습니다.";
 		}else{
-			msg="선택한 업체 재등록처리 중 에러가 발생했습니다.";
+			msg="선택한 회원 재등록처리 중 에러가 발생했습니다.";
 		}
 		
 		model.addAttribute("msg", msg);
