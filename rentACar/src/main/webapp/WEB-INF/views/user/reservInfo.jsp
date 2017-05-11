@@ -16,8 +16,7 @@ tbody{
 	
 }
 .text-right {
-    text-align: left;
-    width: 100px;
+    text-align: right;
 }
 select{
 	border-radius: 5px;

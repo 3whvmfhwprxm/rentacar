@@ -44,17 +44,19 @@ $(document).ready(function () {
 <body>
     <header>
         <div class="center-block text-center">
-            <h3 class="h3"><img src="<c:url value='/companyLogo/rentZoa_logo.png'/>">업체관리자</h3>
-        </div>
-        <nav class="text-right1">
-	        <c:if test="${!empty sessionScope.comId }">
+            <h3 class="h3"><img class="titleimg" src="<c:url value='/user_img/indexlogo.png'/>">업체 관리모드
+             <c:if test="${!empty sessionScope.comId }">
 				<span class="navbar-brand1">${sessionScope.comName } 님 접속중 </span>
-				<span class="navbar-brand1"><a href="<c:url value='/login_company/com_logout.do'/>">로그아웃</a></span>
+				<span class="navbar-brand2"><a href="<c:url value='/login_company/com_logout.do'/>">로그아웃</a></span>
 			</c:if>
 			<c:if test="${empty sessionScope.comId }">
 				<span class="navbar-brand1"><a href="${pageContext.request.contextPath }/login_company/com_login.do">로그인</a></span>
 			</c:if>
-		</nav>
+            </h3>
+        </div>
+       
+	       
+		
     </header>
     
     <nav class="navbar navbar-default mega-nav">

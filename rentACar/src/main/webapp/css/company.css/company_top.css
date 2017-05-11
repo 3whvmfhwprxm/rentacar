@@ -17,9 +17,23 @@
 // 페이지의 높이를 브라우저 높이로 선언
 html,body { height: 100%; margin: 0; padding: 0; }
 
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.h3{	
+	margin-left: 400px;
+	
+}
+.text-center {
+    text-align: left;
+}
+
 .titleimg{
 	width: 200px;
-	height: 100px; 
+	height: 100px;
+	margin-right: 20px; 
 }
 
 .text-right1{
@@ -27,8 +41,13 @@ html,body { height: 100%; margin: 0; padding: 0; }
 }
 .navbar-brand1{
     height: 50px;
-    padding: 15px 0px 10px 15px;
-    font-size: 18px;
+    padding: 10px 0px 20px 15px;
+    font-size: 30px;
+    margin-left: 400px;
+    margin-right: 20px;
+}
+.navbar-brand2{
+	font-size: 30px;
 }
 .container1{
 	font-family: 'Nanum Gothic Coding'; font-size: 15px;
