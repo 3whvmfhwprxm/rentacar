@@ -28,7 +28,7 @@ public class adminImagesUpload {
 
 	public static final int FILE_UPLOAD = 1;
 	public static final int companyLogo_UPLOAD = 2;
-	public static final int carImg_UPLOAD = 2;
+	public static final int carImg_UPLOAD = 3;
 		
 	private static final Logger logger
 		= LoggerFactory.getLogger(adminImagesUpload.class);
@@ -117,7 +117,7 @@ public class adminImagesUpload {
   				String originCarImg = tempFile.getOriginalFilename();
   				String carImg = getUniqueFileName(originCarImg);
  				
-  				String savePath = getLogoUploadPath(request, uploadWhat); 
+  				String savePath = getcarImgUploadPath(request, uploadWhat); 
   				File file = new File(savePath, carImg);
   				try {
   					if(!file.exists()){
@@ -148,16 +148,16 @@ public class adminImagesUpload {
 		String upPath = "", dir = "";
 		if(type.equals("test")){
 			if(uploadWhat==FILE_UPLOAD){
-				upPath = fileProperties.getProperty("companyLogoUpload.upload.path.test");
-			}else if(uploadWhat==companyLogo_UPLOAD){
-				upPath = "D:\\rentCar\\rentacar\\rentACar\\src\\main\\webapp\\carImages_upload";
+				upPath = fileProperties.getProperty("carImagesUpload.upload.path.test");
+			}else if(uploadWhat==carImg_UPLOAD){
+				upPath = "D:\\rentCar\\rentacar\\rentACar\\src\\main\\webapp\\carImages";
 			}
 			
 		}else{
 			if(uploadWhat==FILE_UPLOAD){
-				dir = fileProperties.getProperty("companyLogoUpload.upload.path");				
-			}else if(uploadWhat==companyLogo_UPLOAD){
-				dir = fileProperties.getProperty("companyLogo.upload.path");
+				dir = fileProperties.getProperty("carImagesUpload.upload.path");				
+			}else if(uploadWhat==carImg_UPLOAD){
+				dir = fileProperties.getProperty("carImages.upload.path");
 			}
 			upPath = request.getSession().getServletContext().getRealPath(dir);			
 		}

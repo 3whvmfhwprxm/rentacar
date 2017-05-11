@@ -89,6 +89,14 @@
 <div class="bodyClass">
 	<form class="form-horizontal" id="frm1" name="frm1" method="post" enctype="multipart/form-data"
 		action='<c:url value="/administrator/carModel/modelEdit.do" />'>
+		
+		<input type="text" name="oldFileName1" 
+           	value="${carVo.carImg}" />
+        <input type="text" name="oldFileName2" 
+         	value="${carVo.carImg2}" />    	
+       	<input type="text" name="oldFileName3" 
+       		value="${carVo.carImg3}" />
+		
 		<legend>차량모델 수정</legend>
 		<div class="form-group">
 			<label for="carCode" class="col-sm-2 control-label"> 모델코드 </label>
@@ -141,21 +149,21 @@
 		<div class="form-group">
 			<label for="carImg" class="col-sm-2 control-label"> 차량 이미지1 </label>
 			<div class="col-sm-2">
-				<input type="file" id="carImg" name="carImg" placeholder="차량 이미지1">
+				<input type="file" id="carImg" name="carimg" placeholder="차량 이미지1">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="carImg2" class="col-sm-2 control-label"> 차량 이미지2 </label>
 			<div class="col-sm-2">
-				<input type="file" id="carImg2" name="carImg2" placeholder="차량 이미지2">
+				<input type="file" id="carImg2" name="carimg2" placeholder="차량 이미지2">
 			</div>
 		</div>
 		
 		<div class="form-group">
 			<label for="carImg3" class="col-sm-2 control-label"> 차량 이미지3 </label>
 			<div class="col-sm-2">
-				<input type="file" id="carImg3" name="carImg3" placeholder="차량 이미지3">
+				<input type="file" id="carImg3" name="carimg3" placeholder="차량 이미지3">
 			</div>
 		</div>
 		

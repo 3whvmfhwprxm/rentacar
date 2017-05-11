@@ -10,20 +10,58 @@
 	</sql>
 	
 	<insert id="insertCarModel" parameterType="CarVO">
-		insert into car(car_code, car_name, car_inc, car_size,
-			car_trans, car_type, car_img, car_img2, car_img3)
-		values(#{carCode}, #{carName}, #{carInc}, #{carSize},
-			#{carTrans}, #{carType}, #{carImg}, #{carImg2}, #{carImg3})
+		<choose>
+	        <when test="carImg!=null and carImg2==null and carImg3==null">
+		        insert into car(car_code, car_name, car_inc, car_size,
+					car_trans, car_type, car_img)
+				values(#{carCode}, #{carName}, #{carInc}, #{carSize},
+					#{carTrans}, #{carType}, #{carImg})
+			</when>
+	        <when test="carImg!=null and carImg2!=null and carImg3==null">
+		        insert into car(car_code, car_name, car_inc, car_size,
+					car_trans, car_type, car_img, car_img2)
+				values(#{carCode}, #{carName}, #{carInc}, #{carSize},
+					#{carTrans}, #{carType}, #{carImg}, #{carImg2})
+			</when>
+      		<when test="carImg!=null and carImg2!=null and carImg3!=null">
+		        insert into car(car_code, car_name, car_inc, car_size,
+					car_trans, car_type, car_img, car_img2, car_img3)
+				values(#{carCode}, #{carName}, #{carInc}, #{carSize},
+					#{carTrans}, #{carType}, #{carImg}, #{carImg2}, #{carImg3})
+			</when>
+      </choose> 
 	</insert>
 	
 	<update id="updateCarModel" parameterType="CarVO">
-		update car
-		set 
-	    	car_code=#{carCode}, car_name=#{carName},
-	    	car_inc=#{carInc}, car_size=#{carSize},
-	    	car_trans=#{carTrans}, car_type=#{carType},
-	    	car_img=#{carImg}, car_img2=#{carImg2}, car_img3=#{carImg3}
-		where car_code=#{carCode}
+		<choose>
+	        <when test="carImg!=null and carImg2==null and carImg3==null">
+	        	update car
+				set 
+		    	    car_code=#{carCode}, car_name=#{carName},
+		    	    car_inc=#{carInc}, car_size=#{carSize},
+		    	    car_trans=#{carTrans}, car_type=#{carType},
+		    	    car_img=#{carImg}
+				where car_code=#{carCode}
+			</when>
+	        <when test="carImg!=null and carImg2!=null and carImg3==null">
+			    update car
+				set 
+				    car_code=#{carCode}, car_name=#{carName},
+				    car_inc=#{carInc}, car_size=#{carSize},
+				    car_trans=#{carTrans}, car_type=#{carType},
+				    car_img=#{carImg}, car_img2=#{carImg2}
+				where car_code=#{carCode}
+			</when>
+      		<when test="carImg!=null and carImg2!=null and carImg3!=null">
+			    update car
+				set 
+				    car_code=#{carCode}, car_name=#{carName},
+				    car_inc=#{carInc}, car_size=#{carSize},
+				    car_trans=#{carTrans}, car_type=#{carType},
+				    car_img=#{carImg}, car_img2=#{carImg2}, car_img3=#{carImg3}
+				where car_code=#{carCode}
+			</when>
+      </choose>
 	</update>
 	
 	<select id="selectAllCarModel" resultType="CarVO"

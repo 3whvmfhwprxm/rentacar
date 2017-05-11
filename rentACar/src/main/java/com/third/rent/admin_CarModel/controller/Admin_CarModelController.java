@@ -1,5 +1,6 @@
 package com.third.rent.admin_CarModel.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -131,10 +132,73 @@ public class Admin_CarModelController {
 	}
 	
 	@RequestMapping(value="/carModel/modelEdit.do", method=RequestMethod.POST)
-	public String modelEdit_post(@ModelAttribute CarVO carVo, Model model){
+	public String modelEdit_post(@ModelAttribute CarVO carVo, @RequestParam String oldFileName1, 
+			@RequestParam String oldFileName2, @RequestParam String oldFileName3, 
+			HttpServletRequest request, Model model){
 		logger.info("차량 수정 처리, 파라미터 carVo={}", carVo);
 		
-
+		List<Map<String, Object>> carImgList
+			= adminImgUpload.carImgUpload(request, adminImagesUpload.carImg_UPLOAD);
+		
+		/*if(carImgList.size()==1){
+			carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+		}else if(carImgList.size()==2){
+			carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+			carVo.setCarImg2(carImgList.get(1).get("carImg").toString());
+		}else if(carImgList.size()==3){
+			carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+			carVo.setCarImg2(carImgList.get(1).get("carImg").toString());
+			carVo.setCarImg3(carImgList.get(2).get("carImg").toString());
+		}*/
+		
+		/*if(!carImgList.isEmpty()){
+			for(Map<String, Object> map : carImgList){
+				if(carImgList.size()==1){
+					carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+				}else if(carImgList.size()==2){
+					carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+					carVo.setCarImg2(carImgList.get(1).get("carImg").toString());
+				}else if(carImgList.size()==3){
+					carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+					carVo.setCarImg2(carImgList.get(1).get("carImg").toString());
+					carVo.setCarImg3(carImgList.get(2).get("carImg").toString());
+				}
+			}*/
+			
+			if(carImgList.size()==1){
+				carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+			}else if(carImgList.size()==2){
+				carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+				carVo.setCarImg2(carImgList.get(1).get("carImg").toString());
+			}else if(carImgList.size()==3){
+				carVo.setCarImg(carImgList.get(0).get("carImg").toString());
+				carVo.setCarImg2(carImgList.get(1).get("carImg").toString());
+				carVo.setCarImg3(carImgList.get(2).get("carImg").toString());
+			}
+			
+			if(oldFileName1!=null && !oldFileName1.isEmpty()){
+				String upPath = adminImgUpload.getcarImgUploadPath(request, adminImagesUpload.FILE_UPLOAD);
+				File oldFile = new File(upPath, oldFileName1);
+				if(oldFile.exists()){
+					boolean bool = oldFile.delete();
+					logger.info("기존 파일 삭제 여부:{}", bool);
+				}
+			}else if(oldFileName2!=null && !oldFileName2.isEmpty()){
+				String upPath = adminImgUpload.getcarImgUploadPath(request, adminImagesUpload.FILE_UPLOAD);
+				File oldFile = new File(upPath, oldFileName2);
+				if(oldFile.exists()){
+					boolean bool = oldFile.delete();
+					logger.info("기존 파일 삭제 여부:{}", bool);
+				}
+			}else if(oldFileName3!=null && !oldFileName3.isEmpty()){
+				String upPath = adminImgUpload.getcarImgUploadPath(request, adminImagesUpload.FILE_UPLOAD);
+				File oldFile = new File(upPath, oldFileName3);
+				if(oldFile.exists()){
+					boolean bool = oldFile.delete();
+					logger.info("기존 파일 삭제 여부:{}", bool);
+				}
+			}
+		
 		int cnt = adminCarModelService.updateCarModel(carVo);
 		logger.info("차량 수정 결과 cnt={}", cnt);
 		
