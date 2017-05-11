@@ -52,6 +52,15 @@
 				    car_img=#{carImg}, car_img2=#{carImg2}
 				where car_code=#{carCode}
 			</when>
+			<when test="carImg!=null and carImg2==null and carImg3!=null">
+			    update car
+				set 
+				    car_code=#{carCode}, car_name=#{carName},
+				    car_inc=#{carInc}, car_size=#{carSize},
+				    car_trans=#{carTrans}, car_type=#{carType},
+				    car_img=#{carImg}, car_img2=#{carImg3}
+				where car_code=#{carCode}
+			</when>
       		<when test="carImg!=null and carImg2!=null and carImg3!=null">
 			    update car
 				set 
