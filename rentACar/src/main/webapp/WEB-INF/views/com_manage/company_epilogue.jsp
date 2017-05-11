@@ -28,7 +28,7 @@
 		**<strong>DB(데이터베이스)</strong> 관리는 관리자에게만 주어지는 기능이나 임의 삭제는 불가하며, 요청시 사 내 규정에 따라 처리됩니다.
     	</code>
 		</pre>
-            <ul class="nav navbar-nav menu-list">
+           <!--  <ul class="nav navbar-nav menu-list">
             	 <li class="dropdown list-category">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                        <i class="fa fa-navicon"></i> 정렬기준 <i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -37,6 +37,7 @@
                     	<li><a href="javascript:fncSort('date')">최근등록순</a></li>
                     </ul>
                 </li>
+            </ul> -->
         <br><br>
         <!--table-->
        <table class="table table-striped">

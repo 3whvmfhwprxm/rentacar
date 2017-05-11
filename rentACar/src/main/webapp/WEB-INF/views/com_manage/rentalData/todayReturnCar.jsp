@@ -232,6 +232,6 @@
 
 
 
-<%@ include file="../../inc_company/company_bottom.jsp" %>
+<%@ include file="../../inc_company/company_bottom2.jsp" %>
 
 
