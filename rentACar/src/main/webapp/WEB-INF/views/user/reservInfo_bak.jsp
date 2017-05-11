@@ -7,37 +7,13 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=efc3625556d3948610f5295a4a5e8968&libraries=services"></script>
 <style>
-
-.col-sm-12{
-	margin-top: 50px;
-}
-tbody{
-	margin: 10px;
-	
-}
-.text-right {
-    text-align: left;
-    width: 100px;
-}
-select{
-	border-radius: 5px;
-	height: 35px;
-	width: 80px;
-	margin-bottom: 7px;
-}
-input{
-	border-radius: 5px;
-	margin-bottom: 7px;
-	width: 80px;
-	
-}
-.div1{
-	margin-top:50px;
-	text-align: center;
-}
 #reservUser{
 	text-align: center;
 }
+#userLeft{
+	
+}
+
 </style>
 <script type="text/javascript">
 	$().ready(function(){
@@ -264,7 +240,6 @@ input{
 				로그인 하시면 예약하실수 있습니다.
 			</c:if>			
 			<c:if test="${!empty uvo}">
-			<div class="div1">
 			<div id="reservUser">
 				<div id="userLeft">
 					<h4>예약자 정보 입력</h4>
@@ -356,7 +331,6 @@ input{
 						</div>
 					</div>					
 				
-			</div>
 			</div>
 			<!-- 예약자 정보 입력 끝 -->
 			</c:if>

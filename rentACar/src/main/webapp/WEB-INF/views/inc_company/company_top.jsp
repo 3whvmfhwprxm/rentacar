@@ -44,7 +44,7 @@ $(document).ready(function () {
 <body>
     <header>
         <div class="center-block text-center">
-            <h3 class="h3">업체관리자</h3>
+            <h3 class="h3"><img src="<c:url value='/companyLogo/rentZoa_logo.png'/>">업체관리자</h3>
         </div>
         <nav class="text-right1">
 	        <c:if test="${!empty sessionScope.comId }">

@@ -17,6 +17,11 @@
 // 페이지의 높이를 브라우저 높이로 선언
 html,body { height: 100%; margin: 0; padding: 0; }
 
+.titleimg{
+	width: 200px;
+	height: 100px; 
+}
+
 .text-right1{
 	padding-left: 80%;
 }
