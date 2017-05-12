@@ -140,7 +140,7 @@
 			<td><fmt:formatDate value="${map['RESERV_START_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
 			<td><fmt:formatDate value="${map['RESERV_END_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
 			<c:if test="${map['REMAININGDAY'] < 0}">
-				<td style="color:red">종료</td>
+				<td style="color:red">대여종료</td>
 			</c:if>
 			<c:if test="${map['REMAININGDAY'] > 0}">
 				<td>${map['REMAININGDAY'] } 일</td>
@@ -255,15 +255,7 @@
 						<option value="res_u_name"
 							<c:if test="${'res_u_name'==param.searchCondition}">
 		           		selected            	
-		           	</c:if>>예약자이름</option>
-		           	<option value="reserv_start_date"
-							<c:if test="${'reserv_start_date'==param.searchCondition}">
-		           		selected            	
-		           	</c:if>>대여일</option>
-		           	<option value="reserv_end_date"
-							<c:if test="${'reserv_end_date'==param.searchCondition}">
-		           		selected            	
-		           	</c:if>>반납일</option>
+		           	</c:if>>예약자이름</option>		        
 					</select> <input type="text" name="searchKeyword" title="검색어 입력"
 						value="${param.searchKeyword}"> <input type="submit"
 						value="검색" class="btn btn-primary btn-sm btn3d">

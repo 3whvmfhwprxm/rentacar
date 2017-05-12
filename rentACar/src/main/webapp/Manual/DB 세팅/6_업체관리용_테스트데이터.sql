@@ -44,7 +44,7 @@ insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
 values('T5000005', '010','2200','2200', to_date('2017-05-12 17:00','yyyy/mm/dd hh24:mi'), 
-to_date('2017-05-12 11:00','yyyy/mm/dd hh24:mi'), '서울허5555', '자차보험', '2017-05-01' ,'jin1');
+to_date('2017-05-12 11:00','yyyy/mm/dd hh24:mi'), '01허5555', '자차보험', '2017-05-01' ,'jin1');
 
 insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
@@ -172,7 +172,22 @@ update companycaroption
 set ccar_status = 'HOLD'
 where ccar_REntalcount = 1;
 
+update companycaroption
+set ccar_status = 'RENT'
+where ccar_car_id= '02허2000';
+
+update companycaroption
+set ccar_status = 'RENT'
+where ccar_car_id= '02허3000';
+
+update companycaroption
+set ccar_status = 'RENT'
+where ccar_car_id= '01허1111';
+
 select * from companycaroption;
+select * from com_reservView;
+
+
 
 desc com_reservview;
 
