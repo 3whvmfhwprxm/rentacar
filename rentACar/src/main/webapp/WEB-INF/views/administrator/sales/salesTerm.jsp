@@ -34,7 +34,7 @@
 		
 		<input type="submit" value="검색">	
 	</form>
-	
+
 	<div class="divSales">
 		<table class="table table-bordered" summary="기간별 매출액에 관한 표">
 			<colgroup>

@@ -38,10 +38,21 @@ public class Admin_SalesController {
 		logger.info("일별 매출 파라미터 dvo={}", dvo);
 		
 		List<Map<String, Object>> slist=null;
-		
+		List<String> listPay = new ArrayList<String>();
+		List<String> listMonth = new ArrayList<String>();
 		if(dvo.getYear()!=null && !dvo.getYear().isEmpty()){
 			slist=sService.selectSalesByDate(dvo);
 			logger.info("일별 매출 조회 결과는 slist.size()={}", slist.size());
+			
+			for(int i = 0 ; i < slist.size() ; i++){
+				Map<String, Object> bean = slist.get(i);
+				listPay.add(bean.get("TOTALPAY")+"");
+				listMonth.add(bean.get("PAYDATE3")+"");
+			}
+			logger.info("월별 매출현황 listPay={}, listMonth={}", listPay, listMonth);
+			
+			model.addAttribute("listPay", listPay);
+			model.addAttribute("listMonth", listMonth);
 		}
 		
 		model.addAttribute("slist", slist);
@@ -82,10 +93,10 @@ public class Admin_SalesController {
 		logger.info("기간별 매출 파라미터 dvo={}", dvo);
 		
 		List<Map<String, Object>> slist=null;
-		
 		if(dvo.getStartDay()!=null && !dvo.getStartDay().isEmpty()){
 			slist=sService.selectSalesByTerm(dvo);
 			logger.info("기간별 매출 조회 결과는 slist.size()={}", slist.size());
+
 		}
 		
 		model.addAttribute("slist", slist);
