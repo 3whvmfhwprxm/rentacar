@@ -24,18 +24,22 @@ select{
 	width: 80px;
 	margin-bottom: 7px;
 }
-input{
+input[type=text]{
 	border-radius: 5px;
 	margin-bottom: 7px;
 	width: 80px;
-	
+}
+input[type=email]{
+	border-radius: 5px;
+	margin-bottom: 7px;
+	width: 80px;
 }
 .div1{
 	margin-top:50px;
 	text-align: center;
 }
 #reservUser{
-	text-align: center;
+	text-align: left;
 }
 </style>
 <script type="text/javascript">
@@ -143,7 +147,12 @@ input{
 	<br>
 	<form class="form-horizontal" name="insertReservInfo" id="insertReservInfo" method="post" action="<c:url value='/user/reservation.do' />">
 		<fieldset>
-			<h3>선택정보 확인</h3>
+			<h3>선택하신 모델: ${map['CAR_NAME'] }</h3>
+			<c:if test="${empty uvo}">
+				<div class="text-right">
+					<h4><span class="label label-success">로그인 하시면 예약하실수 있습니다.</span></h4>
+				</div>
+			</c:if>	
 		<!-- 선택한 기간 정보 -->
 		<div class="form-group">
 				<!-- 테스트 끝나면 hidden으로 재 설정 -->
@@ -259,14 +268,13 @@ input{
 			<br>
 			
 			<!-- 예약자 및 운전자 입력 정보 -->
-			<c:if test="${empty uvo}">
-				로그인 하시면 예약하실수 있습니다.
-			</c:if>			
+					
 			<c:if test="${!empty uvo}">
 			<div class="div1">
 			<div id="reservUser">
 				<div id="userLeft">
-					<h4>예약자 정보 입력</h4>
+					<h4><span class="label label-success">예약자 정보 입력</span></h4>
+					
 					<p>
 						<input type="radio" name="insertUserInfo" id="insertUserInfo1" checked>
 						<label for="insertUserInfo1">직접 입력</label>
@@ -302,7 +310,7 @@ input{
 				</div>
 				
 				<div id="userRight">
-					<h4>운전자 정보 입력</h4>
+					<h4><span class="label label-success">운전자 정보 입력</span></h4>
 					<p>			
 						<input type="radio" name="insertDrvInfo" id="insertDrvInfo1" checked>
 						<label for="insertDrvInfo1">직접 입력</label>
