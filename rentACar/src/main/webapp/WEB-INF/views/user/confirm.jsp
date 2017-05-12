@@ -42,7 +42,7 @@ Date CurrentDate = new Date();
                 <!-- 조회기간 include -->
     <form name="frm1" method="post" action='<c:url value="/user/confirm.do" />' >
 		<%@ include file="../inc_user/dateTerm.jsp" %>
-		<input type="submit" value="조회" style="color: black;">
+		<input class="tab-pane active" type="submit" value="조회" style="color: black;">
 		<p>
 		<b>${dateSearchVO2.startDay } ~ ${dateSearchVO2.endDay }</b> 까지의 주문내역 입니다.
 		</p>
