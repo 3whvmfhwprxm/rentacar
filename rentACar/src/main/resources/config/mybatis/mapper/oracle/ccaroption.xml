@@ -277,18 +277,19 @@
 		        select * from com_reservview
 				<![CDATA[
 				where to_char(reserv_start_date,'yyyy-MM-dd')<=to_char(sysdate,'yyyy-MM-dd')
+				and to_char(reserv_end_date,'yyyy-MM-dd') >= to_char(sysdate,'yyyy-MM-dd')
 				]]>
 				and com_id=#{companyId}
 			 	<include refid="searchWhere"></include>
 			 	 <if test="sortingKeyword != null">
 			 	 	<if test="sortingKeyword == 'carNum'">
-						order by ccar_car_id desc
+						order by ccar_car_id
 					</if>
 					<if test="sortingKeyword == 'name'">
-						 order by res_drv_name desc
+						 order by res_drv_name
 					</if>
-					<if test="sortingKeyword == 'lateCar'">
-						order by res_drv_name desc
+					<if test="sortingKeyword == 'fCar'">
+						order by reserv_end_date
 					</if>
 				</if>
 				<if test="sortingKeyword == null">
@@ -328,6 +329,7 @@
  		select car_name, car_code from car 
 	 	where car_inc = #{carInc}
  	</select>
+ 	
 </mapper>
 
 
