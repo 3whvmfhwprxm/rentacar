@@ -3,6 +3,12 @@
 
 <%@ include file="../inc_user/top.jsp" %>
 
+<%@page import="java.util.Date"%>
+<%
+Date CurrentDate = new Date();
+%>
+<fmt:formatDate var="nowDate" value="<%=CurrentDate %>" pattern="yyyy-MM-dd  hh:mm:ss" />
+
 <script type="text/javascript">
 	$().ready(function(){
 		
@@ -101,11 +107,28 @@
                         		${map['RESERV_CANCEL'] }에 예약취소
                         	</c:if>
                         </td>
-                        
                         <td style="text-align: center;">
+                        <%-- <c:choose>
+						    <c:when test="${map['RESERV_END_DATE']  <  nowDate}">
+						        <label>사용 종료</label><br>
+                        		<a href="<c:url value="/user/reviewWrite.do?reservNum=${map['RESERV_NUM']}"/>"><input type="submit" value="이용후기 작성"></a>
+						    </c:when>
+						    <c:otherwise>
+						        <label>사용중</label><br>
+						    </c:otherwise>
+						</c:choose> --%>
+							<c:if test="${map['RESERV_END_DATE']  <  nowDate}">
+						        <label>사용 종료</label><br>
+                        		<a href="<c:url value="/user/reviewWrite.do?reservNum=${map['RESERV_NUM']}"/>"><input type="submit" value="이용후기 작성"></a>
+						    </c:if>
+						    <c:if test="${map['RESERV_END_DATE']  >  nowDate}">
+						        <label>사용중</label><br>
+						    </c:if>
+                        </td>
+                        <%-- <td style="text-align: center;">
                         	<label>사용 종료</label><br>
                         	<a href="<c:url value="/user/reviewWrite.do?reservNum=${map['RESERV_NUM']}"/>"><input type="submit" value="이용후기 작성"></a>
-                        </td>
+                        </td> --%>
                     </tr>
                 	</c:forEach>
                 </tbody>
