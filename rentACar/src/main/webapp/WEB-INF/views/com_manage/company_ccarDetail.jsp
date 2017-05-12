@@ -20,7 +20,7 @@
 	}
 </script>
 <div class="container">
-    <div class="row col-md-6 col-md-offset-2 custyle">
+    <div class="row col-md-11 custyle">
     <table class="table table-striped custab">
     <legend>차량 상세 정보</legend>
     

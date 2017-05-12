@@ -177,12 +177,12 @@
 						order by remainingday
 					</if>
 					<if test="sortingKeyword == 'rvAll'">
-						order by remainingday desc
+						order by reserv_date
 					</if>
 				</if>
 				<if test="sortingKeyword == null">
 					and to_date(reserv_start_date) >= to_date(sysdate)
-					order by reserv_date desc
+					order by reserv_date
 				</if>
 		    )LIST
 		)

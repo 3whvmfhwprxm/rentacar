@@ -68,6 +68,7 @@
 		상세정보보기 버튼을 클릭하시면 해당 예약차량의 좀더 자세한 내용을 보여줍니다.
 		예약취소는 해당 차량의 예약을 취소 시키며, 취소 철회는 되지않습니다.
 		정렬기준 선택으로 리스트를 세분화 시킬수 있습니다.
+		**정렬기준 메뉴에서는 차량예약현황 전체보기를 제외 하고 모두 대여가 종료된 차량은 표시되지않습니다.
 		검색은 차량번호, 예약자명, 대여일, 반납일로 가능합니다.
     	</code>
 		</pre>
@@ -139,8 +140,13 @@
 			</c:if>
 			<td><fmt:formatDate value="${map['RESERV_START_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
 			<td><fmt:formatDate value="${map['RESERV_END_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
-			<c:if test="${map['REMAININGDAY'] < 0}">
+			<c:if test="${map['REMAININGDAY'] < 0 }">
+				<c:if test="${map['CCAR_STATUS'] == 'HOLD' }">
 				<td style="color:red">대여종료</td>
+				</c:if>
+				<c:if test="${map['CCAR_STATUS'] == 'RENT' }">
+					<td>대여중</td>
+				</c:if>
 			</c:if>
 			<c:if test="${map['REMAININGDAY'] > 0}">
 				<td>${map['REMAININGDAY'] } 일</td>
@@ -148,6 +154,7 @@
 			<c:if test="${map['REMAININGDAY'] == 0}">
 				<td style="color:blue">금일</td>
 			</c:if>
+			
 			<td><button id="bt${i.index }">열기/닫기</button></td>
 			<td><button>취소</button></td>
 		</tr>

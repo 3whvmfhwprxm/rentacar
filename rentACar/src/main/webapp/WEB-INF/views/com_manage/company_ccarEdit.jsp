@@ -31,7 +31,7 @@
 <!-- 차량 수정 하기  -->
 
 	<div class="divList container">
-	<h4>차량정보 수정 가이드</h4> 
+	<legend>차량 정보 수정</legend>
 	<pre>
 		<code>
 		     
@@ -40,12 +40,10 @@
 		    입력됩니다.</span>
     	</code>
 	</pre>
-	</div>
-<div class="divList container">
+
 		<form class="form-horizontal" id="frmCo" method="post"
 			action="<c:url value='/com_manage/company_ccarEdit.do'/>" >
 			<fieldset>
-			<legend>차량 정보 수정</legend>
 				<div class="form-group">
 					<label for="comId" class="col-sm-2 control-label">업체아이디</label>
 					<div class="col-sm-6">
@@ -56,7 +54,7 @@
 				
 				<div class="form-group">
 					<label for="ccarCarId" class="col-sm-2 control-label">차량번호</label>
-					<div class="col-sm-2">
+					<!-- <div class="col-sm-2">
 						<select class="form-control" name="area" id="area" readOnly="readonly">
 							<option>선택하세요</option>
 							<option selected>서울</option>
@@ -85,22 +83,21 @@
 							<option selected>허</option>
 							<option>호</option>
 						</select>
-					</div>
-					<div class="col-sm-2">
+					</div> -->
+					<div class="col-sm-6">
 						<input type="text" class="form-control" name="ccarCarId"
 							id="ccarCarId" placeholder="1234" value="${map['CCAR_CAR_ID'] }" readOnly="readonly">
 					</div>
 				</div>
 				
-				<div class="form-group">
+				 <div class="form-group">
 					<label for="carCode" class="col-sm-2 control-label">모델코드</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" name="carCode"
 							id="carCode" value="${map['CAR_CODE'] }" disabled="true">
-							아래 제조사car_INC, 모델명 선택car_name시 자동입력
 					</div>
 				</div>
-				<div class="form-group">
+				<%-- <div class="form-group">
 					<label for="com1" class="col-sm-2 control-label">제조사</label>
 					<div class="col-xs-2">
 						<select class="form-control" name="carInc" id="carInc">
@@ -111,7 +108,7 @@
 						</select>
 						
 					</div>
-				</div>
+				</div> 
 				<div class="form-group">
 					<label for="com2" class="col-sm-2 control-label">모델명</label>
 					<div class="col-xs-2">
@@ -124,7 +121,7 @@
 							<option value="019">019</option>
 						</select>
 					</div>
-				</div>
+				</div> --%>
 				
 	 
 				<div class="form-group">
@@ -196,7 +193,7 @@
 			</fieldset>
 		</form>
 	</div>
-
+</div>
 
 
 <%@ include file="../inc_company/company_bottom.jsp" %>

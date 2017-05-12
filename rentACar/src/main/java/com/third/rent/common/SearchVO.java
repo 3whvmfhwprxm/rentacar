@@ -12,8 +12,8 @@ public class SearchVO {
     private int recordCountPerPage;
     
     //업체 리스트 정렬용 변수, 업체 아이디 변수
-    private String sortingKeyword;
-    private String companyId;
+    private String sortingKeyword= "";
+    private String companyId= "";
     
     
     public void setSearchVO(SearchVO bean){

@@ -111,9 +111,8 @@ $(function(){
 
 	<div id="container"></div>
 	<div class="divRe">
-		<a href='<c:url value="/com_manage/company_revenueDay.do" />'>일별 매출</a> | <a
-			href='<c:url value="/com_manage/company_revenueMonth.do" />'>월별 매출</a> | <a
-			href='<c:url value="/com_manage/company_revenueTerm.do" />'>기간별 매출</a> |
+		 | <a href='<c:url value="/com_manage/company_revenueDay.do" />'>일별 매출</a> | <a
+			href='<c:url value="/com_manage/company_revenueMonth.do" />'>월별 매출</a> |
 	</div>
 	
 
