@@ -65,6 +65,9 @@
 		<input type="submit" value="검색">	
 	</form>
 	
+	<div id="container"
+			style="width: 100%; height: 450px; margin: 8px 0 8px 0; padding: 0 8px;"></div>
+			
 	<div class="divSales">
 		<table class="table table-bordered" summary="일별 매출액에 관한 표">
 			<colgroup>
@@ -87,7 +90,7 @@
 					<c:set var="totalSum" value="0" />
 					<c:forEach var="map" items="${slist }">
 						<tr>
-							<td class="text-center">${map['PAYDATE'] }</td>
+							<td class="text-center">${map['PAYDATE1']}-${map['PAYDATE2']}-${map['PAYDATE3'] }</td>
 							<td class="text-right">
 								<fmt:formatNumber pattern="#,###" value="${map['TOTALPAY'] }"  /> 원
 							</td>
@@ -106,4 +109,46 @@
 			</tbody>
 		</table>
 	</div>
+	<script type="text/javascript">
+		Highcharts.chart('container', {
+			chart: {
+		        type: 'line'
+		    },
+		    
+		    title: {
+		        text: '일별매출'
+		    },
+	
+		    xAxis: { 
+		    	type: 'datetime',
+		    	categories: ${listMonth}
+		    },
+		       
+		    yAxis: {
+		        title: {
+		            text: '원'
+		        }
+		    },
+		    
+		    legend: {
+		        layout: 'vertical',
+		        align: 'right',
+		        verticalAlign: 'middle'
+		    },
+	
+	 	    plotOptions: {
+	 	    	line: {
+	 	            dataLabels: {
+	 	                enabled: true
+	 	            },
+	 	            enableMouseTracking: true
+	 	        }
+		    },
+	
+		    series: [{
+		        name: '일별 매출',
+		        data: ${listPay}
+		    }]
+		});
+	</script>
 </div>

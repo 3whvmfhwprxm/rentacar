@@ -4,13 +4,16 @@
 
 <mapper namespace="config.mybatis.mapper.oracle.sales">
 	<select id="selectSalesByDate" parameterType="DateSearchVO2" resultType="map">
-		select to_char(PAY_REGDATE, 'yyyy-MM-dd') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+		select to_char(PAY_REGDATE, 'yyyy') as "PAYDATE1", 
+		to_char(PAY_REGDATE, 'mm') as "PAYDATE2", 
+		to_char(PAY_REGDATE, 'dd') as "PAYDATE3", 
+		sum(PAY_MONEY) as "TOTALPAY" 
 		from PAYINFO
 		where extract(year from PAY_REGDATE)=#{year}
 		and extract(month from PAY_REGDATE)=#{month}
 		and PAY_CANCELDATE is null
-		group by to_char(PAY_REGDATE, 'yyyy-MM-dd')
-		order by PAYDATE
+		group by to_char(PAY_REGDATE, 'yyyy'), to_char(PAY_REGDATE, 'mm'), to_char(PAY_REGDATE, 'dd')
+		order by PAYDATE3
 	</select>
 	
 	<select id="selectSalesByMonth" parameterType="DateSearchVO2" resultType="map">
