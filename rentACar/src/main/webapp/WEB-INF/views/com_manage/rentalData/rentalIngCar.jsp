@@ -84,7 +84,6 @@
                     <ul class="dropdown-menu mega-dropdown-menu">
                     	<li><a href="javascript:fncSort('carNum')">차량번호순</a></li>
                     	<li><a href="javascript:fncSort('name')">운전자명순</a></li>
-                    	<li><a href="javascript:fncSort('lateCar')">연체차량만 보기</a></li>
                     </ul>
                 </li>
             </ul>
@@ -126,7 +125,7 @@
   				<th>차량번호</th>
 				<th>모델명</th>
 				<th>운전자명</th>
-				<th>운전자 상세정보</th>
+				<th>운전자번호</th>
 				<th>대여상태</th>
 				<th>반납일자</th>
 			</tr>
@@ -142,16 +141,16 @@
 			<!-- 반복시작 -->
 			<c:set var="u" value="0" />
 			<c:forEach var="map" items="${rlist }">
-			<c:if test="${map['CCAR_STATUS'] == 'RENT' }"> 
+			 <c:if test="${map['CCAR_STATUS'] == 'RENT' }">  
 				<tr>
 					<td>${map['CCAR_CAR_ID'] }</td>
 					<td>${map['CAR_NAME'] }</td>
 					<td>${map['RES_DRV_NAME'] }</td>
-					<td><button>열기</button></td>
+					<td>${map['RES_DRV_TEL1'] }-${map['RES_DRV_TEL2'] }-${map['RES_DRV_TEL3'] }</td>
 					<td>${map['CCAR_STATUS'] }</td>
 					<td><fmt:formatDate value="${map['RESERV_END_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
 				</tr>
-			</c:if>
+			 </c:if> 
 		 	<!-- 반복끝 --> 
 	        </c:forEach>
 	        

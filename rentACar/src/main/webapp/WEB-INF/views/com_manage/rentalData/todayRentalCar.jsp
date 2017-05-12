@@ -167,7 +167,10 @@
 		        	</c:if>
 		        	<c:if test="${map['PAY_CONDITION'] == 'failed' }">
 		        		<td class="line">결제실패</td>
-		        	</c:if>	
+		        	</c:if>
+		        	<c:if test="${empty map['PAY_CONDITION'] }">
+		        		<td class="line">결제미정</td>
+		        	</c:if>		
 		        	<td>${map['CCAR_STATUS'] }</td>
 		        	<td><button id="bt_${i.index }" onclick="javascript:cg('${map['CCAR_STATUS']}','${map['CCAR_CAR_ID'] }','${sessionScope.comId }')">보내기</button></td>
 		        	<td><input type="checkbox"  id="chk_${u}" name="cCarItems[${u}].ccarCarId" value="${map['CCAR_CAR_ID'] }"/></td>

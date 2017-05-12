@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.third.rent.car.model.CarVO;
 import com.third.rent.common.SearchVO;
 
 public interface CcarOptionDAO {
@@ -29,4 +30,5 @@ public interface CcarOptionDAO {
 	public int updateStatusCgReturn(CcarOptionVO vo);
 	public int updateStatusCgHold(CcarOptionVO vo);
 	public CcarOptionVO selectByCCarId(String ccarCarId);
+	public List<CarVO> selectByCarInc(String carInc);
 }

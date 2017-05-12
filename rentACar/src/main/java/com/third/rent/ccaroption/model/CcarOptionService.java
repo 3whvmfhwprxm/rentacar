@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.third.rent.car.model.CarVO;
 import com.third.rent.common.SearchVO;
-import com.third.rent.user.model.UserVO;
 
 public interface CcarOptionService {
 	//차량번호 사용에 관련한 상수
@@ -34,4 +34,5 @@ public interface CcarOptionService {
 	public int multiMoveHold(List<CcarOptionVO> cCarList);
 	public int multiMoveRent(List<CcarOptionVO> cCarList);
 	public int multiMoveReturn(List<CcarOptionVO> cCarList);
+	public List<CarVO> selectByCarInc(String carInc);
 }

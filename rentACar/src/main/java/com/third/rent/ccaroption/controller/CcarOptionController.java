@@ -360,7 +360,23 @@ public class CcarOptionController {
 		return "com_manage/company_reservList";
 	}
 	
-	
+	@RequestMapping("/changeCarName.do")
+	public String changeCarName(@RequestParam String carInc, Model model){
+		logger.info("차량제조사 선택 파라미터 carInc={}", carInc);
+		CarVO vo = new CarVO();
+		List<CarVO> alist
+		 = ccarOptionService.selectByCarInc(carInc);
+		logger.info("모델명 alist.size()={}", alist.size());
+		/*String carName = vo.getCarName();
+		String carCode = vo.getCarCode();
+		logger.info("::::모델명 select::: carName={}, carCode={}", carName, carCode);*/
+		List<CarVO> blist = carService.selectAllCar();
+		
+		model.addAttribute("clist", alist);
+		model.addAttribute("slist", blist);
+		
+		return "com_manage/company_optionRegist";
+	}
 }
 
 

@@ -166,19 +166,19 @@
 		        <include refid="searchWhere"></include>
 		        <if test="sortingKeyword != null">
 					<if test="sortingKeyword == 'stday'">
-						and reserv_start_date >= to_char(sysdate,'yyyy/MM/dd')
+						and to_date(reserv_start_date) > to_date(sysdate)
 					</if>
 					<if test="sortingKeyword == 'paidCar'">
-						 and pay_condition = 'paid'
+						and to_date(reserv_start_date) >= to_date(sysdate)
+						and pay_condition = 'paid'
 					</if>
 					<if test="sortingKeyword == 'reday'">
-						 order by remainingday desc
-					</if>
-					<if test="sortingKeyword == 'rvAll'">
-					
+						and to_date(reserv_start_date) >= to_date(sysdate)	
+						order by remainingday desc
 					</if>
 				</if>
 				<if test="sortingKeyword == null">
+					and to_date(reserv_start_date) >= to_date(sysdate)
 					order by reserv_date desc
 				</if>
 		    )LIST
@@ -276,7 +276,7 @@
 		    (
 		        select * from com_reservview
 				<![CDATA[
-				where reserv_start_date <= sysdate
+				where to_char(reserv_start_date,'yyyy-MM-dd')<=to_char(sysdate,'yyyy-MM-dd')
 				]]>
 				and com_id=#{companyId}
 			 	<include refid="searchWhere"></include>
@@ -322,6 +322,11 @@
  	
  	<select id="selectByCCarId" parameterType="string" resultType="CcarOptionVO">
  		select * from companycaroption where ccar_car_id=#{ccarCarId}
+ 	</select>
+ 	
+	<select id="selectByCarInc" resultType="CarVO" parameterType="string">
+ 		select car_name, car_code from car 
+	 	where car_inc = #{carInc}
  	</select>
 </mapper>
 

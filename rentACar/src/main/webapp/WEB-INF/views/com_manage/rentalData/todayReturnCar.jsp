@@ -23,7 +23,6 @@
 		});
 		
 		jQuery("#btMulti").click(function(){
-			alert("옴?");
 			jQuery("#frmSend").attr("action","<c:url value='/com_manage/rentalData/multiUpdateStatusCgRent.do' />");
 			jQuery("#frmSend").submit();
 		});
@@ -117,15 +116,15 @@
        <table class="table table-striped">
        <thead>
        		  <colgroup>
-       		  	<col width="5%">
+       		  	<col width="10%">
 	    		<col width="13%">
 	    		<col width="10%">
-	    		<col width="15%">
+	    		<col width="10%">
 	    		<col width="8%">
-	    		<col width="15%">
-	    		<col width="13%">
+	    		<col width="12%">
+	    		<col width="10%">
+	    		<col width="10%">
 	    		<col width="*%">
-	    		<col width="7%">
 	    		<col width="7%">
     		</colgroup>
        		<tr>
@@ -134,7 +133,8 @@
   				<th>차량번호</th>
 				<th>모델명</th>
 				<th>예약자명</th>
-				<th colspan="2">운전자 정보</th>
+				<th>운전자명</th>
+				<th>운전자번호</th>
 				<th>연체상태</th>
 				<th>대여상태</th>
 				<th>반납완료</th>

@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.third.rent.car.model.CarVO;
 import com.third.rent.common.SearchVO;
-import com.third.rent.user.model.UserVO;
 
 @Service
 public class CcarOptionServiceImpl implements CcarOptionService {
@@ -194,6 +194,12 @@ public class CcarOptionServiceImpl implements CcarOptionService {
 			cnt = -1;
 		}
 		return cnt;
+	}
+
+
+	@Override
+	public List<CarVO> selectByCarInc(String carInc) {
+		return ccarOptionDao.selectByCarInc(carInc);
 	}
 
 

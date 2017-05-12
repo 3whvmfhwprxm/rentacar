@@ -3,6 +3,20 @@
 <%@ include file="../inc_company/company_top.jsp"%>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
+		jQuery("#carInc").change(function(){
+			jQuery("#frmRg").attr("action", "<c:url value='/com_manage/changeCarName.do' />");
+			jQuery("#frmRg").submit();
+		});
+		
+		jQuery("#carName").change(function(){
+			if(jQuery("#carName").val()!= '0'){
+				jQuery("#carCode").val(jQuery("#carName").val());	
+			}else if(jQuery("#carName").val()== '0'){
+				jQuery("#carCode").val('');
+			}
+			
+		});
+		
 		jQuery("#ccarUseYn").is("checked").val('Y');
 		
 		jQuery(".Yn").click(function(){
@@ -35,6 +49,10 @@
 			}else if(!jQuery('#carCode').val()){
 				alert("모델코드가 입력되지않았습니다. 제조사,모델명을 선택해주세요.");
 				jQuery("#carCode").focus();
+				return false;
+			}else if(!jQuery('#area').val() || jQuery('#area').val().length!=2){
+				alert("차량 지역번호를 입력하세요. 2자리 입니다.");
+				jQuery("#area").focus();
 				return false;
 			}else if(!jQuery('#ccarCarId').val() || jQuery('#ccarCarId').val().length!=4){
 				alert("차량 차대번호를 입력하세요. 4자리 입니다.");
@@ -98,6 +116,8 @@
 			
 			
 		}); */
+		
+		
 	});
 	
 </script>
@@ -125,16 +145,16 @@
 					<label for="carCode" class="col-sm-2 control-label">모델코드</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" name="carCode"
-							id="carCode" placeholder="제조사,모델명 선택시 자동입력">
+							id="carCode" placeholder="제조사,모델명 선택시 자동입력" readonly="readonly">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="com1" class="col-sm-2 control-label">제조사</label>
 					<div class="col-xs-2">
 						<select class="form-control" name="carInc" id="carInc">
-							<option selected>::선택::</option>
+							<option>::선택::</option>
 							<c:forEach var="s" items="${slist }">
-							<option value="${s.carInc }">${s.carInc }</option>
+								<option value="${s.carInc }" <c:if test="${s.carInc == param.carInc }" > selected </c:if>>${s.carInc }</option>
 							</c:forEach>
 						</select>
 						
@@ -144,20 +164,22 @@
 					<label for="com2" class="col-sm-2 control-label">모델명</label>
 					<div class="col-xs-2">
 						<select class="form-control" name="carName" id="carName">
-							<option>::선택::</option>
-							<option value="010">쏘나타</option>
-							<option value="011">그렌져</option>
-							<option value="016">아반떼</option>
-							<option value="017">017</option>
-							<option value="018">018</option>
-							<option value="019">019</option>
+							<c:if test="${empty clist }">
+								<option>::제조사 선택::</option>
+							</c:if>
+							<c:if test="${!empty clist }">
+								<option value='0'>::모델명 선택::</option>
+								<c:forEach var="cn" items="${clist }">
+									<option value="${cn.carCode }">${cn.carName }</option>
+								</c:forEach>
+							</c:if>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="ccarCarId" class="col-sm-2 control-label">차량번호</label>
 					<div class="col-sm-2">
-						<select class="form-control" name="area" id="area">
+						<!-- <select class="form-control" name="area" id="area">
 							<option>::선택::</option>
 							<option value="서울" selected>서울</option>
 							<option value="경기" >경기</option>
@@ -174,8 +196,10 @@
 							<option value="전남" >전남</option>
 							<option value="전북" >전북</option>
 							<option value="경북" >경북</option>
-							<option value="경남" >경남</option>
-						</select>
+							<option value="경남" >경남</option> 
+						</select> -->
+						<input type="text" class="form-control" name="area"
+							id="area" placeholder="01">
 					</div>
 					<div class="col-sm-2">
 						<select class="form-control" name="carMiddleNum" id="carMiddleNum">
@@ -189,7 +213,7 @@
 						<input type="text" class="form-control" name="ccarCarId"
 							id="ccarCarId" placeholder="1234">
 						<span id="error"></span>
-						<input type="text" name="chkCarId" id="chkCarId">
+						<!-- <input type="text" name="chkCarId" id="chkCarId"> -->
 					</div>
 				</div>
 				<div class="form-group">

@@ -94,14 +94,14 @@
     		<col width="10%">
     		<col width="10%">
     		<col width="8%">
-    		<col width="13%">
-    		<col width="13%">
+    		<col width="12%">
+    		<col width="12%">
     		<col width="10%">
     		<col width="10%">
     		<col width="10%">
     		<col width="10%">
     		<col width="8%">
-    		<col width="5%">
+    		<col width="7%">
     	</colgroup>
        		<tr>
   				<th>차량번호</th>
@@ -139,7 +139,15 @@
 			</c:if>
 			<td><fmt:formatDate value="${map['RESERV_START_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
 			<td><fmt:formatDate value="${map['RESERV_END_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
-			<td>${map['REMAININGDAY'] } 일</td>
+			<c:if test="${map['REMAININGDAY'] < 0}">
+				<td style="color:red">종료</td>
+			</c:if>
+			<c:if test="${map['REMAININGDAY'] > 0}">
+				<td>${map['REMAININGDAY'] } 일</td>
+			</c:if>
+			<c:if test="${map['REMAININGDAY'] == 0}">
+				<td style="color:blue">금일</td>
+			</c:if>
 			<td><button id="bt${i.index }">열기/닫기</button></td>
 			<td><button>취소</button></td>
 		</tr>
@@ -162,6 +170,7 @@
         	<td class="line">${map['RES_DRV_NAME'] }</td>
         	<td class="line">${map['RES_DRV_TEL1'] }-${map['RES_DRV_TEL2'] }-${map['RES_DRV_TEL3'] }</td>
         	<td class="line"><fmt:formatDate value="${map['RESERV_DATE'] }" pattern="yyyy-MM-dd HH:mm"/></td>
+        	
         	<c:if test="${empty map['PAY_REGDATE']}">
         		<td class="line">미정</td>
         	</c:if>
@@ -179,6 +188,9 @@
         	</c:if>
         	<c:if test="${map['PAY_CONDITION'] == 'failed' }">
         		<td class="line">결제실패</td>
+        	</c:if>
+        	<c:if test="${empty map['PAY_CONDITION'] }">
+        		<td class="line">결제전</td>
         	</c:if>
         	<c:if test="${empty map['PAY_DISCOUNT'] }">
         		<td class="line">없음</td>
