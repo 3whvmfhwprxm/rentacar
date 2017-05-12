@@ -112,9 +112,6 @@ public class Admin_CompanyController {
 
 		List<CompanyVO> companyAllList = adminCompanyService.selectAllCompany(searchVo);
 		logger.info("업체목록 조회결과, companyAllList.size()={}", companyAllList.size());
-
-		int carCount = adminCompanyService.selectCarTotalRecord(searchVo);
-		logger.info("업체차량 수 조회결과, carCount={}", carCount);
 		
 		int totalRecord = adminCompanyService.selectTotalRecord(searchVo);
 		logger.info("업체목록 조회 - 전체 업체수 조회 결과, totalRecord={}",
@@ -123,7 +120,6 @@ public class Admin_CompanyController {
 		pagingInfo.setTotalRecord(totalRecord);
 		
 		model.addAttribute("companyAllList", companyAllList);
-		model.addAttribute("carCount", carCount);
 		model.addAttribute("pagingInfo", pagingInfo);
 
 		return "administrator/company/companyCarList";
@@ -187,7 +183,6 @@ public class Admin_CompanyController {
 	
 	@RequestMapping("/company/companyDetail.do")
 	public String companyDetail(@RequestParam String comId, Model model){
-		//1.
 		logger.info("글 상세보기, 파라미터 comId={}", comId);
 		if(comId.isEmpty()){
 			model.addAttribute("msg", "잘못된 url입니다");
@@ -196,12 +191,9 @@ public class Admin_CompanyController {
 			return "common/message";
 		}
 
-		//2.
 		CompanyVO companyVo = adminCompanyService.selectByComId(comId);
 		logger.info("상세보기 결과, companyVo={}", companyVo);
 
-
-		//3.
 		model.addAttribute("companyVo", companyVo);
 
 		return "administrator/company/companyDetail";

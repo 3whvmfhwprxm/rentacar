@@ -116,6 +116,8 @@ public class adminImagesUpload {
   			if(!tempFile.isEmpty()){
   				String originCarImg = tempFile.getOriginalFilename();
   				String carImg = getUniqueFileName(originCarImg);
+  				String carImg2 = getUniqueFileName(originCarImg);
+  				String carImg3 = getUniqueFileName(originCarImg);
  				
   				String savePath = getcarImgUploadPath(request, uploadWhat); 
   				File file = new File(savePath, carImg);
@@ -133,6 +135,8 @@ public class adminImagesUpload {
   				  				
   				Map<String, Object> map = new HashMap<String, Object>();
   				map.put("carImg", carImg);
+  				map.put("carImg2", carImg2);
+  				map.put("carImg3", carImg3);
   				map.put("originCarImg", originCarImg);
   				
   				fileList.add(map);

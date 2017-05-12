@@ -55,7 +55,7 @@
 	<form class="form-horizontal" id="frm1" name="frm1" method="post" enctype="multipart/form-data"
 		action='<c:url value="/administrator/company/companyEdit.do" />'>
 		
-		<input type="hidden" name="oldFileName" 
+		<input type="text" name="oldFileName" 
             	value="${companyVo.comLogo}" />
 		
 		<legend>업체 수정</legend>

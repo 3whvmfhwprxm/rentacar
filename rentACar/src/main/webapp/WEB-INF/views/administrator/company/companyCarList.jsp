@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/top.jsp"%>
 
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/admin_companyCar.css" />
+
+
 <script type="text/javascript">	
 	function pageFunc(curPage){
 		document.frmPage.currentPage.value=curPage;
@@ -80,50 +84,42 @@ th {
 					<div class="row">
 						<div class="col-md-12">
 							<br>
-							<table class="table table-hover">
-								<caption>주문 내역</caption>
-								<colgroup>
-									<col style="width: 9%" />
-									<col style="width: 12%" />
-									<col style="width: 40%" />
-									<col style="width: 12%" />
-									<col style="width: 12%" />
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">업체명</th>
-										<th scope="col">대표자</th>
-										<th scope="col">대표번호</th>
-										<th scope="col">보유 차량 수</th>
-										<th scope="col">보유차량</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:if test="${empty companyAllList}">
-										<tr>
-											<td colspan="5">데이터가 존재하지 않습니다.</td>
-										</tr>
-									</c:if>
-									<c:if test="${!empty companyAllList}">
-										<c:forEach var="vo" items="${companyAllList}">
-											<tr>
-												<td>${vo.comName}</td>
-												<td>${vo.comCeo}</td>
-												<td>${vo.comTel1}-${vo.comTel2}-${vo.comTel3}</td>
-												<td>${vo.carCount}</td>
-												<td><%-- <c:forEach var="map"
-														items="${orderAllVo.orderDetailList}">
-														<img alt="업체 보유차량 이미지" width='40'
-															align="absmiddle"
-															src="<c:url value='/carImages_upload/${vo.carImg}'/>">
-													</c:forEach> --%>
-												</td>
-											</tr>
-										</c:forEach>
-										<!-- 반복 끝 -->
-									</c:if>
-								</tbody>
-							</table>
+							<c:if test="${empty companyAllList}">
+								<p>데이터가 존재하지 않습니다.</p>
+							</c:if>
+							<c:if test="${!empty companyAllList}">
+								<c:forEach var="vo" items="${companyAllList}">
+									<div class="col-sm-6">
+										<div
+											class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+											<div class="media" style="height: 250px;">
+												<a class="pull-left"
+													href='<c:url value="/administrator/company/companyCar.do?comId=${vo.comId}" />'
+													target="_parent"> <img
+													style="width: 300px; height: 250px;" alt="image"
+													class="img-responsive"
+													src='<c:url value="/companyLogo_upload/${vo.comLogo}" />'>
+												</a>
+												<div class="clearfix visible-sm"></div>
+
+												<div class="media-body fnt-smaller">
+													<a href="#" target="_parent"></a>
+
+
+													<p class="hidden-xs">
+														<span style="font-size: 1.4em; font-weight: bold;">
+															업체 정보
+														</span><br><br>
+														<b>업체명:</b> ${vo.comName}<br>
+														<b>대표자:</b> ${vo.comCeo}<br>
+														<b>대표번호:</b> ${vo.comTel1}-${vo.comTel2}-${vo.comTel3}
+												</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+								<!-- 반복 끝 -->
+							</c:if>
 						</div>
 					</div>
 				</div>
