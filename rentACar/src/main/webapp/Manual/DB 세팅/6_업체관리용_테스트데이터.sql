@@ -2,6 +2,7 @@ select * from reservation;
 select * from payinfo;
 select * from reserv_user;
 
+/*
 delete from payinfo
 where pay_condition='paid';
 
@@ -11,93 +12,7 @@ delete from reserv_user
 where res_drv_tel1='011';
 
 delete from reservation
-where reserv_insurance='ÀÚÂ÷º¸Çè';
-
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('01Çã1234','hd002', 'rentGo', 'Y', 'µðÁ©','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2016-05-02');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('01Çã1111','hd001', 'rentGo', 'Y', 'µðÁ©','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-03-21');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('01Çã2222','hd001', 'rentGo', 'Y', 'µðÁ©','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-03-22');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('01Çã3333','hd002', 'rentGo', 'Y', 'µðÁ©','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-04-02');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('01Çã4444','lambo001', 'rentGo', 'Y', 'µðÁ©','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2016-05-02');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('01Çã5555','kia002', 'rentGo', 'Y', 'µðÁ©','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2016-05-02');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('01Çã6666','kia001', 'rentGo', 'Y', 'µðÁ©','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2016-05-02');
-
-
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('02Çã1000','hd002', 'rentGo', 'Y', 'ÈÖ¹ßÀ¯','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2016-05-02');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('02Çã2000','hd001', 'rentGo', 'Y', 'ÈÖ¹ßÀ¯','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2016-04-11');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('02Çã3000','hd001', 'rentGo', 'Y', 'ÈÖ¹ßÀ¯','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2016-04-02');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('02Çã4000','hd002', 'rentGo', 'Y', 'ÈÖ¹ßÀ¯','Y', 'Y', 'Y', 'Y', 'Y', 'N', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2016-03-02');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('02Çã5000','lambo001', 'rentGo', 'Y', 'ÈÖ¹ßÀ¯','Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 'N', 1, 17000, 22000, 42000, 63000, 4000, '2016-06-18');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('02Çã6000','kia002', 'rentGo', 'Y', 'ÈÖ¹ßÀ¯','Y', 'Y', 'Y', 'N', 'N', 'Y', 'N', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-01-02');
-insert into companycaroption
-(ccar_car_id, car_code, com_id, ccar_use_yn, car_fuel, ccar_blackbox_yn, ccar_smoke_yn, ccar_rear_camera_yn, ccar_rear_sence_yn, ccar_navi_yn, 
-ccar_sun_roof_yn, ccar_bluetooth_yn, ccar_aux_yn, ccar_smartkey_yn, ccar_rentalcount, ccar_normal_price, ccar_weekend_price, 
-ccar_peak_price, ccar_s_peak_price, ccar_arrear, comcar_regdate)
-values('02Çã7000','kia001', 'rentGo', 'Y', 'ÈÖ¹ßÀ¯','Y', 'Y', 'N', 'N', 'Y', 'Y', 'Y', 'Y', 'Y', 1, 17000, 22000, 42000, 63000, 4000, '2017-04-02');
-
-
-
-
-
-
-
-
-
-
-
-
-
+where reserv_insurance='ÀÚÂ÷º¸Çè';*/
 
 
 insert into RESERVATION(
@@ -175,7 +90,7 @@ values('T5000006', 'Áø´©³ª', '010', '2200', '2200', 'jin2@naver.com', 'ÃÖÄ£±¸', 
 
 
 select *from com_reservView;
-
+/*
 update companycaroption
 set ccar_status = 'HOLD'
 where ccar_Car_id='rentGo_0003' and com_id='rentGo';
@@ -183,7 +98,7 @@ where ccar_Car_id='rentGo_0003' and com_id='rentGo';
 update companycaroption
 set ccar_status = 'HOLD'
 where com_id='rentGo';
-
+*/
 select * from companycaroption;
 
 desc com_reservview;
