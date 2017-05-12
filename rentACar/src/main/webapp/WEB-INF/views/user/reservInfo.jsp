@@ -165,7 +165,7 @@ input[type=email]{
 				<input type="hidden" name="ccarCarId" value="${map['CCAR_CAR_ID'] }">	
 		</div>
 		
-		<!-- 선택한 차에 대한 정보 -->
+		<!-- 선택한 차에 대한 정보 11-->
 		<div id="selectedCar">
 			<table class="table table-bordered">			
 				<thead>
