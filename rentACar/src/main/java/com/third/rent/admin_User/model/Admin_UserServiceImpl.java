@@ -102,4 +102,9 @@ public class Admin_UserServiceImpl implements Admin_UserService{
 	public int updateUser(UserVO userVo) {
 		return adminUserDao.updateUser(userVo);
 	}
+
+	@Override
+	public int selectOutTotalRecord(SearchVO searchVo) {
+		return adminUserDao.selectOutTotalRecord(searchVo);
+	}
 }

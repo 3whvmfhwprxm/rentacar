@@ -23,4 +23,6 @@ public interface Admin_UserDAO {
 	public int reRegisterUser(String userId);
 	
 	public int updateUser(UserVO userVo);
+	
+	public int selectOutTotalRecord(SearchVO searchVo);
 }
