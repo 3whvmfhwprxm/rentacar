@@ -206,7 +206,7 @@ delete from company;
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo, com_regdate)
 values('rentZoa', '렌트조아', '1', '100-81-02000', '국민:289333-01-22212', '02', '0100', '0100', '010', '0100', '0100',  '02', '0100', '0101', 
-'제주도 한라산 아래', '제주특별자치도 제주시 다호북길 13', '김렌트', 'rentZoa1@rentZoa.com', 'rentZoa_logo.png', sysdate);
+'제주도 한라산 아래', '제주특별자치도 제주시 용문로 20', '김렌트', 'rentZoa1@rentZoa.com', 'rentZoa_logo.png', sysdate);
 
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo, com_regdate)
@@ -216,23 +216,23 @@ values('rentGo', '렌트고', '1', '100-81-03000', '농협:22222-02-22222', '02', '02
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo, com_regdate,  com_outdate)
 values('rentDie', '렌트죽음', '1', '100-81-00000', '신한:3333-03-33333', '02', '0300', '0300', '010', '0300', '0300',  '02', '0300', '0301', 
-'제주공항 근처', '제주특별자치도 제주시 다호북길 13', '박렌트', 'rentDie1@rentDie.com', 'rentDie_logo.png', sysdate, sysdate);
+'제주공항 근처', '서울 영등포구 당산로47길 3 신다옥빌딩', '박렌트', 'rentDie1@rentDie.com', 'rentDie_logo.png', sysdate, sysdate);
 
 --이희준 테스트 데이터 업체 ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo)
 values('rentJava', '렌트자바', '1', '100-80-01000', '하나:356-0468-22212', '02', '2443', '5456', '010', '2361', '8960',  '02', '2443', '5456', 
-'제주도 한라산 아래', '제주특별자치도 제주시 다호북길 13', '김자바', 'rentJava@naver.com', 'rentJava_logo.png');
+'제주도 한라산 아래', '서울 영등포구 당산로47길 3 신다옥빌딩', '김자바', 'rentJava@naver.com', 'rentJava_logo.png');
 
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo)
 values('rentJsp', '렌트제이에스피', '1', '100-80-02000', '농협:352-1265-02-22222', '02', '6484', '4732', '010', '7578', '3158',  '02', '6484', '4732', 
-'제주도 한라산 아래', '제주특별자치도 제주시 다호북길 13', '이렌트', 'rentJsp@nate.com', 'rentJsp_logo.png');
+'제주도 한라산 아래', '서울 영등포구 당산로 221', '이렌트', 'rentJsp@nate.com', 'rentJsp_logo.png');
 
 insert into company(com_id, com_name, com_pwd, com_num, com_accNum, com_tel1, com_tel2, com_tel3, com_mobile1, com_mobile2, com_mobile3,
 com_fax1, com_fax2, com_fax3, com_address, com_return_place, com_ceo, com_email, com_logo)
 values('rentSpring', '렌트스프링', '1', '100-80-03000', '신한:456-2741-2374-333', '02', '9458', '3488', '010', '5735', '9759',  '02', '9458', '3488', 
-'제주공항 근처', '제주특별자치도 제주시 다호북길 13', '박렌트', 'rentSpring@daum.net', 'rentSpring_logo.png');
+'제주공항 근처', '서울 영등포구 당산로 221', '박렌트', 'rentSpring@daum.net', 'rentSpring_logo.png');
 
 select * from company;
 commit;
@@ -376,6 +376,7 @@ commit;
 
 
 --예약 정보
+/*
 insert into RESERVATION(
 reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
@@ -393,7 +394,7 @@ reserv_num, user_tel1, user_tel2, user_tel3, reserv_start_date, reserv_end_date,
 ccar_car_id, reserv_insurance, reserv_date, user_id)
 values('00000003', '010','2200','2200', to_date('2017-04-30 11:00','yyyy/mm/dd hh24:mi'), 
 to_date('2017-05-02 11:00','yyyy/mm/dd hh24:mi'), '03허2222', '자차보험', '2017-05-01' ,'jin1');
-
+*/
 select * from RESERVATION order by reserv_date desc;
 commit;
 rollback;
@@ -401,17 +402,19 @@ rollback;
 --예약 회원(회원정보와는 다른 예약하는 당사자)
 --예) 회원(자식), 예약자/운전자 정보를 받을때(예약자-엄마, 운전자-아빠)받을수 있게
 
+/*
 insert into reserv_user
 values('00000001', '김엄마', '011', '1111', '1111', 'kim2@naver.com', '김아빠', '011', '1112', '1112', '600102', '1종보통');
 insert into reserv_user
 values('00000002', '김엄마', '011', '1111', '1111', 'kim2@naver.com', '김아빠', '011', '1112', '1112', '600102', '1종보통');
 insert into reserv_user
 values('00000003', '진누나', '010', '2200', '2200', 'jin2@naver.com', '진남친', '011', '2200', '2201', '880102', '2종보통');
-
+*/
 select * from reserv_user;
 commit;
 
 --결제정보
+/*
 insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2, 
 user_tel3, pay_method, pay_money, pay_condition, pay_regdate)
 values('p001234', '00000001', '010', '1234', '1234', 'card', 59000, 'paid', '2017-04-01');
@@ -421,7 +424,7 @@ values('p002234', '00000002', '010', '1234', '1234', 'card', 62000, 'paid', '201
 insert into PAYINFO(pay_no, reserv_num, user_tel1, user_tel2, 
 user_tel3, pay_method, pay_money, pay_condition, pay_regdate)
 values('p003234', '00000003', '010', '1234', '1234', 'card', 55000, 'paid', '2017-05-01');
-
+*/
 select * from PAYINFO order by pay_regdate desc;
 commit;
 rollback;
