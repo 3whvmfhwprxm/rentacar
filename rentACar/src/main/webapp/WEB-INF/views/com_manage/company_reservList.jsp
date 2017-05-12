@@ -47,7 +47,7 @@
 </script>
 <body>
 	<form id="frmPage" name="frmPage" method="POST"
-		action='<c:url value="/com_manage/company_ccarList.do" />'>
+		action='<c:url value="/com_manage/company_reservList.do" />'>
 		<input type="hidden" name="currentPage" value="${pagingInfo.currentPage }">
 		<input type="hidden" name="searchCondition" value="${param.searchCondition}">
 		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">

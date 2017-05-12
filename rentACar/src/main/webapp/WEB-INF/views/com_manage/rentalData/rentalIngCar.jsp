@@ -54,7 +54,7 @@
 </script>
 <body>
 	<form id="frmPage" name="frmPage" method="POST"
-		action='<c:url value="/com_manage/company_ccarList.do" />'>
+		action='<c:url value="/com_manage/rentalData/rentalIngCar.do" />'>
 		<input type="hidden" name="currentPage" value="${pagingInfo.currentPage }">
 		<input type="hidden" name="searchCondition" value="${param.searchCondition}">
 		<input type="hidden" name="searchKeyword" value="${param.searchKeyword}">
@@ -84,6 +84,7 @@
                     <ul class="dropdown-menu mega-dropdown-menu">
                     	<li><a href="javascript:fncSort('carNum')">차량번호순</a></li>
                     	<li><a href="javascript:fncSort('name')">운전자명순</a></li>
+                    	<li><a href="javascript:fncSort('fCar')">최근 반납시간순</a></li>
                     </ul>
                 </li>
             </ul>
