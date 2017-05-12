@@ -26,5 +26,10 @@ public class HighchartsMybatis extends SqlSessionDaoSupport
 	public List<Map<String, Object>> selectSumTotalPay() {
 		return getSqlSession().selectList(namespace+".selectSumTotalPay");
 	}
+
+	@Override
+	public List<Map<String, Object>> ComSalesByMonth(DateVO dateVo) {
+		return getSqlSession().selectList(namespace+".ComSalesByMonth", dateVo);
+	}
 	
 }

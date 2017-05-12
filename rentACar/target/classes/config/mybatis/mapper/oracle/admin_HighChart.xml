@@ -48,6 +48,15 @@
 		group by to_char(PAY_REGDATE,'MM')
 		order by to_char(PAY_REGDATE,'MM')
 	</select>
+	
+	<select id="ComSalesByMonth" parameterType="DateVO" resultType="map">
+		select to_char(PAY_REGDATE, 'MM') as "PAYDATE", sum(PAY_MONEY) as "TOTALPAY" 
+		from com_reservView
+		where extract(year from PAY_REGDATE)=#{year}
+		and PAY_CANCELDATE is null
+		group by to_char(PAY_REGDATE, 'MM')
+		order by PAYDATE
+	</select>
 </mapper>
 
 

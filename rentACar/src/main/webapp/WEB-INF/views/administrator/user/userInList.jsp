@@ -93,14 +93,14 @@ th {
 							<br>
 							<form name="frmList" id="frmList" method="post"
 								action='<c:url value="/administrator/user/userInList.do" />'>
-								<table class="table table-hover">
+								<table class="table table-bordered">
 									<thead>
 									<colgroup>
 										<col width="5%">
-										<col width="13%">
 										<col width="10%">
+										<col width="7%">
 										<col width="*%">
-										<col width="8%">
+										<col width="15%">
 										<col width="12%">
 										<col width="8%">
 										<col width="10%">
@@ -136,7 +136,7 @@ th {
 													name="userItems[${u}].userId" value="${vo.userId}">
 												</td>
 												<td>
-													<button type="button" class="btn btn-default"
+													<button style="width: 80px; height: 30px;" type="button" class="btn btn-default"
 														data-toggle="modal" data-target="#myInModal_${i.index}">
 														${vo.userId}</button>
 													<div class="modal fade" id="myInModal_${i.index}"
