@@ -44,7 +44,7 @@ Date CurrentDate = new Date();
 		<%@ include file="../inc_user/dateTerm.jsp" %>
 		<input type="submit" value="조회" style="color: black;">
 		<p>
-		${dateSearchVO2.startDay } ~ ${dateSearchVO2.endDay } 까지의 주문내역	총 ${pagingInfo.totalRecord }건 입니다.
+		<b>${dateSearchVO2.startDay } ~ ${dateSearchVO2.endDay }</b> 까지의 주문내역 입니다.
 		</p>
 	</form>
             </div>

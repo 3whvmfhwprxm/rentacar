@@ -70,12 +70,19 @@ hr {
                	<span style="float: right;">친절도 <c:if test="${1==vo.cmtKindScore }">
                											<div class="stars">
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${2==vo.cmtKindScore }">
                											<div class="stars">
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${3==vo.cmtKindScore }">
@@ -83,6 +90,8 @@ hr {
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${4==vo.cmtKindScore }">
@@ -91,7 +100,7 @@ hr {
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
-															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${5==vo.cmtKindScore }">
@@ -107,12 +116,19 @@ hr {
                									청결도 <c:if test="${1==vo.cmtCleanScore }">
                											<div class="stars">
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${2==vo.cmtCleanScore }">
                											<div class="stars">
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${3==vo.cmtCleanScore }">
@@ -120,6 +136,8 @@ hr {
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${4==vo.cmtCleanScore }">
@@ -128,7 +146,7 @@ hr {
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
-															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${5==vo.cmtCleanScore }">
@@ -143,12 +161,19 @@ hr {
                									편의성 <c:if test="${1==vo.cmtConvScore }">
                											<div class="stars">
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${2==vo.cmtConvScore }">
                											<div class="stars">
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${3==vo.cmtConvScore }">
@@ -156,6 +181,8 @@ hr {
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${4==vo.cmtConvScore }">
@@ -164,7 +191,7 @@ hr {
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
 															<span class="fa fa-star checked"></span>
-															<span class="fa fa-star checked"></span>
+															<span class="fa fa-star"></span>
                											</div>
                										 </c:if>
                										 <c:if test="${5==vo.cmtConvScore }">

@@ -54,10 +54,10 @@
 		select count(*) from reservation
 		where user_id=#{userId}
 		<!-- <if test="startDay!=null and startDay!=''">
-			and r.RESERV_END_DATE>=#{startDay} 
+			and RESERV_END_DATE>=#{startDay} 
 			<![CDATA[
-			and r.RESERV_END_DATE< to_date(#{endDay})+1
-			]]>
+			and RESERV_END_DATE< to_date(#{endDay})+1
+			]]> 
 		</if> -->
 	</select>
 	
