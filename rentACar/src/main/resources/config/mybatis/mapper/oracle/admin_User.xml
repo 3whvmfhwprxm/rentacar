@@ -70,8 +70,20 @@
 	
 	<select id="selectTotalRecord" parameterType="SearchVO"
 		resultType="int">
-		select count(*) from RENT_USER 
-		<include refid="searchWhere"></include>
+		select count(*) from RENT_USER
+		where user_outdate is not null
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			and lower(${searchCondition}) like '%'|| lower(#{searchKeyword}) ||'%'
+		</if>
+	</select>
+	
+	<select id="selectOutTotalRecord" parameterType="SearchVO"
+		resultType="int">
+		select count(*) from RENT_USER
+		where user_outdate is not null
+		<if test="searchKeyword !=null and searchKeyword !=''">
+			and lower(${searchCondition}) like '%'|| lower(#{searchKeyword}) ||'%'
+		</if>
 	</select>
 	
 	<select id="selectByUserId" parameterType="String" resultType="UserVO">

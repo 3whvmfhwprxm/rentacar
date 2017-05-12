@@ -57,4 +57,9 @@ public class Admin_UserMybatis extends SqlSessionDaoSupport
 	public int updateUser(UserVO userVo) {
 		return getSqlSession().update(namespace+".updateUser", userVo);
 	}
+
+	@Override
+	public int selectOutTotalRecord(SearchVO searchVo) {
+		return getSqlSession().selectOne(namespace+".selectOutTotalRecord", searchVo);
+	}
 }

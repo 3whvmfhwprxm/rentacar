@@ -72,7 +72,7 @@ public class Admin_UserController {
 		List<UserVO> userOutList = adminUserService.selectOutUser(searchVo);
 		logger.info("회원목록 조회결과, userOutList.size()={}", userOutList.size());		
 		
-		int totalRecord = adminUserService.selectTotalRecord(searchVo);
+		int totalRecord = adminUserService.selectOutTotalRecord(searchVo);
 		logger.info("회원목록 조회 - 전체 회원수 조회 결과, totalRecord={}",
 				totalRecord);
 

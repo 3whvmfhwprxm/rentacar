@@ -32,4 +32,6 @@ public interface Admin_UserService {
 	public int userMultiReregister(List<UserVO> userList);
 	
 	public int updateUser(UserVO userVo);
+	
+	public int selectOutTotalRecord(SearchVO searchVo);
 }

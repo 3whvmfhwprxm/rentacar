@@ -76,6 +76,4 @@ private String namespace="config.mybatis.mapper.oracle.admin_Company";
 	public int reRegisterCompany(String comId) {
 		return getSqlSession().update(namespace+".reRegisterCompany", comId);
 	}
-
-	
 }
