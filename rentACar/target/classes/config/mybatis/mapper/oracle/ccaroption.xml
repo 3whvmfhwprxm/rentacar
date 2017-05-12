@@ -74,7 +74,7 @@
 					</if>
 				</if>
 				<if test="sortingKeyword == null">
-					order by cco.comcar_regdate desc
+					order by cco.comcar_regdate
 				</if>
 		    )LIST
 		)

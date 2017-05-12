@@ -92,7 +92,7 @@
                     	<li><a href="javascript:fncSort('date')">최근등록순</a></li>
                     	<li><a href="javascript:fncSort('num')">차량번호순</a></li>
                         <li><a href="javascript:fncSort('model')">차량모델순</a></li>
-                        <li><a href="javascript:fncSort('fuel')">연료타입순</a></li>
+                        <li><a href="javascript:fncSort('fuel')">연료타입별</a></li>
                         <li><a href="javascript:fncSort('usey')">사용가능한 차량만 보기</a></li>
                         <li><a href="javascript:fncSort('usen')">정비중인 차량만 보기</a></li>
                     </ul>
