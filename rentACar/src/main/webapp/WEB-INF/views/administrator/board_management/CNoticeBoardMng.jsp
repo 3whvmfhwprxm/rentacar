@@ -121,7 +121,7 @@ th {
 				</c:forEach>
 			</c:if>
 		</table>
-		<!-- 테이블 표시 끝 -->
+		<!-- 11테이블 표시 끝 -->
 		<div class="row">
 			<div style="float: right;">
 				<button type="button" class="btn btn-primary" id="bt_cNoInsert"
