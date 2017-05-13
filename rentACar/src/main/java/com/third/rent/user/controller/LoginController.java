@@ -123,33 +123,53 @@ public class LoginController {
 	
 	@RequestMapping(value="/user/userseachpwd.do")
 	public String userseachpwd(@RequestParam String userId, @RequestParam String userEmail, Model model){
-		logger.info("비밀번호 찾기");
+		logger.info("회원 비밀번호 찾기 파라미터 userId={}, userEmail={}", userId, userEmail);
 		UserVO userVo = new UserVO();
 		userVo.setUserId(userId);
 		userVo.setUserEmail(userEmail);
-		String result = userService.selectSearchpwd(userVo);
-		logger.info("결과 result = {}",result);
 		
-		UserVO vo = new UserVO();
-		vo.setUserPwd(result);
-		logger.info("이메일 발송 처리");
-		String subject="비밀번호 문의에 대한 답변입니다.";
-		String content="찾으실 비밀번호 [ "+vo.getUserPwd()+" ]";
-		String receiver="horo7777@gmail.com";
-		String sender="admin@herbmall.com";
+		/*String result = userService.selectSearchpwd(userVo);*/
 		
-		try {
-			emailSender.sendEmail(subject, content, receiver, sender);
-			logger.info("이메일 발송 성공");
-		} catch (MessagingException e) {
-			logger.info("이메일 발송 실패");
-			e.printStackTrace();
+		//id, email과 일치하는 회원정보가 있는지 확인
+		int count=userService.returnUserCount(userVo);
+		logger.info("id, email과 일치하는 회원 정보 검색 결과 count={}",count);
+		
+		String url="/user/index.do", msg="";
+		
+		if(count>0){
+			String userNewPwd="";
+			
+			//랜덤하게 8자리 패스워드를 생성
+			//char 값 33(!)~122(z) 랜덤 8개
+			for (int i = 0; i < 8; i++) {
+				char randomChar=(char)(int)(Math.random()*122+33);
+				userNewPwd+=randomChar;
+			}
+			logger.info("새로 생성된 패스워드 값 userNewPwd={}", userNewPwd);
+			
+			String subject="[3조 렌터카]"+userId+"님의 비밀번호 문의에 대한 답변입니다.";
+			String content="새로운 비밀번호 [ "+userNewPwd+" ] - 접속하셔서 비밀번호를 수정해주세요";
+			String receiver=userEmail;
+			String sender="admin@herbmall.com";
+			
+			try {
+				emailSender.sendEmail(subject, content, receiver, sender);
+				logger.info("이메일 발송 성공");
+				msg="새로운 비밀번호가 이메일로 전송되었습니다.";
+			} catch (MessagingException e) {
+				logger.info("이메일 발송 실패");
+				e.printStackTrace();
+				msg="새로운 비밀번호를 이메일로 전송중 실패하였습니다.";
+			}
+		}else{
+			msg="해당 ID와 Email에 해당하는 회원정보가 존재하지 않습니다.";
 		}
 		
-		return "redirect:/user/index.do";
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
 	}
-	
-	
 	
 }
 

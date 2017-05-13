@@ -51,9 +51,19 @@ public class UserServiceImpl implements UserService{
 		return userDao.selectSearchid(vo);
 	}
 
-	@Override
+	/*@Override
 	public String selectSearchpwd(UserVO vo) {
 		return userDao.selectSearchpwd(vo);
+	}*/
+	
+	@Override
+	public int returnUserCount(UserVO vo) {
+		return userDao.returnUserCount(vo);
+	}
+
+	@Override
+	public int updateNewRandomPwd(UserVO uvo) {
+		return userDao.updateNewRandomPwd(uvo);
 	}
 
 	@Override
