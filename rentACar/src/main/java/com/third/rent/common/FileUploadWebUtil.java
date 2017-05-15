@@ -152,7 +152,8 @@ public class FileUploadWebUtil {
 			if(uploadWhat==FILE_UPLOAD){
 				upPath=fileProperties.getProperty("file.upload.path.test");
 			}else if(uploadWhat==IMAGE_UPLOAD){
-				upPath="C:\\Users\\User\\git\\rentacar2\\rentACar\\src\\main\\webapp\\companyLogo";
+				upPath="C:\\Users\\User\\git\\rentacar\\rentACar\\src\\main\\webapp\\companyLogo";
+						
 				/*"C:\\Users\\User\\git\\rentacar2\\rentACar\\src\\main\\webapp\\companyLogo";*/
 						//fileProperties.getProperty("imageFile.upload.path.test");
 			}

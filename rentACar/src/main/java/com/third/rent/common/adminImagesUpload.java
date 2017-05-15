@@ -83,7 +83,7 @@ public class adminImagesUpload {
 			if(uploadWhat==FILE_UPLOAD){
 				upPath = fileProperties.getProperty("companyLogoUpload.upload.path.test");
 			}else if(uploadWhat==companyLogo_UPLOAD){
-				upPath = "D:\\rentCar\\rentacar\\rentACar\\src\\main\\webapp\\companyLogo_upload";
+				upPath = "C:\\Users\\User\\git\\rentacar\\rentACar\\src\\main\\webapp\\companyLogo";
 				/*upPath = "companyLogo.upload.path.test";*/
 			}
 			
@@ -150,7 +150,7 @@ public class adminImagesUpload {
 			if(uploadWhat==FILE_UPLOAD){
 				upPath = fileProperties.getProperty("carImagesUpload.upload.path.test");
 			}else if(uploadWhat==carImg_UPLOAD){
-				upPath = "D:\\rentCar\\rentacar\\rentACar\\src\\main\\webapp\\carImages";
+				upPath = "C:\\Users\\User\\git\\rentacar\\rentACar\\src\\main\\webapp\\carImages";
 			}
 			
 		}else{

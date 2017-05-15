@@ -225,7 +225,7 @@
 		<div class="form-group">
 			<label for="CompanyLogo" class="col-sm-2 control-label"> 로고 </label>
 			<div class="col-sm-2">
-				<input type="file" id="CompanyLogo" name="comlogo"">
+				<input type="file" id="comLogo" name="comlogo"">
 			</div>
 		</div>
 		

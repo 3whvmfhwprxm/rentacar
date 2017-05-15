@@ -5,7 +5,8 @@
 	href="${pageContext.request.contextPath}/css/admin_Detail.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/coupon_style.css" />
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=efc3625556d3948610f5295a4a5e8968&libraries=services" async ></script>
+	
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=efc3625556d3948610f5295a4a5e8968&libraries=services"></script>
 <style type="text/css">
 .bodyClass {
 	padding-top: 30px;
@@ -23,7 +24,7 @@
 						<div class="preview-pic tab-content">
 							<div class="tab-pane active" id="pic-1" style="height: 550px;">
 								<img
-									src='<c:url value="/companyLogo/${companyVo.comLogo}" />' />
+									src='<c:url value="/companyLogo_upload/${companyVo.comLogo}" />' />
 							</div>
 						</div>
 					</div>

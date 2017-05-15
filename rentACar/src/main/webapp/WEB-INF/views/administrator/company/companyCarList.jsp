@@ -98,7 +98,7 @@ th {
 													target="_parent"> <img
 													style="width: 300px; height: 250px;" alt="image"
 													class="img-responsive"
-													src='<c:url value="/companyLogo_upload/${vo.comLogo}" />'>
+													src='<c:url value="/companyLogo/${vo.comLogo}" />'>
 												</a>
 												<div class="clearfix visible-sm"></div>
 

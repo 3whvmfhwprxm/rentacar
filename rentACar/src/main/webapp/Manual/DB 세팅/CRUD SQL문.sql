@@ -231,19 +231,19 @@ and extract(month from p.PAY_REGDATE)='05'
 
 --완성
 insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
-values(Balance_acc_seq.nextval, 'rentGo', nvl((select count(RESERV_NUM) as reserv from company_paymoney
-where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='06'),0), 
-'2017-06', nvl((select sum(PAY_MONEY) as sales from company_paymoney
-where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='06'),0), 
-nvl((select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentGo' and extract(year from PAY_REGDATE)='2017'
-and extract(month from PAY_REGDATE)='06'),0)*(select COM_RATE/100 from company where COM_ID='rentGo'));
+values(Balance_acc_seq.nextval, 'rentZoa', nvl((select count(RESERV_NUM) as reserv from company_paymoney
+where COM_ID='rentZoa'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'),0), 
+'2017-05', nvl((select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentZoa'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='05'),0), 
+nvl((select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentZoa' and extract(year from PAY_REGDATE)='2017'
+and extract(month from PAY_REGDATE)='05'),0)*(select COM_RATE/100 from company where COM_ID='rentZoa'));
 
 update Balance_acc
 set BAL_DECISION_DATE=null
 where BAL_NUM=10;
 rollback;
 select * from Balance_acc
-where BAL_TARGET_DATE='2017-05';
+where BAL_TARGET_DATE='2017-03';
 
 rollback;
 commit;
@@ -269,3 +269,43 @@ on cc.COM_ID = c.COM_ID
 where r.RESERV_NUM='00000001';
 
 select * from COMPANYNOTICE;
+
+
+
+
+
+--정산 2,3월
+insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
+values(Balance_acc_seq.nextval, 'rentGo', nvl((select count(RESERV_NUM) as reserv from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='02'),0), 
+'2017-02', nvl((select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='02'),0), 
+nvl((select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentGo' and extract(year from PAY_REGDATE)='2017'
+and extract(month from PAY_REGDATE)='02'),0)*(select COM_RATE/100 from company where COM_ID='rentGo'));
+
+insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
+values(Balance_acc_seq.nextval, 'rentZoa', nvl((select count(RESERV_NUM) as reserv from company_paymoney
+where COM_ID='rentZoa'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='02'),0), 
+'2017-02', nvl((select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentZoa'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='02'),0), 
+nvl((select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentZoa' and extract(year from PAY_REGDATE)='2017'
+and extract(month from PAY_REGDATE)='02'),0)*(select COM_RATE/100 from company where COM_ID='rentZoa'));
+
+insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
+values(Balance_acc_seq.nextval, 'rentGo', nvl((select count(RESERV_NUM) as reserv from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='03'),0), 
+'2017-03', nvl((select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentGo'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='03'),0), 
+nvl((select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentGo' and extract(year from PAY_REGDATE)='2017'
+and extract(month from PAY_REGDATE)='03'),0)*(select COM_RATE/100 from company where COM_ID='rentGo'));
+
+insert into Balance_acc(bal_num, com_id, BAL_RESERV_CNT, BAL_TARGET_DATE, BAL_SALES, BAL_COMMISSION)
+values(Balance_acc_seq.nextval, 'rentZoa', nvl((select count(RESERV_NUM) as reserv from company_paymoney
+where COM_ID='rentZoa'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='03'),0), 
+'2017-03', nvl((select sum(PAY_MONEY) as sales from company_paymoney
+where COM_ID='rentZoa'and extract(year from PAY_REGDATE)='2017'and extract(month from PAY_REGDATE)='03'),0), 
+nvl((select sum(PAY_MONEY) as sales from company_paymoney where COM_ID='rentZoa' and extract(year from PAY_REGDATE)='2017'
+and extract(month from PAY_REGDATE)='03'),0)*(select COM_RATE/100 from company where COM_ID='rentZoa'));
+
+select * from Balance_acc
+commit;
