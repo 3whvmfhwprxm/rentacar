@@ -75,7 +75,7 @@
 	<div class="w3-container">
 		<h3>
 			<b> <i class="fa fa-line-chart" aria-hidden="true"></i> <a
-				href='<c:url value="/administrator/highChart/sales.do" />'> &nbsp;2017년 매출 </a>
+				href='<c:url value="/admin/sales/salesMonth.do" />'> &nbsp;2017년 매출 </a>
 			</b>
 		</h3>
 		<!-- HighChart 그래프 -->
@@ -167,7 +167,7 @@
 	<div class="w3-container">
 		<h3>
 			<b> <i class="fa fa-credit-card"></i> <a
-				href='<c:url value="/administrator/payInfo/payInfoList.do" />'>
+				href='<c:url value="/admin/payInfo.do" />'>
 					&nbsp;최근 결제 10건 </a>
 			</b>
 		</h3>

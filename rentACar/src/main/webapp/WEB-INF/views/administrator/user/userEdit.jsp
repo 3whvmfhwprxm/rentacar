@@ -3,10 +3,27 @@
 <%@ include file="../include/top.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#btCompanyRegister").click(function() {
-			if (!$("#CompanyPwd").val()) {
-				alert('비밀번호를 입력하세요');
-				$("#CompanyPwd").focus();
+		$("#bt1").click(function() {
+			if ($("#userName").val()=='') {
+				alert('이름을 입력하세요.');
+				$("#userName").focus();
+				return false;
+			} else if ($("#userEmail").val() == '') {
+				alert('이메일을 입력하세요');
+				$("#userEmail").focus();
+				return false;
+			} else if ($("#userTel2").val() == ''
+					|| $("#userTel3").val() == '') {
+				alert('휴대폰번호를 입력하세요.');
+				$("#userTel2").focus();
+				return false;
+			} else if ($("#userBirth").val() == '') {
+				alert('생일을 입력하세요');
+				$("#userBirth").focus();
+				return false;
+			} else if ($("#userAddress").val() == '') {
+				alert('주소를 입력하세요');
+				$("#userAddress").focus();
 				return false;
 			}
 		});
@@ -46,9 +63,10 @@
 					value="${userVo.userId}" readonly>
 			</div>
 		</div>
-		
+
 		<div class="form-group">
-			<label for="userPwd" class="col-sm-2 control-label"> 회원 비밀번호 </label>
+			<label for="userPwd" class="col-sm-2 control-label"> 회원 비밀번호
+			</label>
 			<div class="col-sm-8">
 				<input type="text" class="form-control" name="userPwd" id="userPwd"
 					value="${userVo.userPwd}" readonly>
@@ -127,7 +145,7 @@
 					id="userAddress" value="${userVo.userAddress}">
 			</div>
 		</div>
-		
+
 		<div class="form-group">
 			<label for="userGender" class="col-sm-2 control-label"> 성별 </label>
 			<div class="col-sm-2">
@@ -153,27 +171,33 @@
 					<option value="1종 대형"
 						<c:if test="${userVo.userLicense=='1종 대형'}">            	
             				selected="selected"
-            			</c:if>>1종 대형</option>
+            			</c:if>>1종
+						대형</option>
 					<option value="1종 보통"
 						<c:if test="${userVo.userLicense=='1종 보통'}">            	
             				selected="selected"
-            			</c:if>>1종 보통</option>
+            			</c:if>>1종
+						보통</option>
 					<option value="1종 소형">
 						<c:if test="${userVo.userLicense=='1종 소형'}">            	
             				selected="selected"
-            			</c:if>1종 소형</option>
+            			</c:if>1종 소형
+					</option>
 					<option value="1종 특수"
 						<c:if test="${userVo.userLicense=='1종 특수'}">            	
             				selected="selected"
-            			</c:if>>1종 특수</option>
+            			</c:if>>1종
+						특수</option>
 					<option value="2종 보통"
 						<c:if test="${userVo.userLicense=='2종 보통'}">            	
             				selected="selected"
-            			</c:if>>2종 보통</option>
+            			</c:if>>2종
+						보통</option>
 					<option value="2종 소형"
 						<c:if test="${userVo.userLicense=='2종 소형'}">            	
             				selected="selected"
-            			</c:if>>2종 소형</option>
+            			</c:if>>2종
+						소형</option>
 				</select>
 			</div>
 		</div>
