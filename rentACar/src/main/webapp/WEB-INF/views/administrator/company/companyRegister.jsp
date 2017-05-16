@@ -73,6 +73,10 @@
 						alert('대표자를 입력하세요');
 						$("#CompanyCeo").focus();
 						return false;
+					} else if ($("#CompanyRate").val()<1 || $("#CompanyRate").val()>100) {
+						alert('수수료는 1%에서 100% 사이에만 가능합니다.');
+						$("#CompanyRate").focus();
+						return false;
 					} else if ($("#comLogo").val() == '') {
 						alert('업체로고를 등록하세요.');
 						$("#comLogo").focus();
