@@ -130,7 +130,7 @@ public class LoginController {
 		
 		/*String result = userService.selectSearchpwd(userVo);*/
 		
-		//id, email과 일치하는 회원정보가 있는지 확인
+		//id, email과 일치하는 회원정보가 있는지 확인2
 		int count=userService.returnUserCount(userVo);
 		logger.info("id, email과 일치하는 회원 정보 검색 결과 count={}",count);
 		
