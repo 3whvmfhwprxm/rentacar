@@ -13,7 +13,7 @@
 	<!-- Header -->
 	<header class="w3-container" style="padding-top: 5px;">
 		<h3>
-			<b><i class="fa fa-check" aria-hidden="true"></i>&nbsp; 현황</b>
+			<b><i class="fa fa-check" aria-hidden="true"></i>&nbsp;관리 정보 현황</b>
 		</h3>
 	</header>
 	<div class="w3-row-padding w3-margin-bottom">
@@ -75,7 +75,7 @@
 	<div class="w3-container">
 		<h3>
 			<b> <i class="fa fa-line-chart" aria-hidden="true"></i> <a
-				href='<c:url value="/administrator/highChart/sales.do" />'> 차트 </a>
+				href='<c:url value="/administrator/highChart/sales.do" />'> &nbsp;2017년 매출 </a>
 			</b>
 		</h3>
 		<!-- HighChart 그래프 -->
@@ -168,7 +168,7 @@
 		<h3>
 			<b> <i class="fa fa-credit-card"></i> <a
 				href='<c:url value="/administrator/payInfo/payInfoList.do" />'>
-					결제 </a>
+					&nbsp;최근 결제 10건 </a>
 			</b>
 		</h3>
 		<div class="row">

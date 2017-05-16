@@ -141,11 +141,14 @@ public class LoginController {
 			
 			//랜덤하게 8자리 패스워드를 생성
 			//char 값 33(!)~122(z) 랜덤 8개
-			for (int i = 0; i < 8; i++) {
+			for (int i=0; i<8; i++) {
 				char randomChar=(char)(int)(Math.random()*122+33);
 				userNewPwd+=randomChar;
 			}
 			logger.info("새로 생성된 패스워드 값 userNewPwd={}", userNewPwd);
+			userVo.setUserPwd(userNewPwd);
+			
+			userService.updateNewRandomPwd(userVo);
 			
 			String subject="[3조 렌터카]"+userId+"님의 비밀번호 문의에 대한 답변입니다.";
 			String content="새로운 비밀번호 [ "+userNewPwd+" ] - 접속하셔서 비밀번호를 수정해주세요";
