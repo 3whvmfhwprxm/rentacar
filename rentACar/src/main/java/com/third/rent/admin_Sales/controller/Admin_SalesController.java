@@ -12,11 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.third.rent.admin_HighChart.model.Admin_HighChartService;
 import com.third.rent.admin_Sales.model.SalesService;
 import com.third.rent.common.DateSearchVO2;
 import com.third.rent.highcharts.model.DateVO;
-import com.third.rent.highcharts.model.HighchartsService;
 
 @Controller
 @RequestMapping("/admin/sales")
@@ -26,12 +24,6 @@ public class Admin_SalesController {
 	
 	@Autowired
 	private SalesService sService;
-	
-	@Autowired
-	private Admin_HighChartService adminHighChartService;
-	
-	@Autowired
-	private HighchartsService highChartService;
 	
 	@RequestMapping("/salesDay.do")
 	public String salesDay(@ModelAttribute DateSearchVO2 dvo, Model model){

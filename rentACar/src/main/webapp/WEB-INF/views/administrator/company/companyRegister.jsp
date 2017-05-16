@@ -69,9 +69,17 @@
 						alert('회사주소를 입력하세요');
 						$("#CompanyAddress").focus();
 						return false;
+					} else if ($("#comReturnPlace").val() == '') {
+						alert('인수/반납장소를 입력하세요');
+						$("#comReturnPlace").focus();
+						return false;
 					} else if ($("#CompanyCeo").val() == '') {
 						alert('대표자를 입력하세요');
 						$("#CompanyCeo").focus();
+						return false;
+					} else if ($("#CompanyEmail").val() == '') {
+						alert('이메일을 입력하세요');
+						$("#CompanyEmail").focus();
 						return false;
 					} else if ($("#CompanyRate").val()<1 || $("#CompanyRate").val()>100) {
 						alert('수수료는 1%에서 100% 사이에만 가능합니다.');
