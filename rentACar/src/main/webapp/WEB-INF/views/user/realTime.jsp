@@ -59,14 +59,14 @@
 	    	var endDate=$("#searchEndDate").val();
 	    	var endDateArr=endDate.split('-');
 	    	
-	    	var startDateCompare=new Date(startDateArr[0],startDateArr[1],startDateArr[2]);
-	    	var endDateCompare=new Date(endDateArr[0],endDateArr[1],endDateArr[2]);
+	    	var startDateCompare=new Date(startDateArr[0],startDateArr[1]-1,startDateArr[2]);
+	    	var endDateCompare=new Date(endDateArr[0],endDateArr[1]-1,endDateArr[2]);
 	    	
 	    	if(startDateCompare.getTime() > endDateCompare.getTime()){
 	    		alert("예약일이 반납일보다 크면 안됩니다. 검색기간을 확인해주세요.");
 	    		$("#searchEndDate").focus();
 	    		return event.preventDefault();
-	    	}else if((endDateCompare.getDate()-startDateCompare.getDate())>7){
+	    	}else if(((endDateCompare.getTime() - startDateCompare.getTime())/(1000*60*60*24)) > 7){
 	    		alert("예약하실 수 있는 기간은 최대 7일까지 입니다");
 	    		$("#searchEndDate").focus();
 	    		return event.preventDefault();
