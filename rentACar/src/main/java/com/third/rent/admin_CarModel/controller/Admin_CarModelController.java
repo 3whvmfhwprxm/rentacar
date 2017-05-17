@@ -179,7 +179,7 @@ public class Admin_CarModelController {
 		int cnt = adminCarModelService.updateCarModel(carVo);
 		logger.info("차량 수정 결과 cnt={}", cnt);
 		
-		String msg = "", url = "";
+		String msg = "", url = "/administrator/carModel/modelList.do";
 		if(cnt>0){
 			msg = "차량 수정 성공";
 			url = "/administrator/carModel/modelDetail.do?carCode="+carVo.getCarCode();

@@ -18,13 +18,17 @@
 				alert('제조사 입력하세요.');
 				$("#carInc").focus();
 				return false;
+			} else if ($("#carSize").val() == '') {
+				alert('승차인원을 입력하세요.');
+				$("#carSize").focus();
+				return false;
 			} else if ($("#carTrans").val() == '') {
 				alert('변속기를 입력하세요.');
 				$("#carTrans").focus();
 				return false;
-			} else if ($("#carSize").val() == '') {
-				alert('승차인원을 입력하세요.');
-				$("#carSize").focus();
+			} else if ($("#carType").val() == '') {
+				alert('차량유형을 입력하세요.');
+				$("#carType").focus();
 				return false;
 			} else if ($("#carImg").val() == '') {
 				alert('이미지을 선택해주세요.');

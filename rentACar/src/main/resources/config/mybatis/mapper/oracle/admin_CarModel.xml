@@ -39,11 +39,19 @@
 	</insert>
 	
 	<update id="updateCarModel" parameterType="CarVO">
-		<choose>			
+        <choose>
+        	<when test="carImg==null and carImg2==null and carImg3==null">
+	        	update car
+				set 
+		    	    car_name=#{carName},
+		    	    car_inc=#{carInc}, car_size=#{carSize},
+		    	    car_trans=#{carTrans}, car_type=#{carType}
+				where car_code=#{carCode}
+			</when>		
 	        <when test="carImg!=null and carImg2==null and carImg3==null">
 	        	update car
 				set 
-		    	    car_code=#{carCode}, car_name=#{carName},
+		    	    car_name=#{carName},
 		    	    car_inc=#{carInc}, car_size=#{carSize},
 		    	    car_trans=#{carTrans}, car_type=#{carType},
 		    	    car_img=#{carImg}
@@ -52,7 +60,7 @@
 	        <when test="carImg!=null and carImg2!=null and carImg3==null">
 			    update car
 				set 
-				    car_code=#{carCode}, car_name=#{carName},
+				    car_name=#{carName},
 				    car_inc=#{carInc}, car_size=#{carSize},
 				    car_trans=#{carTrans}, car_type=#{carType},
 				    car_img=#{carImg}, car_img2=#{carImg2}
@@ -61,7 +69,7 @@
 			<when test="carImg!=null and carImg2==null and carImg3!=null">
 			    update car
 				set 
-				    car_code=#{carCode}, car_name=#{carName},
+				    car_name=#{carName},
 				    car_inc=#{carInc}, car_size=#{carSize},
 				    car_trans=#{carTrans}, car_type=#{carType},
 				    car_img=#{carImg}, car_img2=#{carImg3}
@@ -70,21 +78,13 @@
       		<when test="carImg!=null and carImg2!=null and carImg3!=null">
 			    update car
 				set 
-				    car_code=#{carCode}, car_name=#{carName},
+				    car_name=#{carName},
 				    car_inc=#{carInc}, car_size=#{carSize},
 				    car_trans=#{carTrans}, car_type=#{carType},
 				    car_img=#{carImg}, car_img2=#{carImg2}, car_img3=#{carImg3}
 				where car_code=#{carCode}
 			</when>
-			<otherwise>
-	        	update car
-				set 
-		    	    car_code=#{carCode}, car_name=#{carName},
-		    	    car_inc=#{carInc}, car_size=#{carSize},
-		    	    car_trans=#{carTrans}, car_type=#{carType}
-				where car_code=#{carCode}
-			</otherwise>
-      </choose>
+      	</choose>
 	</update>
 	
 	<select id="selectAllCarModel" resultType="CarVO"

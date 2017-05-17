@@ -119,7 +119,10 @@
 	    	com_fax3=#{comFax3}, com_address=#{comAddress},
 	    	com_return_place=#{comReturnPlace}, 
 	    	com_ceo=#{comCeo}, com_rate=#{comRate},
-	    	com_email=#{comEmail}, com_logo=#{comLogo}
+	    	com_email=#{comEmail}
+	    	<if test="comLogo!=null and comLogo!=''">
+			, com_logo=#{comLogo}
+			</if>  	
 		where com_id=#{comId}
 	</update>
 	

@@ -3,10 +3,79 @@
 <%@ include file="../include/top.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#btCompanyRegister").click(function() {
-			if (!$("#CompanyPwd").val()) {
+		$("#btEdit").click(function() {
+			if (!validate_CompanyId($("#comId").val())) {
+				alert('아이디는 영문대소문자, 숫자만 가능합니다');
+				$("#comId").focus();
+				return false;
+			} else if ($("#comId").val() == '') {
+				alert('아이디를 입력하세요.');
+				$("#comId").focus();
+				return false;
+			} else if ($("#comId").val().length < 6) {
+				alert('아이디는 6글자 이상이어야합니다.');
+				$("#comId").focus();
+				return false;
+			} else if ($("#CompanyName").val() == '') {
+				alert('업체명을 입력하세요');
+				$("#CompanyName").focus();
+				return false;
+			} else if ($("#CompanyNo").val() == '') {
+				alert('사업자번호를 입력해야 합니다.');
+				$('#CompanyNo').focus();
+				return false;
+			} else if ($("#comAccNum").val() == '') {
+				alert('계좌번호를 입력해야 합니다.');
+				$('#comAccNum').focus();
+				return false;
+			} else if ($("#CompanyTel2").val() == ''
+					|| $("#CompanyTel3").val() == '') {
+				alert('대표번호를 입력하세요.');
+				$("#CompanyTel2").focus();
+				return false;
+			} else if (!validate_tel($("#CompanyTel2").val()) || !validate_tel($("#CompanyTel3").val())) {
+				alert('대표번호는 숫자를 입력하셔야 합니다');
+				$("#CompanyTel2").focus();
+				return false;
+			} else if ($("#CompanyMobile2").val() == '' || $("#CompanyMobile3").val() == '') {
+				alert('휴대폰번호를 입력하세요');
+				$("#CompanyMobile2").focus();
+				return false;
+			} else if (!validate_mobile($("#CompanyMobile2").val()) || !validate_mobile($("#CompanyMobile3").val())) {
+				alert('휴대폰번호는 숫자를 입력하셔야 합니다');
+				$("#CompanyMobile2").focus();
+				return false;
+			} else if ($("#CompanyFax2").val() == '' || $("#CompanyFax3").val() == '') {
+				alert('팩스번호를 입력하세요');
+				$("#CompanyFax1").focus();
+				return false;
+			} else if (!validate_fax($("#CompanyFax2").val()) || !validate_fax($("#CompanyFax3").val())) {
+				alert('팩스번호는 숫자를 입력하셔야 합니다');
+				$("#CompanyFax1").focus();
+				return false;
+			} else if ($("#CompanyAddress").val() == '') {
+				alert('회사주소를 입력하세요');
+				$("#CompanyAddress").focus();
+				return false;
+			} else if ($("#comReturnPlace").val() == '') {
+				alert('인수/반납장소를 입력하세요');
+				$("#comReturnPlace").focus();
+				return false;
+			} else if ($("#CompanyCeo").val() == '') {
+				alert('대표자를 입력하세요');
+				$("#CompanyCeo").focus();
+				return false;
+			} else if ($("#CompanyEmail").val() == '') {
+				alert('이메일을 입력하세요');
+				$("#CompanyEmail").focus();
+				return false;
+			} else if ($("#CompanyRate").val()<1 || $("#CompanyRate").val()>100) {
+				alert('수수료는 1%에서 100% 사이에만 가능합니다.');
+				$("#CompanyRate").focus();
+				return false;
+			} else if ($("#comPwd").val() != '${companyVo.comPwd}') {
 				alert('비밀번호를 입력하세요');
-				$("#CompanyPwd").focus();
+				$("#comPwd").focus();
 				return false;
 			}
 		});
@@ -27,6 +96,25 @@
 			 }
 		});
 	});
+	
+	function validate_CompanyId(CompanyId) {
+		var pattern = new RegExp(/^[a-zA-Z0-9]*$/g);
+		return pattern.test(CompanyId);
+	}
+	function validate_tel(tel) {
+		var pattern = new RegExp(/^[0-9]*$/g);
+		return pattern.test(tel);
+	}
+
+	function validate_mobile(mobile) {
+		var pattern = new RegExp(/^[0-9]*$/g);
+		return pattern.test(mobile);
+	}
+
+	function validate_fax(fax) {
+		var pattern = new RegExp(/^[0-9]*$/g);
+		return pattern.test(fax);
+	}
 </script>
 
 <style type="text/css">
@@ -72,8 +160,7 @@
 			<label for="comPwd" class="col-sm-2 control-label"> 업체 비밀번호
 			</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" name="comPwd" id="comPwd"
-					value="${companyVo.comPwd}">
+				<input type="text" class="form-control" name="comPwd" id="comPwd">
 			</div>
 		</div>
 		
@@ -225,7 +312,7 @@
 		<div class="form-group">
 			<label for="CompanyLogo" class="col-sm-2 control-label"> 로고 </label>
 			<div class="col-sm-2">
-				<input type="file" id="comLogo" name="comlogo"">
+				<input type="file" id="comLogo" name="comlogo">
 			</div>
 		</div>
 		
@@ -239,7 +326,7 @@
 		<div class="form-group">
 			<label for="bt" class="col-sm-2 control-label"></label>
 			<div class="col-sm-8">
-				<button type="submit" class="btn btn-default">
+				<button type="submit" class="btn btn-default" id="btEdit">
 					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>수정
 				</button>
 

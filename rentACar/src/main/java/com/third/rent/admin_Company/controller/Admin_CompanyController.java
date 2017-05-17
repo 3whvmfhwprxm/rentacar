@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.third.rent.admin.model.AdminVO;
 import com.third.rent.admin_Company.model.Admin_CompanyService;
 import com.third.rent.common.PaginationInfo;
 import com.third.rent.common.SearchVO;
@@ -221,7 +220,7 @@ public class Admin_CompanyController {
 	}
 	
 	@RequestMapping(value="/company/companyEdit.do", method=RequestMethod.POST)
-	public String companyEdit_post(@ModelAttribute CompanyVO companyVo, @ModelAttribute AdminVO adminVo,
+	public String companyEdit_post(@ModelAttribute CompanyVO companyVo,
 			@RequestParam String oldFileName, HttpServletRequest request, Model model){
 		logger.info("업체 수정 처리, 파라미터 companyVo={}", companyVo);
 		

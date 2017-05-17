@@ -3,10 +3,30 @@
 <%@ include file="../include/top.jsp"%>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#btCompanyRegister").click(function() {
-			if (!$("#CompanyPwd").val()) {
-				alert('비밀번호를 입력하세요');
-				$("#CompanyPwd").focus();
+		$("#bt1").click(function() {
+			if ($("#carCode").val() == '') {
+				alert('모델코드를 입력하세요');
+				$("#carCode").focus();
+				return false;
+			} else if ($("#carName").val() == '') {
+				alert('모델명을 입력하세요.');
+				$("#carName").focus();
+				return false;
+			} else if ($("#carInc").val() == '') {
+				alert('제조사 입력하세요.');
+				$("#carInc").focus();
+				return false;
+			} else if ($("#carSize").val() == '') {
+				alert('승차인원을 입력하세요.');
+				$("#carSize").focus();
+				return false;
+			} else if ($("#carTrans").val() == '') {
+				alert('변속기를 입력하세요.');
+				$("#carTrans").focus();
+				return false;
+			} else if ($("#carType").val() == '') {
+				alert('차량유형을 입력하세요.');
+				$("#carType").focus();
 				return false;
 			}
 		});
@@ -102,7 +122,7 @@
 			<label for="carCode" class="col-sm-2 control-label"> 모델코드 </label>
 			<div class="col-sm-2">
 				<input type="text" class="form-control" name="carCode" id="carCode"
-					value="${carVo.carCode}">
+					value="${carVo.carCode}" readonly="readonly">
 			</div>
 		</div>
 
