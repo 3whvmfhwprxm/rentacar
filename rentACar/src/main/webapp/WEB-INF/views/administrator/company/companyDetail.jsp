@@ -5,12 +5,19 @@
 	href="${pageContext.request.contextPath}/css/admin_Detail.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/coupon_style.css" />
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=efc3625556d3948610f5295a4a5e8968&libraries=services" async ></script>
+<script type="text/javascript" 
+	src="//apis.daum.net/maps/maps3.js?apikey=7469f17404c90e226549fd0d55be97a5&libraries=services">
+</script>
 <style type="text/css">
 .bodyClass {
 	padding-top: 30px;
 	width: 85%;
 	padding-left: 40px;
+}
+#map{
+	width: 100%;
+	height: 400px;
+	margin-bottom: 10px;
 }
 </style>
 
@@ -105,7 +112,7 @@
 		<!-- 인수/반납 장소 표시 -->
 	    <p><strong>회사위치: </strong>${companyVo.comAddress}</p>
 	    <div id="map"></div>
-	    <input type="hidden" id="mapInfo" name="mapInfo" value="${companyVo.comAddress}">    
+	    <input type="hidden" id="mapInfo" name="mapInfo" value="인천광역시 서구 완정로 65번안길 10 대주피오레 114동 903호">    
 	    <script>
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			    mapOption = {
@@ -146,7 +153,6 @@
 			    } 
 			});    
 		</script>
-
 	</div>
 </div>
 <%@ include file="../include/bottom.jsp"%>
